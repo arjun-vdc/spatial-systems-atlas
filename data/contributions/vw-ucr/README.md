@@ -67,5 +67,5 @@ not hand work. The repository imports the map's claims the same way, from a date
 
 ## Licence
 
-Offered under CC0 1.0, the map's own licence, **subject to confirmation by the VDC**. The `note`
+Offered under CC0 1.0, the map's own licence. The `note`
 column quotes the repository's own use case text.
