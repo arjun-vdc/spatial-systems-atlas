@@ -4,7 +4,7 @@
 
 The map measures **supply**: which systems provide each capability, with the evidence attached. It
 holds no use cases, so it cannot measure **demand**: which capabilities real deployments actually
-depend on. The Virtual Worlds Use Case Repository (VW-UCR) of the Virtual Dimension Center (VDC),
+depend on. The Virtual Worlds Use Case Repository (Virtual Worlds UCR) of the Virtual Dimension Center (VDC),
 Fellbach, holds that half. It describes virtual-world use cases in the IEC 62559-2 template and
 files real deployments under them. Each use case is linked to the capabilities on this map that it
 depends on.
@@ -34,7 +34,7 @@ python3 build_demand.py
 
 Every use case scope in the repository was read against the map's 164 capability definitions
 (capture of 2026-09-22). A link is made only where a reader comparing the two texts arrives at the
-pairing, and its note quotes the words it rests on. `derived` means the scope states the need;
+pairing, and its note gives the words it rests on, quoted or closely paraphrased. `derived` means the scope states the need;
 `proposed` means the scope implies it without naming it, and the note says what is missing. Many
 plausible pairings were left out on purpose. Individual use cases (a named company's realisation)
 inherit the links of the generic use case they specialise, and carry their own only where they name a
@@ -62,8 +62,13 @@ need their parent does not.
 ## Keeping it current
 
 The repository regenerates these files from its database with one command
-(`scripts/atlas_contribution_export.py` in the VDC wiki), so a refresh is a new commit on this branch,
+(a script the VDC maintains), so a refresh is a new commit on this branch,
 not hand work. The repository imports the map's claims the same way, from a dated capture.
+
+The files were last refreshed on 2026-10-19, after the repository's record texts were rewritten:
+every link note was read again against the current scope, quotes that no longer matched were
+re-quoted, and scores of the map frozen into note text were removed (the `demand.csv` columns carry
+them instead).
 
 ## Licence
 
