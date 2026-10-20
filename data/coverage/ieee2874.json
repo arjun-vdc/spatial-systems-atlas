@@ -512,23 +512,46 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "The Spatial Web standard is a modelling and transaction layer. Presentation, including any blend with a camera view of the room, is left entirely to the client.",
+      "note": "The IEEE project record states the purpose as a technical framework for a collaborative, interactive Spatial Web and shared world system (a protocol, architecture and governance reference model); the normative text is paywalled and was not read. The Spatial Web standard is a modelling and transaction layer. Presentation, including any blend with a camera view of the room, is left entirely to the client.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE SA project record (PAR) for P2874, Spatial Web Protocol, Architecture and Governance",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://standards.ieee.org/ieee/2874/11717/",
+          "title": "IEEE SA catalogue entry: IEEE 2874-2025 (abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This standard describes the services, hypergraphs, protocols, and languages that enable interoperable, semantically compatible connections between network-connected hardware"
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "The standard models entities, activities and their governance. Reading the user's own face and body as a live stream is a device runtime's job and is not part of it.",
+      "note": "The IEEE project record states the purpose as a technical framework for a collaborative, interactive Spatial Web and shared world system (a protocol, architecture and governance reference model); the normative text is paywalled and was not read. The standard models entities, activities and their governance. Reading the user's own face and body as a live stream is a device runtime's job and is not part of it.",
       "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "scene.navmesh",
-      "level": "out-of-scope",
-      "note": "The standard describes a graph of entities and their relations, not a place description in which a walkable surface or an arrival point would travel.",
-      "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE SA project record (PAR) for P2874, Spatial Web Protocol, Architecture and Governance",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://standards.ieee.org/ieee/2874/11717/",
+          "title": "IEEE SA catalogue entry: IEEE 2874-2025 (abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This standard describes the services, hypergraphs, protocols, and languages that enable interoperable, semantically compatible connections between network-connected hardware"
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
@@ -544,27 +567,6 @@
           "quote": "a human and machine-readable contracting language that enables the expression and automated execution of legal, financial, and physical activities"
         }
       ]
-    },
-    {
-      "capability_id": "deliver.moderation",
-      "level": "out-of-scope",
-      "note": "Governance in this standard is expressed as rules and permissions on activities, not as a review that stands between finished content and its audience, and there is no publishing service in it to hold one.",
-      "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "geo.map-align",
-      "level": "out-of-scope",
-      "note": "The standard places entities in domains. It declares no map of a place with a version and a lifecycle, and publishes no transform between two maps.",
-      "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "geo.coverage",
-      "level": "out-of-scope",
-      "note": "Its spatial range query asks what is inside a volume, which is discovery, not a service declaring the area it answers for.",
-      "confidence": "verified",
-      "sources": []
     },
     {
       "capability_id": "scene.containment",
@@ -593,6 +595,1879 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "This standard defines a protocol for spatial web interactions."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Every entity, including every domain, must carry an identifier and be registered and linked in a public graph, which is the basis for resolving an identifier to what it names. What is missing is the resolution method itself, the registry has yet to be built, and nothing says how a scene resource reference is resolved.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Every Spatial Web entity, including Domains, shall include a Spatial Web Identifier (SWID) using W3C did-core. Spatial Web entities are registered and linked in the Universal Domain Graph (UDG)."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The specification requires a registration activity."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Domain-specific architectures are planned as named tailorings of the system design for particular verticals, and protocol messages are to use profile encoding formats defined elsewhere. What is missing is any way for an implementation or content to declare which profile it meets, and none of the profiles are written yet.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250801114643/https://spatialwebfoundation.org/swf/the-spatial-web-standards/",
+          "title": "The Spatial Web Standards, Spatial Web Foundation, archived 2025-08-01",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "As an architecture specification, this will define the concepts relevant to the domain and tailor the Spatial Web system design to meet the requirements of the particular domain."
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "HSTP requests and responses are encoded using profile encoding formats defined by the HSML Implementation Specification."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "partial",
+      "note": "A geographic domain is defined as one associated with a location, which is the idea of stating where something applies. The public text gives no format for the area, no stated frame, and no way for a client to test relevance.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Implicitly or explicitly associated with a location"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "The abstract names a credentialing method for permissioning access and the model grants credentials against a domain authority's rules, so presenting a credential is implied. What is missing is the exchange itself: no request and presentation message flow is described in public text.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://standards.ieee.org/ieee/2874/11717/",
+          "title": "IEEE 2874-2025 catalogue entry and abstract, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a verifiable credentialing and certification method for permissioning create-retrieve-update-delete access to devices, locations, users, and data"
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "governance of Activities within relevant Domains is accomplished by granting Credentials for only those Activity types found consistent with Domain Authority rules"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Credentials are claims made by a domain, and the modelling language implements the shared ontology as schemas, so a declared vocabulary for claims is intended. No credential-specific schema or validation mechanism is public.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "HSML implements the Spatial Web ontology as a set of schemas that enable increased coherence across diverse datasets without sacrificing flexibility."
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "A Credential is a set of one or more claims made by a Domain."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "Consent to a domain's terms is given by executing a contract on entry, which is a grant of permission by the participant. What is missing is any statement of scope, purpose, validity or withdrawal, and the contracting language is not published.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Participation in a Domain (via the execution of Activities by a Spatial Web agent) may involve explicit consent to the terms governing that Domain, via HSML Contract."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "partial",
+      "note": "An application-layer protocol is defined that runs over several transport bindings with a common meaning above them, so the carrying layer is addressed. The wire encoding sits in an implementation specification still under development, and the protocol is described as request and response operations rather than continuous session traffic.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "HSTP is an application-layer protocol."
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "HSTP is designed to be consistent with multiple protocol bindings"
+        },
+        {
+          "url": "https://web.archive.org/web/20250801114643/https://spatialwebfoundation.org/swf/the-spatial-web-standards/",
+          "title": "The Spatial Web Standards, Spatial Web Foundation, archived 2025-08-01",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Several types of Implementation standards are under development for HSML, HSTP, and UDG"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "The design relies on zero-trust security, requiring every user to be authenticated and authorized before access, and it describes bootstrapping and context queries. How a client joins a running shared world is not described in public text.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Zero Trust requires all users to be authenticated, authorized, and continuously validated for security configuration before being granted access to applications and data."
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Bootstrapping/Context queries"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "partial",
+      "note": "Seamless navigation and asset transfer between spaces is stated as a guiding principle and as a goal of the interoperability requirement. No mechanism for carrying state from one world to another is described in public text.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Seamless user navigation and asset transfer within and between spaces across devices, operating systems, and locations."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "A domain admits activity by granting credentials only for activity types its authority's rules allow, which is the approval side of arrival. No pre-arrival approval or refusal response, validity limit or explanation is described publicly.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "governance of Activities within relevant Domains is accomplished by granting Credentials for only those Activity types found consistent with Domain Authority rules"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "partial",
+      "note": "Privacy is a guiding principle, stated as individual control through a cryptographically secured, decentrally stored identity, with governance policies for privacy and location information still to be written. No selective-disclosure mechanism is public.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Individual control, trust, and security utilizing cryptographically secured and decentrally-stored digital identity"
+        },
+        {
+          "url": "https://web.archive.org/web/20250801114643/https://spatialwebfoundation.org/swf/the-spatial-web-standards/",
+          "title": "The Spatial Web Standards, Spatial Web Foundation, archived 2025-08-01",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "The governance of the Spatial Web will need to address societal and management issues, e.g., privacy, location information, trust, and federated identity."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "partial",
+      "note": "Conflicts between authorities are to be shown as competing claims, each with its provenance, so a reader can weigh how a claim arose. No assurance level or evidence structure for a claim is published.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "to represent such conflicts accurately in the form of competing claims, each with its provenance"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "partial",
+      "note": "A common language is described for defining, instantiating, executing and monitoring agent activities, with conditions that can be machine-evaluated. These describe what agents do in a domain, and nothing public says they travel with an asset; the schemas are unpublished.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "The HSML framework supports this relationship by offering a unified language and protocols for defining, instantiating, executing, and monitoring Agent Activities."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "partial",
+      "note": "The abstract claims a language whose statements are executed automatically. It is a contracting language rather than a general language for world rules, and neither the language nor a runtime is published.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://standards.ieee.org/ieee/2874/11717/",
+          "title": "IEEE 2874-2025 catalogue entry and abstract, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a human and machine-readable contracting language that enables the expression and automated execution of legal, financial, and physical activities"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "partial",
+      "note": "Ownership is a guiding principle: users own their data and digital property and keep control when they leave a provider. No record of items held, or rule for whether they travel, is public.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "Users can own their data and digital property and choose with whom they share this data."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "partial",
+      "note": "Domains are to carry provenance information for each entity, and the trust principle calls for verifiable records of ownership and traceability. No signed record of who made an asset and how is defined in public text.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "information regarding the provenance and material composition of the entity"
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "certifiable and verifiable records that validate various proofs of ownership, activity, traceability, and rights"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "The standard includes a data ontology for describing objects and relationships, implemented as schemas, so structured properties with declared structure are intended. Attaching them to parts of a scene is not described, and the schemas are unpublished.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://standards.ieee.org/ieee/2874/11717/",
+          "title": "IEEE 2874-2025 catalogue entry and abstract, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a data ontology for describing objects, relationships, and activities"
+        },
+        {
+          "url": "https://web.archive.org/web/20250820113913/http://spatialwebfoundation.org/wp-content/uploads/2024/10/Spatial-Web-Foundation_Specification-Introduction_2024-06-03.pdf",
+          "title": "Introduction to Spatial Web Protocol, Architecture & Governance (draft D3.1, June 2024), Spatial Web Foundation, archived 2025-08-20",
+          "retrieved": "2026-10-20",
+          "kind": "secondary",
+          "quote": "HSML implements the Spatial Web ontology as a set of schemas that enable increased coherence across diverse datasets without sacrificing flexibility."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "It names no avatar or mesh description format; a person is a domain with a self-sovereign identity, and appearance is left to implementers. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "It names no bone structure or animation transfer rule; its entities are persons, agents and things, not rigged bodies. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "It names no facial expressions or visemes; it describes and permissions places and agents, not how a face moves. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "It defines no items worn or carried and no attachment points; ownership of digital property is a principle, not an avatar format. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "It carries no animation, so there is nothing to replay on a different body. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "It defines no avatar representation, so reduced versions of one are not its concern. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "It places no sound in a scene; sound output is a client matter. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "It defines no rendering of direction to the ears; presentation is left to clients. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "It defines no acoustic description of a space. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "It defines no sound blocking by geometry and no geometry to block it. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "It defines no synthesis model or sound generation during playback. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "It trains or reconstructs no radiance field or splat representation from images. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "It generates no three-dimensional object from a prompt. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "It defines no package for a runnable experience; implementation specifications are what it leaves to others. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "It defines no fixing of content to a place on one device, which is a runtime function. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "It defines no recovery of pose from camera imagery, which is a sensing service. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "It defines no buttons, sticks or handheld pose; device input is left to clients. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "It defines no articulated hand pose as an input source. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "It defines no gaze input; device input is left to clients. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "It defines no touch feedback to a user. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "It defines no picking of scene content from pointing input. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "It defines no character or string entry interface. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "It defines no musical instrument events or documented device interface for them. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "It simulates no bodies, mass or velocity. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "It defines no shapes for contact tests. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "It defines no hinges, sliders or other links between bodies. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "It defines no friction, restitution or surface response. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "It specifies no simulation, so identical outcomes across machines is not at issue. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "It simulates no deformable bodies. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "It defines no regions that fire events when entered; its conditions are queries on a domain model, not simulation volumes. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "It turns no geometry into pixels and defines no render graph. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "It targets no graphics interface; presentation is left to clients. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "It defines no surface appearance or its evaluation at render time. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "It defines no light, shadows or probes. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "It defines no effects applied after a render pass. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "It defines no choice of detail to show or send first. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "It renders no captured scenes in splat or radiance form. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "It renders no point clouds, voxels or volumetric video. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "It defines no text in three dimensions, fonts or layout. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "It defines no viewpoints or moves between them. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "It declares no colour interpretation or output range for images or surfaces. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "It defines no layout of two-dimensional interface regions. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "It submits no image layers to a display compositor. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "It dispatches no graphics-compute workloads. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "It coordinates no frame submission with display timing. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "It specifies no shader language. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "It defines no handedness, axis order or transform composition. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "It defines no mesh encoding or compression. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "It defines no image formats or compression. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "It defines no material interchange between renderers. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "It defines no keyframe or clip storage. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "It defines no bone hierarchy or binding. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "It defines no curves or surfaces in mathematical form. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "It defines no spatial cell volumes as a scene representation. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "It defines no shape deformation for faces or detail. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "It defines no repeated objects within a scene. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "It defines no walkable surface, bounds or spawn points; its places are domains with authorities, not navigable geometry. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "It defines no preview image packaged with an asset. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "It defines no bounding volumes for geometry. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "It defines no named sets of scene objects as operation targets. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "It defines no transform constraints between scene nodes. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "It defines no timed audiovisual media inside a scene. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "It defines no particle emitters or their parameters. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "It defines no styling rules that select display properties from metadata. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "It defines no named alternative configurations of an asset. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "It reports no estimate of environmental light. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "It detects no physical markers or images and reports no tracked pose for them. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "It reports no play-area bounds or floor reference. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "It performs no ray intersection with sensed surroundings. Its own project record states its purpose as a technical framework for a shared Spatial Web, defined as a reference model that requires implementation specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        },
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project authorization request record, IEEE Standards Association",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "IEEE 2874 is a reference model and a framework of requirements for the Spatial Web; its stated purpose is a technical framework, not a renderer or frame stream.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE 2874 project record (PAR)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purpose of this standard is to provide a holistic and coherent technical framework for the implementation of a collaborative, interactive Spatial Web and shared world system."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "IEEE 2874 is a reference model that sets requirements for implementation specifications still to be written; it defines no object recognition or pose tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://development.standards.ieee.org/myproject-web/rest/api/public/par/11834",
+          "title": "IEEE P2874 project record (PAR)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This standard defines requirements for a set of Implementation Specifications to be developed for the Spatial Web."
         }
       ]
     }

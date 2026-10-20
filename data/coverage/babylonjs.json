@@ -529,9 +529,17 @@
     {
       "capability_id": "scene.provenance",
       "level": "none",
-      "note": "No signing, no manifest checking and no content credentials anywhere in the engine; a search of the whole repository for the content provenance standard returns nothing.",
+      "note": "No signing, no manifest checking and no content credentials anywhere in the engine. The glTF exporter writes an unsigned asset block naming Babylon.js as generator, and the loader reads XMP metadata that the exporter does not write. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for C2PA, content credentials, provenance and JUMBF on 2026-10-19; no documentation page mentions them and the only source hits are unrelated interactivity-graph provenance types.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/6f8ffb69692ed0cdfda849aecbac22207f2eaebb/packages/dev/serializers/src/glTF/2.0/glTFExporter.ts",
+          "title": "Babylon.js glTF exporter source (commit 6f8ffb6), asset block",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "asset: { generator: `Babylon.js v${Engine.Version}`, version: \"2.0\" }"
+        }
+      ]
     },
     {
       "capability_id": "avatar.body",
@@ -603,9 +611,17 @@
     {
       "capability_id": "avatar.wearable",
       "level": "none",
-      "note": "Anything can be parented to a bone, but there is no attachment point vocabulary and nothing that would survive transfer to another runtime.",
+      "note": "Anything can be parented to a bone, but there is no attachment point vocabulary and nothing that would survive transfer to another runtime. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for attachment point, wearable, accessory and avatar on 2026-10-19; a rigid mesh can be attached to a bone with attachToBone, there is animation retargeting between avatars and a community page on the VRM avatar format, but no attachment-point vocabulary.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/features/featuresDeepDive/mesh/bonesSkeletons.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Attaching a mesh to a specific bone",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "You can attach a rigid mesh, such as a sword, helmet, or shield, to a bone so that it follows the bone's animation"
+        }
+      ]
     },
     {
       "capability_id": "avatar.lod",
@@ -625,9 +641,17 @@
     {
       "capability_id": "avatar.identity",
       "level": "out-of-scope",
-      "note": "A rendering runtime does not bind avatars to credentials; the surrounding application would.",
+      "note": "Babylon.js is a web rendering engine, so it does not bind avatars to credentials; the surrounding application would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "physics.rigid",
@@ -891,16 +915,32 @@
     {
       "capability_id": "net.authority",
       "level": "none",
-      "note": "There are no owned objects and no notion of who decides the truth, because there is no shared state to decide about.",
+      "note": "There are no owned objects and no notion of who decides the truth, because there is no shared state to decide about; the official networking guides build an authoritative server with the outside Colyseus framework. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for authoritative, server authority and ownership of on 2026-10-19; the only documentation hits are the Colyseus networking guides, and no engine source hit relates to network authority.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.interest",
       "level": "none",
-      "note": "Culling by frustum, octree and occlusion query decides what to draw, not what to send; nothing filters network traffic because there is none.",
+      "note": "Culling by frustum, octree and occlusion query decides what to draw, not what to send; nothing filters network traffic because there is none. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for interest management, area of interest, relevance filter and network cull on 2026-10-19; no hit.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.prediction",
@@ -918,109 +958,214 @@
       ]
     },
     {
-      "capability_id": "net.transport",
-      "level": "none",
-      "note": "Babylon opens no session socket and defines no wire protocol; the application picks and drives its own.",
-      "confidence": "verified",
-      "sources": []
-    },
-    {
       "capability_id": "net.media",
       "level": "none",
-      "note": "A video texture can display a media stream the application has already obtained, but Babylon carries no live audio or video itself.",
+      "note": "A video texture can display a media stream the application has already obtained, and the engine can capture webcam and microphone input locally, but Babylon carries no live audio or video between machines itself. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for getUserMedia, MediaStream, CreateFromWebCam and CreateMicrophoneSoundSourceAsync on 2026-10-19; hits are local webcam and microphone capture and a video texture built on a stream the application supplies, with no transport.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.session",
       "level": "none",
-      "note": "There is no world to join and no authentication; the immersive session lifecycle Babylon does implement is a device session on one machine, not a shared one.",
+      "note": "There is no world to join and no authentication; the immersive session lifecycle Babylon does implement is a device session on one machine, not a shared one. The official networking guide handles matchmaking with the outside Colyseus framework. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for matchmaking, join a room, join a session and authentication on 2026-10-19; the only hits are the Colyseus guide, a snippet-server tutorial and community extension pages, none an engine feature.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.handoff",
       "level": "none",
-      "note": "No portals and no state handover between worlds. Scenes can be swapped inside one page, which is not the same thing.",
+      "note": "No portals and no state handover between worlds. Scenes can be swapped inside one page, which is not the same thing. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for teleport to a world, handoff, portal between and state handover on 2026-10-19; the only hits are an XR controller teleportation locomotion feature and a physics prestep teleport mode, both inside one scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.presence",
       "level": "none",
-      "note": "No roster and no notion of who is present.",
+      "note": "No roster and no notion of who is present. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for roster, presence, who is online, online users and player list on 2026-10-19; hits use the word presence in its ordinary sense and none relates to users.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.address",
       "level": "none",
-      "note": "Assets are addressed by ordinary web address, and the smart asset registry adds stable local keys, but there is no naming of places and no resolution to a reachable destination.",
+      "note": "Assets are addressed by ordinary web address, and the smart asset registry adds stable local keys, but there is no naming of places and no resolution to a reachable destination. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for world address, place name, resolve, did: and urn: on 2026-10-19; no hit names or resolves a place; the smart asset keys are stable local keys, not destinations.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.discovery",
       "level": "none",
-      "note": "No discovery of worlds, nodes or services.",
+      "note": "No discovery of worlds, nodes or services. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for service discovery, world discovery and mDNS on 2026-10-19; no hit.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "net.time",
       "level": "none",
-      "note": "The engine has its own frame clock and an option for fixed time steps, but no shared or agreed time across machines.",
+      "note": "The engine has its own frame clock and an option for fixed time steps, but no shared or agreed time across machines. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for NTP, clock sync, server time, network time and shared clock on 2026-10-19; no hit relates to shared time.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "identity.root",
       "level": "out-of-scope",
-      "note": "A rendering runtime holds no identifier for a person, agent or thing; the hosting application does.",
+      "note": "Babylon.js is a web rendering engine, so it holds no identifier for a person, agent or thing; the hosting application does.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.credential",
       "level": "out-of-scope",
-      "note": "No credential handling of any kind; a repository search for verifiable credentials returns nothing.",
+      "note": "Babylon.js is a web rendering engine with no credential handling of any kind; a repository search for verifiable credentials returns nothing.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.exchange",
       "level": "out-of-scope",
-      "note": "No request or presentation of claims.",
+      "note": "Babylon.js is a web rendering engine, so it has no request or presentation of claims.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.capability",
       "level": "out-of-scope",
-      "note": "No permission model for what a subject may do.",
+      "note": "Babylon.js is a web rendering engine, so it has no permission model for what a subject may do.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.privacy",
       "level": "out-of-scope",
-      "note": "No selective disclosure. Note that eye tracking is exposed, so the privacy constraint on gaze falls entirely on the browser's consent model and on the application.",
+      "note": "Babylon.js is a web rendering engine, so it has no selective disclosure. Eye tracking is exposed, so the privacy constraint on gaze falls entirely on the browser's consent model and on the application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.social",
       "level": "out-of-scope",
-      "note": "No relationships or standing are modelled.",
+      "note": "Babylon.js is a web rendering engine, so it models no relationships or standing.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.rights",
       "level": "out-of-scope",
-      "note": "Licence terms are not acted on at the point of use; the one metadata block Babylon reads is passed through untouched.",
+      "note": "Babylon.js is a web rendering engine, so licence terms are not acted on at the point of use; the one metadata block it reads is passed through untouched.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "geo.pose",
@@ -1366,16 +1511,32 @@
     {
       "capability_id": "persist.inventory",
       "level": "out-of-scope",
-      "note": "A rendering runtime holds no items for a user and no notion of ownership that could travel.",
+      "note": "Babylon.js is a web rendering engine, so it holds no items for a user and has no notion of ownership that could travel.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "persist.prefs",
       "level": "none",
-      "note": "Accessibility support exists as a parallel readable tree of the scene, but there is no settings model and nothing that would follow a user to another world.",
+      "note": "Accessibility support exists as a parallel readable tree of the scene, but there is no settings model and nothing that would follow a user to another world; the inspector keeps its own theme in browser storage. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for preferences, user settings, accessibility and localStorage on 2026-10-19; hits are the Accessibility Package, the inspector's own theme and pane settings in local storage, and an anchor handle stored by an AR example.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/toolsAndResources/accessibility/screenReaders.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Accessibility Scene Tree for Screen Readers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Accessibility Package provides a way to create HTML twin elements for objects in the scene that should be accessible."
+        }
+      ]
     },
     {
       "capability_id": "persist.content-addr",
@@ -1895,30 +2056,62 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "The engine runs the application's own code. Publishing a unit of logic under a permanent name happens in the package registry, which Babylon.js does not operate.",
+      "note": "Babylon.js is a web rendering engine that runs the application's own code. Publishing a unit of logic under a permanent name happens in the package registry, which Babylon.js does not operate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "Nothing reaches an audience through the engine itself, so there is no path in which a review could stand.",
+      "note": "Babylon.js is a web rendering engine, so nothing reaches an audience through the engine itself and there is no path in which a review could stand.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
-      "level": "out-of-scope",
-      "note": "No geographic frame and no map of a real place in the engine.",
+      "level": "none",
+      "note": "Babylon.js has a globe camera, a reference ellipsoid and a latitude, longitude, altitude conversion, but declares no map of a place, no map version or lifecycle, and publishes no transform between two maps of the same place. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for georeference, georegistration, map alignment, map version and relocalise on 2026-10-19; the only hits are unrelated cube-map, environment-map and smart-asset-map version checks.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/features/featuresDeepDive/geospatial.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Geospatial",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Babylon.js provides a set of features for building geospatial and large-world 3D applications."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
-      "level": "out-of-scope",
-      "note": "The engine is not a service bound to a place and declares no area of application.",
+      "level": "none",
+      "note": "Babylon.js declares no geographic area that a scene, asset or service applies to, in a stated frame or otherwise. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) for geographic area, geographic extent, coverage area and bounding region on 2026-10-19; no hit.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/features/featuresDeepDive/geospatial.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Geospatial",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Babylon.js provides a set of features for building geospatial and large-world 3D applications."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1938,44 +2131,92 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for assurance evidence accompanying an identity claim for relying-party evaluation. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it is not the credential or destination authority that supplies assurance evidence with an identity claim; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for the vocabulary, types and validation schema for an identity claim. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it is not the authority that declares the vocabulary, types and validation schema of an identity claim; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for pairwise identifiers or presentations with stated residual correlation risks. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it issues no pairwise identifiers and makes no presentations whose correlation risks could be stated; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for recipient key material and algorithms for confidential delivery to an intended subject. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it names no recipient key material for confidential delivery to a subject; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for identity-control key rotation, revocation or recovery and discovery of verification material. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it has no identity-control keys to rotate, revoke or recover; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for discovery of a credential status after issuance. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it has no credentials whose suspension or revocation status could be discovered; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
@@ -2115,23 +2356,47 @@
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for a carried permission grant including scope, purpose, validity and withdrawal information. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it carries no grant of permission with scope, purpose, validity and withdrawal; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for a machine-readable recipient evaluation/action account with integrity mechanisms identified. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "note": "Babylon.js is a web rendering engine, so it produces no machine-readable account of a recipient's evaluation and action; a host service or separately assessed integration would.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Welcome page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
-      "level": "out-of-scope",
-      "note": "As a rendering/scene library, babylonjs provides host application facilities rather than the credential or destination authority responsible for a destination pre-arrival approval or refusal response with its applicable validity. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
+      "level": "none",
+      "note": "Babylon.js documents how to build networked experiences (a Networking section whose guides use the outside Colyseus server to match clients into rooms), but it defines no way for a destination to approve or refuse an arrival, with a validity limit or explanatory information; the application would build that itself. Searched the Babylon.js documentation repository (commit 0222ae2) and the engine repository's packages (commit 6f8ffb6) on 2026-10-20 for admission, admit, allowlist, join request, approve, approval, refuse, deny and banned; found no admission feature, and the hits were unrelated: pull-request approval, approved texture formats and naming conventions in the documentation, and the Gaussian splat loader refusing a decode when graphics memory has no room.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        }
+      ]
     },
     {
       "capability_id": "render.compute",
@@ -2372,6 +2637,340 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Class used to load scene content. The Append static method takes an existing scene and appends a new scene to the existing one."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a web rendering engine and framework. It has no payment exchange of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation home",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a rendering engine and framework with no store or account service, so checking a holder's grant at use is left to the application built on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation home (commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a rendering engine and application framework; it states no role in issuing or holding purchase or grant records.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation home (commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a web rendering engine and does not govern which issuers, services or worlds a verifier accepts, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js Documentation home (commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Voxel grids exist only as private working data: the image-based-lighting shadow pipeline builds one to trace rays, and navigation mesh generation voxelizes meshes to find walkable ground. Searched the 816 pages of the documentation site outside the API reference and legacy sections (from its sitemap of 2026-10-12) and the engine repository by code search (commit 6f8ffb6) for voxel on 2026-10-20; no hit is a loader, a file format or a scene representation of voxel volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/postProcesses/IBLShadowsRenderingPipeline",
+          "title": "IBL Shadows rendering pipeline",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does this by generating a voxel grid for all objects that will cast shadows and then traces rays through the voxel grid to determine which pixels will be shadowed."
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/crowdNavigation/createNavMesh",
+          "title": "Creating a navigation mesh",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The meshes are voxelized in order to compute a walkable navmesh."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Babylon.js loads media and plays video textures but declares no protection scheme for content. Searched the 816 pages of the documentation site outside the API reference and legacy sections (from its sitemap of 2026-10-12) for DRM, encrypted media, copy protection and content protection on 2026-10-20; no match. The API reference was not searched, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/features/featuresDeepDive/materials/using/videoTexture.md",
+          "title": "Babylon.js Documentation, Video As A Texture (commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If you want to display a video in your scene, the Babylon engine has a special texture for that."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "none",
+      "note": "The engine ships no wire protocol; its networking guides build on the outside Colyseus library, which connects over a WebSocket address the author supplies. Searched the Networking guides (documentation repository, commit 0222ae2) and the 816 pages of the documentation site outside the API reference and legacy sections (from its sitemap of 2026-10-12) for websocket, webrtc, socket.io and transport on 2026-10-20; hits are tutorials using the outside Colyseus and socket.io libraries, and a webcam capture feature that stays on one machine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/guidedLearning/networking.md",
+          "title": "Babylon.js documentation (Documentation repository, commit 0222ae2), Networking",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In this section, you can learn how to create networked Babylon.js experiences such as multiplayer games or remote multi-user interactions."
+        },
+        {
+          "url": "https://doc.babylonjs.com/guidedLearning/networking/Colyseus",
+          "title": "Babylon.js multiplayer with Colyseus",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Note that we're using the local ws://localhost:2567 endpoint here. You need to deploy your server to the public internet in order to play with others online."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Two named subsets exist: a smaller Viewer Lite that is WebGPU-only and supports fewer features, and a configuration of the Sandbox certified under the Khronos 3D Commerce viewer programme. Missing: neither is a profile that content can declare or that other implementations can claim, since the first is a package choice and the second is a certification of one viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/babylonViewer/viewerLite",
+          "title": "Viewer Lite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Viewer Lite is a smaller version of the Babylon Viewer"
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/babylonViewer/viewerLite",
+          "title": "Viewer Lite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "it is WebGPU-only and does not yet support every Viewer feature."
+        },
+        {
+          "url": "https://doc.babylonjs.com/setup/support/3D_commerce_certif",
+          "title": "3D Commerce Certification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Viewer Certification Program enables 3D viewers across the industry to demonstrate that they can accurately and consistently display 3D products"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "Only the 3MF serializer touches previews: its object builder can set a thumbnail reference (withThumbnail, a package path) on an exported object, but the default document writer writes no thumbnail part and leaves thumbnails to a custom override, and no other Babylon.js format (such as glTF) carries one. Missing: any preview written by the stock exporters, and any preview carried with Babylon.js scene files. The community Babylon.js Editor also generates thumbnails, but only for its own asset browser. Searched the 816 pages of the documentation site outside the API reference and legacy sections (from its sitemap of 2026-10-12) for thumbnail, preview image and poster on 2026-10-20; the poster hits concern video loading. Searched the BabylonJS/Babylon.js repository by GitHub code search for thumbnail on 2026-10-20 (default branch; the 3MF files read were at commit 6f8ffb6); the 5 matches were all in the 3MF serializer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/6f8ffb69692ed0cdfda849aecbac22207f2eaebb/packages/dev/serializers/src/3MF/core/model/3mf.builder.ts",
+          "title": "Babylon.js 3MF object builder (commit 6f8ffb6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The package relative path of the thumbnail part."
+        },
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/6f8ffb69692ed0cdfda849aecbac22207f2eaebb/packages/dev/serializers/src/3MF/core/model/3mf.serializer.ts",
+          "title": "Babylon.js 3MF serializer, toDocument (commit 6f8ffb6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Override if you need custom parts (textures, thumbnails, print ticket, etc.)."
+        },
+        {
+          "url": "https://doc.babylonjs.com/communityExtensions/editor/assets/addingFiles",
+          "title": "Babylon.js Editor, adding files",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Whenever a file is added, its thumbnail is generated if its type is recognized and supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing finds a provenance record from a fingerprint or watermark; the exporter writes only an unsigned generator name. Searched the 816 pages of the documentation site outside the API reference and legacy sections (from its sitemap of 2026-10-12) and the engine repository by code search (commit 6f8ffb6) for watermark and fingerprint on 2026-10-20; the only repository hits are in particle-system code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/6f8ffb69692ed0cdfda849aecbac22207f2eaebb/packages/dev/serializers/src/glTF/2.0/glTFExporter.ts",
+          "title": "Babylon.js glTF exporter (commit 6f8ffb6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "asset: { generator: `Babylon.js v${Engine.Version}`, version: \"2.0\" }"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "partial",
+      "note": "The Inspector's Override Manager keeps a separate list of property changes applied to named scene objects after a scene loads, saved in the project file. Missing: it selects objects by name and index, not by content metadata, and has no visibility rules; it belongs to the authoring tool and not to the runtime loaders.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/toolsAndResources/inspectorv2/overrideManager",
+          "title": "Override Manager",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Override Manager is a per-scene registry of property diffs . Each entry — an override — says \"set this property on this named object in the scene to this value.\""
+        },
+        {
+          "url": "https://doc.babylonjs.com/toolsAndResources/inspectorv2/overrideManager",
+          "title": "Override Manager",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "targetType + targetName + targetIndex + propertyPath is the unique identity of an override."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched the Babylon.js documentation pages Input and Device Source Manager for heart, biometric, physiolog and bluetooth on 2026-10-20; no match. The listed input devices are keyboard, mouse, touch, gamepads and device orientation, with no body-signal device. The full documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/input/deviceSourceManager",
+          "title": "Device Source Manager, Babylon.js documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The DeviceSourceManager is a class that manages connections for various user input devices and provides methods for querying those devices for their current state."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "Official Babylon.js MCP servers let an agent create, edit, validate, import, export and live-sync graphs in the Babylon.js editors (materials, geometry, GUI, flow graphs and others). Missing: the servers cover editor graphs rather than whole scenes, and the page names no publish step or limit on what an agent may change.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/toolsAndResources/mcpServers",
+          "title": "Babylon.js MCP Servers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "They can create, edit, validate, import, export, and live-sync editor graphs through the Model Context Protocol ."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "Babylon.js presents itself as an engine for digital twins and IoT, but its documentation describes no feature for binding objects to live sources; applications wire feeds by hand. Searched the Babylon.js documentation repository (commit 0222ae2, 2026-10-09) for MQTT, OPC UA, Modbus, digital twin, IoT, telemetry, SCADA, sensor data and live data on 2026-10-20; no feature found (only unrelated mentions such as the 3MF packaging format and the profiler).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.babylonjs.com/digitalTwinIot/",
+          "title": "Babylon.js, a 3D engine for digital twins and IoT",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A fully featured, open-source rendering engine, Babylon.js makes it simple to create Digital Twins applications on the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a web rendering engine; it has no portable learning or activity record, which an application built on it would have to supply.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js documentation home page (commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "The scene serializer downloads a whole scene as a .babylon file and the separate serializers package exports scenes to glTF or GLB. These carry scene content only; the documentation pages read give no whole-place package that includes application code and settings, and no statement of what survives. Loading runs through a plugin per file type, so the direction runs both ways.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/Exporters/Save_Babylon",
+          "title": "Save Your Scene or Meshes, Babylon.js Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Any scene or mesh can be downloaded as a file to your computer."
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/Exporters/glTFExporter",
+          "title": "glTF Exporter, Babylon.js Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The glTF Exporter allows Babylon scenes to be exported to"
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/importers/loadingFileTypes",
+          "title": "Loading Any File Type, Babylon.js Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To load a file of a given type, Babylon must first have a reference to the plugin for that file type."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Babylon.js is a rendering engine that runs in the user's browser; its documentation home presents no server-side rendering or frame-streaming service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/0222ae2cf8d566cc939d70d8fa12aa8d30174a50/content/landing_pages/home.md",
+          "title": "Babylon.js Documentation home (pinned commit 0222ae2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Babylon.js offers WebXR hit test, anchors, plane detection and related sensing features but documents no object tracking. Searched the Babylon.js WebXR Augmented Reality Features page for object, tracking and marker on 2026-10-20; none found, and the typedoc class reference was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/webXR/webXRARFeatures",
+          "title": "Babylon.js WebXR Augmented Reality Features",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Augmented reality in Babylon.js relies heavily on WebXR."
         }
       ]
     }

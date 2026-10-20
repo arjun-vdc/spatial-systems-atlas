@@ -1,0 +1,2638 @@
+{
+  "subject_id": "jsonld",
+  "summary": "JSON-LD 1.1 is the World Wide Web Consortium format for writing Linked Data, meaning facts about things and their relationships, in ordinary JSON. It covers well the naming of things by web address, the mapping of short property names to shared vocabularies through a context, and the conversion of one document between compact, expanded and flattened forms. It leaves to others every domain meaning: geometry, scenes, identity proofs, licences, networking and rendering all need a vocabulary or a separate specification layered on top. A trap for a standards audience is that a processor silently drops any property its context does not map to a web address, so two systems with different contexts can read the same file and see different data. A second is that remote contexts are fetched by address, so a document's meaning can change or fail to load unless the context is pinned or cached.",
+  "coverage": [
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "JSON-LD defines datatypes for values but no units of measure or real-world scale convention.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "State replication is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Session establishment is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Agent integration is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video capture and playback is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "Asset container format is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Geometry encoding is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Exact and parametric geometry is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Shared and persistent anchors is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "partial",
+      "note": "The data model is a labeled directed graph of nodes and relationships, which can carry any object graph. It defines no scene objects, transforms or hierarchy semantics, so a scene model must be supplied by a vocabulary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Data Model",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The syntax serializes labeled directed graphs. This ensures that almost every real world data model can be expressed."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "JSON-LD defines no rights terms; a licence statement is one more vocabulary carried as ordinary properties, chosen outside the specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Capability and permission grant is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Animation encoding is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Transforms and coordinate convention is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Attachments and wearables is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and live pose streams is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "Every node can carry an identifier, either a web address or a document-local blank node name, and the specification advises addresses that can be looked up. It defines no proof of control, key binding or resolution method for that identifier.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Node Identifiers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In JSON-LD, a node is identified using the @id"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable credentials are defined in separate specifications that can use JSON-LD as their syntax; JSON-LD 1.1 itself defines no credential structure or proof.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential exchange protocol is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status and revocation is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Session handoff and portals is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "IRIs identify resources but the specification says looking them up is optional, and it defines no world naming or resolution of a place to a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Inventory is a persistence and storage-policy concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Experience containment is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar body format is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended world coupling is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar skeleton standard is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Consent carried with the subject is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Behaviour graphs and interactivity is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression standard is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Avatar to identity binding is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat data interchange format is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Multi-view plus depth is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Machine and agent payments is a commerce and payment concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Entitlements and licence checks at use is a commerce and payment concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "A context can declare the processing mode with a version entry, and 1.1 documents are defined to stay compatible with 1.0 ones. This versions the syntax and processing rules, not a vocabulary or the content itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "documents created using the 1.0 version of this specification remain compatible with JSON-LD 1.1."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "native",
+      "note": "The processing specification names conformance classes for processors and points implementers at the public test suite. It states that passing the test suite does not by itself imply full conformance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-api-20200716/",
+          "title": "JSON-LD 1.1 Processing Algorithms and API: Conformance",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Implementers can partially check their level of conformance to this specification by successfully passing the test cases of the JSON-LD test suite"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "New terms are added by defining them in a context against an address in a vocabulary, so independent authors do not clash. A processor ignores properties that do not map to an address, which is the rule for recipients that do not know the extension.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Interpreting JSON as JSON-LD",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Generally, a JSON-LD processor will ignore properties which don't map to IRIs"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Relative addresses are resolved against a base address or vocabulary, and a document loader retrieves referenced documents and remote contexts. It resolves JSON-LD documents and contexts only, not arbitrary scene resources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Documents and IRIs",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In JSON-LD, with exceptions that are as described below, all relative IRI references are resolved relative to the base IRI ."
+        },
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Document loader",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This includes a general mechanism for loading remote documents, including referenced JSON-LD documents and remote contexts"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is a delivery and distribution concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "JSON-LD can serialize any graph but defines no pose or transform terms, so linked frames are left to a vocabulary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "A context declares the vocabulary and datatypes used to read a claim, so the structure can be interpreted unambiguously. JSON-LD itself contains no validation schema language, so checking a claim's structure needs a separate mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Context",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Simply speaking, a context is used to map terms to IRIs ."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation, revocation and recovery is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive session lifecycle is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "Transport protocol is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "Deciding whether to admit an arrival is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability is a persistence and storage-policy concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Skeleton and rig definition is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Media transport is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Passthrough and environment blending is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Authority and ownership is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit test against the real world is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Device capability discovery is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "JSON-LD 1.1 defines no signature or integrity proof, so a signed record of origin must come from another specification layered on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar level of detail is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "JSON-LD attaches named properties to any node, and a context maps each property name to a vocabulary address so another system can read it. It defines no scene-specific property set; the descriptive vocabulary comes from elsewhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Context",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Simply speaking, a context is used to map terms to IRIs ."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Volumetric and point cloud is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "JSON-LD defines no named alternatives or selection mechanism for an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Rights enforcement is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Assurance and evidence behind a claim is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned audio sources is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting is an avatar concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking as input is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "A context can import another context and merge it, and a document can include secondary node objects, so data from several sources can be layered. These are data-level merges of terms and node descriptions, with no scene-part referencing or override rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Keywords, @import",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Used in a context definition to load an external context within which the containing context definition is merged."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and spatial events is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Voice transport is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic scene imagery is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Haptics is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Discovery is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "JSON-LD lets an identifier use any address scheme but defines no hash-based addressing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft bodies and cloth is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Usable physical area is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation from a prompt or an image is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generation of individual 3D objects is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graph is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Clock and time model is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "World state persistence is a persistence and storage-policy concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text rendering is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Camera and viewpoint model is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space and dynamic range is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatialization model is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics and reverb is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Occlusion and obstruction is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Audio streaming is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is an audio concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Simulation from a learned model is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Photogrammetric object capture is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Captured-scene streaming is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Control over what gets generated is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Action and control exchange is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a reality-capture or generated-world concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts and proofs of purchase is a commerce and payment concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "Bundle format is a delivery and distribution concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Content delivery is a delivery and distribution concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating is a delivery and distribution concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "The media type defines six profile values naming document forms such as expanded, compacted, flattened, framed and context documents, and recipients must ignore profiles they do not recognise. These name forms of one document, not subsets of features or levels an implementation could declare.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1: Appendix, application/ld+json media type",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification defines six values for the profile parameter."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchors is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is a geospatial concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "JSON-LD defines no geographic terms; a coverage statement would be a vocabulary carried as ordinary properties, chosen outside the specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkability is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Encryption keys and confidential delivery is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Record of what a system decided is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed trust registries is an identity and trust-framework concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Pointing and selection against content is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event-device input is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Physiological signals as input is a device-input concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "Scripting runtime is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Sandboxing and isolation is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "Resource budgets is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent code identity is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Agent authoring and publishing interface is a world-logic and scripting concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Interest management is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Prediction and reconciliation is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Presence and roster is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Live data binding is a networking and session concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Taking a whole world out is a persistence and storage-policy concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records is a persistence and storage-policy concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid bodies is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes is a physics-simulation concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Rasterization pipeline is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Graphics interface binding is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Material model is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting and radiance fields is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface surfaces is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "General-purpose GPU computation is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Portable shader language is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote (split) rendering is a rendering concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets and blend shapes is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview image for an asset is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial index is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "JSON-LD lists and sets group values within a document but do not define named or rule-defined target sets of scene objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media inside a scene is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Emitter-based effects is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering a stripped provenance record is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative styling carried apart from the content is a content-model concern for 3D scenes and assets; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Real-world depth is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Real-world lighting estimation is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is a runtime-sensing concern; JSON-LD only serializes linked data as JSON and states no rule for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2020/REC-json-ld11-20200716/",
+          "title": "JSON-LD 1.1, W3C Recommendation 16 July 2020: Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is primarily intended to be a way to use Linked Data in Web-based programming environments, to build interoperable Web services, and to store Linked Data in JSON-based storage engines."
+        }
+      ]
+    }
+  ]
+}

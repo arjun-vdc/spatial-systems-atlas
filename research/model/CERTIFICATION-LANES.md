@@ -20,6 +20,8 @@ project_code_note: Omitted because the project registry has no uppercase alias; 
 
 # Certification lanes
 
+Since 2026-10-20 the four lanes hold 30, 27, 32 and 21 must rows: `commerce.payment` joined U4, and `commerce.entitlement` joined U2, U3 and U4. The support tables below are as of 2026-09-11.
+
 ## What this is, and what it is not
 
 Four lanes, one for each use case the boundaries page was built from. A lane is a named bundle of the
@@ -66,10 +68,10 @@ second pass, and the boundaries page still holds them.
 
 | Lane | Use case | Rows | Route |
 |---|---|---|---|
-| 1 Content portability | U1 An asset moves between tools with no hand fixes | 30 | `/msf/map/#lane=content` |
-| 2 Avatar portability | U2 An avatar, its items and its expressions travel | 26 | `/msf/map/#lane=avatar` |
-| 3 World-to-world travel | U3 A person travels through a portal and stays themselves | 31 | `/msf/map/#lane=travel` |
-| 4 Agent participation | U4 An agent joins a world, acts, and pays | 19 | `/msf/map/#lane=agent` |
+| 1 Content portability | U1 An asset moves between tools with no hand fixes | 30 | `/msf/atlas/#lane=content` |
+| 2 Avatar portability | U2 An avatar, its items and its expressions travel | 26 | `/msf/atlas/#lane=avatar` |
+| 3 World-to-world travel | U3 A person travels through a portal and stays themselves | 31 | `/msf/atlas/#lane=travel` |
+| 4 Agent participation | U4 An agent joins a world, acts, and pays | 19 | `/msf/atlas/#lane=agent` |
 
 The four lanes hold 106 places between them, filled by 54 distinct capabilities. Every must row belongs to at least one lane. The approved additions contribute 14 new must rows and 33 lane places. The five captured-content rows made must by the owner on 2026-09-06 remain in U1.
 
@@ -98,7 +100,7 @@ effort.
 
 **The use case.** An asset made in one tool loads, renders and behaves in another system with no hand fixes.
 
-**The bundle.** 30 must-interoperate capabilities. **The route.** `/msf/map/#lane=content`
+**The bundle.** 30 must-interoperate capabilities. **The route.** `/msf/atlas/#lane=content`
 
 **Historical lane description — 2026-09-06.** The following description records the earlier bundle; the current membership and proposed tests follow.
 
@@ -234,7 +236,7 @@ is a captured-content row. The five have no test anywhere today.
 
 **The use case.** A person's avatar, with its equipped items and expressions, is readable and drawn by every system it enters.
 
-**The bundle.** 26 must-interoperate capabilities. **The route.** `/msf/map/#lane=avatar`
+**The bundle.** 26 must-interoperate capabilities. **The route.** `/msf/atlas/#lane=avatar`
 
 **Historical lane description — 2026-09-06.** The following description records the earlier bundle; the current membership and proposed tests follow.
 
@@ -345,7 +347,7 @@ first.
 
 **The use case.** A person moves from one world to another through a portal, keeping identity, inventory, preferences and the session's continuity.
 
-**The bundle.** 31 must-interoperate capabilities. **The route.** `/msf/map/#lane=travel`
+**The bundle.** 31 must-interoperate capabilities. **The route.** `/msf/atlas/#lane=travel`
 
 **Historical lane description — 2026-09-06.** The following description records the earlier bundle; the current membership and proposed tests follow.
 
@@ -467,7 +469,7 @@ today.
 
 **The use case.** A software agent joins a world, acts in it, and pays for what it uses.
 
-**The bundle.** 19 must-interoperate capabilities. **The route.** `/msf/map/#lane=agent`
+**The bundle.** 19 must-interoperate capabilities. **The route.** `/msf/atlas/#lane=agent`
 
 **Historical lane description — 2026-09-06.** The following description records the earlier bundle; the current membership and proposed tests follow.
 

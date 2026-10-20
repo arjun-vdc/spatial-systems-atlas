@@ -1676,51 +1676,107 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "WebGPU draws into a texture. It never sees a camera image of the room and has no compositor, so the blend with the real world happens somewhere else entirely.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor. It has no camera, no compositor and no control over how much of the real world a viewer sees, so passthrough blending falls outside it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "A graphics interface has no sensors and no user model; nothing about the person in front of the screen reaches it.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor, so it has no sensors and no user model; a live face or body stream is not something it would carry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
       "level": "out-of-scope",
-      "note": "WebGPU has no scene: it takes buffers, pipelines and draw calls. Walkable surface and spawn points belong to a place description, which it does not have.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor, so it has no scene or place description to carry walkable surface or spawn points.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "Shader modules are created from source at run time inside one page. There is no published unit of logic anyone else depends on by name.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor; shader modules are created at run time inside one page and nothing publishes a unit of logic under a lasting name.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "No content is delivered to an audience through a graphics API, so there is no path for a review to stand in.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor, not delivering content to an audience, so no review step has a place in it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "WebGPU has no notion of place at all, so no map and no alignment between maps.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor and it has no notion of place, so there is no map to declare and no alignment between maps.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "No geographic frame and no service boundary; the row has nothing to attach to.",
+      "note": "WebGPU's stated purpose is rendering and computation on a graphics processor and it has no geographic frame or service boundary to which an applicable area could attach.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-webgpu-20260915/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -2422,6 +2478,171 @@
           "url": "https://www.w3.org/TR/webgpu/",
           "title": "WebGPU, W3C Candidate Recommendation Draft",
           "retrieved": "2026-09-18",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "WebGPU exposes the graphics processor for drawing and computation. It has no payment exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and compute interface for the processor; grants to content are not part of what it does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and computation interface for the processor, and has nothing to do with purchase or grant records.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "WebGPU exposes graphics and compute on the processor and has no role in deciding which issuers or worlds are accepted, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and compute interface to the graphics processor, with no connection to sensors or wearable devices, so body-signal input is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and compute interface for a web page, not a way for an outside agent to create or publish world content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and compute programming interface to the graphics processor; it knows nothing of external data sources or what objects stand for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and compute interface to the GPU; a record of what a person did in a world is not something it addresses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics and computation interface for the browser and holds no place, so exporting a whole place is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU, W3C Candidate Recommendation Draft, 15 September 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "WebGPU is an interface to the graphics processor of the machine running the page; drawing on a server and streaming frames is not part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU (W3C Candidate Recommendation Draft)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "WebGPU is a graphics-processor interface; it can run computer-vision workloads for an application but defines no object recognition or pose reporting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webgpu/",
+          "title": "WebGPU",
+          "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "WebGPU exposes an API for performing operations, such as rendering and computation, on a Graphics Processing Unit."
         }

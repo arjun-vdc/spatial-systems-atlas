@@ -528,28 +528,60 @@
       "level": "out-of-scope",
       "note": "Content Credentials travel with an asset. They say nothing about how a runtime blends its drawing with a camera view of the room.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
       "note": "C2PA records what a camera or tool did to an asset. It delivers no live face or body stream to an application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
       "level": "out-of-scope",
       "note": "Provenance data has no scene in it, so no walkable surface, bounds or arrival points.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
       "note": "Assertion labels are a registered vocabulary for describing an asset, not names for published units of world logic.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
@@ -579,14 +611,30 @@
       "level": "out-of-scope",
       "note": "No map of a place is declared by a provenance manifest, and no transform between maps.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
       "note": "An asset's credentials say where it was captured at most; they declare no area over which a service or dataset applies.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1185,6 +1233,1629 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "The C2PA specification defines a framework for content provenance: the history, origin, and modifications of digital content."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "partial",
+      "note": "The metadata assertion can carry Exif GPS latitude, longitude, altitude and image direction, and a signer who includes them states that it vouches for the location. Missing: a full orientation, and any pose for content other than a still capture; it is descriptive metadata, not a pose a runtime can consume.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "that is an explicit signal from the signer that it is asserting the GPS location associated with the asset."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "exif:GPSImgDirection"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "partial",
+      "note": "The only frame information is the Exif GPS map datum field, plus the Exif flag for altitude above or below sea level (exif:GPSAltitudeRef), both among the Exif properties the metadata assertion may carry; C2PA itself defines no coordinate reference system, no projected or local frames and no vertical reference beyond the Exif sea-level flag.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only the following Exif properties, in Table 18, “Supported Exif Properties” , are supported:"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "exif:GPSMapDatum"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026), Table 18 Supported Exif Properties",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "exif:GPSAltitudeRef"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Revocation is covered: a validator checks whether the signing certificate was revoked, and a trusted time-stamp keeps an old signature valid after its certificate expires or is revoked; the certificate chain travels in the signature. Rotation exists only for live video: session keys carry validity periods, and a new manifest may bring new keys. Missing: any rule for rotating or recovering the signer's own certificate credential, and any self-controlled identifier, since signers are certificates issued by authorities on a list the coalition curates.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Claim generators are encouraged to obtain and include time-stamps to ensure their manifests will remain valid."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "X.509 Certificates are stored as defined by RFC 9360"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The claim signatures of C2PA Manifests, when combined with trusted time-stamps, can undergo the validation process indefinitely"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026), 18.25.2 Session Keys, Requirements",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The minSequenceNumber field indicates the earliest segment sequence number that can be signed with a given key, supporting key rotation and preventing replay attacks."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026), 14.5.2 Certificate Revocation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "X.509 certificates support revocation status queries."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "Via the training and data mining assertion, a specification of another body, a rights holder can state per use (mining, inference, two kinds of training) that it is allowed, not allowed, or constrained with free-text conditions. Missing: any validity period or withdrawal mechanism; only four uses are standardised, and custom uses may be added but carry no defined meaning; nor is there consent from a person depicted rather than from the creator.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://cawg.io/training-and-data-mining/1.1/",
+          "title": "Training and Data Mining Assertion, version 1.1, DIF Ratified Specification 16 May 2025 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each entry describes whether its use is allowed , notAllowed , or constrained ."
+        },
+        {
+          "url": "https://cawg.io/training-and-data-mining/1.1/",
+          "title": "Training and Data Mining Assertion, version 1.1, DIF Ratified Specification 16 May 2025 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The value of constrained implies that permission is not unconditionally granted for this usage."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Removed the \"Training & Data Mining\" assertion"
+        },
+        {
+          "url": "https://cawg.io/training-and-data-mining/1.1/",
+          "title": "Training and Data Mining Assertion, version 1.1, DIF Ratified Specification 16 May 2025 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "allow for any other custom use case"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "Via the identity assertion of the Creator Assertions Working Group, a separate body: a non-normative example shows a signing tool requesting a presentation from a wallet and receiving a verifiable presentation. Missing: any normative request and presentation protocol; the core specification removed its own verifiable credentials section.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://cawg.io/identity/1.3/",
+          "title": "Identity Assertion, version 1.3, DIF Ratified Specification 17 August 2026 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This example, which is non-normative, depicts a possible workflow for this scenario."
+        },
+        {
+          "url": "https://cawg.io/identity/1.3/",
+          "title": "Identity Assertion, version 1.3, DIF Ratified Specification 17 August 2026 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In this example, the wallet is prepared to selectively disclose portions of the credential via W3C verifiable presentation"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Removed the \"W3C Verifiable Credentials\" section"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "partial",
+      "note": "Via the identity assertion of the Creator Assertions Working Group, a separate body: any asset, an avatar file included, can be bound to a named actor and a credential, with the actor's role such as creator, editor or publisher. Missing: any tie between an avatar and the person who wears or controls it, and any avatar-specific meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://cawg.io/identity/1.3/",
+          "title": "Identity Assertion, version 1.3, DIF Ratified Specification 17 August 2026 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "binds this identity assertion to a specific C2PA asset and allows the credential holder to endorse or make additional statements about the named actor’s relationship to that C2PA asset"
+        },
+        {
+          "url": "https://cawg.io/identity/1.3/",
+          "title": "Identity Assertion, version 1.3, DIF Ratified Specification 17 August 2026 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The named actor is a primary creator/author of this C2PA asset ."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "A claim generator can obtain a trusted time-stamp from a time authority on the coalition's list, so independent parties can agree on when a signature existed. Missing: any shared clock or ordering of events in a running session; the time covers signing, not runtime events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to obtain a trusted time-stamp proving that the signature itself actually existed at a certain date and time"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A C2PA-managed list of X.509 certificate trust anchors that issue certificates to Time Stamping Authorities (TSAs)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Searched the C2PA Technical Specification 2.4, crJSON 2.4, Soft Binding API 2.4, Human and Organizational Identity Recommendation 2.4, Identity Assertion 1.3 and Training and Data Mining Assertion 1.1 for pairwise, pseudonym, anonym, unlink, correlat and linkab on 2026-10-20; found no pairwise identifier or unlinkable presentation, only an anonymous data-source label, redaction, and a note that anonymous identities, if supported, need disambiguating signals. Signers are stable certificates.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enable users to control the privacy of their information, including consumption data and information recorded in provenance"
+        },
+        {
+          "url": "https://cawg.io/identity/1.3/",
+          "title": "Identity Assertion, version 1.3, DIF Ratified Specification 17 August 2026 (Creator Assertions Working Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If anonymous identities are supported, identity assertions should also contain signals to disambiguate between anonymous identities."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Two narrow named contracts exist: certificate profiles that limit a signing certificate to one of three purposes (manifest signing, time-stamp signing, response signing), and named profiles of hash exclusion lists. Missing: named levels or subsets of the whole specification that a producer and a consumer can declare against each other.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a certificate being authorized for no more than one of the three purposes listed in this section: C2PA signing, time-stamp signing, or OCSP response signing."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This section describes a set of pre-defined, named, profiles of extensions lists."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "A producer can redact a statement, such as location metadata, from an inherited record and the removal is declared, and a signer vouches for GPS only if it puts it in a signed assertion. Missing: spatial coarsening, retention declarations and pseudonymous pose publication; the control is fixed when the file is written.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Assertions that are present in an asset-embedded manifest may be removed from that asset’s manifest when the asset is used as an ingredient . This process is called redaction."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the signer is not responsible for the accuracy of a GPS location appearing in EXIF metadata"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It describes no avatar mesh or appearance; it can only sign a file that holds one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It names no bones and defines no body structure, since it carries statements about files, not rigs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no expression or viseme names; a provenance record has no face or body in it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It has no notion of worn items or attachment points; at most it records that one asset was composed of others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It fixes nothing to a place across devices or sessions; it binds a record to file bytes, not content to a location.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It streams no geospatial data and defines no tiling; it signs whatever file it is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "A validator checks that a signing certificate is authorised for the purpose it is used for (C2PA signing, time-stamp signing or OCSP response signing) and rejects certificates used for another purpose, which is a narrow permission check. Missing: any general statement of what a subject may do beyond those three signing purposes; C2PA is otherwise a provenance standard that records who signed and what was done to an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026), 14.5.1.2 Certificate Trust Chain",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A validator shall ensure a signing certificate is authorized for the purpose for which it is being used, and reject certificates used for an unauthorized purpose."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It has no runtime, device or session; a manifest travels with a file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It carries no interactivity; its assertions describe an asset's history, not what the asset does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It does not host or direct agents; at most it records that an AI tool acted on an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It shares no live state; a manifest is a static record attached to a file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no wire protocol for session traffic, only how to place a manifest inside files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It has no worlds to join and no join step; its signatures authenticate files, not participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It moves no user between worlds and carries no session state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It names manifests and assets by URN identifiers built on random UUIDs, not places, and resolves no world name to a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It tracks no items held by a user; it records an asset's provenance, not who holds it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It stores no user settings; its records describe assets, not people.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It has no scene: a manifest holds assertions about an asset and defines no objects or relationships between them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no handedness, axes or transform composition; it has no scene content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It encodes and compresses no meshes; its supported file-format list names no three-dimensional format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no image or texture encoding; it only embeds a manifest in other people's image formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It carries no material definitions; at most it signs a file that does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It stores no keyframes or clips; animation would be inside the signed file, not in the record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no bone hierarchy or binding; a provenance record has no rig in it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It states no unit or scale of its own; any scale agreement lives in the formats it signs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It places no sound in a scene; its statements are about an audio file's history, not its position.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no rendering of direction to the ears.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It describes no room acoustics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It has no geometry to block sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It delivers no audio; its live video method adds signed manifests to streams that other protocols carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It carries no live voice between participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It plays no animation on any body.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no reduced avatar representations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It packages no runnable experience; it only specifies how a manifest rides inside existing container formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It delivers no assets to clients; a manifest can be stored remotely, but getting content out at scale is left to others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It fixes content to nothing on a device; it binds a record to file bytes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It recovers no pose from camera imagery; at most it records where a capture was taken.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It describes no interior spaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It holds no relationships or standing; the trust it conveys is about a signer's certificate, not a social graph.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It reads no handheld device input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It tracks no hands.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It captures no gaze.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It produces no touch feedback.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It lets a client learn nothing of the device's abilities; it records the capture device of an asset, not what a client can do.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no scripting language or runtime, since an assertion is data about an asset, not code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It runs no untrusted content; it says who signed a file, not whether running it is safe.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It bounds no memory, time or calls for guest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It decides the truth of no live object; its trust model concerns who signed a record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It sends each client nothing, filtered or otherwise.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It hides no latency and corrects no state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It carries no live streams; its live video method signs segments of streams that other protocols carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It knows nothing of who is where.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It finds no worlds, nodes or services; the Soft Binding API looks up manifests for an asset, not places.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It stores no world state; nothing is said of what survives a restart.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It simulates no bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no contact shapes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no links between bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no friction or surface response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It runs no simulation whose results could differ between machines.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It simulates nothing deformable.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no regions that fire events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It draws nothing; it signs content that others draw.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It targets no graphics interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It describes no surface appearance for evaluation at render time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It describes and computes no light.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It applies no effects after a render pass.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It chooses no detail to show or send; it signs a file whole.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It renders no captured scenes; no splat or radiance field format appears in its supported formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It renders no point clouds, voxels or volumetric video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It lays out and draws no text; its font information assertion records a font's name, format and licensing, not text layout or drawing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It defines no viewpoints to bind or move between; it records capture-device details, not a camera in a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It carries no shape deformation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It repeats no objects; an ingredient assertion records reuse of an asset in a history, not instances in a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It layers and overrides no scene parts; its ingredient assertions record that an asset was composed of others, as history, not as a composition a runtime resolves.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It encrypts nothing and names no recipient keys or algorithms; its signatures are public, and encryption is mentioned only in passing: a custom assertion may carry encrypted data in a UUID content box, and a file format that can be encrypted, such as EPUB, is hashed over its encrypted content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The reason that the hash is over the compressed/encrypted content is to enable validation without the need to decompress or have the decryption key."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026), 11.1.4.3 Assertion Store",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Custom assertions containing other formats/serializations of data, such as encrypted data, are supported through the use of a UUID Content Box"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "C2PA is a provenance standard: signed statements about how an asset was made and changed. It declares no protection scheme and enforces none; for encrypted formats such as EPUB it simply hashes the encrypted bytes so a file can be validated without a key.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The reason that the hash is over the compressed/encrypted content is to enable validation without the need to decompress or have the decryption key."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "C2PA specifications SHOULD NOT provide value judgments about whether a given set of provenance data is 'good' or 'bad,'"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "C2PA binds signed provenance statements to an asset. It records who made content and what was done to it, not a payment for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "These statements, called assertions, make up the provenance of a given asset"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "C2PA records who made an asset and what was done to it (creation history), not whether a holder may use it now.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4, 1.2 Scope",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "C2PA records provenance, meaning who made an asset and what was done to it. Version 2.4 does define a repository receipt assertion, but it only proves that a manifest was ingested by a manifest repository, so it must not be read as proof that anyone bought or was granted a resource.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "These statements, called assertions, make up the provenance of a given asset"
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Specification 2.4, 18.27 Repository Receipt",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "There are use cases where a receipt may be desired in order to prove that a C2PA Manifest has been ingested by a C2PA Manifest Repository."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "native",
+      "note": "The specification requires a validator to keep, for each accepted key usage, a list of trust anchors with optional start and end times, and to include the C2PA Trust List; a trust list identifier can be recorded in the validation result. C2PA's Conformance Program governs the official list; the programme's own update and removal rules were not read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4, 14.4 Trust Lists",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the list of trust anchor configurations shall include, but need not be limited to, the signer trust anchor configurations provided by C2PA (i.e., the C2PA Trust List)."
+        },
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4, 14.4.1 C2PA Signers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If a \"notBefore\" date/time is present, the trust anchor configuration shall not be used for claim signatures whose timestamp (or current time, if no timestamp is present) is before that date/time."
+        },
+        {
+          "url": "https://c2pa.org/conformance/",
+          "title": "C2PA Conformance Program",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the C2PA Conformance Program and the official C2PA Trust List (C2PA TL) were launched in mid-2025."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "C2PA records the provenance of a finished asset; it is not an input path for live body signals, so streaming heart rate or skin conductance is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "C2PA records signed provenance for a piece of content, so it defines no interface for an outside agent to create or publish world content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a model for storing and accessing cryptographically verifiable information"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Content Credentials record where a piece of content came from and what was done to it; they are not a channel for live data from sensors or controllers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "C2PA binds signed provenance assertions to a piece of content (who made or changed it); it is about an asset's history, not a statement of what a person did in a world and with what result.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Content Credentials attach signed provenance to a piece of content, not a place, so whole-place export is outside them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification, Content Credentials, version 2.4 (April 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a defined trust model"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Content Credentials record the provenance of content as signed statements; they do not render or stream frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification describes the technical aspects of the C2PA architecture; a model for storing and accessing cryptographically verifiable information whose trustworthiness can be assessed based on a"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Content Credentials record provenance of a file as signed assertions and do not sense or track physical objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html",
+          "title": "C2PA Technical Specification 2.4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a model for storing and accessing cryptographically verifiable information"
         }
       ]
     }

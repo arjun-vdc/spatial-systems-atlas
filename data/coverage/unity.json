@@ -123,8 +123,17 @@
     {
       "capability_id": "render.splat",
       "level": "none",
-      "note": "No first-party support: a search of the whole Unity 6.5 manual contents list finds no page on splats or radiance fields, and there is no Unity package for them; the well-known solutions are community or asset store work.",
-      "confidence": "reported"
+      "note": "No first-party support found. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for splat, splats, gaussian, nerf, radiance on 2026-10-19; the only hits are unrelated pages (terrain splat maps in lightmapping and Burst intrinsics notes, Gaussian blur and depth of field); no page describes drawing splats or radiance fields, and no Unity package for them was found. The well-known solutions are community or asset store work. Rendering scene content is in scope, as the cited page shows.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/render-pipelines-overview.html",
+          "title": "Unity Manual: Introduction to render pipelines",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A render pipeline takes the objects in a scene and displays them on-screen."
+        }
+      ]
     },
     {
       "capability_id": "render.volumetric",
@@ -297,23 +306,38 @@
     },
     {
       "capability_id": "scene.material-x",
-      "level": "conflicts",
-      "note": "Surface appearance will not carry across: the manual has no page on the MaterialX exchange form, and a Unity material breaks even when moved between Unity's own drawing pipelines, which is why the manual tells you to run a converter or see pink objects.",
+      "level": "partial",
       "confidence": "verified",
+      "direction": "write",
+      "note": "Partly met, outbound only. The PolySpatial visionOS package converts a Shader Graph material to MaterialX for display on visionOS, so Unity can emit the exchange form for that one target. Missing: the conversion is lossy (Shader Graph nodes with no MaterialX analogue are flagged and unsupported), the base manual has no MaterialX page, and no documentation read shows Unity reading MaterialX in; the USD Importer reads USD preview-surface materials only. Outside that path a Unity material does not carry between its own render pipelines without conversion.",
       "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.polyspatial.visionos@2.4/manual/ShaderGraph.html",
+          "title": "Unity PolySpatial visionOS 2.4.3: Shader Graph support",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "converted to MaterialX for display in simulator and on device"
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.polyspatial.visionos@2.4/manual/ShaderGraph.html",
+          "title": "Unity PolySpatial visionOS 2.4.3: Shader Graph support",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "some Shader Graph nodes have no analog in materialX"
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.importer.usd@1.0/manual/index.html",
+          "title": "Unity USD Importer 1.0.0-pre.2: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Materials (USD preview surface material only)"
+        },
         {
           "url": "https://docs.unity3d.com/Manual/upgrade-material.html",
           "title": "Unity Manual: Upgrade material assets to Scriptable Render Pipeline",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "If you don’t upgrade your materials, they appear bright pink in Scene view."
-        },
-        {
-          "url": "https://docs.unity3d.com/Packages/com.unity.cloud.gltfast@6.19/manual/features.html",
-          "title": "Unity glTFast: Features",
-          "retrieved": "2026-08-22",
-          "kind": "primary",
-          "quote": "There are two approximation implementations for transmission in Universal render pipeline."
         }
       ]
     },
@@ -437,15 +461,40 @@
     },
     {
       "capability_id": "scene.licence",
-      "level": "none",
-      "note": "Nothing in the engine carries terms of use with an asset; the manual contents list has no page on rights or licence metadata travelling with content.",
-      "confidence": "reported"
+      "level": "partial",
+      "note": "Only at package level: a Unity package manifest has a license field (an SPDX identifier or a pointer to LICENSE.md) and a licensesUrl field, and a package without the field must ship a LICENSE.md. Missing: terms attached to an individual asset such as a model, texture or prefab, and any rule about what a recipient may do with it. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for license, licence, licenses on 2026-10-19; 35 pages match, mostly activating Unity itself plus package pages (manifest reference, required legal files); no page describes rights metadata attached to an imported asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/upm-manifestPkg.html",
+          "title": "Unity Manual: Package manifest",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "license String Identifier for an OSS license using the SPDX identifier format , or a string such as ‘Refer to LICENSE.md file’. Note : If you omit this property in your package manifest, your package must contain a LICENSE.md file."
+        }
+      ]
     },
     {
       "capability_id": "scene.provenance",
-      "level": "none",
-      "note": "There is no signed record of who made an asset; the manual contents list has no page on content credentials or provenance, and no Unity package provides them.",
-      "confidence": "reported"
+      "level": "partial",
+      "note": "Starting with Unity 6.6 the Editor can sign an exported asset package and associate it with an organization, and checks the signature on import; Unity package manager packages have a signature model too. This records who published a package and that it was not altered. Missing: any record of how an asset was made, signing of an individual asset or of the neutral formats Unity imports, and verification outside Unity. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for provenance, signature, signatures, signed, checksum on 2026-10-19; one page names content provenance (New in Unity 6.6), the package signature pages above, and the AssetBundle integrity page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/AssetPackagesSignatures.html",
+          "title": "Unity Manual: Package signatures in asset packages",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A package signature is a cryptographic identifier that helps verify where a package came from and ensures it wasn’t changed after the developer created it."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/AssetPackagesSignatures.html",
+          "title": "Unity Manual: Package signatures in asset packages",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Sign the asset packages you export and associate them with one of your organizations, so others who import your asset package can determine who created and owns it."
+        }
+      ]
     },
     {
       "capability_id": "avatar.body",
@@ -494,8 +543,17 @@
     {
       "capability_id": "avatar.expression",
       "level": "none",
-      "note": "Unity names no expressions and no mouth shapes for speech; faces are raw blend shapes whose names come from whoever modelled them, and the manual contents list has no page on the subject.",
-      "confidence": "reported"
+      "note": "Unity names no standard expressions and no mouth shapes for speech: faces are blend shapes whose names come from whoever modelled them, and Unity only exposes each one's weight. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for expression, facial, viseme, lipsync, phoneme on 2026-10-19; no page defines a facial expression set; the facial hit is a blend tree note, and the rest are numeric field expressions. Blend shapes are in scope, as the cited page shows.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/BlendShapes.html",
+          "title": "Unity Manual: Work with blend shapes",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "For each listed blend shape, you can change its influence (weighting) to the default shape, where: 0 means the blend shape has no influence. 100 means the blend shape has full influence."
+        }
+      ]
     },
     {
       "capability_id": "avatar.retarget",
@@ -552,8 +610,24 @@
     {
       "capability_id": "avatar.identity",
       "level": "none",
-      "note": "Nothing ties an avatar to a checkable identity; the Authentication package signs a player in to Unity's own services but knows nothing about the avatar they wear.",
-      "confidence": "reported"
+      "note": "Nothing ties an avatar to a checkable identity. The Authentication package signs a player in to Unity Gaming Services, and the Avatar asset is only a bone mapping, so neither knows about the other. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for avatar, identity, identities, credential on 2026-10-19; identity pages cover player accounts and Authentication; no page binds an avatar to an identity.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.services.authentication.html",
+          "title": "Unity Manual: Authentication package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Client SDK offering player identity management for Unity Gaming Services."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/ConfiguringtheAvatar.html",
+          "title": "Unity Manual: Importing a model with humanoid animations",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "It does this by mapping each bone in the file to a Humanoid Avatar so that it can play the Animation properly."
+        }
+      ]
     },
     {
       "capability_id": "physics.rigid",
@@ -914,8 +988,17 @@
     {
       "capability_id": "net.handoff",
       "level": "none",
-      "note": "There is no way to leave one world and arrive in another keeping your state; a Unity session ends and a new one begins, and reconnection support only restores a player into the same session.",
-      "confidence": "reported"
+      "note": "No way found to leave one world and arrive in another keeping state: the sessions building block lets a player create, join, quick-join or leave a session, and a new session is a new start. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for handoff, portal, teleport, migrate, relay, lobby on 2026-10-19; portal hits are occlusion portals, licensing portals and visual scripting portals; nothing moves state between sessions.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/building-blocks-multiplayer-sessions.html",
+          "title": "Unity Manual: Multiplayer Sessions Building Block",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Let players create a session and share a simple join code that other players can use to join the session."
+        }
+      ]
     },
     {
       "capability_id": "net.presence",
@@ -935,8 +1018,17 @@
     {
       "capability_id": "net.address",
       "level": "none",
-      "note": "Unity names no places and resolves no names. The nearest thing is a relay join code, which points at one running session rather than at a world, and dies with it.",
-      "confidence": "reported"
+      "note": "Unity names no places and resolves no names. The nearest thing is the session join code, which points at one running session rather than a world. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for dns, hostname, join code, address on 2026-10-19; hostname hits are about Unity Accelerator and version control servers; no page resolves a world name.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/building-blocks-multiplayer-sessions.html",
+          "title": "Unity Manual: Multiplayer Sessions Building Block",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Let players create a session and share a simple join code that other players can use to join the session."
+        }
+      ]
     },
     {
       "capability_id": "net.discovery",
@@ -985,27 +1077,105 @@
     },
     {
       "capability_id": "identity.credential",
-      "level": "none",
-      "note": "Unity defines no way to express a checkable claim about a person or thing, and no Unity package reads one.",
-      "confidence": "reported"
+      "level": "partial",
+      "note": "Partly met. Unity Authentication, a Unity Gaming Services service, issues ID tokens to players and publishes a key set so that a second party can verify them. Missing: the documentation read describes player ID tokens only and defines no general format for other claims about a person or thing. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals and the Unity Gaming Services documentation are not in it) for credential, credentials, verifiable, jwt, claims on 2026-10-19; the credential hits are proxy, Git and package registry login settings, licence activation and package signing; no page defines a claim format. The Authentication service documentation was read directly on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/oas-player-auth-jwks/latest",
+          "title": "Unity Docs: Player Authentication JWKS API",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Get the JSON Web Key Set (JWKS) for verifying the ID tokens that Unity Authentication issues to players."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.services.authentication.html",
+          "title": "Unity Manual: Authentication package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Client SDK offering player identity management for Unity Gaming Services."
+        }
+      ]
     },
     {
       "capability_id": "identity.exchange",
-      "level": "none",
-      "note": "There is no protocol in Unity for asking for and presenting claims; sign-in goes to Unity's own service or to a platform account provider.",
-      "confidence": "reported"
+      "level": "partial",
+      "note": "Partly met. Unity Authentication supports custom OpenID Connect sign-in: the game obtains a player's ID token from an external identity provider and presents it to Unity Authentication, which links it to a Unity player. Unity says it does not provide the integration, so the developer builds the provider side. Missing: a protocol by which two worlds ask for and present claims to each other; the documented flow only signs a player in to Unity's own service. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals and the Unity Gaming Services documentation are not in it) for authentication, oauth, credential, presentation on 2026-10-19; 42 pages mention authentication: player sign-in for Unity Gaming Services, and proxy, Git, registry and platform login settings. The Authentication service documentation was read directly on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/authentication/openid-connect",
+          "title": "Unity Docs: Authentication - OpenID Connect",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Set up custom sign-in with OpenID Connect providers to enable players to authenticate with external identity systems."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/authentication/openid-connect",
+          "title": "Unity Docs: Authentication - OpenID Connect",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The integration exists only to link a third-party IdP credential with a UGS Player ID"
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.services.authentication.html",
+          "title": "Unity Manual: Authentication package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Client SDK offering player identity management for Unity Gaming Services."
+        }
+      ]
     },
     {
       "capability_id": "identity.capability",
-      "level": "none",
-      "note": "Nothing states what a subject may do in a form a party that did not issue it could check; permissions in a Unity game are whatever that game's own code decides.",
-      "confidence": "reported"
+      "level": "partial",
+      "confidence": "verified",
+      "note": "Partly met. Unity Gaming Services Access Control states in a documented policy form (effect, action, principal, resource) what a signed-in player may read or write, and the services enforce it on every call. Missing: the policy lives in Unity's own services and covers only Unity service addresses, the only principal it accepts is a Unity player, and the documentation describes no way to carry a grant with the person or to let a world outside Unity read and check it. The Unity 6.6 manual itself has no such grant (searched its full-text word index for permission, permissions, capability, capabilities, claims on 2026-10-19; hits are platform and package settings); the grant exists only in the separate Unity Gaming Services documentation, read on 2026-10-20.",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/ugs/en-us/manual/overview/manual/access-control",
+          "title": "Unity Docs: Access Control (Unity Gaming Services)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access Control in UGS is configured using resource policies."
+        },
+        {
+          "url": "https://docs.unity.com/ugs/en-us/manual/overview/manual/access-control",
+          "title": "Unity Docs: Access Control (Unity Gaming Services)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "UGS services enforce rules for who can access those services and what actions they are allowed to perform."
+        },
+        {
+          "url": "https://docs.unity.com/ugs/en-us/manual/overview/manual/access-control",
+          "title": "Unity Docs: Access Control (Unity Gaming Services)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Player is currently the only accepted value."
+        }
+      ]
     },
     {
       "capability_id": "identity.privacy",
       "level": "none",
-      "note": "There is no mechanism for revealing only part of what is known about a user to a receiving world.",
-      "confidence": "reported"
+      "note": "No mechanism found for revealing only part of what is known about a user to a receiving world. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for selective, disclosure, privacy, consent on 2026-10-19; privacy hits are the Apple privacy manifest, editor analytics and proxy pages; none describes limiting what a receiving world learns about a user.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.services.authentication.html",
+          "title": "Unity Manual: Authentication package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Client SDK offering player identity management for Unity Gaming Services."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/building-blocks-liveops-player-accounts.html",
+          "title": "Unity Manual: Player Accounts Building Block",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Use the Player Accounts Unity Building Block to add sign-in functionality to your project, for example, to track and preserve users’ progress in your application."
+        }
+      ]
     },
     {
       "capability_id": "identity.social",
@@ -1025,8 +1195,17 @@
     {
       "capability_id": "identity.rights",
       "level": "none",
-      "note": "The runtime does not read or act on licence terms at the moment content is used; nothing in the manual or the package list covers this.",
-      "confidence": "reported"
+      "note": "The runtime does not read or act on licence terms when content is used. Package manifests carry a licence field, but the manual describes it as information for people and the Package Manager, not as a check applied at the point of use. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for license, licence, rights, entitlement on 2026-10-19; no page describes acting on licence terms when content is used.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/upm-manifestPkg.html",
+          "title": "Unity Manual: Package manifest",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "license String Identifier for an OSS license using the SPDX identifier format , or a string such as ‘Refer to LICENSE.md file’. Note : If you omit this property in your package manifest, your package must contain a LICENSE.md file."
+        }
+      ]
     },
     {
       "capability_id": "geo.pose",
@@ -1046,8 +1225,17 @@
     {
       "capability_id": "geo.crs",
       "level": "none",
-      "note": "Unity has one scene frame in metres and no notion of a named Earth reference frame; projects that need one bring in a third-party plug-in.",
-      "confidence": "reported"
+      "note": "Unity has one scene frame in metres and no named Earth reference frame. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals and the Unity Gaming Services documentation are not in it) for geodetic, georeference, wgs84, ecef, utm, epsg, proj, latitude, longitude on 2026-10-19; the only hits are latitude and longitude in panorama and cubemap texture mapping, and in the SketchUp importer, where they are read-only values from the model's geo coordinates that locate an imported model and do not define a coordinate reference system for the scene; no page names a coordinate reference system. Projects that need one bring in a third-party plug-in.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/class-SketchUpImporter.html",
+          "title": "Unity Manual: SketchUp Import Settings reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Read-only value from the Geo Coordinate system, used to identify a position on a geographic system."
+        }
+      ]
     },
     {
       "capability_id": "geo.anchor-local",
@@ -1089,14 +1277,32 @@
     {
       "capability_id": "geo.vps",
       "level": "none",
-      "note": "Unity does not recover a precise pose from camera pictures; that comes from platform or vendor plug-ins outside Unity's own packages.",
-      "confidence": "reported"
+      "note": "Unity does not recover a precise pose from camera pictures itself. The AR Foundation 6.6 feature list covers plane detection, image tracking, anchors, meshing and shared participants, and no visual positioning. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for vps, geospatial, visual positioning on 2026-10-19; zero matches in the manual index; the AR Foundation 6.6 index page was also read, not the platform packages.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.6/manual/index.html",
+          "title": "AR Foundation 6.6 manual",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "AR Foundation enables you to create multiplatform augmented reality (AR) apps with Unity."
+        }
+      ]
     },
     {
       "capability_id": "geo.tiles",
       "level": "none",
-      "note": "No Unity package streams large Earth data by tile; projects that need it install a third-party plug-in.",
-      "confidence": "reported"
+      "note": "No Unity package found that streams large Earth data by tile; Unity Terrain is a single in-scene landscape. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for tiles, tileset, streaming, terrain, 3d tiles, cesium on 2026-10-19; tile hits are 2D tilemaps and texture tiling; terrain hits describe the Terrain object. Projects that need streamed Earth data install a third-party plug-in.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/CreatingEnvironments.html",
+          "title": "Unity Manual: World building",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Unity provides a selection of tools that let you create environmental features such as landforms and vegetation."
+        }
+      ]
     },
     {
       "capability_id": "geo.indoor",
@@ -1294,14 +1500,60 @@
     {
       "capability_id": "logic.budget",
       "level": "none",
-      "note": "Unity measures memory and time with profiler tools but does not bound them: there is no mechanism to cap what a piece of guest content may use, because there is no guest content model in the first place.",
-      "confidence": "reported"
+      "note": "Unity measures memory and time with profiler tools and has project-wide caps such as the texture Memory Budget in Quality settings and the CPU budget for Enlighten Realtime Global Illumination in Graphics settings, but it has no mechanism to cap what a piece of guest content may use, because there is no guest content model. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals and the Unity Gaming Services documentation are not in it) for budget, budgets, quota, limit on 2026-10-19; the budget hits are texture streaming, lightmap and UI settings; none applies to a part of the content.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/performance-memory.html",
+          "title": "Unity Manual: Memory in Unity",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "To ensure your application runs with no performance issues, it’s important to understand how Unity uses and allocates memory."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/TextureStreaming-configure.html",
+          "title": "Unity Manual: Configure mipmap streaming",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "To set the maximum GPU memory that Unity uses for textures, follow these steps:"
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/class-GraphicsSettings.html",
+          "title": "Unity Manual: Graphics settings reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Sets the CPU budget for Enlighten Realtime Global Illumination to use for lighting calculations at runtime."
+        }
+      ]
     },
     {
       "capability_id": "persist.world",
-      "level": "none",
-      "note": "Nothing survives a restart by default. The Cloud Save package stores a player's own data in Unity's service, but there is no notion of a world whose state persists.",
-      "confidence": "reported"
+      "level": "partial",
+      "note": "Partly met. Nothing survives a restart by default, but Unity's Cloud Save service has a Game Data store for non-player game data such as NPCs, entities and game state, which a developer can use to keep the state of items and NPCs in multiplayer games. Missing: nothing saves or restores a running world automatically; the developer decides what to write and read, and the store lives in Unity's service. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals and the Unity Gaming Services documentation are not in it) for persistence, persistent, save, cloud save on 2026-10-19; 122 pages mention persistence or persistent, mostly UI Toolkit view data, memory and build settings; no manual page describes persisting the state of a running world. The Cloud Save service documentation was read directly on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.services.cloudsave.html",
+          "title": "Unity Manual: Cloud Save package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Use Cloud Save to store your players’ progress and preferences, by doing so you can share this data between all the players’ devices and any game backend services."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/cloud-save",
+          "title": "Unity Docs: Cloud Save",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game Data for non-player game data, for example NPCs, entities, game state"
+        },
+        {
+          "url": "https://docs.unity.com/en-us/cloud-save",
+          "title": "Unity Docs: Cloud Save",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to store the state of items and NPCs in multiplayer games"
+        }
+      ]
     },
     {
       "capability_id": "persist.inventory",
@@ -1410,8 +1662,24 @@
     {
       "capability_id": "deliver.conformance",
       "level": "none",
-      "note": "Unity ships a test framework for a project's own tests but publishes no suite that proves the engine matches an outside specification. Where conformance exists in Unity's stack it belongs to someone else: the OpenXR plug-in relies on runtimes that Khronos has certified.",
-      "confidence": "reported"
+      "note": "Unity ships a test framework for a project's own tests but publishes no suite that proves the engine matches an outside specification. Searched the Unity 6.6 manual's full-text word index (3,667 pages; the separate package manuals are not in it) for conformance, conformant, compliance, certification on 2026-10-19; the single match for conformance is the accessibility page discussing WCAG for people building apps; none is a Unity conformance suite. The OpenXR plug-in targets the Khronos standard.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.test-framework.html",
+          "title": "Unity Manual: Test Framework package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Test framework for running Edit mode and Play mode tests in Unity."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/com.unity.xr.openxr.html",
+          "title": "Unity Manual: OpenXR Plugin package",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "OpenXR is an open, royalty-free standard developed by Khronos that aims to simplify AR/VR development by allowing developers to target a wide range of AR/VR devices."
+        }
+      ]
     },
     {
       "capability_id": "capture.worldgen",
@@ -1831,16 +2099,46 @@
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "Unity is an engine and an editor. Finished content leaves it as a built application, and any review that stands between that application and its audience belongs to the store it ships through, not to Unity.",
+      "note": "Unity is an engine and an editor. Finished content leaves it as a built application, and any review that stands between that application and its audience belongs to the store it ships through, not to Unity. Unity does publish a first-party Moderation package (com.unity.services.moderation) for its Gaming Services, but it is for live player conduct: it manages players' safety in game text and voice chat and lets players report toxic players. That is action against people after release, not review of finished content before it reaches an audience, so the cell stays out of scope.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/UnityManual.html",
+          "title": "Unity Manual: Unity 6.6 User Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It combines the latest technologies and tools to deliver high-quality, high-performance experiences for all supported platforms."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/building-introduction.html",
+          "title": "Unity Manual: Introduction to building",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A Player is the platform-specific runtime application that Unity builds from your project."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.services.moderation@1.1/manual/index.html",
+          "title": "Unity Moderation package 1.1 manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Moderation platform allows you to manage your players' safety in game text and voice chat."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
       "note": "AR Foundation gives an application anchors and tracked features from whichever device provider is underneath. Declaring a map of a place with a version, or a transform to another map, is the provider's business and not the engine's.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.6/manual/index.html",
+          "title": "AR Foundation 6.6 manual",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "When you build and run your app on an AR device, AR Foundation enables these features using the platform's native AR SDK, so you can create once and deploy to the world's leading AR platforms."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
@@ -2266,6 +2564,376 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Loads a Scene without unloading currently loaded Scenes. The additively loaded Scene appears in the Hierarchy window while another is active."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "via-extension",
+      "note": "The optional Unity In-App Purchasing package gives one API over Apple App Store, Google Play and Direct-to-Consumer payment providers, and each store or provider handles the purchase flow and payment processing. It is a person-facing store checkout; it defines no payment protocol of its own and no agent payment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/iap",
+          "title": "Unity In-App Purchasing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Install the Unity In-App Purchasing (IAP) package and configure Unity IAP for your project."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/iap/introduction",
+          "title": "Introduction to Unity In-App Purchasing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Unity IAP supports built-in platform stores (Apple App Store and Google Play Store), Direct-to-Consumer (D2C) payment providers for off-platform transactions, and webshops"
+        },
+        {
+          "url": "https://docs.unity.com/en-us/iap/introduction",
+          "title": "Introduction to Unity In-App Purchasing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each store type handles the purchasing flow, payment processing, and entitlement management differently"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "via-extension",
+      "note": "Through the Unity In-App Purchasing package 5.0, a game calls CheckEntitlement on a product and receives an entitlement status such as fully entitled or not entitled. The store backend supplies the holder binding; the package page defines no transfer rules or recognition across stores. The editor LicensingUtility and private content bucket tokens are separate checks, shown as context.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.purchasing@5.0/api/UnityEngine.Purchasing.StoreController.html",
+          "title": "Unity In-App Purchasing 5.0: StoreController",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Checks the entitlement status for the specified product."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.purchasing@5.0/api/UnityEngine.Purchasing.EntitlementStatus.html",
+          "title": "Unity In-App Purchasing 5.0: EntitlementStatus",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Non-Consumable or Subscription has a valid entitlement with a completed order."
+        },
+        {
+          "url": "https://docs.unity3d.com/ScriptReference/Experimental.Licensing.LicensingUtility.html",
+          "title": "Unity Scripting API: LicensingUtility",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HasEntitlement Checks if the current user is entitled to a specific entitlement."
+        },
+        {
+          "url": "https://docs.unity.com/ccd/UnityCCD.html",
+          "title": "Unity Cloud Content Delivery overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Private buckets protect read access to buckets with an access token, so only those users with that access token can retrieve content from that bucket."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "partial",
+      "note": "Through the Unity In-App Purchasing package the engine validates store-issued receipts by signature and application identifier and exposes the product, date and transaction identifier. Missing: Unity defines no receipt of its own, only Google Play and Apple receipts validate, and nothing binds recipient and resource in a store-independent way another system could check.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.purchasing@4.12/manual/UnityIAPValidatingReceipts.html",
+          "title": "Unity In App Purchasing 4.12.2, Receipt Obfuscation and validation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Note that the validator only validates receipts generated on Google Play and Apple platforms."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.purchasing@4.12/manual/UnityIAPValidatingReceipts.html",
+          "title": "Unity In App Purchasing 4.12.2, Receipt Obfuscation and validation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Receipt authenticity is checked via signature validation."
+        },
+        {
+          "url": "https://docs.unity.com/ugs/en-us/manual/iap/manual/overview",
+          "title": "Unity In-App Purchasing overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Manage purchases, validate receipts, restore entitlements, and handle subscriptions in Unity In-App Purchasing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Unity is a real-time engine and editor, and the identity provider list in its Authentication package configures player sign-in for one project rather than a shared governed registry of accepted issuers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/UnityManual.html",
+          "title": "Unity 6.6 User Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Unity 6.6 is the latest release of the next generation of the Unity Engine. It combines the latest technologies and tools to deliver high-quality, high-performance experiences for all supported platforms."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "partial",
+      "note": "Unity Authentication keeps a disabled state on each player that the game operator can read and switch through the Admin API, and issues access tokens valid for one hour. Missing: any way for a second party holding a player's token to look up that state, or a status list or revocation endpoint for issued tokens; searched the Authentication session, OpenID Connect, Admin API and JWKS pages on 2026-10-20 for revoke, revocation, suspend and status; only the operator-side disable and enable calls were found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/oas-player-auth-admin/latest",
+          "title": "Unity Docs: Player Authentication Admin API",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Disable the player."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/authentication/session-management",
+          "title": "Unity Docs: Unity Authentication sessions",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Based on this session token it also grants an access token which is valid for one hour."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Unity Authentication publishes a JSON Web Key Set so that a second party can find the keys that verify its tokens. Missing: any documented rule for rotating, revoking or recovering those keys; searched the JWKS API page on 2026-10-20 for rotation and revocation and found none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/oas-player-auth-jwks/latest",
+          "title": "Unity Docs: Player Authentication JWKS API",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Get the JSON Web Key Set for validating authentication tokens."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Through the Netcode for GameObjects package a server can approve or refuse each arriving client in a callback and attach a reason that the client receives. Missing: a validity limit on the approval, and any approval given before the client arrives; the page also says approval is not supported with the distributed authority topology.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@2.13/manual/basics/connection-approval.html",
+          "title": "Connection approval, Netcode for GameObjects 2.13",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If response.Approved is false, you can provide a message that explains the reason why via ConnectionApprovalResponse.Reason"
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.netcode.gameobjects@2.13/manual/basics/connection-approval.html",
+          "title": "Connection approval, Netcode for GameObjects 2.13",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Connection approval is not currently supported when using a distributed authority topology"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "Unity has 3D textures, a stored volume of values in three dimensions that shaders sample, which covers storing a cell volume. Missing: any exchange form for voxel data, cell properties beyond texture channels, or updates; searched the Unity 6.6 manual word index (3,667 pages; package manuals not included) for voxel on 2026-10-20 and found only collision caching and occlusion-culling pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/Textures-landing.html",
+          "title": "Unity Manual: Custom textures",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resources for creating and using a bitmap image that contains information in three dimensions, for example to create volumetric effects, 3D meshes, or animated textures."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "A Unity shader declares the shader model it needs with a target value, which is a named group of GPU features that a device either meets or does not. Missing: named subsets or levels for whole scenes, assets or the engine itself; searched the Unity 6.6 manual word index on 2026-10-20 for shader model, compile target and feature set, and the feature sets found are bundles of editor packages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/SL-ShaderCompileTargets.html",
+          "title": "Unity Manual: Shader compile targets",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "#pragma target to specify a shader model that a shader requires, for example #pragma target 4.0 . A shader model represents a specific group of GPU features."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "A Unity scene template can carry a preview image shown when choosing the template. Missing: a preview image packaged with an ordinary asset, scene or build for use outside the Editor; searched the Unity 6.6 manual word index on 2026-10-20 for thumbnail, which found only Editor search, profiler and template pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/scene-templates-editing.html",
+          "title": "Unity Manual: Editing scene templates",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Thumbnail section contains options for creating a preview image for the template."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "partial",
+      "note": "Unity's UI Toolkit applies style sheets in USS, whose selectors pick which user interface elements a rule affects, so styling is kept apart from the structure. Missing: any such styling for three-dimensional scene content selected by content metadata; this covers user interface elements only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/UIE-USS-Selectors.html",
+          "title": "Unity Manual: USS selectors",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Selectors decide which elements that USS rules affect."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Unity can sign exported asset packages so their origin and integrity can be checked, but nothing recovers a lost provenance record from a content fingerprint or watermark. Searched the Unity 6.6 manual word index (3,667 pages; package manuals not included) for watermark, fingerprint, provenance and C2PA on 2026-10-20; the only hits were package signing, build fingerprints on Android and browser fingerprinting.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/WhatsNewUnity66.html",
+          "title": "Unity Manual: New in Unity 6.6",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This feature provides content provenance and integrity verification for .unitypackage files, aligning them with the signature model already available for UPM packages."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Unity plays video and delivers built content, but its manual names no way to declare a protection scheme on content components. Searched the Unity 6.6 manual word index (3,667 pages; package manuals not included) for DRM, Widevine, FairPlay, PlayReady, protected content and content protection on 2026-10-20; the only hits were the App Store's own store-level DRM.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/video-sources.html",
+          "title": "Unity Manual: Video sources",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Learn how to import, work with, and use your video sources in Unity."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched Unity Input System 1.14 (Sensor support, Devices pages) and the Unity OpenXR Plugin 1.15 manual (index, Input pages) for heart, biometric and physiolog on 2026-10-20; no match, and a web search restricted to docs.unity3d.com and unity.com found no first-party body-signal document. The Input System sensor list covers motion, environment and a step counter, but no heart-rate or skin-conductance device. The full Unity manual was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/Sensors.html",
+          "title": "Sensor support, Input System 1.14.2",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Sensors are InputDevices that measure environmental characteristics of the device that the content is running on. Unity currently supports sensors on iOS and Android."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "Unity states that its real-time 3D platform connects asset systems with real-time or historical IoT data and offers an IoT project template for digital twins, but this rests on vendor product pages: no engine-level binding or industrial connector documentation was found, and the connectors named in practice are third-party. Treated as partial, with the missing part being a documented, built-in source binding.",
+      "confidence": "reported",
+      "sources": [
+        {
+          "url": "https://unity.com/solutions/energy",
+          "title": "Unity for energy digital twins",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Connect disparate data , such as asset management systems and real-time or historical IoT data, to enable better decision-making and strengthen contextual awareness of your operations."
+        },
+        {
+          "url": "https://create.unity.com/unity-industry-templates",
+          "title": "Unity Industry templates webinar series",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Whether you're creating product configurators, developing immersive 3D viewers, or building IoT-connected digital twins"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "none",
+      "note": "Unity documents training use and says training content can be extended into a learning management system, but the engine ships no xAPI or cmi5 emitter or learning-record export. Its Analytics service is a studio dashboard of player behaviour, and Unity's own case study credits SCORM and xAPI tracking to a customer's product built on Unity. Searched unity.com/solutions/immersive-training, unity.com/resources/pinnacle-solutions, the docs.unity.com Analytics overview, and web searches limited to unity.com, docs.unity3d.com and docs.unity.com for xAPI, SCORM, cmi5, learning record store and learning management system on 2026-10-20; found no Unity-supplied learning-record output. The Unity Manual was not searched in full.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://unity.com/solutions/immersive-training",
+          "title": "Unity: Immersive AR & VR Training",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Extend immersive training content into existing systems such as your learning management system (LMS), manufacturing execution system (MES), or product lifecycle management (PLM) system, among others."
+        },
+        {
+          "url": "https://unity.com/resources/pinnacle-solutions",
+          "title": "Unity: Aircraft maintenance training with Unity virtual twins",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "tracking student performance through SCORM and xAPI integration with existing learning management systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "Scenes and prefabs can be saved in a documented text format (UnityYAML), and parts of a project move between projects as .unitypackage archives that keep folder structure and import settings. There is no whole-place export in an open interchange format and no statement of what survives outside Unity; the package format is Unity's own.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Manual/TextSceneFormat.html",
+          "title": "Text-based scene files, Unity Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Unity provides a text-based format for scene data, in addition to the default binary format."
+        },
+        {
+          "url": "https://docs.unity3d.com/Manual/AssetPackages.html",
+          "title": "Distribute assets as packages, Unity Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Asset packages are collections of files and data from Unity projects, or elements of projects, which Unity compresses and stores in one file with the .unitypackage extension."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "via-extension",
+      "note": "Unity's AR Foundation package has an object tracking manager that detects previously scanned reference objects, but the only Unity-supported providers are Apple's ARKit and visionOS plug-ins, so it does not work on Android. A model-based route that starts from a CAD or 3D model is available through PTC's Vuforia Model Targets and its Unity integration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.4/manual/features/object-tracking.html",
+          "title": "AR Foundation 6.4, AR Tracked Object Manager component",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Currently, the Apple ARKit XR Plug-in and Apple visionOS XR Plug-in are the only Unity-supported provider plug-ins that implement object tracking."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@6.4/manual/features/object-tracking.html",
+          "title": "AR Foundation 6.4, AR Tracked Object Manager component",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Before a real-world object can be detected, you must scan it to create a reference object."
+        },
+        {
+          "url": "https://developer.vuforia.com/library/vuforia-engine/images-and-objects/model-targets/model-targets/",
+          "title": "Vuforia Engine Library, Model Targets",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Model Target Generator generates Model Targets by taking a 3D model representing the object you want to track as input"
         }
       ]
     }

@@ -50,12 +50,6 @@
           "retrieved": "2026-08-22",
           "kind": "primary",
           "quote": "Godot currently does not support WebGPU, which is a prerequisite for allowing Forward+/Mobile to run on the web platform."
-        },
-        {
-          "url": "https://github.com/godotengine/godot-proposals/issues/6646",
-          "title": "Add WebGPU support - godotengine/godot-proposals",
-          "retrieved": "2026-08-22",
-          "kind": "primary"
         }
       ]
     },
@@ -178,20 +172,22 @@
     {
       "capability_id": "render.splat",
       "level": "none",
-      "note": "Nothing in core, and nothing in the official asset library either. The words splat, splatting and radiance field do not appear anywhere in the documentation index, there are no issues or proposals for it in the engine's trackers, and a search of the official asset library returns no results. Community projects exist on code hosting outside official channels, typically hooking in through the compositor.",
+      "note": "Nothing in core, and nothing in the official asset library. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for splat, splatting, nerf and radiance on 2026-10-19; splat, splatting and nerf have no match, radiance appears only in lighting, sky, reflection and texture-import pages, and gaussian only in blur and post-processing pages. The asset library search API returned no results for splat. A search of the godot-proposals tracker for gaussian on the same date returned 11 results, and the 8 read were all about blur or filtering. Community projects exist on code hosting outside official channels, typically hooking in through the compositor.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://docs.godotengine.org/en/stable/searchindex.js",
-          "title": "Godot Engine (stable) documentation search index",
-          "retrieved": "2026-08-22",
-          "kind": "primary"
+          "url": "https://docs.godotengine.org/en/stable/engine_details/architecture/internal_rendering_architecture.html",
+          "title": "Internal rendering architecture - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Godot's renderers are built entirely on OpenGL and RenderingDevice, which is our abstraction over Vulkan/Direct3D 12/Metal."
         },
         {
           "url": "https://godotengine.org/asset-library/api/asset?filter=splat",
-          "title": "Godot Asset Library search - splat",
-          "retrieved": "2026-08-22",
-          "kind": "primary"
+          "title": "Godot Asset Library API search for splat (no results)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "{\"result\":[],\"page\":0,\"pages\":0,\"page_length\":40,\"total_items\":0}"
         }
       ]
     },
@@ -518,15 +514,16 @@
         {
           "url": "https://github.com/V-Sekai/godot-vrm",
           "title": "V-Sekai/godot-vrm - Importer/Exporter for VRM avatars and MToon shader",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-20",
           "kind": "primary",
-          "quote": "This Godot addon fully implements an importer and exporter for models with the VRM specification."
+          "quote": "This Godot addon fully implements an importer and exporter for models with the VRM specification"
         },
         {
           "url": "https://godotengine.org/asset-library/asset/2031",
           "title": "VRM Importer for 3D Avatars and MToon Shader - Godot Asset Library",
-          "retrieved": "2026-08-22",
-          "kind": "primary"
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This asset provides an importer and exporter for VRM characters, as well as a full implementation the high quality VRM Toon Shader \"MToon\" for Godot Engine 4.1 and higher."
         }
       ]
     },
@@ -876,14 +873,15 @@
     {
       "capability_id": "net.prediction",
       "level": "none",
-      "note": "No client-side prediction, reconciliation or rollback in the engine. Replication is authority to peer; hiding latency is left to the project.",
-      "confidence": "reported",
+      "note": "No client-side prediction, reconciliation or rollback in the engine. Replication is authority to peer, and the multiplayer guide names client-side prediction as something a project has to add. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for predict, rollback, reconcili and netcod on 2026-10-19; rollback, reconcili and netcod have no match, and the only networking page that mentions prediction is the high-level multiplayer guide quoted here.",
+      "confidence": "verified",
       "sources": [
         {
           "url": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
           "title": "High-level multiplayer - Godot Engine (stable) documentation",
-          "retrieved": "2026-08-22",
-          "kind": "primary"
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This comes with some tradeoffs (such as server-side performance and complexity due to the need for client-side prediction), but will make it much harder for attackers to cheat by sending falsified data."
         }
       ]
     },
@@ -1464,7 +1462,7 @@
     {
       "capability_id": "capture.splat-format",
       "level": "none",
-      "note": "Nothing in core and nothing in the official asset library. The engine's own list of the 3D scene formats it imports holds glTF, Blender, COLLADA, Wavefront and Filmbox and no splat container; the words splat, splatting and radiance field do not appear in the documentation index, there are no issues or proposals in the engine's trackers, and a search of the asset library returns nothing.",
+      "note": "Nothing in core and nothing in the official asset library. The engine's own list of the 3D scene formats it imports holds glTF, Blender, COLLADA, Wavefront and Filmbox and no splat container. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for splat, splatting, nerf and radiance on 2026-10-19; splat, splatting and nerf have no match, and radiance appears only in lighting, sky and texture-import pages. The asset library search API returned no results for splat on the same date.",
       "confidence": "verified",
       "sources": [
         {
@@ -1473,13 +1471,6 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "Godot supports the following 3D scene file formats"
-        },
-        {
-          "url": "https://docs.godotengine.org/en/stable/searchindex.js",
-          "title": "Godot Engine documentation search index",
-          "retrieved": "2026-08-22",
-          "kind": "primary",
-          "quote": null
         }
       ]
     },
@@ -1869,21 +1860,52 @@
       "level": "out-of-scope",
       "note": "Godot exports an application and hands it over. Any review between that application and its players belongs to the store it ships through, not to the engine.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Introduction - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Introduction - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Games can be exported with one click to a number of platforms, including the major desktop platforms (Linux, macOS, Windows), mobile platforms (Android, iOS), as well as Web-based platforms and consoles."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
       "note": "The engine has no map of a real place: it has anchors from whichever XR runtime is underneath and no lifecycle or alignment for maps.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Introduction - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
       "note": "Godot declares no geographic area over which anything applies.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Introduction - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -2282,6 +2304,692 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Scenes can be created and saved to disk. You can create as many as you'd like. You can then use a scene as a building block for other scenes."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "via-extension",
+      "note": "The Godot engine core has no payment API; store billing comes from the first-party GodotGooglePlayBilling Android plugin, which lists product details and prices, launches the billing flow and reports the result in a purchase signal. This is Google Play store billing for a person, and an iOS in-app-purchase plugin is also mentioned; neither is an agent payment protocol.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases - Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot offers a first-party GodotGooglePlayBilling Android plugin compatible with Godot 4.2+ which uses the Google Play Billing library"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases - Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To launch the billing flow for an item: Use purchase() for in-app products, passing the product ID string."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/ios/ios_plugin.html",
+          "title": "iOS plugins - Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "iOS plugins allow you to use third-party libraries and support iOS-specific features like In-App Purchases, GameCenter integration, ARKit support, and more."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "via-extension",
+      "note": "Godot core has no store, account or grant check. Its first-party GodotGooglePlayBilling Android plugin lets a game ask Google Play which purchases the signed-in user holds, returning only active subscriptions and non-consumed one-time purchases. The check is Android and Google Play only; the grant lives in Google's store, not in the engine or the content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot offers a first-party GodotGooglePlayBilling Android plugin compatible with Godot 4.2+ which uses the Google Play Billing library"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only active subscriptions and non-consumed one-time purchases are included in the purchase array."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "partial",
+      "note": "Through the first-party GodotGooglePlayBilling Android plugin, a game receives each Google Play purchase as a dictionary with an order id, purchase token, purchase time, quantity, product ids and a signature field. Only part of the definition is met: no recipient is listed, the page does not state which fields the signature covers, and the record is Google Play's, for Android only, with no cross-store form.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases, Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot offers a first-party GodotGooglePlayBilling Android plugin compatible with Godot 4.2+"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases, Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The purchase Dictionary includes keys that map to values of the Google Play Billing Purchase class."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases, Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Purchase fields: order_id : String purchase_token : String package_name : String purchase_state : int purchase_time : int"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/platform/android/android_in_app_purchases.html",
+          "title": "Android in-app purchases, Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "signature : String"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Godot is a general game engine for building games; deciding which issuers, services or worlds a verifier should accept is not part of what it is for, and its documentation defines no such registry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Godot defines no avatar identity of its own; the identifiers it hands out are a per-session peer number and a device identifier from OS.get_unique_id(), so tying an avatar to a verifiable identity is not something the engine specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
+          "title": "High-level multiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every peer is assigned a unique ID. The server's ID is always 1, and clients are assigned a random positive integer."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_os.html",
+          "title": "OS - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Returns a string that is unique to the device."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "none",
+      "note": "The multiplayer authentication hook carries opaque bytes and the engine defines no format for claims about a subject. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for credential, verifiable, jwt, oauth, openid and wallet on 2026-10-20; credential appears only in editor settings, source control, HTTP, WebRTC and project export pages, and the other terms have no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_scenemultiplayer.html",
+          "title": "SceneMultiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This can be used to authenticate peers, and control when MultiplayerAPI.peer_connected is emitted (and the remote peer accepted as one of the connected peers)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "none",
+      "note": "Who may call what is fixed in code by per-method call modes and a per-node authority, which only the running project can read; there is no grant object that a party other than the project could read. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for capability, permission, acl, authorization and access control on 2026-10-20; permission appears only for operating-system and Android runtime permissions, capability only in the OpenXR spatial entity class, and the other terms have no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
+          "title": "High-level multiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only the multiplayer authority can call remotely."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Declaring the vocabulary and validation schemas for claims belongs to identity systems, and Godot documents none because it is a game engine and not an identity provider.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Rotating, revoking and recovering identity-control keys is the work of an identity system; the engine's Crypto class only generates keys and signs or encrypts with them, and defines no rules around them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_crypto.html",
+          "title": "Crypto - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Currently, this includes asymmetric key encryption/decryption, signing/verification, and generating cryptographically secure random bytes, RSA keys, HMAC digests"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Discovering the suspension or revocation of a credential after issuance is an issuer-side service, and a game engine neither issues credentials nor defines a status mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying a grant of permission with scope, purpose, validity and withdrawal belongs to identity and data-protection systems, and a game engine documents no such grant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is a property of credential presentation, and Godot defines no credentials to disclose from because it is a game engine and not an identity provider.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "The engine has no friends, reputation or relationship model; portable standing is a concern of platforms and identity systems, not of a game engine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "A game engine does not interpret licence terms attached to content, so acting on them at the point of use is left to the project or the store it ships through.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Evidence and assurance behind a claim presuppose claims issued by an identity authority, and Godot is a game engine that issues and documents none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkable presentations are identity-system mechanisms, and the engine's only identifiers are a per-session peer number and a device identifier from OS.get_unique_id(), neither of which is pairwise.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/networking/high_level_multiplayer.html",
+          "title": "High-level multiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every peer is assigned a unique ID. The server's ID is always 1, and clients are assigned a random positive integer."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_os.html",
+          "title": "OS - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Returns a string that is unique to the device."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "A machine-readable record of what a recipient decided about a claim is an identity-system artefact, and a game engine documents no such record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Before a peer joins, the host can hold it in an authenticating state, then accept it or drop it, with a timeout after which authentication fails. Missing is any defined approval or refusal message: the exchange is whatever bytes the project sends, with no standard validity limit or explanatory information.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_scenemultiplayer.html",
+          "title": "SceneMultiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If the Callable is empty (default), peers will be automatically accepted as soon as they connect."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_scenemultiplayer.html",
+          "title": "SceneMultiplayer - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This can be used to authenticate peers, and control when MultiplayerAPI.peer_connected is emitted (and the remote peer accepted as one of the connected peers)."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "An inventory is game content that each project designs for itself; the engine has no item or holdings model and nothing for whether items travel.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot documentation: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "GridMap is a core node holding a sparse grid of cells, each referring to a mesh tile, editable from the editor or from scripts. It is a level-building tool saved in Godot's own scene files, and the documentation describes no interchange format for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_gridmap.html",
+          "title": "GridMap - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A GridMap contains a collection of cells."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "partial",
+      "note": "Exported packs can be encrypted with a 256-bit AES key, and the pack format records which files are encrypted: its header has a directory-encrypted flag and each file carries an encrypted flag. Missing: the scheme and the key are not named for a recipient; the key is compiled into custom export templates, and a build without it reports a corrupt file instead of naming the protection required.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_with_script_encryption_key.html",
+          "title": "Compiling with PCK encryption key - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The export dialog gives you the option to encrypt your PCK file with a 256-bit AES key when releasing your project."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_with_script_encryption_key.html",
+          "title": "Compiling with PCK encryption key - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot is encrypting PCK file during export, but can't read it at runtime."
+        },
+        {
+          "url": "https://github.com/godotengine/godot/blob/469659e0617345149cd1eaec2e643d61d130aa6a/core/io/file_access_pack.cpp",
+          "title": "Godot pack reader, core/io/file_access_pack.cpp (commit 469659e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "bool enc_directory = (pack_flags & PACK_DIR_ENCRYPTED);"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Godot names three renderers with stated hardware requirements, and a GDExtension file can declare the minimum and maximum engine version it accepts. These are contracts between a project and Godot itself, not named profiles that another runtime could implement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html",
+          "title": "Renderers, rendering drivers, and RenderingDevice - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot's renderers are Forward+ , Mobile , and Compatibility ."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/engine_details/engine_api/gdextension/gdextension_file.html",
+          "title": "GDExtension .gdextension file - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Minimum compatible version. This prevents older versions of Godot from loading extensions that depend on features from newer versions of Godot."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "MeshLibrary items carry a manually set preview texture (set_item_preview) that a running project gets back from get_item_preview, so one resource type does carry a preview. Missing: scenes and imported models carry no preview; all other previews are generated by the editor on demand and kept in a cache folder that is safe to delete. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for thumbnail and preview on 2026-10-20; thumbnail appears only in editor, file dialog and asset-library pages, and preview appears in 54 pages, of which the MeshLibrary class page was read and is the one that carries a preview with a resource at runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_meshlibrary.html",
+          "title": "MeshLibrary - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When used in a running project, returns the manually-defined item preview which can be set using set_item_preview()"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_editorresourcepreview.html",
+          "title": "EditorResourcePreview - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A node used to generate previews of resources or files."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_editorpaths.html",
+          "title": "EditorPaths - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This folder should be used for temporary data that can be removed safely whenever the editor is closed (such as generated resource thumbnails)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing locates provenance from a fingerprint or watermark; the only authorship field in the asset path is a free-text copyright string. Searched the Godot 4.7 stable documentation search index (1,591 pages, including the class reference) for provenance, watermark, fingerprint, c2pa, jumbf and content credentials on 2026-10-20; fingerprint appears once, as a browser fingerprinting remark in the rendering server reference, and nothing else matches.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_gltfstate.html",
+          "title": "GLTFState - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The copyright string in the asset header of the glTF file. This is set during import if present and export if non-empty."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "via-extension",
+      "note": "Nothing in the engine core, but a community GDExtension called 3D Tiles for Godot, listed in the official asset library at community support level, streams 3D Tiles content from Cesium Ion and other sources. Its readme names Windows, Linux and macOS on Apple Silicon, with Web and Android not yet supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Battle-Road-Labs/3D-Tiles-For-Godot/blob/a9c4c0baddaf535474dcd476f5658ff1e4acf4c0/README.md",
+          "title": "3D Tiles for Godot README (commit a9c4c0b)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Godot 4 extension that integrates Cesium 3D Tiles capabilities into Godot Engine through GDExtension."
+        },
+        {
+          "url": "https://godotengine.org/asset-library/api/asset/3976",
+          "title": "3D Tiles For Godot - Godot Asset Library entry",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "3D Tiles for Godot streams real-world 3D content such as high-resolution photogrammetry, terrain, imagery, and 3D buildings from Cesium Ion and other sources"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "via-extension",
+      "note": "Godot defines no Earth frame itself; the same community 3D Tiles add-on supplies a georeference node that converts between engine coordinates and Earth-centred Earth-fixed coordinates and between those and ellipsoid latitude, longitude and altitude. Only the add-on's header was read, so other frames are not assessed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Battle-Road-Labs/3D-Tiles-For-Godot/blob/a9c4c0baddaf535474dcd476f5658ff1e4acf4c0/cesium_godot/Models/CesiumGlobe.h",
+          "title": "3D Tiles for Godot, CesiumGlobe.h (commit a9c4c0b)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Transform3D get_tx_engine_to_ecef() const;"
+        },
+        {
+          "url": "https://github.com/Battle-Road-Labs/3D-Tiles-For-Godot/blob/a9c4c0baddaf535474dcd476f5658ff1e4acf4c0/cesium_godot/Models/CesiumGlobe.h",
+          "title": "3D Tiles for Godot, CesiumGlobe.h (commit a9c4c0b)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Vector3 ecef_to_lat_lon_alt_deg(const EcefVector3& ecef) const;"
+        },
+        {
+          "url": "https://github.com/Battle-Road-Labs/3D-Tiles-For-Godot/blob/a9c4c0baddaf535474dcd476f5658ff1e4acf4c0/README.md",
+          "title": "3D Tiles for Godot README (commit a9c4c0b)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Godot 4 extension that integrates Cesium 3D Tiles capabilities into Godot Engine through GDExtension."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "partial",
+      "note": "The Crypto class does public-key encryption and decryption with a key object, and TLS and DTLS options protect network links. Missing is any way to identify a recipient's key material and algorithms for an intended subject: keys are objects the project holds and passes around itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_crypto.html",
+          "title": "Crypto - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Currently, this includes asymmetric key encryption/decryption, signing/verification, and generating cryptographically secure random bytes, RSA keys, HMAC digests"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_tlsoptions.html",
+          "title": "TLSOptions - Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "TLSOptions abstracts the configuration options for the StreamPeerTLS and PacketPeerDTLS classes."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched the Godot stable documentation pages for the Input class and OpenXR settings, and the engine source file for OpenXR interaction profile metadata (master), for heart, biometric, physiolog and oppo on 2026-10-20; no body-signal input found, and a web search restricted to docs.godotengine.org and godotengine.org found none. The Input class covers motion sensors and OpenXR hand and body tracking, not heart rate or skin conductance. The full documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_input.html",
+          "title": "Input, Godot Engine (stable) documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Returns the acceleration in m/s² of the device's accelerometer sensor, if the device has one. Otherwise, the method returns Vector3.ZERO ."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "The documented command line runs a script and exports a project headless, so any program can build and package a Godot project from outside. Missing: no MCP server, REST interface or instruction file in the official documentation I read, and no statement of what an outside agent may change.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/editor/command_line_tutorial.html",
+          "title": "Command line tutorial",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enable headless mode ( --display-driver headless --audio-driver Dummy ). Useful for servers and with --script ."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "Godot is a game engine whose own FAQ endorses non-game applications, so live data binding is not excluded; it has general networking classes but no feature for binding objects to sensors, machine controllers or building systems. Searched the Godot documentation repository (commit 0914a4d, 2026-10-19) for MQTT, OPC, Modbus, digital twin, IoT, telemetry, SCADA and live data on 2026-10-20; none, the only sensor mentions being the device's own motion sensors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Introduction to Godot",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/faq.html",
+          "title": "Godot Engine FAQ",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Is it possible to use Godot to create non-game applications?"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/faq.html",
+          "title": "Godot Engine FAQ",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Yes! Godot features an extensive built-in UI system"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Godot is a general game engine whose documentation describes no learning or activity record; analytics and any learning record come from add-ons or the game's own code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot Docs: Introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "A Godot project is a folder of documented files, with scenes in a mostly human-readable text format, and scene trees can be saved to and loaded from glTF, including from exported projects. There is no whole-world interchange package and the documentation says nothing on what survives if a host closes: glTF carries scenes, while scripts and project settings stay in Godot's own formats.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/engine_details/file_formats/tscn.html",
+          "title": "TSCN file format, Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "TSCN files have the advantage of being mostly human-readable and easy for version control systems to manage."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/io/runtime_file_loading_and_saving.html",
+          "title": "Runtime file loading and saving, Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Godot can load and save glTF files in exported projects"
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_projects.html",
+          "title": "Exporting projects, Godot Engine documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Drop the Godot binary in the same directory as the project.godot file, then compress the project directory and you are done."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "Searched the Godot stable documentation page index (all page titles of the manual, including the XR section) and the XR setup page for remote, stream, cloud, server-side, tethered and standalone on 2026-10-20; no remote-rendering or frame-streaming feature found. Page bodies were not each read, so this is not a full-documentation search.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/setting_up_xr.html",
+          "title": "Setting up XR (Godot stable documentation)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Due to the special requirements for output in XR, especially for head mounted devices that supply different images to each eye, the XRServer in Godot will override various features in the rendering system."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Godot's OpenXR spatial entities support covers spatial anchors, plane tracking and marker tracking, with no object-tracking capability, although OpenXR itself now ratifies XR_EXT_spatial_object_tracking. Searched the Godot stable manual (XR tutorials, OpenXR spatial entities page and class reference listing) and the godot_openxr_vendors repository page for object track, tracked object, marker and spatial entit on 2026-10-20; found none, but did not read every class page.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/openxr_spatial_entities.html",
+          "title": "Godot manual, OpenXR spatial entities",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For any sort of augmented reality application you need to access real world information, and be able to track real world locations."
         }
       ]
     }

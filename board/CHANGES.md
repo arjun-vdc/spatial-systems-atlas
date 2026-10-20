@@ -5,6 +5,29 @@ Newest first. One section per pass. Every number here can be re-derived from
 
 ---
 
+## 2026-10-20 — nine new subjects, eleven new rows, and a commerce group
+
+The map now scores 66 subjects against 175 capabilities in 15 groups: 10,659 claims from
+2,687 distinct sources, with 62 recorded conflicts and 141 unverified claims counted
+separately. Before this pass it held 57 subjects, 164 capabilities in 14 groups and 6,996
+claims from 1,963 sources.
+
+- New subjects: SpatialDDS, the Model Context Protocol, the SpatioTemporal Asset Catalog
+  (STAC), WebAssembly, Arrival Space, OAuth 2.0 with protected-resource metadata, the Vibe
+  Jam portal convention, the OMI glTF extensions and JSON-LD 1.1.
+- New group, Commerce & payments: machine and agent payments (must), entitlements and
+  licence checks at use (must), and receipts and proofs of purchase (should).
+- New rows in other groups: governed trust registries, the agent authoring and publishing
+  interface, taking a whole world out, model-based object tracking, remote (split)
+  rendering (recorded descriptively, rated none), live data binding, activity and learning
+  records, and physiological signals as input. The Virtual Dimension Center contributed
+  the last five.
+- Every claim cites a source, and its quotes were checked against the source text. A
+  reviewer that did not write the claims checked them: all of them in the first two
+  passes, a random quarter in the later two, and every claim of a batch whose quarter
+  failed. Two Unity claims were corrected from Unity's own documentation.
+- Renamed: Niantic Lightship is now the Niantic Spatial SDK (formerly Lightship).
+
 ## 2026-09-19 — two composability rows published, and the September maintenance pass folded
 
 Two capabilities approved on 2026-09-18 reach the public map: **World-to-world coupling**

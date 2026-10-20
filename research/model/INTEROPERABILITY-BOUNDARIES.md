@@ -2,7 +2,7 @@
 gas_schema: gas.doc.v1
 legacy_document_type: decision-input
 type: decision
-title: Interoperability boundaries — which of the 162 capabilities must interoperate at all
+title: Interoperability boundaries — which of the 175 capabilities must interoperate at all
 status: draft for owner review
 created: 2026-09-04T21:42:57Z
 revised: "2026-09-06T19:27:08Z — WO-msf-wg-tool-20260906-074 applied the owner's answer to question 5: captured content is first-class, so Splat data interchange format, Volumetric video capture and playback, Point cloud encoding, Multi-view plus depth and Time-varying capture are must rows under U1, and every count on this page is re-derived at 40 must, 62 should and 15 none."
@@ -13,7 +13,7 @@ source_work_order: /Users/grig/work/spatial-computing-research-projects-msf/repo
 created_by: project steward
 source: infrastructure-wg/meetings/2026-09-04-meeting-notes.md (F5) — Don Brutzman on tests 00:19:54–00:24:35 and 00:32:53; Grig Bilham 00:35:04–00:36:29 ("defining those boundaries would help define where the tests are")
 updated: 2026-09-11T07:51:29Z
-data_basis: 162 capabilities in 14 groups and 57 subjects. Membership derives from accepted capabilities.csv metadata. Integrated coverage contains 6,882 accepted claims and 1,932 sources, including 1,579 accepted claims for the 45 additions; 986 new subject-capability pairs remain explicitly unscored.
+data_basis: 175 capabilities in 15 groups and 66 subjects (2026-10-20). Membership derives from accepted capabilities.csv metadata. Integrated coverage contains 10,659 claims and 2,687 sources; 891 subject-capability pairs remain unscored.
 data_basis_2026_09_06: infrastructure-wg/data/territory.db as of 2026-09-06 (46 subjects, 117 capabilities, 4,016 claims, 1,507 sources). The 89 rows were first scored against the database of 2026-09-04T10:03:30Z (35 subjects, 1,749 claims, 1,057 sources); the reach figures on this page have been re-derived against the current database and the two that moved are marked.
 project_root: /Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool
 project_code_note: Omitted because the project registry has no uppercase alias; the frontmatter standard directs omission rather than invention.
@@ -22,7 +22,7 @@ project_code_note: Omitted because the project registry has no uppercase alias; 
 # Interoperability boundaries
 
 The map says who has what. It does not say where two systems have to agree. This page decides that,
-once, for all 162 capabilities, so that the test work has a target and the certification lanes have a
+once, for all 175 capabilities, so that the test work has a target and the certification lanes have a
 scope. It is the first step the meeting asked for, and nothing about tests is settled until it is
 agreed.
 
@@ -236,38 +236,53 @@ The prior 117 rows retain their approved wording, including dated reach observat
 | Musical event-device input `input.event-device` | Input & devices | connect | should | U1, U3 | Without an agreed musical-event interface, an arriving performance or interactive experience loses instrument input while other interaction paths remain. |
 | Radiance-field reconstruction `capture.radiance-training` | Generation & capture | build | none | — | The fitting method stays inside the capture tool, while the resulting field crosses through the separate representation and format capabilities. |
 | Generation of individual 3D objects `capture.objectgen` | Generation & capture | build | none | — | The generation method stays inside one tool, while its placeable output travels through the ordinary asset and representation capabilities. |
+| Experience containment `scene.containment` | Scene & assets | build | must | U2, U3 | If two systems disagree on what a contained experience may do, the containment either fails or becomes a security hole; there is no partial agreement that works. |
+| Unattended world coupling `net.world-coupling` | Networking & session | connect | must | U3, U4 | A coupling that carries change without anyone crossing needs both ends to agree on authority, ordering and settlement, or the two worlds silently diverge. |
+| Machine and agent payments `commerce.payment` | Commerce & payments | connect | must | U4 | The agent use case says an agent pays for what it uses; if payer and payee share no payment exchange, the payment cannot happen at all. |
+| Entitlements and licence checks at use `commerce.entitlement` | Commerce & payments | connect | must | U2, U3, U4 | A destination that cannot read a grant must refuse the item, the entry or the agent, or admit it blindly. |
+| Receipts and proofs of purchase `commerce.receipt` | Commerce & payments | build | should | U3, U4 | A grant can still be checked with its issuer without a portable receipt, but a third system cannot verify the purchase on its own. |
+| Governed trust registries `identity.trust-registry` | Identity, trust & rights | connect | should | U3, U4 | Credentials still verify without a shared registry, but each receiver must decide alone whom to trust, so acceptance differs from world to world. |
+| Agent authoring and publishing interface `logic.agent-authoring` | Logic & behaviour | connect | should | U1, U4 | An agent can still build in each platform through that platform's own interface, but without a shared one every agent needs a separate integration for every platform. |
+| Taking a whole world out `persist.world-export` | Persistence & storage | build | should | U1 | Assets can still move one at a time, but a place that cannot leave its host as a whole has to be rebuilt by hand when the host changes or closes. |
+| Model-based object tracking `sense.object-track` | World sensing | build | should | U1 | The object model arrives from another system, so its format and units must be readable by the tracker, while the tracking itself stays on the device. |
+| Remote (split) rendering `render.remote` | Rendering & presentation | connect | none | — | Recorded descriptively by the owner's decision of 2026-09-18: the Atlas records which systems render remotely and does not define an agreement between client and renderer. |
+| Live data binding `net.live-data` | Networking & session | connect | should | U1 | A digital twin can still be shown without a shared binding, but each data source must be wired by hand; the Atlas's four use cases do not yet include digital twins, so the row is recorded against content that moves. |
+| Activity and learning records `persist.activity-record` | Persistence & storage | connect | should | U3 | Training still finishes without a portable record, but the result stays in one vendor's dashboard instead of travelling with the person. |
+| Physiological signals as input `input.physiological` | Input & devices | build | should | U3 | Sensors and experiences come from different vendors; without a shared signal description each adaptation is wired to one device, though the experience still runs without it. |
+
 
 ## Current counts
 
-Of the 162 capabilities in 14 groups: **52 must**, **87 should**, **23 none**.
+Of the 175 capabilities in 15 groups (re-derived from `tool/data/capabilities.csv`, on 2026-10-20, after the five rows contributed by the Virtual Dimension Center): **56 must**, **95 should**, **24 none**.
 
 | Group | must | should | none |
 |---|---|---|---|
-| Rendering & presentation | 0 | 11 | 6 |
-| Scene & assets | 12 | 15 | 0 |
+| Rendering & presentation | 0 | 11 | 7 |
+| Scene & assets | 13 | 15 | 0 |
 | Avatars | 5 | 2 | 0 |
 | Physics & simulation | 0 | 6 | 1 |
 | Audio | 0 | 5 | 2 |
-| Networking & session | 6 | 7 | 0 |
-| Identity, trust & rights | 8 | 7 | 0 |
+| Networking & session | 7 | 8 | 0 |
+| Identity, trust & rights | 8 | 8 | 0 |
+| Commerce & payments | 2 | 1 | 0 |
 | Spatial & geospatial | 6 | 5 | 1 |
-| World sensing | 0 | 6 | 3 |
-| Input & devices | 1 | 7 | 2 |
-| Logic & behaviour | 2 | 3 | 1 |
-| Persistence & storage | 2 | 2 | 0 |
+| World sensing | 0 | 7 | 3 |
+| Input & devices | 1 | 8 | 2 |
+| Logic & behaviour | 2 | 4 | 1 |
+| Persistence & storage | 2 | 4 | 0 |
 | Packaging & delivery | 5 | 4 | 0 |
 | Generation & capture | 5 | 7 | 7 |
-| **All** | **52** | **87** | **23** |
+| **All** | **56** | **95** | **24** |
 
-The 80 `connect` rows contain 25 must, 48 should and 7 none rows. The 82 `build` rows contain 27 must, 39 should and 16 none rows.
+The 88 `connect` rows contain 28 must, 52 should and 8 none rows. The 87 `build` rows contain 28 must, 43 should and 16 none rows.
 
-Must-row memberships are **U1 30**, **U2 25**, **U3 29** and **U4 18**: 102 lane places filled by 52 distinct capabilities. A row can serve more than one use case.
+Must-row memberships are **U1 30**, **U2 27**, **U3 32** and **U4 21**: 110 lane places filled by 56 distinct capabilities. A row can serve more than one use case.
 
-The subject table contains 57 subjects. Final reach, thin-row and lane-coverage measurements depend on accepted scores for the 45 additions. They are not inferred from omitted cells or from the older measurements below.
+The subject table contains 66 subjects. Final reach, thin-row and lane-coverage measurements depend on accepted scores for the 45 additions. They are not inferred from omitted cells or from the older measurements below.
 
 ## Historical counts and reach — 2026-09-06
 
-The following counts and interpretation retain the 117-capability, 46-subject snapshot and the owner decision made that day. They are not measurements of the current 162-capability scope.
+The following counts and interpretation retain the 117-capability, 46-subject snapshot and the owner decision made that day. They are not measurements of the current 175-capability scope.
 
 Of the 117 capabilities in 14 groups: **40 must**, **62 should**, **15 none**.
 
@@ -373,7 +388,7 @@ the stack — the same two lists, with four rows moved from the first to the sec
 
 ## How the counts were made
 
-The current classification table and counts derive from `infrastructure-wg/data/capabilities.csv`: 162 rows, with exact `interop`, `interop_uses` and `interop_reason` values. The prior 117 records are preserved; the 45 additions match their accepted metadata. Lane membership is `interop=must` plus the named use case in `interop_uses`.
+The current classification table and counts derive from `infrastructure-wg/data/capabilities.csv`: 175 rows, with exact `interop`, `interop_uses` and `interop_reason` values. The prior 117 records are preserved; the 45 additions match their accepted metadata. Lane membership is `interop=must` plus the named use case in `interop_uses`.
 
 The SQL below records the earlier reach-measurement method. Current coverage must be derived from the accepted integrated data; this metadata preparation does not refresh those measurements.
 

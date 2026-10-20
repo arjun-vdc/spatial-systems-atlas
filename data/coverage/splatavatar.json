@@ -1744,7 +1744,7 @@
     {
       "capability_id": "capture.gen-control",
       "level": "partial",
-      "note": "The single-image method takes one photograph as the whole specification of the avatar to make, which is control over what gets generated in the narrow sense of the input. Nothing else about the result can be specified.",
+      "note": "The single-image method takes one photograph as the user-supplied specification of the avatar to make. The pipeline also feeds a fixed pair of positive and negative text prompts, written by the authors and listed in an appendix, into the splat generation step as additional guidance for photorealism; the paper shows no user-facing way to specify structure, identity or other attributes of the result.",
       "confidence": "verified",
       "sources": [
         {
@@ -1753,6 +1753,20 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "We propose S-Avatar, a novel method for generating photorealistic 3D head avatars from a single image"
+        },
+        {
+          "url": "https://arxiv.org/html/2607.28164v1",
+          "title": "S-Avatar (arXiv 2607.28164v1), method section",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "To generate robust 3DGS results, we carefully designed both positive and negative text prompts. These prompts serve as additional inputs to guide the generation of initial splats."
+        },
+        {
+          "url": "https://arxiv.org/html/2607.28164v1",
+          "title": "S-Avatar (arXiv 2607.28164v1), Appendix D",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "To guide the Large multi-view Gaussian Model (LGM) process more robustly, we utilize carefully crafted text prompts as an additional modality of supervision."
         }
       ]
     },
@@ -2005,177 +2019,727 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "sense.lighting",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "input.pointing",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "render.layer",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "render.frame-timing",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Splat-to-avatar research families is assessed here as Gaussian avatar reconstruction papers and their author implementations. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "The sources state what these methods are for: building photorealistic avatars of a person that can be animated. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar: Realistic Real-Time Human Avatars with Mesh-Embedded Gaussian Splatting (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.03704",
+          "title": "Relightable Gaussian Codec Avatars (arXiv abstract)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "we present Relightable Gaussian Codec Avatars, a method to build high-fidelity relightable head avatars that can be animated to generate novel expressions."
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2299,6 +2863,260 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "We propose a method to generate animatable head avatars from Gaussian splatting."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "These research families build drivable avatars from captures and define no payment exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Research methods for building drivable avatars from captures; they describe a representation and rig, not a grant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "These research methods build drivable avatars from captures of a person, so purchase or grant records are not part of what they are for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "These research methods build drivable avatars from splats; deciding which issuers, services or worlds to accept is outside their stated purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "These research methods build a drivable avatar from captured video; the driving signal is a face or body model, not a stream of heart rate or similar body signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars (arXiv 2312.02069)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "These are research families for building drivable avatars from captures, not a platform with an authoring interface for an outside agent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars (arXiv 2312.02069)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Splat-avatar methods build a drivable person from a capture; the driving signal is a face or body model, not a binding to an outside data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars (arXiv 2312.02069)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "This is a way to represent and animate a face as splats; it says nothing about recording what a person did in a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians (arXiv 2312.02069)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "These research families build drivable head and body avatars from captures, so the output is an avatar asset and no place or host is involved.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "These research families build a drivable avatar from a body or face model plus splats; they define a representation, not a remote rendering service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "These research methods build drivable avatars from a capture of a person; they are not trackers that recognise a known physical object from its model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars (arXiv 2312.02069), abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "partial",
+      "note": "The avatar methods are driven by recorded sequences of model parameters, such as a motion file of FLAME parameters or a sequence of expression coefficients, and Gaussian Head Avatar's fitting step produces head pose along with expression coefficients, so the driving data carries head pose as well as expression. Each method reads its own npz layout and no interpolation rule is declared.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/main/README.md",
+          "title": "GaussianAvatars README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Path to the motion file (npz). You only need this if you want to load a different motion sequence than the original one for training."
+        },
+        {
+          "url": "https://github.com/YuelangX/Gaussian-Head-Avatar/blob/main/README.md",
+          "title": "Gaussian Head Avatar README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the trained avatar can be reenacted by a sequence of expression coefficients"
+        },
+        {
+          "url": "https://github.com/YuelangX/Gaussian-Head-Avatar/blob/main/README.md",
+          "title": "Gaussian Head Avatar README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Fit BFM model for head pose and expression coefficients"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "These methods turn a capture of a person into a Gaussian avatar bound to a parametric head or body model; the scene representation is Gaussians on a mesh, and none of the READMEs read for GaussianAvatars, SplattingAvatar, ExAvatar or Gaussian Head Avatar mentions voxels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "out-of-scope",
+      "note": "Research code releases for avatar reconstruction and animation define no file container, so there is no place to declare extensions with rules for recipients that lack them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Resolving scene resource identifiers belongs to a scene container that references assets; these methods read local checkpoints and npz files named on the command line and define no such references.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Declaring a protection scheme for content components belongs to a delivery container; these research releases ship code under non-commercial licences and define no container for generated avatars.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
         }
       ]
     }

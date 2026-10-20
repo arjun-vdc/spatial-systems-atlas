@@ -1,0 +1,2834 @@
+{
+  "subject_id": "oauth",
+  "summary": "OAuth 2.0 is the Internet Engineering Task Force framework by which an application obtains limited access to a web service, either with the approval of the person who owns the data or on its own behalf; Request for Comments 6749 defines it and Request for Comments 9728 adds a standard way for a protected service to publish what a client needs to know, such as which authorization servers it trusts and which scope values it accepts. It covers delegation well: scoped, time-limited access tokens, a refresh path, registries for extensions, and discovery of the authorization server for a service the client already knows. It leaves to others the token format, how a service checks tokens with the authorization server, how clients register, how a person is signed in, and everything about the content and behaviour of worlds. A standards audience should know that the framework itself warns it is likely to produce non-interoperable implementations unless profiles fix its optional parts, so saying a system supports OAuth does not tell two systems they will work together. It also authorizes access without authenticating anyone or saying who they are, and its discovery begins only once the client already knows the service address.",
+  "coverage": [
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "An access token denotes a scope and lifetime that the resource server enforces, and the protected resource metadata lists the scope values it accepts, but the token format and how a resource server reads it are left to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tokens represent specific scopes and durations of access, granted by the resource owner, and enforced by the resource server and authorization server."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access tokens can have different formats, structures, and methods of utilization"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "JSON array containing a list of scope values, as defined in OAuth 2.0 [ RFC6749 ] , that are used in authorization requests to request access to this protected resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "partial",
+      "note": "An access token may carry its authorization information in a signed, verifiable form, but the framework fixes no token format or claim structure and the token states what the holder may do, not verifiable claims about a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The token may denote an identifier used to retrieve the authorization information or may self-contain the authorization information in a verifiable manner"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access token attributes and the methods used to access protected resources are beyond the scope of this specification"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "Defines how a client requests an access token from the authorization server and how a resource points a client to its metadata, but presenting the token to the resource is left to a companion specification, and the credentials exchanged are access tokens rather than verifiable claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The authorization server issues an access token and optional refresh token, and constructs the response by adding the following parameters to the entity-body of the HTTP response"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "methods used to access protected resources are beyond the scope of this specification"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A protected resource MAY use the WWW-Authenticate HTTP response header field, as discussed in [ RFC9110 ] , to return a URL to its protected resource metadata to the client."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "partial",
+      "note": "The token endpoint can report a grant or refresh token as revoked and access tokens carry a lifetime, but no mechanism lets another party check whether an issued token was suspended or revoked; validation is left to the resource server's own coordination with the authorization server.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The provided authorization grant (e.g., authorization code, resource owner credentials) or refresh token is invalid, expired, revoked"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The lifetime in seconds of the access token."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The methods used by the resource server to validate the access token (as well as any error responses) are beyond the scope of this specification"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "The resource owner approves or denies a request that is limited by scope and token lifetime, but the grant carries no stated purpose and neither document defines how a grant is withdrawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access tokens are issued to third-party clients by an authorization server with the approval of the resource owner."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The resource owner or authorization server denied the request."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The strings are defined by the authorization server."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "Gives each registered client an identifier unique to its authorization server and each protected resource an https resource identifier, but defines no base identifier for a person, agent or thing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a unique string representing the registration information provided by the client"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The protected resource's resource identifier, which is a URL that"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "How a person was authenticated and with what evidence is outside the framework, which only delegates access and does not state the assurance behind a claim.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authenticating resource owners to clients is out of scope for this specification."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Gives its own protocol parameters a formal syntax and a registry, and registers the protected resource metadata parameter names, but defines no vocabulary or validation schema for claims inside tokens.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This section provides Augmented Backus-Naur Form (ABNF) syntax descriptions for the elements defined in this specification"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The following protected resource metadata parameters are used by this specification and are registered in the"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "The resource metadata can point to a published key set and signed metadata must verify against the issuer's key, but neither document says how keys are rotated, revoked or recovered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "URL of the protected resource's JSON Web Key (JWK) Set [ JWK ] document."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The recipient MUST validate that any signed metadata was signed by a key belonging to the issuer and that the signature is valid."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "partial",
+      "note": "The metadata can publish a key set that holds encryption keys beside signing keys, but it lists only signing algorithms and defines no confidential delivery to an intended subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When both signing and encryption keys are made available,"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "supported by the protected resource for signing resource responses,"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "partial",
+      "note": "A protected resource can list the authorization servers it accepts and an authorization server can list its resources, but these are self-published lists with no governing authority, update or delegation rules, and secure choice of authorization server is declared out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Secure determination of appropriate authorization servers to use with a protected resource for all use cases is out of scope for this specification."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "JSON array containing a list of OAuth authorization server issuer identifiers"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "partial",
+      "note": "Tokens can be narrower than the grant behind them, so an application receives only the access range it needs, but this limits access to resources, not which claims inside a credential are shown, and no unlinkable presentation is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This abstraction enables issuing access tokens more restrictive than the authorization grant used to obtain them"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "each string adds an additional access range to the requested scope."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Licence terms and their enforcement are not something the access framework models; the only terms it carries are links to human-readable pages in the resource metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "URL of a page containing human-readable information about the protected resource's terms of service."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "The framework returns a grant or an error code to the requesting client and defines no machine-readable record of what a system decided.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Portable reputation and relationships are a social-graph matter, while this framework only delegates access to a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkable presentation concern how subjects are identified, which this access-delegation framework leaves to others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authenticating resource owners to clients is out of scope for this specification."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "The resource server must check at each request that a token is unexpired and covers the resource, and the metadata can advertise sender-bound tokens, but there is no entitlement record, transfer rule or revocation check.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The resource server MUST validate the access token and ensure that it has not expired and that its scope covers the requested resource."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "dpop_bound_access_tokens_required"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "Provides the sign-in and approval step for reaching a web service, but nothing about joining a running world, and authenticating the person to the client is out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server issuing access tokens to the client after successfully authenticating the resource owner and obtaining authorization."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authenticating resource owners to clients is out of scope for this specification."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "An authorization server answers a request with approval and a token lifetime or with a refusal and an error code, but this concerns access to a web service, not a destination admitting an arrival.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If the resource owner denies the access request or if the request fails for reasons other than a missing or invalid redirection URI"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The lifetime in seconds of the access token."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "partial",
+      "note": "A client can learn which authorization servers and capabilities belong to a resource it already knows, but finding the resource itself is out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The means by which the client obtains the location of the protected resource is out of scope for this document."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification is intended to be deployed in scenarios where the client has no prior knowledge about the resource server"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "Defines registries and naming rules for new token types, parameters, grant types and response types, and tells recipients to ignore unrecognized parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "New request or response parameters for use with the authorization endpoint or the token endpoint are defined and registered in the"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The client MUST ignore unrecognized response parameters."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "any metadata parameters that are not understood MUST be ignored."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Has no version negotiation and is not backward compatible with its predecessor, though older and newer versions may co-exist and unknown parameters must be ignored.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "protocol is not backward compatible with OAuth 1.0. The two versions may co-exist on the network"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "any metadata parameters that are not understood MUST be ignored."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "none",
+      "note": "Searched RFC 6749 and RFC 9728 (full text, html editions) for conformance, conform and test suite on 2026-10-20; neither defines conformance tests or a test suite, and the word appears only in syntax rules. The framework itself warns it is likely to produce non-interoperable implementations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "specification is likely to produce a wide range of non-interoperable implementations."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched RFC 6749 and RFC 9728 (full text, html editions) for profile, profiles, levels and named subset on 2026-10-20; neither defines named subsets, and RFC 9728 refers to an application profile it leaves to others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This framework was designed with the clear expectation that future work will define prescriptive profiles and extensions necessary to achieve full web-scale interoperability."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "should be cross-checked against one another for consistency when these lists are used by the application profile."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "Only a web-service authorization protocol; carrying world session traffic is outside it, and use over any other protocol is declared out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The use of OAuth over any protocol other than HTTP is out of scope."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Who decides the truth for an object in a world is not addressed; the roles here decide only who may access a protected resource.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting inside a world are not addressed; the framework only lets a client obtain access to a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "It is an authorization layer, not an interface for creating or publishing content; it states no tools for changing a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification defines a metadata format that an OAuth 2.0 client or authorization server can use to obtain the information needed to interact with an OAuth 2.0 protected resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Resolving scene resource identifiers is not addressed; the only resolution is deriving a well-known metadata address from a resource identifier.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification defines a metadata format that an OAuth 2.0 client or authorization server can use to obtain the information needed to interact with an OAuth 2.0 protected resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "Naming a place and resolving it to a destination is not addressed; a resource identifier is already a web address and the location of the resource is declared out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The means by which the client obtains the location of the protected resource is out of scope for this document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "Asset licence terms travelling with an asset are not modelled; the metadata only links to human-readable resource terms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "Descriptive properties of a scene or its parts are not addressed; the metadata specification describes how to reach a protected resource, not content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification defines a metadata format that an OAuth 2.0 client or authorization server can use to obtain the information needed to interact with an OAuth 2.0 protected resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Declaring the geographic area a service applies to is not addressed; the resource metadata covers scopes, token methods and authorization servers only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9728.html",
+          "title": "RFC 9728: OAuth 2.0 Protected Resource Metadata (April 2025)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This specification defines a metadata format that an OAuth 2.0 client or authorization server can use to obtain the information needed to interact with an OAuth 2.0 protected resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Units and scale is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "State replication is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video capture and playback is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "Asset container format is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Geometry encoding is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Exact and parametric geometry is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Shared and persistent anchors is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "Scene graph model is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Animation encoding is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Transforms and coordinate convention is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Attachments and wearables is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and live pose streams is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Session handoff and portals is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Inventory is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Experience containment is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar body format is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended world coupling is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar skeleton standard is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Behaviour graphs and interactivity is a matter of world logic and its execution, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression standard is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Avatar to identity binding is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat data interchange format is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Multi-view plus depth is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Machine and agent payments is a matter of payments and purchase records, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is a matter of packaging and delivery of content, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "Linked pose structures is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive session lifecycle is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Skeleton and rig definition is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Media transport is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Passthrough and environment blending is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit test against the real world is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Device capability discovery is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "Provenance and authorship is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar level of detail is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Volumetric and point cloud is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable variants of an asset is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned audio sources is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting is a matter of avatars, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking as input is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Scene composition and overrides is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and spatial events is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Voice transport is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic scene imagery is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Haptics is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "Content addressing is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft bodies and cloth is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Usable physical area is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation from a prompt or an image is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generation of individual 3D objects is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Clock and time model is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "World state persistence is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text rendering is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Camera and viewpoint model is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space and dynamic range is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatialization model is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics and reverb is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Occlusion and obstruction is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Audio streaming is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is a matter of sound, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Simulation from a learned model is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Photogrammetric object capture is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Captured-scene streaming is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Control over what gets generated is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Action and control exchange is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a matter of capturing, reconstructing or generating scenes, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "none",
+      "note": "RFC 6749 issues authorization grants and access tokens, which come close to a record of a grant, but neither it nor RFC 9728 defines a portable record that binds recipient, resource, issuer and time and states which fields are signed so that a third party can verify it; the token format is left open. Searched RFC 6749 and RFC 9728 for receipt, purchase, proof of purchase, grant record, signed and signature on 2026-10-20; neither has a receipt or purchase term, RFC 6749 mentions a signature only as an option inside a token whose format it leaves open (and for a separate request-signing token type), and RFC 9728 signs only a resource's own metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An authorization grant is a credential representing the resource owner's authorization"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access tokens can have different formats, structures, and methods of utilization"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "Bundle format is a matter of packaging and delivery of content, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Content delivery is a matter of packaging and delivery of content, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating is a matter of packaging and delivery of content, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchors is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is a matter of place and position, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Pointing and selection against content is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event-device input is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Physiological signals as input is a matter of user input devices and tracking, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "Scripting runtime is a matter of world logic and its execution, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Sandboxing and isolation is a matter of world logic and its execution, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "Resource budgets is a matter of world logic and its execution, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent code identity is a matter of world logic and its execution, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Interest management is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Prediction and reconciliation is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Presence and roster is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Live data binding is a matter of networked world behaviour, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Taking a whole world out is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records is a matter of what persists or travels with a user or world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid bodies is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes is a matter of simulation of bodies, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Rasterization pipeline is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Graphics interface binding is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Material model is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting and radiance fields is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface surfaces is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "General-purpose GPU computation is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Portable shader language is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote (split) rendering is a matter of how content is drawn and displayed, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets and blend shapes is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview image for an asset is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial index is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "Named sets of objects is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media inside a scene is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Emitter-based effects is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering a stripped provenance record is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative styling carried apart from the content is a matter of the content, structure and packaging of three-dimensional assets, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Real-world depth is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Real-world lighting estimation is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is a matter of sensing the physical world, while this framework only governs how a client obtains permission to use a web service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6749.html",
+          "title": "RFC 6749: The OAuth 2.0 Authorization Framework (October 2012)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to an HTTP service"
+        }
+      ]
+    }
+  ]
+}

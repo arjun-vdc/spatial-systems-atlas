@@ -56,16 +56,30 @@
     },
     {
       "capability_id": "render.lighting",
-      "level": "out-of-scope",
-      "note": "Lighting is baked into the captured appearance, unchanged from the static case.",
+      "level": "partial",
+      "note": "The research implementations bake lighting into the captured appearance, as in the static case. The Gracia Web SDK, the one delivery kit in this subject, lists environment relighting among its XR features, shows the splats as a standard Three.js mesh with environment relighting, and in its PlayCanvas integration gives splats depth testing and automatic shadow casting. Missing: any lighting model carried in the content, and any test of these claims, since the README states what the SDK offers and was not run.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://arxiv.org/abs/2510.03857",
-          "title": "Optimized Minimal 4D Gaussian Splatting, arXiv abstract",
-          "retrieved": "2026-09-06",
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "it faces a major challenge of storage overhead, as millions of Gaussians are required for high-fidelity reconstruction"
+          "quote": "**XR built-in** — hand tracking, grab-to-move, spatial audio, environment relighting"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Splats as a standard Three.js mesh with environment relighting"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Splats with depth testing and automatic shadow casting"
         }
       ]
     },
@@ -660,16 +674,16 @@
     },
     {
       "capability_id": "audio.spatial",
-      "level": "out-of-scope",
-      "note": "No spatialisation model, because no audio is carried.",
+      "level": "partial",
+      "note": "The research implementations reconstruct pictures and carry no audio. The Gracia Web SDK, the one delivery kit in this subject, lists spatial audio among its XR features. Missing: which direction-rendering model it uses (head-related transfer or ambisonics), whether audio travels inside the volumetric video file, and any test, since the README states what the SDK offers and was not run.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://arxiv.org/abs/2604.13746",
-          "title": "ClipGStream, CVPR 2026, arXiv abstract",
-          "retrieved": "2026-09-06",
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "Existing dynamic Gaussian approaches are either Frame-Stream, offering scalability but poor temporal stability, or Clip, achieving local consistency at the cost of high memory and limited sequence length."
+          "quote": "**XR built-in** — hand tracking, grab-to-move, spatial audio, environment relighting"
         }
       ]
     },
@@ -1184,16 +1198,16 @@
     },
     {
       "capability_id": "input.hand",
-      "level": "out-of-scope",
-      "note": "No hand tracking is consumed or produced.",
+      "level": "partial",
+      "note": "Hand tracking is consumed in one member only: the Gracia Web SDK lists hand tracking and grab-to-move among its built-in XR features. The research implementations consume or produce none. Missing: which runtime interface supplies the hand pose, and any test, since the README states what the SDK offers and was not run.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://gracia.ai/",
-          "title": "Gracia, delivery targets",
-          "retrieved": "2026-09-06",
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "Delivered natively on Meta Quest 3/3S, Apple Vision Pro, and PCVR headsets."
+          "quote": "**XR built-in** — hand tracking, grab-to-move, spatial audio, environment relighting"
         }
       ]
     },
@@ -1669,16 +1683,23 @@
     },
     {
       "capability_id": "capture.relight",
-      "level": "none",
-      "note": "Captured light stays fixed. The relighting work in the splat world is on avatars, not on dynamic scenes.",
+      "level": "partial",
+      "note": "Research implementations keep the captured light fixed. The Gracia Web SDK lists environment relighting among its features, and shows its Three.js mesh with environment relighting. Missing: any evidence that reflectance or illumination is recovered from the capture, or a standard payload that lets another system relight the scene; the README claim was not run.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://gracia.ai/",
-          "title": "Gracia, processing pipeline",
-          "retrieved": "2026-09-06",
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "We reconstruct temporally consistent 4D Gaussian Splats, remove unwanted objects and floors, apply color LUTs"
+          "quote": "**XR built-in** — hand tracking, grab-to-move, spatial audio, environment relighting"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Splats as a standard Three.js mesh with environment relighting"
         }
       ]
     },
@@ -1980,42 +2001,216 @@
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
@@ -2037,112 +2232,576 @@
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "scene.constraint",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
       "note": "Dynamic and four-dimensional Gaussian splat implementations is assessed here as the individually named dynamic Gaussian research implementations, colmap4d and Gracia player. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification v1.0",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "colmap4d = a standard COLMAP sparse model + one timestamp per image + one timestamp per point."
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2245,6 +2904,230 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "We present 4D Gaussian Splatting for modeling dynamic 3D scenes."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The research methods here define no payment exchange. The record also covers the Gracia service, which offers reconstruction and playback of dynamic splats as volumetric video; the pages read describe no payment requirements, authorization or settlement, so any sales are ordinary account billing rather than an exchange the subject defines. The Gracia page is script-built and was read in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        },
+        {
+          "url": "https://gracia.ai/",
+          "title": "Gracia: Reconstruct the Real World in 4D",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Self-service reconstruction suite. SDKs for distribution"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Research methods for reconstructing and streaming moving scenes; they describe a representation, not who may use it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS: Progressive Decomposition of 4D Gaussian Splatting for Bandwidth-Adaptive Dynamic Scene Streaming",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "These methods reconstruct and compress moving scenes as Gaussian splats, so a record of a purchase or grant is not part of what they do.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion, arXiv 2407.13764",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "These are methods for reconstructing and streaming moving Gaussian-splat scenes; none of them is a registry of acceptable issuers, services or worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS: Progressive Decomposition of 4D Gaussian Splatting for Bandwidth-Adaptive Dynamic Scene Streaming",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "These are research methods for reconstructing and compressing moving scenes from video, not runtimes that take live body signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "Progressive streaming of 4D Gaussian splatting (arXiv 2605.11427)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "These are research methods and reference code for reconstructing moving scenes, so there is no platform with an authoring interface for an outside agent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion (arXiv 2407.13764)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Dynamic splat methods reconstruct and compress recorded multi-view sequences; the streaming they study delivers a recording and does not tie objects to a live data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2604.13746",
+          "title": "ClipGStream (arXiv 2604.13746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Dynamic 3D scene reconstruction is essential for immersive media such as VR, MR, and XR, yet remains challenging for long multi-view sequences with large-scale motion."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "These are reconstruction and streaming methods for moving scenes; they carry appearance and motion, not statements about what a person did.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS: Progressive Decomposition of 4D Gaussian Splatting (arXiv 2605.11427)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "These are research methods and a streaming service for moving splat scenes, so they describe a representation of one captured scene and not a host that keeps places.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv 2605.11427",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Dynamic splat methods reconstruct and compress moving scenes; their streaming sends splat data for the client to draw, so no server-side frame rendering is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS, arXiv",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "current models remain monolithic bitstreams that clients must download in full before any frame can be rendered"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Dynamic splat methods reconstruct and compress moving scenes from video; they do not recognise a known object from its model or report its pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS (arXiv 2605.11427), abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "The Gracia player resolves a streaming ID plus token against the vendor's service into a playable source and fetches its metadata. That is the only resolver among the dynamic-splat methods read, all of which are files or papers, and it resolves scene IDs on one vendor's service rather than general scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Pre-built scenes, or id + token pairs the player resolves"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/gracia-labs/web-sdk/main/README.md",
+          "title": "Gracia Web SDK README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resolve streaming IDs into playable sources"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Gracia hosted streaming authorises playback with a per-scene view token, optionally limited to listed domains. That is access control, not a protection scheme declared on content components. Searched the Gracia Web SDK README and the streaming-usage page of the Gracia documentation for DRM, encrypt, rights and protect on 2026-10-20; only a licence line matched. The rest of the Gracia documentation and the research methods were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.gracia.ai/streaming-usage",
+          "title": "Content Access and Security, Gracia Docs",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Long-lived tokens are less secure — anyone with the token can watch the content."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "The subject covers dynamic Gaussian splat methods and players, which represent a scene as Gaussian primitives over time. Voxel grids appear only in the reference lists of the papers read, as earlier methods, and none of the formats or players read interchanges a voxel volume.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.11427v1",
+          "title": "PD-4DGS, arXiv 2605.11427v1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PD-4DGS is the first framework that brings progressive compression and on-demand transmission to 4DGS."
         }
       ]
     }

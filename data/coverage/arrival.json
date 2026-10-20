@@ -1,0 +1,2506 @@
+{
+  "subject_id": "arrival",
+  "summary": "Arrival Space is a hosted service from Stratum1 GmbH that turns Gaussian splat scans, glTF and USD models, images and video into shareable 3D spaces that open in a web browser, with avatars, voice chat and multiplayer built in. It covers scan-to-place publishing well: splat formats (PLY, SPZ, SOG, LCC), level-of-detail streaming, generated collision, VRM and Mixamo avatars, gates that link spaces, and a JavaScript plugin system on the PlayCanvas engine that is also open to AI agents through a Model Context Protocol server, a command-line tool and a web programming interface. It leaves to others anything about portable identity and credentials, payments between parties, geospatial reference systems, real-world sensing, and published wire formats: it is one proprietary service, not an open specification. Traps for a standards audience: plugin authority checks run only in the sending client, a space export carries links to assets rather than the assets, avatars and inventories move between Arrival spaces but not to other worlds, and 3D Tiles streaming, joints, soft bodies and cross-space inventory exist only as example plugin code rather than as platform features.",
+  "coverage": [
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "Uploaded models keep their original dimensions, and a space-level worldScale setting fixes how many scene units equal a real metre for the avatar.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We don’t resize additional 3D objects — they are displayed in their original dimensions."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Scale the (real-size) avatar is shown at; a real 1 m is this many units"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "Accepts glTF/GLB and USD/USDZ for meshes and PLY, SPZ, SOG, SPLAT and zipped LCC for splats; files can be uploaded, replaced and downloaded, but OBJ and FBX are not accepted directly and a Unity package must first be exported to USD.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/formats",
+          "title": "Formats FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Meshes: export .glb or .glTF if you need editable geometry, UVs, and animation."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/mesh",
+          "title": "Meshes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Selecting this allows you to upload/replace/download a 3D Object file."
+        },
+        {
+          "url": "https://codex.arrival.space/claim/import",
+          "title": "Import Scenes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A .unitypackage cannot be uploaded directly."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "partial",
+      "note": "Mesh geometry is carried as glTF/GLB, and splats can be compressed as SOG or SPZ; no mesh-compression extension (Draco, meshopt) is documented in the pages searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/basic",
+          "title": "3D Basics (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Supported File Formats : .glb , .glTF"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "With this level of compression, you can reduce your scene size down to one-third of the original file ."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "partial",
+      "note": "Materials travel only inside glTF and USD files and are re-created by the viewer; no renderer-neutral material format such as MaterialX is documented, and custom shaders from other tools do not survive.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/import",
+          "title": "Import Scenes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Custom Unity shaders are unlikely to work after export."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Arrival.Space accepts meshes, splats, images and video; exchanging parametric curves and surfaces is a CAD concern, not part of hosting walkable web scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "partial",
+      "note": "A space is a flat list of entities (one JSON file each) organised with content folders; object hierarchy exists only inside each glTF file and at runtime for plugin-created children.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`space/entities/*.json` — one file per entity: `{ id, type, data }`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Folder tree that organizes entities in the Content list."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "partial",
+      "note": "A space-level allowRemix flag states whether others may duplicate the space; no licence terms travel with an individual asset, and the manual leaves third-party model terms to the creator.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Others may remix/duplicate the space"
+        },
+        {
+          "url": "https://codex.arrival.space/claim/avatar/vrm",
+          "title": "VRM Models (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is your own responsibility to review the Terms of Use in advance."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Baked glTF animation clips play once or loop, and keyframe cutscenes use a proprietary JSON .path sequence format that the platform authors and replays.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/mesh",
+          "title": "Meshes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Even with backed-in animations you can configure if the animation is only shown once or loop all the time."
+        },
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Animations, object movement, camera fly-throughs, and other keyframe sequences can be authored as .path files."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "Scenes are Y-up; a plugin example documents East as +X, Up as +Y and North as -Z, but the manual states no formal handedness or transform-composition rule and warns that Blender and Arrival.Space differ in Y and Z.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ground-aligned (East -> +X, Up -> +Y, North -> -Z)"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the Y and Z axes differ between Blender and Arrival.Space"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "native",
+      "note": "Third-party JavaScript plugins (called vibes) run inside a space as entities with an initialise-to-destroy lifecycle, and gates can embed other websites; the host does not isolate plugin code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A plugin host is a `UserModelEntity` whose `data.glbUrl` is `\"plugins/<name>.mjs\"`"
+        },
+        {
+          "url": "https://codex.arrival.space/troubleshooting/performance",
+          "title": "Performance (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This setting does not affect embedded websites (iframes)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "Bone hierarchy and skin binding come from the uploaded rigged GLB or VRM file; avatar rigs may be Mixamo-rigged GLB, VRM or a splat rigged in the editor.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/avatar/",
+          "title": "Avatar (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Currently, you can use Modular Avatars, Mixamo rigged GLB's, VRM Avatars or Splat Avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Arrival.Space hosts meshes, splats, images and video; interchange of voxel volumes is not among the content types it says it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "Space-level discovery metadata (category, tags, schema.org place type and geo coordinates) is stored in room settings, but there is no per-object descriptive property structure, and the discovery editor is switched off in the current build.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "schema.org place"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Discovery panel is compiled out (`SHOW_DISCOVERY_SEO = false`) in the current build"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for variant, KHR_materials_variants, configurator, material switch on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "virtual showrooms, property or venue tours, exhibitions and galleries, event spaces, interactive 3D experiences and small multiplayer games"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "A space composes many separately uploaded assets as entities that reference stored files by URL; there is no layering or override mechanism such as USD layers or references.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can upload multiple supported objects and manage them from the Content tab."
+        },
+        {
+          "url": "https://codex.arrival.space/api/mcp-server",
+          "title": "Arrival.Space MCP server (manual, version 2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "CDN URL for the entity's asset"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "partial",
+      "note": "Avatar mouth shapes use glTF morph target 0 driven by voice loudness; the documentation specifies no general facial or detail morph-target scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/generating-avatars.md",
+          "title": "Generating avatars (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Morph target 0 is driven by voice loudness"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "partial",
+      "note": "Walkability comes from a per-asset collision mesh and entry points from spawn-point entities, but no navigation mesh is carried or generated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A collision is your way to make splats walkable."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Where visitors appear when they enter the space."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "Each space gets a generated preview screenshot taken from its spawn point or a custom screenshot position, used in listings and gates; individual assets carry no packaged thumbnail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is also used to generate the preview image or screenshot of your Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "Large splat sets in the LCC1 format are organised in an octree for rendering and streaming, and splats can be clipped to bounds; no general bounding-volume hierarchy for meshes or entities is exposed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "LCC1 datasets use an octree-based spatial hierarchy to organize Gaussian Splats for rendering and streaming."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Room-level splat clip bounds"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "Content folders group entities and a hidden folder hides everything in it in the scene; there are no rule-defined sets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A folder's `hidden:true` cascades to hide the entities it contains in-scene"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "native",
+      "note": "Videos placed in a space or on a gate play as scene content with autoplay, loop and a synchronized-view option that keeps viewers in step.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/gates/gate-interface",
+          "title": "Gate Edit (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Videos Loop, Mute, Autoplay, Synchronized View, Restrict Controls to Me, 360° Content, Allow Download, Rotate Content"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "partial",
+      "note": "Particle effects such as snowfall exist only as plugin templates that run as code; no emitter description is exchanged between systems.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Snowfall Create a dynamic snowfall effect."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Styling rules that select features by content metadata belong to map and city-data viewers; Arrival.Space is a viewer for scans and authored models, not a feature-data styling engine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "native",
+      "note": "Plugin properties marked sync are replicated to everyone in the space with a per-property throttle (default 100 ms), and one-off events go through a message bus; the form of avatar state replication is not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The `attribute()` function lets you define properties that automatically synchronize across all players."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| `throttle` | `number` | `100` | Min ms between updates |"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "native",
+      "note": "A visitor joins a running space by its link, as a guest or a signed-in account, and a Link Only space can require an entry code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A space lives at https://arrival.space/<spaceId>."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Entry code; only meaningful with `Link Only`"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "native",
+      "note": "Gates move a visitor to another Arrival.Space space, optionally at a chosen entry gate, and account-bound avatar and plugin data follow the user; nothing is handed to a non-Arrival world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/gates/connecting-scenes",
+          "title": "Seamlessly connect Scenes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "you can spawn your visitors in front of a dynamic gate"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/persistent-inventory.mjs",
+          "title": "Persistent Inventory example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "everything picked up here persists into the user's account and shows up in EVERY space"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "native",
+      "note": "Every space has a URL of the form arrival.space/<id> with a changeable alias, and paid tiers can use a custom subdomain.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The alias is the Part of the URL after the slash."
+        },
+        {
+          "url": "https://codex.arrival.space/enterprise/subdomain",
+          "title": "Subdomain (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In Arrival.Space, you can request a custom subdomain starting from the Business subscription tier"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for server-side scripts, scheduled tasks, cross-space triggers, bots without a visitor on 2026-10-20; nothing runs without a connected client; the closest feature is pluginStore.push with a spaceId option, which still needs a visitor's browser to execute the call.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "portals (\"gates\") between spaces"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "partial",
+      "note": "Realtime traffic goes through the platform's own relay with per-client socket identifiers, but the wire protocol and message framing are not published.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/arrival-script-api.md",
+          "title": "ArrivalScript API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`send(type, data = {})` — ArrivalSpace.net.send: Broadcast a message of `type` to all peers via networkManager.broadcastMessage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Entry is gated by space privacy (Open, Closed, Link Only) and an optional entry code; the answer is a plain allow or deny in the app, with no validity limit or machine-readable explanation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`Closed`=owner only; `Link Only`=unlisted (Pro)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Entry code; only meaningful with `Link Only`"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "partial",
+      "note": "Live voice from any visitor's microphone is broadcast to everyone in the space; live camera video between participants is not described, only synchronized playback of uploaded video and shared web views.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/social-interaction/voice-chat",
+          "title": "Voice Chat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "As soon as one creator inside the Space has enabled his microphone, the voice will be broadcast to all participants in the Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "partial",
+      "note": "Each synced property can be writable by anyone, by the space owner only, or per player, but the check runs only in the writing client and receivers do not re-validate it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/arrival-script-api.md",
+          "title": "ArrivalScript API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authority is a writer-side guard, not a verified contract."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| `'owner'` | Room owner only | Game settings, admin controls |"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "native",
+      "note": "Spaces set to Open are listed in the platform's search and sitemap, and an explore view lists them; discovery covers only spaces hosted on Arrival.Space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Privacy `Open` lists a space publicly (search, sitemap); new spaces are `Closed`."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "partial",
+      "note": "The platform lists who is in a space and whether friends are online (a green dot jumps you to their space); this is limited to Arrival.Space and not exchanged across operators.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Track who's in the room:"
+        },
+        {
+          "url": "https://codex.arrival.space/faq/user-interaction",
+          "title": "User Interaction FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Yes it is, if the person is in a public or link only Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "native",
+      "note": "Each person is an Arrival.Space account (sign-in with Google, Apple or email, with optional multi-factor login) identified by a platform-local user ID; it is not a portable or decentralised identifier.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "API keys are tied to individual user accounts"
+        },
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The user sees the Arrival.Space login page with Google sign-in and email/password options."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "What an account may do is decided inside the platform (owner, editor with edit permission, read-only, plus a bearer API key that carries the account's full rights); a third party cannot read a scoped, signed statement of those rights.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The CLI is intended for owners and users with edit permission. Read-only users cannot apply changes."
+        },
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All API requests require a Bearer token in the Authorization header:"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "Third-party apps obtain a token through OAuth 2.0 authorization code with PKCE and dynamic client registration; this exchanges platform access tokens, not verifiable credentials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "POST /register Dynamic Client Registration ( RFC 7591 )"
+        },
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Native applications can use OAuth 2.0 Authorization Code flow with PKCE"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Revoking a token or an API key is an account control inside the platform, not a way for a third party to discover the status of an issued credential; Arrival.Space neither issues nor consumes portable credentials, so status discovery sits outside what the platform says it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        },
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "POST /revoke Token revocation"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "Connecting an app or an AI connector goes through an OAuth sign-in that the account holder approves and can revoke, but the token is the same all-rights account key, with no scope, purpose or expiry carried.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "returns an API key as the access token — the same key visible in the user's account settings"
+        },
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "POST /revoke Token revocation"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "API keys can be managed or revoked from account settings and the command-line tool states that logout leaves the key valid on the server; there are no identity-control keys or recovery rules in the sense of decentralised identity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Manage or revoke API keys from the Arrival.Space account settings."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Arrival.Space signs people in to its own accounts and does not issue, hold or verify portable claims about a subject, so a claim format is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "With no portable claims issued or verified, there is no claim vocabulary to declare; this sits outside what the platform says it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "A machine-readable record of a recipient's evaluation of a presented claim has no place in a platform that issues and consumes no portable claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Deciding which issuers or worlds a verifier accepts is not part of hosting shareable scenes, which is what the platform says it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "partial",
+      "note": "A space can be marked remixable and the remix button appears only then, so one licence-like permission is acted on at the point of use; no other licence terms are evaluated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If a Space is remixable, it is indicated by a button located next to the owner badge."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "partial",
+      "note": "Followers, bookmarks, likes, friends-online and direct messages exist inside Arrival.Space; none of this standing or relationship data is portable to another operator.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/user-interaction",
+          "title": "User Interaction FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Yes it is, if the person is in a public or link only Space."
+        },
+        {
+          "url": "https://codex.arrival.space/social-interaction/like_bookmark_follow",
+          "title": "Social Actions (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Like a Space/Gate, Bookmark a space or Follow a creator."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "native",
+      "note": "A visitor starts an immersive VR or passthrough AR session with an Enter Immersive Mode button or a plugin call, and ends it with the headset menu button or an exit call; sessions are view-only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enter an XR session. Returns a promise."
+        },
+        {
+          "url": "https://codex.arrival.space/claim/controls/vr",
+          "title": "VR Glasses controls (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "VR mode is designed for viewing only and does not support editing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "Plugins can ask whether WebXR is supported and whether immersive VR or AR is available on the device; no wider capability report (input sources, sensors, display) is provided beyond what the browser exposes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Whether `immersive-vr` is available on this device"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "native",
+      "note": "Browser gamepads and VR headset controllers are mapped to walking, looking and jumping, and teleporting with the trigger; no other buttons are used by the platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the platform uses the left stick to walk, the right stick to look and the bottom face button (Cross / A) to jump"
+        },
+        {
+          "url": "https://codex.arrival.space/claim/controls/vr",
+          "title": "VR Glasses controls (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Aim the controller at the floor to highlight a spot. Press the trigger button to teleport."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "partial",
+      "note": "On headsets without controllers (Apple Vision Pro) a pinch gesture selects, teleports and turns the view; no articulated hand-pose data is documented as an input source for plugins.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/controls/vr",
+          "title": "VR Glasses controls (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "you can use the pinch movement to call up the function of the element"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "partial",
+      "note": "The manual says eye tracking must be set up on Vision Pro, which is used to point at gates and elements; no gaze-direction input or privacy treatment of gaze is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/controls/vr",
+          "title": "VR Glasses controls (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For VR headsets like the Apple Vision Pro, which are operated without a joystick, eye tracking must be set up."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "partial",
+      "note": "The platform has no haptic feedback of its own; the plugin documentation only shows calling the browser's gamepad rumble from plugin code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Rumble is the browser API too"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "native",
+      "note": "Plugins receive click and hover events on any entity or its child meshes, picked by mesh-accurate rendering without needing a collider.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Call `handler` when `entity` (or a descendant) is clicked."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "so a hit is **mesh-accurate**"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "native",
+      "note": "Plugins can show interactive text fields and lock movement keys while the visitor types; the platform also provides text chat and comments.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Temporarily lock/unlock movement keys while typing in UI fields."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "native",
+      "note": "Avatars are VRM 1.0 or 2.0 models, Mixamo-rigged GLB files, catalogue-based modular avatars or rigged splats; an avatar can be downloaded as GLB again, though the manual warns that rigs and materials differ between platforms.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/avatar/vrm",
+          "title": "VRM Models (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Supported formats . VRM 2.0 . VRM 1.0"
+        },
+        {
+          "url": "https://codex.arrival.space/claim/avatar/animations",
+          "title": "Avatar Animations (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is recommended to download your Avatar as GLB and upload it to the platform of your choice."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "Modular avatars wear catalogue parts (hats, glasses, tops, shoes) and a plugin can attach any model to a named avatar bone, but there is no portable attachment-point scheme for items worn elsewhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/avatar/modular-avatar",
+          "title": "Modular Avatar (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Head : Hair, face shape, eyes, glasses, hats, and masks"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/avatar-bone-attachment.mjs",
+          "title": "Avatar Bone Attachment example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Loads a GLB model and attaches it to a specific bone on the local player's avatar skeleton."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "partial",
+      "note": "Rigs from VRM and Mixamo are accepted and animation transfer relies on the Mixamo skeleton, but the manual says rigs are not built the same way everywhere and states no required bone names of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/avatar/vrm",
+          "title": "VRM Models (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "not every rig (a digital skeleton for a model) is built the same way"
+        },
+        {
+          "url": "https://codex.arrival.space/claim/avatar/animations",
+          "title": "Avatar Animations (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "first download your avatar and then upload it to Mixamo to properly rig the animations"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "partial",
+      "note": "The only documented expression is mouth movement from the first morph target driven by voice loudness; named expressions and visemes are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/generating-avatars.md",
+          "title": "Generating avatars (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Morph target 0 is driven by voice loudness"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "partial",
+      "note": "An avatar belongs to the signed-in account and follows it into every space, but nothing ties it to a verifiable identity or credential.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/avatar",
+          "title": "Avatar FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Avatar Selection stores both Modular and VRM avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "partial",
+      "note": "Mixamo animations in FBX format can be mapped onto VRM and rigged GLB avatars into idle, walk, jump and four signature slots; the manual warns the result may look odd when the skeleton differs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/avatar/animations",
+          "title": "Avatar Animations (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If you do not use your own skin, animations may sometimes look odd."
+        },
+        {
+          "url": "https://codex.arrival.space/claim/avatar/animations",
+          "title": "Avatar Animations (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Idle Animation while standing"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for avatar level of detail, reduced avatar, crowd, impostor on 2026-10-20; no match; the avatar guide instead notes that every visitor downloads every other avatar in full.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/general",
+          "title": "General FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we recommend keeping it to around 25–30 people per space"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/generating-avatars.md",
+          "title": "Generating avatars (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every person in a room downloads every other person's avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "native",
+      "note": "Sound entities and plugin-played sounds are placed in the scene with distance falloff and direction; ambient sound plays uniformly everywhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a sound entity is a spatial sound. Its direction and intensity change based on your position in the room"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Play positional or non-positional audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "native",
+      "note": "Microphone voice is broadcast live to everyone present in the space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/social-interaction/voice-chat",
+          "title": "Voice Chat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "As soon as one creator inside the Space has enabled his microphone, the voice will be broadcast to all participants in the Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "partial",
+      "note": "The manual states the platform uses spatial audio, but not how direction is rendered (head-related transfer, panning or ambisonics).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/troubleshooting/microphone",
+          "title": "Audio and Microphone (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Because Arrival.Space primarily uses Spatial Audio"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "partial",
+      "note": "Audio reverb is a per-user graphics-and-audio setting that can be switched off for performance; a space cannot describe its own acoustics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/troubleshooting/performance",
+          "title": "Performance (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Audio reverb can make audio sound natural and immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for occlusion, muffled, obstruction, blocked sound on 2026-10-20; only ambient occlusion in post effects, nothing for sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a sound entity is a spatial sound. Its direction and intensity change based on your position in the room"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "partial",
+      "note": "Subscriptions and usage top-ups are paid through Stripe, and a release note mentions monetised downloadable gate content; no payment exchange for content inside a space is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/manage-settings",
+          "title": "Manage your Settings (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "you’ll be redirected to Stripe, where you can manage your plan"
+        },
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Monetize downloadable Gate content Updated"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "The platform checks the account's subscription tier when a feature is used and refuses the call otherwise; entitlements to third-party content or items are not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You need to be a Pro user to set a space to Link Only"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "The plugin interface reports a version number and features state the minimum version they need, the web interface is versioned (v1), and saved snapshots let a space be rolled back after a bad change.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Requires `ArrivalSpace.VERSION` ≥ `1.17.0`."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Up to 50 versions are kept per Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "out-of-scope",
+      "note": "Arrival.Space is one hosted service, not a published specification, so a conformance suite for other implementations has nothing to test against; its validate command only checks that a workspace is well-formed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "The extension mechanism is the JavaScript plugin, which must declare a script name and parameters and is attached to an entity; no rule is stated for a viewer that lacks a plugin.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`static scriptName = \"...\"` is **required** — no `scriptName`, no plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "In a pulled workspace, literal assets/<name> and plugins/<name> references are validated and replaced with stored CDN addresses on push; at run time spaces hold absolute addresses and no resolver context is supplied.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "it's uploaded and the token is replaced with a real CDN URL on push"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "native",
+      "note": "A space exports as a zip of entity JSON files, settings and plugin source, with binary assets kept as links to the platform's content delivery network, or syncs to a GitHub repository.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Binary assets (3D models, images, audio) are not included -- only their URLs are stored."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "native",
+      "note": "Uploaded assets are served from the platform's own content delivery network, and large files go straight to storage by presigned URL.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The assets themselves remain hosted on Arrival.Space's CDN."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for moderation, review, report, abuse, takedown on 2026-10-20; no match for any review step between publishing and viewing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Privacy `Open` lists a space publicly (search, sitemap); new spaces are `Closed`."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "native",
+      "note": "Gaussian splats are accepted as PLY, compressed PLY, SPZ (up to version 4), SOG (up to version 2), SPLAT and zipped LCC datasets; the stored file can be downloaded again, but the platform does no format conversion for the user.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space supports all features available in SOG files up to and including version 2. SPZ files are supported up to and including version 4."
+        },
+        {
+          "url": "https://codex.arrival.space/faq/formats",
+          "title": "Formats FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We currently don’t support direct conversion within the platform."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "partial",
+      "note": "A point cloud content type and an upload optimiser are mentioned, and splat files are point sets with attributes, but no plain point-cloud format or compression scheme is specified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/troubleshooting/storage",
+          "title": "Storage (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For point clouds and splats we offer an optimize option when uploading."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "native",
+      "note": "A skybox is set from an HDR image as a dome, box or infinite projection, can be hidden while still lighting the scene, and Pro accounts can add 360-degree skyboxes; 360-degree video is also supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Skybox Upload a .hdr file or generate one automatically"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Skybox Hidden Hide visuals but keep lighting effects"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "native",
+      "note": "Splat scenes are rendered from any viewpoint a visitor chooses, so views no capture camera occupied are synthesised on the fly.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/basic",
+          "title": "3D Basics (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "stores the position ( X , Y , Z ), shape and direction, color ( rgb ) and alpha value"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A collision is your way to make splats walkable."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "partial",
+      "note": "Photos or video are turned into a 3D reconstruction with camera estimation, but the output is a Gaussian splat, not a textured mesh.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/video-to-splat",
+          "title": "Video to Splat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Video to Splat allows you to create a Splat from a video or a set of images."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/video-to-splat",
+          "title": "Video to Splat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Corresponding features across multiple frames are matched to establish spatial relationships between images."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "native",
+      "note": "The Video to Splat service trains a splat from video or images on the platform with presets for steps, frame count, image resolution and spherical-harmonics degree.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/video-to-splat",
+          "title": "Video to Splat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Defines the number of training steps applied to the Splat. A higher value increases detail but also processing time."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/video-to-splat",
+          "title": "Video to Splat (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Controls the degree of spherical harmonics, which affects lighting and color accuracy."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "native",
+      "note": "A release note lists improved dynamic relighting of splats; the manual gives no mechanism beyond per-splat brightness, contrast and tone-mapping controls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Improved Dynamic Splat Relighting Updated"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "native",
+      "note": "An integrated SuperSplat editor crops, merges, cleans floaters and re-arranges splats and saves the edited .spz back to the space; the edit applies to static splats only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Floater Cleaning Removes floating/unconnected splats (noise, scan artifacts)"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "you can directly manipulate .spz files and save all changes by simply closing the SuperSplat window"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "native",
+      "note": "The in-app space agent builds 3D models from a text description by running Blender scripts and returns a GLB that becomes a space asset; avatar clothing can also be remixed by text prompt.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/generating-models.md",
+          "title": "Generating models (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The **first `.glb`** becomes the space asset, at the `path` you passed to the tool."
+        },
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Remix Avatar Clothes vie Text Prompt Updated"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "native",
+      "note": "Large splat scenes stream by region and detail level: the LCC2 format is chunked for streaming, one-click level-of-detail generation builds hierarchies, and presets tune streaming for desktop, mobile and VR.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "LCC2 replaces the octree-based approach with a chunk-based architecture designed for more efficient streaming"
+        },
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "upload your splat and click Optimize for Streaming to run Arrival.Space’s one-click LOD generator"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "partial",
+      "note": "A walkable collision mesh can be generated from a splat, uploaded or downloaded as GLB; a drawing mesh, panorama or video is not derived.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Click this button to automatically generate a collision mesh for your uploaded splat."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "A learned world model that continues a scene frame by frame is not among the content types Arrival.Space says it hosts; it plays back stored scans and models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Carrying robot or agent action streams is outside hosting shareable 3D spaces for people, which is what the platform says it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "partial",
+      "note": "A space can carry a latitude, longitude and altitude on the WGS84 ellipsoid for search and map plugins, and a tile plugin maps Earth-centred coordinates into a local east-up-north frame; scene coordinates themselves are local with no declared reference system.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "metres (WGS84 ellipsoid)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ground-aligned (East -> +X, Up -> +Y, North -> -Z)"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "via-extension",
+      "note": "Streaming of Google Photorealistic 3D Tiles and Cesium tilesets is provided by example plugins that render tiles as meshes; the Cesium plugin does not support implicit tiling.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Streams Google's Photorealistic 3D Tiles (the Google Earth dataset) and renders the entire globe as PlayCanvas meshes."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/cesium-3d-tiles.mjs",
+          "title": "Cesium 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Note: Implicit tiling (used by Google Photorealistic 3D Tiles) is not yet supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "via-extension",
+      "note": "Entering a longitude and latitude in the 3D Tiles plugin re-centres the world so that place is the entity's origin, ground-aligned; the platform's own avatar and entity poses remain in the local scene frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enter a longitude/latitude and the world re-centers so that location sits at this entity's origin"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "Entities sit at stored positions that every device and session sees, and the space can carry a real-world latitude and longitude; there are no shared spatial anchors tied to the physical world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/mcp-server",
+          "title": "Arrival.Space MCP server (manual, version 2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "World position. Example: {x: 0, y: 1.5, z: -3}"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Real-world latitude → JSON-LD GeoCoordinates; used by map / 3D-tiles plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "partial",
+      "note": "Keyframed .path sequences move objects and cameras through time with Catmull-Rom interpolation, but they are in local scene coordinates, not Earth-referenced poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/sequences.md",
+          "title": "Sequences (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Runtime playback uses Catmull-Rom interpolation:"
+        },
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Animations, object movement, camera fly-throughs, and other keyframe sequences can be authored as .path files."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "partial",
+      "note": "A space can declare a single latitude, longitude, altitude and address label, which is published as structured search data; it declares a point, not an area in a stated frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Human address label."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for anchor, spatial anchor, hit-test, XRAnchor, persistent anchor on 2026-10-20; only annotation anchors (label placement) and unrelated uses of the word.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering a device pose from camera imagery is a localisation service; the platform shows scenes and does not locate devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Structured interior-map description is an indoor-positioning concern; Arrival.Space hosts walkable scans and models rather than describing buildings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Exchanging typed events scoped to spatial zones is a geographic data-feed concern, outside hosting shareable 3D scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "native",
+      "note": "Platform-hosted AI characters are built in: an LLM-driven NPC answers questions in a chat panel and a voice NPC listens and speaks in real time, using a free platform model or the owner's own key.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/ai-npc.mjs",
+          "title": "AI NPC example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An LLM-driven character built on the general ArrivalSpace.ai.complete API."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/voice-npc.mjs",
+          "title": "Voice NPC example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Click it and speak: it listens and answers aloud in realtime"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "partial",
+      "note": "Interactivity travels with a space as JavaScript plugin files plus JSON parameters on an entity; it is code, not a declarative description, and does not attach to a glTF asset itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A plugin host is a `UserModelEntity` whose `data.glbUrl` is `\"plugins/<name>.mjs\"`"
+        },
+        {
+          "url": "https://codex.arrival.space/api/mcp-server",
+          "title": "Arrival.Space MCP server (manual, version 2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Plugin property values — keys match the plugin's static property names"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "native",
+      "note": "World rules are written in JavaScript classes (ArrivalScript) running in the browser on the PlayCanvas 2.x engine, with a documented API.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        },
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**PlayCanvas v2.x, not v1**"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for sandbox, isolation, untrusted, permissions for plugins, content security on 2026-10-20; no isolation of plugin code described; the only sandbox mentioned is the server worker that runs generated Blender scripts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/vibe-coding/",
+          "title": "Vibe Coding (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Functions created and shared by other creators."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "partial",
+      "note": "Calls to the built-in AI service are capped by daily dollar budgets per visitor, guest and space; no limit on memory, run time or other calls by plugin code is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "daily dollar budgets — $0.50 per signed-in visitor, $0.10 per guest, $5 per space"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "An MCP server, a command-line tool and a REST API let an AI agent or other program create spaces, upload assets, place and edit entities and plugins, and publish them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Best for a chat assistant making a few changes: create a space, upload a file, place and adjust entities, take a screenshot."
+        },
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Pushing changes updates the live space for the next load."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "via-extension",
+      "note": "The Persistent Inventory example plugin records pickups in the signed-in user's account and shows them in every space that has the plugin with the same inventory ID; values are small strings under 1024 characters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/persistent-inventory.mjs",
+          "title": "Persistent Inventory example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "everything picked up here persists into the user's account and shows up in EVERY space"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Per-user persistent key-value storage that works **across spaces**."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "native",
+      "note": "A space is stored on the platform and keeps its entities and settings; plugin data is kept in space-wide stores and files, and server-side snapshots of up to 50 versions can be restored.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A small shared store per space for lists that many visitors add to"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Up to 50 versions are kept per Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "native",
+      "note": "A whole space exports and imports as a zip or syncs to a GitHub repository in open JSON and JavaScript files; the 3D models, images and audio are not included, only their links, so the assets stay on the platform's own delivery network.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Binary assets (3D models, images, audio) are not included -- only their URLs are stored."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/git-sync",
+          "title": "Versioning (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Import uploads one back."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "native",
+      "note": "The viewer's physics engine gives plugins rigid bodies with mass, velocity and impulses; the global step rate is adjustable, but nothing in an imported asset describes physics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/00-agent-quickstart.md",
+          "title": "Agent quickstart (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Global physics stepping: `ArrivalSpace.setPhysicsStepRate` (world-global, latest call wins)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/physics-box.mjs",
+          "title": "Physics Box example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "static scriptName = \"Physics Box\";"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "native",
+      "note": "Friction and restitution are set per body by plugins through the physics engine; they are not carried in glTF files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/physics-box.mjs",
+          "title": "Physics Box example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "restitution: { title: \"Restitution\", min: 0, max: 1 },"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "native",
+      "note": "Collision shapes are separate from visible geometry: uploaded or generated GLB collision meshes for splats and meshes, and primitive shapes (box, sphere, capsule, cylinder, cone) for plugins.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/00-agent-quickstart.md",
+          "title": "Agent quickstart (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Collision primitives (`box`, `sphere`, `capsule`, `cylinder`, `cone`) ignore entity scale"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Upload your .glb collision file."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "via-extension",
+      "note": "The Ragdoll Physics example plugin builds bodies and constraints from the avatar skeleton; joints are available only through plugin code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/ragdoll-physics.mjs",
+          "title": "Ragdoll Physics example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Procedurally creates physics bodies and constraints from the player"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "via-extension",
+      "note": "A cloth example plugin simulates a soft-body curtain with Ammo.js; there is no built-in deformable simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/00-agent-quickstart.md",
+          "title": "Agent quickstart (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "simple soft-body curtain with Ammo.js cloth simulation"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "partial",
+      "note": "Plugin examples fire events from distance checks around the player; declarative trigger regions that travel with a scene are not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/sound-trigger.mjs",
+          "title": "Sound Trigger example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Plays a sound when the player gets close to this object."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "native",
+      "note": "Scenes are rasterised in the browser by the PlayCanvas 2.x engine, whose render components and layers plugins use directly; the render pass structure is the engine's, not a published Arrival.Space specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "use the `render` component (not `model`)"
+        },
+        {
+          "url": "https://codex.arrival.space/faq/general",
+          "title": "General FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space runs entirely in the browser, so performance depends on each user's device."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "Spaces render with WebGL2 by default and can request the WebGPU backend, which falls back to WebGL2 when the browser lacks it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Render this space with the WebGPU graphics backend when the visitor's browser supports it (otherwise falls back to WebGL2)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "native",
+      "note": "Post effects set per space: tone mapping (ACES, linear, filmic, Hejl, ACES2, neutral), bloom, brightness, contrast, saturation, sharpness and gamma.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enable bloom"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tone Mapping — Controls how brightness, contrast, and color are rendered:"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "partial",
+      "note": "A plugin can start an immersive AR session that clears the background to transparent so the real world shows through, and a separate depth demo works in Quest mixed reality; blend control and cutting a hole in a virtual environment are not offered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When `true` (AR only): hides skybox and clears to transparent"
+        },
+        {
+          "url": "https://github.com/arrival-space/playcanvas-vr-twa-demo/blob/b864951d1d634f8352d09a65d8887cb77933a377/README.md",
+          "title": "WebXR Depth Occlusion on Quest 3 (arrival-space/playcanvas-vr-twa-demo, commit b864951)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "tap *Enter Mixed Reality*"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for XR layers, quad layer, compositor layer, cylinder layer, XRLayer on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1 and command-line 1.0 pages, and the arrival-plugins documentation at commit 25b02ef for remote rendering, server rendering, cloud streaming of frames on 2026-10-20; no match for scene rendering on a server; synchronized web views stream only a shared browser page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/general",
+          "title": "General FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space runs entirely in the browser, so performance depends on each user's device."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "A one-click generator builds level-of-detail hierarchies for splats with distance-based presets for desktop, mobile and VR; large scans can also arrive as pre-chunked LCC2 data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/faq/space",
+          "title": "Space FAQ (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "upload your splat and click Optimize for Streaming to run Arrival.Space’s one-click LOD generator"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/splats",
+          "title": "Gaussian Splats (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "no additional LOD generation is required after upload"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "partial",
+      "note": "Gaussian splats and splat-based point sets render in the viewer and plugins add volumetric fog on splats; voxel and volumetric-video rendering are not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/00-agent-quickstart.md",
+          "title": "Agent quickstart (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "procedural GSplat examples for animated fire, volumetric fog, and dense grass"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "native",
+      "note": "Text appears in 3D through the room title with a configurable font and through HTML-rendered panels with font size and billboard options.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| `fontSize` | `string` | `24px` | Font size for `text` mode |"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Override font for title + gate text"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "native",
+      "note": "Each space sets a default first-person, third-person or free camera, field of view and spawn points, and plugins and cutscenes can move the camera along defined paths.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Initial camera mode on load"
+        },
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Scene Tour Camera Lead your audience through your Space"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Output colour is shaped by tone mapping, gamma and an optional experimental HDR pipeline, and uploaded HDR skies state their encoding; individual images and textures do not declare a colour space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HDR pipeline (experimental; forces `gamma`=1"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HDR encoding of the uploaded image"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "Surface appearance follows glTF physically based materials (base colour, metallic, roughness, emission) and plugins can create materials through the platform API.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/generating-avatars.md",
+          "title": "Generating avatars (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Principled BSDF survives the export: base colour, metallic, roughness, emission."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/00-agent-quickstart.md",
+          "title": "Agent quickstart (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Materials: `ArrivalSpace.createMaterial`"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "native",
+      "note": "Per-space point or directional stage light with cascaded real-time shadows and skybox environment lighting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Light Type Choose between Point (default) or Directional"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Cascaded-shadow-map count"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "native",
+      "note": "Splats render in the viewer with correct depth sorting when several scans are combined, with brightness, contrast and tone-mapping controls per splat.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Enable this Setting if you combine multiple scans and want to apply correct depth sorting."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "native",
+      "note": "Interface regions appear as a screen overlay and as in-world panels; plugins create HTML elements that capture pointer input while hovered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Interactive `createUI` elements lock input on their own while hovered"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "Plugins can replace the engine's splat shader chunks with GLSL, which ties custom shaders to the PlayCanvas engine; no portable shader language or execution model is specified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/splat-shader.mjs",
+          "title": "Splat Shader example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Loads a Gaussian Splat (.ply, .sog, .spz) and applies a custom GLSL shader."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "partial",
+      "note": "Arrival.Space's own Quest 3 demo hides meshes and splats behind real hands, desk and room using the headset depth sensors; this is a standalone demo repository, not documented as a platform feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/arrival-space/playcanvas-vr-twa-demo/blob/b864951d1d634f8352d09a65d8887cb77933a377/README.md",
+          "title": "WebXR Depth Occlusion on Quest 3 (arrival-space/playcanvas-vr-twa-demo, commit b864951)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "so virtual objects — meshes *and* gaussian splats — are hidden by your hands, your desk and your room"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "partial",
+      "note": "The same demo reads the Quest depth map every frame and writes it into the depth buffer; the platform's plugin API does not expose depth to ordinary plugins.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/arrival-space/playcanvas-vr-twa-demo/blob/b864951d1d634f8352d09a65d8887cb77933a377/README.md",
+          "title": "WebXR Depth Occlusion on Quest 3 (arrival-space/playcanvas-vr-twa-demo, commit b864951)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebXR hands you a 320×320 depth map per eye."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "Plugins can choose the WebXR reference space (local-floor for AR, local for VR), which gives a floor-relative origin; play-area bounds are not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Override XR reference-space. Defaults: AR → `\"local-floor\"`, VR → `\"local\"`"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "partial",
+      "note": "Images upload as PNG, JPEG, GIF or WebP and the space can downscale textures separately for mobile and desktop to save graphics memory; no GPU-compressed texture format such as KTX2 or Basis is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/file-upload-api",
+          "title": "Arrival.Space REST API (manual, version 2.1)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": ".ply , .glb , .gltf , .spz , .sog , .zip , .jpg , .jpeg , .png , .gif , .webp , .mjs , .path ."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Reduce VRAM use (not download size) by downscaling textures, separately per platform."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Assurance information accompanies portable claims, which Arrival.Space neither issues nor consumes; its multi-factor sign-in only protects its own accounts and travels with nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        },
+        {
+          "url": "https://codex.arrival.space/claim/manage-settings",
+          "title": "Manage your Settings (Arrival.Space manual)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Once MFA has been enabled, you will be asked to enter both your password and a current authenticator app code whenever you sign in."
+        }
+      ]
+    }
+  ]
+}

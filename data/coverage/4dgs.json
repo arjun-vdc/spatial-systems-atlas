@@ -1638,7 +1638,7 @@
     {
       "capability_id": "deliver.version",
       "level": "partial",
-      "note": "Three of the five formats version themselves properly. SOG declares an integer format version, Streamed SOG declares version one and tells readers to reject a greater major version, and SPZ's record-structured extension block lets an old reader skip a vendor block it does not know. PLY, the format everything actually interchanges in, has none of this: it carries splat semantics by convention, competing trainers write different header comments for the same fact, the last one read wins, and a converter that merges files whose tags disagree drops the tag and warns.",
+      "note": "Three of the five formats version themselves properly. SOG declares an integer format version, Streamed SOG declares version one and tells readers to reject a greater major version, and SPZ writes a version number in a 32-byte plaintext header, treats versions 1 to 3 as legacy gzip that is read but no longer written, and has a record-structured extension block that lets an old reader skip a vendor block it does not know. PLY, the format everything actually interchanges in, has none of this: it carries splat semantics by convention, competing trainers write different header comments for the same fact, the last one read wins, and a converter that merges files whose tags disagree drops the tag and warns.",
       "confidence": "verified",
       "sources": [
         {
@@ -1651,9 +1651,9 @@
         {
           "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/sog/",
           "title": "The SOG Format specification, PlayCanvas user manual",
-          "retrieved": "2026-09-04",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "version: 2; // File format version (integer)"
+          "quote": "File format version (integer)"
         },
         {
           "url": "https://github.com/nianticlabs/spz/blob/main/extensions/README.md",
@@ -1668,6 +1668,13 @@
           "retrieved": "2026-09-04",
           "kind": "primary",
           "quote": "Combining inputs whose models disagree warns and writes the result untagged."
+        },
+        {
+          "url": "https://github.com/nianticlabs/spz/blob/affd0ecea7fbb4c265ee119475af7ee5b2997482/README.md",
+          "title": "SPZ README, Niantic Labs (commit affd0ec), File Format",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Version 4 uses ZSTD compression with a 32-byte plaintext header."
         }
       ]
     },
@@ -1748,7 +1755,7 @@
     {
       "capability_id": "capture.splat-format",
       "level": "native",
-      "note": "This is the subject's own row and the reason the row exists. Five containers carry the same primitives, and two of them have published specifications with version discipline: the lossless source form, a compressed delivery form, a streamed form, Niantic's compressed interchange, and binary glTF through the ratified Khronos extension. One caution belongs here rather than in a footnote: the reference implementation that defines the method is granted for research use only.",
+      "note": "This is the subject's own row and the reason the row exists. Five containers carry the same primitives, and two of them have published specifications with version discipline: the lossless source form, a compressed delivery form, a streamed form, Niantic's compressed interchange (version 4 is a 32-byte plaintext header followed by a count of independently compressed streams, typically six, with versions 1 to 3 as legacy gzip), and binary glTF through the ratified Khronos extension. One caution belongs here rather than in a footnote: the reference implementation that defines the method is granted for research use only.",
       "confidence": "verified",
       "direction": "both",
       "sources": [
@@ -1772,6 +1779,13 @@
           "retrieved": "2026-09-04",
           "kind": "primary",
           "quote": "Licensors grant non-exclusive rights to use the *Software* for research purposes"
+        },
+        {
+          "url": "https://github.com/nianticlabs/spz/blob/affd0ecea7fbb4c265ee119475af7ee5b2997482/README.md",
+          "title": "SPZ README, Niantic Labs (commit affd0ec), File Format",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Version 4 uses ZSTD compression with a 32-byte plaintext header."
         }
       ]
     },
@@ -1937,11 +1951,11 @@
           "quote": "The editor can currently play the sequences only, editing is not possible."
         },
         {
-          "url": "https://github.com/playcanvas/splat-transform/blob/main/README.md",
-          "title": "splat-transform README (playcanvas/splat-transform, main)",
-          "retrieved": "2026-09-04",
+          "url": "https://github.com/playcanvas/splat-transform/blob/45931669547a7c70cbc44d2657749f8a56e5533c/README.md",
+          "title": "SplatTransform README (playcanvas/splat-transform, commit 4593166), opening",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": null
+          "quote": "SplatTransform is an open source library and CLI tool for converting and editing Gaussian splats."
         }
       ]
     },
@@ -2083,51 +2097,156 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "Gaussian splatting is a way of representing and drawing a captured scene. Whether the drawing is mixed with a camera view of the room is decided by the application that uses it.",
+      "note": "The technique is for novel-view synthesis of captured scenes and the formats only store the splats, so whether the drawing is mixed with a camera view of the room is decided by the application that uses it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "The technique reconstructs a scene from images. It delivers no live stream of the viewer's own face or body to anybody.",
+      "note": "The technique reconstructs a scene from photos or video and the formats store splats, so none delivers a live stream of the viewer's own face or body to anybody.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
       "level": "out-of-scope",
-      "note": "A splat cloud is appearance, not an authored place: there is no floor declared in it and no arrival point, which is exactly why runtimes bolt a collider on separately.",
+      "note": "The technique and its formats describe appearance for novel-view synthesis, not an authored place: no floor is declared and no arrival point is carried, which is why runtimes add a collider separately.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "A representation technique publishes no units of logic to name.",
+      "note": "The technique and its formats represent and store captured appearance, so they publish no units of logic to name.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "There is no publishing service here, so no review stands between a splat scene and whoever opens it.",
+      "note": "The technique and its formats store captured appearance and are not a publishing service, so no review stands between a splat scene and whoever opens it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "A reconstruction sits in its own coordinates; the technique declares no map of a place and no transform to another one.",
+      "note": "The technique and its formats store a reconstruction in its own coordinates, so no map of a place is declared and no transform to another one is published.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "A captured scene is content, not a service that answers for an area.",
+      "note": "The technique and its formats store captured content, not a service that answers for an area, so no geographic area of application is declared.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (Kerbl, Kopanas, Leimkuehler, Drettakis), abstract",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (commit a7963af), Overview",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -2702,6 +2821,231 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "We introduce three-dimensional Gaussians as a flexible and expressive scene representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way to represent and render captured scenes, not a service that charges for anything.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "allow high-quality real-time (≥ 100 fps) novel-view synthesis at 1080p resolution."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "A rendering representation for captured scenes; it has no notion of holders or grants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way of representing and rendering a captured scene, so recording who bought or was granted a scene is not part of the technique.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering, arXiv 2308.04079",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (>= 30 fps) novel-view synthesis at 1080p resolution."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way to represent and render a captured scene; the technique has no notion of issuers, services or worlds that a verifier should accept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS: Progressive Decomposition of 4D Gaussian Splatting for Bandwidth-Adaptive Dynamic Scene Streaming",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way of representing and rendering captured scenes, not a runtime that takes live input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a scene representation and a set of file formats, so it has no platform with an authoring interface for an outside agent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way of representing and drawing a captured scene; it does not itself connect anything to a live data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (arXiv 2308.04079)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "This is a representation and rendering technique for moving scenes, together with the splat file formats that carry it; none of them describes what a person did in a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2310.08528",
+          "title": "4D Gaussian Splatting for Real-Time Dynamic Scene Rendering (arXiv 2310.08528)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we propose 4D Gaussian Splatting (4D-GS) as a holistic representation for dynamic scenes"
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way to represent and draw a captured scene, and the splat file formats are asset containers, so there is no host or place to export.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Gaussian splat formats and 4D splatting methods describe a stored scene representation; whoever opens the file draws it, and no format here defines a client, a pose exchange or a frame stream.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting is a way to represent and render a captured scene from many photographs; it does not recognise a known object from its model or report its pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2308.04079",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (abstract)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "partial",
+      "note": "A splat set stored with KHR_gaussian_splatting sits under a glTF node, and core glTF animation channels can move that node with timed samplers and declared interpolation; the splat extension itself says nothing about animation. SPZ, SOG and PLY carry no pose sequences, and the research dynamic methods deform the splats themselves rather than describing an object's pose over time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 specification, animations",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Channels connect the output values of the key frame animation to a specific node in the hierarchy."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting (glTF commit a7963af)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The global transformation matrix of the node containing a mesh with splat primitives SHOULD conform to all of the following conditions:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "PlayCanvas splat-transform can write a sparse voxel octree of solid and empty cells, version 1.1 of a documented file format, computed from a splat scene and read by the SuperSplat Viewer for collision. It stores occupancy only, with no per-cell properties or updates, and the tool lists the format as write-only; the splat formats themselves are not voxel volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/splat-transform/voxel-format/",
+          "title": "SplatTransform Voxel Format, PlayCanvas documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The format stores a solid/empty voxelization of a Gaussian splat scene as a sparse voxel octree (SVO) in the Laine–Karras node layout"
+        },
+        {
+          "url": "https://github.com/playcanvas/splat-transform/blob/main/README.md",
+          "title": "splat-transform README, PlayCanvas",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "📤 Write PLY, Compressed PLY, SOG, Streamed SOG, SPZ, GLB, CSV, HTML Viewer, LOD, Voxel and WebP image formats"
+        }
+      ],
+      "direction": "write"
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Searched the KHR_gaussian_splatting README (glTF commit a7963af), the SPZ README and extensions README, and the PlayCanvas SOG, streamed SOG and PLY format pages for encrypt, DRM, protect, protection, watermark on 2026-10-20; only copyright and licence statements matched, no protection scheme is declared. The original 3DGS PLY output and the dynamic research methods were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting (glTF commit a7963af)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
         }
       ]
     }

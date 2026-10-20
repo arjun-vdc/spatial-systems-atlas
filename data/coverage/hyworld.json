@@ -1943,22 +1943,29 @@
     {
       "capability_id": "capture.sim-learned",
       "level": "none",
-      "note": "The subject defines itself against this row rather than doing it. Its own table contrasts a playable duration limited to about a minute with assets that persist permanently, and an inference cost that accumulates with every interaction against one-time generation; the vendor keeps the interactive-video family in a separate repository.",
+      "note": "Searched the HY-World-2.0 README.md, DOCUMENTATION.md, hyworld2/worldgen/README.md and hyworld2/panogen/README.md at commit df9988e, the technical report (arXiv 2604.14268, full text, 44 pages) and the HY-WorldPlay README at commit 1588e13 on 2026-10-20 for interactive, simulate, autoregressive, next frame, keyboard, action, real-time and world model; found the subject defines itself against a model that continues a world frame by frame: its README table contrasts a playable duration limited to about a minute and inference cost that accumulates with every interaction against assets that persist, the technical report places it within an offline 3D world model paradigm, and both name the interactive-video family (HY-World 1.5, WorldPlay) as a separate release. The only interaction in HY-World 2.0 is first-person and third-person exploration of finished 3D assets with mesh collision, which an engine runs; no model continues the world in response to the viewer. The row stays none for HY-World 2.0 itself; the learned interactive simulation is a different Tencent release.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/main/README.md",
-          "title": "HY-World 2.0 repository README",
-          "retrieved": "2026-09-04",
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "| **Playable Duration** | Limited (typically 1 min) | Unlimited — assets persist permanently |"
         },
         {
-          "url": "https://github.com/Tencent-Hunyuan/HY-WorldPlay",
-          "title": "HY-WorldPlay repository (Tencent Hunyuan)",
-          "retrieved": "2026-09-04",
+          "url": "https://arxiv.org/html/2604.14268",
+          "title": "HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds (technical report, arXiv 2604.14268)",
+          "retrieved": "2026-10-20",
           "kind": "primary",
-          "quote": null
+          "quote": "within an offline 3D world model paradigm"
+        },
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-WorldPlay/blob/1588e1336e842b03b0a7860c654ebd7c46bb065e/README.md",
+          "title": "HY-WorldPlay repository README (HY-World 1.5, commit 1588e13)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We release the first open-source, real-time interactive, and long-term geometric consistent world model, HY-World 1.5 (WorldPlay)!"
         }
       ]
     },
@@ -2312,16 +2319,32 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "The system generates a world from panoramas and prompts. Presentation, and any blend with a camera view of a room, belongs to whatever opens the result.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The system generates a world from panoramas and prompts. Presentation, and any blend with a camera view of a room, belongs to whatever opens the result.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "Input is images, panoramas and text. No live reading of a user's face or body is taken or delivered.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Input is images, panoramas and text. No live reading of a user's face or body is taken or delivered.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -2348,9 +2371,17 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "The project publishes model code and weights as a repository. Nothing in it is a published unit of world logic named for other authors to depend on.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The project publishes model code and weights as a repository. Nothing in it is a published unit of world logic named for other authors to depend on.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
@@ -2370,16 +2401,32 @@
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "A generated interior is not a map of a real place and carries no transform to one.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction, and says of WorldMirror 2.0 'Capture a video, get a digital twin'. Neither half declares a map of a place: a generated interior is not a map of a real place, and a reconstruction's outputs (point clouds, depth, camera parameters, 3D Gaussians) sit in the model's own camera frame, with no declared map, version, lifecycle or published transform to another map. Running a map registry is outside what a generation and reconstruction model is for.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "Nothing declares a region of the Earth over which a generated world applies.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Nothing declares a region of the Earth over which a generated world applies.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.metadata",
@@ -2399,58 +2446,122 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "sense.lighting",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "geo.trajectory",
@@ -2470,128 +2581,272 @@
     {
       "capability_id": "input.pointing",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "render.layer",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.constraint",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "render.frame-timing",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Tencent HY-World is assessed here as HY-World 2.0 reconstruction and generation code with mesh and Gaussian outputs. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "The README describes HY-World 2.0 as a multi-modal world model framework for world generation and world reconstruction. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2681,6 +2936,238 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "HY-World 2.0 generates 3D world environments from input images."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is a model for generating and reconstructing 3D worlds and has no payment function.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "A model framework that generates and reconstructs worlds; it does not check any holder's grant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/main/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is a model framework for generating and reconstructing 3D worlds, so purchase or grant records are not part of its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README at commit df9988e",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is a model that generates and reconstructs 3D worlds; a trust registry for verifiers is outside that stated purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is an offline world generation and reconstruction model, not a runtime that receives live body signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is an open model framework run locally from scripts and Python code that outputs world files, and it has no hosted world or platform to publish into.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 generates or reconstructs a 3D world as a file; it has no part in binding world objects to an outside live source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "HY-World generates and reconstructs 3D worlds; it is a model framework and defines no record of what a person did in a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 is a model that generates or reconstructs a world as mesh and splat files; it does not host places, so whole-place export and what survives a host closing do not arise.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 produces world files (meshes or Gaussian splats) once, to be drawn by other software, rather than rendering frames for a remote client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/main/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "produces 3D world representations (meshes / Gaussian Splattings)"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 generates and reconstructs 3D worlds as files; it does not track a known physical object from its model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/main/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "produces 3D world representations (meshes / Gaussian Splattings)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "HY-World 2.0 outputs meshes and Gaussian splats; voxels appear only as private working data, to merge points and prune Gaussians before export. Searched the README, DOCUMENTATION.md and worldgen README at commit df9988e and the technical report (arXiv 2604.14268v1) for voxel on 2026-10-20; no voxel volume is produced or accepted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It accepts diverse input modalities — text, single-view images, multi-view images, and videos — and produces 3D world representations (meshes / Gaussian Splattings)."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/HY-World-2.0/df9988efb87bfc0f4947eb3889411cf957478b06/DOCUMENTATION.md",
+          "title": "HY-World 2.0 DOCUMENTATION.md (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Voxel size for point cloud merging"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "out-of-scope",
+      "note": "Declaring named extensions with recipient rules belongs to a scene or file container, which this model framework does not define; it writes meshes and splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It accepts diverse input modalities — text, single-view images, multi-view images, and videos — and produces 3D world representations (meshes / Gaussian Splattings)."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Resolving scene resource identifiers belongs to a scene container that references assets; this framework writes its outputs as files and defines no such references.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It accepts diverse input modalities — text, single-view images, multi-view images, and videos — and produces 3D world representations (meshes / Gaussian Splattings)."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Declaring a protection scheme for content components belongs to a delivery container; this research model framework distributes weights and code and writes unprotected outputs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It accepts diverse input modalities — text, single-view images, multi-view images, and videos — and produces 3D world representations (meshes / Gaussian Splattings)."
         }
       ]
     }

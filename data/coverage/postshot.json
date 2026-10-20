@@ -64,10 +64,17 @@
     },
     {
       "capability_id": "render.post",
-      "level": "out-of-scope",
-      "note": "No post-processing chain; compositing is what the After Effects and Unreal integrations are for.",
+      "level": "partial",
+      "note": "The camera has a relative exposure compensation in EV and one simple tone-mapping operator for mapping high-dynamic-range colours to standard range, applied when rendering. Missing: no programmable or configurable chain of effects is documented; further compositing is left to the host application the scene is brought into.",
       "confidence": "verified",
       "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Camera",
+          "title": "Postshot User Guide, Camera color settings",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "When enabled, a simple tone mapping operator is applied that maps High-Dynamic-Range colors into the Standard-Dynamic-Range (SDR)."
+        },
         {
           "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Unreal+Engine+Integration",
           "title": "Postshot User Guide, Unreal Engine integration",
@@ -1051,7 +1058,7 @@
     {
       "capability_id": "geo.pose",
       "level": "partial",
-      "note": "The front page claims integration with geo-referenced data, and the documentation read here describes alignment to printed markers rather than to the Earth. Nothing states a geospatial pose in an exported file.",
+      "note": "The front page claims integration with geo-referenced data, and the v1.1.69 release notes add an option to apply GPS geo-location metadata to cameras and points. The user guide page read describes alignment to printed markers of a stated size. Missing: no datum, no geospatial pose in an exported file and no interchange guarantee is stated.",
       "confidence": "verified",
       "sources": [
         {
@@ -1067,6 +1074,13 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "Specify the side-length of the tag in millimeters. This should match the real-world size of the printed tags as closely as possible."
+        },
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Release+Notes/v1.1.69",
+          "title": "Postshot release notes v1.1.69",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Added option to apply GPS geo-location metadata to cameras and points"
         }
       ]
     },
@@ -1169,16 +1183,16 @@
     },
     {
       "capability_id": "input.session",
-      "level": "out-of-scope",
-      "note": "No immersive session; the application is a desktop window.",
+      "level": "partial",
+      "note": "A Main Tools toggle shows the scene on an active OpenXR device and applies XR head tracking alongside the regular navigation inputs, so a bounded immersive display mode exists. The guide documents no session start, run and end behaviour beyond that toggle, and no headset was tested.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://www.jawset.com/",
-          "title": "Jawset Postshot home page, system requirements",
-          "retrieved": "2026-09-06",
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Main+Tools",
+          "title": "Postshot User Guide, Main Tools",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "System Requirements: Windows 10 or later, Nvidia GPU CC 7.5 or higher (GeForce RTX 2060, Quadro T400/RTX 4000 or higher)"
+          "quote": "If an OpenXR device, such as a VR headset or stereo display, is available, checking this button will display the current scene on the active OpenXR device. You can then use XR head tracking alongside the regular navigation inputs to navigate the scene."
         }
       ]
     },
@@ -1753,10 +1767,17 @@
     },
     {
       "capability_id": "capture.derived-asset",
-      "level": "none",
-      "note": "No mesh, point cloud or conventional asset comes out. The route into a game engine is a plug-in that keeps the field as a field, and a packaged project still requires the application to be installed.",
+      "level": "partial",
+      "note": "The camera render writes image sequences (such as EXR) or compressed video, so flat derived outputs exist; the radiance field exports as HTML, PLY or SPZ. Missing: no mesh, collision mesh or panorama output is documented in the pages read, and no statement of what a flat render loses. The route into a game engine is a plug-in that keeps the field as a field, and a packaged project still requires the application to be installed.",
       "confidence": "verified",
       "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Camera",
+          "title": "Postshot User Guide, Camera output",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "If the file extension is a video format like .MOV, .MP4 or similar, the images will be stored as a compressed video in that format."
+        },
         {
           "url": "https://www.jawset.com/docs/d/Postshot%20User%20Guide/Interface/Radiance%20Field%20Export",
           "title": "Postshot User Guide, radiance field export",
@@ -1835,16 +1856,16 @@
     },
     {
       "capability_id": "sense.depth",
-      "level": "out-of-scope",
-      "note": "No depth sensor is read and no depth map is produced as an output.",
+      "level": "partial",
+      "note": "No depth sensor is read. The camera can render depth of the trained field as a greyscale image (black nearest, white farthest, clamped at a user-set Max Depth, optionally inverted). Missing: the guide states no metric units and no depth data output, only a rendered gradient image, so this is synthetic rendered depth, not sensed depth.",
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Importing+Images",
-          "title": "Postshot User Guide, camera pose formats",
-          "retrieved": "2026-09-06",
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Camera",
+          "title": "Postshot User Guide, Camera",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": "Postshot supports the following file formats for camera poses and points: COLMAP *.bin or *.txt files"
+          "quote": "When enabled, the camera renders depth instead of RGB color using a gradient from black to white, where black is the closest distance to the camera and white is the farthest distance, as specified by the Max Depth parameter below."
         }
       ]
     },
@@ -2001,58 +2022,129 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "sense.lighting",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
-      "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
+      "level": "partial",
+      "note": "Postshot detects AprilTags in an image set and can position and orient a reconstructed radiance field against a chosen tag of a stated side length, so a recognised physical marker is related to a pose in the scene. This happens offline in the desktop tool; the guide documents no marker detection at runtime and no tracked pose reported relative to a runtime reference space.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Image+Set",
+          "title": "Postshot User Guide, Image Set",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "These tags can then be detected in images and be used to relate the reconstructed scene to the real-world reference."
+        },
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Rdnc+Field",
+          "title": "Postshot User Guide, Rdnc Field",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If AprilTags have been detected in the Image Set, the Rdnc Field object can be positioned and oriented in 3D space to align with one of the tags."
+        }
+      ]
     },
     {
       "capability_id": "geo.trajectory",
@@ -2072,23 +2164,32 @@
     {
       "capability_id": "input.pointing",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "render.layer",
-      "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
-      "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.bounds",
@@ -2108,107 +2209,212 @@
     {
       "capability_id": "scene.constraint",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "render.frame-timing",
-      "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
-      "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2228,9 +2434,17 @@
     {
       "capability_id": "capture.objectgen",
       "level": "out-of-scope",
-      "note": "Postshot is assessed here as desktop radiance-field reconstruction, editing, camera animation and field export. This observation-fitting or device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
+      "note": "Postshot's user guide states its purpose as tracking, training, editing and rendering radiance fields. This observation-fitting or device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
     },
     {
       "capability_id": "scene.collection",
@@ -2319,6 +2533,238 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Postshot provides tools for editing and exporting Gaussian splat representations."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop program for training and editing radiance fields that runs on the operator's own machine, so no payment exchange is part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "A desktop tool that trains and edits radiance fields on the operator's own machine; it checks no holder grant on a resource.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool for training and editing radiance fields on the operator's own machine, so purchase or grant records are not what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, Jawset",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool that trains and edits radiance fields on the user's own machine; it states no role in governing acceptable issuers, services or worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool that trains and edits radiance fields from images and video, with no live body-signal input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop program that keeps all processing on the user's own machine, so it has no hosted world or platform for an outside agent to publish into.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Postshot trains, edits and renders radiance fields on the operator's own machine; it does not bind objects to a live source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields"
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool for building radiance fields; it defines no record of what a person did.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, Jawset",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop program that trains, edits and exports radiance fields on the operator's own machine, so it keeps no hosted places and exports a single capture.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool that states it runs all processing on the operator's own devices, so rendering for a remote client is outside its design.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/",
+          "title": "Jawset Postshot",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot runs all processing and machine learning steps on devices only you have access to."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Postshot trains and edits radiance fields on a desktop. Its 'tracking' means recovering camera positions for reconstruction, not recognising a known object from its model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Postshot writes non-standard metadata into the PLY header (colour space, anti-aliasing mode and world origin) and says it can be read by custom software. The guide gives no field names or rules for readers that do not understand them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Radiance+Field+Export",
+          "title": "Postshot user guide: Radiance Field Export",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot stores several non-standard metadata in the PLY header, including the color space, anti-aliasing mode, and world origin. These can be extracted using custom software."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "A Postshot project stores only paths to external image and video files, and a Relocate Files action repoints them when they move. There is no identifier scheme or resolver beyond file paths.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Image+Set",
+          "title": "Postshot user guide: Image Set",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Postshot does not store images or videos in a .PSHT project file but only paths to external files. If the external paths change, the Relocate Files action can be used to update the project file."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Postshot is a local desktop tool that exports open PLY, SPZ and HTML scenes, and none of its documented exports declares a protection scheme for recipients.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/",
+          "title": "Jawset Postshot",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Easily create photorealistic 3D scenes and objects with any camera in minutes."
+        },
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Radiance+Field+Export",
+          "title": "Postshot user guide: Radiance Field Export",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can export scenes from Postshot in several formats supported by third-party applications."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Postshot trains and exports radiance fields as Gaussian scenes in PLY, SPZ or HTML; none of its documented exports is a cell-volume representation. Searched all 19 pages of the Postshot user guide, including Radiance Field Export, Rdnc Field, Command-line Interface and Release Notes, for voxel, volume, TSDF and occupancy on 2026-10-20; found no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Radiance+Field+Export",
+          "title": "Postshot user guide: Radiance Field Export",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can export scenes from Postshot in several formats supported by third-party applications."
         }
       ]
     }

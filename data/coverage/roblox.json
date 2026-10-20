@@ -2344,14 +2344,30 @@
       "level": "out-of-scope",
       "note": "Roblox places are virtual and have no relation to a map of the real world.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt overview)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences. Creators use Roblox Studio (the IDE) and Luau (the scripting language) to build games, experiences, and avatar items."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
       "note": "An experience is not a service bound to a region of the Earth and declares no such area.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt overview)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences. Creators use Roblox Studio (the IDE) and Luau (the scripting language) to build games, experiences, and avatar items."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -2736,6 +2752,482 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Data stores are a server-side storage solution for saving persistent data across sessions."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "native",
+      "note": "Roblox defines a purchase exchange inside its engine: a script calls PromptProductPurchase, the player authorizes the price in Robux, and a ProcessReceipt callback delivers the settlement record the game must act on. The asset is Roblox's own currency, Robux, so the scheme is closed to the platform; agent-initiated payment and spending delegation are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/developer-products",
+          "title": "Developer products - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use PromptProductPurchase to prompt product purchases inside your game."
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/developer-products",
+          "title": "Developer products - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Set the product price in Robux."
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/developer-products",
+          "title": "Developer products - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use the ProcessReceipt API to check purchase receipts."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "native",
+      "note": "Roblox sells passes and subscriptions per experience and a script checks them at use: UserOwnsGamePassAsync takes a user and a pass, and GetUserSubscriptionStatusAsync returns whether a user is subscribed. Passes are permanent, subscriptions renew each period and deleting one refunds active subscribers. The grant is bound to one experience and Roblox holds it; cross-game pass sales were switched off from 30 May 2026, and the docs state no transfer rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/game-passes",
+          "title": "Passes - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Passes let you charge users a one-time Robux fee to access special privileges inside your game, such as entry to a restricted area, an in-game avatar item, or a permanent power-up."
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/game-passes",
+          "title": "Passes - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "hasPass = MarketplaceService:UserOwnsGamePassAsync(player.UserId, passID)"
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/game-passes",
+          "title": "Passes - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Starting May 30, 2026, cross-game pass sales will be disabled."
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/subscriptions",
+          "title": "Subscriptions - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "return MarketplaceService:GetUserSubscriptionStatusAsync(player, SUBSCRIPTION_ID)"
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/subscriptions",
+          "title": "Subscriptions - Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Deleting an active subscription results in full refunds for active subscribers and zero Robux for you."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "partial",
+      "note": "For each developer-product purchase Roblox hands the selling experience's server a receipt with a unique PurchaseId, the buyer's user id, the product id, the place and the Robux spent, and the experience must acknowledge it. It is an in-process callback to the seller: the documented fields carry no time or issuer, no signature, and no form a third system could verify, and the receipt cannot be fetched again once acknowledged.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Roblox/creator-docs/917eca42ffefeb7bc370a835c0ca409817792749/content/en-us/reference/engine/classes/MarketplaceService.yaml",
+          "title": "MarketplaceService reference source, Roblox creator-docs at commit 917eca4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A callback to process receipts of developer product purchases."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Roblox/creator-docs/917eca42ffefeb7bc370a835c0ca409817792749/content/en-us/reference/engine/classes/MarketplaceService.yaml",
+          "title": "MarketplaceService reference source, Roblox creator-docs at commit 917eca4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PurchaseId string A unique identifier for this specific receipt."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Roblox/creator-docs/917eca42ffefeb7bc370a835c0ca409817792749/content/en-us/reference/engine/classes/MarketplaceService.yaml",
+          "title": "MarketplaceService reference source, Roblox creator-docs at commit 917eca4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can't get a receipt back after it has been acknowledged."
+        },
+        {
+          "url": "https://create.roblox.com/docs/production/monetization/developer-products",
+          "title": "Developer products, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The receiptInfo table passed to the ProcessReceipt() callback function contains detailed information about the purchase, like the ID of the purchased product, the user who made the purchase, and the currency they used."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "partial",
+      "note": "Roblox reviews third-party OAuth apps before they can reach more than a small private group of users, so it holds a reviewed, one-way list of services it accepts. The list is Roblox's alone: it names no issuers or worlds, is not portable to another verifier, and the page gives no removal, delegation or versioning rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/cloud/auth/oauth2-registration",
+          "title": "Roblox Creator Docs: OAuth 2.0 app registration",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If you want to extend the user base for your app, you need to publish it in public mode by submitting it for review:"
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud/auth/oauth2-registration",
+          "title": "Roblox Creator Docs: OAuth 2.0 app registration",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When your app is approved, it transitions to public mode, and you can't revert it back to private mode."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "A Roblox asset is named by a platform identifier written as rbxassetid:// plus a number, and the engine's ContentProvider service resolves it and loads the referenced content into the running experience. Only Roblox can resolve these identifiers; an outside runtime has no resolver for them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/ContentProvider.yaml",
+          "title": "ContentProvider, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Service that loads content (assets) into a game."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/cloud/guides/usage-assets.md",
+          "title": "Use assets, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To use an asset in a property, enter `rbxassetid://` followed by the `assetId`"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "partial",
+      "note": "Roblox can deliver encrypted assets: a script registers a decryption key for a named asset, or a default key, and the content service decrypts the file when it fetches it, with the key itself sent in session-encrypted form. Missing: a declaration carried with the asset naming the protection scheme so any recipient can tell what is required; Roblox also states that its asset privacy setting is not digital rights management. Searched the Roblox creator documentation repository (commit f77a748) for DRM, encrypt, content protection and piracy on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/ContentProvider.yaml",
+          "title": "ContentProvider, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Registers an encryption key used to decrypt a specific encrypted asset."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/production/creator-store.md",
+          "title": "Creator Store, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "No, the asset privacy feature controls how creators can purchase and load your assets on Roblox, it is not a form of DRM."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Roblox's ban call lets an experience refuse a user before they can rejoin, with a duration in seconds (or permanent) and a display reason the user sees in an error message. Missing: an approval response, and any form a second operator could ask for or read; it is an in-platform call.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/Players.yaml",
+          "title": "Players, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Banned users will be immediately evicted and prevented from rejoining your experiences."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/Players.yaml",
+          "title": "Players, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "They will be presented with an error modal displaying the time left on their ban and your"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "partial",
+      "note": "Roblox's OpenID Connect discovery document lists claims named verified, email_verified and age_bracket among those it can issue, so a relying party can receive a verification state. Missing: any description of the evidence behind it, such as ID check or facial age estimation, or an assurance level; the claims are listed without definitions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/cloud/auth/oauth2-reference.md",
+          "title": "OAuth 2.0 reference, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "\"email_verified\", \"verified\", \"age_bracket\","
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Roblox names three character body scale standards, Normal, Slender and Classic, and publishes technical requirements an avatar body must meet, so avatar content and the platform share a named contract. Missing: named subsets or levels for experiences, scenes or engine features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/avatar/character-bodies/specifications.md",
+          "title": "Character body specifications, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Roblox supports 3 standards of character body scales:"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "partial",
+      "note": "Roblox encrypts to specific recipients in two documented places: a server can encrypt a string with one connected player's session key so only that player's client can decrypt it, and secrets sent to Roblox are encrypted with a sealed box and the game's public key. Missing: key material that an outside party can discover or name, since the session keys are internal and the game public key is fetched through Roblox's own interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/NetworkServer.yaml",
+          "title": "NetworkServer, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only that player's client can decrypt the result."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/cloud/guides/secrets-store.md",
+          "title": "Secrets store, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When creating or updating secrets on Roblox, you must encrypt secrets with a"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "partial",
+      "note": "An experience can retrieve the ban and unban history for any user in its universe, which is a machine-readable record of what the experience decided and when. Missing: a signature or integrity proof, and any way to hand the record to another operator; the method works only on Roblox production servers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/reference/engine/classes/Players.yaml",
+          "title": "Players, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Retrieves the ban and unban history of any user within the experience's universe."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Roblox's rights tool lets rights holders report unauthorized use of content, but nothing recovers a lost provenance record from a content fingerprint or watermark. Searched the Roblox creator documentation repository (commit f77a748, 1,028 pages and the engine reference) for provenance, watermark, fingerprint, C2PA and content credentials on 2026-10-20; the only hit was a preview watermark on an early-testing screen.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/production/publishing/rights-manager.md",
+          "title": "Rights Manager, Roblox creator-docs (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "is an intellectual property (IP) management tool that lets rights holders or their authorized representatives report unauthorized use of their content on Roblox."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Roblox gives scripts device accelerometer and gyroscope readings but documents no heart rate or other body-signal input. Searched the Roblox/creator-docs repository (main branch, GitHub code search) for 'heart rate', 'heartrate', 'physiological', 'biometric' and 'pulse sensor', and the creator documentation index llms.txt for heart, biometric, physiolog and wearable, on 2026-10-20; the only hit was a privacy note on ID-verification photos, not a signal input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Roblox/creator-docs/main/content/en-us/reference/engine/classes/UserInputService.yaml",
+          "title": "Roblox UserInputService reference (creator-docs repository)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This property describes whether the user's device has an accelerometer, a component found in most mobile devices that measures acceleration (change in speed)."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "Roblox Studio has a built-in local MCP server (read and edit scripts, inspect and run Luau, insert assets, playtest) and Open Cloud REST interfaces with scoped API keys can publish a place version from outside Studio. The scope is stated: MCP clients can read and modify the open place, and the publishing interface skips some instance types, which still need Studio.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/studio/mcp",
+          "title": "Connect to the Roblox Studio MCP server",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Roblox Studio MCP server is built into Roblox Studio."
+        },
+        {
+          "url": "https://create.roblox.com/docs/studio/mcp",
+          "title": "Connect to the Roblox Studio MCP server",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP clients can read and modify content in your open Roblox places."
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud/guides/usage-place-publishing",
+          "title": "Usage guide for place publishing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The place publishing API offers similar functionality to publishing to Roblox in Studio, with extra permission control and automation in continuous release workflow."
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud/guides/usage-place-publishing",
+          "title": "Usage guide for place publishing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The place publishing API doesn't update certain instance types."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "Scripts in a live experience can call third-party web services over HTTPS, capped at 500 requests a minute; streaming connections (server-sent events, chunked responses, WebSockets) through CreateWebStreamClient are available in Studio only, so live experiences are limited to script-driven HTTP requests. This is polling with no declarative binding of an object to a source and no industrial protocol.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/cloud-services/http-service",
+          "title": "HttpService, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can use HttpService to send generic HTTP requests to third-party web services for use cases like analytics, data storage, or error logging."
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud-services/http-service",
+          "title": "HttpService, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Open Cloud requests do not consume the same overall limit of 500 HTTP requests per minute enforced on all other requests."
+        },
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/classes/HttpService.md",
+          "title": "HttpService class reference, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Within Studio, use [CreateWebStreamClient()](/docs/reference/engine/classes/HttpService.md) to process data in real time from servers that support streaming protocols such as"
+        },
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/classes/HttpService.md",
+          "title": "HttpService class reference, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "There is a limit of four total clients allowed at one time."
+        },
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/classes/HttpService.md",
+          "title": "HttpService class reference, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This method is available in Studio only."
+        }
+      ]
+    },
+    {
+      "level": "partial",
+      "confidence": "verified",
+      "note": "Roblox's Open Cloud badges API lets an outside server read which badges a user was awarded and when, respecting the user's inventory privacy settings. The record is a Roblox-specific badge list with no result, score or outcome and no standard statement vocabulary, so a learning record store cannot use it without a custom bridge. Aggregate experience analytics are separate and carry no per-person records.",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/cloud/reference/features/badges.md",
+          "title": "Badges, Roblox Open Cloud reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Create and manage experience badges to recognize player achievements."
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud/reference/features/badges.md",
+          "title": "Badges, Roblox Open Cloud reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Gets timestamps for when badges were awarded to a user."
+        },
+        {
+          "url": "https://create.roblox.com/docs/cloud/reference/features/badges.md",
+          "title": "Badges, Roblox Open Cloud reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Respects inventory privacy settings when evaluating which awarded badges are visible."
+        },
+        {
+          "url": "https://create.roblox.com/docs/en-us/cloud/guides/analytics.md",
+          "title": "Analytics Query API, Roblox Creator Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Analytics Query API lets you query aggregated experience metrics over a date range."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "Studio can save a whole place to a local .rbxl (binary) or .rbxlx (XML) file and the place publishing interface uploads such a file back, so scenes, scripts and settings leave as one file. Missing: images, meshes and audio stay as cloud assets referenced by id and are not in the file, and the documentation says nothing about what survives if Roblox closes.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/projects/place-files.md",
+          "title": "Place files, Roblox creator documentation (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`.rbxlx` is the XML-based place file format, which is quite a bit larger on disk than the binary format."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/cloud/guides/usage-place-publishing.md",
+          "title": "Place publishing guide, Roblox creator documentation (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The following two example requests reference a Roblox XML place file (`.rbxlx`) and a binary place file (`.rbxl`)."
+        },
+        {
+          "url": "https://github.com/Roblox/creator-docs/blob/f77a7480f5437b49b87a8ea97b6b5bf44f0b3943/content/en-us/projects/assets/index.md",
+          "title": "Assets, Roblox creator documentation (commit f77a748)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This cloud-based asset system allows you to store assets through Roblox and reuse them across the platform in various contexts, such as in different objects and places, without maintaining local copies as part of each saved Studio game."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "Roblox ships no remote rendering today: its instance streaming sends 3D content to the client, which still draws it. Roblox announced in April 2026 an internal project, Roblox Reality, to run a video world model on cloud edge GPUs with video streaming, with an early version promised later in 2026 or early 2027. Searched the Roblox Creator Hub documentation index (llms.txt) and the instance streaming and frustum streaming pages on 2026-10-20 for remote render, cloud render, cloud gaming, pixel stream and stream; only content streaming found.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://about.roblox.com/newsroom/2026/04/roblox-reality-hybrid-architecture-democratizing-photorealistic-multiplayer-gaming",
+          "title": "Roblox Reality hybrid architecture, Roblox newsroom",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Roblox Reality will be optimized to run on cloud edge GPU infrastructure coupled with video streaming"
+        },
+        {
+          "url": "https://create.roblox.com/docs/workspace/streaming",
+          "title": "Instance streaming, Roblox Creator Hub",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In-game instance streaming allows the Roblox engine to dynamically load and unload 3D content and related instances in the Workspace"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Roblox is a platform for creating and sharing virtual 3D experiences, so recognising a real physical object from its model and reporting its pose is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences. Creators use Roblox Studio (the IDE) and Luau (the scripting language) to build games, experiences, and avatar items."
         }
       ]
     }

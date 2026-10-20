@@ -1,0 +1,2750 @@
+{
+  "subject_id": "wasm",
+  "summary": "WebAssembly is a compact, safe and portable binary code format with a precisely defined instruction set and execution rules; it is a target that many programming languages compile to, not a format for scenes, avatars or media. It covers the safe running of untrusted code well: modules are validated before use, run isolated from their host, and can reach the outside world only through functions the host chooses to supply. It also has a strong change story: a backward-compatibility promise, a version field, ignorable custom sections for extensions, named language subsets including a deterministic one, and a public conformance test suite. It leaves everything about worlds to others: scenes, avatars, networking, identity, sensing, rendering, and even input and output, because the core specification defines no way to talk to any environment and leaves that to separate interface documents for each hosting environment. Trap for a standards audience: two hosts can run the same module only if both supply the same imports, so the claim that a platform runs WebAssembly says nothing about whether guest content written for another platform will work there. The address ending in wasm-core-2 now serves release 3.0 of the core specification, not release 2.0.",
+  "coverage": [
+    {
+      "capability_id": "logic.sandbox",
+      "level": "native",
+      "note": "The core specification requires validation before execution and gives a module no ambient access to its host; the host decides which functions a module may import.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebAssembly provides no ambient access to the computing environment in which code is executed."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An embedder can establish security policies suitable for a respective environment by controlling or limiting which functional capabilities it makes available for import."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "partial",
+      "note": "Defines a portable, language-independent code format with exact execution rules that can run world logic, but defines no world-facing interface; what the code can see or do is whatever the host supplies as imports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Language-independent : does not privilege any particular language, programming model, or object model."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "partial",
+      "note": "A module can declare a maximum size for memories and tables, and implementations may stop a computation that exceeds their own limits; the core defines no portable time, instruction-count or call budget a host can set (searched the core specification chapters on execution, runtime and implementation limits for budget, fuel, timeout and quota on 2026-10-20; none).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "its maximum, if present, restricts the size to which it can grow later."
+        },
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/implementation.html",
+          "title": "WebAssembly 3.0 specification, Implementation Limitations",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "then it may terminate that computation and report an implementation-specific error to the invoking code."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "Binary modules carry a version field (currently 1), and the specification commits all present and future versions to backward compatibility with earlier valid modules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/changes.html",
+          "title": "WebAssembly 3.0 specification, Change History",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All present and future versions of WebAssembly are intended to be backwards-compatible with all previous versions."
+        },
+        {
+          "url": "https://webassembly.github.io/spec/core/binary/modules.html",
+          "title": "WebAssembly 3.0 specification, Binary Format: Modules",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The current version of the WebAssembly binary format is 1."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "Custom sections carry named, uninterpreted data that every recipient must ignore without rejecting the module, and the binary format is declared extensible without a version change; unknown data therefore degrades safely.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "They are intended to be used for debugging information or third-party extensions, and are ignored by the WebAssembly semantics."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If an implementation interprets the data of a custom section, then errors in that data, or the placement of the section, must not invalidate the module."
+        },
+        {
+          "url": "https://webassembly.github.io/spec/core/binary/modules.html",
+          "title": "WebAssembly 3.0 specification, Binary Format: Modules",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The binary format is intended to be extensible,"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "native",
+      "note": "The specification repository ships an official test suite, including tests for the core semantics, that implementations run to show they match the specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebAssembly/spec/blob/340650f2f620169685814774bc5b019d05d4d3d7/test/README.md",
+          "title": "WebAssembly/spec repository, test/README.md at commit 340650f",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This directory contains the WebAssembly test suite."
+        },
+        {
+          "url": "https://github.com/WebAssembly/spec/blob/340650f2f620169685814774bc5b019d05d4d3d7/test/README.md",
+          "title": "WebAssembly/spec repository, test/README.md at commit 340650f",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "tests for the core semantics"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Defines named language subsets, the full profile and a deterministic profile, so a host can declare which it supports; content has no way to declare the profile it needs, and the specification discourages producers from depending on a profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/profiles.html",
+          "title": "WebAssembly 3.0 specification, Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "profiles specify coherent language subsets that fit constraints imposed by common classes of host environments."
+        },
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/profiles.html",
+          "title": "WebAssembly 3.0 specification, Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tools are generally expected to handle and produce code for the full profile by default."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "partial",
+      "note": "Execution is deterministic except for a few listed cases, and the deterministic profile removes the incidental ones (floating-point not-a-number payloads, relaxed vector operations); memory and table growth can still fail unpredictably and host functions are outside the specification, so identical outcomes across machines are not fully guaranteed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/profiles.html",
+          "title": "WebAssembly 3.0 specification, Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines a sub-language that does not exhibit any incidental non-deterministic behaviour:"
+        },
+        {
+          "url": "https://webassembly.github.io/spec/core/appendix/profiles.html",
+          "title": "WebAssembly 3.0 specification, Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "in order to be able to indicate resource exhaustion."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The definition and behavior of host functions are outside the scope of this specification."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "A module is a self-contained, streamable binary of code, data segments and declared imports and exports, but it packs no assets or manifest, and how an experience is launched or composed is left to the host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Modular : programs can be split up in smaller parts that can be transmitted, cached, and consumed separately."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "partial",
+      "note": "A host can instantiate untrusted modules in isolation with only the imports it grants, which is the mechanism for hosting guest logic; the core defines no experience lifecycle beyond instantiating and invoking, and no interface between a world and its guest.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Platform-independent : can be embedded in browsers, run as a stand-alone VM, or integrated in other environments."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "WebAssembly provides no ambient access to the computing environment in which code is executed."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "Sharing world state between machines is an application protocol, and the core defines no networking or input and output.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Joining and authenticating into a world is an interaction with an environment, which the core leaves to environment-specific interfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting in a world are a platform concept, while the core defines only a code format and how it executes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems describe spatial data, and the core has numeric types but no spatial data or frame semantics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled geospatial streaming is a data delivery format, and the core encodes programs rather than any geospatial data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is a spatial data model, which the core, an instruction set with plain numeric values, does not provide.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video is a media format, and the core defines how programs are encoded and run, not any media.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a data format, and the core defines code encoding, not data formats for geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "The core defines a binary container for code, not for models or scenes; carrying scene content is outside an instruction set specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Mesh encoding is a content format, and the core defines instructions and module encoding, not geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is about renderer-neutral appearance data, and the core defines no rendering or appearance data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Parametric curves and surfaces are geometry data, which an instruction set does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place across devices needs sensing and networking interfaces, which the core leaves to environment-specific interfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is a media data format, and the core defines code, not captured data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "A scene graph is a content model, and the core defines instructions and modules, not scene structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "Asset rights metadata belongs to content formats, and the core defines no content or asset model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Permission grants between parties need an identity and credential layer; the core only lets a host decide which functions to import, which is not a grant readable by another party.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An embedder can establish security policies suitable for a respective environment by controlling or limiting which functional capabilities it makes available for import."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Keyframe storage is a content format, and the core defines code and its execution, not animation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Handedness and transform composition are scene conventions, and the core defines no scene or spatial semantics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Wearables and attachment points are avatar content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and streams are spatial data, and the core defines only numeric values and instructions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Identifiers for people, agents or things belong to an identity layer, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable claims are an identity-layer format, and the core defines no data interchange beyond module encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential request and presentation protocols are network interactions, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status discovery is an identity-layer mechanism, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Moving between worlds with state intact needs session and network protocols, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "Naming and resolving a world is an environment interaction, and the core defines no naming or networking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Items a user holds are world state, while the core defines no storage, user or world model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Cross-world state effects need networking and world services, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar mesh and appearance description is a content format, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar bone naming is a content convention, and the core defines code, not rigs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying permission grants with purpose and withdrawal is an identity and data-governance layer, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Declarative interactivity that travels with an asset is a content model, whereas the core is an imperative instruction set with no asset or interaction model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression names are an avatar content convention, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Binding an avatar to a verifiable identity is an identity-layer matter, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat interchange is a data format, and the core defines code encoding, not data formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Calibrated multi-view imagery is a capture data format, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Payment exchange is a network and service protocol, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Entitlement checks at use need identity, commerce and network services, none of which the core defines.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Import names are labels the host resolves when it instantiates a module, and the core leaves that resolution to the embedder; it has no scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each import is labeled by a two-level name space, consisting of a module name and an item name for an entity within that module."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Unlike export names, import names are not necessarily unique."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is a media and delivery concern, and the core defines no content components to protect.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "Linked pose structures are spatial data, outside an instruction set specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabularies and schemas belong to an identity-layer format, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Identity key rotation and recovery are an identity-layer matter, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Starting and ending an immersive session is a device interaction, which the core leaves to environment-specific interfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "Wire protocols for session traffic are networking, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "Admission decisions between worlds are network and policy exchange, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability needs user storage and a world service, and the core defines no storage or user model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Image formats and compression are content formats, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Bone hierarchy and binding are content data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes are a scene data representation, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Carrying live audio and video is networking and media transport, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Blending the live camera view needs a display and camera interface, which the core leaves to environment-specific interfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Deciding which party owns the truth for an object is a networking design matter, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Ray tests against sensed surroundings need a sensing runtime interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Learning what a client device can do is an environment interface, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order concern rendered content, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "Signed authorship records belong to content formats, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Reduced avatar representations are content data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Gaze input comes from a device interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "Descriptive scene properties belong to content formats; custom sections can carry any bytes but the core declares no structure for scene metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Rendering point clouds and volumes concerns graphics, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable asset variants are a content model, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at use needs identity and policy services, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Evidence behind a claim belongs to the identity layer, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is a rendering technique over captured data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is a device input, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned sound needs an audio interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Retargeting animation between bodies is a content operation, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking arrives from device interfaces, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Layering and overriding scene parts is a content-composition model, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker detection needs a sensing runtime interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and events are a spatial data exchange, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is an identity-layer mechanism, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Carrying live voice is networking and audio, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic imagery is a media format, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback goes through a device interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Finding worlds and services is a networking function, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "Hash-based content reference is a naming and storage scheme; the core defines no references to external content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft body and cloth simulation is a physics engine feature, not part of an instruction set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world comes from a sensing runtime, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion needs sensing and rendering interfaces, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Physical play-area bounds are reported by a device runtime, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data belong to sensing interfaces, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation is a generative service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Object generation from a prompt is a generative service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graphs are platform services, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Shared clocks across participants are a networking matter; the core defines no clock or network.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a world restart is platform persistence, and the core defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Three-dimensional text, fonts and layout concern rendering content, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Viewpoint definition is a scene and rendering concept, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space declaration concerns images and rendering surfaces, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatial audio rendering concerns audio processing, which an instruction set does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics is an audio-processing model, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Sound obstruction by geometry is an audio and scene feature, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Delivering audio over a network is networking and media transport, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Exchanging synthesis models is an audio content format, whereas the core defines general code with no audio semantics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "A learned world simulator is a generative model service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Building models from photographs is a capture pipeline, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Progressive delivery of captured scenes is a capture data format and service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is a rendering technique over captured data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing captured scenes is a content-tool function, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a generative service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Specifying what a generator should make concerns generative services, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is a content conversion, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Exchanging agent actions as time-sampled data is a data interchange format, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a capture and training pipeline, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Purchase receipts are a commerce and identity record, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Getting assets to clients at scale is a hosting and network service, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating are platform processes, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchoring needs a device tracking interface, outside an instruction set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning needs camera and positioning services, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is a spatial data description, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Declaring and aligning maps is a spatial data matter, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Declaring a geographic coverage area is a spatial data description, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers are an identity-layer mechanism, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Recipient key material for confidential delivery is an identity and security-layer matter; the core defines no encryption or key handling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Machine-readable records of a system's decision are an identity and policy record, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed registries of accepted issuers are an identity-layer service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input comes from a device interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Picking scene content from pointing input needs input and scene interfaces, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Receiving text entry is an input and output interface, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event input is a device interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Body signal streams come from device interfaces, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "An interface for outside agents to create and publish world content is a platform service, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Import names are labels resolved by the host and are not required to be unique, and the core defines no registry giving a published unit of logic a permanent, unclaimable name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each import is labeled by a two-level name space, consisting of a module name and an item name for an entity within that module."
+        },
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Unlike export names, import names are not necessarily unique."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Sending each client only what it needs is a networking design matter, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Latency hiding and reconciliation is networking behaviour, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Presence and rosters are network services, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Binding objects to external live data needs an environment interface, which the core leaves to the embedder.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Whole-world export and import is a platform and file-format matter, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records are platform data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid body simulation is a physics engine feature, not part of an instruction set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes are physics content data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints are physics content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Friction and restitution are physics content data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes are scene and physics content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "The rasterization pipeline is a graphics function, and the core defines a general-purpose instruction set with no graphics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Choosing a graphics interface is a rendering matter, and the core has no graphics interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Surface appearance models are rendering content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination are graphics functions, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing effects are graphics functions, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Rendering splats is a graphics function, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface layout is a presentation concern, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Submitting image layers to a display compositor is a display interface, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Dispatching programmable graphics-processor workloads is outside a specification of instructions for general processors, which does not define graphics hardware access.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time are display-runtime interfaces, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "The core is a code format for general processors, not a shader language, and it defines no graphics-processor execution.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote rendering needs networking and display pipelines, which the core does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets are content data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is a scene and rendering feature, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points are scene content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview images belong to asset formats, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial indexes are scene data, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "Named sets of scene objects are a scene model, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints are scene content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media synchronisation inside a scene is a media and scene concern, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Particle emitters are scene content, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering stripped provenance through fingerprints or watermarks is a content-authenticity function, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative display styling of content is a presentation concern, outside a code format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction comes from a device sensing runtime, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Per-pixel real-world depth comes from a device sensing runtime, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Environmental lighting estimates come from a device sensing runtime, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is a device sensing function, which the core leaves to the environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not, however, define how WebAssembly programs can interact with a specific environment they execute in, nor how they are invoked from such an environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Real-world scale of imported content is a content convention, and the core has plain numeric values with no unit or scene semantics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2026/CRD-wasm-core-2-20261013/",
+          "title": "WebAssembly Core Specification, release 3.0 (Candidate Recommendation Draft, 13 October 2026)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It defines the instruction set, binary encoding, validation, and execution semantics, as well as a textual representation."
+        }
+      ]
+    }
+  ]
+}

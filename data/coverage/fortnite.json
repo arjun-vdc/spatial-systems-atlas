@@ -2417,9 +2417,17 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "Fortnite is played on a screen or in virtual reality against a wholly virtual island. No camera view of the player's room enters the picture, so there is no blend to control.",
+      "note": "Epic describes its editor as a tool for publishing games into Fortnite, whose islands are virtual places. Nothing in that purpose brings a camera view of the player's room into the game, so there is no blend to control.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-glossary",
+          "title": "Fortnite Glossary, Epic Developer Community Fortnite Documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Unreal Editor for Fortnite (UEFN) is a PC application for designing, developing and publishing games directly into Fortnite."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
@@ -2507,16 +2515,32 @@
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "Islands are virtual places with no relation to a map of the real world.",
+      "note": "Epic describes its editor as a tool for publishing games into Fortnite. An island is a virtual place with no relation to a map of the real world, so it declares no map and no alignment to another.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-glossary",
+          "title": "Fortnite Glossary, Epic Developer Community Fortnite Documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Unreal Editor for Fortnite (UEFN) is a PC application for designing, developing and publishing games directly into Fortnite."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "An island is not a service bound to a region of the Earth and declares no such area.",
+      "note": "Epic describes its editor as a tool for publishing games into Fortnite. An island is a game space, not a service bound to a region of the Earth, so it declares no area of application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-glossary",
+          "title": "Fortnite Glossary, Epic Developer Community Fortnite Documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Unreal Editor for Fortnite (UEFN) is a PC application for designing, developing and publishing games directly into Fortnite."
+        }
+      ]
     },
     {
       "capability_id": "render.color",
@@ -2738,6 +2762,418 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Repeating elements can be converted into Prefabs, simplifying management and enabling easy variation."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "native",
+      "note": "In-Island Transactions let a Fortnite island offer items for V-Bucks, with the item, description and price defined in Verse and every sale kept in a central record visible in the Creator Portal. The currency is Epic's V-Bucks and the exchange works only inside Fortnite; no agent payer is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-in-fortnite",
+          "title": "In Island Transactions in Fortnite - Epic Developer Community",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In-Island Transactions provides a way for you to create your own in-game economy by offering items to players in exchange for V-Bucks."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-in-fortnite",
+          "title": "In Island Transactions in Fortnite - Epic Developer Community",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use Verse to define the item name, description, and price (in V-Bucks)."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "native",
+      "note": "In Verse, a creator defines entitlements that players buy with V-Bucks: consumable ones with a maximum count, and durable ones owned once and never used up. Code reacts to a per-player entitlement-changed event rather than to a purchase result. The grant is scoped to one island and held by Epic; resale and trading of V-Bucks purchases are not supported, and the page names no expiry or revocation rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite",
+          "title": "In-Island Transactions Overview in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When creating items or assets to sell on your island, you define them as entitlements in Verse."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/creating-items-and-offers-in-fortnite",
+          "title": "Creating Items and Offers in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Durable entitlements can only be purchased once by players and players can only own one of a given durable entitlement."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/creating-items-and-offers-in-fortnite",
+          "title": "Creating Items and Offers in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Do not use the success condition of a purchase attempt through BuyOffer , ShowOffersDialog , ConsumeEntitlement or GrantEntitlement to drive entitlement related changes. Instead, use the GetEntitlementChangedEvent ."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite",
+          "title": "In-Island Transactions Overview in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Players redeem V-Bucks for digital content. Reselling and trading content purchased with V-Bucks is not supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "none",
+      "note": "Fortnite sells items on islands for V-Bucks and Epic keeps what it calls a central, unchangeable record of every transaction, but creators see sales in the Creator Portal and Verse code sees entitlement counts and changes, not a receipt object. Searched the In-Island Transactions overview, the device template page, the best-practices page and the Verse Marketplace module pages (UnrealEngine.com and Fortnite.com) for receipt, proof of purchase, signed and signature on 2026-10-20; none found. The rest of the Fortnite documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/in-island-transactions-overview-in-fortnite",
+          "title": "In Island Transactions Overview in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In-island transactions provide a way for you to sell items, gameplay properties, or assets for V-Bucks"
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/in-island-transactions-in-fortnite",
+          "title": "In Island Transactions in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "while the system ensures a central, unchangeable record of every transaction"
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/unrealenginedotcom/marketplace",
+          "title": "Marketplace module, Verse API reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Entitlements that have changed in quantity."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "Epic reviews each island through moderation before it is published into Fortnite, so acceptance of worlds is in scope, but no configuration for a verifier to discover and apply is documented. Searched the Fortnite documentation pages Publishing Projects, How Discover Works, Verse WebAPI module, Permissions Settings, Project and Asset Security, Fortnite Data API and In-Island Transactions for allowlist, trusted, whitelist, external, domain, approved, registry, issuer and moderation on 2026-10-20; moderation is one operator's island review, with no entry, update or delegation rules.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/publishing-projects-in-unreal-editor-for-fortnite",
+          "title": "Epic Games: Publishing Projects in Unreal Editor for Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Submit your project for moderation."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "A parent can switch on voice and written conversation with AI characters from the Fortnite menu or the child's Epic account settings, and a child's account must be completed by a parent before that permission is given. Missing: the permission is held in Epic's account system and is not carried with the player or any data, and no purpose, validity or withdrawal terms are published for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/llm-conversations-in-unreal-editor-for-fortnite",
+          "title": "LLM conversations in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We have a parental control to allow voice and written communication with AI Features across Epic Games products."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/llm-conversations-in-unreal-editor-for-fortnite",
+          "title": "LLM conversations in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "their parent/guardian will need to complete their account setup before giving permission to talk with LLM-powered characters."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Creators add behaviour with their own components written in Verse, which sit beside Epic's components on an entity. Missing: there is no named or versioned extension registry and no rule for a recipient that lacks an extension, because everything runs on Epic's own server.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/working-with-entities-and-components-in-unreal-editor-for-fortnite",
+          "title": "Working with entities and components",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Components can be simple, like a mesh, or complex, like a custom Verse script."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Verse code names things by a persistent, unique path, and the editor generates a component class from each mesh, sound or particle asset in the project, so references resolve against the project's content. Missing: resolution is inside one project and Epic's compiler, and no outside address or resolver context can be supplied.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/path",
+          "title": "Verse glossary, path",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Verse paths provide a global namespace for identifying things, and borrow from the idea of web domains."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/working-with-entities-and-components-in-unreal-editor-for-fortnite",
+          "title": "Working with entities and components",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An asset-generated component is a component class that is automatically created based on preexisting content in your project, such as a mesh, sound, or particle system asset."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Epic publishes quality levels, each tied to a stated set of target platforms, and says features are disabled or scaled down at the lower levels. Missing: the levels are Epic's own scheme, content does not declare one, and no other implementation can claim one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/level-of-detail-lod-best-practices-in-fortnite",
+          "title": "Level of detail best practices",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each of these levels corresponds to a different set of target platforms."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/mobile-optimization-in-fortnite",
+          "title": "Mobile optimization in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Due to hardware limitations, some features are disabled or scaled down at lower-quality levels."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Island settings decide who may join: public games can be joined by anyone and private games only by a party, with a maximum player count and queue limits. Missing: the answer is applied by Epic's matchmaking and the platform publishes no pre-arrival response with a validity limit or explanation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/island-settings-in-unreal-editor-for-fortnite",
+          "title": "Island settings in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Public games can be joined by anyone. Private games are restricted to groups of players in the same party."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Volume data is not an importable scene representation: the closed list of importable file types names meshes, textures, audio and a few data files, with no volume or cell format. Searched the Importing Assets page and a title search of 2,358 unique documentation page names recovered from the sitemap for voxel on 2026-10-20; the only match is a glossary definition of the word. The search was one page plus page names, not the full documentation, so the absence is unverified.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/importing-assets-in-unreal-editor-for-fortnite",
+          "title": "Importing assets in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Below is a list of supported file types you can import and use today."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "partial",
+      "note": "A prefab instance can override its components to differ from the original prefab, so alternatives of one authored asset exist. Missing: overrides are unnamed per-instance changes, with no named variants and no selection mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/prefabs-and-prefab-instances-in-unreal-editor-for-fortnite",
+          "title": "Prefabs and prefab instances",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can override components in a prefab instance to make changes unique to that single instance."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "native",
+      "note": "Each island carries a still thumbnail image, uploaded through the Creator Portal, that appears in Discover so players can preview it without loading it. The image is set per island, not per individual asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/thumbnail-image-policies",
+          "title": "Thumbnail image policies",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A thumbnail is a still image (not a video) of your island that invites players to learn more."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/thumbnail-image-policies",
+          "title": "Thumbnail image policies",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can upload thumbnails through your Creator Portal account."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "native",
+      "note": "Imported meshes get bounding boxes used for rendering, culling, lighting and physics, and World Partition splits an island into grid cells that load around a streaming source with simplified stand-ins for far content. These structures stay inside the cooked island and cannot be exported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/bounding-box",
+          "title": "Fortnite glossary, bounding box",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Bounding boxes are used for things like rendering , culling , lighting, and physics ."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/streaming-and-hlods-in-unreal-editor-for-fortnite",
+          "title": "Streaming and HLODs in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "World Partition uses Streaming to load grid cells around a player, or streaming source , in and out of memory."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "partial",
+      "note": "Physics props can have rotation and translation constraints that stop them moving along chosen axes. Missing: these constrain a prop against fixed axes, not against another node's transform, and nothing published defines evaluation rules between nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/getting-started-with-physics",
+          "title": "Getting started with physics",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can add Rotation and Translation constraints to your props to prevent them from moving along certain axes."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Fortnite's Verse input documentation lists only gamepad, keyboard, mouse and touch as input hardware, with no body-signal input. Searched the Player Input Device Info page, the Verse.org Input module page and the Fortnite documentation home for heart, biometric, physiolog, wearable, sensor, accelerometer and health on 2026-10-20; no match, but the full documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/player-input-device-info-in-fortnite",
+          "title": "Player Input Device Info in Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Learn how to detect a player's available input hardware and preferred input method through the Verse Player Input Device Info API."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "Unreal Editor for Fortnite embeds an MCP server that lets a local agent read and write Verse files, edit scene-graph entities, place and configure Creative devices and run play sessions, with file operations confined to the creator's project. It works only against a running local editor with Python scripting and the toolsets enabled, and no toolset for publishing an island is listed; Python-made assets can fail the separate validation that precedes publishing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/uefn-mcp?lang=en-US",
+          "title": "UEFN MCP | Fortnite Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "UEFN MCP embeds a Model Context Protocol (MCP) server inside the UEFN editor process. Any MCP-compatible AI agent connects to it over local HTTP and drives the editor through typed tools, grouped into toolsets."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/uefn-mcp?lang=en-US",
+          "title": "UEFN MCP | Fortnite Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Confines Verse file operations to the creator’s project."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/python-tools-in-uefn?lang=en-US",
+          "title": "Python Tools in UEFN",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Some tasks you perform with the Python API might produce assets that will fail validation and publish for your UEFN project."
+        }
+      ]
+    },
+    {
+      "level": "none",
+      "confidence": "unverified",
+      "note": "Epic's only documented outside data feed is the Fortnite Data API, which gives island-level engagement metrics and states that no personal player information is shared. Searched the Fortnite Data API page of the Fortnite documentation on 2026-10-20 for personal, aggregate, metric and xapi; found only aggregated island metrics. The wider Fortnite and Unreal Editor for Fortnite documentation was not searched.",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/using-fortnite-data-api-in-fortnite",
+          "title": "Using the Fortnite Data API, Epic Games Fortnite documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Fortnite Data API is a new publicly available API that provides access for developers to key performance metrics from all Epic-made game modes, and eventually for all islands, both Epic-made and developer-made."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/using-fortnite-data-api-in-fortnite",
+          "title": "Using the Fortnite Data API, Epic Games Fortnite documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "No personal player information is shared through the API. All metrics focus strictly on aggregated engagement data for islands, which maintains player privacy and confidentiality."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "A UEFN project is a folder on the creator's own disk that can be zipped whole, Verse source and content included, and a Creative island can be converted into such a project. Missing: Epic states there is no export or package command, the project holds Unreal's own asset files, conversion from Creative is one-way, and nothing is said about what happens if Fortnite closes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fab/upload-unreal-editor-for-fortnite-source-to-fab?lang=en-US",
+          "title": "Upload Unreal Editor for Fortnite Source to Fab, Fab documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A UEFN Source listing contains your whole Unreal Editor for Fortnite (UEFN) project as a .zip file."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fab/upload-unreal-editor-for-fortnite-source-to-fab?lang=en-US",
+          "title": "Upload Unreal Editor for Fortnite Source to Fab, Fab documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "UEFN has no export or package command, and you can’t publish to Fab from inside the editor. You must create the .zip file yourself from your project folder on your computer."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/importing-fortnite-islands-into-unreal-editor-for-fortnite?lang=en-US",
+          "title": "Importing Fortnite Islands into Unreal Editor for Fortnite, Fortnite documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Importing a Fortnite island into UEFN creates a fork in the editing access for a project. Once converted to UEFN, a Fortnite island project can only be edited within UEFN, using UEFN tools and features."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "The Fortnite and UEFN documentation read describes no remote rendering feature: its streaming system loads world cells around the player into the local machine's memory. Searched the Fortnite documentation home page and the Streaming and HLODs page on 2026-10-20 for cloud, remote, pixel streaming and stream; only world-cell streaming found (documentation not searched in full).",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/streaming-and-hlods-in-unreal-editor-for-fortnite",
+          "title": "Streaming and HLODs in Unreal Editor for Fortnite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This reduces the amount of data that your machine has to remember to the cells surrounding a player character."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Fortnite's creator tools are for building virtual islands and games, so recognising a real physical object from its 3D model is outside what they are for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/fortnite-documentation",
+          "title": "Fortnite Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Welcome to the official Fortnite Documentation — the source of truth for everything to do with building your own islands in Fortnite."
         }
       ]
     }

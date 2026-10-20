@@ -992,16 +992,32 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "glTF is a transmission format for models and scenes. It says what to draw; how a runtime mixes that drawing with a live camera view of the room is the runtime's own presentation and no glTF property touches it.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content. Mixing a live camera view of the room with that content is how a runtime presents what it loaded, and no glTF property touches it, so the capability falls outside what the format is for.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "A face and body stream comes off a device's sensors at run time. glTF carries no input model at all, and the face data it can hold is a stored morph target, which is scene.morph.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content, which is stored data. A live face and body stream comes off a device's sensors at run time and glTF has no input model; the face data it can hold is a stored morph target, which is scene.morph.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -1021,30 +1037,62 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "glTF publishes no units of logic to name. It registers extension name prefixes so two vendors cannot collide on a property name, which is a naming rule for the format, not an address for code somebody else can depend on.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content, not the publication of code. Behaviour graphs under KHR_interactivity travel inside the asset and are not separately published or named units, and the extension name prefixes it registers are a naming rule for the format, not an address for code somebody else can depend on.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "No finished content passes through Khronos on its way to an audience. glTF is a file format, so there is no place in it where a review could stand, and it carries no field saying what review an asset has had.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content: it is a file format, and no finished content passes through Khronos on its way to an audience. There is no place in it where a review could stand and no field saying what review an asset has had.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "glTF has no geographic frame of any kind, so it can neither declare a map of a place nor publish a transform between two maps. It is placed in the world by whatever loads it.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content in its own local axes. It has no geographic frame, so it can neither declare a map of a place nor publish a transform between two maps; whatever loads the asset places it in the world.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "A glTF file is content, not a service bound to a place, and it declares no geographic area it applies to. Its bounds are in its own local axes.",
+      "note": "glTF states its purpose as the transmission and loading of 3D content, so a file is content and not a service bound to a place. It declares no geographic area it applies to; its bounds are in its own local axes.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format. glTF bridges the gap between 3D content creation tools and modern graphics applications by providing an efficient, extensible, interoperable format for the transmission and loading of 3D content."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1538,6 +1586,1035 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "glTF defines an extensible, common publishing format for 3D content tools and services that streamlines authoring workflows and enables interoperable use of content across the industry."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "glTF delivers three-dimensional assets to a runtime. It defines no way for a person or agent to receive payment requirements, authorize a payment or get a settlement result.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "glTF is a format for delivering asset content; it defines no holder, grant, expiry or revocation, so whether a given user may load or use a file is left to whoever serves or runs it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "glTF is a delivery format for model content, so a purchase or grant record for a glTF asset would be issued by a store or credential system outside the file; the format itself defines no receipt.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "glTF delivers model data and defines no rules for which issuers, services or worlds a verifier should accept, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "partial",
+      "note": "Morph targets carry the shapes a face needs, and tools name them through an unofficial mesh.extras.targetNames convention. No expression or viseme vocabulary exists in the specification or any extension, so names do not survive a move between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.7.2 Meshes, morph targets",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "While the glTF 2.0 specification currently does not provide a way to specify names"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "A joint node may have other nodes attached, such as a sword on a hand, so an item can be parented to a bone and carried in the file. Nothing names attachment points or fixes them across avatars, and bone names are themselves unspecified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.7.3 Skins",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A joint node MAY have other nodes attached to it, even a complete node sub graph with meshes."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Binding an avatar to a verifiable identity or credential is an identity-layer function that a model file does not perform; the file can only carry free-text copyright or metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "none",
+      "note": "Animation channels target nodes by index, and no bone naming or humanoid mapping is defined, so an animation authored for one body cannot be mapped to another by the format. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for retarget, bone, humanoid and rig on 2026-10-20; the only hit is the specification's example of animations targeting a model's own bones.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.11 Animations",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "each contain multiple channels targeting a model"
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.7.3 Skins",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The mesh MAY be skinned using information provided in a referenced skin object."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "partial",
+      "note": "MSFT_lod lets a node or material carry lower-detail alternatives, which an avatar asset can use. It is a single-vendor extension outside the Khronos patent framework and defines nothing avatar-specific, such as crowd representations or device tiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MSFT_lod/README.md",
+          "title": "MSFT_lod, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension adds the ability to specify various Levels of Detail (LOD) to a glTF asset."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry (main, head a7963af6dcb2)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Vendor extensions are not covered by the Khronos IP framework."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "The format has no way to declare that a component is encrypted or which protection scheme applies. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for encrypt, DRM, content protection, protection scheme, CENC, watermark and fingerprint on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "GLB packs the description, binary data and images into one file, and KHR_interactivity behaviour graphs travel inside it. It packages an asset, not a runnable experience: there is no entry point, dependency list or launch manifest.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 4 Binary glTF File Format Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a container format, Binary glTF is introduced that enables a glTF asset, including JSON, buffers, and images, to be stored in a single binary blob."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "partial",
+      "note": "The specification lets an asset be split into separate files for progressive loading, and ratified compression extensions such as EXT_meshopt_compression cut transfer size. It defines no caching, cache-key, content addressing or edge-delivery signalling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.8 URIs",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "separate files may be preferred to reduce the total amount of data requested"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/EXT_meshopt_compression/README.md",
+          "title": "EXT_meshopt_compression",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To optimize for delivery size, general-purpose compression such as gzip can be used"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "An asset declares its contract through the minimum version and the extensions it requires, so a reader can tell whether it can load the file. There are no named profiles or levels bundling a set of features with stated requirements.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.12 Specifying Extensions",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All glTF extensions required to load and/or render an asset MUST be listed in the top-level extensionsRequired array"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, Extension Mechanics",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This allows an engine to quickly determine if it supports the extensions needed to render the model without inspecting the"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. The specification places assets in its own local axes and defines no position or orientation against the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.4 Coordinate System and Units",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF uses a right-handed coordinate system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "partial",
+      "note": "The format fixes one local frame for every file: right-handed, +Y up, +Z forward, metres. It has no field to declare an Earth-referenced coordinate system, so geographic frames must come from a carrier such as a tileset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.4 Coordinate System and Units",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF uses a right-handed coordinate system."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.4 Coordinate System and Units",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The units for all linear distances are meters."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Fixing content to a place across devices and sessions needs a runtime service holding anchors; a file has no place to keep one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Streaming by tile is done by a container that references many assets, with glTF as the payload; a glTF file is one self-contained asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. The base identifier for a person, agent or thing belongs to an identity system; a model file only names its own parts, and those names are not guaranteed unique.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Expressing verifiable claims about a subject is done by credential formats, not by a model file, which carries only free-text copyright and descriptive metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Requesting and presenting credentials is a protocol between parties; a file format defines no conversation and no parties.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Granting what a subject may do needs an issuer and a verifier, neither of which a model file has; KHR_interactivity behaviour graphs carry no permission model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Carrying grants of permission with scope, purpose and withdrawal is a function of a consent or credential system; the format has no subject, holder or revocation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Selective disclosure acts on credentials held by a person, and a model file has no holder or claims to reveal in part.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Portable relationships and standing belong to a social or reputation system; an asset file has no people or relationships to describe.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. The format can state licence terms through KHR_xmp_json_ld but not act on them; acting at the point of use is a function of the store or runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Starting, running and ending an immersive session is an act of a runtime talking to a device, and a stored asset has no session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. The format defines no actors or agent interface; KHR_interactivity offers custom events for external execution environments but does not define agents.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension aims to enhance glTF 2.0 by adding the ability to encode behavior and interactivity in 3D assets."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. A wire protocol for session traffic is a networking layer, and the format has none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Joining a running world with authentication is a service and protocol function; a file cannot be joined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Leaving one world and arriving in another with state intact needs sessions on both sides, and a model file has no state to hand over.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Naming a place and resolving it to a destination is a naming-system function; glTF only resolves URIs for its own buffers and images.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Deciding who holds the truth for an object needs a live world with several writers, and a file has one author.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Sending each client only what it needs is a server function applied to a live session, not a property of a stored asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Hiding latency and reconciling afterwards operates on a live networked simulation, which a stored asset does not contain.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Knowing who is where across operators needs live participants, and a file describes none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Finding worlds, nodes or services is a registry or search function; a file describes content, not services.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "partial",
+      "note": "MPEG_scene_dynamic points to a media track whose samples carry scene description updates with timing, so a scene can be updated over time from a source. It is a one-way timed update stream from a single source, with no rule on which state is shared between participants or at what rate.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_scene_dynamic/README.md",
+          "title": "MPEG_scene_dynamic, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The track samples as defined in ISO/IEC 23090-14 contain scene description updates and provide timing to perform these updates."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension is for single user experiences only and does not deal with any of the complexity involved in multi-user networked experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "partial",
+      "note": "MPEG_media names media sources and their tracks, and its address may follow the ISO/IEC 23090-14 scheme for real-time streams, with DASH, ISOBMFF and SDP track addressing. glTF only references the stream; carrying the live audio or video is left to the referenced protocol.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If the reference media is a real-time media stream, then the uri may follow the referencing scheme defined in ISO/IEC 23090-14:Annex C."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "MPEG_media starts playback at a time on the scene's presentation timeline and can start groups of media together, and MPEG_animation_timing aligns media timelines with glTF animation. This orders events inside one presentation, not across participants, and no shared network clock is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All media that have the same autoplayGroup identifier shall start playing synchronously as soon as all autoplayGroup media are ready."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_animation_timing/README.md",
+          "title": "MPEG_animation_timing, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "enables alignment between media timelines and animation timeline defined by glTF 2.0"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A startTime of 0 means the presentation time of the current scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Items a user holds, and whether they travel, is account or store state; a model file is one item and holds no owner.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "glTF is an asset delivery format and says so itself. Settings and accessibility choices that follow the user are user state kept by a service, and an asset file has no user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "none",
+      "note": "Geometry is triangle, line or point primitives in accessors, with no curve or surface in mathematical form for a receiver to evaluate or tessellate. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for NURBS, parametric, Bezier, B-spline, B-rep, subdivision and CAD on 2026-10-20; the only hits are animation interpolation and EXT_mesh_manifold, which keeps triangle meshes watertight.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/EXT_mesh_manifold/README.md",
+          "title": "EXT_mesh_manifold, glTF multi-vendor extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Manifoldness is critical for reliability of geometric algorithms that operate on solid objects, and so is important in CAD, FEA (Finite Element Analysis), CFD (Computational Fluid Dynamics), and more."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.7.2 Meshes",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Meshes are defined as arrays of primitives ."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "No voxel or cell-volume representation exists; the nearest scene representation is Gaussian splats, which are stored as points. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for voxel, OpenVDB, NanoVDB and density grid on 2026-10-20; the only hit is a reference list in NV_materials_mdl.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "KHR_xmp_json_ld recommends the XMP thumbnail namespace for assets that carry descriptive metadata, so a preview image can ride in the metadata packet. The specification has no thumbnail property and no rule for where a viewer finds one, and the recommendation is non-normative.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we recommend glTF creators to use the following preferred list of namespace prefixes and URIs"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "http://ns.adobe.com/xap/1.0/g/img/"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "Any node can be named and can gather child nodes, and scenes list root nodes, so a group can be addressed by index. Names are not guaranteed unique, each node has at most one parent so a node cannot belong to two groups, and there are no rule-defined sets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.5.2 Nodes and Hierarchy",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The node hierarchy MUST be a set of disjoint strict trees."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.3 Indices and Names",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "These property values are not guaranteed to be unique as they are intended to contain values created when the asset was authored."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "none",
+      "note": "No declarative transform constraint (look-at, aim, copy-transform or inverse kinematics) is defined; a KHR_interactivity behaviour graph can script one node's transform from another's each tick, which is general scripting, not an authored constraint with defined evaluation rules. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for constraint, look-at, aim, inverse kinematic and IK on 2026-10-20; no match. The only related item is the joint in the unmerged KHR_physics_rigid_bodies draft, a physics rule listed at review draft.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.5.2 Nodes and Hierarchy",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The node hierarchy MUST be a set of disjoint strict trees."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, operation tables (Khronos glTF head a7963af, status: Complete, Ratified by the Khronos Group)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Set an object model property value"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, event/onTick operation (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The flow to be activated when the tick event happens"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, in-progress table",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| KHR_physics_rigid_bodies | Review Draft |"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/13ffdd2d681736c3fdbac0d53b4f490770c178e4/extensions/2.0/Khronos/KHR_physics_rigid_bodies/README.md",
+          "title": "KHR_physics_rigid_bodies draft proposal, pull request 2424, head 13ffdd2d681736c3fdbac0d53b4f490770c178e4",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Constrains the motion of this node relative to another."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "none",
+      "note": "No emitter or particle-system definition exists in the core or any extension. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for particle system, emitter, sprite and billboard on 2026-10-20; the only hits are a visibility extension that names particles among features a node may carry and a vendor example of an attach point for a separately built particle effect.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_node_visibility/README.md",
+          "title": "KHR_node_visibility, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "point clouds, particles, billboards, volumetric effects, etc., are not rendered"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "A copied object should carry its metadata along, but when that association is stripped nothing locates the record again. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for C2PA, content credentials, soft binding, fingerprint, watermark, perceptual hash, digest and checksum on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Metadata is used to transmit information (such as attribution, licensing, creation date) about the glTF asset."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When a glTF object (for example a Mesh) is copied from a glTF file to another"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "Display properties such as visibility and material choice are set in the asset or switched by variant name, and no separate rule document selects them from content metadata. Searched the glTF 2.0.1 specification and all 62 extension documents under extensions/2.0 of the Khronos glTF repository (head a7963af6dcb2: ratified, multi-vendor, vendor, archived and merged drafts; open pull request drafts excluded) for style, stylesheet, styling rules and filter by metadata on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_materials_variants/README.md",
+          "title": "KHR_materials_variants, glTF ratified extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension allows for a compact glTF representation of multiple material variants of an asset, structured to allow low-latency switching at runtime."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "glTF is a delivery format for finished assets, so it has no running-application input path on which body signals such as heart rate or skin conductance could arrive, and it defines no privacy terms for them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "glTF is a file format for delivering one asset, so it has no service or tool through which an outside agent could create or publish content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "glTF is a format for delivering a model to a runtime; it describes the model and has no feature for tying objects to a sensor, machine controller or building system, which is left to the application that loads it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "glTF delivers 3D assets to a runtime; it defines no statement of what a person did in a world or with what result, and a learning record would belong to the application or a record standard such as xAPI.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "glTF is a delivery format for one runtime asset; it defines no host, so exporting or importing a whole place and stating what survives a host closing falls outside it (a host could write glTF files, but the format itself says nothing about that).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "glTF is an asset format; it carries a model to a renderer that draws it on the device running it, and it defines no server-side rendering or frame streaming.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "glTF delivers models and scenes and defines no sensing, so it neither recognises a physical object nor reports its pose; a glTF model can only be the input a separate tracker matches against.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
         }
       ]
     }

@@ -4,8 +4,8 @@
 
 An evidence-backed map of what spatial-computing systems actually do.
 
-57 subjects scored against 164 capabilities in 14 groups: 6,996 claims drawn from
-1,963 distinct sources, with 64 recorded conflicts and 22 unverified claims
+66 subjects scored against 175 capabilities in 15 groups: 10,659 claims drawn from
+2,687 distinct sources, with 62 recorded conflicts and 141 unverified claims
 counted separately rather than blurred into the rest.
 
 Every claim here is tied to a source you can open. That is the point of it. The
@@ -15,7 +15,7 @@ vendor claims at face value.
 
 ## Read the map
 
-The published map is at **https://openspatials.com/msf/map/**.
+The published map is at **https://openspatials.com/msf/atlas/**.
 
 ## What is here
 
@@ -127,7 +127,7 @@ in something you make, mention where it came from.
 
     Spatial Systems Atlas by Grig Bilham
     https://github.com/openspatials/spatial-systems-atlas
-    https://openspatials.com/msf/map/
+    https://openspatials.com/msf/atlas/
 
 If you quote a figure, give the date you took it as well. The map is rebuilt as
 the research grows and the numbers move.

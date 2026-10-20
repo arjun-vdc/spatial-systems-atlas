@@ -1082,16 +1082,46 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "Web of Worlds describes worlds and the ways in and out of them. How a client presents a world against a camera view of the room is the client's own affair and the API says nothing about it.",
+      "note": "The WoWAPI describes an API for opening and following a spatial world session by URL, and the whitepaper describes a network of linked 3D experiences like websites. Web of Worlds describes worlds and the ways in and out of them. How a client presents a world against a camera view of the room is the client's own affair and the API says nothing about it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/README.md",
+          "title": "Web of Worlds WoWAPI, OpenSpatialWorld README (commit d39a1a0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Open continuous spatial experience and session for a given device and User-Agent/browser (UA)"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/README.md",
+          "title": "Web of Worlds initial MSF whitepaper README (commit 988f369)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Web of Worlds (WoW) proposes a new model for the metaverse: a network of interconnected 3D experiences, similar to how websites form today’s web."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "The API is about a world's description and a visitor's session, not about reading the visitor's face or body from a sensor.",
+      "note": "The WoWAPI describes an API for opening and following a spatial world session by URL, and the whitepaper describes a network of linked 3D experiences like websites. The API is about a world's description and a visitor's session, not about reading the visitor's face or body from a sensor.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/README.md",
+          "title": "Web of Worlds WoWAPI, OpenSpatialWorld README (commit d39a1a0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Open continuous spatial experience and session for a given device and User-Agent/browser (UA)"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/README.md",
+          "title": "Web of Worlds initial MSF whitepaper README (commit 988f369)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Web of Worlds (WoW) proposes a new model for the metaverse: a network of interconnected 3D experiences, similar to how websites form today’s web."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -1140,10 +1170,18 @@
     },
     {
       "capability_id": "geo.map-align",
-      "level": "out-of-scope",
-      "note": "A world may carry a GeoPose that puts it somewhere on Earth. That is a placement, not a declared map with a version, and the API publishes no transform between two maps of a place.",
+      "level": "none",
+      "note": "The world, user, view, portal and spatial schemas of OpenSpatialWorld, and the asset schema of OpenSpatialAsset, can each carry a GeoPose, so placement on Earth is in scope, but nothing declares a map of a place with a version and lifecycle, and nothing publishes a transform that aligns one map to another. Searched the WoWAPI repository at commit d39a1a0 (the OpenSpatialWorld, OpenSpatialAsset and OpenUserManifest OpenAPI files and their READMEs, the whole normative surface) on 2026-10-19 for map, align, transform, crs, coordinate, lifecycle and geo; found geoPose properties on those schemas (the user manifest schema holds only a name, an age and an avatar asset address) and a localTransform for scene nodes only.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "Web of Worlds WoWAPI, OpenSpatialWorld API.yaml (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "geoPose:\n          type: object\n          properties:\n            position:"
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
@@ -1269,6 +1307,2171 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Web of Worlds makes virtual worlds addressable and linkable with ordinary web machinery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "none",
+      "note": "The whitepaper wants avatar animations to behave the same across devices, but an avatar is one address string with no bone names, hierarchy or rig rule. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for skeleton, bone, rig, humanoid, HAnim on 2026-10-20; the only hit is HAnim listed among the standards the working group recognises.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Avatars maintain accurate height, clothing, animations, and lip‑sync across devices."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        AvatarURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "none",
+      "note": "Lip-sync across devices is named as a goal, but no expression, viseme or blend-shape vocabulary exists, and the avatar is one address string. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for expression, viseme, facial, blend shape, morph on 2026-10-20; the only hit is the lip-sync sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Avatars maintain accurate height, clothing, animations, and lip‑sync across devices."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        AvatarURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "none",
+      "note": "The whitepaper says the user manifest should hold wearables links and accessories, but the manifest schema has only a name, an age and an avatar address, and no attachment point is defined anywhere. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for wearable, attach, accessory, apparel on 2026-10-20; the hits are whitepaper statements of intent only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Storage of users’ data such as avatar links, wearables links, preferences, consent flags, fiat/crypto payment handles, NFT pointers, VC’s (or pointers to them), public profile fragments, and privacy metadata."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "none",
+      "note": "The whitepaper wants avatar and identity carried together in the user manifest, but the manifest holds only a name, an age and an avatar address, and nothing binds the avatar to an identifier or credential. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for avatar with identity, DID, credential, binding on 2026-10-20; the hits are whitepaper statements of intent only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://webofworlds.github.io/initial_MSF_Whitepaper/",
+          "title": "Web of Worlds initial MSF whitepaper (summary page)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Avatar & identity"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "none",
+      "note": "Animation reaching different bodies is implied by the goal of consistent avatar animations across devices, but no clip format, shared rig or retarget rule is defined, and the avatar is one address string. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for retarget, skeleton, animation clip, rig on 2026-10-20; no hit beyond the animation goal sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Avatars maintain accurate height, clothing, animations, and lip‑sync across devices."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        AvatarURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "The consistency use case expects experiences to adapt to each device's capabilities, but an avatar is one address with no reduced versions, crowd representation or selection rule. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for avatar level of detail, LOD, crowd, reduced on 2026-10-20; the only LOD hit is a reference-list article title.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "remain uniform across platforms, while adapting appropriately to each device’s capabilities and the creator’s design intent (e.g., full immersion in VR)."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        AvatarURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "none",
+      "note": "Some features are listed as optional and the whitepaper expects different implementation levels, but there is no way to declare an extra field or feature, no extension names, and no rule for a recipient that does not know one. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for extension, extend, vendor, optional, profile on 2026-10-20; the hits are optional-feature lists, a file-extension hint, and the whitepaper's future plans for profiles and levels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Not every implementation has to provide all features, and different levels will play a role here in the future classification."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/README.md",
+          "title": "OpenSpatialAsset README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The following API feature are option and only provided in some implementation"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Asset and node addresses are plain strings fetched over HTTP, with a 302 reply for a moved resource, so ordinary web resolution works. The whitepaper wants a harmonised resolver across URL, DID and URN addresses, but no resolver interface, base-address rule or relative-reference rule is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        '302':\n          description: Resource is located elsewhere."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Generic URI with harmonized resolver (e.g URL, DID, URN )"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "The whitepaper says signatures and encryption can be applied to a content package, and its plan lists role-based access and encryption of assets, but no field declares a protection scheme. The only control is an access check that answers 200, 403 or 404. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for encrypt, signature, DRM, protect, integrity, watermark on 2026-10-20; the hits are whitepaper statements of intent and the access-check replies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Digital signatures for authenticity, and data encryption for privacy, can each be applied when appropriate as part of a content package."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        '403':\n          description: Forbidden. User does not have authorization to view this resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "A world is delivered as a web application served at its root address, but the contract is a bare text/html reply with no package format, manifest, entry point or list of contents. Asset downloads add a filename hint for the receiving loader.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HTTP header which defines a filename for the content. Will be used as a fallback if Content-Type is not given."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "The Spatial and Asset descriptors each carry a geoPose, so content can be pinned to a place that any device reading the same address sees, and a world is meant to be a persistent address. The pose has no declared reference frame (see the geo.pose entry), and there is no anchor identity, lifetime or relocalisation rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "    Spatial:\n      type: object\n      properties:\n\n        id:\n          type: number\n\n        rootNodeID:\n          type: number\n\n        geoPose:\n          type: object\n          properties:\n            position:"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Central to this vision is the concept of a persistent and collaborative spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "none",
+      "note": "3D Tiles is listed among the standards the working group recognises, and tiled delivery is part of its efficient-delivery plan, but the asset interface returns one whole model per address and defines no tileset, tile index or streaming rule. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for tile, 3D Tiles, stream, level of detail on 2026-10-20; the hits are the standards table, the roadmap sentence and a statement that formats can be streamed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "how to review and evaluate the current solutions for delivering 3D assets and experiences (X3D, glTF, 3DTiles, USDz) and how to identify gaps and requirements."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      description: Used to negotiate and fetch a data instance as resources."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "none",
+      "note": "A user, view or node carries one pose at a time, with no time-stamped pose list, live pose stream or interpolation rule. The asset README mentions a temporal dimension and a time fragment only for model addresses, as an open opportunity. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for trajectory, time series, interpolation, keyframe, timestamp on 2026-10-20; no match beyond that README text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/README.md",
+          "title": "OpenSpatialAsset README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Spatial (3 or more) and temporal dimensions"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/README.md",
+          "title": "OpenSpatialAsset README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Missing “Model Fragment URI”: Spatially-, temporally- and structure-based addressing"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "partial",
+      "note": "Nodes link to a parent and children and each carries a local transform, so a chain or tree of related frames can be exchanged. The transform is an array of numbers with no declared length or order and no frame identifiers exist, so a receiver cannot rebuild the frames consistently.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        parent:\n          type: integer\n        children:\n          type: array\n          items:"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        localTransform:\n          type: array\n          items:\n            type: number"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place on one device is a service of the visiting client and is never shared, so it lies outside a specification whose purpose is joining, connecting and sharing worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering a precise pose from camera images is a service of the visiting client or a separate positioning provider, and the specification reads no camera or sensor data; its purpose is joining, connecting and sharing worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "A structured description of interior spaces is a map or building-model format; the project carries a world as a scene graph and its own scope is joining, connecting and sharing worlds, so it defines no interior-space structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Identified spatial zones with typed events and summaries are an application data format; the project's scope is joining, connecting and sharing worlds, and it creates no new data format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "none",
+      "note": "The whitepaper says a wallet builds verifiable presentations when the user visits a world, but no request message, presentation message, endpoint or sequence is defined. The only exchange is a HEAD access check that answers 200, 403 or 404. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for credential, presentation, wallet, verifier, OAuth, SSO on 2026-10-20; the hits are whitepaper statements of intent, a single-sign-on mention without a protocol, and the access-check replies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Holds the User Manifest (or pointers to it), manages consent prompts, builds Verifiable Presentations and selective/derived proofs – when visiting a virtual world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      description: Used to authorize resources and simultaneously check whether ETag still matches cached ETag."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "none",
+      "note": "The whitepaper says users decide who may access each data item, but no grant, token or permission statement exists. Access is a server-side decision visible only as a 403 or 404 reply. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for permission, capability, grant, authorization, OAuth on 2026-10-20; the hits are whitepaper statements of intent and the access-check replies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Permissions: You decide who has access to your data (on a per data item basis)"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        '403':\n          description: Forbidden. User does not have authorization to view this resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "none",
+      "note": "The whitepaper puts private keys in the user's wallet and lists DID resolution among recognised standards, but no rotation, revocation, recovery or key-discovery rule is stated, and no key appears in any API file. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for rotate, revoke, recover, key, DID resolution on 2026-10-20; the only key hits are the wallet sentence and the standards table.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A DID-enabled wallet (mobile/extension/hardware app) that stores DIDs, private keys and private Verifiable Credentials."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "The whitepaper expects verifiable credentials to travel in the manifest, but nothing says how a world learns that one was suspended or revoked, and the manifest schema carries no credential. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for revoke, suspend, status, expiry, validity on 2026-10-20; the only hits are the word status in resource summaries.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Storage of users’ data such as avatar links, wearables links, preferences, consent flags, fiat/crypto payment handles, NFT pointers, VC’s (or pointers to them), public profile fragments, and privacy metadata."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "none",
+      "note": "The whitepaper names consent flags, access consent and data with a limited life, but the manifest schema defines no consent field, scope, purpose, validity period or withdrawal route. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for consent, permission, purpose, withdraw, limited life on 2026-10-20; the hits are whitepaper statements of intent only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "which data will require access notification to the User and access consent from the User."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The User will also be able to define which data has a limited life when passed to a Virtual World."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "none",
+      "note": "The Digital YOU manifest is meant to travel with the person, but its listed contents (avatar, preferences, consent, payment, credentials) include no friends, memberships or standing, and the schema has none. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for friend, social, relationship, reputation, standing on 2026-10-20; the only hits are use-case sentences about sharing with friends and social experiences; 'follow' means following a world by its address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Universal Manifest holds the metadata and links that form the parts of Digital YOU, enabling digital presence consistency across Metaverse experiences"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "none",
+      "note": "Assets declare a licence and a cost as untyped strings, but nothing identifies a licence scheme or lets a recipient act on the terms when using the content. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for licence, rights, usage terms, cost on 2026-10-20; the only hits are the licence and cost strings in the world and asset schemas.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            license:\n              type: string\n            cost:\n              type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "none",
+      "note": "The manifest is meant to carry credentials and proofs, but no evidence, issuer, assurance level or method field is defined for any claim; the age is a bare number. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for assurance, evidence, issuer, verifier, method on 2026-10-20; the only hit is the whitepaper's call for common understanding among wallet makers, issuers and verifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Standardization of the User Manifest will be required to ensure Wallet creators, Issuers, Verifiers, and Virtual Worlds have a common understanding and usage of User Manifest formats and naming conventions."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenUserManifest/API.yaml",
+          "title": "OpenUserManifest API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            name:\n              type: string\n            age:\n              type: number\n            avatarAssetURI:\n                type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Selective proofs, zero-knowledge proofs and anonymity are named as intentions, but a user is a plain integer in a path, the manifest has no pairwise identifier or presentation format, and correlation risk is not discussed. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for pairwise, unlinkable, correlation, anonymity, zero-knowledge on 2026-10-20; the hits are whitepaper statements of intent only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Security and access - access cards, event tickets, verifiable credentials, zero-knowledge proofs"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        - name: userId\n          in: path\n          description: ID of user to return\n          required: true\n          schema:\n            type: integer"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Encryption of assets and data is named as a plan, but no recipient key, key agreement or algorithm field exists, and transport security is left to the existing web stack. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for encrypt, key agreement, recipient key, algorithm on 2026-10-20; the hits are whitepaper statements of intent only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Role-based access and encryption of assets"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Existing Web stacks provide authentication and encryption"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "none",
+      "note": "The whitepaper wants the user notified when a world accesses protected data, but no record of what a world evaluated or did with it, and no signed or hashed account of that, is defined. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for receipt, notification, audit, log, record on 2026-10-20; the only hit is the access-notification sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "which data will require access notification to the User and access consent from the User."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "none",
+      "note": "The portable-content use case asks for behaviour graphs that travel with an asset, but the API carries no behaviour description: assets arrive as model media types and a node has only a transform and two address strings. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for behaviour, script, event, interaction, trigger on 2026-10-20; the hits are use-case sentences only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This use case emphasizes the need for interoperable standards in asset representation—including geometry, appearance, lighting, sensors, and behavior graphs—so that personal digital content is portable, trustworthy, and usable across diverse metaverse worlds."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        spatialAssetURI:\n          type: string\n        appearanceURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "none",
+      "note": "A world's experience arrives as a web application, so any containment comes from the visiting browser; the specification says nothing about running untrusted world content safely or what that content may do. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for sandbox, isolation, untrusted, permission, content security on 2026-10-20; the API files have no match, and the whitepaper hits are an unrelated use of the word isolation and data-permission requirements for personal data, none about running guest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Portable personal content allows interactive 3D assets—complete with lighting, behaviors, and familiar controls—to move seamlessly across different metaverse environments."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "while prioritizing user safety and PII"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "none",
+      "note": "The specification states no memory, time or call limit for a world's web application or the content it loads, and nothing bounds guest content. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for budget, limit, quota, memory, timeout on 2026-10-20; the only hits are unrelated uses of the word limit in the whitepaper.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Portable personal content allows interactive 3D assets—complete with lighting, behaviors, and familiar controls—to move seamlessly across different metaverse environments."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "none",
+      "note": "Searched the three WoWAPI specification files and their READMEs (commit d39a1a0) and the 33-page whitepaper (commit 988f369) for admission, admit, refuse, join, portal, HEAD, 403 on 2026-10-20. Joining a world is a stated requirement, so entry is in scope, but the contract defines no answer a destination gives before arrival: the portal endpoint returns a portal record, and the only approve-or-refuse responses are HEAD checks answering 200, 403 or 404 on the asset and user-manifest endpoints, which control access to a resource, not admission to a world. The 403 text is OpenAPI documentation, not a returned reason, and no validity limit or structured explanation is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/README.md",
+          "title": "OpenSpatialWorld README.md (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| Join world | URL, URL#join, URL#join=aspect.id | join the world as new or existing user on a given device and UA |"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      description: Used to authorize resources and simultaneously check whether ETag still matches cached ETag."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        '403':\n          description: Forbidden. User does not have authorization to view this resource."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "none",
+      "note": "The consistency use case wants all participants to see objects behave the same, but nothing says who decides the truth about an object; node changes are open create, update and delete calls with no owner or arbitration rule. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for authority, owner, arbitration, server authoritative, conflict on 2026-10-20; the hits are use-case sentences only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiplayer synchronization delivers smooth, low‑latency interactions, with avatars and objects behaving consistently for all participants."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Update an existing node."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "none",
+      "note": "Nothing lets a client ask for only the part of a world near it: a node tree can be fetched whole and the world reports counts of users, views and portals, with no area, distance or subscription filter. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for interest, area, distance, subscription, relevance, filter on 2026-10-20; no match beyond the multiplayer sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiplayer synchronization delivers smooth, low‑latency interactions, with avatars and objects behaving consistently for all participants."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Returns a single Node tree as a single data state"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "none",
+      "note": "Smooth low-latency behaviour is a stated goal, but no local-prediction, correction or reconciliation rule exists; the contract is request and response only. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for prediction, latency compensation, reconciliation, rollback on 2026-10-20; the only hit is the multiplayer sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiplayer synchronization delivers smooth, low‑latency interactions, with avatars and objects behaving consistently for all participants."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "none",
+      "note": "No clock, timestamp or ordering rule is defined; the one time-like field is a world duration number with no unit or meaning given. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for clock, timestamp, ordering, synchronised time, tick on 2026-10-20; the only hit is the duration field and the word synchronization in the multiplayer sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiplayer synchronization delivers smooth, low‑latency interactions, with avatars and objects behaving consistently for all participants."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            duration:\n              type: number"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "none",
+      "note": "Collaborative synchronous sessions are a stated use case, but no live audio or video stream, channel or signalling is described in any file. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for stream, WebRTC, live audio, live video, signalling on 2026-10-20; the hits are a streaming-over-web-infrastructure sentence and a synchronous-activities bullet.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Support collaborative, synchronous activities in custom 3D worlds."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiple interoperable formats can be compressed, streamed, or simply transferred using the Web infrastructure."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "none",
+      "note": "A world is described as persistent and its nodes can be created, changed and deleted through the API, but no statement says what survives a restart, how often state is saved, or what a visitor can rely on. The README's 'persist' requirement means bookmarking the address. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for persistent, restart, survive, durable, save on 2026-10-20; the hits are the persistent-world sentence and the bookmark requirement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Central to this vision is the concept of a persistent and collaborative spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/README.md",
+          "title": "OpenSpatialWorld README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Persist world | store or bookmark URL"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "The project says it creates no data format and returns assets in registered model types, so how a mesh is encoded or compressed is left wholly to glTF, USD, X3D and the other formats it names.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Image formats and compression for a device are choices made inside the model formats the asset interface returns; the project defines no image type of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "none",
+      "note": "A node carries appearanceURI, a string whose target the contract never defines, and the asset interface lists model/mtl as one of the registered model media types it can return, so how a material definition is carried between renderers is left wholly to the carried formats. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0) and the 33-page whitepaper (commit 988f369) for material, appearance, MaterialX, mtl, shading on 2026-10-20; the only hits are appearanceURI, the model/mtl media type and the whitepaper's use-case sentences, none of which defines a material.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        appearanceURI:\n          type: string"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            model/mtl:\n              example: binary-data"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "3D scenes are built from various resources, from geometry and materials to lighting, sensors, and rich content models."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Keyframes and animation clips are stored inside the model formats the project carries, and the project defines no animation format or playback rule of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Bone hierarchy and binding are stored inside the carried model formats; the project defines no body structure of its own (see the avatar.skeleton entry for the portability side).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Parametric curves and surfaces would arrive only as opaque payloads of CAD media types such as STEP and IGES, which the asset interface lists; the project defines no mathematical form of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Spatial cell volumes are not described by the project, which carries assets as registered model types and creates no format of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Shape deformation for faces and detail is stored inside the carried model formats; the project defines no morph target or blend shape of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "partial",
+      "note": "Several nodes can point at the same asset address, each with its own transform, so repetition by reference is possible and the README calls objects instantiated, transformed elements. No rule says the shared asset is fetched or held once, and no instance list or batch form exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/README.md",
+          "title": "OpenSpatialAsset README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Objects are instantiated/transformed elements"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        spatialAssetURI:\n          type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "none",
+      "note": "A node tree can be fetched or deleted as a unit and a node has a list of names, but no named group or rule-based selection of nodes exists for an operation to target. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for collection, group, set, selection, tag on 2026-10-20; the hits are an X3D grouping-node table and a volume-selection operation listed as an idea.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Compute Volume Selection"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        names:\n          type: array\n          items:\n            type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "The scene graph is described as a minimal hierarchy for addressing objects and linking assets, so authored runtime relationships between node transforms are not part of what it sets out to do.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This minimalistic hierarchical structure allows the addressing of different spatial objects for the following use case patterns:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "none",
+      "note": "Field-trip photo and video spheres are a stated use case, but a node references only a model address and an appearance address, and no media reference, playback clock or synchronisation rule exists. Time fragments for models appear only as an open opportunity. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for video, audio, media, timed, playback, synchronization on 2026-10-20; the hits are the field-trip sentence, media-type lists and the media-fragment opportunity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "By combining photo and video spheres with interactive 3D environments, educators can visually transport students to real-world locations for exploration, teaching, and collaboration."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/README.md",
+          "title": "OpenSpatialAsset README (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Missing “Model Fragment URI”: Spatially-, temporally- and structure-based addressing"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Particle emitters and their simulation parameters would live inside a carried model format or the world's own web application; the project defines no particle description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Metaverse Standards Forum blog, Announcing the Web of Worlds Whitepaper, 2 June 2026",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Facilitates modular, reusable 3D components by leveraging existing standards like glTF, X3D, and USD, which are already registered with IANA."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Digital signatures for authenticity are named as a plan, but no signature, fingerprint, watermark or provenance lookup exists, and the existing provenance entry already records that the graph is unsigned. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for watermark, fingerprint, provenance, hash, digest, signature on 2026-10-20; the only hits are the signature sentence and an entity-tag header meant for caching.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Digital signatures for authenticity, and data encryption for privacy, can each be applied when appropriate as part of a content package."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Rules that pick visibility or colour from content metadata are a display or map-styling feature; the project defines only an appearance address on a node and no styling language, and its scope is joining, connecting and sharing worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "The nearest mechanism is choosing between file formats by content negotiation, which selects an encoding rather than a configuration such as a colour or option set; no named alternatives or selection rule exist. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for variant, configuration, option, customization, alternative on 2026-10-20; the hits are optional-feature lists and a sentence that some models can include data-driven customizations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Some models can include data-driven customizations."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "OpenSpatialAsset API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      description: Used to negotiate and fetch a data instance as resources."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "none",
+      "note": "Spatialized sound is listed as a requirement for linked assets, but no sound object, position, distance rule or direction cone exists in the API files, which return model media types only. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for audio, sound, spatialized, acoustic on 2026-10-20; the hits are the requirement line, the field-trip use case and a microphone-consent bullet.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access to deliver Web Audio and spatialized sound"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Spatialized audio and environmental effects enhance realism, creating compelling, multisensory experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "none",
+      "note": "The field-trip use case says environmental effects enhance realism, but nothing describes how a space colours sound: no reverberation, absorption or room volume. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for reverb, acoustic, room, absorption, environmental effects on 2026-10-20; the only hit is the field-trip sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Spatialized audio and environmental effects enhance realism, creating compelling, multisensory experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Spatialized sound is only a requirement line; there is no sound geometry, blocking or muffling rule anywhere in the files. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for occlusion, muffle, obstruction, spatialized on 2026-10-20; the only hit is the requirement line.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access to deliver Web Audio and spatialized sound"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "none",
+      "note": "Web Audio delivery is a stated requirement and streaming is said to use existing Web infrastructure, but no audio type, stream or delivery rule is defined; the asset interface lists model media types only. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for audio, stream, Web Audio, codec on 2026-10-20; the hits are the requirement line and a sentence that formats can be streamed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access to deliver Web Audio and spatialized sound"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiple interoperable formats can be compressed, streamed, or simply transferred using the Web infrastructure."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "none",
+      "note": "Microphone access appears as a consent item in the manifest use case and collaborative sessions are a stated use case, but no voice channel, codec or signalling is defined. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for voice, speech, microphone, chat, signalling on 2026-10-20; the only hit is the microphone-consent bullet.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Consent - usage of personal information, microphone access, other player interactions/communications"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Support collaborative, synchronous activities in custom 3D worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Generating audio during playback from a synthesis model is a content or client feature; the project carries model assets and creates no new data format, and its scope is joining, connecting and sharing worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Reconstructing a radiance field from images is a capture and training pipeline; the project's scope is joining, connecting and sharing worlds, and it takes no images or camera data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Producing a 3D object from a text or image prompt is a generation service; the project only links to assets by address and does not generate or edit them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "The consistency use case expects controls to adapt to the device but leaves that to the client application; the contract carries no button, stick or pose data from handheld devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Navigation and controls adjust to the device (keyboard, touch, controllers, gestures, BCI)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Articulated hand pose is read by the visiting client's runtime and never passed through the contract, which carries one pose per user and view.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Navigation and controls adjust to the device (keyboard, touch, controllers, gestures, BCI)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Gaze direction is read by the visiting client's runtime; the contract carries no gaze data, and the project's scope is joining, connecting and sharing worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback is produced by the visiting client's hardware and application, and the contract defines no feedback message.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "none",
+      "note": "A ray-intersect operation is listed among the spatial operations the project envisions for agents, but no endpoint, request or hit result exists, and no pointing input from a user is described. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for ray, pick, pointer, hit, intersect on 2026-10-20; the only hit is the operation list.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Compute Ray intersect"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Character or string entry is handled by the visiting client's input system; the contract defines no text-entry interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Navigation and controls adjust to the device (keyboard, touch, controllers, gestures, BCI)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Typed musical-instrument events are a device input interface of the client; nothing in the project's scope of joining, connecting and sharing worlds reaches them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "none",
+      "note": "Collision detection is named in the consistency use case and as an envisioned spatial operation, but no collision shape, layer or query is defined; the only related field is a free-text gravity string. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for collision, clash, physics, contact on 2026-10-20; the hits are the use-case sentence and the operation list.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Environments and objects are correctly scaled and interact realistically with physics and collision detection."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Compute Clashes / Collision"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "none",
+      "note": "Uniform object behaviour across platforms is a stated goal, but no simulation model, fixed step, number format or reproducibility rule is given. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for deterministic, reproducible, fixed step, simulation on 2026-10-20; the only hit is the uniform-behaviour sentence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "elements such as environment scale, object behavior, avatar appearance, accessibility, and interactivity remain uniform across platforms"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Hinges and sliders belong to a physics engine inside the client or content; the project defines no simulation model, only a free-text gravity string.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            gravity:\n              type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Deformable simulation belongs to a physics engine inside the client or content; the project defines no simulation model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            gravity:\n              type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Friction and restitution are properties of a physics engine's contact model; the project defines no simulation and its only related field is a free-text gravity string.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            gravity:\n              type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Regions that fire events when entered are application logic of the world's own web application; the contract returns descriptors and defines no event regions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "            gravity:\n              type: string"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The project provisions a web application and records, as free text, which framework or engine a world was built with; it draws nothing and names no renderer, so which graphics interface a renderer targets is not something the contract is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "                description: \"Web framework or gameengine used (e.g. Unreal or Unity3D)\""
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "How surface appearance is evaluated at render time is a renderer task; the contract only gives a node an appearance address (see the scene.material-x entry for the carrying side).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "The project creates no data format and carries assets in the existing formats it names, so any lighting an asset carries is left to those formats and to the renderer; the contract only joins, connects and shares the world and draws nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Our objective is not to introduce or create a new data format, but rather to leverage existing standards as spatial assets within the virtual world."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Effects applied after the main render pass are a matter for the web application the world's address delivers; the contract defines no renderer or effect.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "none",
+      "note": "Reducing transmitted data and compute is part of the efficient-delivery plan, but no detail level, selection rule or send-first order is defined for assets or nodes. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0), the 33-page whitepaper (commit 988f369) and the Forum announcement for level of detail, LOD, progressive, simplif on 2026-10-20; the only hit is the title of a reference-list article.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Efficient 3D rendering is primarily about reducing the overall system workload. This naturally includes the data that is transmitted"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Rendering captured scenes as splats is a task of the client renderer; the project draws nothing and defines no splat type.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Rendering point clouds, voxels and volumetric video is a task of the client renderer; the asset interface lists point-cloud types such as E57 only as payloads it may return.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Legible 3D text, fonts and layout are left to the client renderer and the carried model formats; the contract defines no text object.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour interpretation and output range are set inside the carried image and model formats and by the client renderer; the contract declares no colour space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface layout is left to the web application the world serves and the browser page model; the contract defines no interface region.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Submitting image layers to a display compositor is a client runtime function; the contract defines no layer or compositor.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Dispatching compute workloads on the GPU is a client renderer function; the contract defines no compute interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Coordinating frame submission with predicted display timing is a client runtime function; the contract defines no frame loop.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "The project names no shader language; shader programs would live inside the world's own web application or the carried formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "      summary: Provisions a web application to deliver the spatial experience on the given device"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Estimating real-world illumination comes from a device's sensors and runtime; the contract carries only descriptions of worlds, users and assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Detecting physical markers or images is a device sensing function, and the contract carries no tracked-marker pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Physical play-area bounds are reported by the device runtime to the application; the contract carries no such report.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Ray intersections with the device's estimate of physical surroundings are a sensing-runtime service, and the contract reads no sensor data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "The User record published at the user endpoint carries each visitor's position and orientation (geoPose with latitude, longitude, height, yaw, pitch and roll), and the whitepaper lists minimum data sharing among its requirements, so disclosure of that pose is in scope, but no control over it is defined: no coarsening, retention limit, pseudonym or per-field setting. Searched the three WoWAPI specification files and their READMEs (commit d39a1a0) and the 33-page whitepaper (commit 988f369) for coarsen, retention, pseudonym, pose privacy, location privacy on 2026-10-20; none found in either, and the whitepaper's privacy statements are general, not specific to pose. See the identity.privacy entry for user-data disclosure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "        AvatarURI:\n          type: string\n        geoPose:\n          type: object"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/initial_MSF_Whitepaper/blob/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper, 33-page PDF (WebOfWorlds/initial_MSF_Whitepaper, commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Allow for minimum data sharing"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "none",
+      "note": "Web of Worlds links worlds by address and shares assets and a user manifest whose whitepaper lists wearables, credentials and NFTs and digital wallets, so payment is conceivable within it, but no payment exchange is defined. Searched the whitepaper and the OpenSpatialWorld, OpenSpatialAsset and OpenUserManifest API files (0.0.1, WoWAPI commit d39a1a0) for pay, commerce, purchase, price, monetiz, currency and entitle on 2026-10-20; only licence metadata and the identity wallet line appear.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://webofworlds.github.io/initial_MSF_Whitepaper/",
+          "title": "initial Web of World Whitepaper",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Assets (wearables, credentials, NFTs)"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "The Asset and User Manifest interfaces include a HEAD check that answers whether the user has access to a resource (200, or 403 forbidden). The grant itself, its holder-to-resource binding, expiry, revocation and transfer are not defined, and the whitepaper only lists event tickets and access cards as intended manifest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/WebOfWorlds/WoWAPI/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "WoWAPI OpenSpatialAsset API (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Used to authorize resources and simultaneously check whether ETag still matches cached ETag."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WebOfWorlds/WoWAPI/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialAsset/API.yaml",
+          "title": "WoWAPI OpenSpatialAsset API (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "User has access to this resource. Any other response is regarded as being unauthorized."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WebOfWorlds/initial_MSF_Whitepaper/988f369b0af206de0a7b53e7903dd55e08be80a0/gen/MSF-3DWebInterop_WoWWhitepaper.pdf",
+          "title": "Web of Worlds whitepaper (commit 988f369)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Security and access - access cards, event tickets, verifiable credentials, zero-knowledge proofs"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Web of Worlds specifies how worlds, assets and a user manifest are addressed and linked over HTTP; none of its three OpenAPI descriptions defines a purchase, payment or grant record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Announcing the Web of Worlds whitepaper",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "By providing a single URI for every discrete virtual world, users can move through the metaverse with the same ease they browse the 2D web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "Web of Worlds carries portable identity built on credentials and decentralized identifiers, but its three interface files and papers define no way to say which issuers or worlds to accept. Searched on 2026-10-20: the three WoWAPI OpenAPI files (OpenSpatialWorld, OpenSpatialAsset, OpenUserManifest), their READMEs, the repository README, the initial whitepaper and the Forum announcement for trust, registry, issuer, credential, signature, certificate, verif and identity; no trust registry or issuer-acceptance term found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/news/blog/announcing-the-web-of-worlds-whitepaper-a-concrete-path-to-the-open-metaverse/",
+          "title": "Announcing the Web of Worlds Whitepaper",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Utilizing JSON-LD, Decentralized Identifiers (DIDs), and Verifiable Credentials, users can carry their avatars, preferences, and assets across different virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Web of Worlds makes a world joinable and shareable by its address through a small set of web interfaces; it defines no input path for body signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml (WebOfWorlds/WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "The world interface is a documented REST interface that creates, updates and deletes nodes in a world's composition graph, so a program outside the world can change its content. Missing: no publish step, no statement of what an outside program or agent may change, no authorisation scheme in the world file, and no agent-specific door such as an MCP server or instruction file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/main/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API 0.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Create and add new nodes."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/main/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API 0.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Update an existing node."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "The world interface exists to join, connect and share a world; the three small interface files define no binding of objects to an external live data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "WoWAPI OpenSpatialWorld API (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "The Web of Worlds API describes how to join, connect and share worlds; its user resource holds only an id, name, avatar address and pose, with no statement of what the person did or achieved.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "WoWAPI OpenSpatialWorld API (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "The world API can read a world's status, including live aspects, as a standardised container such as JSON-LD, and a world is saved by bookmarking its URL. There is no whole-world import, though the API can create and update individual scene nodes, so the two directions are uneven: world status comes out whole, while only single nodes go in. There is also no whole-world file that carries assets and behaviour and no statement of what survives if the host closes; the specification is at draft version 0.0.1.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/README.md",
+          "title": "Spatial World Provisioning, OpenSpatialWorld README (WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Read world status including live aspects as a standardized container (e.g JSON-LD)"
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml, version 0.0.1 (WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Create and add new nodes."
+        },
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "OpenSpatialWorld API.yaml, version 0.0.1 (WoWAPI, commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Update an existing node."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Web of Worlds defines web APIs to join, connect and share worlds; it describes world and asset access, not rendering for a remote client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "WoWAPI OpenSpatialWorld API.yaml (pinned commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Web of Worlds specifies web interfaces for joining and sharing virtual worlds and assets and does not recognise physical objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebOfWorlds/WoWAPI/blob/d39a1a009aa4ef8fb6d14aa66d588cffb74c33de/specification/OpenSpatialWorld/API.yaml",
+          "title": "WoW OpenSpatialWorld API (commit d39a1a0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The main purpose is to join, connect and share the spatial world."
         }
       ]
     }

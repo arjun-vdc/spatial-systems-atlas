@@ -218,7 +218,7 @@ export function encode(state: AppState, total: number): string {
     state.view === 'relations' ? state.relGroup : null,
     state.detail,
     total,
-  ).replace(/^\/msf\/map\/\?/, '')
+  ).replace(/^[^?]*\?/, '')
 }
 
 /**

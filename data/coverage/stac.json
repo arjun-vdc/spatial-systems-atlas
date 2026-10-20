@@ -1,0 +1,2800 @@
+{
+  "subject_id": "stac",
+  "summary": "The SpatioTemporal Asset Catalog is a community specification for describing and searching files that represent the Earth at a place and time, such as satellite and drone imagery, elevation models and lidar point clouds. It defines small catalogue, collection and item records that point to the files and carry a footprint, a time, a licence and descriptive properties, and it can be extended with named add-ons; a companion web interface specification adds search by place, time and collection. It covers discovery, coverage, licence, versioning and descriptive metadata of geospatial data well. It does not define how any asset is encoded or drawn, and it has nothing on scenes, avatars, identity, networking or sessions, which it leaves to the file formats it points to and to other standards. A standards audience should know that the search interface specification is versioned separately (1.0.0) from the core specification (1.1.0), and that useful fields for point clouds and tiling live in community extensions of varying maturity, with the tiling one still at proposal stage. A catalogue entry tells a client that a point cloud or three-dimensional file exists and where; it does not guarantee that a spatial runtime can load it.",
+  "coverage": [
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "Every Item carries a free-form properties dictionary, the common metadata fields and community extensions with published JSON Schemas give those properties a declared structure, and Collections can summarise them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Additional metadata fields can be added to the GeoJSON Object Properties."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/extensions/README.md",
+          "title": "STAC extensions overview (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Extensions include a JSON Schema precisely describing the structure, a natural language description of the fields, and thorough examples."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "native",
+      "note": "Collections and Items carry a licence field holding an SPDX identifier or expression, or other with a licence link; it names the licence rather than encoding permitted uses in machine-readable form.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/commons/common-metadata.md",
+          "title": "STAC common metadata (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Information about the license(s) of the data, which is not necessarily the same license that applies to the metadata."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/collection-spec/collection-spec.md",
+          "title": "STAC Collection specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "License(s) of the data that the STAC Collection and its children provides."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "native",
+      "note": "Items and Collections can carry an asset with the thumbnail role intended for human preview; the guidance sets it as a low-resolution image displayable in a web browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/best-practices.md",
+          "title": "STAC best practices (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An asset that represents a thumbnail of the Item or Collection, typically a RGB or grayscale image primarily for human consumption"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a thumbnail with the role `thumbnail` for preview purposes"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "native",
+      "note": "Every Item with a geometry carries a bounding box, 2D or 3D, and every Collection a spatial extent, so clients can reject non-matching records before opening any asset; the box is in WGS 84 longitude, latitude, elevation, not a volume in a local frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This field enables more naive clients to easily index and search geospatially."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Bounding Box of the asset represented by this Item using either 2D or 3D geometries,"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "native",
+      "note": "Items carry a footprint geometry and bounding box, and Collections carry required spatial and temporal extents, all in WGS 84 longitude and latitude so a client can test relevance to its own position.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/collection-spec/collection-spec.md",
+          "title": "STAC Collection specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The object describes the spatio-temporal extents of the Collection. Both spatial and temporal extents are required to be specified."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Defines the full footprint of the asset represented by this item"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "native",
+      "note": "Core records fix the frame of footprints and bounding boxes as WGS 84 longitude, latitude and optional elevation; the projection extension adds a declared coordinate reference system code, WKT2 or PROJJSON for the assets themselves.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Coordinates are specified in Longitude/Latitude or Longitude/Latitude/Elevation based on"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/projection/v2.1.0/README.md",
+          "title": "STAC projection extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authority and specific code of the data source (e.g., `EPSG:3857`)"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "The core specification uses semantic versioning, each record states the version it implements, and the version extension adds item or collection version, deprecation and predecessor, successor and latest-version links.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "so any breaking change will require the spec to go to 2.0.0."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/version/v1.2.0/README.md",
+          "title": "STAC version extension (v1.2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension allows to version STAC Collections and STAC Items. Therefore, it also allows to deprecate legacy versions."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "Relative links and asset hrefs must be resolved against a base address, taken from the self link or else the address of the document itself; with neither present, behaviour is undefined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/best-practices.md",
+          "title": "STAC best practices (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Relative links must be resolved against a base URL, which is the absolute URI given in the link with the relation type `self`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/best-practices.md",
+          "title": "STAC best practices (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If neither of them is available, relative links can usually not be resolved and the behavior is undefined."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "native",
+      "note": "The web interface specification defines named conformance classes with address identifiers that a server lists on its landing page, and records list the extension schema addresses they implement; these are API-level and record-level declarations, not subsets of one asset format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/v1.0.0/overview.md",
+          "title": "STAC API overview (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we declare new STAC conformance classes, with the core ones detailed in the table below."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/extensions/README.md",
+          "title": "STAC extensions overview (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To incorporate an extension in STAC the 'Identifier' of the extension must be added to the `stac_extensions`"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "The specification supplies JSON Schemas used for validation and the web interface declares conformance classes, but no test suite or certification programme is described: searched the stac-spec v1.1.0 README, overview and best practices and the stac-api-spec v1.0.0 overview, README and implementation notes for those terms on 2026-10-20; none found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/overview.md",
+          "title": "STAC overview (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "JSON Schemas provide the core testing definitions, and are used in an array of validation tools."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/v1.0.0/overview.md",
+          "title": "STAC API overview (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we declare new STAC conformance classes, with the core ones detailed in the table below."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Extensions are declared by listing a versioned JSON Schema address in stac_extensions, with a field-name prefix and maturity classes, and custom fields are allowed; the specification states no rule for recipients that do not implement a listed extension.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/extensions/README.md",
+          "title": "STAC extensions overview (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To incorporate an extension in STAC the 'Identifier' of the extension must be added to the `stac_extensions`"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is generally allowed to add custom fields but it is recommended to add multiple fields for related values instead of a nested object,"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "partial",
+      "note": "The authentication extension declares the authentication and authorisation schemes needed to reach assets and links, which tells a recipient what access protection applies; it does not signal encryption or digital rights management of the content itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/authentication/v1.2.0/README.md",
+          "title": "STAC authentication extension (v1.2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "describe authentication and authorization schemes, flows, and scopes required to access Assets and Links"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "partial",
+      "note": "The alternate-assets and storage extensions record mirror locations and cloud storage access details for an asset, but the specification does not itself deliver assets or define content distribution.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/alternate-assets/v1.2.0/README.md",
+          "title": "STAC alternate-assets extension (v1.2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Or an asset is mirrored on multiple servers that have different URLs."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/storage/v2.0.0/README.md",
+          "title": "STAC storage extension (v2.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It allows adding details related to cloud object storage access and costs to be associated with STAC Assets."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "partial",
+      "note": "The file extension carries a checksum for an asset as a self-identifying hash, which lets a receiver verify content; assets are still referenced by their address, not by their hash.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/file/v2.1.0/README.md",
+          "title": "STAC file extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The hashes are self-identifying hashes as described in the"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/file/v2.1.0/README.md",
+          "title": "STAC file extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Provides a way to specify file related details such as checksum, data type and size for assets in"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "partial",
+      "note": "Common metadata lists providers with roles such as producer and processor, and the processing extension records lineage and software used; none of this is signed, so it is a descriptive record rather than a verifiable one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/commons/common-metadata.md",
+          "title": "STAC common metadata (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Information about the organizations capturing, producing, processing, hosting or publishing this data."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/processing/v1.3.0/README.md",
+          "title": "STAC processing extension (v1.3.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A dictionary with name/version for key/value describing one or more applications or libraries that were involved during the production of the data for provenance purposes."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "partial",
+      "note": "The pointcloud extension describes a point cloud asset by point count, phenomenology type, dimension schema and statistics; it does not define how the points are encoded or compressed, which is left to the file the asset points to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/pointcloud/v2.0.0/README.md",
+          "title": "STAC pointcloud extension (v2.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It adds fields to a STAC Item, to enable STAC to more fully describe point cloud datasets."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/pointcloud/v2.0.0/README.md",
+          "title": "STAC pointcloud extension (v2.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A sequential array of Items that define the dimensions and their types."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "partial",
+      "note": "The tiled-assets extension, rated Proposal, describes very large tiled datasets with URL templates and tile matrix sets; the tile model is the two-dimensional OGC one, so it does not stream three-dimensional terrain or city data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/tiled-assets/v1.0.0/README.md",
+          "title": "STAC tiled-assets extension (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension allows the specification of tiled assets within STAC Items."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/tiled-assets/v1.0.0/README.md",
+          "title": "STAC tiled-assets extension (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Two Dimensional Tile Matrix Set"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "partial",
+      "note": "The thumbnail and overview asset roles and the tiled-assets extension describe lower-resolution versions of a dataset, but no rule says which detail to choose or to send first.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/best-practices.md",
+          "title": "STAC best practices (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An asset that represents a more detailed overview of the Item or Collection"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/tiled-assets/v1.0.0/README.md",
+          "title": "STAC tiled-assets extension (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "resolution to allow a quick inspection of larger areas but also retain the possibility to"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "partial",
+      "note": "Items give the footprint of an asset on the Earth and the view extension records the sensor viewing azimuth and angles, but there is no general position-and-orientation pose for an object or device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Defines the full footprint of the asset represented by this item"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/view/v1.1.0/README.md",
+          "title": "STAC view extension (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Viewing azimuth angle. The angle measured from the sub-satellite point (point on the ground below the platform) between the scene center and true north."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "partial",
+      "note": "Elevation in bounding boxes is in metres and common metadata strongly recommends UCUM or UDUNITS-2 units for data values; there is no declared unit or scale convention for the geometry of a three-dimensional asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When using 3D geometries, the elevation of the southwesterly most extent is the minimum depth/height in meters"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/commons/common-metadata.md",
+          "title": "STAC common metadata (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It is STRONGLY RECOMMENDED to provide units in one of the following two formats:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "The projection extension carries an affine transformation for an asset grid and footprints use longitude, latitude, elevation order; handedness and how transforms compose are not defined for three-dimensional content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/projection/v2.1.0/README.md",
+          "title": "STAC projection extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The affine transformation coefficients for the default grid"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Coordinates are specified in Longitude/Latitude or Longitude/Latitude/Elevation based on"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "partial",
+      "note": "The render extension, rated Pilot, gives consumers named renderings of assets with rescaling, colour maps and band expressions, kept apart from the data; it does not select features by metadata rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/render/v2.1.0/README.md",
+          "title": "STAC render extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Rendering extension aims at providings consumers with the possible rendering of an item or a collection (e.g. on a online map)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Common metadata declares data type, nodata and value statistics, and the electro-optical extension names spectral bands such as red; no colour space or transfer function is declared.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/commons/common-metadata.md",
+          "title": "STAC common metadata (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Statistics usually specify the range of values by providing the `minimum` and `maximum` values,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/eo/v2.0.0/README.md",
+          "title": "STAC eo extension (v2.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The name commonly used to refer to the band to make it easier to search for bands across instruments."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "partial",
+      "note": "Catalogs are meant to be browsed or crawled and the Item Search interface finds records by place, time and collection; this discovers geospatial data, not worlds or live services.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/catalog-spec/catalog-spec.md",
+          "title": "STAC Catalog specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Their purpose is discovery: to be browsed by people or be crawled"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-api-spec/v1.0.0/item-search/README.md",
+          "title": "STAC API Item Search (v1.0.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It retrieves a group of Item objects that match the provided parameters"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "All Item times must be in UTC under RFC 3339, giving one shared reference for ordering acquisitions; there is no clock synchronisation or session time model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/item-spec/item-spec.md",
+          "title": "STAC Item specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The searchable date and time of the assets, which must be in UTC."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "partial",
+      "note": "The version extension declares version, deprecation and links to the latest version of a dataset such as a map, and the projection extension declares its reference system; no transform aligning one map to another is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/version/v1.2.0/README.md",
+          "title": "STAC version extension (v1.2.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Specifies that the context this field is used in (e.g. Asset or Collection) is deprecated"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/stac-extensions/projection/v2.1.0/README.md",
+          "title": "STAC projection extension (v2.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authority and specific code of the data source (e.g., `EPSG:3857`)"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "via-extension",
+      "note": "The STAC API Transaction extension, rated Candidate at release candidate 3, lets a program create, replace, update and delete Items by HTTP POST, PUT, PATCH and DELETE under a collection; Collections have a separate extension.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/stac-api-extensions/transaction/v1.0.0-rc.3/README.md",
+          "title": "STAC API Transaction extension (v1.0.0-rc.3)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "of items through POST, PUT, PATCH, and DELETE method requests."
+        }
+      ],
+      "direction": "write"
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so state replication is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so session establishment is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "STAC catalogue records are not worlds in which autonomous agents act.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "STAC may point to video files but does not carry or replay volumetric video or its camera calibration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "STAC catalogues assets and says nothing about the file format that carries a model or scene; the asset keeps its own format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so geometry encoding is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so material exchange is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so exact and parametric geometry is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "STAC records dataset footprints and has no anchors fixing content to a place across devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "STAC records the acquisition time of an asset but does not carry or play back a time-varying captured scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "The tree of catalogs, collections and items links catalogue records, not objects in a scene, so a scene graph is not something STAC specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so capability and permission grant is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so animation encoding is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so attachments and wearables is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "An Item has a single footprint and time range; pose series and live pose streams are not defined by STAC.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so identity root is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so credential format is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so credential exchange protocol is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so credential status and revocation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so session handoff and portals is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "STAC record identifiers and links name catalogue entries, not places in a world that resolve to a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not store user or world state, so inventory is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so experience containment is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so avatar body format is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so unattended world coupling is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so avatar skeleton standard is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so consent carried with the subject is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not run or govern any code, so behaviour graphs and interactivity is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so facial expression standard is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so avatar to identity binding is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "STAC may point to a splat file but does not define a splat interchange format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies multi-view plus depth, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no payments or sales, so machine and agent payments is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "STAC records describe and link to assets; checking a holder's current grant at the moment of use is done by whoever serves the asset, not by catalogue metadata, so this falls outside what the specification is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "STAC defines no linked poses or transform chains; it catalogues datasets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "STAC extension schemas validate catalogue fields, not the vocabulary of verifiable claims about a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so key rotation, revocation and recovery is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so immersive session lifecycle is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "The web interface is ordinary request and response over HTTP for catalogue queries, not a transport for session traffic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so deciding whether to admit an arrival is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not store user or world state, so preference portability is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so texture encoding is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so skeleton and rig definition is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "STAC may point to voxel or cube files, but defining or exchanging voxel volumes is left to the file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so media transport is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so passthrough and environment blending is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so authority and ownership is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so hit test against the real world is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so device capability discovery is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so avatar level of detail is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so eye tracking is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so volumetric and point cloud is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "STAC records versions and alternate locations of an asset but has no selectable configurations of one authored asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "partial",
+      "note": "STAC names licence terms as an SPDX identifier or expression, or as a link to the licence text, but defines no machine-readable permissions and no action taken on them at the point of use.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/commons/common-metadata.md",
+          "title": "STAC common metadata (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Information about the license(s) of the data, which is not necessarily the same license that applies to the metadata."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/collection-spec/collection-spec.md",
+          "title": "STAC Collection specification (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "License(s) of the data that the STAC Collection and its children provides."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so assurance and evidence behind a claim is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies novel view synthesis, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so hand tracking is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so positioned audio sources is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "STAC catalogues geospatial data files and has no concept of avatars, so animation retargeting is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so face and body tracking as input is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so scene composition and overrides is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so marker and image tracking is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "STAC items carry footprints and times for data files, not typed events scoped to interchanged zones.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so selective disclosure is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so voice transport is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "STAC may point to imagery of any kind but does not define panoramic projection or its use as a backdrop or light source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so haptics is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so soft bodies and cloth is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so semantic labelling of the real world is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so real-world occlusion is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so usable physical area is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so privacy terms on sensed data is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies world generation from a prompt or an image, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies generation of individual 3d objects, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so reputation and social graph is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not store user or world state, so world state persistence is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so text rendering is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so camera and viewpoint model is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so spatialization model is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so room acoustics and reverb is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so occlusion and obstruction is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so audio streaming is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "STAC describes geospatial data files and has no sound model, so sound generated at play time is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies simulation from a learned model, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies photogrammetric object capture, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies captured-scene streaming, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies relighting captured content, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies editing a capture after the fact, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies generative editing of a world, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies control over what gets generated, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies deriving conventional assets from a generated scene, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies action and control exchange, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "STAC records that captured geospatial files exist and where, but neither performs nor specifies radiance-field reconstruction, which belongs to capture and reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no payments or sales, so receipts and proofs of purchase is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "STAC catalogues files and does not package a runnable experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "STAC has no review or safety gate for content; it describes and searches data files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "STAC has no device-side anchors; it records dataset footprints in a catalogue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "STAC does not recover pose from camera imagery; it catalogues stored data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "STAC describes Earth-observation style assets and does not define the structure of interior spaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so pairwise identifiers and unlinkability is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so encryption keys and confidential delivery is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so record of what a system decided is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no people, credentials or claims about them, so governed trust registries is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so controller input is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so pointing and selection against content is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so text entry is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so musical event-device input is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "STAC describes stored data files and has no user input devices, so physiological signals as input is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not run or govern any code, so scripting runtime is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not run or govern any code, so sandboxing and isolation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not run or govern any code, so resource budgets is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not run or govern any code, so permanent code identity is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so interest management is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so prediction and reconciliation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so presence and roster is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and a search interface over them, not live multi-user sessions, so live data binding is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "STAC records are not a world to export; it describes data files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and does not store user or world state, so activity and learning records is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so rigid bodies is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so collision shapes is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so joints and constraints is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so physics materials is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so deterministic simulation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "STAC describes data files and has no simulation, so trigger volumes is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so rasterization pipeline is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so graphics interface binding is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so material model is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so lighting and global illumination is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so post-processing is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so gaussian splatting and radiance fields is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "STAC has no two-dimensional interface surfaces; its web pages are separate browsers built by others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so compositor layers is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so general-purpose gpu computation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so frame pacing and predicted display time is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so portable shader language is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "STAC describes data files for other software to draw and does not render anything, so remote (split) rendering is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so morph targets and blend shapes is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so instancing is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so navigable space and arrival points is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "A STAC collection groups catalogue records, not scene objects that operations can target, so this is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so transform constraints is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "STAC can catalogue a video file but does not place timed media inside a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "STAC points to files and does not define scene content, so emitter-based effects is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "STAC has no fingerprint or watermark lookup for recovering a lost provenance record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so real-world reconstruction is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so real-world depth is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so real-world lighting estimation is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "STAC catalogues stored data and is not a sensing runtime on a device, so model-based object tracking is outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/radiantearth/stac-spec/v1.1.0/README.md",
+          "title": "STAC specification README (v1.1.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "standardize the way geospatial asset metadata is structured and queried."
+        }
+      ]
+    }
+  ]
+}

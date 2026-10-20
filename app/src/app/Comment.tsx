@@ -1,13 +1,13 @@
 // Comment submission against the real endpoint.
 //
-// Posts to the same endpoint as tool/board/submit.js: /msf/map/api/submit.
+// The new Atlas endpoint shares the handler retained for cached Map clients.
 // The submission becomes a public issue on github.com/openspatials/spatial-systems-atlas.
 // The email address is optional, never written into the issue, and kept privately
 // so a maintainer can reply.
 
 import { useEffect, useRef, useState } from 'react'
 
-const ENDPOINT = '/msf/map/api/submit'
+const ENDPOINT = '/msf/atlas/api/submit'
 const ISSUES = 'https://github.com/openspatials/spatial-systems-atlas/issues'
 const NEW_ISSUE = 'https://github.com/openspatials/spatial-systems-atlas/issues/new/choose'
 const SITEKEY = '0x4AAAAAAEqgjvsSDXAjf2mv'
