@@ -19,6 +19,7 @@ depends on.
 | `demand.csv` | capability with at least one use case | Use cases linked, records that specialise them, deployments under them, beside the map's own native/partial/scored counts |
 | `links.csv` | use case → capability link | The link's basis (`derived` or `proposed`) and the sentence of the use case it rests on, with the record's address |
 | `deployment-evidence.csv` | deployment × capability, for deployments built on a system the map scores | The map's verdict for that pair, or a blank where the map has no claim. `realisation` says whether the deployment fully realises its use case |
+| `lane-candidates.csv` | lane × capability, for five candidate use case lanes (U5–U9) | Use cases the repository holds many deployments for, with the rows that stop them; where a row rated *should* would become *must*. Read with `LANE-CANDIDATES.md` |
 | `candidate-capabilities.csv` | need the map had no row for | A proposed row in the columns of `data/capabilities.csv`, with the use cases that need it, and a `status` column: adopted or open |
 
 `build_demand.py` reads these files and `board/territory.json` and writes
@@ -58,7 +59,8 @@ need their parent does not.
    cases, U1 to U4. Section 2 of the demo page lists rows rated *should* or *none* that three or more
    real deployments depend on. That does not settle a rating, but it gives the next boundary
    review somewhere to look.
-4. **Carry a demand column.** A *must* row that many use cases need and few systems provide is a
+4. **Consider five more lanes.** `LANE-CANDIDATES.md` proposes U5 to U9 (a twin follows its asset, the same thing at the same real place, a training result leaves the simulator, engineering data reaches the point of use, a live event reaches remote viewers), each in the lanes' own shape, from clusters of real deployments.
+5. **Carry a demand column.** A *must* row that many use cases need and few systems provide is a
    standardisation gap with deployments behind it. That is a sharper ranking than coverage alone.
 
 ## Keeping it current
