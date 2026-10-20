@@ -65,9 +65,15 @@ export function Shell({ model }: { model: Model }) {
   // one-shot ignore flag would be set and never consumed, and would swallow the
   // next genuine address change. Compare the value instead.
   const selfWritten = useRef<string | null>(null)
+  // Keep incoming fragment bytes (including subject order and unknown fields)
+  // until the reader changes the analysis. Preferences do not rewrite a link.
+  const encodedState = useRef(encode(state, total))
 
   useEffect(() => {
-    const next = `#${encode(state, total)}`
+    const encoded = encode(state, total)
+    if (encoded === encodedState.current) return
+    encodedState.current = encoded
+    const next = `#${encoded}`
     if (next !== window.location.hash) {
       selfWritten.current = next
       window.history.replaceState(null, '', next)
@@ -78,7 +84,9 @@ export function Shell({ model }: { model: Model }) {
     const onHash = () => {
       if (window.location.hash === selfWritten.current) return
       selfWritten.current = null
-      dispatch({ type: 'replace', state: decode(window.location.hash, model, state) })
+      const restored = decode(window.location.hash, model, state)
+      encodedState.current = encode(restored, total)
+      dispatch({ type: 'replace', state: restored })
     }
     window.addEventListener('hashchange', onHash)
     return () => window.removeEventListener('hashchange', onHash)

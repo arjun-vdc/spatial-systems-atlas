@@ -341,7 +341,7 @@
     {
       "capability_id": "capture.splat-format",
       "level": "none",
-      "note": "No splat schema is in the ratified core, and the core is composition rather than representation. This matters because two device platforms on this map name USD as a container an application might parse splats out of, which is a claim about their own parsers, not about this standard.",
+      "note": "Searched the USD Core Specification 1.0.1 (repository commit 2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0) for splat, gaussian, particle, point cloud and volume on 2026-10-19; no splat or particle schema appears in the ratified core, which is composition rather than representation and leaves geometry to other specifications. Separately from the core, NVIDIA's NuRec and 3DGRUT export write Gaussian splats as USD ParticleField prims; that is an implementation using USD, not support by the ratified Core. Two device platforms on this map also name USD as a container an application might parse splats out of, which is a claim about their own parsers, not about this standard.",
       "confidence": "verified",
       "sources": [
         {
@@ -350,6 +350,20 @@
           "retrieved": "2026-08-23",
           "kind": "primary",
           "quote": "It does not describe domain specific uses of USD, such as: - Geometry - Materials - Physics etc…"
+        },
+        {
+          "url": "https://docs.isaacsim.omniverse.nvidia.com/latest/assets/usd_assets_nurec.html",
+          "title": "NVIDIA Isaac Sim documentation, Neural Volume Rendering (NuRec)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Compatible environments are published as USD stages that use OpenUSD ParticleField geometry (3D Gaussian splats and related radiance fields), which Omniverse RTX renders natively together with polygonal scene content."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/a37ef721012dea0f29c0fcfff2d525023b4e854a/threedgrut/export/README.md",
+          "title": "3DGRUT export README (commit a37ef72)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "While Isaac Sim 6.0 supports both the `ParticleField` (standard USD) schema and the NuRec USDZ output"
         }
       ]
     },
@@ -611,16 +625,32 @@
     {
       "capability_id": "render.passthrough",
       "level": "out-of-scope",
-      "note": "OpenUSD authors, composes and streams scene description. What a headset does with the camera view of the room when it draws that scene is the renderer's business and is nowhere in USD.",
+      "note": "The Core Specification covers the scene description document and how its elements compose into a stage. What a headset does with the camera view of the room when it draws that stage is the renderer's business and is outside it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
-      "note": "USD has no input or sensor model. It can store the shapes a face makes, which is scene.morph, but not a live reading of the person in the room.",
+      "note": "The Core Specification covers the scene description document and its composition, so it has no input or sensor model. It can store the shapes a face makes, which is scene.morph, but not a live reading of the person in the room.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -640,30 +670,62 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "USD carries no published units of logic. Prim paths name things inside one composed stage, and asset resolution finds files; neither is a permanent public address for code.",
+      "note": "The Core Specification covers the scene description document and its composition, not published units of logic. Prim paths name things inside one composed stage and asset resolution finds files; neither is a permanent public address for code.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "Nothing is published to an audience through USD itself, so there is no point in it where a review could stand or be recorded.",
+      "note": "The Core Specification covers the scene description document and its composition, not how content reaches an audience, so there is no point in it where a review could stand or be recorded.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "USD scenes sit in their own coordinates. Declaring a map of a real place, its version and its transform to another map is a positioning service's job, not a scene description's.",
+      "note": "The Core Specification covers the scene description document and its composition, and its foreword leaves domain specific uses to other specifications. Declaring a map of a real place, its version and its transform to another map is outside it; a USD scene sits in its own coordinates.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "A USD stage is content, not a service bound to a place; it states no geographic area of application in any stated frame.",
+      "note": "The Core Specification covers the scene description document and its composition, and its foreword leaves domain specific uses to other specifications. A stage is content, not a service bound to a place, so it states no geographic area of application in any frame.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1292,6 +1354,860 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "USD provides for interchange of elemental assets, shading networks, and other building blocks, as well as assemblies of any complexity."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The OpenUSD core specifies scene data and how layers are composed. It describes no exchange of payment, and it says domain uses are left to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "OpenUSD Core Specification 1.0.1, Foreword",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The core specification defines how scene data is represented and composed, not who holds a right to open or use a layer, so a grant check at use falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/main/core/1.0.1/core_spec.md",
+          "title": "AOUSD Core Specification 1.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Scene Description (USD) is an authoring and interchange format for representing 3D scenes."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "OpenUSD Core describes how scene description files are read and composed; it has no concept of who bought or was granted a scene, so a receipt would live outside the specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "OpenUSD Core Specification 1.0.1 (commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "USD specifies how scene description is read and composed, not whom a receiver should trust, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "OpenUSD Core Specification 1.0.1, Foreword",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar mesh and appearance is a domain-specific use of USD; the core covers the document model, composition and file formats and defines no avatar or body schema.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Bone naming and structure is a domain-specific schema use; the core names no skeleton, joint or bone concept and leaves such schemas to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Named facial expressions and visemes are a domain-specific use; the core defines no face or expression vocabulary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Wearables and attachment points are a domain-specific use; the core offers composition and references to assemble scenes but defines no attachment point vocabulary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting between bodies needs skeleton semantics that the core leaves to domain specifications; the core only carries generic time-sampled values.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Reduced avatar representations need avatar semantics the core does not define; its payloads and variants are generic composition tools, not an avatar level-of-detail contract.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Binding an avatar to a verifiable identity is not a function of a scene-description document and its composition; the core defines no identity or credential concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Base identifiers for a person, agent or thing belong to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable-claim formats belong to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential request and presentation protocols belong to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying consent with scope, purpose, validity and withdrawal belong to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure of attributes belongs to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Portable reputation and social graph belong to an identity layer; the core describes scene documents and their composition and defines no identity, claim or relationship concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "A grant of what a subject may do is an identity-layer function; the core's only permission field is a deprecated per-prim public or private flag that must not be authored into new files, not a grant to a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Permissions are a deprecated field within USD documents"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at the point of use is runtime behaviour of an application; the core carries no licence field to act on (see scene.licence) and specifies no enforcement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Position and orientation against the Earth is a domain-specific use; the core has no geodetic terms and a USD scene sits in its own coordinates.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Naming the Earth-based coordinate reference system is a geospatial domain use; the core has no geodetic terms or CRS field, and stage-level axis and unit conventions are likewise left to the unpublished geometry specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place across devices and sessions is a spatial-service function; the core describes documents and composition and defines no anchor, place or persistence-by-location concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is a geospatial domain use; the core defines no tiling scheme, though its payloads let a scene defer loading of parts of a stage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "Which state is shared and how often between participants is a live-session concern; the core defines stored documents and composition, not state sharing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "A wire protocol for session traffic is not part of a scene-description document or its file formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Joining a running world, with authentication, is a live-session function; the core defines no session or participant concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Moving between worlds with state intact is a live-session function; the core defines documents and composition, not travel between running worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "The core resolves identifiers for scene resources such as layers and textures to locations (see deliver.resolve), not names of places or worlds to reachable destinations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Deciding who owns the truth of an object across participants is a live-session concern; the core has no participants, and its only owner fields are deprecated layer metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Sending each client only what it needs is a live-session concern; the core has no clients or server, though payloads let a reader defer loading.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Hiding latency and reconciling afterwards is a live-session concern outside a stored-document specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Carrying live audio and video is a transport function; the core defines stored scene data and no live stream.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Knowing who is where across operators is a live-session function; the core has no participant concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Finding worlds or services without prior knowledge is a network function; the core resolves identifiers it is given and defines no discovery.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Shared time for consistent event ordering across parties is a live-session function; the core's time is an authored animation timeline, not a clock shared between participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Starting, running and ending an immersive session on a device is a runtime and device function; the core defines scene documents and no device session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Items a user holds and whether they travel is an application and account concern; the core defines scene documents and no user or ownership state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Settings and accessibility choices that follow a user are application and account state; the core defines scene documents and no user state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Interactivity that travels with an asset would be a domain schema layered on the core's schema mechanism; the core defines no behaviour or trigger vocabulary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting inside a world are a runtime concern; the core defines scene documents and no agent concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Bone hierarchy and skinning binding is a domain-specific schema use; the core has no skeleton, joint or skinning concept (searched for skeleton, joint, bone, skin on 2026-10-20) and leaves such schemas to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Shape deformation for faces and detail is a domain-specific geometry use; the core has no blend shape or morph target concept (searched for morph and blend shape on 2026-10-20).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It does not describe domain specific uses of USD"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Locating a provenance record through a fingerprint or watermark is a lookup service outside scene-description interchange; the core has no fingerprint or watermark concept, and its provenance cell (scene.provenance) is already recorded as absent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the representation of the data model in formats for interchange"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for encrypt, DRM, protect and protection scheme on 2026-10-20; the only hit is the rule that packages are stored without encryption, so a recipient has no way to learn a protection scheme from the package.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "USD Packages must be stored without compression and must be stored without encryption."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for texture, image, compression and format on 2026-10-20; textures appear only as an example of a resource, as an asset path that may carry a source colour space, and in sample identifiers. No image format or compression is specified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resource or container of resources (layers, textures, volumes, etc.)"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for profile, subset, level, optional feature and capability on 2026-10-20; the only hit for profile is a link to an ICC colour profile. Compliance is a single all-or-nothing rubric of three tests, and the package format is a restricted zip, not a named level a file can declare.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A compliant implementation of Universal Scene Description core specification must pass the following conformance tests"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for thumbnail, preview, poster, icon and image on 2026-10-20; nothing describes a preview image of an asset, and the package section defines only a root layer and its required media.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "USD Packages store USD files and other required media within a specialized zip compression"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "USDZ packs a scene's layers and the media they reference into one uncompressed, aligned zip file whose first entry is the root layer; missing is anything that makes the package a runnable experience, such as an entry point beyond the root layer, a launcher or app metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "USD Packages store USD files and other required media within a specialized zip compression"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A USD Package must use the first file within the Zip file as its root layer to be read."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Getting assets to clients at scale is delivery infrastructure; the core defines how identifiers resolve and how a package is laid out, and says nothing of distribution (searched cache, CDN, stream and tile on 2026-10-20 with no relevant hit).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1 (repository commit 2f9e746)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "USD describes and composes scene data for authoring and interchange; it is a file-level data model with no live device input, so body-signal streams and their privacy terms fall outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Scene Description (USD) is an authoring and interchange format for representing 3D scenes."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "OpenUSD Core is a scene data model and file-format specification, so it defines no service or tool for an outside agent to build or publish content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "OpenUSD Core Specification 1.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "The OpenUSD core specification defines the data representation, composition rules and file formats for scene interchange; connecting a scene to a live sensor or controller is a product or connector concern outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (AOUSD)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The USD Core Specification formally defines the data representation, scene construction algorithms, and file formats of Universal Scene Description, establishing the open standard for interoperable 3D content creation and interchange."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "The OpenUSD Core Specification defines the scene description data model and file formats; it has no concept of a person's activity or outcome, so a learning record sits outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "OpenUSD Core Specification 1.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The USD core specification defines the data model, composition and file formats for scenes, not a host or an export procedure, so exporting a whole place from a host and stating what survives is outside it (USD is a candidate target file for a host to write).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the representation of the data model in formats for interchange"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "OpenUSD's core specification covers data representation and file formats for scene interchange; it names no renderer or frame-streaming role.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The USD Core Specification formally defines the data representation, scene construction algorithms, and file formats of Universal Scene Description, establishing the open standard for interoperable 3D content creation and interchange."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "OpenUSD Core specifies how scene description is read and composed and defines no sensing; recognising a physical object from a USD model is left to applications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/aousd/specifications-public/main/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
         }
       ]
     }

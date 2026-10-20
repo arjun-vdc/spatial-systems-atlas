@@ -824,37 +824,77 @@
     {
       "capability_id": "geo.anchor-local",
       "level": "out-of-scope",
-      "note": "No anchoring-to-physical-place concept is documented. Resonite is a fully virtual platform without a passthrough or world-mapping feature set.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No anchoring-to-physical-place concept is documented; Resonite is a virtual platform with no passthrough or world-mapping feature set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "geo.anchor-shared",
       "level": "out-of-scope",
-      "note": "No shared or persistent physical-space anchors are documented.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No shared or persistent physical-space anchors are documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "geo.vps",
       "level": "out-of-scope",
-      "note": "No visual positioning capability is documented. The only camera-derived 3D capability is importing pre-made Gaussian splat scans, which is content import, not localization.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No visual positioning capability is documented. The only camera-derived 3D capability is importing pre-made Gaussian splat scans, which is content import, not localization.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "geo.tiles",
       "level": "out-of-scope",
-      "note": "No tiled terrain or city streaming is documented.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No tiled terrain or city streaming is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "geo.indoor",
       "level": "out-of-scope",
-      "note": "No structured indoor-space description is documented. ---",
-      "confidence": "reported",
-      "sources": []
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No structured indoor-space description is documented; worlds are free-form virtual spaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "avatar.body",
@@ -1509,10 +1549,25 @@
     },
     {
       "capability_id": "net.prediction",
-      "level": "none",
-      "note": "No client-side prediction, reconciliation, rollback or lag compensation is documented anywhere. Wiki searches for those terms return nothing in the article namespace, and none of the architecture, data-model or update pages mention any latency-hiding mechanism. This is an absence of documentation rather than proof of absence in the code.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "Latency hiding with later correction is documented for the data model: a local change applies at once, and when the host keeps a different value it re-syncs the authoritative one to the client, rolling the local change back. Missing: no motion prediction, extrapolation, interpolation of remote movement or lag compensation is documented, so the correction covers conflicting writes only, not smoothing of what other users do. Searched the Resonite Wiki (wiki.resonite.com, MediaWiki search over all pages including release notes and podcast transcripts) on 2026-10-20 for prediction, reconciliation, reconcile, rollback, rolling back, optimistic, lag compensation, client-side prediction, extrapolation, dead reckoning and latency; the hits that bear on networking are Data model synchronization (optimistic concurrency, rolling back a discarded update) and Networking information (clients connect to the session host over LNL, QUIC or Steam sockets); the other hits were physics-rate interpolation in a podcast, quaternion and value extrapolation in release notes, a ProtoFlux optimisation page that uses 'dead-reckoning' to mean guessing instead of testing, a world named for a story, animation and texture interpolation, audio buffer latency and mesh-upload latency.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Networking_information",
+          "title": "Resonite Wiki: Networking information",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "When you connect to a Resonite session, you're starting a connection to the session's host."
+        },
+        {
+          "url": "https://wiki.resonite.com/Data_model_synchronization",
+          "title": "Resonite Wiki: Data model synchronization",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When an update is discarded, the host will re-sync the authoritative value for that piece of data with the client (effectively rolling back the 'optimistic' local change the client made)."
+        }
+      ]
     },
     {
       "capability_id": "persist.world",
@@ -1706,9 +1761,17 @@
     {
       "capability_id": "identity.privacy",
       "level": "none",
-      "note": "There is no selective disclosure mechanism. Identity is a single account record held by one operator; there is no notion of revealing a subset of claims to a receiving world, because there are no claims and there are no independent receiving worlds.",
-      "confidence": "reported",
-      "sources": []
+      "note": "There is no selective disclosure mechanism toward receiving worlds: identity is a single account record held by one operator, and there are no claims to reveal in part. Searched the Resonite Wiki (wiki.resonite.com, MediaWiki search over all pages including release notes and podcast transcripts) on 2026-10-19 for selective disclosure, verifiable credential, zero-knowledge, disclosure, identity and claims; found no disclosure or credential feature. The nearest feature is OAuth, which lets a registered third-party application obtain a user-approved scope of account details; it is consent-based release to outside applications, in an early manually approved state, and is not usable from inside Resonite, so it is not disclosure to a receiving world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/OAuth",
+          "title": "Resonite Wiki: OAuth",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "OAuth is an open standard which allows other applications on the internet to access your Resonite Account details without you sharing your Resonite Password with them."
+        }
+      ]
     },
     {
       "capability_id": "identity.social",
@@ -1988,24 +2051,104 @@
     },
     {
       "capability_id": "physics.joint",
-      "level": "none",
-      "note": "No joints or constraints are exposed. There is no wiki page for joints, hinges or constraints, and searches turn up only podcast discussion. This follows from rigid bodies not being exposed — with no dynamic bodies there is nothing to constrain. The nearest thing is dynamic bone chains for wiggle, which is a procedural effect rather than a constraint solver.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "Partial: the Joint component rotates a slot about a point or an axis and the Slider component moves one along an axis, both driven by a grabbing user (doors, helmet tops, dials), so hinge-like and slider-like constraints exist for grabbable objects. Missing: no physics-simulated joints, springs or constraints between dynamic bodies are exposed to users. The engine's physics library supports them internally, and the wiki says full rigid-body integration is future work; in the project's 2024-12-15 podcast its developer says springs and joints cannot be done. Searched the Resonite Wiki (wiki.resonite.com, MediaWiki search over all pages including release notes and podcast transcripts, and the page list of the Component namespace, 1770 pages) on 2026-10-20 for joint, hinge, spring, constraint and rigid body; found Component:Joint and Component:Slider (grab-driven), the inverse-kinematics page (skeleton joints), avatar-pose constraint components, unrelated value-type constraints and podcast discussion. No release note adds physical joints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Component:Joint",
+          "title": "Resonite Wiki: Component:Joint",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Joint component allows for a slot or object to rotate around a single point, in any direction, or around an axis. Common uses are doors, helmet tops, and dials."
+        },
+        {
+          "url": "https://wiki.resonite.com/Bepuphysics",
+          "title": "Resonite Wiki: Bepuphysics",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "bepuphysics2 is an very powerful, extremely fast rigid body Physics engine written in C#. It is used throughout Resonite for most physical interactions and FrooxEngine leverages it's capabilities for many key features of gameplay."
+        },
+        {
+          "url": "https://wiki.resonite.com/Bepuphysics",
+          "title": "Resonite Wiki: Bepuphysics",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NOTE: This is is what the physics engine can do, not what is exposed in Resonite and is included for the sake of interest."
+        },
+        {
+          "url": "https://wiki.resonite.com/The_Resonance/2024-12-15/Transcript",
+          "title": "The Resonance podcast transcript, 2024-12-15 (Resonite Wiki)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "you cannot do arbitrary 08:34: Rigidbody simulation. You cannot like, you know, do like various constraints, like, you know, 08:38: springs, joints, you know, stuff like that."
+        }
+      ]
     },
     {
       "capability_id": "physics.material",
-      "level": "none",
-      "note": "No physics materials. Colliders expose a mass field and nothing else about surface response; there is no documented friction or restitution anywhere. Again a consequence of rigid bodies not being exposed.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "Partial: surface response exists for character locomotion only. The character controller has traction, sliding and glue forces (standing friction, force to keep moving, sticky surfaces), and the CharacterControllerModifier family lets a surface change them, for example a texture map that makes sand or gravel slow the walker or lower a jump. Missing: colliders expose a mass field and nothing else about surface response; no friction or restitution field on colliders or rigid bodies is documented, and the developer said in the 2024-12-15 podcast that arbitrary rigid-body simulation is not exposed. Searched the Resonite Wiki (wiki.resonite.com, MediaWiki search over all pages including release notes and podcast transcripts, and the page list of the Component namespace, 1770 pages) on 2026-10-20 for friction, restitution, bounciness, bounce, physics material and surface material; found Component:CharacterController (TractionForce, SlidingForce, MaximumGlueForce) and the character controller modifier components, while the other hits were unrelated (social friction, texture materials, a projectile template and a ProtoGraph example with a bouncing ball, an optimisation page about disabling friction calculations on idle objects) or podcast discussion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Bepuphysics",
+          "title": "Resonite Wiki: Bepuphysics",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "bepuphysics2 is an very powerful, extremely fast rigid body Physics engine written in C#. It is used throughout Resonite for most physical interactions and FrooxEngine leverages it's capabilities for many key features of gameplay."
+        },
+        {
+          "url": "https://wiki.resonite.com/Component:CharacterController",
+          "title": "Resonite Wiki: Component:CharacterController",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "How much force is needed to overcome standing friction."
+        },
+        {
+          "url": "https://wiki.resonite.com/Component:TextureCharacterControllerModifier",
+          "title": "Resonite Wiki: Component:TextureCharacterControllerModifier",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to allow different terrain like sand or gravel to affect user speed or jump height when walking on it."
+        },
+        {
+          "url": "https://wiki.resonite.com/Collider",
+          "title": "Resonite Wiki: Collider",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Mass Float How heavy this collider is in total."
+        },
+        {
+          "url": "https://wiki.resonite.com/The_Resonance/2024-12-15/Transcript",
+          "title": "The Resonance podcast transcript, 2024-12-15 (Resonite Wiki)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "you cannot do arbitrary 08:34: Rigidbody simulation. You cannot like, you know, do like various constraints, like, you know, 08:38: springs, joints, you know, stuff like that."
+        }
+      ]
     },
     {
       "capability_id": "physics.soft",
-      "level": "none",
-      "note": "No cloth and no soft-body simulation is documented. Dynamic bone chains provide secondary motion on skeletal chains, which is a different thing and does not solve deformable surfaces.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "Partial. Dynamic bone chains give spring-like secondary motion along bone chains, which the wiki says can animate fabric or tails. Missing: no cloth solver, no volumetric soft body and no deformable-surface collision model is documented, and the physics library's rigid-body features are largely not exposed. Searched the Resonite Wiki (wiki.resonite.com, MediaWiki search over all pages including release notes and podcast transcripts) on 2026-10-19 for cloth, soft body, dynamic bone and spring bone; hits were a world, podcast discussion, and the dynamic bone pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Dynamic_bone_chain_parameters",
+          "title": "Resonite Wiki: Dynamic bone chain parameters",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Dynamic bone chains are a very flexible tool that can be used to animate a variety of objects, such as fabric or tails."
+        },
+        {
+          "url": "https://wiki.resonite.com/Bepuphysics",
+          "title": "Resonite Wiki: Bepuphysics",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NOTE: This is is what the physics engine can do, not what is exposed in Resonite and is included for the sake of interest."
+        }
+      ]
     },
     {
       "capability_id": "physics.trigger",
@@ -2638,16 +2781,32 @@
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "Resonite worlds are virtual. There is no map of a real place, so nothing to version or align.",
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. Resonite worlds are virtual. There is no map of a real place, so nothing to version or align.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "No world or service in Resonite declares a region of the Earth where it applies.",
+      "note": "Resonite's own home page describes a \"digital universe\" for socialising, playing and building, that is, a virtual platform with no physical-world sensing. No world or service in Resonite declares a region of the Earth where it applies.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite home page",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -2917,6 +3076,448 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "Every object in Resonite exists as a Slot. Slots form hierarchies, are positioned in 3D space via their transformation, and may contain Components to add additional behavior."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "none",
+      "note": "Searched Resonite Wiki pages 'Guide for Rec Room users', 'Guide for Second Life users', 'Patreon', 'Resonite Credits' (empty page) and wiki site search for marketplace, payment and currency on 2026-10-20; found no in-world payment exchange, only subscription purchases for storage through resonite.com, Stripe and Patreon. The wiki states there is no in-world currency and that avatars are sold on external websites; the game's full documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Guide_for_Rec_Room_users",
+          "title": "Guide for Rec Room users - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "There's currently no in-world currency, but avatars and accessories may be sold on external websites."
+        },
+        {
+          "url": "https://wiki.resonite.com/Connecting_Resonite_to_other_applications",
+          "title": "Connecting Resonite to other applications - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This means that at this time anything involving Payments, Passwords or personal information is not recommended."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "Resonite checks account-level supporter grants: subscription tiers give in-game perks for the duration of the subscription, including a key to unlock the headless server beta. It has no in-world currency or store, so a creator cannot attach a purchase grant to a world, item or avatar; avatars are sold on outside sites as importable files. Missing: any resource-level grant, holder-to-resource binding, revocation or transfer rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Supporting_Resonite",
+          "title": "Supporting Resonite - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "subscribing to a tier on either Patreon or directly with Resonite will give you in-game perks for the duration of the subscription."
+        },
+        {
+          "url": "https://wiki.resonite.com/Supporting_Resonite",
+          "title": "Supporting Resonite - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tiers with the Headless server software perk may send the /headlessCode command to the Resonite bot in-game which will provide a key to unlock the headless beta branch on Steam."
+        },
+        {
+          "url": "https://wiki.resonite.com/Guide_for_Second_Life_users",
+          "title": "Guide for Second Life users - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "There's currently no in-world currency, but avatars and accessories may be sold on external websites as importable files."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "none",
+      "note": "Resonite sells supporter subscriptions, directly or through Patreon, that give in-game perks, but the wiki describes no receipt or proof of purchase that another system could check. Searched the wiki pages Supporting Resonite, Supporting Resonite/Patreon, Frequently Asked Questions, Getting Your Patreon Rewards, Patreon Linking and Terms of Service for receipt, invoice and proof of purchase on 2026-10-20; none found, and no in-platform marketplace for creators was found. The rest of the wiki and the Resonite policies were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Supporting_Resonite",
+          "title": "Supporting Resonite, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "subscribing to a tier on either Patreon or directly with Resonite will give you in-game perks for the duration of the subscription"
+        },
+        {
+          "url": "https://wiki.resonite.com/Patreon",
+          "title": "Supporting Resonite/Patreon, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Patreon is a popular monetization platform used to handle Resonite subscriptions."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "Resonite keeps only a per-user list of hosts the person has agreed to let a world connect to, set through a consent dialog. Searched Resonite wiki pages ProtoFlux:RequestHostAccess, ProtoFlux:IsHostAccessAllowed, Component:HostAccessDialog and Security/Consent (a stub with no text) for trust, allow, host and whitelist on 2026-10-20; found no governed list of acceptable issuers, services or worlds.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/ProtoFlux:IsHostAccessAllowed",
+          "title": "Resonite Wiki: ProtoFlux:IsHostAccessAllowed",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This relates to the settings in the Dash that a user can look through to see what services they have access to."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "native",
+      "note": "Resonite carries time-ordered pose sequences as animation tracks whose interpolation mode (raw, discrete, curve or Bezier) is declared per track, and carries live pose streams through the TransformStreamDriver, which turns a stream of position, rotation and scale values into slot transforms and drives user positioning. Both are Resonite's own forms, readable only by another Resonite.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/AnimJ",
+          "title": "AnimJ, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Used to determine how each keyframe is interpolated between frames."
+        },
+        {
+          "url": "https://wiki.resonite.com/Component:TransformStreamDriver",
+          "title": "Component:TransformStreamDriver, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The TransformStreamDriver is used to convert a stream of position rotation and scale values into drives which can drive slot transforms."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "native",
+      "note": "Poses are linked as the slot hierarchy, where each slot holds a position, rotation and scale relative to its parent, and a ResonitePackage carries the slot hierarchies so a related set of frames is rebuilt when imported. This works between Resonite worlds only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Slot_transforms",
+          "title": "Slot transforms, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Position , Rotation , and Scale fields on slots in the scene inspector are shown and managed in a local coordinate space to the slot's immediate parent."
+        },
+        {
+          "url": "https://wiki.resonite.com/ResonitePackage",
+          "title": "ResonitePackage, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ResonitePackages will include everything needed to re-create an object inside Resonite when re-imported."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "partial",
+      "note": "A Resonite login token can be revoked by its holder through a DELETE call, and tokens expire after 24 hours or 30 days. Missing: any way for a second party to ask whether an account or token is still valid, and any suspension status; searched the Resonite wiki API page and wiki search on 2026-10-20 for revoke, suspend and status and found only token revocation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/API",
+          "title": "API, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To revoke a token, send a DELETE request to https://api.resonite.com/userSessions/{userId}/{token_to_be_revoked} with an authorization header ."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Resonite does not encrypt messages between contacts end to end and does not encrypt stored cloud data at rest; no recipient key material is named. Searched the Resonite wiki privacy page and wiki search for end to end encryption and encrypted on 2026-10-20; the only hits were these statements.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Privacy_information",
+          "title": "Privacy information, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Messages sent to contacts are not end to end encrypted ."
+        },
+        {
+          "url": "https://wiki.resonite.com/Privacy_information",
+          "title": "Privacy information, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Traffic to and from Cloudflare is encrypted with HTTPS , but data is not encrypted at rest ."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "Resonite has a Texture3D asset, a volume built by stacking images, which covers storing a cell volume. Missing: any voxel exchange form, per-cell properties or updates; searched the Resonite wiki on 2026-10-20 for voxel and found only avatar and group names.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Texture3D",
+          "title": "Texture3D, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Texture3D is a volumetric asset that takes in multiple images or textures and stacks them together to form a volume or area of visual data."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "A Resonite record carries a name, description and tags, and slots carry a free-text tag field. Missing: declared structure or a schema that another system could read, since tags are plain strings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/ResonitePackage",
+          "title": "ResonitePackage, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Contains various metadata about the object - name, description, tags, etc"
+        },
+        {
+          "url": "https://wiki.resonite.com/Tag",
+          "title": "Tag, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tags are Strings that Resonite uses to label slots , Dynamic Variables (Triggers & Receivers), and other objects that require a tag."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "native",
+      "note": "Slots carry string tags, and a dynamic impulse trigger names a slot and a tag so that every receiver under that slot with the matching tag acts, so a tag works as a named set used as the target of an operation. These are Resonite's own components.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Dynamic_impulses",
+          "title": "Dynamic impulses, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every receiver under the targeted slot with a matching tag and value's datatype will be triggered."
+        },
+        {
+          "url": "https://wiki.resonite.com/Tag",
+          "title": "Tag, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Slots have a tag field"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing in Resonite recovers a lost provenance record from a content fingerprint or watermark; a record names its owner and ID, which is an account-level authorship claim. Searched the Resonite wiki search on 2026-10-20 for watermark, fingerprint, C2PA and provenance; no page describes it.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Record",
+          "title": "Record, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Records are identified by an owner and record ID ."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Resonite declares no protection scheme on content; its own guidance says in-app obfuscation is easy to break and the only enforcement primitive is a single-user avatar protection component. Searched the Resonite wiki search on 2026-10-20 for DRM and protect; no page describes signalling a scheme.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Things_to_avoid",
+          "title": "Things to avoid, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "While, this may seem like a way to protect your creation it doesn't do much for a knowledgeable user who has Builder permissions."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "partial",
+      "note": "Resonite can receive live data from outside through OSC, WebSocket and HTTP, and its own wiki names heart-rate sensors as something users connect this way. It defines no body-signal type and gives no privacy terms for such data; its only guidance is host-access consent and a warning against sending personal information.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Connecting_Resonite_to_other_applications",
+          "title": "Connecting Resonite to other applications",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Talking to Real world Hardware or devices such as Heart Rate Sensors, Lights or Sound Equipment"
+        },
+        {
+          "url": "https://wiki.resonite.com/Connecting_Resonite_to_other_applications",
+          "title": "Connecting Resonite to other applications",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This means that at this time anything involving Payments, Passwords or personal information is not recommended."
+        },
+        {
+          "url": "https://wiki.resonite.com/OSC",
+          "title": "OSC - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "OSC requires the use of third party applications outside Resonite to send/receive data."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "ResoniteLink is an official WebSocket protocol that lets outside programs in any language read and write a live Resonite session's data model, with a reference C# library and an official Unity SDK for building worlds, avatars and items. It is in beta, works only in a session where the user is host or has Builder permission and the world has not disallowed it, and the sources read describe no separate publish step beyond the live session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/ResoniteLink",
+          "title": "ResoniteLink - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ResoniteLink is a WebSocket-based interoperability layer that allows external tools to read and write Resonite’s data model from virtually any programming language."
+        },
+        {
+          "url": "https://wiki.resonite.com/ResoniteLink",
+          "title": "ResoniteLink - Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You have at least Builder permission"
+        },
+        {
+          "url": "https://yellow-dog-man.github.io/ResoniteLink/",
+          "title": "ResoniteLink Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ResoniteLink is an interoperability layer built on top of WebSockets allowing you to easily build external tools from any programming language."
+        },
+        {
+          "url": "https://yellow-dog-man.github.io/ResoniteLink/",
+          "title": "ResoniteLink Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "we're seeking for feedback on the protocol and are still open to significant breaking changes."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "native",
+      "note": "Resonite has built-in components that receive OSC messages into an ordinary component field and send field values back out, plus WebSocket and HTTP request nodes, so objects in a world can follow an outside source. ResoniteLink also lets outside tools read and write the world's data model over a WebSocket.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/OSC",
+          "title": "OSC, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Open Sound Control (OSC) is a content format that allows software and hardware to send and receive data."
+        },
+        {
+          "url": "https://wiki.resonite.com/OSC",
+          "title": "OSC, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Expose an OSC value as a regular component field"
+        },
+        {
+          "url": "https://wiki.resonite.com/ResoniteLink",
+          "title": "ResoniteLink, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ResoniteLink is a WebSocket-based interoperability layer that allows external tools to read and write Resonite’s data model from virtually any programming language."
+        },
+        {
+          "url": "https://wiki.resonite.com/ProtoFlux:WebsocketTextMessageReceiver",
+          "title": "ProtoFlux:WebsocketTextMessageReceiver, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Websocket Text Message Receiver node allows you to receive text messages from a WebsocketClient."
+        }
+      ]
+    },
+    {
+      "level": "none",
+      "confidence": "verified",
+      "note": "Resonite keeps per-user values across worlds as cloud variables, with owner-set read and write permissions, but no outside-readable activity record is documented. Searched the Resonite Wiki full text on 2026-10-20 for cmi5, SCORM, 'Experience API', 'learning record', 'activity record', 'learning management', LMS, 'Tin Can', 'learning analytics', 'player statistics' and 'export your data'; no page matched. A search for xAPI returned 33 loose matches, and the pages inspected contain no such term.",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Cloud_Variables",
+          "title": "Cloud variables, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Cloud variables are variables that persist across worlds."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "Any object or world can be exported as a ResonitePackage, a zip archive that carries every asset, the slot hierarchy, components and ProtoFlux, and is meant for local backups that do not need the Resonite cloud. Missing: the contents are Resonite's internal data formats that may change at any time and no other platform reads them.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/ResonitePackage",
+          "title": "ResonitePackage, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The package includes all the necessary assets for exported item without relying on the Resonite Cloud, making this a good option if you want to create local backups of your items."
+        },
+        {
+          "url": "https://wiki.resonite.com/ResonitePackage",
+          "title": "ResonitePackage, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This contains a reference to the main asset (typically the object or main world that should be loaded)"
+        },
+        {
+          "url": "https://wiki.resonite.com/ResonitePackage",
+          "title": "ResonitePackage, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "While possible, the ResonitePackage contains Resonite's internal data formats, which are subject to change at any moment."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "Resonite documents no rendering on a server for a remote client: its own pages say it draws with Direct3D 11 on the client, and its headless server software exists to run where rendering is not needed. Searched the Resonite wiki pages Headless Server Software, Headless client and Optimization guidelines on 2026-10-20 for render, graphic, GPU and stream; no remote or cloud rendering found (the wiki was not searched in full).",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Optimization_guidelines",
+          "title": "Optimization guidelines, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resonite currently uses Direct3D 11 for rendering in Unity"
+        },
+        {
+          "url": "https://wiki.resonite.com/Headless_Server_Software",
+          "title": "Headless Server Software, Resonite Wiki",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Headless Server Software is a version of Resonite that lacks a graphical user interface, allowing it to run efficiently in scenarios where rendering is not needed."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Resonite is a social virtual world platform for conversation, play and building, so recognising a real physical object from its 3D model is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
         }
       ]
     }

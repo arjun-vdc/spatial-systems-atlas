@@ -1629,7 +1629,7 @@
     {
       "capability_id": "capture.4d",
       "level": "partial",
-      "note": "Time appears once, as an experimental research port for dynamic surgical scenes added in June 2026. There is no general four-dimensional training path, no time axis in any export, and no playback of a captured sequence.",
+      "note": "Time-varying training exists only as research add-ons and an experimental port, not as a general path. Nerfstudio documents two add-on methods, K-Planes (a configuration tuned for dynamic monocular synthetic scenes) and NeRFPlayer (nerfplayer-nerfacto and nerfplayer-ngp), and gsplat has an experimental G-SHARP port for dynamic surgical scenes (June 2026) that keeps its 4D Gaussian machinery under gsplat/contrib. The documentation describes no export that carries a time axis (the documented exports are PLY point clouds and OBJ meshes) and no playback contract for a captured sequence.",
       "confidence": "verified",
       "sources": [
         {
@@ -1638,6 +1638,34 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "[Jun 2026] **G-SHARP** -- dynamic surgical-scene reconstruction for Gaussian splatting."
+        },
+        {
+          "url": "https://docs.nerf.studio/nerfology/methods/kplanes.html",
+          "title": "K-Planes - nerfstudio documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A unified model for static, dynamic and variable appearance NeRFs."
+        },
+        {
+          "url": "https://docs.nerf.studio/nerfology/methods/nerfplayer.html",
+          "title": "NeRFPlayer - nerfstudio documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A Streamable Dynamic Scene Representation with Decomposed Neural Radiance Fields"
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/proposals/gsharp_v0_2_port.html",
+          "title": "G-SHARP v0.2 Integration Proposal - gsplat documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Keep the deformable / 4D Gaussian machinery behind a clearly experimental gsplat/contrib/ namespace."
+        },
+        {
+          "url": "https://docs.nerf.studio/quickstart/export_geometry.html",
+          "title": "Export geometry - nerfstudio documentation",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Our point clouds are exported as .ply files and the textured meshes are exported as .obj files."
         }
       ]
     },
@@ -1954,56 +1982,176 @@
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "sense.lighting",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "geo.trajectory",
@@ -2025,21 +2173,66 @@
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "render.layer",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "scene.bounds",
@@ -2061,105 +2254,330 @@
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "render.frame-timing",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
       "note": "Nerfstudio and gsplat is assessed here as NeRF and Gaussian training pipelines, developer APIs, optional methods and a training viewer. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        },
+        {
+          "url": "https://docs.gsplat.studio/main/",
+          "title": "gsplat documentation (main)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "gsplat is an open-source library for CUDA-accelerated differentiable rasterization of 3D gaussians with Python bindings."
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2271,6 +2689,259 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "gsplat provides an efficient and differentiable rasterization framework for 3D Gaussian Splatting."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Nerfstudio and gsplat are open research training libraries, not a service that takes payment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "A research framework for training radiance fields; it has no holder, purchase or access-right concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Nerfstudio is a framework for creating, training and testing radiance fields, so purchase or grant records are outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "Nerfstudio README at commit 50e0e3c",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Nerfstudio is a framework for training radiance fields; it states no role in governing which issuers, services or worlds a verifier accepts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Nerfstudio is a training and rendering framework for radiance fields from captured images, not a runtime for live body signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Nerfstudio and gsplat are local research libraries for training radiance fields, with no hosted world or platform that an outside agent authors and publishes into.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Nerfstudio and gsplat train and render radiance fields from captured images; they do not bind objects to a live source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "Nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "Nerfstudio is a toolkit for training and viewing neural radiance fields; it defines no record of what a person did.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "Nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Nerfstudio and gsplat are research tools for training and rendering radiance fields, so they keep no places and their exports are single captures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "native",
+      "note": "The Nerfstudio viewer renders each view on the machine running training, from the camera set in the browser, and sends the result back as a JPEG image to the browser, which can be reached over an SSH tunnel or share URL. It serves training monitoring and video authoring; it states no pose prediction or latency model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/nerfstudio/viewer/render_state_machine.py",
+          "title": "render_state_machine.py, Nerfstudio",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Takes the current camera, generates rays, and renders the image"
+        },
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/nerfstudio/viewer/render_state_machine.py",
+          "title": "render_state_machine.py, Nerfstudio",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "self.client.scene.set_background_image("
+        },
+        {
+          "url": "https://docs.nerf.studio/quickstart/viewer_quickstart.html",
+          "title": "Using the viewer, Nerfstudio documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To access a viewer, we need to enter the server's address and port in a web browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Nerfstudio and gsplat are frameworks for training and rendering radiance fields from images; they do not recognise a known object from its model or report its pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/main/README.md",
+          "title": "Nerfstudio README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "partial",
+      "note": "Nerfstudio's dataset format lists one camera-to-world matrix per image in a single world space, and the loader records the transform from the original data frame to its own training frame. There are no chains, parent links or graph, so related frames are not linked beyond that shared frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nerf.studio/quickstart/data_conventions.html",
+          "title": "Nerfstudio data conventions",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For a transform matrix, the first 3 columns are the +X, +Y, and +Z defining the camera orientation, and the X, Y, Z values define the origin."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/nerfstudio-project/nerfstudio/50e0e3c70c775e89333256213363badbf074f29d/nerfstudio/data/dataparsers/nerfstudio_dataparser.py",
+          "title": "Nerfstudio dataparser (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "dataparser_transform_matrix contains the transformation to dataparser output coordinates from original data coordinates."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Image and depth paths in a transforms file are resolved against the dataset folder, with a fixed rule for downscaled image folders. There is no resolver or identifier scheme beyond that folder join.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/nerfstudio-project/nerfstudio/50e0e3c70c775e89333256213363badbf074f29d/nerfstudio/data/dataparsers/nerfstudio_dataparser.py",
+          "title": "Nerfstudio dataparser (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "return data_dir / filepath"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Nerfstudio trains and exports radiance fields, point clouds and meshes as open files and has no protected content components to signal. Protection signalling belongs to the container or delivery layer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "Nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Nerfstudio exports point clouds, meshes and splats, and its TSDF export builds a volume only as a step toward a mesh; no voxel volume is written or read as an interchanged scene. Searched the Nerfstudio README at commit 50e0e3c and the docs pages for export geometry, data conventions, custom datasets and the index for voxel, volume, TSDF, occupancy and grid on 2026-10-20; the only hits were the TSDF mesh export and a Record3D point-cloud downsampling option. The rest of the docs site and the source were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.nerf.studio/quickstart/export_geometry.html",
+          "title": "Nerfstudio: exporting geometry",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "TSDF (truncated signed distance function) Fusion is a meshing algorithm that uses depth maps to extract a surface as a mesh."
+        },
+        {
+          "url": "https://github.com/nerfstudio-project/nerfstudio/blob/50e0e3c70c775e89333256213363badbf074f29d/README.md",
+          "title": "Nerfstudio README (commit 50e0e3c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Nerfstudio provides a simple API that allows for a simplified end-to-end process of creating, training, and testing NeRFs."
         }
       ]
     }

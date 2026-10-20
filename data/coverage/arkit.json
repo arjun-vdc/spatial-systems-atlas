@@ -554,16 +554,32 @@
     {
       "capability_id": "scene.licence",
       "level": "none",
-      "note": "Nothing in ARKit, RealityKit or the USDZ packaging guidance carries terms of use with an asset. Apple's USD documentation covers geometry, materials, behaviour and packaging and says nothing about rights.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Nothing in ARKit, RealityKit or the USD packaging guidance carries terms of use with an asset. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for licence, license, copyright, rights, attribution; no symbol or page about asset terms of use; the USD pages cover geometry, materials, variants and packaging only.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd.md",
+          "title": "Apple Developer Documentation: USD (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "USD is also Apple’s format of choice for 3D Content, including 3D content used for Augmented Reality."
+        }
+      ]
     },
     {
       "capability_id": "scene.provenance",
       "level": "none",
-      "note": "There is no signed record of who made an asset and how. USDZ is a plain zip archive of a USD file and its dependencies, with no signature and no content credential.",
-      "confidence": "reported",
-      "sources": []
+      "note": "There is no signed record of who made an asset and how in the documented frameworks. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for provenance, signature, signed, credential, authorship; no symbol or page about signing or recording who made an asset.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd.md",
+          "title": "Apple Developer Documentation: USD (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "USD is also Apple’s format of choice for 3D Content, including 3D content used for Augmented Reality."
+        }
+      ]
     },
     {
       "capability_id": "avatar.body",
@@ -654,25 +670,34 @@
       ]
     },
     {
-      "capability_id": "avatar.wearable",
-      "level": "none",
-      "note": "No worn or carried item model, and no attachment-point convention for one. Anything worn is an ordinary child entity of the wearer's transform, with no named socket that would survive a move to another system.",
-      "confidence": "reported",
-      "sources": []
-    },
-    {
       "capability_id": "avatar.lod",
-      "level": "none",
-      "note": "No reduced avatar representation for crowds or weak devices. There is no level-of-detail mechanism of any kind in the frameworks.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "RealityKit documents a generic LevelOfDetailComponent (introduced in OS 27) that shows or hides child entities by camera distance, screen area or resolution metric. It is not avatar-specific: no reduced avatar representation, crowd rule or avatar profile is defined, and an exchange format for avatar detail levels is not described. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>) on 2026-10-19 for level of detail, LOD, avatar and Persona; the only avatar-like items are spatial Personas in GroupActivities, which the app does not receive.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/levelofdetailcomponent.md",
+          "title": "Apple Developer Documentation: LevelOfDetailComponent (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The component allows entities to automatically show/hide child entities based on viewing conditions, reducing rendering complexity for distant or small objects."
+        }
+      ]
     },
     {
       "capability_id": "avatar.identity",
       "level": "none",
-      "note": "Nothing binds an avatar to a checkable identity. A spatial Persona belongs to the Apple account on the call, and the app is given neither the Persona nor a credential about it.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Nothing binds an avatar to a checkable identity; a spatial Persona belongs to the Apple account on the call and the app is given neither the Persona nor a credential about it. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for avatar, Persona, identity, credential; spatial Personas are described only as a SharePlay presentation of people; no symbol exposes a Persona to the app or ties one to a credential.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/groupactivities/adding-spatial-persona-support-to-an-activity.md",
+          "title": "Apple Developer Documentation: Adding spatial Persona support to an activity (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Each person sees the facial expressions of other participants, what they’re looking at, and where they’re pointing."
+        }
+      ]
     },
     {
       "capability_id": "physics.rigid",
@@ -758,16 +783,32 @@
     {
       "capability_id": "physics.determinism",
       "level": "none",
-      "note": "Apple states no determinism guarantee for the simulation. The synchronised multi-device model is authority-and-replication over the network rather than a matching simulation on each device, which is the design a system without determinism has to choose.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Apple states no determinism guarantee for the simulation. The synchronised multi-device model is authority-and-replication over the network rather than a matching simulation on each device. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for determinism, deterministic, fixed time step, reproducible; only a cloth time-step setting and a localized PhysicsSimulationComponent turned up; no page states that identical inputs give identical results on different devices.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Animate objects, both manually and with physics simulations."
+        }
+      ]
     },
     {
       "capability_id": "physics.soft",
-      "level": "none",
-      "note": "No cloth and no deformable body simulation is documented in either framework. Deformation is available only as skinning and blend shapes, which are animation, not simulation.",
-      "confidence": "reported",
-      "sources": []
+      "level": "partial",
+      "note": "Cloth is documented: a RealityKit \"Cloth simulation\" collection (ClothSimulationComponent, ClothBodyComponent, collider, grab and force-volume components) introduced in OS 27 for iOS, iPadOS and visionOS. Missing: no volumetric soft body or other deformable solid is documented, and the collection is a RealityKit runtime API with no exchange format. Documentation availability is not a compilation, deployment, device-performance or interchange test. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>) on 2026-10-19 for cloth, soft body, deform; found the cloth family and BlendShapeDeformer (animation).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/physics-cloth-simulation.md",
+          "title": "Apple Developer Documentation: Cloth simulation (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Add fabric, soft surfaces, and draping materials that bend, fold, and respond to forces and contact in your 3D scenes."
+        }
+      ]
     },
     {
       "capability_id": "physics.trigger",
@@ -963,16 +1004,32 @@
     {
       "capability_id": "net.interest",
       "level": "none",
-      "note": "Nothing decides what each peer needs. The multipeer session synchronises the scene to all connected devices, and no filter, relevance rule or area of interest is exposed.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Nothing decides what each peer needs; the multipeer session synchronises the scene to all connected devices. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for interest, relevance, area of interest, filter; only collision and navigation filters; no setting limits what each peer receives from scene synchronization.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/multipeerconnectivityservice.md",
+          "title": "Apple Developer Documentation: MultipeerConnectivityService (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A service that provides scene synchronization among all peers in a multipeer connectivity session."
+        }
+      ]
     },
     {
       "capability_id": "net.prediction",
       "level": "none",
-      "note": "No prediction and no reconciliation. Apple's own guidance is that synchronisation can simply fail on a poor connection, with no local-correction machinery offered.",
-      "confidence": "reported",
-      "sources": []
+      "note": "No prediction and no reconciliation of synchronised state is offered. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for prediction, reconcile, rollback, interpolation, latency; predictAnchor and the predicted tracking mode concern sensor tracking, not network state; no network prediction or correction API.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/multipeerconnectivityservice.md",
+          "title": "Apple Developer Documentation: MultipeerConnectivityService (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "A service that provides scene synchronization among all peers in a multipeer connectivity session."
+        }
+      ]
     },
     {
       "capability_id": "net.transport",
@@ -1118,23 +1175,68 @@
     {
       "capability_id": "identity.root",
       "level": "out-of-scope",
-      "note": "Neither framework defines an identifier for a person, agent or thing. Identity on this platform lives in separate sign-in services outside the subject.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Neither framework defines an identifier for a person, agent or thing. Identity on this platform lives in separate sign-in services outside the subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.credential",
       "level": "out-of-scope",
-      "note": "No format for a checkable claim about a subject, and nothing in either framework reads one.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. No format for a checkable claim about a subject, and nothing in either framework reads one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.exchange",
       "level": "out-of-scope",
-      "note": "No protocol for requesting and presenting claims.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. No protocol for requesting and presenting claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.capability",
@@ -1154,23 +1256,68 @@
     {
       "capability_id": "identity.privacy",
       "level": "out-of-scope",
-      "note": "Selective disclosure of credentials is not something either framework does. The platform's privacy work is of a different kind: it withholds sensor data from the app rather than revealing part of a claim to a receiver.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Selective disclosure of credentials is not something either framework does. The platform's privacy work is of a different kind: it withholds sensor data from the app rather than revealing part of a claim to a receiver.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.social",
       "level": "out-of-scope",
-      "note": "No relationships and no standing are modelled.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. No relationships and no standing are modelled.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.rights",
       "level": "out-of-scope",
-      "note": "Nothing acts on licence terms at the point of use, because nothing carries them.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Nothing acts on licence terms at the point of use, because nothing carries them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "geo.pose",
@@ -1313,9 +1460,17 @@
     {
       "capability_id": "geo.tiles",
       "level": "none",
-      "note": "No tiled terrain or city streaming. Location anchors carry no geometry, and Apple's guidance for large scenes is to split meshes by hand rather than to stream by tile.",
-      "confidence": "reported",
-      "sources": []
+      "note": "No tiled terrain or city streaming; location anchors carry no geometry. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for tile, tiling, tileset, streaming, large scene; only an audio material named tile and an AR-session streaming sample; location anchors carry no geometry and no tiled-data API exists.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/argeoanchor.md",
+          "title": "Apple Developer Documentation: ARGeoAnchor (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "An anchor that identifies a geographic location using latitude, longitude, and altitude data."
+        }
+      ]
     },
     {
       "capability_id": "geo.indoor",
@@ -1533,9 +1688,17 @@
     {
       "capability_id": "logic.sandbox",
       "level": "none",
-      "note": "There is no guest-content model to sandbox. Assets are loaded as data and Script Graph logic runs in the app's own process through a linked Swift package; nothing runs untrusted code with limits.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Nothing runs untrusted code with limits; imported content is data and Script Graph logic runs in the app's own process. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for sandbox, isolation, untrusted, limits, script; Script Graph and behavior trees are authoring features with no documented isolation or resource limits; the only \"isolated\" hit is a physics-simulation option.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitycomposerpro.md",
+          "title": "Apple Developer Documentation: Reality Composer Pro (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Reality Composer Pro includes editors and workflows for designing materials with Shader Graph, building visual scripts with Script Graph, authoring GPU-driven simulations with Compute Graph, defining character behaviors with Animation Graphs, and editing skeletons."
+        }
+      ]
     },
     {
       "capability_id": "logic.agent",
@@ -1606,16 +1769,39 @@
     {
       "capability_id": "persist.inventory",
       "level": "out-of-scope",
-      "note": "Neither framework models items a person holds. There is no inventory to travel.",
-      "confidence": "reported",
-      "sources": []
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Neither framework models items a person holds. There is no inventory to travel.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "persist.prefs",
       "level": "none",
-      "note": "Settings and accessibility choices belong to the device and follow the person across apps on that device only; nothing carries them to another operator's experience, and neither framework exposes them as portable data.",
-      "confidence": "reported",
-      "sources": []
+      "note": "Settings and accessibility choices belong to the device; neither framework exposes them as portable data. Searched the symbol-title indexes of ARKit, RealityKit, USD, USDKit and GroupActivities (developer.apple.com/tutorials/data/index/<framework>, current snapshot) and the pages named in the sources on 2026-10-19 for preference, setting, accessibility, portable; only per-entity accessibility properties for VoiceOver; no portable preference data.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/improving-the-accessibility-of-realitykit-apps.md",
+          "title": "Apple Developer Documentation: Improving the Accessibility of RealityKit Apps (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Incorporate assistive technologies in your augmented reality app."
+        }
+      ]
     },
     {
       "capability_id": "persist.content-addr",
@@ -2164,16 +2350,46 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "ARKit and RealityKit run an application's own code inside one app. Publishing a unit of logic under a name others resolve is the app store and the package manager's business, not the framework's.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. ARKit and RealityKit run an application's own code inside one app. Publishing a unit of logic under a name others resolve is the app store and the package manager's business, not the framework's.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "The frameworks draw and sense; the review that stands between an application and its users is App Review, a property of the store rather than of ARKit, and nothing in the frameworks records what review content has had.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The frameworks draw and sense; the review that stands between an application and its users is App Review, a property of the store rather than of ARKit, and nothing in the frameworks records what review content has had.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
@@ -2239,44 +2455,134 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
@@ -2401,30 +2707,90 @@
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "render.compute",
@@ -2504,9 +2870,24 @@
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Apple ARKit and RealityKit is assessed here as Apple device sensing and entity/component rendering APIs. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "ARKit's overview describes device motion tracking, world tracking, scene understanding and display conveniences for building AR experiences, and RealityKit's describes 3D simulation and rendering. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
     },
     {
       "capability_id": "deliver.resolve",
@@ -2640,6 +3021,286 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "RealityKit provides high-performance 3D simulation and rendering for creating augmented reality experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit are sensing and rendering frameworks for building AR experiences, so payment belongs to Apple's separate store services, not to this subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit - Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit sense and render the physical surroundings; store purchases and entitlement checks belong to a separate Apple purchase service, not to this platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit sense the room and draw and simulate the scene, so issuing purchase or grant records is not part of what they are for; store purchases belong to other Apple frameworks that this subject does not cover.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation, Apple Developer",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit sense the room and simulate and draw a scene on Apple devices; choosing which issuers, services or worlds to trust is outside that stated purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "ARKit is for sensing device motion and the surrounding scene, so heart rate and similar body signals are not part of it; Apple delivers them to apps through the separate HealthKit framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/healthkit.md",
+          "title": "HealthKit",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "HealthKit provides a central repository for health and fitness data on iPhone and Apple Watch. With the user’s permission, apps communicate with the HealthKit store to access and share this data."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit are device libraries that an app developer calls to sense the room and draw the scene, so there is no hosted world or platform for an outside agent to author and publish content into; agent-assisted app building is ordinary software development.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit sense the device's own surroundings and draw a scene; they are not a way to bind world objects to an outside sensor or controller feed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit, Apple developer documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "ARKit is a tracking and scene-understanding framework for building AR apps; what a person did and with what result is kept, if at all, by the app built on it, and ARKit defines no activity or learning record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation, Apple Developer",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "ARKit and RealityKit sense the room and draw and simulate an app's scene inside an app the developer ships; they are not a host that keeps places, so any scene file belongs under the asset container row.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "ARKit documentation, Apple Developer",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "via-extension",
+      "note": "On visionOS, the separate Foveated Streaming framework (not part of ARKit or RealityKit) connects Apple Vision Pro to a local or cloud streaming endpoint that renders and streams the immersive view, using the person's approximate gaze region relative to the device pose; NVIDIA CloudXR is the documented endpoint SDK. Neither ARKit nor RealityKit itself renders on a server.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/foveatedstreaming.md",
+          "title": "Foveated Streaming, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Foveated Streaming framework provides a session-based API for establishing connections from Apple Vision Pro to local and cloud streaming endpoints."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/foveatedstreaming.md",
+          "title": "Foveated Streaming, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The endpoint host streams high quality content only where necessary based on information about the approximate region where the person is looking, ensuring performance."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "native",
+      "note": "ARKit tracks a known real object and reports its pose through object anchors (ObjectTrackingProvider on visionOS, trackingObjects in a world-tracking session on iOS). The input starts from a USDZ 3D model of the object that Create ML trains into Apple's own .referenceobject file, and that training needs a Mac with Apple silicon; the older .arobject format only works with detection objects, not tracking objects, and cannot be mixed with the newer one in one session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/documentation/visionos/implementing-object-tracking-in-your-app.md",
+          "title": "Implementing object tracking in your app, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To add object tracking to your app, start with a physical object’s 3D model, train a machine learning model in Create ML with that 3D model to obtain a reference object file, then use the resulting reference object file to track the physical object."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/visionos/implementing-object-tracking-in-your-app.md",
+          "title": "Implementing object tracking in your app, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Create ML requires a 3D model asset in the USDZ file format that represents your real-world object."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit-in-ios.md",
+          "title": "Using a reference object with ARKit in iOS, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can’t use `.arobject` and `.referenceobject` files in the same session."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/objecttrackingprovider.md",
+          "title": "ObjectTrackingProvider, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use this class to configure ARKIt to track reference objects in a person’s environment and receive a stream of updates that contains [`ObjectAnchor`](/documentation/ARKit/ObjectAnchor) structures that describe them."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/visionos/implementing-object-tracking-in-your-app.md",
+          "title": "Implementing object tracking in your app, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The machine learning training in Create ML requires a Mac with Apple silicon and macOS 15 or later."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/visionos/using-a-reference-object-with-arkit-in-ios.md",
+          "title": "Using a reference object with ARKit in iOS, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "only works with `detectionObjects` and doesn’t support the `trackingObjects` property."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "partial",
+      "note": "RealityKit evaluates analytic primitive shapes and subdivision surfaces, but Apple's support table ticks no renderer for NURBS patches and gives RealityKit no basis curves, and the page says NURBS assets do not render on RealityKit. So free-form exact surfaces and curves are missing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/validating-usd-files.md",
+          "title": "Validating USD files, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Primitive Shapes are basic geometry types such as cubes, cones, and spheres."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/validating-usd-files.md",
+          "title": "Validating USD files, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "RealityKit supports subdivision on objects using a USD preview surface shader."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/validating-usd-files.md",
+          "title": "Validating USD files, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "assets defined using a NURBS patch render on Storm, but not on SceneKit or RealityKit."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Searched Apple's 'Validating USD files' page for voxel, volume and OpenVDB on 2026-10-20; the volumes table lists OpenVDB volumes for the Raytracer and Storm renderers and leaves the RealityKit column blank, and the word voxel does not appear. The full RealityKit documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/validating-usd-files.md",
+          "title": "Validating USD files, Apple Developer Documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "USD supports volumetric data and particle-based representations."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "RealityKit can attach an entity to a point on the user's hand, head, face or body at runtime. The USD anchoring schema allows only plane, image, face or none, so hand and head attachment points are not carried in a file; there is no wearable item concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/anchoringcomponent/target-swift.enum.md",
+          "title": "AnchoringComponent.Target, RealityKit documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An anchor point attached to the user’s head."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/preliminary-anchoring-type.md",
+          "title": "preliminary:anchoring:type, USD schemas for AR",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "uniform token preliminary:anchoring:type (  allowedTokens = [\"plane\", \"image\", \"face\", \"none\"] )"
         }
       ]
     }

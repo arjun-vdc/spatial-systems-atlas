@@ -1768,17 +1768,47 @@
     },
     {
       "capability_id": "render.passthrough",
-      "level": "out-of-scope",
-      "note": "The browser's preview target is a flat or headset display of the fabric it opens. Nothing in its architecture notes mixes a camera view of the room into that picture.",
+      "level": "none",
+      "note": "The project's architecture proposal counts mixed-reality headsets with camera passthrough among its target devices, so this is within what the browser is for, but nothing is built. Searched the SneezeDoc wiki and architecture proposal 2026.Q2.0 (commit 8e26da5), the SneezeSDK prep documentation and C header (commit 4239e2b), and the Markdown and header files of the Forum Sneeze engine (commit 04bc0ac) and of the MetaversalCorp Sneeze engine (commit 986fc4c) for passthrough, see-through, blend mode, environment blend, room view and camera view on 2026-10-20; found no passthrough or environment-blending control. The hits are all descriptive or open: the proposal's device list, its OpenXR extension list, its device-class definitions, its sensitivity table (camera passthrough rated extreme) and a design question that says the panel capture and passthrough model needs definition; the SneezeDoc overview page what-is-omb.md, which mentions an immersive passthrough headset; and a note in the MetaversalCorp engine's camera-capture module that headset passthrough is a separate OpenXR path and not a capture device. None of these is an implemented control. The engine's XR module only probes for a runtime, and the browser's release notes say virtual and augmented reality are not ready for use. Source code files (.cpp) were not searched.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture, the project's own standards proposal for the metaverse browser engine, version 2026.Q2.0 (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Fully immersive devices, including mixed-reality headsets with camera passthrough that blend virtual content with a view of the physical world."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture, the project's own standards proposal for the metaverse browser engine, version 2026.Q2.0 (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hand tracking, eye tracking, face tracking, passthrough (AR/MR), scene understanding, spatial anchors."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Rubidium/blob/3b8a68e1c7774463629084d1d57bb442ecda148e/RELEASE",
+          "title": "Rubidium release notes, present limitations (commit 3b8a68e)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "VR and AR (via OpenXR) are coming, but are not ready for use in this build"
+        }
+      ]
     },
     {
       "capability_id": "input.face",
-      "level": "out-of-scope",
-      "note": "The browser passes device input to modules. There is no face or body sensing surface in its published interface for a module to read.",
+      "level": "none",
+      "note": "The architecture proposal expects the browser to read face-tracking input through OpenXR and to gate it behind the consent model, so this is within what the browser is for, but nothing is built. Searched the SneezeDoc wiki and architecture proposal 2026.Q2.0 (commit 8e26da5), the SneezeSDK prep documentation and C header (commit 4239e2b), and the Markdown and header files of the Forum Sneeze engine (commit 04bc0ac) and of the MetaversalCorp Sneeze engine (commit 986fc4c) for face tracking, facial, body tracking, skeletal tracking, hand tracking, eye tracking, blendshape, body pose and pose stream on 2026-10-19; the only mentions are in the proposal and a one-line OpenXR note in the standards page, and no module, interface class or header exposes any face or body sensing to a module. Source code files (.cpp) were not searched.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture, the project's own standards proposal for the metaverse browser engine, version 2026.Q2.0 (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Sensitive input channels — eye tracking, face tracking, and any camera-derived data — are gated by the user consent model (Section 22)."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -1827,10 +1857,25 @@
     },
     {
       "capability_id": "geo.map-align",
-      "level": "out-of-scope",
-      "note": "The browser has no geographic model: content is fetched by address, not placed on Earth, so there is no map to declare or align.",
+      "level": "none",
+      "note": "The architecture proposal puts anchoring to the physical world and map services within the browser's remit, but publishes no map version, lifecycle or alignment transform between two maps of one place. It also states that GPS and VPS position the viewpoint only and never move fabric content. Searched the SneezeDoc wiki and architecture proposal 2026.Q2.0 (commit 8e26da5), the SneezeSDK prep documentation and C header (commit 4239e2b), and the Markdown and header files of the Forum Sneeze engine (commit 04bc0ac) and of the MetaversalCorp Sneeze engine (commit 986fc4c) for map version, map lifecycle, alignment, between maps, geodetic, latitude, longitude, WGS, GeoPose, GPS and VPS on 2026-10-19; GeoPose and positioning appear only in the proposal as intent, and no wiki page, SDK class, header or module note declares a map of a place or a transform between maps. Source code files (.cpp) were not searched.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture, the project's own standards proposal for the metaverse browser engine, version 2026.Q2.0 (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Outdoors, GPS (global positioning system) provides coarse positioning to determine which fabrics are nearby. VPS (visual positioning system) provides fine-grained anchoring to the physical world at centimeter-level accuracy."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture, the project's own standards proposal for the metaverse browser engine, version 2026.Q2.0 (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "GPS/VPS does not move or transform fabric content, and fabric placement does not depend on the user's location."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
@@ -1996,6 +2041,1363 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "The Open Metaverse Browser is a working browser for spatial content."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "The guest-to-engine wire has a real compatibility rule: method numbers are permanent and append-only, and a packet a module has no hook for is ignored. The fabric file has no declared extension point, no extension names and no way to mark an extension as required or optional; a service block is free-form JSON that the engine does not interpret.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/include/sneeze_abi.h",
+          "title": "Sneeze ABI header (prep), method registry",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Numbers are PERMANENT,"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/docs/api/overview.md",
+          "title": "Sneeze SDK (prep) API overview, event delivery",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a `Notify` packet a module has no hook for is simply ignored"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/context/msf/MsfFile.md",
+          "title": "Sneeze MSF module note, services",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "each key is a service name and its value is a free-form object"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Nothing in the engine, the fabric format or the module interface signals a protection scheme for any component. The architecture raises owner protection only as a worry about proprietary scan data landing on a device, and names no scheme. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8) for DRM, digital rights, content protection, encrypt, cipher, obfuscat and piracy on 2026-10-20; the only hits are transport encryption (TLS 1.3, QUIC) and a vendor-hardware encryption note, none of which declares protection for content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "But the fabric owner's proprietary scan data is now on someone else's hardware."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "No named subsets, levels or profiles exist: the engine and SDK offer one flat interface, and the only version number covers packet framing. The architecture assumes a conformant browser without defining what that means. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8) for profile, conformance level, conformant, baseline, subset and minimum requirement on 2026-10-20; found no named set of requirements that content and an implementation could both declare.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "every conformant browser can use it"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "none",
+      "note": "Nothing fixes content to a place on the device: fabric content sits in the fabric's own coordinate frame, and the architecture says physical positioning moves only the camera and never the content. The XR module only reports whether an OpenXR runtime exists, so no runtime anchor facility is reached. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for anchor, spatial anchor, ARCore, ARKit and localize on 2026-10-20; the only hits are the proposal's plans and unrelated uses of the word (clock origin, cache stamp, UI panel placement).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hand tracking, eye tracking, face tracking, passthrough (AR/MR), scene understanding, spatial anchors. These capabilities are provided through OpenXR extensions without breaking the core specification."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "none",
+      "note": "No anchor is shared between devices or kept across sessions: there is no anchor record, no cloud anchor service and no visual-positioning data in any format. The architecture makes this a plan, saying physical position must be mapped into the fabric's coordinates and recommending that scan data live with each fabric, but defines no format or exchange. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for anchor, persistent, cloud anchor, VPS, GeoPose and localization on 2026-10-20; found no defined anchor data or protocol.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For AR and VR users to share the same spatial fabric, the AR user's physical position must be mapped into the fabric's coordinate system with convincing precision."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "No such standard exists today. This is proposed as a new standard to be developed for the spatial internet."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "none",
+      "note": "No camera-based localization exists in the engine, the SDK or the module notes. The architecture describes visual positioning and recommends fabric-hosted scan data and the OGC GeoPose output, but it is a description of what a positioning layer would need, not an interface. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for VPS, visual positioning, localization, camera pose, scan data and E57 on 2026-10-20; the hits are all in the proposal.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Visual Positioning Systems use the device's camera to recognize the physical environment and return centimeter-level position and orientation."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "No such standard exists today. This is proposed as a new standard to be developed for the spatial internet."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "none",
+      "note": "No description of interior spaces exists: no floor, room or level structure in the fabric format, and no indoor map format is read. The architecture lists IndoorGML among the OGC standards it maps to map services and says indoor positioning systems fill the role GPS cannot. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for indoor, IndoorGML, IMDF, floor plan, room and level on 2026-10-20; found no engine or SDK support, only the proposal's references.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| OGC | GeoPose 1.0/1.x, IndoorGML, CityGML, 3D Tiles | Section 17 (positioning), Section 23.5 (map services), Appendices B.3, B.5 |"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "none",
+      "note": "No zone or event interchange exists: nodes carry bounding extents but no trigger or zone type, and the module interface delivers only timer events. The architecture describes fabric-defined audio and video zones as regions in the scene object model, which is a plan with no format. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for zone, event, trigger, region, geofence and Notify on 2026-10-20; the only zone hits are the proposal's safety and A/V zones and the clock-zone setting in the time API.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "These zones are defined by the fabric and represented in the SOM as spatial regions with associated audio policies:"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/docs/api/overview.md",
+          "title": "Sneeze SDK (prep) API overview, event delivery",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Other event kinds (node events, for example) are still reserved;"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "none",
+      "note": "Nothing streams geospatial data by tile. The only streaming is proximity-driven tier expansion of a map-managed tree in the MetaversalCorp copy, which is load-only and not geographic. The architecture treats 3D Tiles as an open question it is tracking with Khronos and the 3D Tiles community. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for tile, 3D Tiles, tileset, terrain, CityGML and streaming on 2026-10-20; found no tile format, index or loader.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Whether glTF will absorb 3D Tiles' spatial indexing capabilities (knowing what content exists where across a large area, before downloading any of it) or whether that remains a map-service-side concern is not yet clear."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/context/scene/Scene.md",
+          "title": "MetaversalCorp Sneeze Scene note, proximity expansion",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This is **load-only**"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "none",
+      "note": "No pose series or live pose stream is defined: node position is set by direct calls, and the one thing that moves by rule is a celestial body on a Kepler orbit computed from orbital parameters on the node, not a stored or streamed series. The architecture plans that the primary fabric broadcasts position updates, with no format. In the MetaversalCorp copy only, glTF animation channels give keyframed translation and rotation, but that is clip playback for a model, not a pose stream, and the Forum copy has none. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for trajectory, pose stream, waypoint, interpolation, position update and keyframe on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The primary fabric manages this: it tracks who is present and broadcasts position updates to all connected clients."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/context/scene/Scene.md",
+          "title": "Sneeze Scene module note, orbit solve",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "File-local static functions `SolveKepler`, `QuatMultiply`, and"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "none",
+      "note": "No claim vocabulary or validation schema exists, because no claim is carried: the only identity statements a fabric makes are the X.509 subject fields of its signing certificate and the persona and organization names derived from them. The architecture names W3C Verifiable Credentials for persona claims and defines nothing further. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for credential schema, claim, vocabulary, JSON Schema, verifiable credential and DID document on 2026-10-20; found no schema or type declaration for claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| W3C VCs v2.0 | Active working group | Persona claims: cryptographically signed credentials held by the identity service provider |"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Verification material travels with the content: the signer's X.509 chain rides in the manifest header and is checked against the operating system's root store, and the manifest reader exposes a successor fingerprint with no documented rule for its use. Missing is any rule for rotating, revoking or recovering a key; revocation appears only as a proposal that a malicious service's signing key is revoked, and no revocation list or online check is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/context/msf/MsfFile.md",
+          "title": "Sneeze MSF module note, chain validation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Loads the OS root"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/context/msf/MsfFile.md",
+          "title": "Sneeze MSF module note, reading and verifying",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "msf.Successor ();            // successor fingerprint"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**Revocation.** If a service is found malicious, its signing key is revoked and all browsers refuse its modules."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "Nothing discovers the status of a signing credential after issue. The engine checks signature validity, chain trust and chain expiry, which are properties of the certificate at the moment of loading, and the SDK exposes those three booleans; there is no revocation list, online status check or suspension state. The architecture promises revocation of a malicious service's key without saying how browsers learn of it. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for revocation, CRL, OCSP, status list, suspension and credential status on 2026-10-20; the only hits are the proposal's revocation bullets and a sentence about a fabric operator revoking identity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**Revocation.** If a service is found malicious, its signing key is revoked and all browsers refuse its modules."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/docs/api/SIGNATURE.md",
+          "title": "Sneeze SDK (prep) signature reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| `IsChainExpired ()` | `bool` | The certificate chain has expired. |"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "none",
+      "note": "No grant of permission is carried with anything: there is no scope, purpose, validity or withdrawal record, and the engine's persona is a typed local name. The architecture proposes that services request capabilities and the user grants or denies, and that agreement to terms is recorded as a signed acknowledgment, but calls the design of consent an area needing significant community input. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for consent, grant, permission, acknowledgment, withdraw and terms of service on 2026-10-20; found only the proposal's descriptions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "services request capabilities, the user grants or denies, and the browser provides only the minimum necessary data"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This is an area where the architectural requirements are clear but the detailed design requires significant community input."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "none",
+      "note": "No relationships or standing are carried: there is no friend list, reputation score or social record anywhere in the format, engine or SDK, and the persona is a local testing name. The architecture lists accumulated reputation, relationships and history among the things that portable identity must keep. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for reputation, relationship, social graph, friend and history on 2026-10-20; found only the proposal's statements.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Identity is not portable. Moving between different universal primary fabrics means creating new identities and losing accumulated reputation, relationships, and history."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/persona/Persona.md",
+          "title": "Sneeze Persona module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this is a local testing proxy."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "The opposite is true today: every fabric a person visits is told the same persona hash, a short SHA-256 value for the locally typed persona, so two fabrics can correlate a visitor by comparing it. The architecture states that personas are unlinkable by default, but that is a goal for a design that does not yet exist. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for unlinkable, pairwise, correlation, pseudonym, persona hash and selective disclosure on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiple personas, unlinkable by default."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/persona/Persona.md",
+          "title": "Sneeze Persona module note, how the hash is used",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The persona hash is the first key in the identity triple that scopes WASM"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/docs/api/CONTAINER.md",
+          "title": "Sneeze SDK (prep) container reference, identity fields",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| `PersonaHash ()` | `&str` | The persona hash. |"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "The browser's stated job is to maintain, connect, execute and render a scene, and training a radiance field or Gaussian representation from images is an offline production step that happens before content reaches a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this document details the architecture of the MBE that sits at the core of a metaverse browser application; the component that maintains the scene graph, manages connections, executes service logic, and renders the scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "The browser's stated job is to maintain, connect, execute and render a scene, and producing an object from a text or image prompt is authoring work done by tools or services whose output arrives as glTF at the browser boundary.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "this document details the architecture of the MBE that sits at the core of a metaverse browser application; the component that maintains the scene graph, manages connections, executes service logic, and renders the scene."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In every case, glTF is the delivery format at the browser boundary, regardless of what sits behind it."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "none",
+      "note": "No item can be worn or carried: the engine has no avatar and its node model has no attachment point for a body, only the attachment node that grafts another fabric. The architecture lists accessory slots among the parameters of its proposed parametric avatar, and describes nothing that would make them survive transfer. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for wearable, accessory, clothing, attachment point, equip and avatar on 2026-10-20; the only avatar-related hits in the implementation are VRM file loading in the MetaversalCorp copy, which reads a humanoid model but defines no attachment slots.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A few hundred bytes of parameters (body shape, proportions, skin tone, hair style, accessory slots) evaluated against a shared reference skeleton and material library built into every conformant browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "none",
+      "note": "No avatar is tied to any identity: the engine has no avatar, and the only persona is a name typed locally as a testing proxy with no credential behind it. The architecture proposes a required entity type on every avatar tied to the identity architecture, with no format. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for avatar, entity type, persona, credential and identity binding on 2026-10-20; found only the proposal's description and the local persona stand-in.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every avatar carries a required entity type, tied to the identity architecture:"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/persona/Persona.md",
+          "title": "Sneeze Persona module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "No network-based identity or authentication"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "No reduced avatar representation exists, because there is no avatar. The only level-of-detail mechanism is proximity-driven tier loading of map content in the MetaversalCorp copy, which is load-only and unrelated to avatars. The architecture describes per-avatar levels chosen at runtime from device capability, avatar count and distance, and relies on a parametric generator that does not exist. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for avatar, LOD, level of detail, crowd and parametric on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The LOD tier assigned to each avatar is a runtime decision driven by the combination of device capability, avatar count, and distance."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "none",
+      "note": "The engine has no audio plane at all: no sound source, no mixer, no output device and no audio interface in the SDK. The architecture proposes server-side head-related mixing for voice and client-side spatialization on the graphics processor for object sounds, with no format for either. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for audio, sound, HRTF, ambisonic, binaural and spatialization on 2026-10-20; the only hits are the proposal's description and a mention of spatial audio as planned compute work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "performs all spatial mixing (HRTF, distance attenuation, occlusion, environmental effects)"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "none",
+      "note": "The engine has no audio plane at all: no sound source, no mixer, no output device and no audio interface in the SDK. The architecture lists environmental reverb among the effects its client-side mixer would compute, and defines no room or reverb description. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for audio, reverb, room acoustics, impulse response and environmental effects on 2026-10-20; the only hits are the proposal's description and a mention of spatial audio as planned compute work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "compute 3D spatialization (direction, distance attenuation, occlusion against scene geometry, environmental reverb) relative to the listener"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "The engine has no audio plane at all: no sound source, no mixer, no output device and no audio interface in the SDK. The architecture plans occlusion against scene geometry in the client mixer and in the voice server, with no description of how geometry would be marked as blocking sound. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for audio, occlusion, obstruction, muffle and blocking geometry on 2026-10-20; the only hits are the proposal's description and a mention of spatial audio as planned compute work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "compute 3D spatialization (direction, distance attenuation, occlusion against scene geometry, environmental reverb) relative to the listener"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "none",
+      "note": "The engine has no audio plane at all: no sound source, no mixer, no output device and no audio interface in the SDK. The architecture proposes a negotiated purpose-built codec and server-side mixing that returns one stereo stream per client, and the release notes of the browser itself say network connectivity has not landed. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for audio, voice, codec, stream, microphone and mixed stream on 2026-10-20; the only hits are the proposal's description and a mention of spatial audio as planned compute work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Voice is mixed server-side. The fabric's audio server receives each user's mono voice stream, performs all spatial mixing"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Rubidium/blob/3b8a68e1c7774463629084d1d57bb442ecda148e/RELEASE",
+          "title": "Rubidium release notes",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Network connectivity is coming very soon"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "No hand pose reaches the engine or a guest module. The XR module only reports whether an OpenXR runtime is present, and the module interface has no input call. The architecture expects hand tracking through OpenXR extensions and says the browser would expose subsets of tracking data to services through host functions. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for hand tracking, finger, hand pose and articulated hand on 2026-10-20; the only hits are the proposal and a one-line OpenXR mention on the standards page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The browser reads tracking, input, and extension data each frame and exposes relevant subsets to WASM services through host functions"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "No gaze input exists in the engine or the module interface. The architecture expects eye tracking through OpenXR and says sensitive channels are gated by a consent model, which is itself undesigned. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for eye tracking, gaze and eye on 2026-10-20; the only hits are the proposal and the standards page's OpenXR mention.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Sensitive input channels — eye tracking, face tracking, and any camera-derived data — are gated by the user consent model (Section 22)."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "none",
+      "note": "No touch feedback path exists: the module interface has no output to a device and the XR module only detects a runtime. The architecture mentions haptic navigation aids once, as an accessibility possibility, and does not describe a haptics interface. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for haptic, vibration, rumble and force feedback on 2026-10-20; the hits are that accessibility sentence and unrelated sensor-vibration examples.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Screen readers for 3D space, audio descriptions of environments, haptic navigation aids."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "none",
+      "note": "Picking is not wired: the project's own working note says pointer and keyboard input is not connected and that in-scene panels are display-only, and the module interface has no pick or pointer call, so the application cannot learn what was pointed at. The same note plans converting a pointer event to a ray and intersecting it with a panel. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for ray, raycast, pick, hit test, intersect, pointer and click on 2026-10-20; the pick hits are the plan in the working note and unrelated uses of the word.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/ui/RMLUI_OBJECTIVES.md",
+          "title": "Sneeze RmlUi status and plan",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**input** (pointer/keyboard) is not wired"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/ui/RMLUI_OBJECTIVES.md",
+          "title": "Sneeze RmlUi status and plan",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Convert a viewport pointer event to a ray, intersect the panel quad"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "none",
+      "note": "No text entry reaches content: the working note says keyboard input is not wired and the panel is display-only, and the guest interface offers no key or character call. The plan is to feed key and text events into the panel's UI context. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for keyboard, text input, character, IME and virtual keyboard on 2026-10-20; the hits are the working note's plan and the architecture's remark that headsets need virtual keyboards.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/ui/RMLUI_OBJECTIVES.md",
+          "title": "Sneeze RmlUi status and plan",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the panel is display-only."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/ui/RMLUI_OBJECTIVES.md",
+          "title": "Sneeze RmlUi status and plan",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Feed `ProcessMouseMove/Down/Up` and key/text events into the `Rml::Context`."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "The architecture has the browser route input from whatever device the user has, so a device interface is in scope, but nothing defines musical events: the input described is XR hardware reached through OpenXR actions. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8) for MIDI, musical and instrument on 2026-10-20; the only hits are the word humidity (matching MIDI as a substring) and a network instrumentation counter, so no typed musical-event interface exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "routing input from whatever device the user has"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The MBE must interact with XR hardware — headsets, controllers, hand tracking, eye tracking, spatial anchors — across every vendor's device."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "none",
+      "note": "No live audio or video is carried: the browser's own release notes say network connectivity has not landed, and the module interface's network call is registered but unimplemented. The architecture proposes server-mixed voice and designates audio and video zones, and lists a media transport standard as tracked but not a priority for the initial architecture. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for video, WebRTC, RTP, media transport, voice stream and live stream on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| SMPTE | Media transport (ST 2110) for video-rich spatial fabrics; immersive video standards | Track — not a priority for initial architecture |"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Rubidium/blob/3b8a68e1c7774463629084d1d57bb442ecda148e/RELEASE",
+          "title": "Rubidium release notes",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Network connectivity is coming very soon"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "none",
+      "note": "The engine has no physics step. Nodes form a tree with transforms and no link, hinge or slider between bodies, and the architecture says even simple rigid-body physics would be re-implemented server-side or inside guest code. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for joint, hinge, constraint, ragdoll and rigid on 2026-10-20; found nothing but the proposal's statements and the vendor copy's glTF node constraint, which is a pose relationship, not a physical link.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Physics in the MBE runs primarily as server-side services. Client-side GPU compute for physics is a known architectural gap (Section 23.4)."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "none",
+      "note": "The engine has no physics step. Nodes carry mass and gravity floats that feed only display, and no friction, restitution or surface response exists in the node record or the SDK. The architecture states that simulation setups tied to other engines do not transfer. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for friction, restitution, physics material, mass and surface response on 2026-10-20; found nothing beyond the mass and gravity fields.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Physics in the MBE runs primarily as server-side services. Client-side GPU compute for physics is a known architectural gap (Section 23.4)."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeSDK/blob/4239e2b/docs/api/MAPOBJECT.md",
+          "title": "Sneeze SDK (prep) map-object builder, physical properties",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "`fMass`, `fGravity` - physical properties"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "none",
+      "note": "The engine has no physics step. Nothing guarantees that two machines reach the same outcome, since nothing simulates; the only rule-driven motion is an orbit solved from parameters in floating point. The architecture sends simulation to server-side services, which leaves reproducibility to whoever writes them. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for determinism, deterministic, fixed step, replay and reproducible on 2026-10-20; the hits were test-suite and pixel-assert uses of the word.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Physics in the MBE runs primarily as server-side services. Client-side GPU compute for physics is a known architectural gap (Section 23.4)."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "none",
+      "note": "The engine has no physics step. No deformable body, cloth or soft-body type exists in the node model. The architecture names cloth simulation settings among engine-specific setups that do not transfer to the browser. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for cloth, soft body, deformable, spring bone and softbody on 2026-10-20; the only implementation hit is the MetaversalCorp copy accepting VRM spring-bone extension names by stripping them from the required list, which it does not implement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PhysX configurations, Chaos destruction setups, cloth simulation parameters — these are tied to their respective engines. Physics in the MBE runs primarily as server-side services."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "none",
+      "note": "No pass runs after the main render: the renderer's own feature list covers geometry, lights, materials, samplers, ambient light, shadows and the frame buffer, with no tone mapping, bloom or other effect stage. The architecture says custom post-processing from other engines does not transfer and that custom effects must be re-authored as shaders. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the Halogen README for post-processing, tone mapping, bloom, exposure, anti-aliasing and filter on 2026-10-20; found no post-effect stage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Visual effects must be re-authored for the MBE's rendering model."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Halogen/blob/master/README.md",
+          "title": "Halogen README, implemented features",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PCF soft shadows on all lights and renderables"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "none",
+      "note": "Splats and radiance fields cannot be rendered: the renderer implements triangle, sphere, cylinder, quad and cone geometry and no splat or volume type, and the glTF path reads only triangle primitives. The architecture mentions point clouds and photogrammetry only as data a map service might stream, and defines no rendering for them. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the Halogen README for splat, Gaussian, radiance, NeRF, point cloud and photogrammetry on 2026-10-20; the hits are the proposal's scan-data and 3D Tiles rows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Streaming format for massive heterogeneous 3D geospatial datasets (cities, terrain, buildings, point clouds, photogrammetry)."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Halogen/blob/master/README.md",
+          "title": "Halogen README, implemented features",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "variable per-endpoint radius, surface normals"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "none",
+      "note": "No point cloud, voxel or volumetric rendering exists: the renderer's geometry list has no point or volume subtype, and the glTF loader skips point, line and strip primitives. The architecture lists volumes among the objects the rendering abstraction handles, but nothing in the project implements them. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the Halogen README for volume, volumetric, voxel, point cloud, spatial field and LiDAR on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The application works with abstract objects (meshes, materials, lights, cameras, volumes) and ANARI delegates the rendering to whichever rendering engine is loaded."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/deps/gltf/Gltf.md",
+          "title": "MetaversalCorp Sneeze glTF module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**only triangle primitives** are mapped"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "In the MetaversalCorp copy only, base colour and emissive textures are uploaded to the renderer as sRGB, which follows glTF's fixed convention. Nothing lets content declare a colour space or output range, nothing covers interface panels or authored light colours, and no output range or high-dynamic-range signalling is described; the Forum module note says only that images are decoded to eight-bit RGBA.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/context/viewport/Viewport.md",
+          "title": "MetaversalCorp Sneeze Viewport note, texture colour space",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "albedo/emissive upload as Filament `SRGB8_A8`"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/gltf/Gltf.md",
+          "title": "Sneeze glTF module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "decoding to RGBA8 is deferred to the renderer layer"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "The engine submits one rendered frame and draws interface panels as textured quads inside the scene or, in the plan, a camera-locked quad; it submits no compositor layers with their own placement. The architecture describes projection, quad and environment layers as the way the browser would use OpenXR. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the Halogen README for composition layer, compositor layer, quad layer, swapchain and overlay on 2026-10-20; the only hits are the proposal and the working note's HUD plan.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The application submits layers that the runtime composites: projection layers (the main 3D scene), quad layers (2D UI panels), and environment layers."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "No display timing is used: a window surface is presented at a fixed 60 frames a second and the XR module only reports whether a runtime exists, so there is no predicted display time and no view pose tied to one. The architecture names frame timing as part of OpenXR rendering submission. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the Halogen README for frame timing, predicted display time, xrWaitFrame, vsync and view pose on 2026-10-20; the only hits are the proposal and the SDK's note that the monotonic clock suits frame pacing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Frame timing, view configuration (mono, stereo), swapchain management (the texture chains the application renders into), and composition layers"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/context/viewport/Viewport.md",
+          "title": "Sneeze Viewport module note, native surface",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Vulkan swapchain on the platform window (zero CPU copies, 60 FPS)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "The engine takes SPIR-V as its shader format for compute: kernels compiled from GLSL at build time are dispatched through a graphics-compute layer, and SPIR-V from remote content must pass validation against the Vulkan compute profile first. Missing is any path for visual shaders, any field in the fabric or node record that carries a shader, and any statement of how a fabric would deliver a kernel, so only embedded kernels are in use.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/compute/ComputeDispatch.md",
+          "title": "Sneeze compute module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The `compute` module dispatches SPIR-V compute kernels on the GPU (via Vox) or"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/spirv/SpvPipeline.md",
+          "title": "Sneeze SPIR-V module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "conforms to the Vulkan compute profile. Untrusted SPIR-V from remote MSF payloads must pass"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Custom shaders arrive as SPIR-V bytecode. The engine must accept SPIR-V and bind the resulting shaders into its pipeline."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "via-extension",
+      "note": "In the MetaversalCorp copy only, the glTF loader reads the VRM node-constraint extension (VRMC_node_constraint) with rotation, aim and roll kinds, each naming a destination node, a source node and a weight, and evaluates them against the rest pose when building and posing a model. The Forum engine documents no constraints, the extension is a VRM one rather than a core glTF one, and the fabric format has no constraint of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/deps/gltf/Gltf.md",
+          "title": "MetaversalCorp Sneeze glTF module note, constraints",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "One `VRMC_node_constraint`: destination `nNode`, `nSource`, `eKind`"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/deps/gltf/Gltf.md",
+          "title": "MetaversalCorp Sneeze glTF module note, posing",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "re-applies `VRMC_node_constraint` in two passes against the model's `aRest`"
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "none",
+      "note": "No named or rule-defined set of objects exists for operations to target: the scene groups nodes only by their three classes and by which publisher owns a branch, and the SDK addresses nodes by handle one at a time. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for collection, group, set, tag, layer set and selector on 2026-10-20; found no name or selection facility.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Each tier groups objects by their functional role: celestial nodes (galaxies, stars, planets, moons), terrestrial nodes (continents, countries, cities, parcels), and physical nodes (buildings, trees, furniture, vehicles, equipment)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "none",
+      "note": "A scene cannot reference video or other timed media: the node record carries a resource reference to a model, a panel document or another fabric and nothing for a media stream. The architecture designates audio and video zones in the scene and tracks a media transport standard as not a priority for the initial architecture. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for video, timed media, media stream, playback, synchronization and ST 2110 on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Spatial fabrics support designated audio/video zones where audio behavior differs from open space."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "| SMPTE | Media transport (ST 2110) for video-rich spatial fabrics; immersive video standards | Track — not a priority for initial architecture |"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "none",
+      "note": "No emitter or particle system exists in the node model or the renderer. The architecture expects particle effects to come from custom shaders shipped with content, which the engine has no path to receive. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for particle, emitter, effect and simulation parameters on 2026-10-20; the hits are the proposal's mentions of particle trails and particle-driven appearances and an unrelated geometry-emitter remark in the UI working note.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "particle-driven appearances"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Provenance travels only inside the signed wrapper: the manifest is a signed envelope, and if the signature or its certificate chain is stripped the content cannot be traced back, since there is no fingerprint registry or watermark lookup. The architecture covers signing and a chain from code to publisher, not recovery. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for watermark, content credentials, C2PA, perceptual hash, fingerprint lookup and provenance on 2026-10-20; the fingerprint hits are all signing-certificate fingerprints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "**Chain of trust.** A service's signing key links to its identity credential, establishing a verifiable chain from code to publisher."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "No selectable variants exist: the glTF loader reads only the default scene, lists the extensions it enables, and does not include the glTF material-variants extension, and the fabric format has no alternative-configuration field. The architecture names glTF as the delivery format at the browser boundary. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for variant, KHR_materials_variants, alternative, configuration and selection on 2026-10-20.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In every case, glTF is the delivery format at the browser boundary, regardless of what sits behind it."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4c/src/deps/gltf/Gltf.md",
+          "title": "MetaversalCorp Sneeze glTF module note, enabled extensions",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Extensions enabled on the parser so REQUIRED files are not rejected:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "No cell volume is exchanged: the node record has no voxel type, the renderer has no volume subtype, and the glTF loader maps only triangles. The architecture lists volumes among the objects its rendering abstraction handles. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for voxel, volume, cell, grid and spatial field on 2026-10-20; found no voxel structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The application works with abstract objects (meshes, materials, lights, cameras, volumes) and ANARI delegates the rendering to whichever rendering engine is loaded."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "The architecture fixes glTF, a mesh format, as the only delivery format at the browser boundary and says exact-geometry sources such as building-model and USD data are converted before they reach the browser, so carrying curves and surfaces in mathematical form is not what this browser does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In every case, glTF is the delivery format at the browser boundary, regardless of what sits behind it."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Map services that store data in USD convert to glTF before serving through RMAP — the browser never sees USD."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "The architecture gives the browser's application shell the avatar selection interface, where a preview image could be shown, but nothing references or packages a preview image with an asset or a fabric. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8) for thumbnail, preview image, poster image and icon image on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The browser needs its own interface for identity management (sign-in, persona selection), service filtering and consent, settings and preferences, content rating warnings, avatar selection and customization"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "none",
+      "note": "No estimate of real-world light reaches content: the XR module only reports whether a runtime exists, scene lighting is authored in the fabric, and the SDK has no sensing call. The architecture hands sensing capabilities to OpenXR extensions without defining anything itself. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for light estimation, illumination, environment probe, reflection and ambient estimate on 2026-10-20; found no sensed-light interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hand tracking, eye tracking, face tracking, passthrough (AR/MR), scene understanding, spatial anchors. These capabilities are provided through OpenXR extensions without breaking the core specification."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "No marker or image is detected or tracked: the XR module only detects a runtime and the SDK has no sensing call. The architecture names scene understanding and spatial anchors among its OpenXR extension expectations and does not mention markers. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for marker, QR code, image tracking, fiducial and tracked image on 2026-10-20; found no marker facility.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hand tracking, eye tracking, face tracking, passthrough (AR/MR), scene understanding, spatial anchors. These capabilities are provided through OpenXR extensions without breaking the core specification."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "No physical area or floor reference is reported: the XR module probes for a runtime and does nothing further, and the SDK has no reference-space call. The architecture lists OpenXR's reference spaces, including a room-scale floor origin, and says mapping them to each fabric's coordinates is a decision still to be made. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for play area, stage space, reference space, boundary and floor on 2026-10-20; the hits are the proposal and unrelated uses of the words.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "OpenXR defines view space (head-relative), local space (seated origin), and stage space (room-scale floor origin)."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "none",
+      "note": "No query against the physical surroundings exists: the engine has no sensing interface and a guest module cannot even pick virtual content. The architecture places scene understanding in OpenXR extensions rather than defining a ray query. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for hit test, ray cast, raycast, plane detection and surface intersection on 2026-10-20; found no real-world query.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hand tracking, eye tracking, face tracking, passthrough (AR/MR), scene understanding, spatial anchors. These capabilities are provided through OpenXR extensions without breaking the core specification."
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "No disclosure control exists on sensed data, because no sensed data reaches the engine. The architecture proposes that services never receive raw sensor data by default and that the browser grants only the minimum, with no coarsening, retention or pseudonymous-publication terms defined. Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac) and the MetaversalCorp Sneeze README and module notes (commit 986fc4c) for sensor, raw data, coarsening, retention, minimum necessary and pseudonymous pose on 2026-10-20; found only the proposal's section on sensor permissions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Services should never receive raw sensor data by default. The browser must mediate: services request capabilities, the user grants or denies, and the browser provides only the minimum necessary data"
+        },
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/xr/XrRuntime.md",
+          "title": "Sneeze XR module note",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "attempts to create an `XrInstance`. If no runtime is found,"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "none",
+      "note": "The Open Metaverse Browser is a client that presents credentials to services, and its architecture has a payment service receiving payment authorization, so payment is within its scope, but the browser defines no payment requirements, authorization or settlement. Searched Sneeze architecture at 8e26da5 and Rubidium README at fd8f6be for payment, commerce, settle, wallet, purchase on 2026-10-20; payment appears only as a service receiving authorization (wallet only for identity credentials), no exchange defined.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Rubidium/blob/fd8f6bed09d7b4e2360c38782778b30ba504910a/README.md",
+          "title": "Rubidium README (commit fd8f6be)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Rubidium is the metaverse browser application, developed by the Open Metaverse Browser Initiative (OMBI), a project under the Metaverse Standards Forum."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze Architecture (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "User presence, social connections, and commerce are fabric-level services, operated by the fabric owner."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze Architecture (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A payment service receives payment authorization without seeing browsing history."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The browser's architecture assigns commerce to services run by each fabric's owner, outside the browser; its scene branch ownership controls who may write to the scene, not whether a holder has a grant to a resource.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze Architecture (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "User presence, social connections, and commerce are fabric-level services, operated by the fabric owner."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "The Open Metaverse Browser is a client for opening spatial content; any purchase or grant record would come from a store or credential system it displays, not from the browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/open-metaverse-browser-initiative/",
+          "title": "Open Metaverse Browser Initiative",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to build the spatial equivalent of the web browser"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "The engine checks a fabric's signature and certificate chain against the operating system's root store; that is roots alone and does not choose which publishers or worlds a verifier accepts. Searched SneezeDoc trust-and-isolation.md and sneeze-architecture.md (commit 8e26da5) and Sneeze MsfFile.md and Persona.md (commit 986fc4c) for registry, allow-list, trust list, publisher, issuer and trust anchor on 2026-10-20; the architecture mentions a DID registry and a service registry of module hashes, but none defines governed acceptance of publishers or worlds.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/trust-and-isolation.md",
+          "title": "Sneeze documentation: Trust & Isolation (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every fabric arrives as a signed manifest"
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/src/context/msf/MsfFile.md",
+          "title": "Sneeze MsfFile module (commit 986fc4c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Loads the OS root"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched SneezeDoc at commit 8e26da5, Sneeze at commit 986fc4c, the Forum Sneeze engine (MetaverseStandards/Sneeze) at commit 04bc0ac, SneezeSDK at commits 4239e2b and 44d0346 and Rubidium at commit 3b8a68e, all text files, for heart rate, galvanic, skin conductance, physiolog, biometric, biosignal, electrodermal, biofeedback and wearable on 2026-10-20; no match in documentation or source. The engine's user input is position, orientation and device tracking; its OpenXR module only detects a runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal 2026.Q2.0 (SneezeDoc 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Sensitive input channels — eye tracking, face tracking, and any camera-derived data — are gated by the user consent model (Section 22)."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "The Open Metaverse Browser is a client for opening spatial content, so its purpose is viewing rather than offering an outside agent a way to build and publish; the fabric signing tool in its engine repository is scored under RP1.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://metaverse-standards.org/open-metaverse-browser-initiative/",
+          "title": "Open Metaverse Browser Initiative",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "build the spatial equivalent of the web browser"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "The browser's architecture runs sandboxed services with their own backends, and its own example is a service that turns ceiling-sensor readings into a live heat map. This is described as a use of the service model; services reach their backends through RMAP model objects with properties, events and actions, but no binding from a backend to a sensor or controller, and no controller write-back, is specified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture (SneezeDoc, commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An IoT environmental service aggregates air-quality, humidity, and temperature readings from ceiling-mounted sensors and renders them as a real-time heat map hovering above the floor."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture (SneezeDoc, commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It communicates with its backend server through RMAP, working with model objects that represent server-maintained state — properties, events, and actions defined by the service provider's class definitions."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "The Open Metaverse Browser architecture covers how a browser engine connects to fabrics and services and renders them; recording what a person did and with what result would be done by a service, and the architecture defines no such record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Open Metaverse Browser Architecture (SneezeDoc commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A metaverse browser is a native, cross-platform application that brings the browsing paradigm to three-dimensional space."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The Open Metaverse Browser is a client that connects to fabrics served elsewhere; the place lives with the fabric's services, so exporting a whole place is not something the browser does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Rubidium/blob/fd8f6bed09d7b4e2360c38782778b30ba504910a/README.md",
+          "title": "Rubidium README (commit fd8f6be)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Rubidium is the metaverse browser application, developed by the Open Metaverse Browser Initiative (OMBI), a project under the Metaverse Standards Forum."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "The Open Metaverse Browser's engine draws the scene locally into a surface the host application supplies, and its architecture streams scene updates, not rendered frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/README.md",
+          "title": "Sneeze README (pinned commit 986fc4c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the engine renders into a surface the application supplies."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture (SneezeDoc, pinned commit 8e26da5)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Fabrics are connected, streamed, and disconnected as the user moves through the world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "The Open Metaverse Browser engine reaches XR devices through OpenXR, so device-side sensing is not excluded, but the documents read describe no object tracking. Searched the Sneeze README (commit 986fc4c) and the Rubidium README (main branch as read) for object track, object recogn, marker, image track, tracking, ARKit, ARCore and camera on 2026-10-20; the only hits were OpenXR device access, a branch-tracking build term and the rendering camera, and the engine source and further documentation were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/README.md",
+          "title": "Sneeze README (commit 986fc4c)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "XR device access (via OpenXR)"
         }
       ]
     }

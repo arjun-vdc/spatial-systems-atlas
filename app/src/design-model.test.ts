@@ -244,12 +244,19 @@ test('the real published export still reports the figures the map claims', async
     await readFile(new URL('../public/territory.json', import.meta.url), 'utf8'),
   )
   const real = adapt(raw)
-  assert.equal(real.subjects.length, 57)
+  // 2026-10-20: 57 -> 59 subjects, SpatialDDS and the Model Context Protocol (wave 1, owner approval).
+  // 2026-10-20: 59 -> 66 subjects, wave 2 (STAC, WebAssembly, Arrival Space, OAuth, Vibe Jam,
+  // OMI glTF extensions, JSON-LD; owner approval).
+  assert.equal(real.subjects.length, 66)
   // These figures are a deliberate tripwire: they move only when capabilities are
   // added or removed, which is a decision somebody made and should have to record here.
   // 2026-09-18: 162 -> 164, the two approved composability rows.
-  assert.equal(real.capabilities.length, 164)
-  assert.equal(real.groups.length, 14)
+  // 2026-10-20: 164 -> 168 and 14 -> 15 groups: payment, entitlement and receipt in the new
+  // commerce group, and the trust registry in identity (order 063, owner approval 2026-10-19).
+  // 2026-10-20: 168 -> 175: agent authoring, whole-world export, and the five rows contributed by
+  // the Virtual Dimension Center (wave 2, owner approval).
+  assert.equal(real.capabilities.length, 175)
+  assert.equal(real.groups.length, 15)
   // The counts block the build writes must agree with what the model derives.
   const claims = Object.values(real.cov).reduce((n, row) => n + Object.keys(row).length, 0)
   assert.equal(claims, (real.counts as Record<string, number>).claims)
@@ -313,9 +320,11 @@ test('the note reports Verse as a scope boundary, not as an absence of work', as
   const before = Object.values(real.cov).reduce((n, row) => n + Object.keys(row).length, 0)
   const note = scopeNote(real, 'verse')
   assert.ok(note, 'Verse sits above the line')
-  assert.equal(note.outOfScope, 114)
+  // 2026-10-20: the four commerce and trust rows are out of scope for a programming language.
+  // 2026-10-20: so are the seven wave 2 rows (agent authoring, world export, the five VDC rows).
+  assert.equal(note.outOfScope, 125)
   assert.equal(note.applies, 50)
-  assert.equal(note.total, 164)
+  assert.equal(note.total, 175)
   assert.equal(note.total, note.outOfScope + note.applies)
 
   // Reading the note must not touch a single claim.
@@ -328,5 +337,10 @@ test('the note reports Verse as a scope boundary, not as an absence of work', as
 
   // The rule applies to every subject in the same position, not to Verse alone.
   const marked = real.subjects.filter((s) => scopeNote(real, s.id) !== null)
-  assert.equal(marked.length, 21)
+  // 2026-10-20: 21 -> 29 after waves 0 and 1 answered blank cells of the identity, location and
+  // agent standards (mostly out of scope) and added SpatialDDS and the Model Context Protocol.
+  // 2026-10-20: 29 -> 38 after wave 2 added formats and protocols where most rows do not apply
+  // (STAC, WebAssembly, OAuth, Vibe Jam, OMI glTF extensions, JSON-LD) and answered blank cells.
+  // 2026-10-20: 38 -> 39 after wave 3 answered the remaining must-agree cells.
+  assert.equal(marked.length, 39)
 })

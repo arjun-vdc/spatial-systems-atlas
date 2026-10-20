@@ -1,0 +1,2972 @@
+{
+  "subject_id": "vibejam",
+  "summary": "The Vibe Jam portal convention is a small informal rule set, published by the organiser of the Vibe Jam game competition, for linking browser games into a webring. A game may place an exit portal that sends the player to a Vibe Jam address, which forwards them to a randomly chosen participating game, and a game that receives a player places a return portal to the game they came from. The player's name, colour, speed, direction of travel, rotation, health, team and an avatar link ride along as optional values in the web address so the next game can place the player with continuity. It covers the hop itself and nothing else: there is no identity check, no agreed format for what the avatar link points to, no state beyond the listed values and no way to name a chosen destination, and everything about rendering, physics, sensing and capture is left to each game. Trap for a standards audience: it is a page of prose plus one sample script, not a versioned specification, all values travel unauthenticated in plain web addresses to whichever game comes next, and the sample return code navigates to whatever address the incoming ref value names.",
+  "coverage": [
+    {
+      "capability_id": "net.handoff",
+      "level": "native",
+      "note": "The exit portal sends the player to a Vibe Jam address with their name, colour, speed, health, team, avatar link, velocity and rotation as optional values, and the receiving game uses them to place the player. The page defines only those listed values; the sample script starts from the current query values, so other values received also travel on.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When the player enters the portal, redirect them to:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The receiving game can use this info to spawn the player with full continuity!"
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "native",
+      "note": "The exit portal address picks a random participating game with a working portal, and a game joins the webring by having a portal; a player reaches games they did not name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Your game will be added to the webring if you have a portal."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "A destination is a plain web address, and the origin is named by the ref value; but the exit portal always goes to one Vibe Jam address that picks the next game at random, so the convention gives no way to name a chosen destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ref= — URL of the game the player came from"
+        },
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "https://vibejam.com/portal/2026"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "The redirector adds portal=true so the receiving game can drop the player in with no start screen, but joining a particular running world is left to each game and the rules forbid any login, so no authentication is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The portal redirector will always add ?portal=true so you can detect when a user comes from a portal and instantly drop them into your game out of another portal — no start screens."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "partial",
+      "note": "Speed values are declared in metres per second, but there is no statement of world scale or unit for positions or sizes, and only the forwarded motion values carry units.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "speed= — meters per second"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "Rotation values are declared in radians for three named axes, but handedness, axis order, rotation order and the frame they are expressed in are not stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "rotation_x= — radians"
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "partial",
+      "note": "An avatar link and a colour travel with the player, but nothing says what format the link points to or how a receiving game must build a body from it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "color= — player color in hex or just red / green / yellow"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "A free-text player name is forwarded, but it is not unique, not verified, and not a defined identifier scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "username= — username/name of the player"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Games re-forward every parameter they receive and must not rely on any being present, so new values can ride along. Missing: any declared way to add new names, any naming rule, and any rule for what a receiver does with unknown values.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam portal sample script",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Pass everything else back (minus ref, since it's now the base URL)"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All parameters except portal are optional and may or may not be present — do not rely on their presence."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "none",
+      "note": "The address names the 2026 edition, but no rule about changes or compatibility is stated. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for version, compatibility, deprecat, breaking on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "https://vibejam.com/portal/2026"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Requirements are stated by role (exit portal optional, return portal expected when a player arrives with a ref, extra values optional), but nothing is named so a game cannot declare which contract it follows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "make a portal where the user spawns out of so they can return back to the previous game by walking into it."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "partial",
+      "note": "Entering the portal region fires the redirect, and the sample script tests a bounding box, but the convention leaves region shape and event handling to each game and defines no interchange of trigger regions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When the player enters the portal, redirect them to:"
+        },
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "// Only trigger on actual intersection"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "none",
+      "note": "Health and team values travel but no items or holdings do. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for inventor, items?, loot, equipment, backpack, currency on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The receiving game can use this info to spawn the player with full continuity!"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "none",
+      "note": "Only the player name, colour and avatar link follow the player; no settings or accessibility choices are carried. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for preferences?, setting, accessibility, locale, language on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The receiving game can use this info to spawn the player with full continuity!"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "none",
+      "note": "The avatar link points to something of unstated format and no bone structure is named. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for skeleton, bones?, humanoid, vrm, glb, gltf on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "none",
+      "note": "No named expressions are defined for the avatar link. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for viseme, blendshape, expression, emote on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "none",
+      "note": "No worn or carried items or attachment points are defined for the avatar link. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for wearable, outfit, attachment, hat, accessor(y|ies) on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "none",
+      "note": "The avatar link and player name are self-declared values with no tie to a verifiable identity. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for credential, verif, signature, signed, wallet, oauth, proof on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "username= — username/name of the player"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "none",
+      "note": "Player values are sent on to the next game automatically with no grant, scope or withdrawal. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for consent, permission, opt-?in, agree, authori[sz], gdpr on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The receiving game can use this info to spawn the player with full continuity!"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "none",
+      "note": "The sending game may leave any value out, but a receiver cannot state what it needs, and every value sent rides in plain view in the web address to an unknown next game. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for privacy, private, coarsen, redact, pseudonym, anonym, encrypt on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "none",
+      "note": "A team value is listed with no description of its meaning, and no relationships or standing are defined. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for friends?, relationship, reputation, guild, party, social on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Optional extra params:"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "none",
+      "note": "The redirect is unconditional: the receiving game is not asked beforehand and no approval or refusal response is defined. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for admission, approv, refus, reject, deny, denied, allowlist, whitelist, blocklist on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When the player enters the portal, redirect them to:"
+        },
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "none",
+      "note": "Only a player walking into a portal moves anything between games; no state in one game acts on another with nobody present. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for webhook, postmessage, websocket, server-side on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When the player enters the portal, redirect them to:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "none",
+      "note": "Each hop is a full page navigation to the next game, so a game is never hosted inside the game the player came from. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for iframe, webview, sandbox on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When the player enters the portal, redirect them to:"
+        },
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "window.location.href = 'https://vibejam.com/portal/2026?' + params.toString();"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "none",
+      "note": "The redirector routes only to games with a working portal, but no tests, checklist or validator are published. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for conformance, complian, validator, test suite, checklist, certif on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "make a portal where the user spawns out of so they can return back to the previous game by walking into it."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "none",
+      "note": "The redirector sends players to a random participating game and the page states no review of what a receiving game contains. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for moderat, review, safe, abuse, flagged, age rating on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/portal/sample.js",
+          "title": "Vibe Jam 2026 portal sample script (sample.js)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a random 2026 game with a working portal and 302s them there."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Your game will be added to the webring if you have a portal."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define how shared state is replicated inside a world; multiplayer is each game's own choice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define autonomous agents acting inside a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define coordinate reference systems, since no position is forwarded and nothing is tied to the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define streaming geospatial 3D tiles.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define positions or orientations expressed against the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define captured volumetric video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define point cloud encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "none",
+      "note": "The forwarded avatar link points to an asset whose file format the convention never states, and no model or scene container is named. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for glb, gltf, fbx, usdz, 3D model and file format on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define mesh encoding or compression.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define material definitions carried between renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define parametric curves and surfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define fixing content to a real place across devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define captured scenes that change over time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a scene tree or graph; the portal carries a player, not scene content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define asset permissions, since no assets are exchanged.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define what a subject may do, since the rules require no login and games run without sign-in.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define keyframes and animation clips.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define time-ordered pose sequences; only one velocity and rotation snapshot is forwarded at the hop.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define verifiable claims, since the rules require no login and games run without sign-in.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define requesting and presenting credentials, since games run without sign-in.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define credential revocation or suspension, since no credentials are involved.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a splat file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define calibrated multi-camera depth views.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define payment, since games must be free to play.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define checking a grant to use a resource, since games must be free to play with no login.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define resolving scene resource identifiers; the portal address is covered under naming a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define protected content schemes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define linked pose chains in geographic frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define claim vocabularies and validation schemas.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define identity key rotation, revocation or recovery.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define starting an immersive device session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a session wire protocol; the hop is one web redirect and in-game traffic is each game's own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define image formats or compression.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "none",
+      "note": "The forwarded avatar link points to something of unstated format, and no bone hierarchy or binding is named. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for skeleton, bones, humanoid, vrm, glb, gltf, fbx on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define voxel volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define live audio and video streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define mixing camera views of the real world with rendered content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define which party decides the truth for a shared object, a matter inside each game.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define ray tests against sensed surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define discovering device capabilities.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define level-of-detail selection.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define signed records of who made an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "The convention forwards an avatar link but names no reduced or simplified avatar forms. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for lod, level of detail, glb, gltf, vrm on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define gaze input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define structured descriptive properties of scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define rendering point clouds, voxels or volumetric video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define named alternative asset configurations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "The convention forwards only a link to an avatar and says nothing about terms of use; acting on licence terms is outside what a webring portal does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define evidence behind identity claims, since games run without sign-in.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define synthesising views from new camera positions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define articulated hand input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define placing sound in a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "none",
+      "note": "The convention forwards an avatar link but says nothing about playing animation on the arriving body. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for retarget, animation, skeleton, bones, humanoid, vrm on 2026-10-20; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar_url="
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "You can send GET query params that get forwarded to the next game:"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define live face and body tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define layering or overriding parts of scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define detecting physical markers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define spatial zones and zone events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define live voice between participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define 360-degree panorama images.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define touch feedback.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define referring to content by hash.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define deformable simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define naming real surfaces or objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define hiding virtual content behind real surfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define physical play-area bounds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define disclosure controls on sensed data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define generating whole places.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define generating objects from prompts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define shared time between participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define what survives a restart of a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define three-dimensional text rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define viewpoint definition and binding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define colour spaces and output range; the colour value is a player tint, not a colour-space declaration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define binaural or ambisonic rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define how a space colours sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define sound blocked by geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define delivering audio over a network.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define generating audio from a synthesis model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define learned world models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define building models from photographs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define streaming captured scenes by region and detail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define relighting captured scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define editing captured scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define editing generated worlds by description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define specifications accepted by world-generating systems.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define converting splat or radiance-field worlds to engine assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define time-sampled agent actions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define training radiance fields or splats from images.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define purchase records, since games must be free to play.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define packaging a runnable experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define asset delivery at scale.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define fixing content to a place on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define recovering pose from camera imagery.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define describing interior spaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define map versions and alignment transforms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define the geographic area content applies to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define pairwise identifiers, since no verified identifiers are involved.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define recipient keys and encrypted content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define signed records of evaluation and action.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define which issuers a verifier accepts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Game has to be accessible on web without any login or signup and free-to-play (preferably its own domain or subdomain)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define handheld controller input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define picking scene content from pointing input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define text entry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define musical instrument events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define body-signal streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a scripting language or runtime for world rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define running untrusted guest content within a world; each game opens as its own web page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define limits on guest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define naming published units of logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define an interface for programs to create or change world content; the jam's /api and /mcp only list games.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        },
+        {
+          "url": "https://vibejam.com/llms.txt",
+          "title": "Vibe Jam llms.txt",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the same data as a Model Context Protocol server (Streamable HTTP transport, stateless JSON responses, no auth;"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define filtering what each client is sent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define latency hiding and correction.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "none",
+      "note": "Nothing says who is where across games: the widget only tracks a game and portals only move a player on. Searched the 2026 jam page (rules, widget, portals and FAQ sections), the portal sample script and llms.txt for presence, online, who is, roster, leaderboard on 2026-10-20; the only hit is 'do not rely on their presence', about optional parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define binding objects to external live data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define exporting a whole place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define portable records of what a person did.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define rigid-body simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define collision shapes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define links between bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define friction and surface response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define identical outcomes across machines.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define turning geometry into pixels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a graphics interface; any engine is allowed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define surface appearance description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define lighting and shadows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define post-render effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define rendering splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define two-dimensional interface layout.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define submitting image layers to a compositor.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define graphics compute workloads.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define frame submission timing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define a shader language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define server-side rendering streamed to a client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define shape deformation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define repeating objects cheaply.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define walkable surfaces and spawn points carried with a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define asset preview images.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define bounding volumes for spatial rejection.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define named sets of scene objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define transform constraints between nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define timed audiovisual media in a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define exchanging particle systems.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define finding provenance from fingerprints or watermarks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define styling rules over content metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define meshes of the real surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define per-pixel real-world depth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define estimates of real-world lighting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define tracking known physical objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "The convention only links browser games and forwards a few player values, and does not define declarative interactivity travelling with an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://vibejam.com/2026/",
+          "title": "Cursor Vibe Jam 2026 (rules and portals sections)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The widget is mandatory and just tracks your game; portals are optional and let players hop between games like a webring."
+        }
+      ]
+    }
+  ]
+}

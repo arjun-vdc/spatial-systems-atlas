@@ -403,5 +403,5 @@ export function shareUrl(
   if (query.lane) p.push(`lane=${query.lane}`)
   if (view === 'relations' && relGroup) p.push(`group=${relGroup}`)
   if (detail) p.push(`open=${detail.cid}${detail.sid ? `:${detail.sid}` : ''}`)
-  return `/msf/map/?${p.join('&')}`
+  return `/msf/atlas/?${p.join('&')}`
 }

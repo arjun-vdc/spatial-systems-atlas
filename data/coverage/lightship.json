@@ -2244,17 +2244,40 @@
     },
     {
       "capability_id": "scene.navmesh",
-      "level": "out-of-scope",
-      "note": "The platform hands an application a mesh of the real room and leaves every judgement about it to the application. There is no place description here to carry walkable surface or arrival points, and virtual content is authored in Unity or a native app instead.",
+      "level": "partial",
+      "note": "Part is met: the current Niantic Spatial SDK for Unity has a navigation mesh package whose manager builds a two-dimensional grid over the meshes detected in the environment, so that characters can navigate the real room; the older 3.17 kit documents the same feature as a grid of tiles over flat surfaces. The missing part is carriage: the grid is built dynamically on the device from the live scan and is not carried with a scene, and the package listing read declares no authored walkable bounds or arrival points that travel with a place.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/api/unity/NianticSpatial.NSDK.AR.NavigationMesh/",
+          "title": "Niantic Spatial SDK Unity API reference: NianticSpatial.NSDK.AR.NavigationMesh",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It dynamically builds a 2d grid on the meshes detected in the environment for running navigation algorithms on."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/3.17.0/features/navigation_mesh/",
+          "title": "Navigation Mesh, Niantic Spatial SDK documentation (release 3.17.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Navigation Mesh provides a straightforward interface to control the movement of virtual content by creating a grid of tiles on top of flat surfaces in the scene."
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "The SDK is a library inside somebody's app. It publishes no units of logic and operates no namespace for them.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The SDK is a library inside somebody's app. It publishes no units of logic and operates no namespace for them.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
@@ -2320,51 +2343,107 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. An authoring application's own menus do not define reusable layout and presentation of interface surfaces for content consumers.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. An authoring application's own menus do not define reusable layout and presentation of interface surfaces for content consumers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "geo.trajectory",
@@ -2384,107 +2463,227 @@
     {
       "capability_id": "input.pointing",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "render.layer",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "scene.constraint",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "render.frame-timing",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
@@ -2519,23 +2718,61 @@
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
-      "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. The selected subject provides device sensing or media generation rather than a radiance-field fitting workflow with trained scene output.",
+      "level": "via-extension",
+      "note": "Supported through the optional Scan Reconstruction package (not supported on Windows): a recorded scan sequence is turned into a Gaussian splat on the device and exported as SPZ or splat-augmented PLY. The documented control is a quality level that sets the number of training iterations, and the missing part is use of the result: the SDK ships no renderer for splats, so viewing it depends on a third-party plug-in.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/gaussian_splat/",
+          "title": "How to Create a Gaussian Splat of an Area or Object, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial Platform SDK offers a Gaussian splat feature that can produce a Gaussian cloud from a recorded sequence."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/gaussian_splat/",
+          "title": "How to Create a Gaussian Splat of an Area or Object, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Additionally, you will need to install the Niantic Spatial SDK Scan Reconstruction UPM."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/gaussian_splat/",
+          "title": "How to Create a Gaussian Splat of an Area or Object, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Set the quality level according to the number of training iterations that you want to run."
+        }
+      ]
     },
     {
       "capability_id": "capture.objectgen",
       "level": "out-of-scope",
-      "note": "Niantic Lightship is assessed here as Niantic Spatial SDK localization, depth, mesh and semantic sensing APIs with Unity as a host. This observation-fitting or device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
+      "note": "Niantic's setup guide describes the SDK as an extension of AR Foundation for localization, depth, occlusion, meshing, semantics and developer tools, and this capability is none of those. This observation-fitting or device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
     },
     {
       "capability_id": "render.compute",
@@ -2593,6 +2830,303 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "AR Effects allow you to transform the world around you with special effects applied to the camera feed."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The Niantic Spatial SDK supplies positioning, depth and meshing for AR, none of which involves requesting or settling a payment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Setup - Niantic Spatial SDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Niantic's SDK adds localization, depth and meshing to Unity AR; it does not define grants held by users over content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK setup",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "The Niantic Spatial SDK adds place localization, depth and meshing on top of AR Foundation, so purchase or grant records are not within what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "NSDK setup, Niantic Spatial",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Niantic's SDK adds place localization, depth and meshing to device tracking; it is a content and positioning toolkit, not a registry of acceptable issuers, services or worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK: Setup",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Niantic Spatial SDK adds localisation, depth, occlusion, meshing and semantics on top of AR Foundation, so body-signal input is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK setup",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "none",
+      "note": "Searched the Niantic Spatial documentation index (llms.txt), the 66 pages of the NSDK guide index (llms-nsdk.txt) and the 7 pages of the Scaniverse guide index (llms-scaniverse.txt) for POST and PUT requests, upload or create-site interfaces, programmatic, MCP and command-line terms on 2026-10-20; found scoped developer tokens and read-only Sites and mesh-download interfaces, with Site creation described only as a Scaniverse app and web task. The Niantic Spatial SDK reads Sites and anchors at run time but creates no content from outside.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/llms-nsdk/features/vps2_migration.txt",
+          "title": "Migrate from VPS to VPS2, Niantic Spatial SDK documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use Scaniverse to create and manage Sites, and use the Sites API to retrieve production anchor payloads."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/llms-nsdk/features/sites.txt",
+          "title": "Sites, Niantic Spatial SDK documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This feature allows you to query what spatial content is available to users and how it's structured within your organization."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/llms-nsdk/auth_developer_token.txt",
+          "title": "Generate developer tokens, Niantic Spatial SDK documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "if your application needs to use sites that you created and manage in Scaniverse, including site discovery paths in NSDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "The Niantic Spatial SDK adds localization, depth and meshing to the device's own camera view; it does not bind world objects to outside live data sources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK setup",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "The SDK adds positioning, depth, meshing and semantic understanding to AR apps; it is a perception toolkit and defines no portable record of what a person did.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "NSDK setup, Niantic Spatial documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The Niantic Spatial SDK adds location and sensing features to apps built in Unity, Swift or Kotlin; the app owns its content, so the SDK has no whole place to export.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Setup, Niantic Spatial SDK documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Lightship's SDK is the device-side layer for localization, depth, occlusion, meshing and semantics on top of the host engine; the host engine draws the frame on the device, so remote rendering is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK setup",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/core_concepts/",
+          "title": "Niantic Spatial SDK core concepts",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Rendering uses the latest pose to draw the scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Searched the Niantic Spatial SDK 4.1.0 documentation (features index, setup, core concepts, migration guide, and the titles of every page in the documentation sitemap) and the 3.17.0 object detection page for object, detection, tracking, reference object, 3D model and marker on 2026-10-20; the only object feature is 2D class-labelled bounding boxes in 3.17.0, with no 3D model input and no object pose, and 4.1.0 lists none. This was not a full-text search of every page, so the absence is unverified.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/3.17.0/features/object_detection/",
+          "title": "Object Detection, Niantic Spatial Platform (NSDK 3.17.0)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "creating semantically labeled 2D bounding boxes that dynamically update as real-world objects appear on-screen"
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Setup, Niantic Spatial Platform",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "The scanning session can compute a voxel grid of the scene and return it as a read-only buffer of voxel positions, normals and colours plus a voxel size, refreshed as new frames arrive. It is offered for visualisation through the code interface only: no file format, no interchange, and the normal meshing output is triangle mesh blocks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/api/kotlin/com.nianticspatial.nsdk.scanning.VoxelBuffer/",
+          "title": "VoxelBuffer, NSDK Kotlin API reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A read-only container for the voxel buffer information generated during scanning."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/api/kotlin/com.nianticspatial.nsdk.ScannerConfig/",
+          "title": "ScannerConfig, NSDK Kotlin API reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "voxels can be computed, and computed voxels will be updated each time a new input frame is available."
+        }
+      ],
+      "direction": "write"
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "NSDK splats export to Niantic's SPZ format, and the SPZ extension rules give vendor type IDs and tell readers to skip unknown extensions. The rest of the SDK (anchors, meshes, Sites assets) declares no extension mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/gaussian_splat/",
+          "title": "Gaussian splat scanning, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Splats can export to Niantic Spatial's open source, highly-optimized SPZ format"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/nianticlabs/spz/affd0ecea7fbb4c265ee119475af7ee5b2997482/extensions/README.md",
+          "title": "SPZ extensions, nianticlabs/spz at commit affd0ec",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "unknown extension types are skipped during parsing so readers only need to understand the extensions they care about."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Anchors can be stored as a payload and resolved across sessions, and Sites lists the assets a signed-in user may reach. Resolution covers anchors and assets within Niantic's own platform; there is no resolver for general scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/lightship_vps/",
+          "title": "VPS, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Anchors can be stored as a payload and resolved across sessions to create persistent virtual objects."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/sites/",
+          "title": "Sites, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Users can only access organizations, sites, and assets that they have permission to view based on their authentication credentials."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "partial",
+      "note": "NSDK separates global, AR-session and map-relative coordinate spaces and resolves anchors through the live relationship between them, so related frames can be recovered at runtime. The set of spaces is fixed and nothing exchanges linked poses as a chain or graph between systems.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/core_concepts/",
+          "title": "Core concepts, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A pose expressed in AR space is not directly interchangeable with a pose expressed in map-relative or global space."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/core_concepts/",
+          "title": "Core concepts, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Anchors are resolved using the current relationship between coordinate spaces."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Access to Sites assets is controlled by sign-in permissions, but no content protection scheme is declared for any asset. Searched all 66 NSDK guide pages and 1,375 Unity, Swift and Kotlin API pages (the publisher's llms text index, 2026-10-20) for DRM, encrypt, content protection and digital rights; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/sites/",
+          "title": "Sites, NSDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Users can only access organizations, sites, and assets that they have permission to view based on their authentication credentials."
         }
       ]
     }

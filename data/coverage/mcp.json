@@ -1,0 +1,2659 @@
+{
+  "subject_id": "mcp",
+  "summary": "The Model Context Protocol is an open protocol that lets applications built around language models connect to outside data sources and tools. It covers how a client and a server agree on a version, discover each other's features, exchange messages over standard input and output or over web requests, expose data, prompts and tools, and ask a user for input, with an optional sign-in flow built on OAuth for web use. Its optional extensions add interactive web interfaces shown inside a conversation, and the project also runs a public registry of servers. It leaves everything about three-dimensional content, avatars, capture, rendering, physics, geographic positioning, shared worlds and portable identity credentials to other standards. A trap for standards audiences: version 2026-07-28 dropped the session handshake and protocol-level sessions, so sources describing earlier versions are out of date, and its sign-in model grants access to a server on a user's behalf rather than carrying verifiable claims about a person or agent.",
+  "coverage": [
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "Each request names its protocol version and a server that does not support it must answer with an error listing the versions it does support; an earlier handshake-based generation is covered by a stated compatibility table.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning",
+          "title": "Versioning and Compatibility (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every request carries its protocol version, and the server accepts or rejects each request independently"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "Optional extensions are named in the capabilities map with prefixed identifiers, and a party that lacks one must fall back to core behaviour or refuse the request.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning",
+          "title": "Versioning and Compatibility (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Extensions are advertised in the extensions field of capabilities, which is a map of extension identifiers to per-extension settings objects."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning",
+          "title": "Versioning and Compatibility (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If one party supports an extension but the other does not, the supporting party MUST either revert to core protocol behavior or reject the request with an appropriate error."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Capabilities and extension identifiers let both sides declare which optional features they support, and the SDK tiers page defines three SDK tiers with stated requirements, such as full conformance for the first; there are no profiles that servers, clients or content declare as a compatible contract.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning",
+          "title": "Versioning and Compatibility (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Extensions are advertised in the extensions field of capabilities, which is a map of extension identifiers to per-extension settings objects."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/discover",
+          "title": "Discovery (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "server/discover lets a client query a server's supported protocol versions, capabilities, and identity before sending any other requests."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/community/sdk-tiers",
+          "title": "SDK Tiering System - Model Context Protocol",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tier 1 : 100% conformance required"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "native",
+      "note": "The project runs automated conformance tests against software development kits, and kit rankings depend on the score; the tests target protocol support, not individual deployments.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/community/sdk-tiers",
+          "title": "SDK Tiers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "All SDKs are evaluated using automated conformance tests that validate protocol support against the published specifications."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "A server resolves a resource address to contents through a read request and can expose parameterised addresses through templates; there is no scene-specific resolver or context for scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/resources",
+          "title": "Resources (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Model Context Protocol (MCP) provides a standardized way for servers to expose resources to clients."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/resources",
+          "title": "Resources (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resource templates allow servers to expose parameterized resources"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "The project's Registry describes how a server is packaged and run (npm, other package types and MCP Bundles), but this packages servers, not runnable spatial experiences.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/registry/package-types",
+          "title": "MCP Registry Supported Package Types",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For MCPB packages, the MCP Registry currently supports MCPB artifacts hosted via GitHub or GitLab releases."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "partial",
+      "note": "The official Registry removes illegal content, malware, spam and broken servers but says it gives no guarantee; nothing in the protocol tells a receiver what review a server or its content has had.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/registry/moderation-policy",
+          "title": "MCP Registry Moderation Policy",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The MCP Registry does not make guarantees about moderation, and consumers should assume minimal-to-no moderation."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/moderation-policy",
+          "title": "MCP Registry Moderation Policy",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "We only remove illegal content, malware, spam, and completely broken servers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "partial",
+      "note": "Servers expose tools that a language model can invoke, which is the core agent integration; the specification has no notion of a world, so acting inside a world is the missing part and what an agent acts on is whatever a server exposes. The sampling feature that let servers run agent loops is deprecated in this version.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+          "title": "Tools (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Model Context Protocol (MCP) allows servers to expose tools that can be invoked by language models."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/sampling",
+          "title": "Sampling (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Sampling in MCP allows servers to implement agentic behaviors"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "via-extension",
+      "note": "The MCP Apps extension runs server-supplied interface code in a host-controlled sandboxed frame with declared permissions and content rules; the core protocol leaves isolation of tools to the host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/apps/overview",
+          "title": "MCP Apps overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP Apps run in a sandboxed iframe controlled by the host."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "partial",
+      "note": "Implementations should set request timeouts and enforce a maximum timeout; there is no bound on memory or number of calls for guest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/cancellation",
+          "title": "Cancellation (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Implementations SHOULD establish timeouts for all sent requests, to prevent hung connections and resource exhaustion."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "partial",
+      "note": "The Registry gives servers verified reverse-domain names and makes each published version immutable, but the project may mark a server deleted or erase its metadata, so a name is not guaranteed to resolve to the same thing forever.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/registry/versioning",
+          "title": "MCP Registry Versioning",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The version string MUST be unique for each publication of the server. Once published, the version string (and other metadata) cannot be changed."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/moderation-policy",
+          "title": "MCP Registry Moderation Policy",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "In extreme cases, we may overwrite or erase the server's metadata."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "native",
+      "note": "The specification defines two standard bindings, standard input and output streams and Streamable HTTP, over one message format, and allows custom transports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports",
+          "title": "Transports overview (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Protocol semantics are identical on every transport."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports",
+          "title": "Transports overview (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "each message is an HTTP POST to a single MCP endpoint"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "Version 2026-07-28 removes protocol-level sessions, so each request stands alone, and authentication is an optional OAuth flow for HTTP; nothing models joining a running world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http",
+          "title": "Streamable HTTP (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Removal of protocol-level sessions."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Authorization is OPTIONAL for MCP implementations."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "partial",
+      "note": "A client can ask a server it already knows what it supports, and the Registry lets clients search for servers; the protocol itself has no way to find unknown servers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/discover",
+          "title": "Discovery (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "server/discover lets a client query a server's supported protocol versions, capabilities, and identity before sending any other requests."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/about",
+          "title": "MCP Registry overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A REST API for MCP clients and aggregators to discover available servers"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "The Registry names servers with unique reverse-domain names and maps each to a package or remote address; ordinary use still configures the server address by hand, and the names point to servers, not places.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/registry/about",
+          "title": "MCP Registry overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Namespace management through DNS verification"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/about",
+          "title": "MCP Registry overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Where to locate the server (e.g., npm package name, remote server URL)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "partial",
+      "note": "A client can open a long-lived stream and receive only the change notifications it asked for; no shared state model, update rate or authority rule is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions",
+          "title": "Subscriptions (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "subscriptions/listen opens a long-lived notification stream from the server to the client."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions",
+          "title": "Subscriptions (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server MUST NOT send notification types the client has not explicitly requested."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "Clients are identified by an HTTPS address that points to a metadata document and servers by a name and version; no identifier for a person or agent is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/client-registration",
+          "title": "Client Registration (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This approach enables clients to use HTTPS URLs as client identifiers, where the URL points to a JSON document containing client metadata."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/discover",
+          "title": "Discovery (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "server/discover lets a client query a server's supported protocol versions, capabilities, and identity before sending any other requests."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "partial",
+      "note": "Access is expressed with OAuth bearer access tokens that a server must check for audience; the specification defers token validation to OAuth and defines no format for verifiable claims about a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP servers MUST validate that access tokens were issued specifically for them as the intended audience"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Access tokens MUST NOT be included in the URI query string"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "A client obtains a token from an authorization server with the authorization-code flow and a code-challenge check, then presents it on every request; this is an OAuth token exchange, not a presentation of verifiable credentials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations",
+          "title": "Authorization Security Considerations (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP clients MUST implement PKCE according to OAuth 2.1 Section 7.5.2"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Note that authorization MUST be included in every HTTP request from client to server."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "A server states the scopes a request needs in its challenge and the client asks for them again with a step-up flow; scope meanings are left to each server, so a third party cannot read them from the specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to indicate the scopes required for accessing the resource"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Clients SHOULD respond to these errors by requesting a new access token with an increased set of scopes via a step-up authorization flow"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "Searched the Model Context Protocol specification 2026-07-28 and the full documentation text (llms-full.txt) for revocation, revoke, introspection and credential status on 2026-10-20; the specification defines no mechanism for a party to learn a token's status after issue, and only a non-normative tutorial shows a server calling an identity provider's introspection endpoint.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Model Context Protocol provides authorization capabilities at the transport level, enabling MCP clients to make requests to restricted MCP servers on behalf of resource owners."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "The principles require explicit user consent before data access or tool use, and the Apps and authorization flows show consent pages, but no machine-readable consent record with purpose, validity or withdrawal travels with the data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Users must explicitly consent to and understand all data access and operations"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Hosts must obtain explicit user consent before invoking any tool"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and defines no payment requirement, authorisation or settlement exchange; the elicitation page hands payment off to an external page outside the protocol, as out-of-band interaction that does not pass through the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation",
+          "title": "Elicitation (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "URL mode elicitation enables servers to direct users to external URLs for out-of-band interactions that must not pass through the MCP client."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "A server must check on each request that the token was issued for it and holds the needed scope, with expiry handled by the authorisation server; there is no licence grant, transfer or resource-level holder binding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations",
+          "title": "Authorization Security Considerations (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP servers MUST validate access tokens before processing the request"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "via-extension",
+      "note": "The MCP Apps extension lets a server return an interactive HTML interface that the host draws inside the conversation; it says nothing about placing a panel in a three-dimensional scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/apps/overview",
+          "title": "MCP Apps overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MCP Apps let servers return interactive HTML interfaces (data visualizations, forms, dashboards) that render directly in the chat."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "partial",
+      "note": "The MCP Apps extension lets a host run another party's interface, with its own code, inside a sandboxed frame within the conversation; the container is a chat conversation, not a containing world, so only the hosting of a running third-party experience is met.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/apps/overview",
+          "title": "MCP Apps overview",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Web hosts typically render the HTML inside a sandboxed iframe within the conversation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "partial",
+      "note": "Form requests let a server ask the user for structured text or values with a schema, but no text-entry device interface is defined and the protocol leaves the user interface to the host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation",
+          "title": "Elicitation (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Servers can request structured data from users with optional JSON schemas to validate responses"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no avatar mesh or appearance format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no bone naming or skeleton structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no facial expressions or visemes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no worn items or attachment points.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it has no avatars to bind to an identity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it carries no animation to retarget between bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no avatar representations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no splat file format, though binary resources of any media type can be sent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no volumetric video capture or playback.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no point cloud encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no calibrated multi-camera or depth carriage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no time-varying captured scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not generate places; a tool could do so, but the protocol only calls tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not run a learned world simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not reconstruct objects from photographs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no progressive delivery of captured scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not render views from captured scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not relight captured content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not edit captures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not edit generated worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no inputs for a world-generating system beyond ordinary tool arguments.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not convert generated scenes into engine assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no agent pose or joint control streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no panoramic image projection, though image content can be passed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not reconstruct radiance fields.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not generate three-dimensional objects; a tool could do so, but the protocol only calls tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no purchase receipts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it does not deliver assets at scale.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no content-protection scheme signalling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no placed sound sources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no sound spatialisation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no room acoustics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no sound occlusion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it can pass audio content blocks in messages but defines no audio streaming.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no live voice transport.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no sound synthesis models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no Earth-referenced position or orientation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no coordinate reference systems.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no shared or persistent anchors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no tiled geospatial streaming.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no pose series or streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no linked pose structures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no device-local anchors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no visual positioning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no indoor mapping.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no map lifecycle or alignment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no geographic coverage declaration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no spatial zones or events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no social graph or reputation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no licence terms to enforce.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no signed account of a recipient's decision.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no immersive session lifecycle.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no handheld controller input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no hand tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no eye tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no haptics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and its capability exchange concerns protocol features, not what a client device can do.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no face or body tracking input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no picking of scene content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no musical event-device input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no behaviour graphs travelling with an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no world scripting language or runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no handoff between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no pre-arrival admission response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no coupling between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no ownership of shared world objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no interest management.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no latency hiding or reconciliation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no live audio or video transport.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no roster of who is where.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no shared clock for ordering world events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no user inventory.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no portable user preferences.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no world state persistence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it addresses resources by URI, not by content hash, and that is not its aim.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no rigid bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no collision shapes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no joints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no physics materials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no deterministic simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no soft bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no trigger volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no rendering pipeline.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it targets no graphics interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no surface material model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no lighting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no post-processing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no level-of-detail choice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it renders nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it renders nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no three-dimensional text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no camera or viewpoint model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no passthrough blending.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no colour space declaration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no compositor layers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no graphics computation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no frame pacing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no shader language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no scene graph.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no transforms or coordinate convention.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it can carry binary resources of any media type but defines no model or scene container.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no mesh encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no texture encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no material exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no animation encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no rig definition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no real-world scale.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no asset licence metadata.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no parametric geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no voxel volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no morph targets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no instancing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no scene composition or overrides.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no signed asset authorship record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no navigable space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it has metadata fields on its own messages but defines no domain metadata for scene assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it has icons for tools and servers but defines no asset preview image.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no bounding volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no named object sets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no transform constraints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no timed media inside a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no particle effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no provenance recovery from fingerprints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no declarative scene styling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no asset variants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no real-world reconstruction.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no semantic labelling of the real world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no real-world depth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no real-world occlusion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no lighting estimation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no marker or image tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no physical play area.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no real-world hit testing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "MCP exists to connect language-model applications to external data and tools, and it defines no privacy terms on sensed data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "The Model Context Protocol connects language-model applications to data sources and tools; it defines no sensor or body-signal stream, so this capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "MCP is the general protocol that authoring servers such as those of Roblox Studio and Unreal Editor for Fortnite are built on, but it defines no world content or authoring operations itself, so the authoring interface belongs to each server built on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "A server can expose data from an outside source as a resource, and a client can hold a long-lived stream that tells it when chosen resources change, so a client's copy can follow a live source. MCP has no notion of a world or of objects in one, so nothing binds a world object to the source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/resources",
+          "title": "Resources (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resources allow servers to share data that provides context to language models, such as files, database schemas, or application-specific information."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions",
+          "title": "Subscriptions (2026-07-28)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "subscriptions/listen opens a long-lived notification stream from the server to the client."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "MCP connects model applications to tools and data; it defines no statement of what a person did in a world, though a server could carry one as ordinary data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The Model Context Protocol connects language-model applications to tools and data, so it describes a connection, not a host that keeps places to export.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "MCP connects language-model applications to outside data and tools; it carries no client pose or rendered frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "MCP is a protocol that connects language-model applications to outside data and tools; it defines no sensing, so recognising a physical object from its model is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    }
+  ]
+}

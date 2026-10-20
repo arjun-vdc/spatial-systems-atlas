@@ -1076,7 +1076,7 @@
     {
       "capability_id": "geo.pose",
       "level": "partial",
-      "note": "A driving reconstruction carries the rig's own trajectories and a driveable road map, so the scene is anchored to the route it was recorded on. No Earth-referenced pose or datum is stated in the documentation read here.",
+      "note": "A driving reconstruction carries the rig's own trajectories and a driveable road map, so the scene is anchored to the route it was recorded on. For the documented Physical AI dataset workflow, NVIDIA also states the rig's Earth-Centered, Earth-Fixed pose at frame 0 and a conversion chain from reconstruction space through ECEF to a local East-North-Up frame defined by an OpenDRIVE map. This is specific to that dataset and conversion workflow; nothing shows that every NuRec package carries a georeference.",
       "confidence": "verified",
       "sources": [
         {
@@ -1092,13 +1092,27 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "Reconstruction converts real-world data into a 3D scene, output as a USDZ file."
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA Omniverse NuRec documentation, Physical AI data",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "with T_rig_ecef representing the ECEF pose at frame 0 in the trajectories included in the Physical AI dataset"
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA Omniverse NuRec documentation, Physical AI data",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The complete transformation chain follows NuRec Space → ECEF → ENU (OpenDRIVE Map Space), where OpenDRIVE maps contain strings that define the local ENU origin."
         }
       ]
     },
     {
       "capability_id": "geo.crs",
       "level": "partial",
-      "note": "The pose graph names every coordinate frame and the transformations between them, in metric units, which settles the internal frame question completely. It is a local frame tree; no geodetic reference system is named.",
+      "note": "The pose graph names every coordinate frame and the transformations between them, in metric units, which settles the internal frame question. For the documented Physical AI dataset workflow, NVIDIA also names Earth-Centered, Earth-Fixed coordinates on the WGS84 datum, a local East-North-Up frame defined by the OpenDRIVE georeference, and an OpenDRIVE map space whose origin is set by a projection string. That naming is specific to the dataset and conversion workflow and is not shown to be carried by every package.",
       "confidence": "verified",
       "sources": [
         {
@@ -1114,6 +1128,20 @@
           "retrieved": "2026-09-06",
           "kind": "primary",
           "quote": "All relative transformations are stored in the form of homogeneous 4x4 \\(SE(3)\\) matrices, where the top left 3x3 elements represent a rotation matrix"
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA Omniverse NuRec documentation, Physical AI data",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Earth-Centered, Earth-Fixed coordinates using WGS84 datum"
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA Omniverse NuRec documentation, Physical AI data",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Local ENU coordinate system with origin defined by proj string"
         }
       ]
     },
@@ -2136,58 +2164,178 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "sense.lighting",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Captured appearance and inferred training exposure are not runtime environmental illumination estimates supplied to content.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "sense.marker",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Offline calibration targets or reference photos do not expose runtime physical-marker detection with tracked poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "geo.trajectory",
@@ -2207,23 +2355,68 @@
     {
       "capability_id": "input.pointing",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Editor selection or image masking is not an exposed runtime picking interface that returns the intersected scene object or geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "input.text",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Prompt strings or command-line parameters are authoring inputs, not a defined runtime character-entry interface for scene applications.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "render.layer",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The selected interface is not a display compositor accepting independently shaped image layers and composition properties.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "scene.bounds",
@@ -2243,107 +2436,332 @@
     {
       "capability_id": "scene.constraint",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Fitted motion and ordinary parenting are not authored node-to-node transform constraints with runtime evaluation rules.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "scene.timed-media",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Image sequences used as reconstruction observations do not reference synchronized audiovisual media as content within a separately authored scene.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "sense.play-space",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Capture extents or a training region do not report the user's usable physical play area and floor-relative reference.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "audio.procedural",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The selected reconstruction or sensing interface does not exchange a sound-synthesis model for evaluation during playback.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "render.frame-timing",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Offline fitting or ordinary preview playback does not coordinate application frame submission with a predicted headset display time and matching view poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "render.shader-lang",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Implementation shaders or learned weights do not make the subject a specified shader language with common execution semantics.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "scene.parametric",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The selected representation is sampled imagery, points, splats or meshes; it does not carry exact parametric curves and surfaces for another system to evaluate.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "scene.particle",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Gaussian primitives and optimized point samples are a representation, not exchanged emitters with runtime particle simulation parameters.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "scene.style",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Capture edits and model appearance are not separate metadata-driven rules for selecting scene-feature visibility or color.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. Offline reconstructed geometry is not a sensing runtime that answers physical-environment ray queries with hit poses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "NVIDIA Omniverse NuRec and 3DGRUT is assessed here as neural reconstruction, simulation rendering interfaces and associated Asset Harvester models. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "NVIDIA states that NuRec exists to turn camera and lidar recordings into simulated 3D environments for training and testing physical-AI agents, and 3DGRUT is its research code for Gaussian ray tracing. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/README.md",
+          "title": "3DGRUT repository README, commit e6f4552b",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This repository provides the official implementations of 3D Gaussian Ray Tracing (3DGRT) and 3D Gaussian Unscented Transform (3DGUT)"
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
@@ -2455,6 +2873,266 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "3DGRUT provides a hybrid neural and explicit 3D representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs sensor recordings into simulation scenes and has no payment function.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works - NVIDIA Omniverse NuRec",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "A neural reconstruction and rendering stack for simulation; it reconstructs scenes and does not check holders' grants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "NuRec rebuilds captured sensor data into simulated environments for physical AI, so purchase or grant records are outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works, NVIDIA",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "NuRec rebuilds real camera and lidar recordings as simulated 3D environments; it has no stated role in choosing acceptable issuers, services or worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA NuRec: How NuRec works",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs real recordings into simulation scenes offline, so a live body-signal stream is not part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "NuRec is a reconstruction and rendering pipeline that turns sensor recordings into simulation scenes through a container and a rendering API, not a hosted world that an outside agent authors and publishes into.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs recorded camera and lidar data into a simulated environment; it works on stored recordings and does not keep world objects in step with a live sensor or controller.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works, NVIDIA documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "NuRec rebuilds captured camera and lidar data as simulatable 3D scenes; it describes places, not what a person did in them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works, NVIDIA Omniverse NuRec documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment"
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs real recordings into scenes for simulation and is not a host that keeps places, so whole-place export is not part of what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works, NVIDIA Omniverse NuRec documentation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Ph"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "partial",
+      "note": "NuRec runs a gRPC rendering server that returns RGB (and lidar) renders for a camera pose and time sent by a client, and 3DGRUT's playground supports remote rendering. Missing: it is a request-and-reply interface for simulators, with no stated frame stream to a display, pose prediction or latency handling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/api/grpc_api_guide.html",
+          "title": "Use the NuRec gRPC API Server, NVIDIA Omniverse NuRec",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To interface with driving simulators, or to generate arbitrary novel views, NuRec implements a gRPC server you can use to serve rendered images for given camera and actor posing."
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/api/nre.grpc.protos.sensorsim.html",
+          "title": "sensorsim protocol, NVIDIA Omniverse NuRec",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Renders an RGB camera image from a reconstructed scene at a specified pose and time."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/main/README.md",
+          "title": "3DGRUT README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The playground engine is now exposed, and remote rendering is supported"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs recorded real-world sensor data into simulated environments; it does not run on a device to recognise a known object from its model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "NCore, NuRec's input data specification, lets writers define custom component types with their own names, versions and a version check in the reader, and attach named generic arrays to any component. It does not state what a reader that lacks a custom component must do, and it covers the input data, not the exported USD package.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://nvidia.github.io/ncore/data/formats",
+          "title": "NCore data formats",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The component architecture is extensible, allowing custom component types to be defined for application-specific data."
+        },
+        {
+          "url": "https://nvidia.github.io/ncore/data/formats",
+          "title": "NCore data formats",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Components may optionally include a generic_data/ subgroup containing named numpy arrays."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "NCore opens its component stores from paths that fsspec can resolve, including local and cloud storage such as S3, and several stores can be combined into one sequence. The caller supplies the paths; the data does not carry resolvable identifiers for its own parts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://nvidia.github.io/ncore/data/storage_and_access.html",
+          "title": "NCore storage and access",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Any protocol that fsspec supports can be used as a component store path."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs simulation scenes from sensor data for physical-AI testing and signals no protected content components. Its NCore format lists access control as a storage aim, which is not a protection scheme declared to recipients.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA NuRec: Physical AI data",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Neural Reconstruction (NuRec) builds photorealistic 3D renderings of real-world scenarios captured from sensor data."
+        },
+        {
+          "url": "https://nvidia.github.io/ncore/data/formats",
+          "title": "NCore data formats",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Fine-grained access control and data sharing"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "NuRec scenes are sets of Gaussian particles in a USD package, with sensor data held as point clouds, images and poses. Its robotics guide runs nvblox, which builds a voxel-based map only as a step toward a triangle mesh and a 2D occupancy map, so no cell-volume representation is a documented output. Searched the NuRec documentation pages, the NCore pages and the 3DGRUT README and export README listed in the scope trace for voxel, volume, occupancy and TSDF on 2026-10-20; the other hits were Docker volume mounts, the USD Volume prim that holds the Gaussians, Gaussian voxelization used when merging, and occupancy benchmark figures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/nurec/physical-ai-data.html",
+          "title": "NVIDIA NuRec: Physical AI data",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "NVIDIA Neural Reconstruction (NuRec) builds photorealistic 3D renderings of real-world scenarios captured from sensor data."
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/robotics/neural_reconstruction_stereo.html",
+          "title": "NVIDIA NuRec: stereo neural reconstruction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "nvblox reconstructs a voxel-based map from dense depth and RGB images, generating both a triangle mesh and an occupancy map."
         }
       ]
     }

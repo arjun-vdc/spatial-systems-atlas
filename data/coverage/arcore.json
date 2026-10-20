@@ -657,10 +657,39 @@
     },
     {
       "capability_id": "physics.rigid",
-      "level": "out-of-scope",
-      "note": "A perception and presentation platform, not a simulator. Neither ARCore nor the Jetpack XR runtime has a dynamics world, and an app that wants rigid bodies brings its own engine.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "Physics is within what this platform serves but neither half supplies it: ARCore's depth guide pitches depth-based collision combined with game physics, and the Android XR OpenXR guide says the environment mesh can be used for physics, so the simulation itself is left to the application's own engine. Searched the Android XR developer guides (developer.android.com/develop/xr and the Jetpack XR SDK, OpenXR, Unity, Godot and Unreal guides linked from it, 227 pages with the Jetpack XR package pages for arcore, scenecore, runtime, compose, projected and glimmer and their class lists) and the ARCore developer guides and API references for Android (Java and C), iOS and Unity (developers.google.com/ar, 482 pages) for physics, collision, collide, rigid body, gravity, joint, simulation, soft body, cloth, ragdoll, friction, restitution and determinism on 2026-10-20; found physics only as that application-side use of depth and mesh data, and gravity only as an up-axis convention in hit tests, Earth anchors and layout alignment; the Jetpack XR SceneCore and ARCore package listings contain no rigid-body, mass, velocity or dynamics component. The individual class pages of the Jetpack XR reference were not opened, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/depth",
+          "title": "ARCore Depth, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When you combine depth-based collision with game physics, you can make an experience come to life."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "OpenXR for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The ability to acquire a 3D mesh of the environment, which can be used for physics, occlusion, and other world-aware interactions."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "physics.collision",
@@ -686,31 +715,147 @@
     },
     {
       "capability_id": "physics.joint",
-      "level": "out-of-scope",
-      "note": "No joints or constraints, because there is no simulation to constrain.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "Physics is within what this platform serves but neither half supplies it: ARCore's depth guide pitches depth-based collision combined with game physics, and the Android XR OpenXR guide says the environment mesh can be used for physics, so the simulation itself is left to the application's own engine. Searched the Android XR developer guides (developer.android.com/develop/xr and the Jetpack XR SDK, OpenXR, Unity, Godot and Unreal guides linked from it, 227 pages with the Jetpack XR package pages for arcore, scenecore, runtime, compose, projected and glimmer and their class lists) and the ARCore developer guides and API references for Android (Java and C), iOS and Unity (developers.google.com/ar, 482 pages) for physics, collision, collide, rigid body, gravity, joint, simulation, soft body, cloth, ragdoll, friction, restitution and determinism on 2026-10-20; found joint only as hand-tracking joints, skeleton joints in glTF models (Scene Viewer's joint limit) and Unity extension types; no hinge, slider or constraint between bodies exists in the SceneCore or ARCore package listings, because there is no simulation to constrain. The individual class pages of the Jetpack XR reference were not opened, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/depth",
+          "title": "ARCore Depth, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When you combine depth-based collision with game physics, you can make an experience come to life."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "OpenXR for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The ability to acquire a 3D mesh of the environment, which can be used for physics, occlusion, and other world-aware interactions."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "physics.material",
-      "level": "out-of-scope",
-      "note": "No friction or restitution model. Surface response belongs to whatever engine the app is built on.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "Physics is within what this platform serves but neither half supplies it: ARCore's depth guide pitches depth-based collision combined with game physics, and the Android XR OpenXR guide says the environment mesh can be used for physics, so the simulation itself is left to the application's own engine. Searched the Android XR developer guides (developer.android.com/develop/xr and the Jetpack XR SDK, OpenXR, Unity, Godot and Unreal guides linked from it, 227 pages with the Jetpack XR package pages for arcore, scenecore, runtime, compose, projected and glimmer and their class lists) and the ARCore developer guides and API references for Android (Java and C), iOS and Unity (developers.google.com/ar, 482 pages) for physics, collision, collide, rigid body, gravity, joint, simulation, soft body, cloth, ragdoll, friction, restitution and determinism on 2026-10-20; found no friction or restitution model (friction appears once, in a Play Instant marketing sentence, and physically-based material appears only for rendering); surface response is left to whatever engine the app is built on. The individual class pages of the Jetpack XR reference were not opened, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/depth",
+          "title": "ARCore Depth, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When you combine depth-based collision with game physics, you can make an experience come to life."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "OpenXR for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The ability to acquire a 3D mesh of the environment, which can be used for physics, occlusion, and other world-aware interactions."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "physics.determinism",
-      "level": "out-of-scope",
-      "note": "No simulation, so no determinism claim to make. Perception output is not reproducible in any case: it depends on the camera, the room and the device profile.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "Physics is within what this platform serves but neither half supplies it: ARCore's depth guide pitches depth-based collision combined with game physics, and the Android XR OpenXR guide says the environment mesh can be used for physics, so the simulation itself is left to the application's own engine. Searched the Android XR developer guides (developer.android.com/develop/xr and the Jetpack XR SDK, OpenXR, Unity, Godot and Unreal guides linked from it, 227 pages with the Jetpack XR package pages for arcore, scenecore, runtime, compose, projected and glimmer and their class lists) and the ARCore developer guides and API references for Android (Java and C), iOS and Unity (developers.google.com/ar, 482 pages) for physics, collision, collide, rigid body, gravity, joint, simulation, soft body, cloth, ragdoll, friction, restitution and determinism on 2026-10-20; found no determinism claim; simulation appears only for emulators, test rigs and recorded sessions. Neither half runs a physics simulation, so there is nothing to reproduce. Perception output is not reproducible in any case: it depends on the camera, the room and the device profile. The individual class pages of the Jetpack XR reference were not opened, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/depth",
+          "title": "ARCore Depth, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When you combine depth-based collision with game physics, you can make an experience come to life."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "OpenXR for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The ability to acquire a 3D mesh of the environment, which can be used for physics, occlusion, and other world-aware interactions."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "physics.soft",
-      "level": "out-of-scope",
-      "note": "No soft bodies or cloth anywhere in the platform.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "Physics is within what this platform serves but neither half supplies it: ARCore's depth guide pitches depth-based collision combined with game physics, and the Android XR OpenXR guide says the environment mesh can be used for physics, so the simulation itself is left to the application's own engine. Searched the Android XR developer guides (developer.android.com/develop/xr and the Jetpack XR SDK, OpenXR, Unity, Godot and Unreal guides linked from it, 227 pages with the Jetpack XR package pages for arcore, scenecore, runtime, compose, projected and glimmer and their class lists) and the ARCore developer guides and API references for Android (Java and C), iOS and Unity (developers.google.com/ar, 482 pages) for physics, collision, collide, rigid body, gravity, joint, simulation, soft body, cloth, ragdoll, friction, restitution and determinism on 2026-10-20; found no soft body, cloth or ragdoll term anywhere in the guides or package listings. The individual class pages of the Jetpack XR reference were not opened, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/depth",
+          "title": "ARCore Depth, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When you combine depth-based collision with game physics, you can make an experience come to life."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "OpenXR for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The ability to acquire a 3D mesh of the environment, which can be used for physics, occlusion, and other world-aware interactions."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "physics.trigger",
@@ -1132,9 +1277,24 @@
     {
       "capability_id": "identity.social",
       "level": "out-of-scope",
-      "note": "No reputation and no social graph. The platform has no notion of a relationship between two people.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither holds reputation or a social graph; the platform has no notion of a relationship between two people.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.rights",
@@ -2200,16 +2360,46 @@
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "ARCore and the Jetpack XR SDK are libraries inside one Android application. Naming published units of logic is the package manager and the store's business, not theirs.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Both are libraries inside one Android application. Naming published units of logic is the package manager's and the store's business, not theirs.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "The SDK senses and renders; review of what an application ships belongs to Play, not to ARCore, and nothing in the SDK records what review content has had.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. The SDKs sense and render. Review of what an application ships belongs to the store that distributes it, and nothing in the SDKs records what review content has had.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
@@ -2275,44 +2465,134 @@
     {
       "capability_id": "identity.assurance",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject does not issue or exchange trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither issues or exchanges trust claims whose establishment a relying party evaluates; reconstruction confidence is a different quantity.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject's scene or model data types are not a vocabulary for identity claims exchanged with a relying party.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Their scene and model data types are not a vocabulary for identity claims exchanged with a relying party.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject is not an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither is an identity-presentation system with pairwise relationship identifiers and correlation guarantees.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Image, geometry and device processing do not define recipient identity keys or confidential identity delivery.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject does not govern identity-control key rotation, revocation or recovery; account administration belongs to its host.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither governs identity-control key rotation, revocation or recovery; account administration belongs to the host platform.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject does not issue portable credentials with a post-issuance status-discovery mechanism.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither issues portable credentials, so there is no post-issuance status-discovery mechanism to define.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
@@ -2422,30 +2702,90 @@
     {
       "capability_id": "geo.zone-event",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject does not publish an exchange of identified spatial zones and typed, temporally scoped events; scene bounds or capture locations are not that protocol.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither publishes an exchange of identified spatial zones and typed, temporally scoped events; scene bounds and capture locations are not that protocol.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.consent",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. An application permission dialog or dataset licence does not carry a subject-bound grant with scope, purpose, validity and withdrawal information.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. Training metrics and processing status are not machine-readable accounts of a recipient evaluating and acting on an arriving subject or claim.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Session, tracking and permission state reported to an app is not a recipient's machine-readable account of evaluating and acting on an arriving subject or claim, with any signature or integrity proof identified.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The selected subject does not define arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Neither defines arrival between independent destinations; local API setup and asset loading are not pre-arrival admission responses.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "sense.hit-test",
@@ -2465,23 +2805,75 @@
     {
       "capability_id": "input.event-device",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The subject does not expose a musical-instrument device or recorded-event input interface with channels, notes and controllers.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. Neither exposes a musical-instrument device or recorded-event input interface with channels, notes and controllers. General Android framework APIs such as android.media.midi, which does carry MIDI events, sit outside the assessed XR scope.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        },
+        {
+          "url": "https://developer.android.com/reference/android/media/midi/package-summary",
+          "title": "android.media.midi, Android API reference",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Provides classes for sending and receiving messages using the standard MIDI event protocol over USB, Bluetooth LE, and virtual (inter-app) transports."
+        }
+      ]
     },
     {
       "capability_id": "capture.radiance-training",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. The selected subject provides device sensing or media generation rather than a radiance-field fitting workflow with trained scene output.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. They provide device sensing and rendering, not a radiance-field fitting workflow with a trained scene as output.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "capture.objectgen",
       "level": "out-of-scope",
-      "note": "Google ARCore and Android XR is assessed here as ARCore device sensing plus Android XR application APIs. This observation-fitting or device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
+      "note": "Both halves of this subject state their purpose as sensing and presenting augmented or extended reality for an Android application: ARCore as a platform for phones to sense their environment, Android XR as an SDK of tools and libraries for XR devices. This device-sensing boundary does not synthesize a separate placeable object from a text or single-image prompt.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
     },
     {
       "capability_id": "input.pointing",
@@ -2570,6 +2962,244 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "ARCore provides APIs for augmented reality experiences on Android."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "ARCore is a sensing platform for placing content in the real world, so taking payment is left to Google Play and other services outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore - Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "ARCore senses the environment for phone AR and Android XR is a device platform; checking what a user has bought is a Google Play service outside both.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore - Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "ARCore and Android XR give an app sensing and a spatial toolkit, so recording what a user bought or was granted is outside their purpose; purchases go through Google Play, which this subject does not cover.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore develop, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "ARCore is a phone-side sensing platform for augmented reality, and Android XR is an extension of the Android platform; neither states a role in governing which issuers, services or worlds a verifier accepts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "Google AR Developers: Develop",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "ARCore and Android XR are developer platforms for apps that sense the environment on the device, not hosted worlds with an authoring door, so an outside-agent publishing interface does not apply.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore develop",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "ARCore and Android XR sense the phone or headset's own surroundings; binding world objects to an outside sensor or controller feed is not what they are for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google's platform for creating augmented reality experiences using a phone's camera to integrate virtual content with the real world."
+        }
+      ]
+    },
+    {
+      "level": "out-of-scope",
+      "note": "ARCore senses the environment and tracks the device for AR apps; it defines no statement of what a person did, which is left to the app built on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences."
+        }
+      ],
+      "capability_id": "persist.activity-record"
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "ARCore and Android XR are toolkits for building apps that sense and place content; the app, not the platform, owns any world, so there is no hosted place to export.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "Build new augmented reality experiences, ARCore",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "partial",
+      "note": "Android XR has a first-party PC Connect beta that streams a Windows PC desktop, windows and games to the headset. The source describes streaming desktop apps and says nothing about drawing a view from the headset's pose, so only the server-renders-and-streams part is shown; ARCore on phones has no such feature in the pages read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://blog.google/products-and-platforms/platforms/android/android-show-xr-edition-updates/",
+          "title": "The Android Show: XR Edition updates, Google",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "With PC Connect, you can stream PC games to your headset and ask Gemini for real-time gameplay tips."
+        },
+        {
+          "url": "https://blog.google/products-and-platforms/platforms/android/android-show-xr-edition-updates/",
+          "title": "The Android Show: XR Edition updates, Google",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It allows you to link your Windows PC to your headset, then pull in your desktop or a window from your computer and place it side-by-side with native apps from Google Play."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "partial",
+      "note": "Android XR's OpenXR extensions track a fixed set of objects the system already knows (keyboards, mice and laptops) and report each one's pose and extents, with no input from the app. What is missing is the app supplying its own 3D model of an object to be recognised; the phone-side ARCore pages read for this row describe image tracking (Augmented Images) and no object tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "OpenXR 1.1.65 Specification, XR_ANDROID_spatial_object_tracking",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension builds on XR_EXT_spatial_entity and defines a spatial capability for tracking a set of predefined physical objects without requiring an input dataset from the application."
+        },
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "OpenXR 1.1.65 Specification, XR_ANDROID_spatial_object_tracking",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For example, the system can track keyboards, mice, and other objects in the environment, and then report the poses and extents of these objects to the application."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr/extensions",
+          "title": "Android XR OpenXR extensions",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This extension enables physical object tracking."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Android XR carries named OpenXR vendor extensions that an app checks for at runtime, and its glTF loader accepts a fixed list of named glTF extensions. ARCore's own SDK and the scene graph define no extension mechanism of their own, and no rule is documented for a recipient that lacks an extension beyond checking availability first.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/openxr/extensions",
+          "title": "Build with supported OpenXR extensions, Android XR",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR supports OpenXR through the OpenXR 1.1 specification and a long list of third party vendor extensions."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models, Jetpack XR SDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Jetpack XR SDK supports several glTF extensions that expand the capabilities of 3D models."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "ARCore Cloud Anchors resolve a hosted anchor's ID into a live anchor on another device through Google's service. That is the only resolver documented; models load from app asset paths, and there is no general resolver for scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop/cloud-anchors",
+          "title": "Cloud Anchors, ARCore",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The anchor is resolved — Users whose devices have the unique ID can recreate the same anchor using the ARCore Cloud Anchor API."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "none",
+      "note": "Searched the Android XR 'Add 3D models' and OpenXR extensions pages and the ARCore fundamentals and Cloud Anchors pages for NURBS, parametric and curve on 2026-10-20; no match. The full ARCore and Android XR documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models, Jetpack XR SDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR supports the glTF format for 3D models"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Searched the Android XR 'Add 3D models' and OpenXR extensions pages and the ARCore fundamentals and Cloud Anchors pages for voxel, volume, volumetric and OpenVDB on 2026-10-20; no match. The full ARCore and Android XR documentation was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models, Jetpack XR SDK",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Android XR supports the glTF format for 3D models"
         }
       ]
     }

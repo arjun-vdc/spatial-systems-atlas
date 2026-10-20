@@ -6,7 +6,7 @@ export default defineConfig({
   // writes root-absolute asset paths and the deployed page asks the site for
   // /assets/..., which is the site's own directory and does not hold them. The
   // page then returns 200 and renders nothing.
-  base: '/msf/map/',
+  base: '/msf/atlas/',
   plugins: [react()],
   // Stable asset names, deliberately not content-hashed. The site is deployed
   // from a manifest that lists every path it serves and deletes anything absent

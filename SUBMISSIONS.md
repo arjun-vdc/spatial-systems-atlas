@@ -4,10 +4,10 @@ This repository holds the **spatial technology map** published by the Metaverse 
 Forum's Infrastructure Working Group, and its public submission list. See [README.md](README.md)
 for the map itself; this page is about telling the maintainers something.
 
-- The map: <https://openspatials.com/msf/map/>
-- The matrix view: <https://openspatials.com/msf/map/matrix/>
+- The map: <https://openspatials.com/msf/atlas/>
+- The matrix view: <https://openspatials.com/msf/atlas/#view=compare>
 
-The map records what each spatial computing system can do: 162 capabilities across 57 subjects —
+The map records what each spatial computing system can do: 175 capabilities across 66 subjects —
 standards, engines, runtimes, platforms, protocols, world models and capture techniques — with
 every claim carrying a level, a confidence and the sources it rests on.
 
@@ -51,13 +51,13 @@ read everything received since the last pass and decide each one. The label then
 - `status:declined` — with a comment saying why.
 
 The dated change list for each pass appears on the map itself, under the comment button, and in
-[`CHANGES.md`](https://openspatials.com/msf/map/) as published with the map.
+[`CHANGES.md`](https://openspatials.com/msf/atlas/) as published with the map.
 
 Page labels — `page:map`, `page:atlas`, `page:board` — record which page a submission came from.
 
 ## For maintainers
 
-The comment button posts to a Cloudflare Pages Function at `/msf/map/api/submit` on
+The comment button posts to a Cloudflare Pages Function at `/msf/atlas/api/submit` on
 openspatials.com. That function validates the submission, checks a Cloudflare Turnstile token,
 enforces a limit of five submissions an hour per address, creates the issue here through GitHub's
 REST API, and stores the optional email address in a private Cloudflare key-value namespace keyed

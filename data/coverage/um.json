@@ -991,21 +991,45 @@
       "level": "out-of-scope",
       "note": "The manifest is evaluated before anything is shown. It carries no presentation control, so how a viewer blends a camera view of the room is outside it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Specification, Base (core)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Formulated as a hybrid of web publication metadata and web application parameters, the Universal Manifest gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
       "level": "out-of-scope",
       "note": "Universal Manifest speaks about consent for sensor-derived data rather than delivering a stream: no face or body pose reaches an application through it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Specification, Base (core)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Formulated as a hybrid of web publication metadata and web application parameters, the Universal Manifest gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
       "level": "out-of-scope",
       "note": "The manifest describes trust, consent and policy for a piece of content, not the shape of a place, so walkable surface and arrival points are outside it.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Specification, Base (core)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Formulated as a hybrid of web publication metadata and web application parameters, the Universal Manifest gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources."
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
@@ -1042,14 +1066,30 @@
       "level": "out-of-scope",
       "note": "The specification's only geographic idea is a candidate profile carrying GeoPose values, and even that is drafted rather than on the wire. It declares no map of a place and no transform between two maps.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Specification, Base (core)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Formulated as a hybrid of web publication metadata and web application parameters, the Universal Manifest gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
       "note": "A manifest travels with content and describes its trust conditions, not an area of the Earth where a service or dataset applies.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Specification, Base (core)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Formulated as a hybrid of web publication metadata and web application parameters, the Universal Manifest gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1677,6 +1717,1411 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "The Universal Manifest specification defines a machine-readable document that describes a spatial experience or virtual world."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "The base specification requires the verifier to resolve the signing key from its reference, and Tier 1 checks that no relied-upon key is revoked 'to the extent revocation information is available'; a post-quantum dual-signature migration is previewed. Rotation is defined only for a facet's content-encryption key, there is no recovery rule, and the project's standards page says it does not issue, rotate or revoke DIDs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The evaluator MUST attempt to resolve keyRef (method-specific; some methods such as did:key resolve locally without network):"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-t1/",
+          "title": "Universal Manifest v0.4 EXT-T1 Tier-1 Binding Profile",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Confirm key revocation status. For all signing keys encountered in steps 1–5 (manifest signer, claim issuer, attester), confirm that no key relied upon has been revoked, to the extent revocation information is available."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Holders MAY rotate the content-encryption key by re-encrypting the payload and re-signing the manifest."
+        },
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "UM consumes a DID as an identifier. It does not issue, rotate, or revoke DIDs."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Every evaluation ends in a receipt whose outcome is accepted, accepted with warnings, accepted in part or rejected, with a per-facet status and an optional reason, so approval or refusal and an explanation are covered. The receipt is the evaluator's record of a completed evaluation rather than a destination's pre-arrival response, and it carries no validity limit of its own beyond the manifest's expiry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "outcome — one of \"accepted\" , \"accepted-with-warnings\" , \"accepted-partial\" , \"rejected\" ."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A receipt MUST include a facetStatuses array (empty when the manifest has zero facets). Each entry is a per-facet status object with facetId (matching the facet's @id ), status ( \"processed\" , \"opaque\" , \"consent-denied\" , \"consent-missing\" , \"trustTierUnsupported\" , \"assuranceInsufficient\" , \"not-projected\" , or \"written\" ), an OPTIONAL name , and an OPTIONAL reason ."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "The specification defines how a signing-key reference and a status reference are resolved, and requires every pointer to carry a target URI, but gives no procedure for resolving a pointer target against a context or resolver. Evaluators must record a pointer type they do not recognise and not act on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A base pointer object MUST contain @type (a string identifying the pointer type; MUST be present) and target (a URI referencing the external resource; MUST be present)."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Evaluators encountering an unrecognized pointer @type MUST record the pointer as present in the receipt but MUST NOT act on it."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When signature.statusRef is present and the evaluator implements revocation-aware verification, the evaluator MUST: (1) issue an HTTP GET to the statusRef URI;"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "partial",
+      "note": "An encrypted facet must declare its encryption profile and list its recipients, so a recipient can tell which mechanism opens it. This protects the manifest's own facets only; the specification has no way to signal a protection scheme on media or asset components that a pointer refers to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An encrypted facet MUST carry the facet member encryptionProfile with the value \"jwe-inline-v1\" (this profile's identifier)."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The encrypted payload MUST be a JWE in General JSON Serialization [ RFC 7516 ], carrying the standard JWE members ( protected , recipients with per-recipient encrypted_key , iv , ciphertext , tag )."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "It executes no guest content, so there is nothing to budget; the defaults evaluators are told to enforce (a 1 MB manifest, 10 levels of nesting, 1,000 entries per array) bound the document being parsed, not the memory, time or calls of guest content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Evaluators SHOULD enforce at least the following defaults and MUST document any deviation in their conformance claim: maximum manifest size 1 MB; maximum nesting depth 10 levels; maximum array length 1,000 entries."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "The specification defines issuedAt and expiresAt timestamps, a clock-skew tolerance of at most 60 seconds, and rejection of a manifest dated in the future. Freshness is judged against each evaluator's own clock; there is no shared time source or event-ordering model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Evaluators SHOULD allow a clock-skew tolerance of no more than 60 seconds for issuedAt / expiresAt comparisons. Manifests with issuedAt more than 60 seconds in the future SHOULD be rejected with rejected and freshnessCheck: \"stale\" . Deployments without NTP MAY configure wider tolerances but MUST document them in their conformance claim."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "partial",
+      "note": "A preview profile defines consent keys that separate a raw gaze stream from region-of-interest results, each bound to a purpose and refused unless explicitly granted, which covers the privacy-constraint half of the definition. It does not define gaze direction as an input source or how it is delivered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A single boolean \"eye-tracking allowed\" consent cannot distinguish \"raw gaze vector stream\" from \"region-of-interest hit only.\""
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "sensor.eye.gaze.raw (raw gaze vector stream); sensor.eye.gaze.roi-derived (region-of-interest hit-test"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "via-extension",
+      "note": "The preview two-component devices schema in the optional-features profile lets a manifest declare sensors, supported OpenXR extensions, positioning tier and processing limits for the current session. It is self-declared unless a manufacturer attestation is present, and the base specification only reserves the devices member.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "deviceCapability (session-scoped, user-signed). Describes what the device can do for the current session, signed by the subject (or a session-scoped key), not the manufacturer."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Evaluators MUST NOT treat deviceCapability claims as hardware-attested unless a corresponding verified deviceAttestation is present on the same entry; absent such attestation, deviceCapability is a self-declared,"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "partial",
+      "note": "A preview, design-stage profile binds a signed record to the exact asset bytes and lists permitted-use verbs such as display, port, transform, train and commercial use. The grantor is the person depicted in the asset, not the rights holder, so this is consent travelling with the asset rather than a licence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "use.display , use.port , use.transform , use.regenerate , use.train , use.commercial , use.agentic-action ."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The manifest signature then covers the binding, so the consent record cannot be silently re-attached to a different asset."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "A preview, design-stage asset-bound manifest takes the asset as its subject and describes what or whom it represents through a typed facet in a versioned vocabulary. The only descriptive structure defined concerns who is depicted and what they agreed to; nothing attaches general properties to a scene or its parts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "whose subject is the asset's stable identifier URI rather than a person. Its characteristic members are: a representation facet describing what or whom the asset represents,"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for skeleton, bone, rig, humanoid on 2026-10-20; the only hit is a consent key naming a hand skeleton. The envelope points at an avatar file and leaves bone naming and structure to it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for viseme, blend shape, morph, facial, expression on 2026-10-20; nothing defines named expressions or visemes. The envelope points at an avatar file and leaves expression data to it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for wearable, garment, clothing, equipment, loadout, attachment point on 2026-10-20; the only hits are a device class for wearable sensors and an unrelated attachment of a pose value. Worn items and their attachment points are not defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for retarget, animation on 2026-10-20; no hit. The specification does not describe how animation authored for one body plays on another.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for LOD, level of detail on 2026-10-20; no hit. The specification defines no reduced avatar representations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for skeleton, bone, rig, humanoid, skin on 2026-10-20; the only hit is a consent key naming a hand skeleton. A body's bone hierarchy and binding stay in whatever file a pointer references.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Carry avatar state, asset pointers, usage terms, device context, and environment rules across spatial boundaries."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "via-extension",
+      "note": "Through the optional GeoPose Primary Pose Value Profile (EXT-OPT O14, marked PREVIEW and design-stage, not yet in the schema or conformance fixtures), a subject whose main fact is position and orientation should carry its pose as an OGC GeoPose 1.0 payload in a geographically anchored frame, so the frame is agreed by delegation to OGC GeoPose. The profile does not convert between reference frames or resolve ambiguity in external frame definitions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the primary pose value SHOULD be expressed as an OGC GeoPose 1.0 payload"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The GeoPose value answers \"where is this object, and how is it oriented, in a geographically anchored frame?\""
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "it does not convert between reference frames; it does not resolve ambiguity in external frame definitions; it does not"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "Through the optional GeoPose Primary Pose Value Profile (EXT-OPT O14, marked PREVIEW and design-stage), a manifest whose subject is a real-world object, 3D asset or scene element can carry a signed GeoPose primary pose, inline as a geopose.primary claim or by a um:geoPosePrimary pointer bound by a SHA-256 digest, which fixes the content to a geographic place any device can read. Missing: anchor persistence and resolution, and device-relative (non-geographic) shared anchors, which are not defined. Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for spatial anchor, persistent anchor, cloud anchor, anchor on 2026-10-20; apart from O14, every hit is a semantic, trust or transparency-log anchor. The project's standards page says a facet can carry spatial anchor data, but defines no structure for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the primary pose value SHOULD be expressed as an OGC GeoPose 1.0 payload"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A standard pointers[] entry with candidate pointer type um:geoPosePrimary whose target URI resolves to an OGC GeoPose JSON data object"
+        },
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A manifest facet can carry spatial anchor data, place membership, and session context for an RP1 fabric node."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index for thumbnail, preview image, poster, icon, image on 2026-10-20; no hit. A preview could travel only as a generic pointer; no preview member or pointer type is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "whose subject is the asset's stable identifier URI rather than a person. Its characteristic members are: a representation facet describing what or whom the asset represents,"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "It carries a subject's claims, consents and pointers rather than a tree of scene objects, and its standards page lists scene graph rendering among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "It places nothing in space, so it defines no handedness, axis order or transform composition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "It defines no mesh encoding or compression; geometry stays in the files that pointers reference.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "It defines no image formats or texture compression; textures stay in referenced files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "It carries no material definitions between renderers because it describes no surface appearance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "It stores no keyframes or clips; animation, like other heavy data, stays in referenced files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "It describes no scene content, so it has no real-world scale to agree on.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "It defines no shape deformation data; morph targets belong to the mesh files a pointer would reference.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "It describes no scene content, so repeating an object cheaply is not something it can express or needs to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Its composition is of facets inside one signed envelope, not layering or overriding parts of a scene from several sources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "It carries no audio and places no sound in a scene; media stays outside the handshake.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "It renders no sound, so it has no head-related or ambisonic model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "It describes no space and renders no sound, so room acoustics are outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "It has no geometry or audio path, so sound blocking is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "It delivers no media streams; they stay outside the handshake.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "It carries no live voice; at most it holds consent for audio-derived data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "It carries no interactivity or executable content with an asset; its output is a verdict and a receipt.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "It defines no scripting language or runtime; it is a document format with an evaluation contract.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "It executes no guest content, so there is nothing to isolate; evaluators only parse a document and ignore what they do not recognise.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "It shares no live world state; it is evaluated once on arrival and nothing re-checks during a session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "It decides no object truth in a running world; it records who a subject is and what they consented to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "It sends no per-client world data, so interest management is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "It has no live simulation to predict or reconcile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "It carries no live audio or video; media stays outside the handshake.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "none",
+      "note": "Presence falls inside what it gates: it defines a delegation scope for representing the subject's presence status and receipt events for presence and avatar disclosure, and the project says a facet can carry place membership. It carries no state of who is where and no presence protocol between operators. Searched Universal Manifest v0.4 Primer, Base, EXT-T1, EXT-T2, EXT-T3, EXT-OPT, Cookbook and document-set index and the project home and standards pages for presence, roster, who is where, online status, session membership, place membership on 2026-10-20; the hits are the presence-status scope, the disclosure receipt events, liveness attestation of human presence (a different matter) and the standards page's place membership, and none defines presence state or its exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "social.presence (represent the subject's presence status)"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "avatar-retrieved , avatar-substituted (presence/avatar disclosure outcomes; presence is a locator, not authorization)"
+        },
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A manifest facet can carry spatial anchor data, place membership, and session context for an RP1 fabric node."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "It holds no world, so there is no world state to survive a restart.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "It hosts and delivers nothing; heavy files stay where they are and pointers name them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "It simulates nothing, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "It has no contact tests or shapes, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "It links no bodies, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "It defines no surface response, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "It runs no simulation, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "It simulates nothing, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "It has no volumes that fire events, and its standards page lists physics among the things it leaves alone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "It draws nothing, so it targets no graphics interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "It describes no surface appearance and evaluates nothing at render time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "It draws nothing, so it has no light, shadow or global illumination model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "It draws nothing, so there is no render pass to follow.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "It streams no geometry, so it has no detail levels or send order to choose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "It renders nothing and defines no splat or radiance-field data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "It renders nothing and defines no point cloud or voxel data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "It renders nothing, so it has no fonts or text layout.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "It defines no viewpoints; its only camera mention is a sensor class named in consent keys.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "It fixes no content to a place on a device, and its standards page leaves spatial anchor coordinate systems to the spatial runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/standards/",
+          "title": "Universal Manifest standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "What UM leaves alone Spatial fabric routing, WASM service module execution, scene graph rendering, physics, and spatial anchor coordinate systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "It streams no geospatial data; heavy data stays in referenced files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "It processes no camera imagery and recovers no pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "It describes no interior spaces; its spatial content is limited to carrying a pose value in a design-stage profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Its session is an exchange of manifests between two parties, not the starting, running and ending of an immersive session on a device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "It reads no handheld devices; it carries no input streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "It delivers no hand pose; it only defines a consent key for hand data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "It sends no touch feedback to a user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "It is a handshake between parties that already meet, and its own text leaves even the discovery of status resolvers out of scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT Optional-Feature Profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resolver discovery is out of scope;"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Universal Manifest says in its own preview profile that it is not a payment rail and only issues attribution records that external payment systems may honour. Its registry of agent delegation scopes gives commerce.transaction as an example scope, which grants authority and is not a payment exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 Optional Extensions, O13.1 Scope Boundary",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Manifest is not an advertising network, a marketplace, a payment rail, a pricing engine, a platform-fee enforcement system, or a tax/royalty-distribution authority"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "The core specification's informative section 3.4.1 composes expiry, manifest status (active, revoked or suspended) and withdrawn consent into a check made before a governed asset is used or an action proceeds. The asset-bound consent profile is a PREVIEW candidate absent from the published schema; no holder grant to a resource and no transfer rules are defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification, 3.4.1 Current Policy-State Resolution",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Before a governed asset is used or a governed or agentic action"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Base Specification, design-stage candidate profiles",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "their candidate members are absent from the published schema/context and fixtures until finalized."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is an identity and consent envelope and states it is not a marketplace or payment rail. Its receipt is the record an evaluator produces about processing a manifest (the Atlas row identity.receipt), its consent entries permit processing a facet, and its commerce.transaction scope concerns an agent's authority to transact, so none of these is a purchase or grant record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Core, Abstract",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "gives developers and holders a standardized envelope to convey linked-data identity references, role permissions, device registrations, and pointers to canonical data sources"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Core, terminology",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "receipt — The structured, machine-readable record an evaluator produces"
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 Optional Extensions, O13.1 Scope Boundary",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Manifest is not an advertising network, a marketplace, a payment rail, a pricing engine, a platform-fee enforcement system, or a tax/royalty-distribution authority"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "partial",
+      "note": "Universal Manifest has evaluators keep a configurable attester trust list and enforce an attester trust policy at Tier 1, but the list is local to each evaluator and the specification forbids mandating a shared registry. Missing: a governing authority for the list, a discovery mechanism and a defined update or removal rule for entries; the separate registry of signature and trust profiles governs profile names, not accepted issuers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-t1/",
+          "title": "Universal Manifest v0.4 EXT-T1, T1.5.4 Trust Policy vs. Cryptographic Verification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The specification MUST NOT mandate a centralized trust registry; each evaluator defines its own trust policy."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/core/",
+          "title": "Universal Manifest v0.4 Core, 6.4 Identity Binding and Claim Authenticity",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Evaluators SHOULD maintain a configurable attester trust list."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched Universal Manifest v0.4 (Base, EXT-OPT, EXT-T1, EXT-T2, EXT-T3, Primer, Cookbook) and the project site for heart, galvanic, skin conductance, physiolog, biometric, biosignal, wearable and EEG on 2026-10-20; the only hits are a wearable-sensor device type and the consent vocabulary. That vocabulary names eight sensor classes (eye, hand, face, body, depth, audio, rgb-camera, environment) with no physiological class, and the manifest says it keeps sensor streams out of the handshake. v0.4 is a preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT, O9.1 Derived-Variant Sensor Consent Vocabulary",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Spatial-computing sensors expose data at very different sensitivities depending on processing."
+        },
+        {
+          "url": "https://universalmanifest.net/spec/v0.4/ext-opt/",
+          "title": "Universal Manifest v0.4 EXT-OPT, O9.1 Derived-Variant Sensor Consent Vocabulary",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Eight sensor classes (eye, hand, face, body, depth, audio, rgb-camera, environment) are each qualified by a derivation tier"
+        },
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "instead of dragging every file, record, model, or sensor stream into the handshake"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a portable signed identity and consent envelope, not an interface for an outside agent to author or publish world content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Manifest is the portable identity and consent envelope that persists across all of them"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a compact signed package for handshakes and says outright that it points to heavy data instead of carrying sensor streams, so live data binding is deliberately left outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Universal Manifest is a small signed package of context for fast handshakes between things that meet: people, agents, devices, vehicles, drones, assets, facilities, and public infrastructure."
+        },
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "instead of dragging every file, record, model, or sensor stream into the handshake"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a signed context envelope exchanged before two parties act, with receipts of how each evaluation went; those receipts record a system's decision about a manifest (the identity.receipt area), not what a person did in a world and with what result.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "When two things meet, each side receives a compact context envelope before it acts."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a signed identity and consent envelope that points to heavier things rather than carrying them, so exporting a whole place with its scenes and assets is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest, project site",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a signed identity and consent envelope that points to heavy assets instead of carrying them; it renders nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Universal Manifest is a signed identity and consent envelope carrying pointers to heavier assets; it does not recognise or track physical objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://universalmanifest.net/",
+          "title": "Universal Manifest",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "It carries claims, proofs, pointers, permissions, terms, freshness, and receipt data instead of dragging every file, record, model, or sensor stream into the handshake."
         }
       ]
     }

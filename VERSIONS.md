@@ -15,8 +15,8 @@ of the same line can be told apart.
 ## The lines
 
 **1.0 — the original atlas.** One self-contained HTML file, built by
-`tool/data/build.py`. Live at `https://openspatials.com/msf/map/` and still the
-page a visitor sees today. Recreated for comparison as
+`tool/data/build.py`. Was live at `https://openspatials.com/msf/map/` until the
+1.4 interface replaced it on 2026-09-15. Recreated for comparison as
 `app/design-candidate/MSF Map - today.dc.html`, which is a rendering of this line
 rather than a version of its own.
 
@@ -40,9 +40,18 @@ without one. Only 1.4 has builds.
 
 ## What is deployed
 
-**The live map is 1.4.5.** `https://openspatials.com/msf/map/` serves the current
-interface, deployed 2026-09-15 as deployment `7ebe4b7f`. The page prints its own
+**The live Atlas is 1.4.11** (read from the served interface on 2026-10-19).
+`https://openspatials.com/msf/atlas/` serves it, since 2026-10-02. The old address
+`https://openspatials.com/msf/map/` shows a five-second moved-page notice and then
+opens `/msf/atlas/`, keeping the query and the fragment. The page prints its own
 version at the bottom, so this file can go stale and the page cannot.
+
+On 2026-10-20 the data behind it was updated without a new build: deployment
+`c400e673`, 66 subjects, 175 capabilities in 15 groups and 10,659 claims. The
+interface is still 1.4.11.
+
+The first 1.4 deploy was 1.4.5, on 2026-09-15, as deployment `7ebe4b7f`, at
+`/msf/map/`.
 
 `/msf/map/matrix/` redirects to `/msf/map/` with a 301, since 2026-09-18
 (deployment `8279c9d1`, WO-100). The matrix page was version 1.1, the tidy-up of

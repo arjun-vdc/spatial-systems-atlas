@@ -1442,38 +1442,85 @@
     },
     {
       "capability_id": "scene.navmesh",
-      "level": "out-of-scope",
-      "note": "The client receives a rendered stream and a geometry payload for what it draws locally. Where a body may stand is decided on the server, inside whichever engine is running the world, and never crosses the protocol.",
+      "level": "partial",
+      "note": "Teleport is an application-level protocol and SDK for client-server virtual, augmented and mixed reality. It carries where a client arrives: the server sends SetOriginNodeCommand (id 128, acknowledged), naming the node to use as the client's stage-space origin, and re-sends it for a teleport or a move to another room. It carries no walkable surface and no bounds of the place, and no spawn point is declared in the scene; where a body may stand is decided on the server inside whichever engine runs the world. Searched the protocol and reference documentation at commit f247f20 (docs/) for navmesh, walkable, spawn and bounds on 2026-10-20; no walkable surface, bounds or spawn point is defined.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport documentation, introduction (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/service/server_to_client.rst",
+          "title": "Teleport documentation, server-to-client commands (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "session uid of the node to use as the client's stage-space origin."
+        }
+      ]
     },
     {
       "capability_id": "logic.namespace",
       "level": "out-of-scope",
-      "note": "Logic stays on the server; the client is given geometry and video. Nothing is published as a unit of logic under a name that another author would depend on.",
+      "note": "Teleport's introduction describes it as an application-level protocol and SDK for client-server virtual, augmented and mixed reality. Logic stays on the server; the client is given geometry and video. Nothing is published as a unit of logic under a name that another author would depend on.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport documentation, introduction (commit f247f20)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "A remote rendering protocol carries frames between one server and one client it has already connected to. There is no publishing path to an audience in which a review could stand.",
+      "note": "Teleport's introduction describes it as an application-level protocol and SDK for client-server virtual, augmented and mixed reality. A remote rendering protocol carries frames between one server and one client it has already connected to. There is no publishing path to an audience in which a review could stand.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport documentation, introduction (commit f247f20)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "The protocol has no geographic frame and no map of a real place.",
+      "note": "Teleport's introduction describes it as an application-level protocol and SDK for client-server virtual, augmented and mixed reality. The protocol has no geographic frame and no map of a real place.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport documentation, introduction (commit f247f20)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
-      "note": "A server is found by an out-of-band address, not by the region it covers, and it declares no area of application.",
+      "note": "Teleport's introduction describes it as an application-level protocol and SDK for client-server virtual, augmented and mixed reality. A server is found by an out-of-band address, not by the region it covers, and it declares no area of application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport documentation, introduction (commit f247f20)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1641,6 +1688,1957 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "The server runs the live simulation and holds the truth of it; each client receives only the partial, temporary slice of state it needs right now."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Teleport defines no claim vocabulary of its own: the published connect message still carries identity as an opaque string. Where an avatar offer names a Universal Manifest, the reference servers check a fixed list of required envelope members and an allow-list of context values (v0.3 by default), but the claim and facet vocabulary belongs to the Universal Manifest, not to Teleport.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "is an opaque string the client supplies for application-level authentication (may be empty)."
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/protocol/manifest.js",
+          "title": "teleport-nodejs protocol/manifest.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Envelope members required by the v0.3 schema."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Discovery of verification material is implemented for manifest signatures: the signature's keyRef resolves a did:key identifier or an https JWK or JWKS document, and an unresolvable keyRef fails even when an inline key is present. Rotation, revocation and recovery of keys are not defined, and did:web is refused as not yet supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/verify.js",
+          "title": "teleport-nodejs manifest/verify.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A JWK or JWKS document fetched from an https keyRef."
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/verify.js",
+          "title": "teleport-nodejs manifest/verify.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "did:web and anything else: not supported yet."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters, TeleportCore and TeleportServer at f247f20 and the teleport-nodejs identity, manifest and protocol modules at d653e23 for revocation, status list, OCSP, CRL, introspection and suspend on 2026-10-20; nothing found that checks the status of a credential after issuance. The OpenID Connect verifier deliberately does not enforce the token's expiry and bounds staleness by a maximum binding age instead, and avatar-revoke is the server withdrawing its own acceptance of an avatar, not a credential status check.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/identity/oidc_verifier.js",
+          "title": "teleport-nodejs identity/oidc_verifier.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Consequently `exp` is deliberately NOT enforced."
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/identity/verifier.js",
+          "title": "teleport-nodejs identity/verifier.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "So verifiers are registered per credential type, and each one reports the"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "via-extension",
+      "note": "Teleport carries no consent grant of its own; where a deployment accepts a Universal Manifest in an avatar offer, the reference servers evaluate its consent entries for scope, purpose, expiry and withdrawal, and treat a facet with no entry as denied. This is the optional manifest profile named in the avatar policy, not part of the base protocol.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/consent.js",
+          "title": "teleport-nodejs manifest/consent.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "carry scope/purpose/validity; v0.1 consents (which the published XR"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/consent.js",
+          "title": "teleport-nodejs manifest/consent.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The rule is default-deny."
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "partial",
+      "note": "Some data minimisation is specified: every avatar message concerns only the recipient's own avatar, an owner can stop its asset address being shown to peers, and the manifest profile processes a facet only if the subject's own consent entry allows it. There is no selective disclosure of identity claims, and the relayed address is visible to every peer by default.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every avatar message concerns the recipient's **own** avatar."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The URL is therefore visible to every other client in the session; an owner that does not want this sets"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/consent.js",
+          "title": "teleport-nodejs manifest/consent.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "subject decides what each consumer may do with it, and an evaluator"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Relationships and standing between users are application state. In Teleport they would live in the server application, which the protocol does not describe; the only per-user record in the reference server is a keyed user store for convenience state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR documentation, Introduction (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR documentation, Introduction (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "How the server stores its data is not specified: this is entirely implementation-dependent."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "partial",
+      "note": "The reference servers act on a licence declaration at the point of use for avatars only: the avatar policy can list allowed licence tags and an offered VRM file is refused when its embedded licence is unknown or not on the list. No other asset class is checked, and rights beyond the VRM licence field are not read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('licence_unknown');"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('licence_not_allowed');"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "partial",
+      "note": "The reference servers sort identities into three trust levels (anonymous, asserted, verified) and, for manifests, honour a raise-only required trust tier, but only tier 0 (signature check) can be verified; higher tiers are refused as unsupported. The evidence behind a claim is reported to the server application only as that level, not as portable assurance data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/protocol/identity.js",
+          "title": "teleport-nodejs protocol/identity.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "no identity at all, or a guest provider."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/TeleportCore/export_include/TeleportCore/Manifest.h",
+          "title": "TeleportCore/Manifest.h (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Tier 0 is signature-only, which is what ManifestVerify does."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "partial",
+      "note": "Teleport can consume pairwise identifiers but provides no mechanism for creating or presenting them: the verified identity key keys on issuer, audience and subject for issuers that give a different subject per client id. The Universal Manifest zero-knowledge trust tier is declared unsupported, and no correlation risks are stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/protocol/identity.js",
+          "title": "teleport-nodejs protocol/identity.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a different subject per client id (Sign in with Apple,"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/TeleportCore/export_include/TeleportCore/Manifest.h",
+          "title": "TeleportCore/Manifest.h (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "needs verifiable presentations or cross-DID binding, tier 2 a ZKP"
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters, TeleportCore and TeleportServer at f247f20 and the teleport-nodejs identity, manifest and protocol modules at d653e23 for JWE, recipient, encrypt, HPKE, X25519, end-to-end and cipher on 2026-10-20; nothing identifies recipient key material or algorithms for a subject. The manifest profile recognises a facet sealed as a JWE it has no key for and records it as opaque, and transport encryption is DTLS-SRTP between endpoints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/protocol/manifest.js",
+          "title": "teleport-nodejs protocol/manifest.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A facet whose payload is a JWE we have no key for."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/TeleportCore/export_include/TeleportCore/Manifest.h",
+          "title": "TeleportCore/Manifest.h (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A facet whose payload is a JWE we have no key for."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "via-extension",
+      "note": "Where a deployment accepts a signed Universal Manifest in an avatar offer (the optional avatar_manifest profile of avatar-offer, not part of the base protocol), the reference servers produce a structured receipt for each manifest evaluation, with an outcome, a signature check result, a freshness result and a status for every facet (processed, opaque, consent-denied, consent-missing, not-projected), and send a compact form to the client in the avatar result. The receipt itself is not signed, and the chapter that would specify it, avatar_manifest, is missing from the public repository.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An offer may name the avatar directly by URL, or indirectly by the address of a signed manifest describing it"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/TeleportCore/export_include/TeleportCore/Manifest.h",
+          "title": "TeleportCore/Manifest.h (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The structured receipt a conformant evaluator owes the subject: an"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/receipt.js",
+          "title": "teleport-nodejs manifest/receipt.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A conformant evaluator hands back a structured receipt that honestly"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "partial",
+      "note": "Teleport's own skeleton payload is only an ordered list of bone node ids with no bone names or required structure. The agreed bone naming comes from the VRM humanoid map: an avatar policy can name a skeleton starting with humanoid, and the reference server then refuses a VRM that lacks seven core humanoid bones or a plain glTF with no skin.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Skeleton chunk gives the ordered list of bone-node uids that make up a skeletal hierarchy."
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "return HUMANOID_CORE_BONES.every(b => names.has(b));"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('skeleton_unsupported');"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters, introduction, TeleportCore and TeleportServer at f247f20 and the teleport-nodejs avatar, manifest and protocol modules at d653e23 for expression, viseme, blendshape, morph target and lip sync on 2026-10-20; nothing in the protocol or avatar negotiation names or carries facial expressions. A VRM file may carry them inside the file, but the reference client's glTF fallback decoder is documented in a code comment as treating morph targets as unsupported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An accepted avatar reaches other clients as an ordinary node in the scene whose mesh resource is delivered as a"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/ClientRender/GeometryDecoder.cpp",
+          "title": "Teleport ClientRender/GeometryDecoder.cpp (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "it declares morph targets"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters, introduction, TeleportCore and TeleportServer at f247f20 and the teleport-nodejs avatar, manifest and protocol modules at d653e23 for wearable, accessory, attachment point, borne and stashed on 2026-10-20; the only mention is the borne asset class in the asset portability chapter, which labels itself a design sketch that is not part of the protocol, and it defines no attachment points. A worn item would reach peers as a node parented to the avatar node.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR asset_portability.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object the user is holding, wearing or otherwise carrying into the world. Visible to peers from the moment it is accepted."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR asset_portability.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the generalised message family"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "partial",
+      "note": "The reference client retargets an animation clip onto the avatar's humanoid rig by mapping bone names, and the protocol notes that a clip must agree with the humanoid rig it is retargeted onto. The retargeting rules and the bone-name mapping are in the client code, not in the specification, so two independent clients are not bound to the same result.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the clip's axes standard must agree with the humanoid rig it will be retargeted onto"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/ClientRender/AnimationRetargeter.h",
+          "title": "Teleport ClientRender/AnimationRetargeter.h (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Main retargeting function"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters, introduction, TeleportCore and TeleportServer at f247f20 and the teleport-nodejs avatar, manifest and protocol modules at d653e23 for LOD, level of detail and lod on 2026-10-20; none found in avatar handling. The avatar policy bounds a single offered file by triangle count, file size and texture budget instead of defining reduced representations, and the node streaming priority is not an avatar-specific level of detail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An accepted avatar reaches other clients as an ordinary node in the scene whose mesh resource is delivered as a"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('too_many_triangles');"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "partial",
+      "note": "Teleport agrees a local Cartesian frame and nothing more: handedness and vertical axis are negotiated at connect, linear units are metres, and a client's tracking space is placed in the server's space through an origin node. There is no geodetic or projected reference system, datum or epoch.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/conventions.rst",
+          "title": "TeleportXR conventions.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "so it does not specify an axis standard but rather negotiates this between client and server."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/client_nodes.rst",
+          "title": "TeleportXR client_nodes.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "global_head = origin.global_rotation * head_stage_position + origin.global_position"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for anchor, spatial anchor, persistent anchor and cloud anchor on 2026-10-20; nothing fixes content to a place across devices or sessions. Session and node ids last only as long as one server process, so even a node cannot be re-found after a restart.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/conventions.rst",
+          "title": "TeleportXR conventions.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Uids are minted by the server and are unique within the lifetime of one server process; the client treats them as opaque."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for anchor and spatial anchor on 2026-10-20; the OpenXR client layer uses only a stage reference space and reports head and controller poses relative to it, with no anchor object.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the protocol assumes the client has at least a head pose and zero or more controller poses, all expressed in the session's origin space."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "The protocol streams by per-client interest in individual nodes and resources, not by geographic tile, and it has no geographic frame. Teleport is a session protocol for a server-held live simulation, so tiled terrain and city streaming is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "The client reports a pose from its own tracking and the protocol has no camera-image localisation service or map. Teleport is a session protocol for a server-held live simulation, so recovering a precise pose from camera imagery is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "The protocol carries scene nodes and meshes, not structured descriptions of buildings or rooms. Teleport is a session protocol for a server-held live simulation, so describing interior spaces is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Zones and the events scoped to them would be server application logic, which the protocol does not describe. Teleport is a session protocol for a server-held live simulation, so identified spatial zones and scoped events is not something it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for light estimation, environment probe and ambient intensity on 2026-10-20; no client-to-server message reports it. Information flows from the server to the client, and the client reports only head and controller poses, input states and resource receipts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for marker, fiducial, image tracking and QR on 2026-10-20; no client-to-server message reports it. Information flows from the server to the client, and the client reports only head and controller poses, input states and resource receipts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for play space, play area, boundary and guardian on 2026-10-20; no client-to-server message reports it. Information flows from the server to the client, and the client reports only head and controller poses, input states and resource receipts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and the OpenXR client layer, TeleportCore and TeleportServer sources at the same commit for hit test and raycast on 2026-10-20; no client-to-server message reports it. Information flows from the server to the client, and the client reports only head and controller poses, input states and resource receipts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for reverb, room acoustics, echo, absorption and impulse response on 2026-10-20; nothing describes how a space colours sound. The audio chapter carries Opus streams and leaves gain and rolloff to the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Gain and rolloff are client/application defaults and are **not** carried on the wire."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "so clients perform their own spatialisation."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for occlusion, muffle and obstruction in the audio chapter on 2026-10-20; none found. Attenuation and panning come from the listener and the emitter node's transform only, and which voices reach a listener is decided by the server's proximity or other selection policy, not by geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Gain and rolloff are client/application defaults and are **not** carried on the wire."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "For a track bound to a placed node the client computes attenuation (and panning) from that node's world transform relative to the listener."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "Searched the Teleport introduction, the protocol chapters (including audio and service) at f247f20 for synthesis, synth, procedural, generator, oscillator, tone and MIDI on 2026-10-20; none found. Audio is a full chapter of the protocol, but it crosses the wire only as encoded Opus streams, so any synthesis from a model would be done by the server application and sent as a stream; the protocol defines no synthesis model, supporting data or control parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Audio uses Opus (`RFC 6716 <https://www.rfc-editor.org/rfc/rfc6716>`_, payload format `RFC 7587 <https://www.rfc-editor.org/rfc/rfc7587>`_) with the following defaults, all of which may be changed via :ref:`audio_config`:"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Starting and ending the headset's immersive session is left to the client. The protocol defines a network session, and the server only tells the client which inputs it expects, which the client matches to its own hardware.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "On connection, the server tells the client which control inputs it expects, and it's up to the client to match these up to its own hardware."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for hand tracking joints or articulated hand pose on 2026-10-20; none found. The client reports a head pose, zero or more controller poses and declared button and axis values, and nothing else.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the protocol assumes the client has at least a head pose and zero or more controller poses, all expressed in the session's origin space."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for gaze or eye tracking on 2026-10-20; none found. The client reports a head pose, zero or more controller poses and declared button and axis values, and nothing else.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the protocol assumes the client has at least a head pose and zero or more controller poses, all expressed in the session's origin space."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for haptic, vibration and rumble on 2026-10-20; no server-to-client command drives touch feedback. The command list is a closed enumeration and none of its entries is haptic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/service/server_to_client.rst",
+          "title": "TeleportXR server_to_client.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The complete set of command types is enumerated below."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for pick, ray cast, hit and intersection on 2026-10-20; no message reports the object a pointer hits. The client sends controller poses and input values, and any intersection test is done by the server application, which the protocol leaves unspecified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server determines the meaning of the client's control inputs."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Controller / head poses are **not** part of the input system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20, with TeleportCore and TeleportServer, for keyboard, text input, character, string entry and IME on 2026-10-20; none found. Declared inputs are booleans, floats and two-dimensional motion values, with no string-valued input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "``InputType`` is one byte, made of the following flags:"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server determines the meaning of the client's control inputs."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "The protocol's input model is a server-declared list of event and state inputs of integer, float and motion type, matched by path to the client's controls, so a typed device event could in principle be declared, but nothing defines musical events with channel, note or control identifiers. Searched input.rst, the introduction and the other protocol chapters at f247f20 for MIDI, musical and instrument on 2026-10-20; none found, so no musical-event interface exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server determines the meaning of the client's control inputs."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "A server may refuse a connection by closing the WebSocket when it rejects the client's identity, and the state machine has a rejected-connect exit. There is no defined refusal message, validity limit or explanatory reason in the connect response; the only structured replies are the server and client identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/state_machine.rst",
+          "title": "TeleportXR state_machine.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server may close the WebSocket at this point if the identity is rejected."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/signaling.rst",
+          "title": "TeleportXR signaling.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "``clientID`` and ``serverID`` are unsigned 64-bit numbers."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "partial",
+      "note": "Latency is hidden for the server-rendered view: the client reprojects the received cubemap to its latest head pose, and the server can date animation commands slightly ahead so clients cross-fade. There is no prediction and correction of simulation or input state, and the protocol states that the server is the final arbiter.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video_metadata.rst",
+          "title": "TeleportXR video_metadata.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This accounts for any camera movemment that occurred on the client since the video frame was rendered on the server."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "But the server is the final arbiter of the simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "User settings that follow the person across worlds would be stored by the server application or by the client. The protocol leaves server storage entirely implementation-dependent and defines no profile or preference record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "How the server stores its data is not specified: this is entirely implementation-dependent."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and TeleportCore headers for DRM, content protection, Widevine, CENC and copy protection on 2026-10-20; nothing declares a protection scheme for any content component. Streams are encrypted hop by hop by DTLS-SRTP, and the asset directory is described as a public read-only mirror with no authentication.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/http.rst",
+          "title": "TeleportXR http.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Treat the directory as a public, read-only mirror of the asset cache."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/http.rst",
+          "title": "TeleportXR http.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Resource expiry, ETag handling, range requests and authentication are not part of the protocol."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "By design a Teleport experience is a live virtual world operated by a server and reached by address, in place of a website, and the protocol states that it has no file format, so there is no file to ship and packaging an experience as a bundle is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "*Teleport* has *no file format*."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "instead of a Website, you have a Virtual World (operated by a Teleport Server)."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Teleport has no named profiles or levels. It has a version number, a requirement that a server support at least two axis conventions, and a rendering-features declaration in the client handshake (for example whether normal maps are supported); the specification itself says there is no formal capability negotiation beyond that.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/conventions.rst",
+          "title": "TeleportXR conventions.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "There is currently no formal capability-negotiation handshake beyond"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/conventions.rst",
+          "title": "TeleportXR conventions.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A server must be capable of supporting clients in at least"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "partial",
+      "note": "The only declarative interactivity attached to a node is a link component that carries a target address and an optional query to activate when the user follows it. All other behaviour runs in the server application and is not sent to the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Target URL activated when the user follows the link."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "The application runs on the server and the client only receives a view of it, so there is no guest content on the client to isolate or bound. The script node type in the node payload is reserved and is not emitted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "The application runs on the server and the client only receives a view of it, so there is no guest content on the client to isolate or bound. The script node type in the node payload is reserved and is not emitted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "partial",
+      "note": "Licence terms are carried only inside an avatar file's own VRM metadata, and the avatar policy can list allowed licence tags that the reference server checks before accepting the file. The protocol has no licence field of its own and no licence data for other assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('licence_not_allowed');"
+        },
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/client/gltf_measure.js",
+          "title": "teleport-nodejs client/gltf_measure.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "reasons.push('licence_unknown');"
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and TeleportCore headers for NURBS, parametric, Bezier, spline, B-rep and subdivision on 2026-10-20; none found. Geometry crosses as compressed triangle meshes or as glTF files, with no curve or surface representation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only ``MeshCompressionType::DRACO`` is currently emitted; uncompressed meshes are not supported on the wire."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 and TeleportCore headers for voxel, volumetric, point cloud and signed distance on 2026-10-20; none found. No payload type carries cell volumes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "TeleportXR is a session protocol in which a server holds the truth and each client is sent only the slice of state it needs now, and training a radiance field or Gaussian representation from observed images is not an act it performs or specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "*Teleport* has *no file format*."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "TeleportXR is a session protocol in which a server holds the truth and each client is sent only the slice of state it needs now, and producing a three-dimensional object from a text or image prompt is not an act it performs or specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "*Teleport* has *no file format*."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Mass, velocity and the rules by which bodies move are server application behaviour. Clients report poses with linear and angular velocity for their own controllers, and the server sends resulting node movement; no body model is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/service/client_to_server.rst",
+          "title": "TeleportXR client_to_server.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "pose + linear velocity + angular velocity), all in stage space."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Contact shapes would be used by the server's simulation; the node and mesh payloads carry only visible geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Links between bodies would be part of the server's simulation, and the protocol has no joint record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Friction and restitution would be physics parameters held by the server application; the material payload describes only appearance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "There is no client-side simulation to agree with the server: the server holds the ground truth and clients receive its results, so reproducibility across machines is not a protocol concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Deformable simulation, if any, runs in the server application; the protocol sends results as node and animation updates.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Regions that fire events would be evaluated by the server application, which receives the client's poses; the protocol defines no trigger volume.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "partial",
+      "note": "A material payload describes a PBR metallic-roughness surface with blend mode, double-sidedness and texture slots, plus a list of extension records of which one is defined (a wind effect for grass). How the description is evaluated is left to each client renderer, and the specification names no shading equations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "carries a PBR (metallic-roughness) material descriptor and a list of extension records."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "Lights are a node component with colour, radius, range, direction and a point, spot, directional or area tag, baked light is a lightmap texture reference, and hybrid rendering adds server-sent diffuse and specular cubemaps and per-light shadow matrices that the client renderer uses for local geometry. Missing: the shadow algorithm is not specified, node light components carry no shadow parameters, and there is no placed light-probe set for streamed geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Light-type tag (point / spot / directional / area)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video.rst",
+          "title": "TeleportXR video.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A cubemap containing the diffuse lighting of the scene should be rendered to the video texture at 64x64 resolution"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video_metadata.rst",
+          "title": "TeleportXR video_metadata.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The **diffuseAmbientScale** and **lights** should be used by the client application's renderer to render local geometry."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "partial",
+      "note": "Each node carries a streaming priority and the client declares a minimum priority, so the server can withhold the mesh of low-priority nodes and decide what to send first. There are no alternative detail levels of one asset and no rule for choosing between them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Streaming priority. The server may withhold the mesh of nodes below the client's minimum priority."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "partial",
+      "note": "The viewpoint is the client's own head pose, reported each frame relative to an origin node that the server can move, and a server-rendered view carries the camera transform it was rendered from. There is no camera object with projection settings that content can define, bind or switch between.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video_metadata.rst",
+          "title": "TeleportXR video_metadata.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "camera position and rotation at the time of rendering should be added to the"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/client_nodes.rst",
+          "title": "TeleportXR client_nodes.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "global_head = origin.global_rotation * head_stage_position + origin.global_position"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Colour values in lights and materials are declared as linear-space, and the video configuration declares bit depth and chroma layout. Textures and video carry no declaration of colour space or output range, so a receiver cannot be told which conversion to apply.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Linear-space emissive colour."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/service.rst",
+          "title": "TeleportXR service.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "``use_10_bit_decoding`` (0 or 1)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The client renderer chooses its own graphics interface; the specification names none. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Effects after the main render pass happen inside each client's renderer, and no effect is declared on the wire. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Composition layers submitted to a headset compositor are an internal matter of the client's runtime; the protocol delivers scene data and encoded video, not layers. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Compute work on the client's graphics interface is local to each renderer; the wire carries no compute workload. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Shader programs are local to each client; no shader source or language crosses the wire, and materials select behaviour only through fixed identifiers. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "The protocol defines no splat or radiance-field payload and leaves drawing to each client's renderer. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "The protocol defines no point cloud, voxel or volumetric-video payload and leaves drawing to each client's renderer. The protocol is an application-layer network protocol and names no renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is a top-level application-layer protocol."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for morph, blend shape and blendshape in the geometry payload on 2026-10-20; none found. Meshes are Draco buffers plus skin binding, and the reference client's glTF fallback decoder is documented in a code comment as treating morph targets as unsupported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/ClientRender/GeometryDecoder.cpp",
+          "title": "Teleport ClientRender/GeometryDecoder.cpp (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "it declares morph targets"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "A scene can be assembled from several sources by reference: the server streams pointers to separately fetched glTF assets, and the client keeps them as sub-scenes under one session cache. The protocol defines no layering order and no way for one source to override another.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "That applies across the whole of a client's cache tree, not only between an asset and its server"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "partial",
+      "note": "Where an avatar is offered through a Universal Manifest, the reference servers verify an Ed25519 signature over the canonical manifest, which binds the manifest's issuer to the asset address inside it. This does not say who made the asset, does not prove the bearer's right to it, and the design sketch says provenance is not passed on to peers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/teleport-nodejs/blob/d653e231c95f3365f6366b012fef9b969ec5f7e8/manifest/verify.js",
+          "title": "teleport-nodejs manifest/verify.js (teleportxr/teleport-nodejs, d653e23)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Signature Profile A is the only profile this implementation supports:"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR asset_portability.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Provenance is not carried."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for watermark, fingerprint, C2PA and content credential, and the TeleportCore, TeleportServer and teleport-nodejs identity and manifest sources, on 2026-10-20; none found. An offer's content hash only checks integrity of a known address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "Audio streams are bound to scene nodes by giving each media track the numeric id of the emitting node, so sound follows the node. Video is the server-rendered view of the whole scene rather than media attached to a node, and no synchronisation contract between media and scene is stated beyond the real-time transport.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/audio.rst",
+          "title": "TeleportXR audio.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "to the decimal uid of the node that emits it, so clients perform their own spatialisation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for bounding, AABB, frustum and culling in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries bounding volumes for spatial rejection. The server decides which nodes a client needs and says so, instead of the client selecting by bounds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for collection, group and tag in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries named or rule-defined sets of nodes. Visibility commands list node ids to show or hide, but lists are not named or reusable.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for constraint, look-at and inverse kinematics in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries runtime relationships between node transforms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for thumbnail and preview image in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries a preview image packaged with an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for particle, emitter and VFX in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries particle-system emitters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for style, stylesheet and variant in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries separately expressed styling rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "Searched the Teleport protocol chapters and introduction at f247f20 for variant and material variant in the geometry, node and command chapters on 2026-10-20; none found, so no payload carries named alternative configurations of an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/geometry_payload.rst",
+          "title": "TeleportXR geometry_payload.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The geometry channel carries every server-allocated resource that is not video, video-tag or audio."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An object positioned in 3D Space. A node may have child nodes, forming a hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "TeleportXR is a client-server session protocol for streaming a live simulation. It defines no payment requirements, authorization or settlement, and the protocol pages searched contain no payment terms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "partial",
+      "note": "A server can ask a client for proof of its right to use an avatar and can revoke an accepted one; the design sketch adds holder-to-asset binding, expiry-driven revocation and per-asset proof checks, but it is not yet part of the protocol. Only avatar negotiation is specified, the proof schemes sit in a plan file outside the published pages, and transfer rules are not stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR Asset Portability (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only the avatar case is specified and implemented today, as"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR Asset Portability (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "a client offers what it holds, along with evidence of its right to use it; the server accepts, constrains or refuses."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "TeleportXR Asset Portability (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A server may revoke because a proof expired"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Teleport is a live client-server streaming protocol for XR sessions; it defines no purchase or grant record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport introduction (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "TeleportXR lets a server require a signed proof for a client's assets and notes that a manifest may mix assets vouched for by different issuers, but defines no registry saying which issuers a server should accept. Searched on 2026-10-20: the protocol and reference pages under docs/ at commit f247f20 (signaling, asset portability, introduction, service, data transfer, geometry, audio, video, input, reconnection, local control, client nodes, server and client references) for trust, registr, issuer, trust anchor, allow-list, attester and vouch; none defines issuer acceptance, and the asset portability page is a design sketch.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/asset_portability.rst",
+          "title": "Teleport protocol: Asset Portability (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A manifest may therefore mix assets vouched for by different issuers"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched the Teleport documentation tree (docs/, all .rst and .md files) and the repository's own markdown at commit f247f20 for heart, galvanic, skin conductance, physiolog, biometric, biosignal, wearable, eye tracking, gaze, privacy and consent on 2026-10-20; no body-signal input found. Inputs are server-declared buttons and normalised axes matched to client control paths, with no body-signal type and no privacy terms for them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/input.rst",
+          "title": "TeleportXR input.rst (teleportxr/Teleport, f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport has a dynamic input model: the server tells the client which inputs it expects, and the client reports their values each frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Teleport is a live client-server session protocol with no file format, and it leaves how the server stores and builds its world to the server application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/main/docs/introduction.rst",
+          "title": "Teleport introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an application level protocol and SDK for client-server virtual, augmented and mixed reality"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Teleport is a session protocol between a simulation server and its clients: the server holds the live state of the world and clients receive it. Binding that world to outside sensors or controllers is left to the application on the server.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport introduction (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A Teleport Server runs a multi-user XR application. *The app lives on the server*."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Teleport is a client-server protocol in which the server runs the simulation and streams its state to clients; it defines no portable record of a person's activity or results, which the server application would have to produce.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/main/docs/introduction.rst",
+          "title": "Teleport introduction",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The Teleport system is a client-server simulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "TeleportXR states that it has no file format and that how a server stores its world is left to the implementation, so exporting a whole place is deliberately outside the protocol.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/main/docs/introduction.rst",
+          "title": "TeleportXR introduction.rst (teleportxr/Teleport, main)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "*Teleport* has *no file format*."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "partial",
+      "note": "The protocol has the server render the application into a video texture (for VR, a colour-and-depth cubemap) and stream it to the client, with per-frame metadata carrying the server camera transform so the client can reproject for head movement since the frame was drawn; head and controller poses travel from client to server. Missing: the server renders a cubemap around its own application camera rather than a view from the client's predicted pose, and the client reprojects instead. The project calls the protocol pre-alpha.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video.rst",
+          "title": "TeleportXR video.rst (pinned commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The server must stream video to the client wth minimal latency."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/video_metadata.rst",
+          "title": "TeleportXR video_metadata.rst (pinned commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The offset between the client's camera position and the position in the **cameraTransform** of the metadata must be used to perform reprojection on the visible pixels of the cubemap."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol/client_nodes.rst",
+          "title": "TeleportXR client_nodes.rst (pinned commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Head and controller poses travel from client to server"
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/protocol.rst",
+          "title": "TeleportXR protocol.rst (pinned commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The protocol and software should be considered pre-alpha, suitable for testing, evaluation and experimentation."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Teleport is a client-server session protocol for streamed XR in which the client maps its own device hardware to the control inputs the server expects, so device-side sensing is not excluded, but the documents read define no object tracking. Searched the Teleport introduction, protocol overview and client nodes pages (commit f247f20) for object track, object recogn, object detect, marker, image track, ARKit, ARCore, camera track and computer vision on 2026-10-20; no match, and the rest of the documentation and the SDK source were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport introduction (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Teleport is an `application level `_ protocol and SDK for client-server virtual, augmented and mixed reality (collectively, XR)."
+        },
+        {
+          "url": "https://github.com/teleportxr/Teleport/blob/f247f206778c31bd3c91ac90eedd55770874de3d/docs/introduction.rst",
+          "title": "Teleport introduction (commit f247f20)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "On connection, the server tells the client which control inputs it expects, and it's up to the client to match these up to its own hardware."
         }
       ]
     }

@@ -455,65 +455,137 @@
     {
       "capability_id": "scene.licence",
       "level": "none",
-      "note": "No rights or licence metadata is carried on an asset; the glTF copyright field is never read on import and never written on export, and asset tags are only a search aid.",
+      "note": "No rights or licence terms travel with an asset: the engine never reads or writes the glTF copyright field, the splat formats (PLY, SOG, Streamed SOG) have no licence member, and asset tags are only a search aid. The one licence field is on the separate hosted SuperSplat site, which makes the owner of a published splat choose a Creative Commons licence when downloads are enabled and shows it with a credit line in the download dialog; that is a field on a hosted page, not carried inside the splat file or a glTF model. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for licence, license, copyright, rights, attribution, Creative Commons on 2026-10-19; the engine and the glTF import and export path read and write no licence or copyright member, and the splat file formats (PLY, SOG, Streamed SOG) have none, but the hosted SuperSplat site records a licence against each published splat.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/supersplat/manage.md",
+          "title": "PlayCanvas developer documentation, SuperSplat Manage page (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "you must choose a Creative Commons license that tells visitors how they can reuse the file:"
+        }
+      ]
     },
     {
       "capability_id": "scene.provenance",
       "level": "none",
-      "note": "Nothing is signed. The only authorship field touched is the glTF generator string, which the exporter writes as plain unverified text.",
+      "note": "Nothing is signed. The only authorship-like fields are the glTF generator string, which the exporter writes as plain unverified text, and the optional generator member in the SOG splat format, which names the tool and version as plain text. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for provenance, signed, signature, authorship, Content Credentials, C2PA, generator on 2026-10-19; no signing or provenance feature found; the only authorship-like data is unsigned tool and version text.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/gaussian-splatting/formats/sog.md",
+          "title": "PlayCanvas developer documentation, SOG format specification (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "\"asset\": { \"generator\": \"splat-transform v1.2.3\" }"
+        }
+      ]
     },
     {
       "capability_id": "avatar.body",
       "level": "none",
-      "note": "There is no avatar format. An avatar is an ordinary glTF mesh like any other model, and there is no VRM support anywhere in the repository or the documentation.",
+      "note": "There is no avatar format. An avatar is an ordinary glTF mesh like any other model, and there is no VRM support anywhere in the repository or the documentation. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for avatar, VRM, humanoid on 2026-10-19; \"avatar\" appears only for editor presence icons, UI masks and SuperSplat profile pictures, and no VRM support exists; a character is an ordinary model.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/assets/supported-formats.md",
+          "title": "PlayCanvas developer documentation, Supported formats (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "GLB is the recommended format for 3D models. It's compact, loads quickly, and supports all PlayCanvas features including animations, materials, and morph targets."
+        }
+      ]
     },
     {
       "capability_id": "avatar.skeleton",
       "level": "none",
-      "note": "Bone names come from whatever the source file used; PlayCanvas defines no naming or structure convention, so nothing guarantees a rig transfers.",
+      "note": "Bone names come from whatever the source file used; PlayCanvas defines no naming or structure convention, so nothing guarantees a rig transfers. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for skeleton, humanoid, bone names, rig on 2026-10-19; no bone naming or structure convention is defined; bones are addressed by whatever names the source file used.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/animation/anim-layer-masking.md",
+          "title": "PlayCanvas developer documentation, Animation layer masking (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "it is often necessary to isolate the playback of certain animations to specific bones in each object's model."
+        }
+      ]
     },
     {
       "capability_id": "avatar.expression",
       "level": "none",
-      "note": "Morph targets provide the mechanism for facial shapes, but there is no named set of expressions or visemes, so nothing survives a move between worlds.",
+      "note": "Morph targets provide the mechanism for facial shapes, but there is no named set of expressions or visemes, so nothing survives a move between worlds. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for viseme, expression, blend shape, morph target, facial on 2026-10-19; morph targets are supported as a mechanism but no named expression or viseme set is defined.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/assets/supported-formats.md",
+          "title": "PlayCanvas developer documentation, Supported formats (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "GLB is the recommended format for 3D models. It's compact, loads quickly, and supports all PlayCanvas features including animations, materials, and morph targets."
+        }
+      ]
     },
     {
       "capability_id": "avatar.retarget",
       "level": "none",
-      "note": "There is no retargeting anywhere in the runtime; animation curves bind to entity paths by name, so a clip plays on another body only when the two hierarchies happen to use identical names, and nothing maps or rescales bones.",
+      "note": "There is no retargeting anywhere in the runtime; animation curves bind to entity paths by name, so a clip plays on another body only when the two hierarchies happen to use identical names, and nothing maps or rescales bones. A single animation state graph can be shared by differently shaped characters, but each must link its own animation clips, which is reuse of logic rather than retargeting of motion. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for retarget, retargeting, humanoid, bone mapping on 2026-10-19; no retargeting exists; the nearest feature is one animation state graph shared by several entities, each linking its own animation assets.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/animation/anim-state-graph-assets.md",
+          "title": "PlayCanvas developer documentation, Animation state graph assets (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This single asset could be used on a human entity, an elf entity and a dwarf entity. Each of these entities would be able to link their own character animation assets, all the while maintaining the same animation behavior as each other."
+        }
+      ]
     },
     {
       "capability_id": "avatar.wearable",
       "level": "none",
-      "note": "Items can be parented to a bone using the ordinary scene hierarchy, but there is no attachment-point definition that would survive transfer to another world.",
+      "note": "Items can be parented to a bone using the ordinary scene hierarchy, but there is no attachment-point definition that would survive transfer to another world. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for attachment point, socket, wearable, equip on 2026-10-19; a model node can be made an attachment point through the ordinary hierarchy, and no attachment-point definition that survives transfer exists.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/web-components/loading-models.md",
+          "title": "PlayCanvas developer documentation, Web Components, loading models (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "That turns any node into an attachment point, inheriting its transform:"
+        }
+      ]
     },
     {
       "capability_id": "avatar.lod",
       "level": "none",
-      "note": "No avatar level of detail, and no mesh level of detail to build it on.",
+      "note": "No avatar level of detail, and no mesh level of detail to build it on; the only level of detail in the engine is for Gaussian splats, which is not an avatar form. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for level of detail, LOD, avatar, crowd on 2026-10-19; level of detail exists only for Gaussian splats; no avatar or mesh level of detail is present.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/gaussian-splatting/formats/streamed-sog.md",
+          "title": "PlayCanvas developer documentation, Streamed SOG format specification (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "splits a Gaussian splat scene into spatial chunks at multiple levels of detail (LOD)."
+        }
+      ]
     },
     {
       "capability_id": "avatar.identity",
       "level": "out-of-scope",
       "note": "A rendering runtime with no avatar model and no identity layer has nothing to bind.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "physics.rigid",
@@ -614,9 +686,17 @@
     {
       "capability_id": "physics.soft",
       "level": "none",
-      "note": "No soft bodies and no cloth; the world is built as a rigid-only dynamics world, and nothing in the repository or documentation exposes deformable simulation.",
+      "note": "No soft bodies and no cloth; the world is built as a rigid-only dynamics world, and nothing in the repository or documentation exposes deformable simulation. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for soft body, cloth, deformable, softbody on 2026-10-19; the engine exposes no deformable simulation, and its documentation says the underlying Bullet soft body solver needs a different dynamics world than the one the engine creates.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/physics/calling-ammo.md",
+          "title": "PlayCanvas developer documentation, Calling Ammo directly (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Bullet's soft body solver is included in ammo.js, but it needs a soft-rigid dynamics world rather than the discrete world the engine creates, which makes it an advanced integration."
+        }
+      ]
     },
     {
       "capability_id": "physics.trigger",
@@ -688,9 +768,17 @@
     {
       "capability_id": "audio.occlusion",
       "level": "none",
-      "note": "Nothing muffles or blocks sound by geometry; there is no occlusion or obstruction code in the audio subsystem and no documentation of it.",
+      "note": "Nothing muffles or blocks sound by geometry; there is no occlusion or obstruction code in the audio subsystem and no documentation of it. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for occlusion, obstruction, muffle, reverb, audio filter on 2026-10-19; sound is positioned and can be routed through Web Audio nodes, but nothing blocks or muffles it by geometry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/glossary.md",
+          "title": "PlayCanvas developer documentation, Glossary (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Audio management and 3D spatial audio"
+        }
+      ]
     },
     {
       "capability_id": "audio.stream",
@@ -709,10 +797,25 @@
     },
     {
       "capability_id": "audio.voice",
-      "level": "out-of-scope",
-      "note": "A single-user rendering runtime with no networking has no voice transport, and none is attempted.",
+      "level": "none",
+      "note": "Live voice between participants is within what a game engine with documented multiplayer is for, but nothing is built: the engine's audio is positioned playback of sound assets, and no voice or live audio transport exists. Searched the PlayCanvas engine source (src/) at commit 982f5a6 and the developer documentation (user manual, tutorials and FAQ) at commit d645310 for WebRTC, getUserMedia, MediaStream, microphone, voice and VoIP on 2026-10-20; the only hit for voice is a source comment that lists voice commands among XR transient input sources, and microphone appears only in an audio tutorial's analogy for the audio listener and in permission attributes of embedded example pages; no stream transport. Multiplayer is documented only as tutorials that wire a scene to a hand-built server, Colyseus or Photon.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This tutorial covers how to start creating your own multiplayer from scratch."
+        },
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "net.replication",
@@ -732,58 +835,122 @@
     {
       "capability_id": "net.authority",
       "level": "none",
-      "note": "No notion of ownership or authority over an object exists, because there is no shared state to own.",
+      "note": "No notion of ownership or authority over an object exists, because there is no shared state to own. The tutorial itself says a larger game should use an authoritative server rather than client-side logic, leaving the decision to the developer. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for authoritative, authority, ownership, shared state on 2026-10-19; the engine holds no shared state or ownership, and the Socket.io tutorial tells the reader to use an authoritative server for anything larger than a basic game.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Realistically, when creating larger multiplayer games you'll want to consider using an authoritative server, instead of handling all the game logic on the client."
+        }
+      ]
     },
     {
       "capability_id": "net.interest",
       "level": "none",
-      "note": "No interest management. Whatever a chosen third-party server does is outside PlayCanvas.",
+      "note": "No interest management. Whatever a chosen third-party server does is outside PlayCanvas. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for interest management, area of interest, relevance on 2026-10-19; no interest management in the engine; the tutorials synchronise state with third-party servers that decide what to send.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer-colyseus.md",
+          "title": "PlayCanvas developer documentation, tutorial Real-time Multiplayer with Colyseus (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Synchronizing the state between server and client"
+        }
+      ]
     },
     {
       "capability_id": "net.prediction",
       "level": "none",
-      "note": "No prediction or reconciliation helpers; the tutorials leave latency hiding entirely to the application.",
+      "note": "No prediction or reconciliation helpers; the tutorials leave latency hiding entirely to the application. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for prediction, reconciliation, interpolation, lag compensation, latency on 2026-10-19; no prediction or reconciliation helpers; the tutorials call their own multiplayer a very basic implementation.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Keep in mind this is only a very basic implementation of multiplayer."
+        }
+      ]
     },
     {
       "capability_id": "net.transport",
       "level": "none",
-      "note": "The runtime ships only an HTTP request helper. There is no session transport, no web socket layer and no wire protocol of its own.",
+      "note": "The runtime ships only an HTTP request helper. There is no session transport, no web socket layer and no wire protocol of its own. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for WebSocket, WebRTC, Socket.io, XMLHttpRequest, transport on 2026-10-19; the only network code in the engine is an HTTP request helper; the tutorials bring in Socket.io, Colyseus and Photon.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "In this tutorial we’ll cover how to setup a basic multiplayer project using Node.js and Socket.io."
+        }
+      ]
     },
     {
       "capability_id": "net.media",
       "level": "none",
-      "note": "No live audio or video transport. Video can be shown as a texture from a browser element, but nothing carries streams between participants.",
+      "note": "No live audio or video transport. Video can be shown as a texture from a browser element, but nothing carries streams between participants. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for WebRTC, getUserMedia, MediaStream, voice, live video on 2026-10-19; no stream transport; the engine can draw a browser video element as a texture and nothing carries streams between participants.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This tutorial covers how to start creating your own multiplayer from scratch."
+        }
+      ]
     },
     {
       "capability_id": "net.session",
       "level": "none",
-      "note": "There is no concept of joining a running world and no end-user authentication; the accounts on playcanvas.com belong to developers, not to the people who visit a published application.",
+      "note": "There is no concept of joining a running world and no end-user authentication; the accounts on playcanvas.com belong to developers, not to the people who visit a published application. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for join, session, authentication, room, matchmaking on 2026-10-19; no join or end-user authentication; the Colyseus tutorial shows creating and joining games through a third-party server.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer-colyseus.md",
+          "title": "PlayCanvas developer documentation, tutorial Real-time Multiplayer with Colyseus (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Matchmaking: how to create, join, and list available games"
+        }
+      ]
     },
     {
       "capability_id": "net.handoff",
       "level": "none",
-      "note": "Nothing carries state from one world to another. Moving between published applications means loading a different page.",
+      "note": "Nothing carries state from one world to another. Moving between published applications means loading a different page. Changing scene happens inside one application and the page documents no state being carried across to another application. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for handoff, portal, travel, changeScene on 2026-10-19; no state carried to another world; the engine can change scene inside one application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/editor/scenes/loading-scenes.md",
+          "title": "PlayCanvas developer documentation, Loading Scenes (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This is the most common approach that developers take where each scene is a self-contained part of the game."
+        }
+      ]
     },
     {
       "capability_id": "net.presence",
       "level": "none",
-      "note": "No presence or roster of any kind, across operators or within one.",
+      "note": "No presence or roster of visitors to a published application, across operators or within one. The hosted Editor does show teammates in a presence bar, but that is collaboration between developers, not a record of who is in a running world. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for presence, roster, who is online, players on 2026-10-19; no roster of visitors to a published application; the Editor shows teammates in a presence bar, which is developer collaboration only.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/editor/realtime-collaboration.md",
+          "title": "PlayCanvas developer documentation, Editor real-time collaboration (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Whenever a new user enters the scene, their user avatar will be added to the Presence Bar."
+        }
+      ]
     },
     {
       "capability_id": "net.address",
@@ -803,79 +970,137 @@
     {
       "capability_id": "net.discovery",
       "level": "none",
-      "note": "No discovery of worlds, nodes or services; the hosted site lists projects for browsing, which is a catalogue, not a discovery protocol.",
+      "note": "No discovery of worlds, nodes or services; the hosted site lists projects for browsing, which is a catalogue, not a discovery protocol. The Colyseus tutorial lists available games through its own server, which is the third party's feature. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for discover, matchmaking, lobby, directory on 2026-10-19; no discovery protocol; the hosted sites list projects and splats for browsing and the third-party tutorials list available games.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer-colyseus.md",
+          "title": "PlayCanvas developer documentation, tutorial Real-time Multiplayer with Colyseus (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Matchmaking: how to create, join, and list available games"
+        }
+      ]
     },
     {
       "capability_id": "net.time",
       "level": "none",
-      "note": "No shared clock or event ordering model. The runtime has only its own frame timer.",
+      "note": "No shared clock or event ordering model. The runtime has only its own frame timer. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for server time, shared clock, timestamp, synchronise time on 2026-10-19; no shared clock or event ordering feature in the engine or the tutorials.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/tutorials/real-time-multiplayer.md",
+          "title": "PlayCanvas developer documentation, tutorial Real Time Multiplayer (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "This tutorial covers how to start creating your own multiplayer from scratch."
+        }
+      ]
     },
     {
       "capability_id": "identity.root",
       "level": "out-of-scope",
       "note": "A client-side rendering runtime with no multi-user layer defines no identifier for a person, agent or thing.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.credential",
       "level": "out-of-scope",
       "note": "No credential format, and nothing in the runtime that would consume one.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.exchange",
       "level": "out-of-scope",
-      "note": "No protocol for requesting or presenting claims.",
+      "note": "A browser game engine with no end-user accounts and no identity layer defines no protocol for requesting or presenting claims; that exchange belongs to whatever host application or service the developer adds.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.capability",
       "level": "out-of-scope",
       "note": "No permission grants readable by a third party. The hosted editor has project roles for developers, which is team access control, not a portable grant.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.privacy",
       "level": "out-of-scope",
       "note": "No selective disclosure, because there are no claims to disclose.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.social",
       "level": "out-of-scope",
-      "note": "No reputation or social graph.",
+      "note": "A game engine for building single applications holds no end-user accounts, so it carries no reputation or social graph; relationships between people belong to the platform or service that hosts the application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.rights",
       "level": "out-of-scope",
       "note": "No licence terms are carried with an asset, so nothing can be enforced at the point of use.",
       "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "geo.pose",
-      "level": "none",
-      "note": "Nothing expresses position or orientation against the Earth. Scene coordinates are local and unreferenced.",
-      "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "geo.crs",
-      "level": "none",
-      "note": "No coordinate reference system is named or carried; the runtime knows only its own local frame.",
-      "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "geo.anchor-local",
@@ -1095,16 +1320,17 @@
     {
       "capability_id": "logic.behaviour",
       "level": "none",
-      "note": "No behaviour graph and no support for the glTF interactivity extension; there is no visual scripting in either product. Animation state graphs are declarative but describe only animation blending and are a PlayCanvas-specific file, so they do not travel with an asset.",
+      "note": "No behaviour graph and no support for the glTF interactivity extension; there is no visual scripting in either product. Animation state graphs are declarative but describe only animation blending and are a PlayCanvas-specific file, so they do not travel with an asset. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for KHR_interactivity, visual scripting, behaviour graph, state machine, declarative on 2026-10-19; no interactivity extension among the glTF extensions the loader handles and no visual scripting; animation state graphs are the only declarative behaviour.",
       "confidence": "verified",
-      "sources": []
-    },
-    {
-      "capability_id": "logic.sandbox",
-      "level": "none",
-      "note": "Scripts are ordinary page JavaScript with full access to the document and the network; the browser origin is the only boundary, and the runtime adds no isolation for guest or third-party content.",
-      "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/animation/anim-state-graph-assets.md",
+          "title": "PlayCanvas developer documentation, Animation state graph assets (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "These assets are therefore state machines for a model's animation behavior and they control the flow of animation sequences over the lifecycle of an entity."
+        }
+      ]
     },
     {
       "capability_id": "logic.agent",
@@ -1124,37 +1350,91 @@
     {
       "capability_id": "logic.budget",
       "level": "none",
-      "note": "No memory, time or call budgets are imposed on anything. A statistics overlay and profiler builds let a developer measure cost, but nothing bounds it.",
+      "note": "Nothing bounds the memory, time or calls of scripts or other guest content, and the statistics overlay and profiler builds only measure cost. The one limit is a global splat budget, 1 million splats by default, which caps how many splats are drawn and makes the engine lower the level of detail to stay within it; the documentation calls it the primary way to control rendering performance, so it is a scene-wide quality setting for the target hardware and not a bound on what a guest may use. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for budget, limit, memory, time, call, splat budget on 2026-10-19; scripts and assets have no memory, time or call limits, but Gaussian splat rendering is bounded by a global splat budget.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/gaussian-splatting/building/performance.md",
+          "title": "PlayCanvas developer documentation, Splat performance guide (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The global splat budget is the primary way to control rendering performance for Streamed SOG. It is always active and defaults to 1 million splats"
+        },
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/gaussian-splatting/building/performance.md",
+          "title": "PlayCanvas developer documentation, Splat performance guide (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The engine automatically adjusts LOD levels across all GSplat assets to stay within the budget"
+        }
+      ]
     },
     {
       "capability_id": "persist.world",
       "level": "none",
-      "note": "Nothing survives a reload. There is no world state store in either product, and the multi-user tutorials leave all persistence to the developer's own server.",
+      "note": "No world state survives a reload. There is no world state store in either product, and the multi-user tutorials leave all persistence to the developer's own server. The one exception is XR anchor persistence, which remembers placed anchor poses between sessions on the same origin but keeps no objects or world state. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for persist, save, localStorage, IndexedDB, world state, anchors on 2026-10-19; no world state store; XR anchor persistence remembers placed anchor poses between sessions and nothing else.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/xr/ar/anchors.md",
+          "title": "PlayCanvas developer documentation, WebXR anchors (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Anchor persistence provides a way to remember anchors between sessions, with a limited number of anchors per origin."
+        }
+      ]
     },
     {
       "capability_id": "persist.inventory",
       "level": "out-of-scope",
       "note": "No user accounts and no item ownership, so there is nothing to hold or carry.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "persist.prefs",
       "level": "none",
-      "note": "No portable settings or accessibility choices. A localisation system chooses language assets at run time, but nothing follows the user between applications.",
+      "note": "No portable settings or accessibility choices. A localisation system chooses language assets at run time, but nothing follows the user between applications. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for settings, preferences, accessibility, locale, user profile on 2026-10-19; no portable settings; a localisation system picks the language for one application.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/user-interface/localization.md",
+          "title": "PlayCanvas developer documentation, Localization (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Localization shows an application's text in the player's language."
+        }
+      ]
     },
     {
       "capability_id": "persist.content-addr",
       "level": "none",
-      "note": "Assets are referred to by numeric identifier and by location; nothing addresses content by hash.",
+      "note": "Assets are referred to by numeric identifier and by location; nothing addresses content by hash. Each asset file record does carry an MD5 hash of its data, but the engine only appends it to the asset's address as a cache-busting query string. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for hash, checksum, content address, SHA-256, MD5 on 2026-10-19; assets are addressed by identifier and location; each file record carries an MD5 hash that the engine uses only to bust the cache.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/src/framework/asset/asset.js",
+          "title": "PlayCanvas engine, asset.js (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "add file hash to avoid hard-caching problems"
+        },
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/src/framework/asset/asset.js",
+          "title": "PlayCanvas engine, asset.js (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "The MD5 hash of the resource file data and the Asset data"
+        }
+      ]
     },
     {
       "capability_id": "deliver.bundle",
@@ -1218,9 +1498,17 @@
     {
       "capability_id": "deliver.conformance",
       "level": "none",
-      "note": "PlayCanvas is a product, not a specification, and it publishes no conformance result against any outside specification it implements, such as glTF or the immersive web interface; the repository's own unit tests check the code against itself.",
+      "note": "PlayCanvas is a product, not a specification, and it publishes no conformance result against any outside specification it implements, such as glTF or the immersive web interface; the repository's own unit tests check the code against itself. Searched the PlayCanvas engine source (src/) and the developer documentation (user manual and tutorials), at main commits 982f5a6 and d645310, for conformance, compliance, test suite, sample models, Khronos on 2026-10-19; no conformance result published against glTF, the immersive web interface or any other outside specification the engine implements.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/gaussian-splatting/formats/index.md",
+          "title": "PlayCanvas developer documentation, Gaussian splat formats (repository commit d645310)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "Splats travel through standard glTF pipelines and can be combined with regular mesh content."
+        }
+      ]
     },
     {
       "capability_id": "capture.worldgen",
@@ -1438,11 +1726,11 @@
           "quote": "The editor can currently play the sequences only, editing is not possible."
         },
         {
-          "url": "https://github.com/playcanvas/splat-transform/blob/main/README.md",
-          "title": "splat-transform README (playcanvas/splat-transform, main)",
-          "retrieved": "2026-09-04",
+          "url": "https://github.com/playcanvas/splat-transform/blob/45931669547a7c70cbc44d2657749f8a56e5533c/README.md",
+          "title": "splat-transform README (playcanvas/splat-transform, commit 4593166)",
+          "retrieved": "2026-10-19",
           "kind": "primary",
-          "quote": null
+          "quote": "SplatTransform is an open source library and CLI tool for converting and editing Gaussian splats."
         }
       ]
     },
@@ -1667,28 +1955,74 @@
       "level": "out-of-scope",
       "note": "Scripts belong to the project that ships them. The engine operates no namespace for logic published to other authors.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "deliver.moderation",
-      "level": "out-of-scope",
-      "note": "The engine draws and runs a project; no content passes through it on the way to an audience for a review to stand in.",
+      "level": "none",
+      "note": "The hosted editor publishes projects to playcanvas.com for anyone to open, so review of published content is within what the hosted half is for, but no review stands in front of it: the service's terms say it does not pre-screen content, though it may do so at its sole discretion, and reserve a right to remove or suspend content afterwards, with copyright complaints sent by email. Nothing tells a receiving world what review a project has had. Searched the PlayCanvas engine source (src/) at commit 982f5a6, the developer documentation (user manual, tutorials and FAQ) at commit d645310 and the service's Terms of Use (last updated 15 May 2024) for moderation, review, pre-screen, takedown, abuse, terms of service and report on 2026-10-20; the documentation describes no review, report or takedown process for published projects, and the only review it mentions is the third-party heyVR platform's check of games submitted to it, which is that platform's own.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/developer.playcanvas.com/blob/d6453105d988abd1c94f090287ff49a5fd6b0aa0/docs/user-manual/editor/publishing/web/playcanvas-hosting.md",
+          "title": "PlayCanvas developer documentation, PlayCanvas Hosting (repository commit d645310)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The fastest, easiest, most convenient way to publish your game is to publish it to playcanvas.com."
+        },
+        {
+          "url": "https://playcanvas.com/terms",
+          "title": "PlayCanvas Terms of Use (last updated May 15, 2024)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas does not pre-screen content, but may do so at its sole discretion."
+        },
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
       "note": "No geographic frame, no map of a place, nothing to align.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
       "level": "out-of-scope",
       "note": "Not a service bound to a place, and no area of application is declared.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1740,42 +2074,90 @@
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for assurance evidence accompanying an identity claim for relying-party evaluation. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.schema",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for the vocabulary, types and validation schema for an identity claim. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.unlinkable",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for pairwise identifiers or presentations with stated residual correlation risks. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.encryption",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for recipient key material and algorithms for confidential delivery to an intended subject. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.key-lifecycle",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for identity-control key rotation, revocation or recovery and discovery of verification material. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.status",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for discovery of a credential status after issuance. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "render.ui",
@@ -1872,21 +2254,45 @@
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for a carried permission grant including scope, purpose, validity and withdrawal information. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "identity.receipt",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for a machine-readable recipient evaluation/action account with integrity mechanisms identified. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "net.admission",
       "level": "out-of-scope",
       "note": "As a rendering/scene library, playcanvas provides host application facilities rather than the credential or destination authority responsible for a destination pre-arrival approval or refusal response with its applicable validity. This scope judgment applies to the library itself; a host service or separately assessed integration may perform that role.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine, README (main at commit 982f5a6, after release 2.23.3)",
+          "retrieved": "2026-10-19",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
     },
     {
       "capability_id": "render.compute",
@@ -2142,6 +2548,341 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "PlayCanvas uses a component-based entity system for building interactive 3D applications."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The PlayCanvas engine builds interactive three-dimensional content in the browser. The hosted editor and publishing service is a separate product; the engine defines no payment exchange for a resource or service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The open-source runtime draws and runs interactive apps and has no grant model; the hosted editor's private-project setting limits who can see and work on a project, which governs editing rather than a holder's right to load content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/projects/settings/",
+          "title": "PlayCanvas User Manual, Project Settings",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only visible to project team members"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "The PlayCanvas engine is a runtime for interactive 3D in the browser and defines no purchase or grant record; this reads the engine's stated purpose only and does not assess billing of the hosted editor service.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "The PlayCanvas runtime is a browser game engine and does not govern which issuers, services or worlds a verifier accepts, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "via-extension",
+      "note": "Earthatile, a separate MIT-licensed project in the PlayCanvas organisation, fixes one Earth frame, the WGS84 ellipsoid, and converts between longitude, latitude, altitude and Earth-centred Cartesian coordinates for its 3D Tiles scenes. Missing: any way to name or choose a different reference system; the runtime itself has no Earth frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/earthatile/blob/5bd8ef8d60a52f814e7b753d19dec577a3e35635/src/geodetic.mjs",
+          "title": "Earthatile source: geodetic.mjs (commit 5bd8ef8)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "// Constants for WGS84 ellipsoid"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "partial",
+      "note": "Earthatile's PlayCanvas integration places the camera at a longitude, latitude and altitude and reads them back from a Cartesian position. Missing: orientation expressed against the Earth, such as heading or a local east-north-up frame; the runtime has no Earth-referenced pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/earthatile/blob/5bd8ef8d60a52f814e7b753d19dec577a3e35635/integrations/playcanvas/geolocation.js",
+          "title": "Earthatile PlayCanvas integration: geolocation.js (commit 5bd8ef8)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Geolocation.prototype.teleport = function (lon, lat, alt) {"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "partial",
+      "note": "A PlayCanvas geometry class generates a shape's mesh from a few parameters such as a radius and band counts, so a shape can be tessellated at the resolution asked for. Missing: any stored or exchanged curve or surface in mathematical form; every asset format the runtime reads carries meshes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/graphics/meshes/creating-meshes/",
+          "title": "Creating Meshes, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "A geometry class generates the vertex data of a shape on the CPU."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "PlayCanvas publishes a specified voxel format, version 1.1, that stores a sparse voxel octree of a Gaussian splat scene as a JSON header plus a binary tree; the splat-transform tool writes it and the SuperSplat Viewer reads it for collision. Missing: per-voxel properties beyond solid or empty, updates, and any reader in the engine runtime itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/splat-transform/voxel-format/",
+          "title": "Voxel Format, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The format stores a solid/empty voxelization of a Gaussian splat scene as a sparse voxel octree (SVO) in the Laine–Karras node layout"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "native",
+      "note": "The streamed splat format carries a binary tree of axis-aligned bounding boxes in its metadata, so a viewer picks which chunks to fetch before loading their splats; for meshes the camera culls mesh instances by their bounding boxes, though only after the mesh is loaded.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/streamed-sog/",
+          "title": "Streamed SOG, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every node carries an axis-aligned bounding box"
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/scenes/components/camera/",
+          "title": "Camera component, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "If enabled, the camera will only render mesh instances whose axis-aligned bounding boxes intersect with the camera's view frustum."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "A hosted PlayCanvas project carries an artwork image used for dashboard thumbnails and sharing, and the splat viewer accepts a poster image shown while a scene loads. Missing: a preview image packaged inside an asset file such as glTF or the splat formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/projects/settings/",
+          "title": "Project settings, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Assign a square 720x720 pixel image to represent your project."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/supersplat/viewer/embedding/",
+          "title": "Embedding the viewer, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "URL of an image to show while the scene loads"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "PlayCanvas shows an asset's author in the editor, but nothing recovers a lost provenance record from a fingerprint or watermark. Searched the PlayCanvas developer manual full text (llms-full.txt, 528 documents, generated 2026-10-16) on 2026-10-20 for provenance, watermark, fingerprint and C2PA; the only hits were an artist's watermark in a model and profiler watermark settings.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/assets/inspectors/",
+          "title": "Asset inspectors, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The original author of the asset, with a link to their profile."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "PlayCanvas declares no protection scheme on content; its hosted service offers private projects as access control, which is not signalling. Searched the PlayCanvas developer manual full text (llms-full.txt, 528 documents, generated 2026-10-16) on 2026-10-20 for DRM, encrypt, content protection and obfuscate; no document describes it.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/projects/settings/",
+          "title": "Project settings, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Only users with premium accounts can create and access private projects."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Searched the PlayCanvas user manual pages on Input (user interface) and WebXR for heart, biometric and physiolog on 2026-10-20; no match. Input is mouse, touch, keyboard, gamepad and WebXR input sources, with no body-signal device. The full manual was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/xr/",
+          "title": "WebXR, PlayCanvas user manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas lets you create AR (Augmented Reality) and VR (Virtual Reality) applications for a variety of devices based on the new WebXR API, as well as through external integrations."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "The Editor MCP server lets an agent edit entities, assets, scenes, scripts, settings and builds in an open Editor project; a REST interface and a published llms.txt for agents also exist. The scope is stated: every tool acts only on the project open in that Editor, and the page warns of destructive operations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/mcp-server/",
+          "title": "PlayCanvas Editor MCP Server",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Every tool acts on the project currently open in that Editor; the server does not choose or administer PlayCanvas projects."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/mcp-server/",
+          "title": "PlayCanvas Editor MCP Server",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The assistant can inspect and edit entities, components, scripts, assets, scenes, project settings, templates, animation data, builds, and version-control state."
+        },
+        {
+          "url": "https://developer.playcanvas.com/llms.txt",
+          "title": "PlayCanvas llms.txt",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This is the entry point for AI agents."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "PlayCanvas is a browser engine for interactive 3D apps, games and visualizations, so showing live data in it is within its use, but it has no data-source layer. Searched its developer documentation repository (commit d645310, 2026-10-16) for MQTT, OPC, Modbus, digital twin, IoT, telemetry, SCADA and live data on 2026-10-20; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "PlayCanvas is an engine for interactive 3D apps in the browser; its documentation offers script events but no portable learning or activity record, so any record is built by the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "The hosted editor exports an entire project as a zip, by the web interface or a REST call, and imports it back as a new project; the documentation states what is left out (version history, other branches, the dev log) and that team members and settings may need re-adding. The zip's internal layout is not documented in the pages read, so another host cannot be assumed to read it.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/projects/backup-and-export/",
+          "title": "Backup and Export, PlayCanvas User Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Export files provide complete project backups that can be stored offline and imported later."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/api/project-export/",
+          "title": "Projects - Export project, PlayCanvas User Manual",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This will allow you to download a zip export of your entire project."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "PlayCanvas's runtime draws in the browser of the device that runs it; its README describes asset streaming only, not server-rendered frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/982f5a68b248c66e7cd382e61de83acb22686249/README.md",
+          "title": "PlayCanvas engine README (pinned commit 982f5a6)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "PlayCanvas exposes WebXR image tracking, plane and mesh detection, anchors and hit testing but lists no object tracking. Searched the PlayCanvas user manual XR section, including the AR page navigation, for object tracking terms on 2026-10-20; none found, and the third-party 8th Wall and Zappar integrations were not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/xr/ar/",
+          "title": "PlayCanvas user manual, AR",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Augmented Reality allows blending of the real world with virtual imagery"
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/xr/ar/",
+          "title": "PlayCanvas user manual, AR navigation",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Anchors Camera Color Depth Sensing DOM Overlay Hit Testing Image Tracking Light Estimation Mesh Detection Plane Detection 8th Wall Integration Zappar Integration"
         }
       ]
     }

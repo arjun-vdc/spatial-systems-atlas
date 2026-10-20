@@ -417,28 +417,6 @@
       ]
     },
     {
-      "capability_id": "net.handoff",
-      "level": "out-of-scope",
-      "note": "A scene description standard is not the kind of thing that moves a user between worlds - and this is the correction to an earlier reading: no other part of this forty-part family picks it up either. The closest, Part 28, is an architecture for interchanging scene-based media, which is assets moving, not users.",
-      "confidence": "verified",
-      "sources": [
-        {
-          "url": "https://www.iso.org/standard/84571.html",
-          "title": "ISO/IEC 23090-28:2026 Part 28: Interchangeable scene-based media representations",
-          "retrieved": "2026-08-22",
-          "kind": "primary",
-          "quote": "This document specifies an architecture and data model for interchange of scene-based media for use in systems and applications that employ renderers for the presentation of immersive media"
-        },
-        {
-          "url": "https://www.iso.org/committee/45316/x/catalogue/",
-          "title": "ISO/IEC JTC 1/SC 29 catalogue, full ISO/IEC 23090 part list",
-          "retrieved": "2026-08-22",
-          "kind": "primary",
-          "quote": null
-        }
-      ]
-    },
-    {
       "capability_id": "identity.root",
       "level": "out-of-scope",
       "note": "No identifier for a person, agent or thing anywhere in scope; the standard describes a scene and the media in it, not who is looking at it.",
@@ -791,17 +769,33 @@
     },
     {
       "capability_id": "render.passthrough",
-      "level": "out-of-scope",
-      "note": "Scene Description extends glTF to carry timed media into a scene. How the presentation engine blends that scene with a camera view of the room is the runtime's, and no extension in the standard controls it.",
-      "confidence": "verified",
-      "sources": []
+      "level": "none",
+      "note": "The second edition's MPEG_anchor extension anchors a scene or its root nodes into the user's physical environment to provide an AR experience, so mixing rendered content with the real world is within the standard's purpose, but no extension controls how much of the camera view and how much of the rendered scene the viewer sees. Searched the MPEG glTF extension registry in the official MPEGGroup/Scene-Description repository at commit 5e39101 (dated 2025-07-28, before the second edition's November 2025 publication; its README and all 15 extension READMEs) for passthrough, pass-through, see-through, blend, occlusion, camera, real world and physical environment on 2026-10-20; the only link to the real world is anchoring, and no blend or hole-cutting control appears. The paywalled text of ISO/IEC 23090-14:2025 was not read, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MPEGGroup/Scene-Description/blob/5e39101aa38333248861c62404d992e10ac1f964/MPEG_anchor/README.md",
+          "title": "MPEG glTF extension registry, MPEG_anchor (Scene-Description repository, commit 5e39101)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "AR anchoring allows for anchoring of a scene or some root nodes of a scene into the user’s physical environment to provide an AR experience."
+        }
+      ]
     },
     {
       "capability_id": "input.face",
-      "level": "out-of-scope",
-      "note": "The standard's input surface is the media access function and the anchors that place content. A live face and body stream from the user is not among the media it carries.",
+      "level": "partial",
+      "note": "Edition 2's MPEG_interactivity takes user body-part input as a trigger source, naming the part with an OpenXR input path such as /user/hand/left/grip, and its MPEG_node_avatar extension maps a user's avatar onto body segments. That is hand and body-part input used to fire behaviours, not a live stream of the user's facial expression or full body pose, and no privacy terms for such a stream are given. Judged from the MPEG glTF extension registry in the official MPEGGroup/Scene-Description repository at commit 5e39101 (dated 2025-07-28, before the second edition's November 2025 publication; its README and all 15 extension READMEs); the paywalled text of ISO/IEC 23090-14:2025 was not read, and a search of those READMEs for sensor, privacy, facial, expression, gaze and body tracking found no such stream.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/MPEGGroup/Scene-Description/blob/5e39101aa38333248861c62404d992e10ac1f964/MPEG_interactivity/README.md",
+          "title": "MPEG glTF extension registry, MPEG_interactivity (Scene-Description repository, commit 5e39101)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Describes the user body part and gesture related to the input. The format shall follow the OpenXR input path description as defined in [OpenXR] section 6."
+        }
+      ]
     },
     {
       "capability_id": "scene.navmesh",
@@ -836,23 +830,47 @@
     {
       "capability_id": "deliver.moderation",
       "level": "out-of-scope",
-      "note": "Scene Description defines carriage and access of media, with no publishing service in the path, so no review can stand there and none is recorded.",
+      "note": "The ISO abstract says the standard specifies extensions to existing scene description formats to support MPEG media, in particular immersive media. Scene Description defines carriage and access of media, with no publishing service in the path, so no review can stand there and none is recorded.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.iso.org/standard/90191.html",
+          "title": "ISO/IEC 23090-14:2025 Part 14: Scene description (ISO abstract)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document specifies extensions to existing scene description formats in order to support MPEG media, in particular immersive media."
+        }
+      ]
     },
     {
       "capability_id": "geo.map-align",
       "level": "out-of-scope",
-      "note": "Anchoring binds content to a tracked XR space. The standard never declares a map of a place with a version, and publishes no transform between two maps of the same place.",
+      "note": "The ISO abstract says the standard specifies extensions to existing scene description formats to support MPEG media, in particular immersive media. Anchoring binds content to a tracked XR space. The standard never declares a map of a place with a version, and publishes no transform between two maps of the same place.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://www.iso.org/standard/90191.html",
+          "title": "ISO/IEC 23090-14:2025 Part 14: Scene description (ISO abstract)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This document specifies extensions to existing scene description formats in order to support MPEG media, in particular immersive media."
+        }
+      ]
     },
     {
       "capability_id": "geo.coverage",
-      "level": "out-of-scope",
-      "note": "A scene is content, not a service answering for a region, and the standard states no geographic area of application.",
+      "level": "partial",
+      "note": "Edition 2's MPEG_anchor defines a geolocation trackable whose coordinates are a GeoJSON point of longitude, latitude and elevation, so a piece of content can be tied to a place on Earth in a stated frame. It is a single point, not a declared area, and nothing lets a client test whether the content is relevant where the client is. Judged from the MPEG glTF extension registry in the official MPEGGroup/Scene-Description repository at commit 5e39101 (dated 2025-07-28, before the second edition's November 2025 publication; its README and all 15 extension READMEs); the paywalled text of ISO/IEC 23090-14:2025 was not read.",
       "confidence": "verified",
-      "sources": []
+      "sources": [
+        {
+          "url": "https://github.com/MPEGGroup/Scene-Description/blob/5e39101aa38333248861c62404d992e10ac1f964/MPEG_anchor/README.md",
+          "title": "MPEG glTF extension registry, MPEG_anchor trackable geolocation (Scene-Description repository, commit 5e39101)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Array of three float numbers giving the longitude, the latitude, and the elevation of the geolocation of the center"
+        }
+      ]
     },
     {
       "capability_id": "deliver.extension",
@@ -1322,6 +1340,600 @@
           "retrieved": "2026-09-18",
           "kind": "primary",
           "quote": "MPEG-I Scene Description specifies a scene description framework for interactive and immersive media experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description adds media access extensions to glTF. Paying for the media or the scene is not part of those extensions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Objectives: To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The extensions describe how a scene references and plays MPEG media, not who holds a right to that media, so a grant check at use is not in the part's scope.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_media/README.md",
+          "title": "ISO/IEC 23090-14 ed. 2, MPEG_media extension",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "MPEG_media provides an array of MPEG media items referenced by other extensions in glTF document."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description adds media-integration extensions to glTF scenes; recording a purchase or grant is not part of that.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I Part 14: Scene Description for MPEG Media",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description adds media-carriage extensions to existing scene formats and sets no rules for accepting issuers or worlds, so a governed trust registry is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I Part 14: Scene Description for MPEG Media (MPEG)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Edition 2's MPEG_interactivity takes user input named by OpenXR input paths as a trigger source, so user input is within what the standard handles, but no body-signal input and no privacy terms for one are described. Searched all 17 Markdown files of the MPEGGroup Scene-Description repository at commit 5e39101 (the extension READMEs, the related-work page and the root README) for heart, physiolog, biometric, galvanic, skin conductance and biosignal on 2026-10-20; no match. The ISO text is paywalled and was not read, so only the public registry was searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MPEGGroup/Scene-Description/blob/5e39101aa38333248861c62404d992e10ac1f964/MPEG_interactivity/README.md",
+          "title": "MPEG glTF extension registry, MPEG_interactivity (Scene-Description repository, commit 5e39101)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Describes the user body part and gesture related to the input. The format shall follow the OpenXR input path description as defined in [OpenXR] section 6."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description adds media extensions to existing scene formats, so it defines no interface for an outside agent to create or publish content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I Part 14 Scene Description for MPEG Media",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Objectives: To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description extends scene description formats such as glTF with MPEG media; it defines no record of a person's activity or results.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I Part 14: Scene Description for MPEG Media",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Objectives: To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description adds extensions that let existing scene formats reference MPEG media; it defines no host or export procedure, so whole-place export is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "MPEG-I Scene Description extends glTF so a presentation engine on the device can draw a scene with timed media; it defines no server-side image rendering from a client pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.iso.org/standard/90191.html",
+          "title": "ISO/IEC 23090-14:2025 catalogue record",
+          "retrieved": "2026-08-22",
+          "kind": "primary",
+          "quote": "This document specifies extensions to existing scene description formats in order to support MPEG media, in particular immersive media."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "partial",
+      "note": "MPEG-I Scene Description's MPEG_anchor extension lets a glTF file declare a trackable of type TRACKABLE_MARKER_3D that points at a scene node holding the object's geometry and texture, and says what a player does once it is detected and its pose is known. It defines no recognition method or pose accuracy, and it calls the case a 3D marker, so it overlaps with marker tracking rather than cleanly separating it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extension, ISO/IEC 23090-14 second edition (draft-based)",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Index to the node in the nodes array in which the marker geometry and texture are described."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extension, processing model",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Upon the detection of a trackable within the user’s physical environment, the application creates an XR space and possibly determines the bounding box of the real world available space in which the virtual assets can be added."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "Its extensions state lengths in metres and physical quantities in SI units, and an anchor can scale content to match the real space; the base length unit is glTF 2.0's metre, which the extensions inherit.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Space required to anchor the AR asset (width, height, depth in meters)."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "Interactivity, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Mass of the object in kilogram as defined in the international unit system"
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The units for all linear distances are meters."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "This standard extends a scene format to carry audio-visual media, so joining a running world and authenticating is not part of what it specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting in a world are not media integration into a scene, so the standard does not address them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "none",
+      "note": "Searched the ISO/IEC 23090-14 ed. 2 glTF extension registry page and the README of each of its 13 listed extensions (MPEG_accessor_timed through MPEG_node_avatar) for tile, tiled, tiling, 3D Tiles, level of detail on 2026-10-20; no match, so no tiling mechanism is listed. The paywalled standard text was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "native",
+      "note": "A geolocation trackable gives longitude, latitude and elevation above the WGS 84 ellipsoid and a local frame aligned to true north and gravity, and the anchor node's transform places content relative to it. The supplement's wording is inconsistent: it says the frame is right-handed yet describes y as pointing downward.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "the elevation is in units of meters above the WGS 84 reference ellipsoid."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The x- and z-axes match the longitude and latitude directions. -Z points to true north -X points west."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "partial",
+      "note": "It adds a way to carry V3C video-compressed point-cloud and volumetric primitives, and linked dependent meshes; ordinary mesh encoding and compression remain glTF's and its extensions', and no mesh codec is defined here.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_primitive_V3C/MPEG_primitive_V3C.schema.json",
+          "title": "MPEG_primitive_V3C schema, ISO/IEC 23090-14 ed. 2",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF extension to specify support for V3C compressed primitives."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_mesh_linking/README.md",
+          "title": "MPEG_mesh_linking, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The dependent mesh can be transformed/animated by relying on the shadow mesh."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "partial",
+      "note": "It adds timed video textures and a YCbCr texture sampler, and an interactivity action that swaps a node's material, but the material model itself is glTF's; it defines no cross-renderer material exchange of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_sampler_YCbCr/MPEG_sampler_YCbCr.schema.json",
+          "title": "MPEG_sampler_YCbCr schema, ISO/IEC 23090-14 ed. 2",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "defines an extension to support YCbCr formatted textures."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "Interactivity, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "ACTION_SET_MATERIAL | Set new material to nodes"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Parametric curves and surfaces in mathematical form are not audio-visual media, and the standard adds none to the glTF scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "Geolocation and marker trackables tie content to a place that different devices can find, but each device tracks and reports status itself; no anchor identifier is stored, shared between devices or persisted across sessions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An application-defined trackable id, that is known to the application."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The application could update at runtime a tracking status of each trackable defined in the trackables array at the scene level"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "partial",
+      "note": "The graph model is glTF's node tree; this standard adds node-level extensions that attach to it, such as anchors on root nodes and avatar paths over child nodes, and timed updates to the scene, but defines no graph model of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Multiple AR anchoring is then supported by adding the MPEG_anchor extension to several root nodes."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_node_avatar/README.md",
+          "title": "MPEG_node_avatar, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "Note that the corresponding path for a parent node shall be a prefix of the path of its child nodes."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Granting and reading permissions for a subject is not media integration into a scene, so the standard defines none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "Anchor spaces are stated as right-handed with named axes, and the anchor node's transform relates trackable space to content, while the scene-wide convention is inherited from glTF 2.0 rather than restated. The geographic frame contradicts itself by also saying y points downward.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "This local reference space is right-handed and depends on the type of trackable as described below."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The y-axis matches the direction of gravity as detected by the device's motion sensing hardware, y points downward."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "glTF uses a right-handed coordinate system. glTF defines +Y as up, +Z as forward, and -X as right; the front of a glTF asset faces +Z."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable claims about a subject are not audio-visual media for a scene, so the standard defines no credential format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Requesting and presenting credentials is a protocol outside media integration into a scene, so the standard defines none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Moving a user between worlds with state is not media integration into a scene, so the standard defines no handoff or portals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "Its URIs name media streams for the scene, not worlds, and it defines no naming or resolution of places.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Items a user holds and whether they travel are not audio-visual media for a scene, so the standard keeps no inventory.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying a permission grant with scope and withdrawal is not media integration into a scene, so the standard defines none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Extensions are optional and an unsupported one can be ignored, as with a reverb unit marked bypassable, and the registry records which extensions arrived in the second edition; no version number is carried inside extension data for recipients to compare.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/README.md",
+          "title": "MPEG glTF Extension Registry, ISO/IEC 23090-14 ed. 2",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The following extensions were added in the ISO/IEC 23090-14 2nd Edition:"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "An audio renderer that does not support reverb shall ignore it if the bypass attribute is set to true."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "A media entry's URI is resolved relative to the glTF file, may use the standard's live-stream scheme, and a track fragment picks the stream within the resolved media, so the client can then access it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_media/README.md",
+          "title": "MPEG_media, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The uri of the media. Relative paths are relative to the .gltf file."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_media/README.md",
+          "title": "MPEG_media, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "URL fragment to access the track within the media alternative."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "partial",
+      "note": "The anchor node's transform links the trackable's space to an anchor space holding child nodes, so a short chain of frames is interchanged; no general graph of poses between arbitrary frames is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor extensions, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The TRS of the node having the MPEG_anchor extension defines the relative transformation between the trackable's space and the anchor space in which the child nodes containing the virtual assets are placed."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Starting and ending an immersive session belongs to the device runtime, which this standard refers to rather than specifies; it only describes what a scene needs once that mode is active.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "User settings and accessibility choices that follow a person are not audio-visual media for a scene, so the standard defines none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/standards/MPEG-I/14/",
+          "title": "MPEG-I: Scene Description for MPEG Media, MPEG standards page",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "To provide integration of audio-visual media to the scene description widely used by the industries such as glTF."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "partial",
+      "note": "The avatar extension names a hierarchy of humanoid body segments down to the finger joints and ties them to skeleton animation, but the skin binding is glTF's and the base skeleton text in Annex H was not read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_node_avatar/README.md",
+          "title": "MPEG_node_avatar, ISO/IEC 23090-14 ed. 2 supplement",
+          "retrieved": "2026-10-20",
+          "kind": "primary",
+          "quote": "The avatar path allows the addressing of every segment in an avatar, which allows for associating them with interactivity triggers and skeleton animations."
         }
       ]
     }
