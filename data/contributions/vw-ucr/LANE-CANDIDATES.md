@@ -14,6 +14,16 @@ is such a use case for rows the map now rates *should*, and the repository's dep
 use case is not hypothetical. Only rows that at least one repository use case is linked to are
 listed; every link carries the sentence of the use case it rests on, in `links.csv`.
 
+**What accepting a lane would change.** A row has one `interop` rating on the map, not one per
+lane, and a lane is the rows rated *must* whose `interop_uses` name its use case
+(`INTEROPERABILITY-BOUNDARIES.md`). Accepting a lane therefore raises each of its "would become
+*must*" rows to *must* for the whole map, adds the lane to the row's `interop_uses`, and moves the row
+into the first pass of test writing. It does not put the row into U1 to U4, whose membership still
+needs their own use case named, and it does not change how those use cases read the row: for moving
+content, live data binding still only degrades the result. That difference would have to be carried
+in `interop_reason`. The question each lane puts to the map is therefore whether its use case
+belongs in the map's scope; once it does, the rating follows from the map's own rule.
+
 Figures are from the repository's public records on 2026-10-21, against the map's data of
 2026-10-20. *Records* counts the lane's use cases and the records that specialise them; *deployments*
 counts the real implementations filed under them.
