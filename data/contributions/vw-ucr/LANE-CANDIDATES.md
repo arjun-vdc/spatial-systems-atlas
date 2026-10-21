@@ -24,7 +24,7 @@ content, live data binding still only degrades the result. That difference would
 in `interop_reason`. The question each lane puts to the map is therefore whether its use case
 belongs in the map's scope; once it does, the rating follows from the map's own rule.
 
-Figures are from the repository's public records on 2026-10-21, against the map's data of
+Figures are from the repository's public records on 2026-10-21 (regenerated after its last sweep), against the map's data of
 2026-10-20. *Records* counts the lane's use cases and the records that specialise them; *deployments*
 counts the real implementations filed under them.
 
@@ -39,7 +39,7 @@ counts the real implementations filed under them.
 ## What each lane would change
 
 **U7 is the strongest case.** `persist.activity-record` (adopted from this branch on 2026-10-20 and
-rated *should*) sits under 10 repository use cases and 132 deployments, and no scored system provides
+rated *should*) sits under 10 repository use cases and 133 deployments, and no scored system provides
 it natively (0 of 8). Training is the largest body of real deployments in the repository. A training
 result that cannot leave the vendor's dashboard is a use case that fails, which is the map's
 definition of *must*. With it come `identity.privacy` and `sense.privacy`: the record carries

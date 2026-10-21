@@ -54,10 +54,11 @@ def main() -> int:
     links = rows("links.csv")
     evidence = rows("deployment-evidence.csv")
     candidates = rows("candidate-capabilities.csv")
+    lanes = rows("lane-candidates.csv")
 
     # Every capability id in the contribution must exist in the export it is
     # read against; a stale contribution should stop the build, not draw.
-    unknown = sorted({r["cap_id"] for r in demand + links + evidence} - caps.keys())
+    unknown = sorted({r["cap_id"] for r in demand + links + evidence + lanes} - caps.keys())
     if unknown:
         raise SystemExit(f"capabilities not in territory.json: {unknown}")
 
@@ -107,8 +108,30 @@ def main() -> int:
     cand_rows = "".join(
         f'<tr><td><b>{e(r["name"])}</b> <code>{e(r["id"])}</code><br><span class="faint">{e(r["definition"])}</span></td>'
         f'<td><span class="chip {e(r["interop"])}">{e(r["interop"])}</span> <span class="faint">{e(r["binding"])}</span>'
-        f'<br><span class="faint">{e(r["interop_reason"])}</span></td><td class="faint">{e(r["evidence"])}</td></tr>'
+        f'<br><span class="faint">{e(r["interop_reason"])}</span></td><td class="faint">{e(r["evidence"])}</td>'
+        f'<td>{e(r.get("status", ""))}</td></tr>'
         for r in candidates)
+    open_candidates = sum(1 for r in candidates if r.get("status", "open").startswith("open"))
+
+    # 5. Candidate use case lanes: one table per lane, rows as in CERTIFICATION-LANES.md
+    lane_ids = list(dict.fromkeys(r["lane"] for r in lanes))
+    lane_blocks = []
+    for lid in lane_ids:
+        lr = [r for r in lanes if r["lane"] == lid]
+        head = lr[0]
+        body = "".join(
+            f'<tr><td><b>{e(caps[r["cap_id"]]["name"])}</b> <code>{e(r["cap_id"])}</code></td>'
+            f'<td><span class="chip {e(r["atlas_interop"])}">{e(r["atlas_interop"])}</span></td>'
+            f'<td>{"<b>" + e(r["role_in_lane"]) + "</b>" if r["role_in_lane"] == "would become must" else e(r["role_in_lane"])}</td>'
+            f'<td class="num">{e(r["cap_use_cases"])}</td><td class="num">{e(r["cap_deployments"])}</td>'
+            f'<td class="num">{e(r["atlas_native"])} of {e(r["atlas_scored"])}</td></tr>'
+            for r in lr)
+        lane_blocks.append(
+            f'<h3>{e(lid)} {e(head["lane_name"])}</h3><p>{e(head["lane_use_case"])}</p>'
+            f'<p class="faint">{e(head["lane_ucr_records"])} repository records, {e(head["lane_deployments"])} deployments: '
+            f'{e(head["lane_ucr_use_cases"])}</p>'
+            f'<div class="wrap"><table><thead><tr><th>Capability</th><th>Map rates it</th><th>In this lane</th>'
+            f'<th>Use cases</th><th>Deployments</th><th>Built in, of scored</th></tr></thead><tbody>{body}</tbody></table></div>')
 
     total_uc = len({l["use_case_id"] for l in links})
     page = f"""<!doctype html>
@@ -150,7 +173,8 @@ the map's own ({e(territory['counts']['claims'])} claims); demand is the reposit
 <span><b>{total_uc}</b>use cases linked</span>
 <span><b>{len(evidence)}</b>deployment checks</span>
 <span><b>{unscored}</b>pairs the map never scored</span>
-<span><b>{len(candidates)}</b>candidate capabilities</span></div>
+<span><b>{len(candidates) - open_candidates}</b>candidate capabilities adopted, <b>{open_candidates}</b> open</span>
+<span><b>{len(lane_ids)}</b>candidate lanes</span></div>
 
 <h2>1. What the use cases need, beside what the field provides</h2>
 <p class="faint">Must rows first, thinnest supply first. A red edge marks a must row that three or fewer
@@ -175,11 +199,20 @@ that bears on it. Only systems matched to a subject by hand take part.</p>
 <div class="wrap"><table><thead><tr><th>System</th><th>Capability</th><th>Map verdict</th><th>Deployment</th></tr></thead>
 <tbody>{ev_rows}</tbody></table></div>
 
-<h2>4. Needs the map has no row for</h2>
+<h2>4. Needs the map had no row for</h2>
 <p class="faint">Found while linking every use case in the repository. Proposed in the columns of
-<code>data/capabilities.csv</code>; the interop value is a proposal argued with the map's own rule.</p>
-<div class="wrap"><table><thead><tr><th>Candidate</th><th>Proposed interop</th><th>Use cases</th></tr></thead>
+<code>data/capabilities.csv</code>; the interop value is a proposal argued with the map's own rule.
+Adopted rows are in the map and stay listed here because the map cites this file as their source.</p>
+<div class="wrap"><table><thead><tr><th>Candidate</th><th>Proposed interop</th><th>Use cases</th><th>Status</th></tr></thead>
 <tbody>{cand_rows}</tbody></table></div>
+
+<h2>5. Candidate use case lanes</h2>
+<p class="faint">Beside the map's four lanes (U1–U4), five use cases the repository holds many records and
+deployments for, each with the rows that stop it. A row has one interop rating on the map, and a lane is
+the must rows that name its use case: accepting a lane raises its <b>would become must</b> rows to must
+map-wide and leaves U1–U4 unchanged. Only rows a repository use case links to are listed. See
+<code>data/contributions/vw-ucr/LANE-CANDIDATES.md</code>.</p>
+{''.join(lane_blocks)}
 
 <p class="faint" style="margin-top:3em">Demand data: Virtual Worlds Use Case Repository,
 <a href="https://usecases.vdc-fellbach.de">usecases.vdc-fellbach.de</a>, Virtual Dimension Center
@@ -188,7 +221,7 @@ Fellbach. See <code>data/contributions/vw-ucr/README.md</code>.</p>
 """
     OUT.write_text(page, encoding="utf-8")
     print(f"wrote {OUT.relative_to(HERE.parent)}: {len(demand)} capabilities, {len(evidence)} checks, "
-          f"{len(candidates)} candidates")
+          f"{len(candidates)} candidates, {len(lane_ids)} lanes")
     return 0
 
 
