@@ -32,7 +32,7 @@ counts the real implementations filed under them.
 |---|---|---:|---:|---|
 | U5 A twin follows its asset | A digital twin stays in step with the real asset it represents, from live data or a real controller, so that people judge and act on the asset through it | 14 | 13 | 4 / 2 |
 | U6 The same thing at the same real place | People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later | 19 | 53 | 3 / 4 |
-| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 37 | 144 | 3 / 3 |
+| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 37 | 145 | 3 / 3 |
 | U8 Engineering data reaches the point of use | Engineering data from the system of record reaches a viewer, a headset or a kiosk at the point of use with its structure, units and metadata, without hand preparation | 21 | 30 | 3 / 1, plus `render.remote` recorded descriptively |
 | U9 A live event reaches remote viewers as captured | A live event or a remote person is captured and presented elsewhere as it happens, volumetrically or as panoramic video, with sound placed where the source is | 7 | 11 | 3 / 1 |
 
