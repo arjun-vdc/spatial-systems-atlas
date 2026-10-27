@@ -159,7 +159,19 @@ FIGURES = {
     "conflicts_total": _one("SELECT COUNT(*) FROM coverage WHERE level='conflicts'"),
     "capabilities_format": _one("SELECT COUNT(*) FROM capability WHERE binding='build'"),
     "capabilities_protocol": _one("SELECT COUNT(*) FROM capability WHERE binding='connect'"),
+    "claims_native": _one("SELECT COUNT(*) FROM coverage WHERE level='native'"),
+    "claims_via_extension": _one("SELECT COUNT(*) FROM coverage WHERE level='via-extension'"),
+    "claims_partial": _one("SELECT COUNT(*) FROM coverage WHERE level='partial'"),
+    "claims_none": _one("SELECT COUNT(*) FROM coverage WHERE level='none'"),
+    "groups_total": len(groups),
 }
+
+# A lane's size is its count of must rows, so the lane notes take a token as well.
+for _u, _n in lane_counts.items():
+    FIGURES["lane_" + _u.lower()] = _n
+# So does a group's size, which grows whenever a row is added to it.
+for _g in groups:
+    FIGURES["capabilities_in_" + _g["id"]] = sum(1 for c in caps if c["group_id"] == _g["id"])
 
 # Prose that names one subject's breadth gets a token too, so "Unreal has the most"
 # cannot quietly become false. reach counts the rows a subject has at built in,
