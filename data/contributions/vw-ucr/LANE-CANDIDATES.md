@@ -39,7 +39,7 @@ counts the real implementations filed under them.
 ## What each lane would change
 
 **U7 is the strongest case.** `persist.activity-record` (adopted from this branch on 2026-10-20 and
-rated *should*) sits under 10 repository use cases and 149 deployments, and no scored system provides
+rated *should*) sits under 12 repository use cases and 149 deployments, and no scored system provides
 it natively (0 of 8). Training is the largest body of real deployments in the repository. A training
 result that cannot leave the vendor's dashboard is a use case that fails, which is the map's
 definition of *must*. With it come `identity.privacy` and `sense.privacy`: the record carries
@@ -62,7 +62,7 @@ cases depend on it (from ETSI GS ARF 003 and the Hololight, mixpace and instant3
 which may be worth a second look at the 2026-09-18 decision not to rate it.
 
 **U9 is the smallest**, and mostly restates U1's captured-content rows for live delivery. Its one new
-claim is `net.media` as *must*: 27 deployments, two native of 29.
+claim is `net.media` as *must*: 32 deployments, two native of 29.
 
 ## How to use it
 

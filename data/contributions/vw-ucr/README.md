@@ -71,7 +71,9 @@ not hand work. The repository imports the map's claims the same way, from a date
 
 The files were last refreshed on 2026-10-27, after the map's 2026-10-21 publication (pop-up note
 wording only; no claim changed) was merged into this branch; the counts moved with the repository's
-new deployments. The refresh before that, on 2026-10-21, followed the map's 2026-10-20 data.
+new deployments. The same day the repository read the 80 use cases added since its previous pass
+(VW-UC-0338 to 0417) against all 175 rows: 112 new links on 51 use cases, each quoting its scope
+word for word. The refresh before that, on 2026-10-21, followed the map's 2026-10-20 data.
 
 On 2026-10-21 the files were refreshed after the map's 2026-10-20 data was merged into this
 branch. The repository imported that capture, linked its eleven new rows where use case scopes name
