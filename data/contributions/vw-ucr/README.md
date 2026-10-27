@@ -69,7 +69,11 @@ The repository regenerates these files from its database with one command
 (a script the VDC maintains), so a refresh is a new commit on this branch,
 not hand work. The repository imports the map's claims the same way, from a dated capture.
 
-The files were last refreshed on 2026-10-21, after the map's 2026-10-20 data was merged into this
+The files were last refreshed on 2026-10-27, after the map's 2026-10-21 publication (pop-up note
+wording only; no claim changed) was merged into this branch; the counts moved with the repository's
+new deployments. The refresh before that, on 2026-10-21, followed the map's 2026-10-20 data.
+
+On 2026-10-21 the files were refreshed after the map's 2026-10-20 data was merged into this
 branch. The repository imported that capture, linked its eleven new rows where use case scopes name
 the need (the five adopted from here among them), and read the use cases added since the previous
 refresh against all 175 rows: 74 new links, each quoting its scope word for word.

@@ -24,22 +24,22 @@ content, live data binding still only degrades the result. That difference would
 in `interop_reason`. The question each lane puts to the map is therefore whether its use case
 belongs in the map's scope; once it does, the rating follows from the map's own rule.
 
-Figures are from the repository's public records on 2026-10-21 (regenerated after its last sweep), against the map's data of
-2026-10-20. *Records* counts the lane's use cases and the records that specialise them; *deployments*
+Figures are from the repository's public records on 2026-10-27, against the map's data of
+2026-10-21 (its claims are unchanged since 2026-10-20). *Records* counts the lane's use cases and the records that specialise them; *deployments*
 counts the real implementations filed under them.
 
 | Lane | Use case | Records | Deployments | Rows (must now / would become must) |
 |---|---|---:|---:|---|
 | U5 A twin follows its asset | A digital twin stays in step with the real asset it represents, from live data or a real controller, so that people judge and act on the asset through it | 14 | 13 | 4 / 2 |
-| U6 The same thing at the same real place | People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later | 19 | 53 | 3 / 4 |
-| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 37 | 145 | 3 / 3 |
-| U8 Engineering data reaches the point of use | Engineering data from the system of record reaches a viewer, a headset or a kiosk at the point of use with its structure, units and metadata, without hand preparation | 21 | 30 | 3 / 1, plus `render.remote` recorded descriptively |
-| U9 A live event reaches remote viewers as captured | A live event or a remote person is captured and presented elsewhere as it happens, volumetrically or as panoramic video, with sound placed where the source is | 7 | 11 | 3 / 1 |
+| U6 The same thing at the same real place | People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later | 19 | 55 | 3 / 4 |
+| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 38 | 166 | 3 / 3 |
+| U8 Engineering data reaches the point of use | Engineering data from the system of record reaches a viewer, a headset or a kiosk at the point of use with its structure, units and metadata, without hand preparation | 21 | 31 | 3 / 1, plus `render.remote` recorded descriptively |
+| U9 A live event reaches remote viewers as captured | A live event or a remote person is captured and presented elsewhere as it happens, volumetrically or as panoramic video, with sound placed where the source is | 7 | 12 | 3 / 1 |
 
 ## What each lane would change
 
 **U7 is the strongest case.** `persist.activity-record` (adopted from this branch on 2026-10-20 and
-rated *should*) sits under 10 repository use cases and 133 deployments, and no scored system provides
+rated *should*) sits under 10 repository use cases and 149 deployments, and no scored system provides
 it natively (0 of 8). Training is the largest body of real deployments in the repository. A training
 result that cannot leave the vendor's dashboard is a use case that fails, which is the map's
 definition of *must*. With it come `identity.privacy` and `sense.privacy`: the record carries
@@ -62,7 +62,7 @@ cases depend on it (from ETSI GS ARF 003 and the Hololight, mixpace and instant3
 which may be worth a second look at the 2026-09-18 decision not to rate it.
 
 **U9 is the smallest**, and mostly restates U1's captured-content rows for live delivery. Its one new
-claim is `net.media` as *must*: 22 deployments, two native of 29.
+claim is `net.media` as *must*: 27 deployments, two native of 29.
 
 ## How to use it
 
