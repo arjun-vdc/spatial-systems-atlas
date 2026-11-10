@@ -1,0 +1,2711 @@
+{
+  "subject_id": "xite",
+  "summary": "X_ITE is a JavaScript viewer that runs inside a web page and draws three-dimensional scenes in the browser using WebGL. Its native format is X3D, which it reads in XML, JSON and Classic VRML encodings, and it also loads VRML, glTF, VRM, OBJ, STL and PLY files by converting them to X3D internally. It covers scene structure, event routing, scripting in ECMAScript, physically based materials, shadows, sound, humanoid animation, geospatial placement, rigid body physics, particles, volume data and, experimentally, Gaussian splats, and it has basic WebXR support for headsets. It leaves identity, payment, multi-user networking, content moderation and world persistence to other systems, and the X3D nodes for networked simulation are marked as not supported. A trap for a standards audience: X_ITE implements most but not all of X3D (the supported-nodes page counts 246 of 259 nodes), and it adds its own nodes and experimental X3D 4.1 features, so support for a node should be checked against its page rather than assumed from the profile.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "partial",
+      "note": "Loads HAnim humanoids (a skeleton plus an optional skin mesh) and has basic VRM loading; the body format itself belongs to HAnim and VRM, and X_ITE calls its VRM support basic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimhumanoid/",
+          "title": "X_ITE HAnimHumanoid node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HAnimHumanoid can also contain an optional skin consisting of an IndexedFaceSet mesh with corresponding skinCoord Coordinate or CoordinateDouble vertices and skinNormal Normal vectors."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "There is now basic support for VRM models."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "native",
+      "note": "Implements the HAnim joint hierarchy, where each joint must carry a unique name drawn from the HAnim specification's list so animation can find it at run time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimjoint/",
+          "title": "X_ITE HAnimJoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Unique name attribute must be defined so that HAnimJoint node can be identified at run time for animation purposes."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimjoint/",
+          "title": "X_ITE HAnimJoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Examples: humanoid_root sacroiliac l_hip l_knee l_ankle etc. as listed in HAnim Specification."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HAnimHumanoid HAnimJoint HAnimMotion"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "partial",
+      "note": "HAnimDisplacer can hold one displacement set per facial expression, but the pages read name no standard list of expressions or visemes, so names are left to each author.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimdisplacer/",
+          "title": "X_ITE HAnimDisplacer node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Example: in the case of a face, there might be a separate HAnimDisplacer node for each facial expression."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "HAnimSite defines attachment points for accessories such as clothing; the pages read say nothing about those points surviving a transfer between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimsite/",
+          "title": "X_ITE HAnimSite node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "define an attachment point for accessories such as jewelry and clothing"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Tying an avatar to a verifiable identity is an identity-service matter; X_ITE has no accounts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "native",
+      "note": "Reads Gaussian splat data from PLY files and from glTF files that use the KHR_gaussian_splatting extension; SOG and SPZ need an external extension, and the splat node is marked experimental.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE now supports the build-in glTF extension KHR_gaussian_splatting"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In addition to PLY files, SOG and SPZ files are also supported, both by using an external extension"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Payment exchanges are a service concern; X_ITE only displays and runs scene files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Checking a licence grant at the moment of use is a platform concern; X_ITE displays whatever scene it is pointed at.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Content declares its specification version and the profile and components it needs, and X_ITE releases follow npm version numbers with breaking changes announced per series; no compatibility promise for existing content is stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As components can be dynamically loaded on demand, it is important to specify an appropriate specification version and component/profile statements."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE follows the npm version syntax"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This is a breaking change."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This series of X_ITE comes with experimental support for X3D4.1"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "X_ITE has its own automated test suite and a consortium-verified Immersive profile result; it offers no test suite that other implementations could run.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE has achieved the X3D Immersive profile support (which matches the VRML97 palette) verified by the X3D consortium at web3d.org"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "significantly improving automated testing across both Node.js and browser environments"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "X3D prototypes let authors define new node types, and X_ITE reads many glTF extensions; the pages read do not state how a recipient treats an extension it lacks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The prototyping feature lets you create complex objects that you can reuse, changing certain properties of the objects as you go."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE supports most Khronos extensions and some multi-vendor extensions in the input scenes, with newer extensions added regularly."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "Relative addresses are resolved against a base address that defaults to the page address and can be set by the author.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A String value which can be read and written, containing the URL against which relative URLs are resolved."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "baseURL A String value containing the URL against which relative URLs are resolved."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "native",
+      "note": "GeoLocation places a model on the Earth's surface in geographic coordinates and orients its children so up is normal to the local ellipsoid surface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geolocation/",
+          "title": "X_ITE GeoLocation node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GeoLocation positions a regular X3D model onto the earth’s surface."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geolocation/",
+          "title": "X_ITE GeoLocation node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GeoLocation adjusts orientation of children models appropriately: +Y axis is up direction for that local area"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "native",
+      "note": "The geoSystem field names the frame: geodetic, geocentric or UTM; the node page lists only these three.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geolocation/",
+          "title": "X_ITE GeoLocation node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Identifies spatial reference frame: Geodetic (GD), Geocentric (GC), Universal Transverse Mercator (UTM)."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Persistent shared anchors are an augmented-reality service function; X_ITE displays authored scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "partial",
+      "note": "GeoLOD loads and unloads terrain by quadtree level of detail; the pages read tie it to no named tile format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geolod/",
+          "title": "X_ITE GeoLOD node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GeoLOD provides quadtree level-of-detail loading/unloading for multi-resolution terrains."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "partial",
+      "note": "GeoPositionInterpolator moves an object through geographic positions over time; live pose streams and separately declared rules for orientation are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geopositioninterpolator/",
+          "title": "X_ITE GeoPositionInterpolator node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GeoPositionInterpolator animates objects within a geographic coordinate system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Base identifiers for people or agents belong to identity systems; X_ITE displays scenes and has no accounts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Expressing verifiable claims is an identity-system job; X_ITE has no user or issuer model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential request and presentation protocols belong to identity systems; X_ITE is a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Permission grants for subjects belong to identity systems; X_ITE has no subject model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabularies belong to identity systems; X_ITE is a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation and recovery belong to identity systems; X_ITE holds no identity keys.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status checking belongs to identity systems; X_ITE handles no credentials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying consent with a subject belongs to identity and privacy systems; X_ITE is a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "native",
+      "note": "Basic WebXR support is built in: a button starts an immersive session and the session mode is set by an attribute and a browser option.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this release there is now basic WebXR support built directly into X_ITE."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "there is now a new attribute ( xrSessionMode ) and the corresponding browser option ( XRSessionMode )"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "native",
+      "note": "Routes connect fields and carry events between nodes, so interactivity is declared in the scene file and travels with it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3D’s event model allows the creation of connections between fields (routes), and events are propagated along these connections."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting inside a world are a platform matter; X_ITE displays and runs scene files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "none",
+      "note": "Searched the X_ITE supported-nodes list, the DIS and networking component pages and the release notes for multi-user, multiplayer, replication and state sharing on 2026-11-03; the DIS networking nodes are marked not supported and nothing else turned up.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/dis/disentitymanager/",
+          "title": "X_ITE DISEntityManager node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "DisEntityManager ESPDU packets use the IEEE Distributed Interactive Simulation (DIS) protocol."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/dis/disentitymanager/",
+          "title": "X_ITE DISEntityManager node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Not Supported: This node is not supported by X_ITE."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "A wire protocol for session traffic belongs to multi-user platforms; X_ITE fetches files over ordinary web requests.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Joining a running multi-user world with authentication is a platform job; X_ITE loads scene files rather than joining sessions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "partial",
+      "note": "Anchor follows a link into new content, which replaces the current content; no state is carried across.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/anchor/",
+          "title": "X_ITE Anchor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Newly loaded content completely replaces current content, if the value of parameter field indicates using the same window."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "Worlds are named by ordinary web addresses in url fields; no naming scheme beyond addresses is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/inline/",
+          "title": "X_ITE Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Address of X3D world to load Inline with current scene, retrieved either from local system or an online address."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "A destination approving arrivals belongs to multi-user platforms; X_ITE loads files and has no arrival model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "One world changing another with nobody present is a platform matter; X_ITE shows one scene at a time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Items a user holds are a platform matter; X_ITE has no user account or inventory.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Settings that follow a user across worlds belong to platforms; X_ITE has no user profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "native",
+      "note": "Scenes are graphs of nodes grouped into components and profiles.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Objects in an X3D scene are also called nodes."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "These nodes are grouped into components and these components are grouped into profiles."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "native",
+      "note": "Transforms scale, then rotate, then translate in a fixed order, and rotations use the right-hand rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/tutorials/transforming-shapes/",
+          "title": "X_ITE Tutorial, Transforming Shapes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The children are scaled, rotated, then translated Order is fixed, independent of field order"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/tutorials/transforming-shapes/",
+          "title": "X_ITE Tutorial, Transforming Shapes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Using the Right-Hand Rule"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "Reads X3D (XML, JSON, Classic VRML), VRML, glTF and several mesh formats; only X3D, VRML and JSON text are written back out, so the two directions are uneven.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Foreign formats such as glTF are converted internally to X3D and then made available to the scene graph."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF .gltf, .glb model/gltf+json glTF Support"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3D XML .x3d, .x3dz model/x3d+xml X3D Encoding: XML X3D JSON .x3dj, .x3djz model/x3d+json X3D Encoding: JSON X3D Classic VRML .x3dv"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "VRM .vrm model/vrm About VRM Wavefront OBJ .obj model/obj"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this version toJSONString is implemented and available for X3DScene, SFNode, MFNode, X3DProtoDeclaration, and X3DExternProtoDeclaration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "native",
+      "note": "Reads glTF meshes compressed with Draco or meshopt and quantized meshes.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "KHR_draco_mesh_compression"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "the glTF parser can now handle KHR_meshopt_compression"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "KHR_mesh_quantization"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "native",
+      "note": "Loads PNG, JPEG, GIF, WebP, AVIF and KTX2 images, and glTF files that use Basis Universal textures.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/texturing/imagetexture/",
+          "title": "X_ITE ImageTexture node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "KTX2 .ktx2 image/ktx2 TEXTURE_2D"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "KHR_texture_basisu"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "partial",
+      "note": "Physically based materials, including glTF material extensions, are carried as X3D material nodes; no MaterialX material graph exchange turned up in the pages read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "automatically translating PBR material definitions and KHR_* extensions into corresponding X3D material extension nodes"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Animation is a time sensor driving interpolators by route, and glTF animations are loaded, including through animation pointers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/interpolation/positioninterpolator/",
+          "title": "X_ITE PositionInterpolator node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PositionInterpolator generates a series of 3-tuple SFVec3f values."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/time/timesensor/",
+          "title": "X_ITE TimeSensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "TimeSensor continuously generates events as time passes."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF Parser: Implemented glTF extension KHR_animation_pointer"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "HAnim humanoids carry a joint hierarchy with skin binding, and glTF skins are translated into HAnimHumanoid.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF skin object is now completely translated into HAnimHumanoid even with animations."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimhumanoid/",
+          "title": "X_ITE HAnimHumanoid node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HAnimHumanoid contains a skeleton consisting of HAnimJoint"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "Scenes can declare units through the UNIT statement and the scene object exposes unit conversion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ROUTE Scene UNIT X3D"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/reference/scene-services/",
+          "title": "X_ITE Reference, Scene Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Returns the UnitInfo object with the given category"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "partial",
+      "note": "Free-text metadata fields such as copyright can travel with a humanoid or world; the pages read define no machine-readable licence terms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimhumanoid/",
+          "title": "X_ITE HAnimHumanoid node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "(d) store human-readable metadata such as name, version, author, copyright, age, gender and other information"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/core/worldinfo/",
+          "title": "X_ITE WorldInfo node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WorldInfo includes a browser-displayable title and persistent string information about an X3D scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "native",
+      "note": "NURBS curves and surfaces are carried in mathematical form and tessellated by the browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NurbsCurve NurbsCurve2D NurbsOrientationInterpolator NurbsPatchSurface NurbsPositionInterpolator NurbsSet"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "VolumeData draws voxel data and ImageTexture3D reads DICOM and NRRD volumes; updates to a volume are not described.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/volumerendering/volumedata/",
+          "title": "X_ITE VolumeData node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "VolumeData displays a simple non-segmented voxel dataset with a single RenderStyle node."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/texturing3d/imagetexture3d/",
+          "title": "X_ITE ImageTexture3D node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "DICOM .dcm image/dicom"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "partial",
+      "note": "Inline loads another model into the scene and can unload it; the pages read do not say whether the guest's logic runs apart from the host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/inline/",
+          "title": "X_ITE Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Inline can load another X3D or VRML model into the current scene via url."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/inline/",
+          "title": "X_ITE Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "load =true means load immediately, load =false means defer loading or else unload a previously loaded asset."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "native",
+      "note": "Sound and SpatialSound place audio in the scene with position and direction.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/sound/",
+          "title": "X_ITE Sound node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Sound node controls the 3D spatialization of sound playback by a child AudioClip or MovieTexture node."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/spatialsound/",
+          "title": "X_ITE SpatialSound node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The SpatialSound node controls the 3D spatialization of sound playback by a child AudioClip or MovieTexture node."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "native",
+      "note": "SpatialSound can use head-related transfer function rendering or equal-power panning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/spatialsound/",
+          "title": "X_ITE SpatialSound node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "enableHRTF enables/disables Head Related Transfer Function (HRTF) auralization, if available."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "partial",
+      "note": "A Convolver node can apply reverberation; no description of a room tied to scene geometry is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/convolver/",
+          "title": "X_ITE Convolver node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Convolver performs a linear convolution on a given AudioBuffer, often used to achieve a reverberation effect."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "partial",
+      "note": "A local microphone can be captured; voice from remote peers through WebRTC is marked as not supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/microphonesource/",
+          "title": "X_ITE MicrophoneSource node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MicrophoneSource captures input from a physical microphone in the real world."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/streamaudiosource/",
+          "title": "X_ITE StreamAudioSource node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Not Supported: This node is not supported by X_ITE."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "native",
+      "note": "Oscillator and periodic wave nodes generate sound during playback.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/oscillatorsource/",
+          "title": "X_ITE OscillatorSource node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "OscillatorSource node represents an audio source generating a periodic waveform, providing a constant tone."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/periodicwave/",
+          "title": "X_ITE PeriodicWave node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PeriodicWave defines a periodic waveform that can be used to shape the output of an Oscillator."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "partial",
+      "note": "HAnimMotion plays stored motion data on HAnim figures whose joints share standard names; the pages read describe no adjustment between bodies of different proportions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimmotion/",
+          "title": "X_ITE HAnimMotion node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An HAnimMotion node supports discrete frame-by-frame playback for HAnim motion data animation."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "partial",
+      "note": "HAnimHumanoid carries a level-of-articulation number describing how detailed its joint set is; no reduced-mesh avatar set for crowds is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimhumanoid/",
+          "title": "X_ITE HAnimHumanoid node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Level Of Articulation 0..4 indicates complexity and detail of joints for given humanoid skeletal hierarchy."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "Generating a whole place from a prompt is a production service; X_ITE only displays scenes that already exist.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "A learned world model that produces each next moment is a generation system, not a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Building a model from photographs is a capture tool; X_ITE displays finished models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is an authoring task; X_ITE displays scenes and leaves editing to separate editors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Describing changes to a generated world in words is an authoring service; X_ITE only displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Specifying what a generator should make is a generation-service matter; X_ITE does not generate worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving meshes or panoramas from a generated splat world is a conversion service; X_ITE displays scenes it is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Exchanging an agent's control actions belongs to robotics and simulation systems; X_ITE displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "native",
+      "note": "ImageCubeMapTexture accepts a panorama image in spherical or equirectangular projection, with a fixed 2:1 aspect ratio, for use as a backdrop or environment.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/cubemaptexturing/imagecubemaptexture/",
+          "title": "X_ITE ImageCubeMapTexture node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Panorama Format (Spherical or Equirectangular Projection)"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/cubemaptexturing/imagecubemaptexture/",
+          "title": "X_ITE ImageCubeMapTexture node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Panorama images must have an exact aspect ratio of 2:1 of width to height."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Training a radiance field from images is a reconstruction tool; X_ITE displays results it is handed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generating an object from a prompt is a generation service; X_ITE displays models authored elsewhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts for purchases are a commerce-service concern; X_ITE has no purchase flow.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Review of finished content before audiences see it is a platform process; X_ITE displays what it is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "native",
+      "note": "X_ITE reports which X3D profiles and component levels it supports and a scene can be created against a named profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Returns the list of all profiles that are supported by this browser."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If level is omitted, it defaults to the highest supported level of this component."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE has achieved the X3D Immersive profile support (which matches the VRML97 palette) verified by the X3D consortium at web3d.org"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Currently 246 out of 259 nodes (95%) are implemented."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place on a device is an augmented-reality runtime function; X_ITE documents WebXR for VR headsets and displays authored scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering pose from camera imagery is a positioning service; X_ITE displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Describing interior spaces as map data is a mapping-standard matter; X_ITE displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Publishing alignment transforms between maps is a mapping-service matter; X_ITE displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Publishing zones and spatial events is a mapping-service matter; X_ITE displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure belongs to identity systems; X_ITE handles no credentials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Portable reputation and social graphs belong to platforms; X_ITE displays scenes only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at the point of use is a platform matter; X_ITE only displays scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Evidence behind identity claims belongs to identity systems; X_ITE handles no claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers belong to identity systems; X_ITE has no identifiers for people.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Recipient key material for confidential delivery belongs to identity systems; X_ITE is a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "A record of what a system decided belongs to identity and policy systems; X_ITE is a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed registries of accepted issuers belong to identity systems; X_ITE has no issuers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "native",
+      "note": "In a WebXR session controllers are drawn with an input ray and drive the navigation viewers through buttons and thumbsticks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Support for WALK, FLY and EXAMINE viewer via controllers and buttons"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WALK, FLY and EXAMINE viewer can now be controlled via the buttons and the thumbstick of the controller(s)"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for hand tracking on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for eye tracking and gaze on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for haptic, vibration and rumble on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "Scripts can read rendering limits such as maximum texture size and light count; the pages read describe no discovery of headset or input device features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MaxTextureSize Integer The maximum texture size supported."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MaxLights Integer The maximum number of lights supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for face tracking and body tracking on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "native",
+      "note": "TouchSensor reports pointing and selection against scene geometry, and picking sensors return the intersected geometry, normal and texture coordinate.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/pointingdevicesensor/touchsensor/",
+          "title": "X_ITE TouchSensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "TouchSensor tracks location and state of the pointing device, detecting when a user points at or selects (activates) geometry."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/picking/linepicksensor/",
+          "title": "X_ITE LinePickSensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As each line intersection generates a known point in space, useful event information is returned including normal, geometry and texCoord values."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "native",
+      "note": "StringSensor turns keyboard entry into string events, separate from controller actions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/keydevicesensor/stringsensor/",
+          "title": "X_ITE StringSensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "StringSensor generates events as the user enters strings on the keyboard."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Heart rate and skin signals are sensor-stream concerns outside a scene viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "native",
+      "note": "The Script node runs author code, with ECMAScript supported in full.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/scripting/script/",
+          "title": "X_ITE Script node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Script contains author-programmed event behaviors for a scene."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "We offer full X3D ECMAScript support to give you the best scripting tools you can get."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent names for published units of logic are a registry matter; X_ITE publishes no logic registry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "A documented JavaScript interface lets a page or a Node program read and change scenes; it is not a remote agent interface and states no limit on what a program may change.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/accessing-the-external-browser/",
+          "title": "X_ITE Accessing the External Browser",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is designed to provide access to the internal X3D browser and its contained scene graph via JavaScript, either within an internal X3D Script node or an external HTML script."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Suitable for just reading 3D files, analyzing, processing them and generating X3D again."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Deciding who owns the truth for an object belongs to multi-user platforms; X_ITE runs a single local scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Sending each client only what it needs belongs to multi-user platforms; X_ITE is a single-client viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Hiding network latency belongs to multi-user platforms; X_ITE has no replicated state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "partial",
+      "note": "Audio and video play from addresses and a local microphone can be captured, but streams from remote peers over WebRTC are marked as not supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/audioclip/",
+          "title": "X_ITE AudioClip node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Location and filename of sound file or stream."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/streamaudiosource/",
+          "title": "X_ITE StreamAudioSource node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "StreamAudioSource operates as an audio source whose media is received from a MediaStream obtained using the WebRTC or Media Capture and Streams APIs."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/streamaudiosource/",
+          "title": "X_ITE StreamAudioSource node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Not Supported: This node is not supported by X_ITE."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Knowing who is where across operators belongs to platforms; X_ITE has no roster.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Finding worlds or nodes without knowing them in advance belongs to platforms; X_ITE opens addresses it is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Shared time across clients belongs to multi-user platforms; X_ITE animates from the local clock.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "RenderedTexture can draw the view of another scene onto a surface, which its page lists as a use for portal views; no destination-controlled preview, trigger, one-way setting or scale is described, and the node is experimental.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/texturing/renderedtexture/",
+          "title": "X_ITE RenderedTexture node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "RenderedTexture enables effects such as dynamic reflections, live video screens, or portal views by continuously updating the texture based on the rendered content."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a world restart is a server matter; X_ITE is a client-side viewer with no world server.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "A loaded scene can be written back out as X3D XML, Classic VRML or JSON text; the pages read do not describe packaging of linked assets or what survives.",
+      "confidence": "verified",
+      "direction": "write",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this version toJSONString is implemented and available for X3DScene, SFNode, MFNode, X3DProtoDeclaration, and X3DExternProtoDeclaration."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "We finally implemented toVRMLString for SFNode, X3DProtoDeclaration, X3DExternProtoDeclaration, and X3DScene."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Records of what a person did belong to learning and platform systems; X_ITE displays scenes only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "native",
+      "note": "Rigid bodies, their collections and collision shapes are implemented as part of the X3D rigid body physics component.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "BallJoint CollidableOffset CollidableShape CollisionCollection CollisionSensor CollisionSpace Contact DoubleAxisHingeJoint RigidBody RigidBodyCollection SingleAxisHingeJoint SliderJoint"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/rigidbody/",
+          "title": "X_ITE RigidBody node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "RigidBody describes a collection of shapes with a mass distribution that is affected by the physics model."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "native",
+      "note": "CollidableShape links the collision system, the rigid body and the drawn scene, so collision shapes can differ from visible geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/collidableshape/",
+          "title": "X_ITE CollidableShape node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "CollidableShape connects the collision detection system, the rigid body model, and the renderable scene graph."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "partial",
+      "note": "Ball, hinge, double hinge and slider joints are supported; MotorJoint and UniversalJoint are marked as not supported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/singleaxishingejoint/",
+          "title": "X_ITE SingleAxisHingeJoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SingleAxisHingeJoint has single axis about which to rotate, similar to a traditional door hinge."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/motorjoint/",
+          "title": "X_ITE MotorJoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Not Supported: This node is not supported by X_ITE."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/universaljoint/",
+          "title": "X_ITE UniversalJoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Not Supported: This node is not supported by X_ITE."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "native",
+      "note": "Contact nodes carry bounce and friction values for surface response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/contact/",
+          "title": "X_ITE Contact node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "bounce indicates bounciness (0 = no bounce at all, 1 = maximum bounce )."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/rigidbodyphysics/contact/",
+          "title": "X_ITE Contact node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "frictionCoefficients used for computing surface drag."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "native",
+      "note": "ProximitySensor and TransformSensor fire events when the viewer or a target object enters or leaves a box-shaped region.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/environmentalsensor/proximitysensor/",
+          "title": "X_ITE ProximitySensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ProximitySensor generates events when the viewer enters, exits and moves within a region of space (defined by a box)."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/environmentalsensor/transformsensor/",
+          "title": "X_ITE TransformSensor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "TransformSensor generates output events when its targetObject enters, exits, and moves within a region in space (defined by a box)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "partial",
+      "note": "X_ITE has its own JavaScript rendering engine on WebGL; the pages read describe no render graph or pass structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE comes with a high performance JavaScript rendering engine, i.e. developers may be completely free of worry about performance optimizations in their code."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a comprehensive 3D library entirely written in JavaScript and uses WebGL for 3D rendering."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "Targets WebGL; support for WebGL 1 was dropped, leaving WebGL 2.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a comprehensive 3D library entirely written in JavaScript and uses WebGL for 3D rendering."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This series drops support for WebGL 1, because all known browsers support WebGL 2 now for quite a while."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "Built-in Gouraud, Phong and physically based shading, with glTF material extensions converted to X3D material extension nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "There is excellent built-in support for Gouraud and Phong shading, as well as PBR shading."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this release, all glTF material extensions are now available, i.e. when a glTF file is parsed, these extensions are automatically converted to X3D."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "Direct lights cast shadows and EnvironmentLight gives image-based lighting; global illumination and light probes are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "DirectionalLight, SpotLight, and PointLight are now able to cast shadows."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/lighting/environmentlight/",
+          "title": "X_ITE EnvironmentLight node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The EnvironmentLight node supports Image Based Lighting (IBL) techniques by specifying light-source intensity around a given location (i.e., the environment) as a cube map."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "partial",
+      "note": "Browser options for motion blur and tone mapping exist; no general post-processing chain is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MotionBlur Render animations with motion blur."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "New browser option ToneMapping."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "The LOD node switches child levels by camera distance and GeoLOD loads terrain by detail level.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/navigation/lod/",
+          "title": "X_ITE LOD node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "LOD (Level Of Detail) uses camera-to-object distance to switch among contained child levels."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/geospatial/geolod/",
+          "title": "X_ITE GeoLOD node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GeoLOD provides quadtree level-of-detail loading/unloading for multi-resolution terrains."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "native",
+      "note": "The GaussianSplats node renders splat data directly; it is marked experimental.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/gaussiansplats/gaussiansplats/",
+          "title": "X_ITE GaussianSplats node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The GaussianSplats node adds basic support for direct real-time radiance field rendering of volume data without converting into surface or line primitives."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "GaussianSplats experimental"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "partial",
+      "note": "Voxel volumes and point sets render; volumetric video is not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/volumerendering/volumedata/",
+          "title": "X_ITE VolumeData node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "VolumeData displays a simple non-segmented voxel dataset with a single RenderStyle node."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/supported-nodes/",
+          "title": "X_ITE Supported Nodes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "LineSet Normal PointSet Tangent"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "native",
+      "note": "The Text node draws 3D text from built-in fonts or TrueType and OpenType files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Use the Text node, which can load remote font files in TrueType and OpenType format, but there are also built-in fonts."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "native",
+      "note": "Viewpoints define and bind cameras and NavigationInfo sets the viewing model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/navigation/viewpoint/",
+          "title": "X_ITE Viewpoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Viewpoints are the primary way for a user to navigate within a scene, and for an author to show critical aspects of a model."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/navigation/navigationinfo/",
+          "title": "X_ITE NavigationInfo node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NavigationInfo describes the user’s viewing model, user navigation-interaction modalities, and also dimensional characteristics of the user’s (typically invisible) avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for passthrough, immersive-ar and augmented reality on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Scene-wide colour space and display colour space options exist (sRGB, linear, Display P3); declaring the colour interpretation per image or an output range is not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ColorSpace The color space in which colors are defined and color calculations take place."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/reference/browser-services/",
+          "title": "X_ITE Reference, Browser Services",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "DisplayColorSpace The color space which is used for the framebuffer and when textures are converted."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "native",
+      "note": "Layout and ScreenGroup size and place two-dimensional regions relative to the screen.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/layout/layout/",
+          "title": "X_ITE Layout node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Layout provides all parameters required to define the size, location and scale of a 2D rectangular region."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/layout/screengroup/",
+          "title": "X_ITE ScreenGroup node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ScreenGroup modifies the screen scale in such a way that one unit is equal to one pixel in both the horizontal and vertical directions."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "native",
+      "note": "Custom shaders are written in GLSL and attached through ComposedShader and ShaderPart nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/custom-shaders/",
+          "title": "X_ITE Custom Shaders",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL uses the GLSL language to write shaders that can be run across all browsers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Rendering on a server and streaming frames back is a service architecture; X_ITE renders locally in the browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Wind, scent and motion-seat effects are device-effect systems; X_ITE renders visuals and sound in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "partial",
+      "note": "HAnimDisplacer reshapes skin geometry by weight; the pages read do not describe general or glTF morph targets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/hanim/hanimdisplacer/",
+          "title": "X_ITE HAnimDisplacer node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HAnimDisplacer nodes alter the shape of coordinate-based geometry within HAnim nodes."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "via-extension",
+      "note": "Uses the X_ITE component node InstancedShape, which is experimental, and reads the glTF extension EXT_mesh_gpu_instancing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/x-ite/instancedshape/",
+          "title": "X_ITE InstancedShape node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this geometry node is instantiated as often as transformations are provided"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "EXT_mesh_gpu_instancing"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "Scenes reference one another through Inline, prototypes and imported nodes; layered overrides across sources are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/inline/",
+          "title": "X_ITE Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Inline can load another X3D or VRML model into the current scene via url."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Full support for imported nodes in proto declarations."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "partial",
+      "note": "Viewpoints give arrival points and terrain following finds the ground; no stored walkable surface or spawn point list is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Terrain following works by determining the ground beneath the avatar"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/navigation/viewpoint/",
+          "title": "X_ITE Viewpoint node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Viewpoints are the primary way for a user to navigate within a scene, and for an author to show critical aspects of a model."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "Metadata nodes attach typed properties to scene nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/core/metadataset/",
+          "title": "X_ITE MetadataSet node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MetadataSet contains a list of Metadata* nodes that each have containerField='value' and together provide information about the parent node of the MetadataSet"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "Nodes such as Inline accept a bounding box hint that speeds initialisation; no spatial index is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/networking/inline/",
+          "title": "X_ITE Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Precomputation and inclusion of bounding box information can speed up the initialization of large detailed models, with a corresponding cost of increased file size."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "PickableGroup marks children with a picking classification that picking sensors target; general named sets are not described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/picking/pickablegroup/",
+          "title": "X_ITE PickableGroup node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PickableGroup contains children that are marked as having a given classification of picking types, and can also enable or disable picking of the children."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "native",
+      "note": "MovieTexture and AudioClip put video and audio into the scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/texturing/movietexture/",
+          "title": "X_ITE MovieTexture node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MovieTexture applies a 2D movie image to surface geometry, or provides audio for a Sound node."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/sound/audioclip/",
+          "title": "X_ITE AudioClip node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "AudioClip provides audio data used by parent Sound nodes."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "native",
+      "note": "ParticleSystem with emitters and physics models is implemented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/components/particlesystems/particlesystem/",
+          "title": "X_ITE ParticleSystem node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ParticleSystem specifies a complete particle system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "native",
+      "note": "The glTF KHR_materials_variants extension is read and implemented as a Switch node.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "KHR_materials_variants implemented as Switch node."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for plane detection and mesh detection on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Naming real surfaces and objects from sensors is an augmented-reality runtime function; X_ITE displays authored scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for depth sensing on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for light estimation on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for image tracking and marker on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for bounded-floor and local-floor on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "none",
+      "note": "Searched the X_ITE features page, release notes, browser-services reference, getting-started, browser-support, accessing-the-external-browser, supported-nodes and the 286 component reference pages (version 16.7.0) for hit test on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/what-s-new/",
+          "title": "X_ITE What's New",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With this series there is now extended WebXR support. Use your VR glasses with X_ITE and get immersive."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data apply to sensing systems; X_ITE documents no real-world sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Recognising physical objects from 3D models is an augmented-reality runtime function; X_ITE displays authored scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/features/",
+          "title": "X_ITE Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a fast, small, and feature-rich JavaScript library and VRML viewer for displaying and executing X3D files, and other formats like VRML, glTF and more"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "partial",
+      "note": "Lists PLY among loadable formats (the comment cell reads ASCII and binary, and 3DGS) and has a PointSet node for coloured 3D points; the pages do not say that PLY points become a PointSet, and describe no compressed point cloud encoding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started, Supported File Formats (comment cell of the PLY row)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ASCII & Binary, 3DGS"
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/components/rendering/pointset/",
+          "title": "X_ITE PointSet node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PointSet is a node that contains a set of colored 3D points, represented by contained Color or ColorRGBA and Coordinate or CoordinateDouble nodes."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "none",
+      "note": "Searched the X_ITE Getting Started page, Supported Nodes and Browser Services reference for renderer, WebGPU, fallback, substitute and swap on 2026-11-03; there is one WebGL renderer, and the only fallback is HTML content shown by browsers without the x3d-canvas element, not a substitute renderer for a scene.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started, Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X_ITE is a comprehensive 3D library entirely written in JavaScript and uses WebGL for 3D rendering."
+        },
+        {
+          "url": "https://create3000.github.io/x_ite/",
+          "title": "X_ITE Getting Started, Fallback Content",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You should always provide fallback content to be displayed by those browsers."
+        }
+      ]
+    }
+  ]
+}

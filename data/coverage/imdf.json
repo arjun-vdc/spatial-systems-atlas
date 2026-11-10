@@ -1,0 +1,2817 @@
+{
+  "subject_id": "imdf",
+  "summary": "The Indoor Mapping Data Format is a community standard of the Open Geospatial Consortium, developed outside the consortium and published with Apple as copyright holder alongside it, that describes the inside of a venue such as an airport, shopping centre or train station. A delivery is a zip archive holding a manifest and one GeoJSON file per kind of feature: venues, buildings, floors, rooms, openings, fixtures, amenities, businesses, postal addresses, restricted zones and the links between rooms. It covers interior place description well, in global latitude and longitude, with a stated extension mechanism and a downloadable set of validation rules. It leaves meshes, materials, drawing and styling, device positioning, live data, identity and commerce to others. Traps for a standards audience: the data is flat and two-dimensional with floors stacked by an integer ordinal rather than by height, its curated paths are hints and not a routing network, the extension rules do not say what a reader without an extension should do, and the venue-type guidance pages are Apple advice outside the official standard.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "IMDF models the rooms and entrances of a venue, not human or character bodies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "IMDF has no bodies or bones; its geometry is flat map features of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expressions are about people and characters, which an indoor venue map does not model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Worn or carried items belong to avatars, which an indoor venue map does not model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Binding an avatar to a person is outside a map of the places inside a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "IMDF carries curated map features, not captured Gaussian splat data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "IMDF carries curated map features, not captured time-varying scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "IMDF carries curated map features, not captured points with attributes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "IMDF carries curated map features, not calibrated camera views with depth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "IMDF carries curated map features, not captured time-varying scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Payment exchange is outside a map of a venue; an Occupant only records that a business trades there.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Use-time licence checks are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Every archive states the IMDF version it follows in its Manifest, and 1.0.0 is the only permitted value. There is no stated rule for how later versions treat content written for earlier ones.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Manifest/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Manifest: Guidance",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "At this time, the ONLY permissible value for this member is"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: VERSION",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MUST correlate to the semantic version number designated by an officially released and supported version of IMDF"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "IMDF publishes a versioned set of validation rules, each with a severity, that test an archive and are available for download. These test map data deliveries, not software that reads or writes IMDF, and no certification programme is stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Validations/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Validations: Version",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Version 1.0.3 validations are also available for download"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Validations/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Validations: Severities",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Non-critical constraint violation indicating a warning"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "IMDF has a declared extension mechanism: identifiers with provider, name and version are listed in the Manifest, and extensions add feature types, members and validations without changing existing meaning. It gives no rule for a reader that does not know an extension, and it says it does not address clashes between extensions. GeoJSON itself defines no processing model for the foreign members this relies on.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Extending IMDF",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF supports formalized extension by declaring new Feature types or additional foreign members and properties of existing Feature types for use in capable or interested environments."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Extending IMDF",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification does NOT address how conflicts caused by their concurrent use in the same archive should be resolved."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 6.1, Foreign Members",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "no normative processing model for foreign members is defined"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Feature references in IMDF must resolve to an existing feature in the named layer of the same archive, and a validation rule checks this. There is no resolver for external resources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Referential Feature IDs",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The value MUST be a valid reference to the FEATURE-ID of an existing feature in the target feature layer."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Validations/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Validations: Archive",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Structural Validation: Validates that a feature id reference is resolvable."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "IMDF defines map archive content and declares no protected content components or protection scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "partial",
+      "note": "IMDF places every feature at a longitude and latitude on the Earth, and GeoJSON allows an optional height above the ellipsoid. It carries no orientation of a thing; the only direction conventions are the winding order of polygon rings and the directed flag on a Relationship.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Feature object represents a physical or conceptual element of an indoor map as an RFC 7946 compliant GeoJSON object"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 4, Coordinate Reference System",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An OPTIONAL third-position element SHALL be the height in meters above or below the WGS 84 reference ellipsoid."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 3.1.1, Position",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "native",
+      "note": "IMDF features are GeoJSON objects, so all coordinates are in the World Geodetic System 1984 frame in decimal degrees. The frame is fixed by inheritance from GeoJSON; IMDF offers no way to declare another one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Feature object represents a physical or conceptual element of an indoor map as an RFC 7946 compliant GeoJSON object"
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 4, Coordinate Reference System",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84)"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "An IMDF Anchor is a curated point from which a business record (an Occupant) takes its place in a room, and feature identifiers must be kept across deliveries, so such content stays tied to a place across sessions and readers. It is a display location in a map, not a device-tracked spatial anchor, and it does not fix arbitrary content with a pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Anchor/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Anchor: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In both cases, the record serves as the anchoring point from which another feature (i.e. Occupant) can derive, reference or inherit the Anchor's attribution."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: FEATURE-ID",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Feature IDs MUST be retained to identify the target feature during the lifetime of its existence across distinct deliveries"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "IMDF is delivered as one whole archive per venue; it defines no tiling or streaming.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "IMDF describes static venue features; it defines no pose series or live streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "IMDF places every feature in one global coordinate frame; it defines no linked local frames or transforms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "Every IMDF feature has a globally unique version 4 UUID that must not be reassigned, an identifier for things (places) only. Nothing in the model identifies a person or an agent, and no one controls or resolves these identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: FEATURE-ID",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Feature IDs MUST be a globally unique, RFC 4122 compliant version 4 UUID"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: FEATURE-ID",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Feature IDs MUST NOT be re-assigned to another Feature of any type within the target dataset or any other"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable claims about subjects are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential request and presentation is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Permission grants for subjects are outside a map of a venue; its restriction categories describe spaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabularies are outside a map of a venue; its type designators describe map features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Identity keys are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying consent with a subject is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive sessions on a device are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "IMDF carries static map features; it defines no behaviour graphs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "State replication between clients is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "IMDF defines archive content, not a wire protocol; it delivers a zip file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Joining a running world is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Arriving in another world with state is outside a map of a venue; a Relationship only links two map features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "IMDF names places (labels) and carries postal Address records, and a location can be derived from an Anchor or a matched Address. This is naming of real places by postal address, not resolution of a name to a reachable network destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Address/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Address: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An Address represents a postal address, of official or proprietary designation, associated with an element of a venue."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Anchor/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Anchor: Geometry capturing rules",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Derivation of an addressable entity's Point location based on reference to an Anchor by ID OR matched Address"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "A destination's approval or refusal response is outside a map of a venue; restriction categories only describe who a space is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended change between worlds is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Items a user holds are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "User settings that follow the user are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "partial",
+      "note": "IMDF features reference one another by identifier (level to building, unit to level) and Relationship features give edges between map elements. This is a graph of venue features, not a tree of drawable nodes with transforms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Referential Feature IDs",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The value MUST be a valid reference to the FEATURE-ID of an existing feature in the target feature layer."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Relationship/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Relationship: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Relationship models the physical or conceptual association between two map elements as an edge"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "IMDF fixes axis order (longitude then latitude, through GeoJSON) and the right-hand winding rule for polygon rings. It has no transforms to compose, no scale or rotation members and no handedness statement for 3D space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 3.1.1, Position",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Polygon Winding Order",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "exterior rings are counterclockwise, and holes are clockwise"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "partial",
+      "note": "An IMDF archive is one zip file that carries a venue model between tools, with a manifest and one GeoJSON file per feature type. The model is flat two-dimensional map data, not meshes or a three-dimensional scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Archives",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Datasets MUST be delivered as ZIP compressed archives"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Glossary/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Glossary: Extrude",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The stretching of a flat, two-dimensional feature in a vertical direction to a pre-determined height to create a three-dimensional view of the feature."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Unit/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Unit: Opening rules",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Occasionally, this is an illusion that is the consequence of the flattening of a 3-dimensional space into a 2-dimensional view."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "IMDF carries GeoJSON points, lines and polygons for venue features; it is not a mesh format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material definitions are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Keyframe animation is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Bone hierarchies are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "partial",
+      "note": "Horizontal scale is fixed by geographic coordinates in decimal degrees, and the spec states positional accuracy in meters and that an Opening must match the real entrance width. No vertical unit or height value is defined; floors are stacked by an integer ordinal.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7946",
+          "title": "RFC 7946 The GeoJSON Format, Section 4, Coordinate Reference System",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84)"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Horizontal Positional Accuracy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Features that explicitly reference this rule-set MUST be within +/- 5 meters of their actual ground location when tested using an independent source of higher accuracy."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Ordinal",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The assigned ordinal MUST reflect the Level's position within the total range of floors that physically exist within a building"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "none",
+      "note": "Searched the Manifest, Reference and all sixteen feature-type pages, the Validations and the Glossary of IMDF 1.0.0 for licence, license, copyright, rights and attribution on 2026-11-03; the matches are page footers, the licence page (terms cover the specification text) and unrelated uses of the words, so no member carries a licence for the map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Manifest/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Manifest: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Manifest is a container for metadata describing the content and origin of an archive"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/License/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), License: Terms of use",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The IMDF Specification is the property of Apple Inc."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "IMDF carries GeoJSON points, lines and polygons; it carries no parametric curves or surfaces.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Hosting another party's running experience is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned sound is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Rendering direction to the ears is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Sound blocked by geometry is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Audio streaming is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Live voice transport is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation of bodies is outside a map of the places inside a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar representations are outside a map of the places inside a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "Generating a place from a prompt is outside a format for describing a venue that exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Learned simulation of a world is outside a format for describing a venue that exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Building models from photographs is outside a format for describing a venue; the spec leaves the production of the data to others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "IMDF is delivered as a whole archive; it defines no progressive delivery of captured scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Synthesising images from unoccupied viewpoints is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing captured scenes is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of worlds is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Specifying inputs to a world generator is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving meshes or panoramas from splat worlds is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Exchanging agent actions is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic imagery is not a feature type of a venue map; the archive holds manifest and map feature files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Reconstructing radiance fields from images is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generating individual 3D objects from prompts is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Purchase records are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "IMDF packages map data as a zip archive of GeoJSON files, not a runnable experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "IMDF defines the content of an archive, not how archives reach clients at scale.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "IMDF defines archive content and validations; review of finished content by people is not part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "IMDF sets stated modelling requirements for three venue types (airport, shopping centre, transit station) and lists required and optional files. These venue-type pages are Apple guidance outside the official standard, and an archive has no field to declare which one it follows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In this release there are also detailed instructions for modeling the spaces of an airport, a shopping mall, and a train station."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Apple_Guidance/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Apple Guidance: Disclaimer",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Disclaimer: Apple Guidance and associated Map Data Requirements are not an official part of IMDF."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place on one device is a device-tracking feature; a venue map only describes the place itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering a device pose from camera imagery is a positioning service that a venue map is integrated with, not part of the map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "native",
+      "note": "IMDF is a data model for interior spaces: venues, buildings, levels, units, openings, fixtures and amenities. It is a community standard of the Open Geospatial Consortium that was developed outside the consortium, with Apple named as copyright holder alongside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Unit/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Unit: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Unit models the presence, location and approximate extent of a space."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Document status",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This Community standard was developed outside of the OGC and the originating party may continue to update their work"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Copyright notice",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Copyright© 2021 Apple and Open Geospatial Consortium"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "partial",
+      "note": "An IMDF archive declares itself through a Manifest with a creation time and keeps feature identifiers across deliveries, and features may carry start, end and modified times. The Manifest version field is the version of IMDF, not of the map, and there is no transform that aligns the map to another map of the place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Manifest/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Manifest: Property keys",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Version number of IMDF that the dataset content was produced in compliance with"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Manifest/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Manifest: Property keys",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Date and time of archive creation"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: FEATURE-ID",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Feature IDs MUST be retained to identify the target feature during the lifetime of its existence across distinct deliveries"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "native",
+      "note": "Every IMDF archive has one Venue polygon, and all other features must lie inside it, so the archive declares the area it covers in the GeoJSON frame. The polygon should be a formal property boundary or a reasonable pedestrian extent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Venue/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Venue: Property capturing rules",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ALL other features MUST be within the polygonal boundary of the Venue"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Venue/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Venue: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Venue models the presence, location and approximate extent of a place."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "IMDF has identified zones (Geofence features with ids, categories, restrictions and parent links) that attribute the features inside them. It defines no events scoped to a zone and no summaries.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Geofence/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Geofence: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Geofence models the extent of a geofence"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Glossary/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Glossary: Geofence (Feature)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The purpose of the Geofence is to attribute applicable features, that fall within its boundary, with characteristics held by the Geofence itself."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure of identity claims is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graphs are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at the point of use is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Evidence behind identity claims is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers for people are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Recipient keys and confidential delivery are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Records of what a system decided are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed lists of accepted issuers are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Discovery of what a client device can do is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Picking content from pointing input is done by the application that displays the map, not by the map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event input is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Body signals as input are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "A scripting runtime is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Running untrusted content is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "Resource budgets for guest content are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "IMDF defines the content of an archive and leaves production of the data to others; it defines no authoring interface for agents.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Deciding the truth of an object between peers is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Sending each client only what it needs is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Hiding latency is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Live audio and video streams are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Knowing who is where is outside a map of a venue; it describes places, not people.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "A shared clock for ordering events is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Binding map features to live external data is outside a static map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "IMDF Openings model real doors and thresholds: a line whose length approximates the entrance width, a door type with an automatic flag, and a directed Relationship that gives one-way travel. It shows nothing of what lies beyond, and these are physical entrances, not links between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Opening/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Opening: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "With few exceptions, an Opening models the presence, location and physical extent (width) of an entrance."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Opening/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Opening: Geometry capturing rules",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An Opening's length MUST approximate the actual width of the entrance"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: DOOR, automatic member",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "indicates the manual or automatic operation of the physical door at the opening"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Relationship/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Relationship: Unidirectional door",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Unidirectional travel though an Opening MUST be captured with the following elements:"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "Survival of world state across restarts is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "IMDF identifies features by UUID inside an archive; it defines no hash-based content addressing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "An IMDF delivery is a zip archive of a manifest and GeoJSON files in an open, documented format, so a whole venue can move between systems. It carries map features only, with no assets, behaviour or settings, and says nothing about what survives if a host closes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Archives",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Datasets MUST be delivered as ZIP compressed archives"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Archives",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Archives MUST contain a Manifest object supplied in a dedicated file named"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Records of what a person did are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid body simulation is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes are outside a map of a venue, which holds flat map features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft body simulation is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Turning geometry into pixels is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The graphics interface used to draw the map is left to the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Surface appearance is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing effects are left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Choosing what detail to draw is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Drawing splats is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Drawing point clouds and volumes is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Drawing text is left to the application; IMDF only carries labels as data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Viewpoint definition is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Blending the live camera view with content is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour spaces and output range are left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Layout of interface surfaces is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Graphics compute is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "A shader language is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Server-side rendering is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Wind, scent and similar effects are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "Choosing between renderers is left to the application that displays the map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Shape deformation is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Repeating objects cheaply is a drawing concern left to the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "partial",
+      "note": "The Manifest generated_by field names the application and release that produced the archive, as an opaque value for auditing. It is not signed and does not describe who made the underlying data or how.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Manifest/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Manifest: Property keys",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Unique identifier of the application or system responsible for generating an IMDF archive, including release number."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "partial",
+      "note": "IMDF marks walkable and restricted spaces (Units with categories such as walkway and nonpublic), their entrances (Openings) and directed traversals (Relationships). It has no spawn points, and the spec says its curated paths are hints and not a routing network.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Unit/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Unit: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A Unit models the presence, location and approximate extent of a space."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Relationship/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Relationship: Curated path",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Curated paths defined in this manner are NOT intended for use in defining a comprehensive routing network within a venue"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Opening/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Opening: Category specific rules",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "MUST have at least one Opening when the Unit models a vertical traversal capability to a different Level."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "Each IMDF feature type lists its property keys with a type and meaning, for example category, restriction, accessibility, name and level reference, so another system can read them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Property Keys describe the names, types and semantic intent of nested members of the GeoJSON"
+        },
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Reference/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Reference: Features",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Feature objects are used to capture ALL elements of a venue"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "The archive holds a manifest and GeoJSON feature files; a preview image is not one of its parts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Runtime transform constraints are outside a static map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed audiovisual media in a scene is outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Particle effects are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering provenance from fingerprints or watermarks is outside the content of a map archive.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF describes the content and characteristics of an archive"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Styling rules are left to the application; the spec says it is not expressly concerned with cartographic requirements.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "IMDF is not expressly concerned with cartographic requirements or aesthetic rules, though rules do, to the extent possible, take these needs into consideration."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable variants of an asset are outside a map of a venue.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Home: Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "provides a generalized, yet comprehensive model for any indoor location, providing a basis for orientation, navigation and discovery."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Reconstructing surroundings from device sensors is outside a venue map format; the spec leaves production of the data to others.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Labelling real surfaces from sensors is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Per-pixel real-world depth is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Hiding virtual content behind real surfaces is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Estimating real-world lighting is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Runtime-reported play-area bounds are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Ray tests against sensed surroundings are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Disclosure controls on sensed data are outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Recognising physical objects from a model is outside a venue map format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/20-094/Level/index.html",
+          "title": "IMDF 1.0.0 (OGC 20-094), Level: Definition",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The objective of IMDF is to provide guidance with respect to the modeling of ground truth conditions."
+        }
+      ]
+    }
+  ]
+}

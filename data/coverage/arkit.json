@@ -3303,6 +3303,273 @@
           "quote": "uniform token preliminary:anchoring:type (  allowedTokens = [\"plane\", \"image\", \"face\", \"none\"] )"
         }
       ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "Apple's USD authoring framework attaches structured metadata to prims, attributes and relationships: a dictionary of custom data, a dictionary of asset information, a display name and a human-readable description, each addressed by a USD token name. The field names and their meaning come from OpenUSD, which is what lets another USD tool read them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usdkit/usdstage/object/metadatacollection.md",
+          "title": "USDStage.Object.MetadataCollection, USDKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Prims, attributes, and relationships may have associated metadata."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usdkit/usdstage/object/metadatacollection/customdata.md",
+          "title": "customData, USDKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A dictionary of custom data authored on this object."
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "partial",
+      "note": "RealityKit can generate a three dimensional representation from a single two dimensional image, called a spatial scene, but only from an image, not a text prompt, and the result is a depth-and-parallax scene shown through the image presentation component. It exposes no mesh or other geometry of an individual object that could be placed in a separately authored scene or saved; photographs of a real object are handled by the photogrammetry service, scored under its own row.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/imagepresentationcomponent/spatial3dimage.md",
+          "title": "ImagePresentationComponent.Spatial3DImage, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Spatial scenes are a 3D representation of a 2D image or photo which RealityKit renders with depth and motion parallax."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/imagepresentationcomponent/spatial3dimage.md",
+          "title": "ImagePresentationComponent.Spatial3DImage, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To present a Spatial3DImage as a spatial scene, you must first generate it."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "none",
+      "note": "Apple documents a renderer for Gaussian splats and says splats come out of an external capture and training pipeline; the framework loads no files and trains nothing. Searched the RealityKit, ARKit, USD and USDKit symbol-title indexes and the GaussianSplatComponent, Gaussian Splat Rendering Guidelines and ObjectCapture photogrammetry pages for splat, gaussian, radiance, nerf, train, optimization on 2026-10-22; found only the renderer and the photogrammetry mesh reconstruction, whose stages are meshGeneration, optimization and pointCloudGeneration. Article bodies of the other symbols were not read, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/gaussiansplatcomponent.md",
+          "title": "GaussianSplatComponent, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Reduce splat count through pruning during the training pipeline."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/gaussian-splat-rendering-guidelines.md",
+          "title": "Gaussian Splat Rendering Guidelines, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "During scene capture and training, splats’ colors are accumulated from multiple views of the 3D scene and stored with each splat in the form of Red, Green, and Blue weights for spherical harmonics functions."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Apple names four USD renderers (RealityKit, Raytracer, Storm and SceneKit) and publishes a feature table for each one, so an author can see which subset a target supports. The contract is prose and tables for people: an asset cannot declare which renderer subset it targets, and Apple's own preliminary schemas carry a warning that they can change.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/validating-usd-files.md",
+          "title": "Validating feature support for USD files, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Each renderer supports a subset of the USD features."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd/creating-usd-files-for-apple-devices.md",
+          "title": "Creating USD files for Apple devices, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Avoid relying on preliminary schemas for production content that needs to remain stable across operating system releases."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "partial",
+      "note": "RealityKit's view for macOS and iOS says it handles keyboard input, with key events delivered to the view, but that is a key press interface from the host user-interface layer and not a string entry interface of RealityKit's own. ARKit has no text input, and on the headset typing arrives through the system's interface framework outside both.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/arview.md",
+          "title": "ARView, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Handle platform-appropriate user interaction in the form of mouse, keyboard, or gesture input."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "partial",
+      "note": "ARKit on the headset predicts the device pose for a requested time, intended for apps that do their own rendering. The predicted presentation and rendering deadlines belong to a companion framework, Compositor Services, rather than to ARKit or RealityKit; RealityKit runs its own frame loop and documents no pacing control.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/worldtrackingprovider/querydeviceanchor(attimestamp:).md",
+          "title": "queryDeviceAnchor(atTimestamp:), ARKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The predicted pose of the current device at a given time."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/compositorservices/layerrenderer/frame/predicttiming().md",
+          "title": "predictTiming(), Compositor Services, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Computes and returns the predicted timing information for the frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "A scanned reference object can be exported to a file with a thumbnail image embedded so the file is recognisable in external tools, though ARKit ignores that image when it loads the object. Nothing in the USD or RealityKit documentation describes a preview image packaged with a scene or model asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/arreferenceobject/export(to:previewimage:).md",
+          "title": "export(to:previewImage:), ARKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A thumbnail image to be embedded in the reference object’s filesystem representation."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Neither framework declares a protection scheme for content. RealityKit plays video through an AVFoundation player, and the key-delivery systems (FairPlay Streaming, clear key) and the protected-content flag belong to that companion framework, so a recipient reading a RealityKit or USD asset learns nothing about how its media is protected. Searched the ARKit, RealityKit, USD and USDKit symbol-title indexes (about 9,000 symbols) and the VideoPlayerComponent, VideoMaterial, ImmersiveMediaSupport, EnvironmentResource, Playing immersive media with RealityKit, Immersive media overview, USD and ARKit overview pages for protect, fairplay, drm, hdcp, encrypt, content key and secure on 2026-10-22, and searched the web for official Apple text tying RealityKit video components to FairPlay-protected playback; no match in the subject. Symbol bodies were not read, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit/videoplayercomponent.md",
+          "title": "VideoPlayerComponent, RealityKit, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A component that supports general video-playback experience with an AV player."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/avfoundation/avasset/hasprotectedcontent.md",
+          "title": "hasProtectedContent, AVFoundation, Apple Developer Documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A Boolean value that indicates whether the asset contains protected content."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "RealityKit draws one composited scene of entities and offers no list of image layers with shape and placement for a display compositor. Searched the RealityKit and ARKit symbol-title indexes for compositor, quad, cylinder, equirect, layer and portal on 2026-10-22; found a portal material and mesh primitives only. The visionOS Compositor Services framework takes a single rendered layer from an app's own Metal drawing and is a separate companion framework; symbol bodies were not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "No way is documented to find a stripped record of who made or edited a 3D asset from a fingerprint or watermark of its content. Searched the symbol-title indexes of ARKit, RealityKit, USD and USDKit for watermark, fingerprint, provenance, c2pa, content credential, signature and signed on 2026-10-22; no symbol or page about content-based provenance lookup. Symbol bodies were not read, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/usd.md",
+          "title": "Apple Developer Documentation: USD (DocC Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "USD is also Apple’s format of choice for 3D Content, including 3D content used for Augmented Reality."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "No separate styling rules are documented that choose which features show or what colour they take from content metadata; appearance is set on materials and entities, and alternate looks are carried as variants. Searched the symbol-title indexes of ARKit, RealityKit, USD and USDKit and the Creating USD files for Apple devices and Validating feature support pages for stylesheet, style, collection and override on 2026-10-22; the only USD page titled style sets animation timing. Symbol bodies were not read, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/realitykit.md",
+          "title": "Apple Developer Documentation: RealityKit (DocC Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "RealityKit provides high-performance 3D simulation and rendering capabilities you can use to create apps with 3D or augmented reality (AR) for iOS, iPadOS, macOS, tvOS, and visionOS."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "ARKit and RealityKit carry no description of wind, scent, heat or motion effects with the content; the nearest platform feature is Core Haptics, which plays authored touch patterns on the device itself. Searched the ARKit and RealityKit DocC index pages on 2026-11-01 for haptic, wind, scent and vibrate; RealityKit's force effects are physics simulation inside the scene, not effect devices. The full documentation set was not searched. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/corehaptics.md",
+          "title": "Core Haptics, Apple Developer Documentation (DocC Markdown)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Compose and play haptic patterns to customize your iOS app’s haptic feedback."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "ARKit supplies tracking and scene understanding; it does not define interchangeable renderers or a declared substitute.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit.md",
+          "title": "Apple Developer Documentation: ARKit (DocC Markdown)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ARKit combines device motion tracking, world tracking, scene understanding, and display conveniences to simplify building an AR experience."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "A RealityKit portal renders a second world through a mesh-shaped opening, clips what shows beyond the boundary and can allow entities to cross. Missing: the destination limiting what is shown, and any link between separate publishers' worlds, since both worlds live in one app.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.apple.com/documentation/realitykit/portalcomponent.md",
+          "title": "PortalComponent, RealityKit",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A RealityKit portal defines a way to look into a different, immersive world."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/realitykit/portalcomponent.md",
+          "title": "PortalComponent, RealityKit",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Entities under that world only render within the portal."
+        },
+        {
+          "url": "https://developer.apple.com/documentation/realitykit/portalcomponent.md",
+          "title": "PortalComponent, RealityKit, Clipping and Crossing",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Clipping prevents portal world content from rendering beyond the portal boundary and causing depth confusion."
+        }
+      ]
     }
   ]
 }

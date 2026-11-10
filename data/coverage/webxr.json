@@ -2721,6 +2721,118 @@
           "quote": "CV tracking algorithms like Vuforia; face and object detection"
         }
       ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "via-extension",
+      "note": "Reference-image detection is the optional marker-tracking feature of the WebXR Marker Tracking Module, which tracks a page-supplied set of 2D images and reports each one's pose as a space with a tracked or emulated state. The module is only a Draft Community Group Report dated 8 July 2026, and it covers images, not codes such as barcodes or square fiducial markers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/image-tracking/",
+          "title": "WebXR Marker Tracking Module, Draft Community Group Report, 8 July 2026",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Marker Tracking module expands the WebXR Device API with functionality to detect 2D images from a specified set and track their poses in the real world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The colour interpretation is fixed rather than declared: the compositor must treat the pixels of the framebuffer as sRGB, with no gamma conversion. The Layers module adds a colour format choice per layer, including sRGB texture formats, but nothing in the core or the Layers module declares a wider gamut, a dynamic range or an output range, and the words HDR and gamut do not appear in either.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "However, the XR Compositor MUST treat the framebuffer ’s backing’s pixels as if they were in the SRGB8_ALPHA8 or SRGB8 colorFormat ."
+        },
+        {
+          "url": "https://www.w3.org/TR/webxrlayers-1/",
+          "title": "WebXR Layers API Level 1, W3C Working Draft",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The colorFormat attribute defines the data type of the color texture data."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "partial",
+      "note": "The core says whether the device can show the system keyboard during a session and that ordinary web actions such as focusing a field will bring it up, with the session shown as visible-blurred meanwhile. It defines no text event or string input of its own, so the characters arrive through the page's ordinary web form handling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If isSystemKeyboardSupported is true , Web APIs that would trigger the overlay keyboard (such as focus ) will show the system keyboard."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "WebXR gives a page access to head-mounted displays and their sensors, with input sources meaning mechanisms for targeted actions in the virtual space, so typed musical events from an instrument are not the kind of device it covers. Searched the WebXR Device API (9 June 2026) and 15 module documents including Gamepads, Hand Input, Layers and Marker Tracking for MIDI, musical, instrument and synthesizer on 2026-10-22; no musical text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This specification describes support for accessing virtual reality (VR) and augmented reality (AR) devices, including sensors and head-mounted displays, on the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "The WebXR Device API treats immersive output as visual, audio, haptic or other sensory, but defines only display, pose and input, with no effect description. Searched the WebXR Device API Candidate Recommendation Draft of 9 June 2026 and the WebXR Gamepads Module for haptic, olfactory, scent, wind, motion platform, sensory, actuator, vibration, rumble on 2026-11-01; only the definition of an XR device matched. Other WebXR modules were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Content is considered to be \"immersive\" if it produces visual, audio, haptic, or other sensory output"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "WebXR gives a page access to XR devices and leaves the choice of drawing renderer to the page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification describes support for accessing virtual reality (VR) and augmented reality (AR) devices, including sensors and head-mounted displays, on the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "WebXR gives a page access to the headset and sensors; it says nothing about linking one world to another or previewing the destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API, W3C Candidate Recommendation Draft, 9 June 2026",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification describes support for accessing virtual reality (VR) and augmented reality (AR) devices, including sensors and head-mounted displays, on the Web."
+        }
+      ]
     }
   ]
 }

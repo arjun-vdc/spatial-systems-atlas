@@ -3170,6 +3170,193 @@
           "quote": "It accepts diverse input modalities — text, single-view images, multi-view images, and videos — and produces 3D world representations (meshes / Gaussian Splattings)."
         }
       ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "Searched the README, the worldgen and panogen READMEs, DOCUMENTATION.md and License.txt at commit df9988ef and the technical report (arXiv 2604.14268, html) for variant, alternative, variation and option set on 2026-10-22; the documentation chapter for the generation pipeline reads coming soon and the hosted product page was not searched, so the search is incomplete. Found only model variants and random seeds, no named alternatives of an output.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "From a single text prompt or image, create navigable 3D worlds with diverse styles: realistic, cartoon, game, and more."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Searched the README, the worldgen and panogen READMEs, DOCUMENTATION.md and License.txt at commit df9988ef and the technical report (arXiv 2604.14268, html) for privacy, anonymisation, face, blur, consent, retention and location on 2026-10-22; the documentation chapter for the generation pipeline reads coming soon and the hosted product page was not searched, so the search is incomplete. The licence's only related term bars using the model to produce personal information to harm others.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Capture a video, get a digital twin."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "none",
+      "note": "Searched the README, the worldgen and panogen READMEs, DOCUMENTATION.md and License.txt at commit df9988ef and the technical report (arXiv 2604.14268, html) for object, prop, asset and single-object generation on 2026-10-22; the documentation chapter for the generation pipeline reads coming soon and the hosted product page was not searched, so the search is incomplete. Object-level material appears only as a multi-view reconstruction test set; every prompt-driven output is a whole scene.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2604.14268",
+          "title": "HY-World 2.0 technical report",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We evaluate point map reconstruction on scene-level datasets (7-Scenes, NRGBD) and an object-level dataset (DTU)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "Searched the README, DOCUMENTATION.md and the technical report (arXiv 2604.14268, html) at commit df9988ef for color space, colour, sRGB, linear and gamma on 2026-10-22; found nothing that declares a transfer function, primaries or range for the panorama or the splat colours (the one table cell naming RGB gives channels only). The documentation chapter for the generation pipeline reads coming soon, so the search is incomplete.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/HY-World-2.0/df9988efb87bfc0f4947eb3889411cf957478b06/DOCUMENTATION.md",
+          "title": "HY-World 2.0 DOCUMENTATION.md",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The panorama is in equirectangular projection (ERP) format with the default output resolution of 1920 × 960 pixels (after removing the blending overlap):"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched the README, DOCUMENTATION.md and the technical report (arXiv 2604.14268, html) at commit df9988ef for profile, conformance, specification, subset, compatibility and level on 2026-10-22; the documentation describes output formats per component, but no named subsets, levels or conformance requirements let content or an implementation declare a compatible contract. The documentation chapter for the generation pipeline reads coming soon, so the search is incomplete.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "it directly produces editable, persistent 3D assets (meshes / 3DGS) that can be imported into game engines like Blender/Unity/Unreal Engine/Isaac Sim"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched the README, DOCUMENTATION.md and the technical report (arXiv 2604.14268, html) at commit df9988ef for thumbnail and preview on 2026-10-22; an optional fly-through video can be rendered from the splats and depth and normal pictures are saved beside them, but nothing marks any of them as a preview packaged with the asset. The demo gallery's thumbnail is the first input image of an example folder, not an output preview. The documentation chapter for the generation pipeline reads coming soon, so the search is incomplete.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/HY-World-2.0/df9988efb87bfc0f4947eb3889411cf957478b06/DOCUMENTATION.md",
+          "title": "HY-World 2.0 DOCUMENTATION.md",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Render interpolated fly-through video from Gaussian splats"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "The splat trainer writes a sidecar file holding the scene's axis-aligned extents and a camera-derived oriented box used as an air wall. It is a single box per scene and an unlisted by-product, not a hierarchy or index, and the documentation does not describe it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/HY-World-2.0/df9988efb87bfc0f4947eb3889411cf957478b06/hyworld2/worldgen/world_gs_trainer.py",
+          "title": "world_gs_trainer.py at commit df9988ef",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "air_wall_bbox = [x_min, x_max, y_min, y_max, z_min, z_max]"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/HY-World-2.0/df9988efb87bfc0f4947eb3889411cf957478b06/hyworld2/worldgen/world_gs_trainer.py",
+          "title": "world_gs_trainer.py at commit df9988ef",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "with open(f\"{self.ply_dir}/position_meta_info.json\", \"w\") as f:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "none",
+      "note": "Searched the README, the worldgen and panogen READMEs, DOCUMENTATION.md and License.txt at commit df9988ef and the technical report (arXiv 2604.14268, html) for group, collection, layer, instance, semantic and label on 2026-10-22; the documentation chapter for the generation pipeline reads coming soon and the hosted product page was not searched, so the search is incomplete. The generation code writes a list of detected object names that steers camera planning, but it is a working file and the splat and mesh outputs carry no sets of objects.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Real 3D assets — meshes / 3DGS (fully editable)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the README, the worldgen and panogen READMEs, DOCUMENTATION.md and License.txt at commit df9988ef and the technical report (arXiv 2604.14268, html) for watermark, fingerprint, provenance, metadata and generated-by marking on 2026-10-22; the documentation chapter for the generation pipeline reads coming soon and the hosted product page was not searched, so the search is incomplete. No mark is written into any output; the licence only encourages marking products as powered by the model.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/License.txt",
+          "title": "HY-World 2.0 Community License Agreement",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "mark the products or services developed by using the Tencent HY-WORLD 2.0 Works to indicate that the product/service is “Powered by Tencent HY”"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "HY-World 2.0 generates or reconstructs 3D worlds as splats, meshes and point clouds; its outputs are visual geometry, with no sensory effect description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 README (commit df9988e)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A research framework that generates world representations; it does not choose renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "HY-World generates world assets as files; it has no portals between worlds and no previews of them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/Tencent-Hunyuan/HY-World-2.0/blob/df9988efb87bfc0f4947eb3889411cf957478b06/README.md",
+          "title": "HY-World 2.0 repository README (commit df9988e)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HY-World 2.0 is a multi-modal world model framework for world generation and world reconstruction"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,2975 @@
+{
+  "subject_id": "hyperfy",
+  "summary": "Hyperfy is an open-source framework for building and hosting interactive three-dimensional virtual worlds that run in a web browser, and its authors still call it alpha (version 0.16.0). Each object in a world is an app that pairs a glTF model with a JavaScript script run in an isolated compartment on both the server and the clients, with PhysX physics, VRM avatars, LiveKit voice chat and WebXR for virtual-reality headsets. It also provides a world server with a database, real-time multiplayer over web sockets and its own .hyp file format for bundling an app with its assets. Payments, geospatial data and captured-scene formats are outside its stated purpose. It has no verifiable identity or credential format in this repository (consistent identity is sent to a connected Hyperfy service that was not read) and no real-world sensing for augmented reality, since the engine requests virtual-reality sessions only; travel between worlds is limited to opening a link. A trap for a standards audience: the scripting interface is documented as likely to break between versions, and the bundle format, blueprint data and packet set are project-specific with no conformance test, so interoperability today means matching this one implementation.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "native",
+      "note": "Avatars are VRM files: the avatar node renders a VRM and the loader registers a VRM plug-in for them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Renders a VRM avatar"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLoader.js",
+          "title": "ClientLoader.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.gltfLoader.register(parser => new VRMLoaderPlugin(parser))"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "native",
+      "note": "Bone names and structure come from the VRM humanoid definition; scripts address bones by their VRM names and the documentation lists the required set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node, getBoneTransform (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The VRM spec defines the following bones as required:"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node, getBoneTransform (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Note that VRM avatars have required and optional bones, and in some cases incuding while avatars are loading this method may return null."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for expressionManager, viseme, lipsync, blendshape and morph on 2026-11-03; the only matches were glTF morph-target handling in the model instancing code and an unrelated changelog line, so no expression or viseme control is exposed. The avatar loader removes the VRM expression nodes from the avatar scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Renders a VRM avatar"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/createVRMFactory.js",
+          "title": "createVRMFactory.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const expressions = glb.scene.children.filter(n => n.type === 'VRMExpression') // prettier-ignore"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/createVRMFactory.js",
+          "title": "createVRMFactory.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "for (const node of expressions) node.removeFromParent()"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "A script can read a bone's world transform and place an item on it, which carries items on a body; no declared attachment points or wearable item format exist, so nothing is defined to survive a transfer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node, getBoneTransform (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Returns a matrix of the bone transform in world space."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Avatar.md",
+          "title": "Avatar node, getBoneTransform example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "weapon.position.setFromMatrixPosition(matrix)"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "partial",
+      "note": "A world issues a signed token for a user record that holds the avatar; the README says avatars connect through Hyperfy for consistent identity, but no verifiable credential is involved.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "authToken = await createJWT({ userId: user.id })"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "avatar: user.avatar || this.world.settings.avatar?.url || 'asset://avatar.vrm',"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "partial",
+      "note": "Emote animation files are retargeted onto the normalized VRM bones, but the code reads rigs named in the Mixamo convention, so only that rig family is covered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/createEmoteFactory.js",
+          "title": "createEmoteFactory.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "// Retarget rotation of mixamoRig to NormalizedBone."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "partial",
+      "note": "Avatar update rate falls as distance from the camera grows; no reduced meshes or crowd representations were found in the quoted code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/createVRMFactory.js",
+          "title": "createVRMFactory.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const DIST_MIN_RATE = 1 / 5 // 5 times per second"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "A virtual-world engine for authored apps does not define an interchange format for captured splat data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Captured time-varying scene media is not part of an authored-world framework; the video node plays flat video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a capture-pipeline format and the framework consumes authored glTF models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Calibrated multi-camera plus depth carriage is a capture format outside a world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying captured scenes are a capture-pipeline matter, not part of an authored-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Learned world models are not part of a framework that runs authored scripts and physics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Building models from photographs is a capture tool task, not a world framework task.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Streaming captured scenes by region and detail belongs to capture formats, not to this framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "View synthesis from captures is outside an engine that draws authored meshes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content applies to captured scenes, which the framework does not handle.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing captured scenes after the fact applies to captured data, which the framework does not handle.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving meshes from splat or radiance-field worlds applies to generated captured scenes, which the framework does not handle.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a training pipeline, not a world framework function.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "partial",
+      "note": "A built-in assistant turns a text prompt into an app script that builds an object from primitive shapes and keeps it as an editable script; image prompts and mesh output are not shown.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/client/public/ai-docs.md",
+          "title": "ai-docs.md, Environment (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Scripts are able to instantiate shapes and other things to form specific objects like a couch, building or plant."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerAI.js",
+          "title": "ServerAI.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "async create({ blueprintId, appId, prompt }) {"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Payment exchange is not part of a framework whose stated purpose is building interactive worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Licence and entitlement checks at use are not part of this framework, whose only access control is a numeric rank per user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts and proofs of purchase are not part of a world-building framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "The database schema is migrated in versioned steps and a migration guide is kept; the scripting documentation warns of breaking changes, so existing apps are not protected (version 0.16.0, alpha).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, IMPORTANT (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As Hyperfy is in alpha, the scripting API is likely to evolve fast with breaking changes."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, IMPORTANT (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Once scripting is stable we'll move toward a forward compatible model, which will allow apps to be shared/traded with more confidence that they will continue to run correctly."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/server/db.js",
+          "title": "db.js, migrate (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "// run missing migrations"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/MIGRATIONS.md",
+          "title": "Migration Guide, Self Hosting (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A new `ASSETS=local` environment variable is now required."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/package.json",
+          "title": "package.json (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"version\": \"0.16.0\","
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Project Status (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This project is still in alpha as we transition all of our [reference platform](https://github.com/hyperfy-xyz/hyperfy-ref) code into fully self hostable worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for test suites, conformance suites and a test script on 2026-11-03; none found; the only files with test in the name are three example apps, and the package scripts list lint and format checks only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/README.md",
+          "title": "Creator Docs (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "These docs are for 3D artists and developers looking to build assets and/or fully interactive apps that are compatible with the Hyperfy world engine."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/package.json",
+          "title": "package.json, scripts (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"check\": \"npm run lint && npm run format\""
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Custom node types such as colliders and level-of-detail groups travel as glTF custom properties that the loader recognises; no extension names or rules for recipients that lack them were found in the quoted sources.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/extras/blender-exporter.md",
+          "title": "Blender Exporter (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "It will also ignore hidden objects, and automatically enable \"custom properties\" on the gltf export so that you can export colliders etc."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/glbToNodes.js",
+          "title": "glbToNodes.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "else if (props.node === 'collider' && object3d.isMesh) {"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "Asset references use an asset:// scheme that each world resolves against its configured asset address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientBuilder.js",
+          "title": "ClientBuilder.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const url = `asset://${filename}`"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/World.js",
+          "title": "World.js, resolveURL (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "return url.replace('asset:/', this.assetsUrl)"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "native",
+      "note": "Apps are packaged as .hyp files holding a blueprint and its assets, and the format is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/supported-files/hyp-format.md",
+          "title": ".hyp File Format Documentation (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The `.hyp` file format is a custom binary format used for Hyperfy Apps that bundles a blueprint configuration with its associated assets."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "partial",
+      "note": "Assets can be kept locally or in an S3-compatible bucket and are served with a one-year expiry header; no content-delivery network integration is specified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# How assets are stored, fetched and uploaded (local or s3)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/server/index.js",
+          "title": "server/index.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString()) // older browsers"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Position expressed against the Earth is not part of a framework whose world coordinates are local metres.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems for the Earth are not part of a framework with a single local world frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Fixing content to real places across devices is not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled geospatial streaming is not part of a framework for authored worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Real-place anchors on a device are not part of a framework for authored virtual worlds; its anchor node only seats players.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Camera-based positioning against the real world is not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping of real buildings is not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Alignment of maps of real places is not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Declaring the real-world area content applies to is not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published real-world zones and spatial events are not part of a virtual-world framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "Each user gets a stable identifier inside a world, kept when they leave and return; it is issued by that world, not a portable base identifier.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/Player.md",
+          "title": "Player API, .id (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The players unique ID. This is always the same for the same player, even when they leave and come back."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "authToken = await createJWT({ userId: user.id })"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for credential, verifiable, did:, siwe, oauth, privy, passkey and openid on 2026-11-03; the only matches were object-storage access keys in the S3 asset code. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for credential, verifiable, did:, siwe, oauth, privy, passkey and openid on 2026-11-03; the only matches were object-storage access keys in the S3 asset code, so no request or presentation exchange exists. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "A user holds one of three numeric ranks (visitor, builder, admin) in a world, and all users are admins when no admin code is set; the rank is meaningful only inside the issuing world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/ranks.js",
+          "title": "ranks.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "BUILDER: 1,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/commands.md",
+          "title": "Commands, /admin (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If your .env doesn't have an ADMIN_CODE set, then all players are treated as an admin."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for claim vocabulary, schema and verifiable on 2026-11-03; no match for a claim vocabulary or validation schema; the only schema matches are database table definitions. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for rotate, rotation, revoke, revocation, recovery, keypair, privateKey, publicKey and secret on 2026-11-03; no match for key rotation, revocation or recovery; the only key is the server secret that signs the session token, and nothing defines how it changes. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": "Example environment file (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# The secret the server uses to create/parse json web tokens"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for revoke, revocation, suspend and credential status on 2026-11-03; no match for a credential status mechanism. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for consent, disclos and permission grant on 2026-11-03; no match for consent carried with a user. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for selective, disclos, zero-knowledge and zkp on 2026-11-03; no match for selective disclosure of user data. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for reputation, friend, follower and social graph on 2026-11-03; no match for a portable reputation or relationship record. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for assurance, attest, evidence and issuer on 2026-11-03; no match for assurance or evidence information for a user claim. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for pairwise, unlink, unlinkable and correlation on 2026-11-03; no match for pairwise identifiers or unlinkability measures. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for encrypt, cipher, e2ee and publicKey on 2026-11-03; no match for recipient key material or confidential delivery; the only cryptography is a content hash and a signed session token. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "authToken = await createJWT({ userId: user.id })"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for receipt, attest and signed decision on 2026-11-03; no match for a machine-readable record of a decision. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for trust, registry, issuer and allow list on 2026-11-03; no match for a governed list of accepted issuers or worlds; the only registry matches are the app blueprint registry and a container image registry. The README sends consistent identity to a connected Hyperfy service whose code and documentation were not read, so the absence is not confirmed for the whole ecosystem.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Portable avatars** - Connect via Hyperfy for consistent identity"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "native",
+      "note": "The engine requests an immersive VR session, keeps track of it and reacts when it ends.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* - Keeps track of XR sessions"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const session = await navigator.xr?.requestSession('immersive-vr', {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "session.addEventListener('end', this.onSessionEnd)"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "native",
+      "note": "Thumbsticks, triggers and grips of VR controllers are read as named inputs alongside keyboard and mouse.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientControls.js",
+          "title": "ClientControls.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "xrLeftStick: createVector,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientControls.js",
+          "title": "ClientControls.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "xrRightTrigger: createButton,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/Control.md",
+          "title": "Control API (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The `app.control()` method gives you access to user inputs like keyboard and mouse and gives you control over the camera etc."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for hand-tracking, XRHand and hand tracking on 2026-11-03; no match; only controller input sources are read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for eye tracking and gaze on 2026-11-03; gaze matches are head-direction based only, per the changelog line quoted, with no eye tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog, v0.15.0 (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "core: introduce gaze based head tracking"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for haptic and vibrate on 2026-11-03; no match outside the bundled physics bindings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "The engine asks the browser whether immersive VR and AR sessions are supported; no wider device capability report is exposed to scripts in the sources quoted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsVR = await navigator.xr?.isSessionSupported('immersive-vr')"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for face tracking, body tracking, mediapipe, facial and blink on 2026-11-03; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "native",
+      "note": "Pointer events are delivered to scene content by raycasting from the reticle while the pointer is locked.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientPointer.js",
+          "title": "ClientPointer.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* It handles pointer events while the pointer is locked via reticle raycasting."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical instrument events are not part of a framework for authored interactive worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Body-signal input streams are not part of a framework for authored interactive worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "native",
+      "note": "World rules are written in JavaScript attached to each app.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Interactive app system** - Create dynamic applications with JavaScript"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, Apps (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can think of them as a combination of a model and a script."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "native",
+      "note": "Each app script runs in a locked-down compartment with a restricted set of globals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/Scripts.js",
+          "title": "Scripts.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* - Executes scripts inside secure compartments"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/client/public/ai-docs.md",
+          "title": "ai-docs.md, Globals (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Scripts all execute in isolated compartments and a very strict set of globals are available:"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for timeout, budget, limit and compute on 2026-11-03; only unrelated timers and a note to the built-in assistant to avoid heavy generated content; no CPU, memory or call limit on guest scripts was found. The sandbox also exposes fetch to scripts.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/Scripts.js",
+          "title": "Scripts.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* - Executes scripts inside secure compartments"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/Utils.md",
+          "title": "Utils, Fetch (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The standard `fetch` API is available for making network requests."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "partial",
+      "note": "Interactivity travels with an app as an attached script inside its .hyp bundle, but it is imperative code, not a declarative behaviour description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, Apps (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can think of them as a combination of a model and a script."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/supported-files/hyp-format.md",
+          "title": ".hyp File Format Documentation, Blueprint Properties (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "`script`: (Optional) URL of the app's script file"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "partial",
+      "note": "A headless node client lets a program join a world as a player, press keys and chat, and the repository ships a sample bot; the sample notes that two such clients cannot share one token in a world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/createNodeClientWorld.js",
+          "title": "createNodeClientWorld.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "world.register('network', ClientNetwork)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/agent.mjs",
+          "title": "agent.mjs (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "world.chat.send('heyo...')"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/agent.mjs",
+          "title": "agent.mjs (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "// - running two of these fails the second one because they both try to use the same authToken and get kicked (one per world)"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "A built-in assistant creates and edits app scripts from prompts using a published instruction file, with several model providers selectable by configuration; no interface for an outside program to create or publish content was found beyond the asset upload endpoint.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog, v0.16.0 (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "core: support for AI and AI generated apps via ChatGPT, Grok, Gemini etc (see .env)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerAI.js",
+          "title": "ServerAI.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "async create({ blueprintId, appId, prompt }) {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/client/public/ai-docs.md",
+          "title": "ai-docs.md, Environment (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Scripts are able to instantiate shapes and other things to form specific objects like a couch, building or plant."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/server/index.js",
+          "title": "server/index.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "fastify.post('/api/upload', async (req, reply) => {"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "native",
+      "note": "The world network rate is eight updates a second, app state is held on the server and sent in the join snapshot, and apps send named events across the network.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/World.js",
+          "title": "World.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.networkRate = 1 / 8 // 8Hz"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/App.md",
+          "title": "App API, .state (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The servers state object is sent to all new clients that connect in their initial snapshot, allowing clients to initialize correctly, eg in the right position/mode."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/App.md",
+          "title": "App API, .send (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Sends an event across the network."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "native",
+      "note": "Clients and server exchange binary packets, packed with a MessagePack library, over a web socket.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/server/index.js",
+          "title": "server/index.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "fastify.get('/ws', { websocket: true }, (ws, req) => {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/packets.js",
+          "title": "packets.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const packr = new Packr({ structuredClone: true })"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientNetwork.js",
+          "title": "ClientNetwork.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.ws = new WebSocket(url)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "native",
+      "note": "A joining client presents a signed token or receives a new one, then gets a snapshot of the world state; authentication is anonymous by default.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "authToken = await createJWT({ userId: user.id })"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "socket.send('snapshot', {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "name: 'Anonymous',"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# The secret the server uses to create/parse json web tokens"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "partial",
+      "note": "A script can open a link, and apps can redirect to a URL or open a new tab; no state travels with the user to the destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/World.md",
+          "title": "World API, open (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Opens a link, defaults to new tab."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "apps: apps can now redirect to a url or open in a new tab"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "A world is reached at the address of its own host and web socket URL; no naming layer resolves a place name to a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Standalone persistent worlds** - Host on your own domain"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# The public web socket url the client connects to"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "The server refuses a join with a coded reason, for a full world or a duplicate user; there is no separate pre-arrival approval exchange with a validity limit.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const packet = writePacket('kick', 'player_limit')"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, onConnection (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const packet = writePacket('kick', 'duplicate_user')"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "native",
+      "note": "A player's client owns that player's movement, while apps run on the server as well as clients and the server holds the shared state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/Entities.js",
+          "title": "Entities.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Entity = Types[data.owner === this.world.network.id ? 'playerLocal' : 'playerRemote']"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/Networking.md",
+          "title": "Networking (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Apps execute their scripts in every environment, eg on the server and on every client."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/App.md",
+          "title": "App API, .state (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The servers state object is sent to all new clients that connect in their initial snapshot, allowing clients to initialize correctly, eg in the right position/mode."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for interest, relevance, culling and visibility on 2026-11-03; no per-client filtering; the server network send loops over every connected socket and skips only the sender.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/World.js",
+          "title": "World.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.networkRate = 1 / 8 // 8Hz"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, send (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "if (socket.id === ignoreSocketId) return"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "partial",
+      "note": "Remote players are shown through a buffered interpolation delay of one and a half network ticks; no server reconciliation of local prediction was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/entities/PlayerRemote.js",
+          "title": "PlayerRemote.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.position = new BufferedLerpVector3(this.base.position, this.world.networkRate * 1.5)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/entities/PlayerLocal.js",
+          "title": "PlayerLocal.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.world.network.send('entityModified', data)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "native",
+      "note": "Live voice and screen-share video are carried through a LiveKit room.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLiveKit.js",
+          "title": "ClientLiveKit.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { Participant, ParticipantEvent, Room, RoomEvent, ScreenSharePresets, Track } from 'livekit-client'"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/Player.md",
+          "title": "Player API, screenshare (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Prompts the player to share their screen, and then casts it to all video nodes that have a matching `.screenId` property."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "partial",
+      "note": "Scripts can list all players in the current world; presence across operators is not shown.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/World.md",
+          "title": "World API, getPlayers (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Returns an array of all players."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "native",
+      "note": "Clients keep an offset to the server clock and read time through it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientNetwork.js",
+          "title": "ClientNetwork.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "return (performance.now() + this.serverTimeOffset) / 1000 // seconds"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "Scripts can call the standard fetch interface, so an app can pull external data, but no binding model ties object state to a data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/Utils.md",
+          "title": "Utils, Fetch (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The standard `fetch` API is available for making network requests."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for portal and preview on 2026-11-03; portal matches were only the page-layer component in the interface code and nothing matched preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/World.md",
+          "title": "World API, open (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Opens a link, defaults to new tab."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "apps: apps can now redirect to a url or open in a new tab"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "native",
+      "note": "World data is saved to a database on a timer (default sixty seconds), kept in a local SQLite file or an optional remote Postgres database.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# How often the world saves (seconds)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SAVE_INTERVAL=60"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# By default world data is stored in a local sqlite database in the world folder"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/.env.example",
+          "title": ".env.example (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "# Optionally set this to a postgres uri to store remotely, eg `postgres://username:password@host:port/database`"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerNetwork.js",
+          "title": "ServerNetwork.js, save (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.saveTimerId = setTimeout(this.save, SAVE_INTERVAL * 1000)"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "native",
+      "note": "Uploaded models are named by the SHA-256 hash of their contents.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/utils-client.js",
+          "title": "utils-client.js, hashFile (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* takes a file and generates a sha256 unique hash."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientBuilder.js",
+          "title": "ClientBuilder.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const filename = `${hash}.glb`"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "partial",
+      "note": "Display and audio preferences are saved in the browser's local storage, so they follow the browser, not the user across worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientPrefs.js",
+          "title": "ClientPrefs.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "storage.set('prefs', {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/storage.js",
+          "title": "storage.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const data = localStorage.getItem(key)"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "A script archives the world folder as a compressed file and single apps export as .hyp bundles; no whole-world import in an open documented format was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/package.json",
+          "title": "package.json, scripts (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"world:backup\": \"node scripts/backup-world.mjs\","
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/scripts/backup-world.mjs",
+          "title": "backup-world.mjs (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const backupFileName = `backup_${timestamp}.tar.gz`"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/supported-files/hyp-format.md",
+          "title": ".hyp File Format Documentation (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The `.hyp` file format is a custom binary format used for Hyperfy Apps that bundles a blueprint configuration with its associated assets."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "native",
+      "note": "Rigid bodies are static, kinematic or dynamic and simulated by PhysX.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/RigidBody.md",
+          "title": "RigidBody node, type (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The type of rigidbody, either `static`, `kinematic` or `dynamic`. Defaults to `static`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/RigidBody.md",
+          "title": "RigidBody node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A rigidbody that has colliders as children will act under physics."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Physics-based interactions** - Built on PhysX for realistic simulation"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "native",
+      "note": "Collider shapes (box, sphere or mesh geometry) are separate nodes under a body.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Collider.md",
+          "title": "Collider node, type (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The type of collider, must be `box`, `sphere` or `geometry`. Defaults to `box`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Collider.md",
+          "title": "Collider node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A collider connects to its parent rigidbody to simulate under physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "native",
+      "note": "The engine has a joint node built on PhysX joint types, one of which is quoted; it is in the code but absent from the documentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/nodes/Joint.js",
+          "title": "Joint.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.joint = new PHYSX.RevoluteJointCreate(this.ctx.world.physics.physics, actor0, frame0, actor1, frame1)"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "native",
+      "note": "Static friction, dynamic friction and restitution can be set per shape.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Prim.md",
+          "title": "Prim node, staticFriction (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Physics material static friction. Determines resistance to start moving when at rest. Defaults to `0.6`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Prim.md",
+          "title": "Prim node, restitution (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Physics material bounciness. 0 = no bounce, 1 = perfect bounce. Defaults to `0`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/nodes/Collider.js",
+          "title": "Collider.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const material = this.ctx.world.physics.getMaterial(this._staticFriction, this._dynamicFriction, this._restitution)"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "native",
+      "note": "Colliders can be marked as triggers, which raise enter and leave events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Collider.md",
+          "title": "Collider node, trigger (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Whether the collider is a trigger. Defaults to `false`."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for determin on 2026-11-03; no statement or mechanism for cross-machine determinism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Physics-based interactions** - Built on PhysX for realistic simulation"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for cloth, softbody and soft body on 2026-11-03; matches were only the bundled physics bindings, with no node or script interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**Physics-based interactions** - Built on PhysX for realistic simulation"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "native",
+      "note": "Drawing goes through a WebGL renderer with a post-processing chain that includes ambient occlusion and filmic tone mapping.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "* - Supports renderer, shadows, postprocessing, etc"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "renderer = new THREE.WebGLRenderer({"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.aoPass = new N8AOPostPass(this.world.stage.scene, this.world.camera, this.width, this.height)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "mode: ToneMappingMode.ACES_FILMIC,"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "The renderer targets WebGL. Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for webgpu on 2026-11-03; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "renderer = new THREE.WebGLRenderer({"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "Surfaces use physically based materials with roughness and emissive controls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Prim.md",
+          "title": "Prim node, roughness (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "How rough the material appears, from 0.0 (smooth/reflective) to 1.0 (rough/diffuse). Defaults to `0.8`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/mesh/Material.md",
+          "title": "Material node, emissiveIntensity (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The emissive intensity of the material. Values greater than `1` will activate HDR Bloom, as long as the emissive color is not black."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "The engine draws real-time shadows (using a cascaded shadow map library) and ambient occlusion; the quoted sources show no light probes or baked global illumination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.renderer.shadowMap.enabled = true"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientEnvironment.js",
+          "title": "ClientEnvironment.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { CSM } from '../libs/csm/CSM'"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.aoPass = new N8AOPostPass(this.world.stage.scene, this.world.camera, this.width, this.height)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "native",
+      "note": "Post-processing includes ambient occlusion, bloom, anti-aliasing and filmic tone mapping.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.aoPass = new N8AOPostPass(this.world.stage.scene, this.world.camera, this.width, this.height)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "mode: ToneMappingMode.ACES_FILMIC,"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "A level-of-detail node switches child nodes by camera distance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/LOD.md",
+          "title": "LOD node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A LOD can hold multiple child nodes and automatically activate/deactivate them based on their distance from the camera."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for splat, gaussian, point cloud, voxel and volumetric on 2026-11-03; the only splat matches concern a terrain splat-map shader, not Gaussian splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for splat, gaussian, point cloud, voxel and volumetric on 2026-11-03; no point cloud, voxel or volumetric video rendering; the video node draws flat video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Video.md",
+          "title": "Video node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Renders a video into the world, either on a simple plane or onto geometry."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "native",
+      "note": "Text is drawn on interface surfaces placed in the world or on the screen.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/UIText.md",
+          "title": "UIText node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents text inside a UI."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/UI.md",
+          "title": "UI node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Displays a UI plane in-world"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "partial",
+      "note": "Scripts can read the camera and take it over by setting a flag; no model for binding between several camera viewpoints was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/Control.md",
+          "title": "Control API, Camera (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "By default the camera information is read-only, set `write` to true when you want to take over control."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for passthrough, alpha-blend and immersive-ar on 2026-11-03; the only immersive-ar match is a support query; sessions are requested for immersive VR only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const session = await navigator.xr?.requestSession('immersive-vr', {"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The renderer outputs sRGB with filmic tone mapping; no per-asset colour interpretation or range declaration is shown.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.renderer.outputColorSpace = THREE.SRGBColorSpace"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "mode: ToneMappingMode.ACES_FILMIC,"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "native",
+      "note": "A UI node draws a two-dimensional surface either in the world or on the screen.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/UI.md",
+          "title": "UI node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Displays a UI plane in-world"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/UI.md",
+          "title": "UI node, space (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Whether this UI should be rendered in `world` space or `screen` space."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for webgpu on 2026-11-03; no match; the graphics system creates a single WebGL renderer and shows no interchangeable renderers or declared substitute.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientGraphics.js",
+          "title": "ClientGraphics.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "renderer = new THREE.WebGLRenderer({"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "native",
+      "note": "Apps are hierarchies of nodes that scripts can read and change, converted from the glTF model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, Nodes (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Apps are made up of a hierarchy of [nodes](./nodes/Node.md) that you can view and modify within the app runtime using scripts."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "native",
+      "note": "Nodes have a local position, and the axis convention follows three.js as stated in the instruction file given to the built-in assistant, not in the creator documentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/Node.md",
+          "title": "Node API, .position (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The local position of the node."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/client/public/ai-docs.md",
+          "title": "ai-docs.md, Coordinate System & Units (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "For all intents and purposes these virtual worlds use the same coordinate system as three.js (X = Right, Y = Up, Z = forward)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "Models are carried as glTF binary (.glb) files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/supported-files/models.md",
+          "title": "Models (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Dragging and dropping a `glb` model directly into a world will convert it into an \"App\" with no script or config attached to it."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLoader.js",
+          "title": "ClientLoader.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "partial",
+      "note": "Meshes arrive as glTF geometry. Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for DRACOLoader, MeshoptDecoder and KTX2 on 2026-11-03; the only match was the server import of its bundled loader, so no decoder is set up for compressed meshes or textures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLoader.js",
+          "title": "ClientLoader.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ServerLoader.js",
+          "title": "ServerLoader.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { GLTFLoader } from '../libs/gltfloader/GLTFLoader.js'"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "partial",
+      "note": "Images in PNG, JPEG and WebP and HDR environment files are supported. Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for KTX2, basis and draco on 2026-11-03; the only matches were unrelated CSS flex-basis properties, so no texture compression loader is set up.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Image.md",
+          "title": "Image node, src (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Supported: png, jpeg, jpg, webp"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/app/Props.md",
+          "title": "Props (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "kind: String, // the kind of file, must be one of: avatar, emote, model, texture, hdr, audio"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for MaterialX on 2026-11-03; no match; materials come from glTF and the engine's own surface properties. The material node documents only a few runtime properties.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/mesh/Material.md",
+          "title": "Material node, emissiveIntensity (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The emissive intensity of the material. Values greater than `1` will activate HDR Bloom, as long as the emissive color is not black."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Animation clips come from the glTF model and scripts play them by name with fade, loop and speed controls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/SkinnedMesh.md",
+          "title": "SkinnedMesh node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a skinned mesh with bones and animations."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/SkinnedMesh.md",
+          "title": "SkinnedMesh node, anims (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An array of animation names available. Read-only."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "Skinned meshes carry bones and scripts can read bone transforms by name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/SkinnedMesh.md",
+          "title": "SkinnedMesh node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a skinned mesh with bones and animations."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/SkinnedMesh.md",
+          "title": "SkinnedMesh node, getBone (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Returns a bone with properties `position`, `quaternion`, `rotation`, `scale` and `matrixWorld`."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "Distances and sizes are in metres; the statement is in the instruction file given to the built-in assistant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/client/public/ai-docs.md",
+          "title": "ai-docs.md, Coordinate System & Units (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The unit of measurement for distance or size is in meters."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for licence, license, copyright, SPDX, Creative Commons, cc0, permitted and attribution on 2026-11-03; the only matches are the project's own GPL-3.0-only licence in the package file and a heading in the code of conduct, so no licence or usage terms are carried with an app or asset. Apps do carry descriptive metadata (image, name, author, url, description).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "core: support app metadata (image, name, author, url, desc)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/package.json",
+          "title": "package.json (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"license\": \"GPL-3.0-only\""
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "partial",
+      "note": "Primitive shapes (box, sphere, cylinder, cone, torus, plane) are described by size parameters, but they are limited to a fixed set and no curve or surface mathematics is carried.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Prim.md",
+          "title": "Prim node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Creates primitive 3D shapes with built-in geometry caching for optimal performance."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Prim.md",
+          "title": "Prim node, size (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The size of the shape, depending on the `type` (defaults shown):"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for voxel on 2026-11-03; the only match is a style hint in the assistant instruction file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, What is Hyperfy (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hyperfy is an open-source framework for building interactive 3D virtual worlds."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "native",
+      "note": "Each app is a self-contained unit with its own script and model that runs in an isolated compartment on both client and server inside the containing world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, Apps (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can think of them as a combination of a model and a script."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/README.md",
+          "title": "Scripting README, Apps (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "They can talk to eachother, and run both on the client and the server."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/Scripts.js",
+          "title": "Scripts.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.compartment = new Compartment({"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "partial",
+      "note": "The model loader marks meshes that have morph targets as not linked, and a changelog entry records a fix for errors with such geometry, so these meshes are accepted. Searched docs, src and scripts for morph and blendshape on 2026-11-03; no script interface for setting morph influences or authoring them was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/glbToNodes.js",
+          "title": "glbToNodes.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "linked: !hasMorphTargets && !object3d.material.transparent,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog, Fixed (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Errors using geometry with morph targets"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "native",
+      "note": "Meshes that share data are automatically instanced into single draw calls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/mesh/Mesh.md",
+          "title": "Mesh node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Internally the mesh is automatically instanced for performance."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/supported-files/models.md",
+          "title": "Models, Duplicate Linked (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This not only reduces the file size of your model, but our engine is able to better optimize and automatically instance those meshes together in a single draw-call for huge performance."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "partial",
+      "note": "A world has one spawn point set by command and saved with the world; no walkable surface or bounds are carried with the scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/commands.md",
+          "title": "Commands, /spawn set (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Sets the spawn point for all future players entering the world, to the current position and direction you are facing. Requires builder rank."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "Apps carry name, author, URL, description and image; free-form structured properties on scene parts are not shown.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "core: support app metadata (image, name, author, url, desc)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "native",
+      "note": "An app can carry an image that is packaged into its .hyp bundle.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/appTools.js",
+          "title": "appTools.js, exportApp (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "if (blueprint.image) {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/CHANGELOG.md",
+          "title": "Changelog (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "core: support app metadata (image, name, author, url, desc)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "native",
+      "note": "The engine keeps a loose octree and bounding-volume trees for spatial lookup and picking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/LooseOctree.js",
+          "title": "LooseOctree.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "export class LooseOctree {"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/extras/three.js",
+          "title": "three.js (extras) (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { computeBoundsTree, disposeBoundsTree, acceleratedRaycast } from 'three-mesh-bvh'"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "native",
+      "note": "A video node draws timed video onto a plane or custom geometry; by default each node has its own player, and nodes can be linked to share state and control.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Video.md",
+          "title": "Video node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Renders a video into the world, either on a simple plane or onto geometry."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Video.md",
+          "title": "Video node, linked (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "By default, videos are not linked and each node spawns a new video player with its own state and control."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "native",
+      "note": "A particles node defines an emitter with shape, rate, bursts, life and colour parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Particles.md",
+          "title": "Particles node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Creates a particle emitter that can be used for VFX such as rain, fire, magic, etc."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "native",
+      "note": "An audio node places a clip in the scene with distance model, rolloff and sound cone settings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a single audio clip that can be played in the world."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node, distanceModel (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When spatial is enabled, the distance model to use. Defaults to `inverse`."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node, coneInnerAngle (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When spatial is enabled, the cone inner angle to use. Defaults to `360`."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "native",
+      "note": "The audio node sets its positional panner to the head-related transfer model and ramps position and orientation over time; the model is fixed, with no per-node choice and no ambisonics in the node source or its documentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/nodes/Audio.js",
+          "title": "Audio.js, panner setup (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.pannerNode.panningModel = 'HRTF'"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/nodes/Audio.js",
+          "title": "Audio.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.pannerNode.positionX.linearRampToValueAtTime(pos.x, endTime)"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for reverb and convolver on 2026-11-03; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a single audio clip that can be played in the world."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for occlu on 2026-11-03; the only matches concern ambient occlusion in graphics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a single audio clip that can be played in the world."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "partial",
+      "note": "Audio clips must be mp3 files at a URL, while video nodes accept HLS streams; no audio-specific streaming at scale is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node, src (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Currently only `mp3` files are supported."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Video.md",
+          "title": "Video node, src (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Currently only `mp4` and `m3u8` (HLS streams) are supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "native",
+      "note": "Live voice is carried through LiveKit with disabled, spatial or global levels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLiveKit.js",
+          "title": "ClientLiveKit.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "import { Participant, ParticipantEvent, Room, RoomEvent, ScreenSharePresets, Track } from 'livekit-client'"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/ClientLiveKit.js",
+          "title": "ClientLiveKit.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "voice?.setLevel(level) // disabled, spatial, global"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/world/Player.md",
+          "title": "Player API, setVoiceLevel (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Overrides the players voice chat level to `disabled`, `spatial` or `global`."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for createOscillator, AudioWorklet and synth on 2026-11-03; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/docs/scripting/nodes/types/Audio.md",
+          "title": "Audio node (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Represents a single audio clip that can be played in the world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for plane-detection, mesh-detection, detectedPlanes and detectedMeshes on 2026-11-03; no match for real-world reconstruction. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for semantic, segmentation and label on 2026-11-03; no match for semantic labelling of the real world; the only \"semantic\" match is the versioning link in the changelog. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for depth-sensing, depthSensing and getDepthInformation on 2026-11-03; no match for real-world depth. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for occlusion and occluder on 2026-11-03; no match for occlusion by real surfaces; the only match is the ambient occlusion graphics setting. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for light-estimation, lightEstimat, XRLightProbe and requestLightProbe on 2026-11-03; no match for real-world lighting estimation. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for image-tracking, trackedImage, marker and aruco on 2026-11-03; no match for marker or image tracking. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for hit-test, hitTest, XRHitTest and requestHitTest on 2026-11-03; no match for hit tests against the real world. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for privacy, coarsen, retention and pointOfInterest on 2026-11-03; no match for disclosure controls on sensed data; no sensed data is read by the engine. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for object-track, trackedObject and model-based tracking on 2026-11-03; no match for model-based object tracking. The engine only checks whether augmented-reality sessions are supported and requests virtual-reality sessions only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "this.supportsAR = await navigator.xr?.isSessionSupported('immersive-ar')"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "Searched every text file of the repository at commit 5d20037435a1 (docs, src except the bundled third-party folder src/core/libs, examples, scripts and top-level files) for bounded-floor and boundsGeometry on 2026-11-03; no match; the VR session asks only for a local-floor reference space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/README.md",
+          "title": "README, Key Features (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "**WebXR support** - Experience worlds in VR"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/hyperfy-xyz/hyperfy/5d20037435a1d86cda088382bb12737e9f18d5f6/src/core/systems/XR.js",
+          "title": "XR.js (commit 5d20037435a1)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "const session = await navigator.xr?.requestSession('immersive-vr', {"
+        }
+      ]
+    }
+  ]
+}

@@ -1,15 +1,20 @@
-// The Groups display: fourteen cards, breadth first. Two plain-language lines
+// The Groups display: one card per group, breadth first. Two plain-language lines
 // each, so a newcomer can read the shape of the map before learning any of its
 // vocabulary. Clicking a card opens that group in the Relationships display.
+//
+// The sidebar scopes the view, so the bar counts only the rows the row filter
+// and lane let through, as every other display does. A group none of them
+// reaches stays in place, faded, so the map keeps its shape.
 
-import type { Model } from '../design-model.ts'
+import type { Capability, Model } from '../design-model.ts'
 import { cellStyle } from './marks.ts'
 import type { Action, AppState } from './state.ts'
 
-export function GroupsView({ model, state, dispatch }: {
+export function GroupsView({ model, state, dispatch, rows }: {
   model: Model
   state: AppState
   dispatch: React.Dispatch<Action>
+  rows: Capability[]
 }) {
   const counted = state.on
 
@@ -17,11 +22,12 @@ export function GroupsView({ model, state, dispatch }: {
     <div style={s.grid}>
       {model.groups.map((group) => {
         const caps = model.capabilities.filter((c) => c.g === group.id)
+        const shown = rows.filter((c) => c.g === group.id)
         const health = model.health[group.id]
 
         // A row is placed by the strongest support any selected subject has.
         const tally = { n: 0, x: 0, p: 0, none: 0 }
-        for (const c of caps) {
+        for (const c of shown) {
           const levels = counted.map((id) => model.cov[id]?.[c.id]?.[0])
           if (levels.includes('n')) tally.n++
           else if (levels.includes('x')) tally.x++
@@ -37,7 +43,7 @@ export function GroupsView({ model, state, dispatch }: {
         ]
 
         return (
-          <button key={group.id} type="button" style={s.card}
+          <button key={group.id} type="button" style={{ ...s.card, opacity: shown.length ? 1 : 0.5 }}
             title={`Open ${group.name} in the Relationships display`}
             onClick={() => { dispatch({ type: 'rel-group', id: group.id }); dispatch({ type: 'view', view: 'relations' }) }}>
             <span style={s.name}>{group.name}</span>
@@ -50,7 +56,8 @@ export function GroupsView({ model, state, dispatch }: {
             </span>
 
             <span style={s.line}>
-              {caps.length} rows · {health.proto} agreed on connect · {caps.length - health.proto} fixed at build
+              {shown.length === caps.length ? `${caps.length} rows` : `${shown.length} of ${caps.length} rows shown`}
+              {' · '}{health.proto} agreed on connect · {caps.length - health.proto} fixed at build
             </span>
             <span style={s.line}>
               {health.contested} shared by two or more · {health.thin} held by one ·{' '}

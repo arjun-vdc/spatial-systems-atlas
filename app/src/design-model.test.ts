@@ -44,8 +44,8 @@ const RAW = {
   capabilities: [
     cap('c.shared'), // two subjects reach it
     cap('c.lonely'), // exactly one has it built in
-    cap('c.gap', { interop: 'must' }), // scored, nobody reaches it
-    cap('c.wire', { binding: 'connect', uses: ['U2'] }), // a conflict lives here
+    cap('c.gap', { interop: 'must', uses: ['U2'] }), // scored, nobody reaches it; the one must row of lane U2
+    cap('c.wire', { binding: 'connect', uses: ['U2'] }), // a conflict lives here; tagged U2 but not must, so not in the lane
   ],
   subjects: [
     { id: 'ship', name: 'Shipping one', kind: 'standard', status: 'shipping', summary: 'One. Two.', conflicts: 0, unverified: 0, source_ids: 0, scored: 0 },
@@ -189,8 +189,8 @@ test('production basis counts only shipping, ratified, board-approved or mixed s
   assert.deepEqual(countedIds(M, q({ basis: 'all' })), ALL, 'every selected subject counts')
 })
 
-test('a lane narrows the rows measured, not the subjects counted', () => {
-  assert.deepEqual(measuredCaps(M, q({ lane: 'U2' })).map((c) => c.id), ['c.wire'])
+test('a lane narrows the rows measured to its must rows, not the subjects counted', () => {
+  assert.deepEqual(measuredCaps(M, q({ lane: 'U2' })).map((c) => c.id), ['c.gap'])
   assert.equal(countedIds(M, q({ lane: 'U2' })).length, 4, 'a lane must not change who is counted')
 })
 
@@ -244,18 +244,23 @@ test('the real published export still reports the figures the map claims', async
     await readFile(new URL('../public/territory.json', import.meta.url), 'utf8'),
   )
   const real = adapt(raw)
-  // 2026-10-20: 57 -> 59 subjects, SpatialDDS and the Model Context Protocol (wave 1, owner approval).
+  // 2026-10-20: 57 -> 59 subjects, SpatialDDS and the Model Context Protocol (wave 1).
   // 2026-10-20: 59 -> 66 subjects, wave 2 (STAC, WebAssembly, Arrival Space, OAuth, Vibe Jam,
-  // OMI glTF extensions, JSON-LD; owner approval).
-  assert.equal(real.subjects.length, 66)
+  // OMI glTF extensions, JSON-LD).
+  // 2026-11-03: 66 -> 82 subjects: X_ITE, X3DOM, H-Anim, Hyperfy and twelve web and data standards.
+  assert.equal(real.subjects.length, 82)
   // These figures are a deliberate tripwire: they move only when capabilities are
   // added or removed, which is a decision somebody made and should have to record here.
   // 2026-09-18: 162 -> 164, the two approved composability rows.
   // 2026-10-20: 164 -> 168 and 14 -> 15 groups: payment, entitlement and receipt in the new
-  // commerce group, and the trust registry in identity (order 063, owner approval 2026-10-19).
+  // commerce group, and the trust registry in identity (approved 2026-10-19).
   // 2026-10-20: 168 -> 175: agent authoring, whole-world export, and the five rows contributed by
-  // the Virtual Dimension Center (wave 2, owner approval).
-  assert.equal(real.capabilities.length, 175)
+  // the Virtual Dimension Center (wave 2).
+  // 2026-11-01: 175 -> 176: non-visual sensory effects (render.sensory-effect, MPEG-V), the sixth
+  // Virtual Dimension Center row.
+  // 2026-11-03: 176 -> 178: renderer swap and fallback (render.renderer-swap) and portal
+  // preview (net.portal-preview).
+  assert.equal(real.capabilities.length, 178)
   assert.equal(real.groups.length, 15)
   // The counts block the build writes must agree with what the model derives.
   const claims = Object.values(real.cov).reduce((n, row) => n + Object.keys(row).length, 0)
@@ -322,9 +327,12 @@ test('the note reports Verse as a scope boundary, not as an absence of work', as
   assert.ok(note, 'Verse sits above the line')
   // 2026-10-20: the four commerce and trust rows are out of scope for a programming language.
   // 2026-10-20: so are the seven wave 2 rows (agent authoring, world export, the five VDC rows).
-  assert.equal(note.outOfScope, 125)
-  assert.equal(note.applies, 50)
-  assert.equal(note.total, 175)
+  // 2026-10-23: 125 -> 134 after wave 4 answered Verse's blank cells, mostly out of scope.
+  // 2026-11-01: 134 -> 135 and 175 -> 176: the sensory-effects row is out of scope for Verse.
+  // 2026-11-03: 135 -> 137 and 176 -> 178: renderer swap and portal preview are out of scope for Verse.
+  assert.equal(note.outOfScope, 137)
+  assert.equal(note.applies, 41)
+  assert.equal(note.total, 178)
   assert.equal(note.total, note.outOfScope + note.applies)
 
   // Reading the note must not touch a single claim.
@@ -342,5 +350,24 @@ test('the note reports Verse as a scope boundary, not as an absence of work', as
   // 2026-10-20: 29 -> 38 after wave 2 added formats and protocols where most rows do not apply
   // (STAC, WebAssembly, OAuth, Vibe Jam, OMI glTF extensions, JSON-LD) and answered blank cells.
   // 2026-10-20: 38 -> 39 after wave 3 answered the remaining must-agree cells.
-  assert.equal(marked.length, 39)
+  // 2026-10-23: 39 -> 42 after wave 4 answered the remaining blank cells.
+  // 2026-11-03: 42 -> 55 after the sixteen new subjects, most of them standards where most rows do not apply.
+  assert.equal(marked.length, 55)
+})
+
+test('the adapter carries every lane the data names, and the platform field only where it is set', () => {
+  const raw = {
+    ...RAW,
+    capabilities: [...RAW.capabilities, { ...RAW.capabilities[0], id: 'c.presence', interop: 'must', uses: ['U10'] }],
+    subjects: RAW.subjects.map((s: any, i: number) => (i === 0 ? { ...s, platform: ['threejs'] } : s)),
+    counts: { lanes: { U1: 0, U2: 1, U3: 0, U4: 0, U6: 0 } },
+  }
+  const m = adapt(raw)
+  // U6 comes from the counts, U10 from a row that names it; number order, not text order.
+  assert.deepEqual(Object.keys(m.lanes), ['U1', 'U2', 'U3', 'U4', 'U6', 'U10'])
+  assert.equal(m.lanes.U10.label, 'Shared presence')
+  assert.equal(m.lanes.U6.label, 'Same place, same thing')
+  assert.deepEqual(measuredCaps(m, { on: ALL, filter: 'all', hasEntry: false, basis: 'all', lane: 'U10' }).map((c) => c.id), ['c.presence'])
+  assert.deepEqual(m.subjects[0].platform, ['threejs'])
+  assert.equal(m.subjects[1].platform, undefined)
 })

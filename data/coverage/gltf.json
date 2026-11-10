@@ -2617,6 +2617,712 @@
           "quote": "glTF is an API-neutral runtime asset delivery format."
         }
       ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "User input is within reach of the format: the MPEG_interactivity user-input trigger takes any OpenXR input path to describe the user body part and gesture related to the input. Searched the glTF 2.0.1 specification, KHR_interactivity and MPEG_media (commit a7963af), and the ISO/IEC 23090-14 second-edition extension documents for MPEG_accessor_timed, MPEG_anchor, MPEG_animation_timing, MPEG_audio_spatial, MPEG_buffer_circular, MPEG_haptic, MPEG_haptic_material, MPEG_interactivity, MPEG_lighting, MPEG_media, MPEG_mesh_linking, MPEG_node_avatar, MPEG_scene_dynamic, MPEG_texture_video and MPEG_viewport_recommended for gaze, eye, eyes and eye-tracking on 2026-10-23; the only hits are the eye vector in the lighting maths and 'Eye Left' and 'Eye Right' in MPEG_interactivity's table of body-part masks for haptic rendering, neither of which is gaze input. Nothing defines gaze data or its privacy constraints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, user-input trigger",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Describes the user body part and gesture related to the input."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "Searched the glTF 2.0.1 specification, the 58 extension documents linked from the extension registry (main), the registry's in-progress table and the ISO/IEC 23090-14 second-edition extension documents for hand, finger, articulated and hand tracking on 2026-10-22; the only hand references are OpenXR path strings such as a left-hand grip pose in MPEG_anchor and MPEG_interactivity, and avatar segment names, with no articulated hand pose data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_node_avatar/README.md",
+          "title": "MPEG_node_avatar, ISO/IEC 23090-14 second-edition extension document",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "It is possible to associate interactivity triggers with different parts/segments of the user avatar (e.g. hand or finger) using the node interactivity triggers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "via-extension",
+      "note": "Haptics reach a glTF file only through MPEG_haptic (haptic media), MPEG_haptic_material (stiffness, friction, vibration and temperature textures) and a haptic action in MPEG_interactivity, all from the ISO/IEC 23090-14 second-edition extension documents. Khronos has no haptics extension and these MPEG extensions are not in the Khronos registry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_haptic/README.md",
+          "title": "MPEG_haptic, ISO/IEC 23090-14 second-edition extension document",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The MPEG_haptic and MPEG_haptic material extensions provide the ability to define the integration of haptics in a glTF scene ."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_haptic_material/README.md",
+          "title": "MPEG_haptic_material, ISO/IEC 23090-14 second-edition extension document",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "An array of items describing the textures that store the coefficients of friction."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, action types",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Get haptic feedbacks on a set of nodes"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_haptic/README.md",
+          "title": "MPEG_haptic, ISO/IEC 23090-14 second-edition extension document, dependencies",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Written against the glTF 2.0 spec."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "none",
+      "note": "Searched the glTF 2.0.1 specification, the 58 extension documents linked from the extension registry (main) and the ISO/IEC 23090-14 second-edition extension documents for hash, checksum, digest, integrity and content address on 2026-10-22; buffers and images are referenced by URI only and nothing names content by hash.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.8 URIs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF assets use URIs or IRIs to reference buffers and image resources."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "none",
+      "note": "Searched the glTF 2.0.1 specification, the 58 extension documents linked from the extension registry (main), the registry's in-progress table and the ISO/IEC 23090-14 second-edition extension documents and the KHR_physics_rigid_bodies draft for soft body, cloth, deformable and fluid on 2026-10-22; none defines deformable simulation, and the working group's physics issue defers soft bodies to future extensions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/issues/1135",
+          "title": "Create a specification for rigid body physics, Khronos glTF repository issue 1135",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Some physics engines support soft bodies, particle systems, fluid dynamics, complex machines, and more."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/issues/1135",
+          "title": "Create a specification for rigid body physics, Khronos glTF repository issue 1135",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We should probably identify features that go beyond this, but leave them for future extensions efforts."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a restart of a world is a property of a running service and its storage, which an asset delivery format does not have. A glTF file is a static description that a runtime loads.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "via-extension",
+      "note": "MPEG_audio_spatial, a vendor extension from the MPEG scene-description group, carries reverb units with per-frequency reverberation time and diffuse-to-source ratio that sources feed at set gains; a reverb object typically stands for one room. The values are authored per room, not derived from geometry, and Khronos has ratified nothing for audio.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A reverb effect can be attached to the output of an audio source."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension, reverb feed (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Typically, a reverb object represents reverberation properties of a single room."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension, reverb properties (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Specifies RT60 value in seconds for the frequency provided in the `frequency` field"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Searched the glTF 2.0.1 specification, the 58 extension documents linked from the extension registry (main), the registry's in-progress table and the ISO/IEC 23090-14 second-edition extension documents for occlusion, obstruction, diffraction and blocked or muffled sound on 2026-10-22; MPEG_audio_spatial attenuates a source by a distance function and nothing lets geometry block or muffle it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The `MPEG_audio_spatial` extension adds support for spatial audio and it may be included at top level or attached to any node in the scene."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension, source properties (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A function used to calculate the attenuation of the audio source."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "partial",
+      "note": "MPEG_media names a stream with its alternatives and tracks (DASH manifests, ISOBMFF tracks, real-time stream addresses) and MPEG_audio_spatial plays audio from it through timed accessors. glTF only references the stream, and carrying audio over the network at scale is left to the referenced protocol, so the delivery half of the definition is missing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Media used to create a texture, audio source, or any other media type."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension, alternative uri (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If the reference media is a real-time media stream, then the uri may follow the referencing scheme defined in ISO/IEC 23090-14:Annex C."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/MPEG_audio_spatial/README.md",
+          "title": "MPEG_audio_spatial, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The `MPEG_audio_spatial` works with the `MPEG_accessor_timed` to reference audio sources."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "Searched the glTF 2.0.1 specification, the 58 extension documents linked from the extension registry (main), the registry's in-progress table and the ISO/IEC 23090-14 second-edition extension documents for synthesis, oscillator and procedural audio on 2026-10-22; the only synthesis-capable item is the KHR_audio_graph design proposal, at Proposal stage in an open pull request.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, in-progress table (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "KHR_audio_graph | Proposal"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/pull/2421",
+          "title": "KHR audio framework design proposal, pull request 2421 (open, unmerged)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Based on the feedback we will update and finalize the design before it is formally schematized into KHR core audio spec, extensions, animations, and interactivity."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/pull/2421",
+          "title": "KHR audio framework design proposal, pull request 2421 (open, unmerged)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Included detune to oscillator property."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "via-extension",
+      "note": "MPEG_anchor, from the ISO/IEC 23090-14 second-edition extension documents, anchors a scene or its root nodes to trackables (floor, plane, controller, marker, geographic marker, application-defined) in the user's physical environment, and the XR runtime does the tracking. The Khronos registry has no anchoring extension, so this is MPEG's extension to glTF 2.0, not Khronos's.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor, ISO/IEC 23090-14 second-edition extension document",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "AR anchoring allows for anchoring of a scene or some root nodes of a scene into the user’s physical environment to provide an AR experience."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor, ISO/IEC 23090-14 second-edition extension document, tracking",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Upon the detection of a trackable within the user’s physical environment, the application creates an XR space and possibly determines the bounding box of the real world available space in which the virtual assets can be added."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor, ISO/IEC 23090-14 second-edition extension document, dependencies",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Written against the glTF 2.0 spec."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering pose from camera imagery is a localisation service run by a platform or cloud, not content delivery. MPEG_anchor only declares which content attaches to which trackable and leaves pose estimation to the XR runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor, ISO/IEC 23090-14 second-edition extension document, tracking",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Upon the detection of a trackable within the user’s physical environment, the application creates an XR space and possibly determines the bounding box of the real world available space in which the virtual assets can be added."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "partial",
+      "note": "GRIFFEL_bim_data, a draft vendor extension, attaches building-information properties to nodes and recommends a model, storey, category and element node hierarchy. It describes building elements, not rooms or spaces or how they connect, so the structured description of interior spaces is missing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/GRIFFEL_bim_data/README.md",
+          "title": "GRIFFEL_bim_data, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The extension was originally developed for architecture, engineering and construction (AEC) industry to keep Building Information Model (*BIM*) data, but it's suitable for any other industry which operates huge amounts of information."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/GRIFFEL_bim_data/README.md",
+          "title": "GRIFFEL_bim_data, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Storey - includes all elements which lay or rise up starting from a particular level,"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "partial",
+      "note": "KHR_node_selectability's select event reports which controller produced a selection, and MPEG_interactivity and MPEG_anchor name controller and hand inputs by OpenXR input path. None of the documents searched defines buttons, sticks or controller pose data, which come from OpenXR at run time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_node_selectability/README.md",
+          "title": "KHR_node_selectability (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Index of the controller that generated the event"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, user-input trigger",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The format shall follow the OpenXR input path description as defined in [OpenXR] section 6."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_anchor/README.md",
+          "title": "MPEG_anchor, ISO/IEC 23090-14 second-edition extension document, trackable object",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A path that describes the action space as specified by the OpenXR specification in clause 6.2."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "partial",
+      "note": "KHR_interactivity, which is ratified, limits behaviour to a declarative graph acting on the asset's own properties and declared custom events, describes its model as safe and sandboxed, and excludes arbitrary scripting. Those safety statements sit in its motivation section, and it sets no normative isolation or trust rules for untrusted assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, motivation (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Behavior graphs and trigger-action lists share common features, such as being safe and sandboxed, offering limited execution models controlled by the viewer, and both supporting the “trigger” and “action” operation categories."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, what behavior graphs do not solve (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Behavior graphs are not designed to handle UI presentation or arbitrary scripting."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, custom events (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Semantics of custom events are application-specific."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "partial",
+      "note": "KHR_interactivity names limits on time slice and total execution time as the way to stop non-halting graphs and lets implementations cap graph size and runtime resources, exposing the caps to graphs as object-model pointers. The caps are optional and implementation-defined with no required minimum, so one player can accept a graph that another rejects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, Turing completeness (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The main way to mitigate the risk of non-halting behavior graphs is to limit the amount of time given to them for execution, both in terms of individual time slice as well as overall execution time."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, dynamic limits (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "These limits are exposed to behavior graphs via additional glTF Object Model pointers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "partial",
+      "note": "Joints exist as a draft: KHR_physics_rigid_bodies, a Review Draft in an open pull request, defines joints between nodes. The only registry extension that comes close is AGI_articulations, a vendor extension that names a node's allowed motions and ranges but links no bodies and simulates nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/13ffdd2d681736c3fdbac0d53b4f490770c178e4/extensions/2.0/Khronos/KHR_physics_rigid_bodies/README.md",
+          "title": "KHR_physics_rigid_bodies, Review Draft specification (pull request 2424, commit 13ffdd2)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Joints, which describe physical connections between nodes."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, in-progress table (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "| KHR_physics_rigid_bodies | Review Draft | [PR #2424]"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/AGI_articulations/README.md",
+          "title": "AGI_articulations, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The glTF model of this dish needs to call out the names and limitations of the available motions, but the model does not contain the actual sequence of motions to perform, which may not be known until runtime or live simulation of the dish in action."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "via-extension",
+      "note": "MPEG_interactivity, from the ISO/IEC 23090-14 second-edition extension documents, gives a collider restitution and static and dynamic friction on the Coulomb model and says how two nodes' values combine on contact. The Khronos counterpart, physics materials in KHR_physics_rigid_bodies, is still a review draft.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, node-level collision trigger",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Provides the ratio of the final to initial relative velocity between two objects after they collide."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, node-level collision trigger",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unitless friction coefficient as defined in the Coulomb friction model."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, processing model",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When a collision occurs between two nodes, the application should calculate the combination of the restitution, static friction and dynamic friction values based on the values provided by the collision trigger extension of the two nodes."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/13ffdd2d681736c3fdbac0d53b4f490770c178e4/extensions/2.0/Khronos/KHR_physics_rigid_bodies/README.md",
+          "title": "KHR_physics_rigid_bodies, Review Draft specification (pull request 2424, commit 13ffdd2)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Physics materials, which describe how pairs of objects react to collisions."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, in-progress table (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "| KHR_physics_rigid_bodies | Review Draft | [PR #2424]"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "partial",
+      "note": "MPEG_interactivity has a recommended-high-precision flag and a recommended physics frame rate, but only asks the application to be more deterministic. It guarantees no identical outcome across machines, and neither the ratified text nor the KHR_physics_rigid_bodies draft makes any determinism requirement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, scene-level semantics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Determines whether the application should enable a more deterministic and precise physic simulation"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, scene-level semantics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Provides the recommended frame rate at which the Physics Engine should operate."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "via-extension",
+      "note": "MPEG_interactivity defines collision and proximity triggers over nodes and primitive regions (cuboid, plane region, cylinder, capsule, spheroid) that start behaviours when entered. Khronos has a trigger volume only in the KHR_physics_rigid_bodies review draft, which is not ratified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, trigger primitives",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "List of primitives used to activate the proximity or collision trigger."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/13ffdd2d681736c3fdbac0d53b4f490770c178e4/extensions/2.0/Khronos/KHR_physics_rigid_bodies/README.md",
+          "title": "KHR_physics_rigid_bodies, Review Draft specification (pull request 2424, commit 13ffdd2)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Describes a volume which can detect collisions, but does not generate a physical response."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, in-progress table (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "| KHR_physics_rigid_bodies | Review Draft | [PR #2424]"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Layout and presentation of two-dimensional interface regions is an application and toolkit function; a glTF file can carry a textured quad but no layout, alignment or display-relationship rules. The behaviour extension says of itself that it is not designed to handle UI presentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity specification, what behavior graphs do not solve (Khronos glTF head a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Behavior graphs are not designed to handle UI presentation or arbitrary scripting."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "Two routes exist and neither is ratified or general. KHR_techniques_webgl carries GLSL programs for WebGL 1.0 but is archived and never ratified. NV_materials_mdl is a complete vendor extension whose conforming implementations must load and render the referenced Material Definition Language functions. Missing: MDL covers material definitions only, in renderers that support that language, and is not a general shader program or stage; the GLSL route is archived and never ratified. The definition asks for a shader source language with execution semantics that every implementation consumes alike, and neither route supplies that, because the core describes surfaces by parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Archived/KHR_techniques_webgl/README.md",
+          "title": "KHR_techniques_webgl, archived glTF extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This extension allows glTF to define instances of shading techniques with external shader programs along with their parameterized values."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Archived/KHR_techniques_webgl/README.md",
+          "title": "KHR_techniques_webgl, archived glTF extension (main, commit a7963af)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Archived Draft, Never Ratified"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/NV_materials_mdl/README.md",
+          "title": "NV_materials_mdl, glTF vendor extension (main, commit a7963af)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This extension provides the ability to store and transfer materials in glTF assets that are defined in the NVIDIA Material Definition Language (MDL) as defined in the [MDL Language Specification](https://github.com/NVIDIA/MDL-SDK/tree/master/doc/specification)."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/NV_materials_mdl/README.md",
+          "title": "NV_materials_mdl, glTF vendor extension, purpose (main, commit a7963af)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The intention of this extension is to enable high-quality material definitions in glTF for MDL-capable applications and renderers"
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/a7963af6dcb2ee65b9ec8facc93cdec7b087014d/extensions/2.0/Vendor/NV_materials_mdl/README.md",
+          "title": "NV_materials_mdl, glTF vendor extension, conformance (main, commit a7963af)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A conforming implementation of this extension must be able to load the referenced MDL modules"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "none",
+      "note": "Live voice arriving in a scene is within reach of the format: MPEG_media can reference real-time media, including a media id of an RTP stream. Searched the glTF 2.0.1 specification, the extension registry and every extension document under it (Khronos glTF main, commit 7cee0fc), the open audio pull requests 2421 and 2137, and the ISO/IEC 23090-14 second-edition extension documents and their schema files, including MPEG_primitive_V3C and MPEG_sampler_YCbCr, for voice, speech, microphone, VoIP, telephony, conversation, two-way and WebRTC on 2026-10-25; the only voice-related hit is MPEG_interactivity's avatar action 'speech', which switches the microphone ability of avatar nodes on or off; the action sets the optional attributes \"microphone\" and \"media\", and what \"media\" means, possibly a reference to the voice stream itself, is defined in Annex H of the sold ISO/IEC 23090-14 text, which was not read. No text read carries voice between participants, but the \"media\" attribute leaves open whether the action can reference a voice stream.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Vendor/MPEG_media/README.md",
+          "title": "MPEG_media, glTF vendor extension, alternatives (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "a media id of an RTP stream"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "MPEG_interactivity, ISO/IEC 23090-14 second-edition extension document, avatar action",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "the nodes in the node array will activate/deactivate their “microphone” ability accordingly when this action is launched."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "KHR_interactivity, a ratified Khronos extension, lets a behaviour graph read which of the asset's used extensions the implementation supports, the glTF version it presents, limits such as the maximum number of active animations, and the active camera's position, rotation, aspect ratio and field of view, which an implementation may withhold for privacy. Missing: the device itself; displays, input devices and sensors are not discoverable from the asset (searched KHR_interactivity at commit 7cee0fc for device, hardware, sensor, display, headset, platform and privacy on 2026-10-25; hits are the copyright notice, the active camera section, and three 'platform' hits that are not capability statements: line 157, where arbitrary scripting is said to be hard to make portable across platforms, and lines 3033 and 3088, an OkLab precision tip for platforms with only double-precision arithmetic such as ECMAScript).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity, asset capabilities (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Behavior graphs **MAY** use those properties to adjust their execution depending on the extension support."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity, runtime limits (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "The `maxActiveAnimations` read-only property represents the implementation-dependent maximum number of simultaneously active animations for the purpose of the `animation/start` operation."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity, active camera state (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "the `aspectRatio`, `yfov`, `znear`, and `zfar` read-only properties nested in the `perspective` path represent the aspect ratio (width over height), vertical field of view in radians, distance to the near clipping plane, and distance to the far clipping plane respectively."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_interactivity/Specification.adoc",
+          "title": "KHR_interactivity, active camera state (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "An implementation **MAY** provide no “active camera” data, for example for privacy reasons or if no cameras are being displayed to the user."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/README.md",
+          "title": "glTF 2.0 Extension Registry, Ratified Khronos Extensions (Khronos glTF main, commit 7cee0fc)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "* [KHR_interactivity](2.0/Khronos/KHR_interactivity/Specification.adoc)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Khronos glTF 2.0 and its extension registry define no way to describe wind, scent, light, heat, fog or motion-seat effects with content. The ISO/IEC 23090-14 second-edition MPEG_interactivity extension, written against glTF 2.0 and not in the Khronos registry, has a haptic action that can trigger rendering on associated devices. Its Table 15 list of haptic modalities names wind, water and temperature, and also acceleration, velocity and position, and each haptic action is aimed at a body-part mask, so the list is haptic data, scored under input.haptic; whether it should also count here is an open question for the working group. Not found in these documents: an effect described by its intended effect, a device capability or user preference description, scent, fog or light effects, a named motion-seat effect, or any reference to ISO/IEC 23005 (MPEG-V). The extension documents are marked as based on the ISO/IEC DIS (draft) second edition of 23090-14. Searched the glTF 2.0 specification (registry.khronos.org, glTF-2.0.html) and the Khronos extension registry index (KhronosGroup/glTF extensions/README.md at commit 59ecbdb) for haptic, sensory, scent, olfactory, wind, fog, 23005, MPEG-V and MPEG_; no sensory hit, and the registry lists only MPEG media, timing, audio, mesh-linking and viewport extensions. Also searched the ISO/IEC 23090-14 second-edition extension documents MPEG_interactivity, MPEG_haptic and MPEG_haptic_material (standards.iso.org, ed-2/en) for scent, olfactory, aroma, smell, fog, mist, 23005, MPEG-V, sensory, motion seat, motion platform, light effect, lighting and heat on 2026-11-01; only the amendment title 'lighting' matched. Not every Khronos extension document was searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "ISO/IEC 23090-14 second edition, MPEG_interactivity (Table 14, haptic action node, washout)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Specifies whether the action should trigger a washout (reset to the origin) of the associated devices."
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "ISO/IEC 23090-14 second edition, MPEG_interactivity (Table 15, list of haptic modalities)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Temperature | Vibrotactile | Water | Wind"
+        },
+        {
+          "url": "https://standards.iso.org/iso-iec/23090/-14/ed-2/en/MPEG_interactivity/README.md",
+          "title": "ISO/IEC 23090-14 second edition, MPEG_interactivity (Status)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "ISO/IEC DIS 23090-14 2nd Edition"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The glTF 2.0 core is deliberately renderer-neutral and lets an asset list which extensions are merely used and which are required to load or render it; fallbacks are defined extension by extension (for example an alternative image for compressed textures). It names no preferred renderer and no substitute renderer, so the declared-substitute part is missing at the format level.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, Runtime-independence",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Runtime-independence. glTF is purely an asset format and does not mandate any runtime behavior."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, extensionsRequired",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "All glTF extensions required to load and/or render an asset MUST be listed in the top-level extensionsRequired array, e.g.,"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/59ecbdba704206bb656965ab4e202881806066f1/extensions/2.0/Khronos/KHR_texture_basisu/README.md",
+          "title": "KHR_texture_basisu (glTF commit 59ecbdb)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The following glTF will load `image.ktx2` in clients that support this extension, and otherwise fall back to `image.png`."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "glTF delivers model assets between tools and runtimes; what a portal shows of its destination is a property of a running world, which a model file does not describe.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 2.1 General",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF is an API-neutral runtime asset delivery format."
+        }
+      ]
     }
   ]
 }

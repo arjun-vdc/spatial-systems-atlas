@@ -38,7 +38,7 @@ LEVEL_ORDER = ["native", "via-extension", "partial", "conflicts"]
 BINDING_WORD = {"build": "format", "connect": "protocol"}
 
 # The display groups the subject chips are drawn in, copied from build.py so the DSL carries the
-# same grouping the page shows. Phase 2 (WO-042) should make one copy serve both.
+# same grouping the page shows. Phase 2 should make one copy serve both.
 MSF_IDS = ["rp1", "wow", "teleportxr", "um", "iwps", "omb"]
 KIND_LABEL = [("standard", "Standards"), ("device-platform", "Device platforms"),
               ("game-engine", "Game engines"), ("web-runtime", "Web runtimes"),

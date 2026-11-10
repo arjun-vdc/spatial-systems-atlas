@@ -2255,6 +2255,702 @@
           "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
         }
       ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "partial",
+      "note": "VRMC_springBone_limit, an optional extension, gives a spring-bone joint a cone, hinge or spherical limit on its range of motion. Missing: links between separate bodies, sliders and motors; the limit only restricts how far one swaying bone chain may tilt.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone_limit-1.0/README.md",
+          "title": "VRMC_springBone_limit 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A hinge limit constrains the range of motion of a spring to a hinge."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone-1.0/README.md",
+          "title": "VRMC_springBone 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Implements a procedural animation that behaves like a spring that tries to maintain velocity by inertia and eventually returns to the node's original orientation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "partial",
+      "note": "The spring-bone, constraint and expression steps have a written update order and reference algorithms, but the core extension gives that order only as recommended, the node constraint extension says it does not aim for identical behaviour between implementations, and the spring bone extension leaves some chain ordering undefined. Missing: any guarantee that two machines give the same outcome.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_node_constraint-1.0/README.md",
+          "title": "VRMC_node_constraint 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We expect implementations to have enough features that artists need, and we do not aim to make the behavior completely identical between implementations of the extension."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone-1.0/README.md",
+          "title": "VRMC_springBone 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The behavior may differ depending on the implementation."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The recommended order of execution in an update loop is as follows."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone_limit-1.0/README.md",
+          "title": "VRMC_springBone_limit 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Results may be unstable across implementations if the Head-to-Tail direction is exactly or nearly the negative y-axis direction."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "none",
+      "note": "Searched the 17 English specification documents of vrm-c/vrm-specification at commit 94e82dd (core extension and its six sub-documents, spring bone with collider and limit extensions, node constraint, MToon, emissive multiplier, VRM animation, and the 0.x specification) for mass, rigid body, kinematic, dynamic, ragdoll, friction, restitution, bounce, trigger and enter on 2026-10-22; found none. Spring bone moves a bone chain by inertia, but it has no body, mass or body type, and no object that moves on its own by rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone-1.0/README.md",
+          "title": "VRMC_springBone 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Implements a procedural animation that behaves like a spring that tries to maintain velocity by inertia and eventually returns to the node's original orientation."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "none",
+      "note": "Searched the 17 English specification documents of vrm-c/vrm-specification at commit 94e82dd (core extension and its six sub-documents, spring bone with collider and limit extensions, node constraint, MToon, emissive multiplier, VRM animation, and the 0.x specification) for mass, rigid body, kinematic, dynamic, ragdoll, friction, restitution, bounce, trigger and enter on 2026-10-22; found none. Colliders are shapes only, with no friction, restitution or other surface response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone-1.0/README.md",
+          "title": "VRMC_springBone 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "You can also set the collision between the end (sphere) of each section of SpringBone and the collision detection node (collider: sphere / capsule)."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "none",
+      "note": "Searched the 17 English specification documents of vrm-c/vrm-specification at commit 94e82dd (core extension and its six sub-documents, spring bone with collider and limit extensions, node constraint, MToon, emissive multiplier, VRM animation, and the 0.x specification) for mass, rigid body, kinematic, dynamic, ragdoll, friction, restitution, bounce, trigger and enter on 2026-10-22; found none. Colliders push spring bones away and raise no event, and the specification has no event or trigger construct anywhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone-1.0/README.md",
+          "title": "VRMC_springBone 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "You can also set the collision between the end (sphere) of each section of SpringBone and the collision detection node (collider: sphere / capsule)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "none",
+      "note": "Searched the 17 English specification documents at commit 94e82dd for lod, level of detail, detail, polygon, triangle, budget and performance on 2026-10-22; no mechanism chooses or orders detail. The only mentions let a runtime drop features: spring-bone limits may be relaxed by LOD, and MToon outlines may be omitted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone_limit-1.0/README.md",
+          "title": "VRMC_springBone_limit 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Implementations may reduce the frequency at which limits are applied or disable angular constraints by limits depending on the target platform, runtime settings, LOD, or other considerations."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If it is difficult or performance-heavy to implement multi-pass rendering of meshes, fallback to omit rendering outlines."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "partial",
+      "note": "VRMC_materials_mtoon fixes a draw order for opaque, masked and blended materials with an offset, and describes the outline as a separate pass over the skinned mesh. Missing: any render graph or general pass structure, and the specification admits its definitions depend on specific rendering techniques.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Render Queue specifies in what order MToon materials should be drawn."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Rasterizer-based renderer usually draws outlines in a separated pass from the mesh surface pass."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Therefore, this definition includes definitions that depend on specific rendering techniques."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "VRMC_materials_mtoon, an optional extension, specifies how a toon surface answers direct light and global illumination (image-based lighting and spherical harmonics), including a factor that evens out indirect light. Missing: light sources, shadow casting and receiving, probes and baking, which are left to the host and to glTF.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This section specifies the lighting of MToon materials."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This section defines the behavior for global illumination, such as IBL (Image-based Lighting) and SH (Spherical Harmonics), which do not depend on a specific position or orientation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "none",
+      "note": "Searched the 17 English specification documents at commit 94e82dd for post-process, bloom, tone map, filter, screen space, image-processing and depth of field on 2026-10-22; found only a statement that MToon avoids image-processing. No effect applied after the main render pass is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Toon shading, in general, usually takes the image-processing approach, while this specification approximates toon-like looking, avoiding image-processing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "none",
+      "note": "Searched the 17 English specification documents at commit 94e82dd for GLSL, HLSL, WGSL, SPIR-V, MSL, shader language, ShaderLab, shader graph and compile on 2026-10-22; found none. MToon is defined by named parameters, formulas and pseudocode, so each renderer writes its own shader.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If it is difficult to implement MToon shader, it MAY fallback to `KHR_materials_unlit`."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The pseudocode represents the implementation example of the lighting procedure:"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "A file format for one humanoid avatar does not choose a graphics interface; the only API words are a footnote in the old 0.x text on the OpenGL axis convention and a Unity render-queue remark, neither of which targets an interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "VRM carries a humanoid built from glTF meshes and names no splat or radiance-field representation, so rendering captured scenes of that kind is not what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Point clouds, voxels and volumetric video are scene or capture content, while VRM describes the mesh body of one humanoid avatar.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Layout of two-dimensional interface regions belongs to a host application; VRM describes an avatar's body, face and hair and defines no interface regions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Fonts and text layout in three dimensions belong to scene content or the host; VRM has text only as metadata strings such as author names and defines no way to draw text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Gaze direction as a device input, with its privacy rules, belongs to the eye tracker and the application that reads it, and the specification states that VRM represents a humanoid for a VR avatar. VRM's lookAt block and the optional VRMC_vrm_animation gaze direction are the avatar's response, which a tracked or recorded gaze may drive; they are not an input source, and are covered by the avatar rows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm_animation-1.0/README.md",
+          "title": "VRMC_vrm_animation 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "LookAt has an eye gaze direction, which indicates that the model moves its gaze in that direction."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/lookAt.md",
+          "title": "VRMC_vrm.lookAt (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "LookAt is a component for animating the line of sight into a VRM model."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Articulated hand pose as an input is produced by a tracker and read by an application, and the specification states that VRM represents a humanoid for a VR avatar. VRM's named finger bones and the rotations that VRMC_vrm_animation carries for them are the avatar body that such input may drive, and are covered by avatar.skeleton and avatar.retarget; they are not an input source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/tpose.md",
+          "title": "VRM T-pose (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The four fingers, index, middle, ring, and little, of each hand must be in parallel to the X axis, which is also parallel to the ground."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm_animation-1.0/README.md",
+          "title": "VRMC_vrm_animation 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Animations for nodes specified as Humanoid bones are treated as animation data for the Humanoid bone."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Asking a device what it can do is a runtime matter; VRM is a file and has no query, and its only related wording is a permission for a reader to skip a feature it finds hard to implement, such as MToon outlines.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback to a person is produced by a device and an application; an avatar file declares no feedback channel or pattern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Buttons, sticks and controller pose come from input devices in a running application; VRM describes the avatar body those inputs might drive and declares no input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Picking scene content from a pointer is done by an application against its own scene; VRM carries one avatar and reports no intersections.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Carrying live voice between people is a transport matter and VRM carries no audio; its one nearby remark is that mouth shapes may be generated by analysing microphone input, which concerns the face and not the voice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/expressions.md",
+          "title": "VRMC_vrm.expressions (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Analyze microphone input, generate from text, etc."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Sound placed in a scene with distance and direction is scene content; VRM declares no emitter and defines no sound for an avatar.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "How direction is rendered to the ears is a property of an audio engine; an avatar file has no audio and says nothing about spatialization.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics belong to the space an avatar is placed in; VRM describes one humanoid and no space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Sound blocked by geometry is decided by an audio engine against a scene; VRM carries one avatar and no audio or scene geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Delivering audio over a network is a service matter; VRM is a file with no audio and no delivery rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Generating audio during playback needs a synthesis model, which VRM does not carry; its word procedural means expression weights such as lip sync and blink that the system generates automatically, not sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/expressions.md",
+          "title": "VRMC_vrm.expressions (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Procedural: A value that can be automatically generated by the system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place on one device is done by a device runtime; a VRM avatar is posed in its own model space and names no place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering pose from camera imagery is a localisation service; VRM describes an avatar and carries no camera image or map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "A structured description of interior spaces is a place description; VRM describes one humanoid and no space.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "none",
+      "note": "Searched the 17 English specification documents at commit 94e82dd for hash, checksum, sha, ipfs, content address, uri, signature and integrity on 2026-10-22; found none. The licence is referenced by URL and original works by free-text strings, which name a location or a work and not its content, and a VRM file is saved as a single .glb.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/meta.md",
+          "title": "VRMC_vrm.meta (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A URL towards the license document this model refers to."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/meta.md",
+          "title": "VRMC_vrm.meta (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "References / original works of the model."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension, file format (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Saved in `.glb` format and using `.vrm` as the extension."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a restart of a world is a property of a running service; VRM describes one avatar file and holds no world state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Isolating untrusted content is the job of the host that receives it. A VRM avatar is itself untrusted content arriving at a host, but VRM carries no executable content, its expressions and constraints being declarative data, and it defines no isolation rule; the specification states that VRM represents a humanoid for a VR avatar. Searched the 17 English specification documents at commit 94e82dd (the core extension and its six sub-documents, the spring bone, collider and limit extensions, node constraint, MToon and its comparison page, emissive multiplier, the two VRM animation documents, and the 0.x specification) for sandbox, untrusted, malicious, security, script, scripting, executable and code on 2026-10-23; found none (the only hit is a 'Pseudo code' comment in the 0.x specification).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "Bounding memory, time and calls for guest content is done by the host that receives it. A VRM avatar is exactly the guest content a host would bound, but VRM declares no cost, complexity rank or limit for an avatar. Searched the 17 English specification documents at commit 94e82dd (the core extension and its six sub-documents, the spring bone, collider and limit extensions, node constraint, MToon and its comparison page, emissive multiplier, the two VRM animation documents, and the 0.x specification) for budget, performance, memory, polygon, triangle, complexity and cost on 2026-10-23; the only hits are the first-person mesh-splitting description, a note that MToon outlines may be omitted if multi-pass rendering is performance-heavy, a T-pose remark on implementation complexity and a tangent-processing note, none of which limits an avatar. The word limit in VRMC_springBone_limit means an angle range for a swaying bone, not a resource limit.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        },
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_springBone_limit-1.0/README.md",
+          "title": "VRMC_springBone_limit 1.0 (commit 94e82dd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A hinge limit constrains the range of motion of a spring to a hinge."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "VRM defines a humanoid avatar model on top of glTF, so environmental effects such as wind or scent belong to the world around the avatar, not to the avatar format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/vrm-c/vrm-specification/blob/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 core extension (commit 94e82dd)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The VRM toon material extension tells an implementation that finds its shader hard to build that it MAY fall back to the glTF unlit material, so an avatar still draws elsewhere. The substitute is a material-level rule, not a renderer-level one, and the wording is permissive.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/vrm-c/vrm-specification/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_materials_mtoon-1.0/README.md",
+          "title": "VRMC_materials_mtoon 1.0 (commit 94e82dd), Interaction with KHR_materials_unlit",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If it is difficult to implement MToon shader, it MAY fallback to `KHR_materials_unlit`."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "VRM describes a humanoid avatar; the avatar is what passes through a portal, and the format says nothing about the portal's opening or preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/vrm-c/vrm-specification/94e82dd346fa6cf0337c4421728640e5252dd38e/specification/VRMC_vrm-1.0/README.md",
+          "title": "VRMC_vrm 1.0 specification (commit 94e82dd)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF represent an entire Scene, whereas VRM represent a Humanoid for VR avatar."
+        }
+      ]
     }
   ]
 }

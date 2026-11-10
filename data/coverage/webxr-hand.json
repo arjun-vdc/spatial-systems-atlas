@@ -1,0 +1,2712 @@
+{
+  "subject_id": "webxr-hand",
+  "summary": "WebXR Hand Input Module Level 1 is a Working Draft from the World Wide Web Consortium's Immersive Web Working Group. It extends the WebXR Device API so a web page can read the pose of 25 named joints on each tracked hand, each with a radius, for gesture detection or for drawing a hand model. It covers hand tracking well, including a privacy section that requires user consent and rules for rounding or noising the data, but it leaves sessions, rendering, avatars, networking and everything beyond the hand to other specifications. The poses are all-or-nothing: if part of a hand cannot be seen, the joints are either filled in or no pose is reported for the whole hand. The document itself warns that it is a work in progress and should not be cited as anything else.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no avatar mesh or appearance format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "partial",
+      "note": "The module fixes agreed names and an order for 25 hand joints, which gives hand animation a common joint vocabulary. It names no joints outside the hand and defines no animation transfer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.3 XRHand",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The XRHandJoint enum defines the various joints that each XRHand MUST contain."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.3 XRHand",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The size attribute MUST return the number 25"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no facial expressions or visemes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no worn or carried items or attachment points.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it ties no avatar to an identity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it handles no payments, grants or purchase records.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it handles no payments, grants or purchase records.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "The document states its requirement words and that its algorithms may be implemented in any manner with an equivalent result. This document defines no test suite and no conformance classes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Conformance",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Conformance requirements are expressed with a combination of descriptive assertions and RFC 2119 terminology."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Conformance",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "the algorithms defined in this specification are intended to be easy to understand and are not intended to be performant."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "The module adds hand tracking to the WebXR Device API as an opt-in feature descriptor and says the user agent may gate hand input on it. It defines no way for others to extend the module itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 2 Initialization",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "is introduced by this module as a new valid"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 2 Initialization",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The user agent MAY gate support for hand based XRInputSources based upon this feature descriptor"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.1 XRInputSource",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "hand MUST be null"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it resolves no resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it declares no content protection.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "The module requires explicit user consent when the session is created. It defines no consent record carried with the data, and nothing about scope, purpose, validity or withdrawal.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Since this feature returns new sensor data, the User Agent MUST ask for explicit consent from the user at session creation time."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; session start and end are left to the WebXR Device API it extends, and the module only adds a feature descriptor for requesting hand tracking.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 2 Initialization",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "is introduced by this module as a new valid"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no tree or graph of scene objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "The module fixes the axis directions of each joint's local frame. It states no handedness rule and no rule for composing transforms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.4 XRJointSpace",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The native origin has its -Y direction pointing perpendicular to the skin, outwards from the palm, and -Z direction pointing along their associated bone, away from the wrist."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "partial",
+      "note": "The module defines a fixed ordered set of hand joints, each tied to the bone that follows it towards the fingertip. It defines no binding to a mesh and no bones outside the hand.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.2 Skeleton Joints",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A skeleton joint may have an associated bone that it is named after and used to orient its -Z axis."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.3 XRHand",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The XRHandJoint enum defines the various joints that each XRHand MUST contain."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "partial",
+      "note": "The module states that the joint radius is in meters. It states no unit for the pose positions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 4.2 XRJointPose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The radius attribute returns the radius of the skeleton joint in meters."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no reduced avatar representations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it captures, carries or generates no scene data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it handles no payments, grants or purchase records.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no packaging of an experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no delivery of assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no content review.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "The module names an input profile that every hand input source must list and a feature descriptor that content requests. It defines no named subsets or levels of its own beyond the Level 1 in its title.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3 Physical Hand Input Sources",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Physical hand input sources MUST include the input profile name of"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Title",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebXR Hand Input Module - Level 1"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it expresses nothing against the Earth or a place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; its anonymization limits the precision of sensed hand data and is not a way of revealing selected claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; its anonymization limits the precision of sensed hand data and does not define identifiers or presentations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no identifiers, credentials or claims about a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it covers hands as input sources, not handheld devices with buttons or sticks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "native",
+      "note": "The module specifies articulated hand pose as an input source: 25 named joints per hand, each with a pose and a radius, reached through the input source's hand attribute.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This API exposes the poses of each of the users' hand skeleton joints"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This can be used to do gesture detection or to render a hand model in VR scenarios."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.3 XRHand",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The size attribute MUST return the number 25"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.4 XRJointSpace",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When a hand is partially obscured the user agent MUST either emulate the obscured joints, or report null poses for all of the joints."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it reports hand joints, not gaze.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it only reports hand poses and sends nothing back to the user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "The module makes one device capability visible: hand tracking is requested through a feature descriptor that should only be granted when the device has hand input sources, and hand-based input may be gated on it. Discovery of other device capabilities is not covered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "On some XR devices it is possible to get fully articulated information about the user's hands when they are used as input sources."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 2 Initialization",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "feature descriptor should only be granted for an XRSession when its XR device has physical hand input sources that support hand tracking"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "partial",
+      "note": "The module delivers the pose of the user's hands as a live sensor stream with stated privacy constraints. It covers hands only; there is no facial expression and no body pose beyond the hands.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This API exposes the poses of each of the users' hand skeleton joints"
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Since this feature returns new sensor data, the User Agent MUST ask for explicit consent from the user at session creation time."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it reports joint poses and leaves picking against scene content to the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it provides no character or string entry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it provides no musical instrument events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it reports hand joint poses, not heart rate or skin signals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scripting, agents or content logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no network behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it stores and exports nothing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "partial",
+      "note": "Each joint carries a sphere radius that is meant to roughly touch the skin, and the fingertip radius is nonzero so that collisions work. These spheres come from the tracker; the module defines no collision shape that content authors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.2 Skeleton Joints",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A skeleton joint has a radius which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 3.2 Skeleton Joints",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The \"tip\" skeleton joints SHOULD have an appropriate nonzero radius so that collisions with the fingertip may work."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; frame timing belongs to the WebXR Device API; the module only reads poses at the time of a frame it is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it draws nothing and defines no rendering feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it records no authorship.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it defines no scene content, asset or file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand, not the surroundings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "native",
+      "note": "Section 5 requires explicit consent when the session is created, forbids data precise enough to identify a user, and sets rules for rounding or noising and for doing it in a trusted environment.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Since this feature returns new sensor data, the User Agent MUST ask for explicit consent from the user at session creation time."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Data returned from this API, MUST NOT be so specific that one can detect individual users."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Instead the correct way to round is to map each hand to a static hand-model."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Noising is discouraged in favour of rounding."
+        },
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, 5 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Anonymization must be done in a trusted environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "This module only exposes tracked hand joint poses to a WebXR session; it tracks the user's hand from its own joint model, not a known physical object.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.w3.org/TR/2024/WD-webxr-hand-input-1-20240605/",
+          "title": "WebXR Hand Input Module - Level 1, W3C Working Draft 5 June 2024, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebXR Hand Input module expands the WebXR Device API with the functionality to track articulated hand poses."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2727 @@
+{
+  "subject_id": "dds",
+  "summary": "The Object Management Group Data Distribution Service, version 1.4, is a specification of application interfaces and delivery behaviour for sharing typed data: publishers write into a global data space and the middleware passes it to matching subscribers. It covers matching by topic, content filter and partition, discovery of remote participants, and a family of quality-of-service policies for durability, ownership, liveliness, reliability and ordering, plus named compliance profiles. It leaves the wire protocol between vendors to a separate specification, so two compliant products can still fail to talk to each other unless both also implement that protocol. It also leaves security to the application, which can only attach credentials as user data and ignore remote participants, and it says nothing about scenes, avatars, rendering, capture or identity formats.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar body format is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar skeleton standard is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression standard is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Attachments and wearables is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Avatar to identity binding is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat data interchange format is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video capture and playback is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Multi-view plus depth is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Machine and agent payments is a matter of payment and licensing, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Entitlements and licence checks at use is a matter of payment and licensing, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "The specification states compliance points and when a product may claim compliance, but defines no test suite of its own; it only says a suite, if approved, must be passed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, Use of Specification, Compliance",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Software developed under the terms of this license may claim compliance or conformance with this specification if and only if the software compliance is of a nature fully matching the applicable compliance points as stated in the specification."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, Use of Specification, Compliance",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In the event that testing suites are implemented or approved by Object Management Group, Inc., software developed using this specification may claim compliance or conformance with the specification only if the software satisfactorily completes the testing suites."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "The user-data policy lets an application attach opaque data to entities as a flexible extensibility mechanism, but there are no declared extension names or rules for recipients that do not implement the extension.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.1 USER_DATA",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The use of this QoS is not limited to security, rather it offers a simple, yet flexible extensibility mechanism."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Asset reference resolution is a matter of packaging and delivering content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is a matter of packaging and delivering content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Shared and persistent anchors is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and live pose streams is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "Linked pose structures is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Identity root is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Credential format is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential exchange protocol is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabulary and schema is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation, revocation and recovery is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status and revocation is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Consent carried with the subject is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive session lifecycle is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Behaviour graphs and interactivity is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Agent integration is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "native",
+      "note": "DDS 1.4 defines a global data space in which publishers write typed topic data that the middleware propagates to interested subscribers, with quality-of-service policies setting how often and how reliably.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This model builds on the concept of a “global data space” that is accessible to all interested applications."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Each time a Publisher posts new data into this “global data space,” the middleware propagates the information to all interested Subscribers."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.12 TIME_BASED_FILTER",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This policy allows a DataReader to indicate that it does not necessarily want to see all values of each instance published under the Topic."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The type provides structural information needed to tell the middleware how to manipulate the data and also allows the middleware to provide a level of type safety."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "The specification covers application interfaces and behaviour only; the wire protocol between vendor implementations is a separate OMG specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification focuses on the portability of applications using the Data-Distribution Service."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Wire-protocol interoperability between vendor implementations is covered in a different OMG specification"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "An application joins a running data domain by creating a domain participant, but the specification defines no authentication: it only lets the application attach credentials and ignore remote participants itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.2.2.1 create_participant",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The DomainParticipant signifies that the calling application intends to join the Domain identified by the domain_id argument."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.1 USER_DATA",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "One possible use of this QoS is to attach security credentials or some other information that can be used by the remote application to authenticate the source."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.2.1.14 ignore_participant",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This operation can be used, in conjunction with the discovery of remote participants offered by means of the “DCPSParticipant” built-in Topic, to provide, for example, access control."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Session handoff and portals is a matter of world-level networking behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification focuses on the portability of applications using the Data-Distribution Service."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "Domains are named by a domain identifier and data by topic names, but the identifier format is middleware specific and the specification defines no resolution of a name to a reachable destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.2.2.1 create_participant",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The DomainParticipant signifies that the calling application intends to join the Domain identified by the domain_id argument."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.1 DomainParticipant Class, footnote 9",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The actual format of the domainId is middleware specific."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "none",
+      "note": "Searched OMG DDS 1.4 (formal/2015-04-10) full text for admission, admit, approval, deny, refuse, authenticate and access control on 2026-11-03; the specification defines no destination approval or refusal response, only application-defined credentials in user data and local ignore operations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.2.2.1 create_participant",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The DomainParticipant signifies that the calling application intends to join the Domain identified by the domain_id argument."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Inventory is a matter of user and world data portability, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability is a matter of user and world data portability, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "Scene graph model is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Transforms and coordinate convention is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "Asset container format is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Geometry encoding is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Animation encoding is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Skeleton and rig definition is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Units and scale is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "Rights and licence metadata is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Exact and parametric geometry is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Experience containment is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned audio sources is a matter of sound production and rendering, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatialization model is a matter of sound production and rendering, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics and reverb is a matter of sound production and rendering, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Occlusion and obstruction is a matter of sound production and rendering, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "none",
+      "note": "Searched OMG DDS 1.4 (formal/2015-04-10) full text for audio, video, voice, multimedia, streaming, telephony and media on 2026-11-03; no audio or media transport, codec or stream definition found, only the general statement that applications publish or stream data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Many real-time applications have a requirement to model some of their communication patterns as a pure data-centric exchange, where applications publish (supply or stream) “data” which is then available to the remote applications that are interested in it."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "none",
+      "note": "Searched OMG DDS 1.4 (formal/2015-04-10) full text for audio, video, voice, multimedia, streaming, telephony and media on 2026-11-03; no audio or media transport, codec or stream definition found, only the general statement that applications publish or stream data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Many real-time applications have a requirement to model some of their communication patterns as a pure data-centric exchange, where applications publish (supply or stream) “data” which is then available to the remote applications that are interested in it."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is a matter of sound production and rendering, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar level of detail is a matter of avatar content and behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation from a prompt or an image is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Simulation from a learned model is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Photogrammetric object capture is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Captured-scene streaming is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Control over what gets generated is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Action and control exchange is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic scene imagery is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generation of individual 3D objects is a matter of capturing, reconstructing or generating three-dimensional content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts and proofs of purchase is a matter of payment and licensing, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "Bundle format is a matter of packaging and delivering content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Content delivery is a matter of packaging and delivering content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating is a matter of packaging and delivering content, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "native",
+      "note": "The specification defines named compliance profiles (minimum, content-subscription, persistence, ownership, group access), each adding stated optional features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, Annex A - Compliance Points",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification includes the following compliance profiles."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, Annex A - Compliance Points",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Content-subscription profile: This profile adds the optional classes: ContentFilteredTopic, QueryCondition, MultiTopic."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchors is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Coverage declaration is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and spatial events is a matter of geographic data models, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graph is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Rights enforcement is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Assurance and evidence behind a claim is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkability is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Record of what a system decided is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed trust registries is a matter of identity and credential formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Haptics is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Device capability discovery is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking as input is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Pointing and selection against content is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event-device input is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Physiological signals as input is a matter of user input devices and sensors, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "Scripting runtime is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Sandboxing and isolation is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent code identity is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Agent authoring and publishing interface is a matter of world logic and scripting, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "native",
+      "note": "The ownership policy lets exactly one writer own each data instance, chosen by strength and liveliness, so one writer decides the value subscribers see.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.9.2 EXCLUSIVE kind",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This setting indicates that each instance of a data-object can only be modified by one DataWriter."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.11 LIVELINESS",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This policy controls the mechanism and parameters used by the Service to ensure that particular entities on the network are still “alive.”"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "native",
+      "note": "Subscribers receive only the topics, content-filtered samples, partitions and update rates they ask for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.2.3.3 ContentFilteredTopic Class",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ContentFilteredTopic is a specialization of TopicDescription that allows for content-based subscriptions."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.13 PARTITION",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "For a DataReader to see the changes made to an instance by a DataWriter, not only the Topic must match, but also they must share a common partition."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.12 TIME_BASED_FILTER",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This policy allows a DataReader to indicate that it does not necessarily want to see all values of each instance published under the Topic."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "none",
+      "note": "Searched DDS 1.4 (formal/2015-04-10) for predict, reconcil, extrapol, interpolat, smooth and dead reckon on 2026-11-03; the only hit is the word predictable in a requirements statement, with no latency-hiding or correction mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Relevant real-time applications can be found in C4I, industrial automation, distributed control and simulation, telecom equipment control, sensor networks, and network management systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "none",
+      "note": "Searched OMG DDS 1.4 (formal/2015-04-10) full text for audio, video, voice, multimedia, streaming, telephony and media on 2026-11-03; no audio or media transport, codec or stream definition found, only the general statement that applications publish or stream data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Many real-time applications have a requirement to model some of their communication patterns as a pure data-centric exchange, where applications publish (supply or stream) “data” which is then available to the remote applications that are interested in it."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "partial",
+      "note": "Liveliness and the participant built-in topic show which entities are alive in a domain; the specification has no notion of where an entity is, and nothing spans operators beyond a shared domain.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.11 LIVELINESS",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This policy controls the mechanism and parameters used by the Service to ensure that particular entities on the network are still “alive.”"
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.5 Built-in Topics",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As part of its operation, the middleware must discover and possibly keep track of the presence of remote entities such as a new participant in the domain."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "native",
+      "note": "The middleware discovers remote participants, topics, readers and writers within a domain, and exposes what it finds to the application as built-in topics.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.5 Built-in Topics",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As part of its operation, the middleware must discover and possibly keep track of the presence of remote entities such as a new participant in the domain."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.5 Built-in Topics",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "To make this information accessible to the application, the DCPS specification introduces a set of built-in topics and corresponding DataReader objects that can then be used by the application."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "Samples carry a source timestamp and a destination-order policy can settle concurrent writers by it, but the lifespan policy relies on sender and receiver clocks being synchronized by other means, and the specification defines no shared clock.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.17 DESTINATION_ORDER",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This policy controls how each subscriber resolves the final value of a data instance that is written by multiple DataWriter objects (which may be associated with different Publisher objects) running on different nodes."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.16 LIFESPAN",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This QoS relies on the sender and receiving applications having their clocks sufficiently synchronized."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "Searched OMG DDS 1.4 (formal/2015-04-10) full text for sensor, actuator, controller, machine, building, device, data source and external source on 2026-11-03; the specification carries data between applications but defines no binding of a world object to an external live data source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.23.2 Detection of loss in topological connectivity",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A more common scenario is that the application logic will wait until some writers appear that can provide some needed source of information (e.g., the raw sensor data that must be processed)."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Portal preview is a matter of world-level networking behaviour, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.2 Purpose",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification focuses on the portability of applications using the Data-Distribution Service."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "partial",
+      "note": "The persistence profile keeps topic data in transient memory or permanent storage so it survives writer and system outages, but it holds samples, not whole world state such as scenes or object behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, Annex A - Compliance Points",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This profile enables saving data into either TRANSIENT memory, or permanent storage so that it can survive the lifecycle of the DataWriter and system outings."
+        },
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 2.2.3.4 DURABILITY",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This QoS policy controls whether the Service will actually make data available to late-joining readers."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "Content addressing is a matter of user and world data portability, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Taking a whole world out is a matter of user and world data portability, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records is a matter of user and world data portability, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid bodies is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft bodies and cloth is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes is a matter of physical simulation, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Rasterization pipeline is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Graphics interface binding is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Material model is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting and radiance fields is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Volumetric and point cloud is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text rendering is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Camera and viewpoint model is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Passthrough and environment blending is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space and dynamic range is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface surfaces is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "General-purpose GPU computation is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Portable shader language is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote (split) rendering is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Non-visual sensory effects is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "Renderer swap and fallback is a matter of drawing and display, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets and blend shapes is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Scene composition and overrides is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "Provenance and authorship is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "Domain metadata carried with an asset is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview image for an asset is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial index is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "Named sets of objects is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media inside a scene is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Emitter-based effects is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering a stripped provenance record is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative styling carried apart from the content is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable variants of an asset is a matter of scene description and asset formats, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Real-world depth is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Real-world lighting estimation is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Usable physical area is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit test against the real world is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is a matter of real-world sensing by an augmented-reality runtime, which a specification for delivering typed data between publishers and subscribers does not address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.omg.org/spec/DDS/1.4/PDF?file=DDS-1.4.pdf",
+          "title": "OMG Data Distribution Service (DDS) 1.4, formal/2015-04-10, 1.1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines both the Application Interfaces (APIs) and the Communication Semantics (behavior and quality of service) that enable the efficient delivery of information from information producers to matching consumers."
+        }
+      ]
+    }
+  ]
+}

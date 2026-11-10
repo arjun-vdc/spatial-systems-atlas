@@ -2936,6 +2936,358 @@
           "quote": "The Model Target Generator generates Model Targets by taking a 3D model representing the object you want to track as input"
         }
       ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "partial",
+      "note": "Partly met. Unity's Developer Data framework has the UnityConsent API, where the game declares each player's consent state per purpose (an analytics intent and an advertising intent) as granted or denied, and Unity services restrict their behaviour when consent is denied, so purpose and withdrawal are carried to Unity's own services. Missing: a scope and validity period, any carriage of the grant to parties other than Unity, and an exchangeable format. Unity Authentication itself carries no grant: its privacy page leaves parental consent to the developer. Searched the Developer Data user-consent page on 2026-10-23 for UnityConsent, purpose, withdraw, revoke, expire and valid; found the two intents, granted, denied and unspecified values, and no validity period or exchange format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/cloud/developer-data/user-consent",
+          "title": "Unity Docs: Manage consent via the UnityConsent API",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "EndUserConsent.SetConsentState(new ConsentState { AnalyticsIntent = ConsentStatus.Granted, AdsIntent = ConsentStatus.Denied });"
+        },
+        {
+          "url": "https://docs.unity.com/en-us/cloud/developer-data/user-consent",
+          "title": "Unity Docs: Manage consent via the UnityConsent API",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "For services whose consent is managed via the UnityConsent API, consent must be granted for the services to function normally."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/authentication",
+          "title": "Unity Docs: Unity Authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Applications often need to know player identities to provide features and services to game developers and players that ensure security, consistency, and safety with every interaction."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/authentication/privacy-and-consent/overview",
+          "title": "Unity Docs: Privacy overview for Authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This service is not intended to be used in applications with child users, unless you, the developer, have obtained Verified Parental Consent where required as outlined in the Unity Terms of Service"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Partly met. The Client API page lists which token claims to verify (exp, nbf, sub, project_id, jti, iss) with a one-line meaning each, and the keys are published as a standard key set. Missing: a machine-readable schema or vocabulary for the claims, and Unity's own support article says its Unity-specific claims are not fully described in public documentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/services-web-apis/client-auth",
+          "title": "Unity Docs: Client authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To make sure that your token is valid, verify the token's following claims:"
+        },
+        {
+          "url": "https://support.unity.com/hc/en-us/articles/44608153508884-What-do-Unity-Authentication-JWT-claims-idd-sign-in-provider-mean-and-can-I-use-the-accessToken-with-my-backend",
+          "title": "Unity Support: What do Unity Authentication JWT claims (idd, sign_in_provider) mean",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unity‑specific claims used for scoping/context aren’t fully described in public docs."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "partial",
+      "note": "Partly met. Unity's access tokens carry a sign_in_provider claim that tells the relying party which provider established the player (anonymous, platform account, custom, OpenID Connect). Missing: any assurance level or evidence about how well the player was verified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://support.unity.com/hc/en-us/articles/44608153508884-What-do-Unity-Authentication-JWT-claims-idd-sign-in-provider-mean-and-can-I-use-the-accessToken-with-my-backend",
+          "title": "Unity Support: What do Unity Authentication JWT claims (idd, sign_in_provider) mean",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "sign_in_provider indicates which identity provider was used."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "partial",
+      "note": "Partly met. A Unity player identifier is unique per Unity project, so the same person gets a different identifier in another project. Missing: any presentation mechanism that hides the link between relationships, and any statement of remaining correlation risk; Unity Player Accounts deliberately offers organisation-level identifiers that persist across all of a developer's games.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/services-web-apis/client-auth",
+          "title": "Unity Docs: Client authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "It's unique per Unity Project."
+        },
+        {
+          "url": "https://docs.unity.com/authentication/en/manual/unity-player-accounts",
+          "title": "Unity Docs: Unity Player Accounts",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Leverage organization-level player identifiers to maintain persistent player profiles across all of your games."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Unity Authentication publishes only signing keys: the key set lists keys with use set to sig and signing algorithm RS256, and nothing identifies a recipient's encryption key or encrypted delivery to a player. Searched all 37 English Authentication pages, the Client API page and the JWKS page for encrypt, recipient, key agreement and JWE on 2026-10-22; the only hits are transport-encryption answers, a Steam ticket remark and licence text.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/authentication",
+          "title": "Unity Docs: Unity Authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Applications often need to know player identities to provide features and services to game developers and players that ensure security, consistency, and safety with every interaction."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/services-web-apis/client-auth",
+          "title": "Unity Docs: Client authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "\"use\": \"sig\", \"kty\": \"RSA\", \"kid\": \"public:f66a7494-5315-4ca4-8150-e846573ffc1d\", \"alg\": \"RS256\""
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "none",
+      "note": "No machine-readable record of an evaluation of a presented credential is documented. Unity Authentication returns tokens and, for enforcement actions, notification records with a case identifier and message, but these are notices to the player rather than a signed account of a decision. Searched all 37 English Authentication pages, the Client API page and the JWKS page for receipt, decision and attestation on 2026-10-22; no receipt format found.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity.com/en-us/authentication",
+          "title": "Unity Docs: Unity Authentication",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Applications often need to know player identities to provide features and services to game developers and players that ensure security, consistency, and safety with every interaction."
+        },
+        {
+          "url": "https://docs.unity.com/en-us/authentication/dsa-notifications",
+          "title": "Unity Docs: Digital Services Act Notifications",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A case identifier to allow the player to request more details on the notification."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Partly met. A trigger collider is a volume in the scene that sends enter, stay and exit events to scripts when another collider touches it. Missing: identified zones that can be exchanged with another system, event types beyond these three callbacks, and summaries with a defined spatial and temporal meaning; the volumes live in Unity's own scene files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/collider-interactions-create-trigger.html",
+          "title": "Unity Manual: Create and configure a trigger collider",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A trigger collider does not collide with other colliders; instead, other colliders pass through it."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/collider-interactions-ontrigger.html",
+          "title": "Unity Manual: OnTrigger events",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Collider.OnTriggerEnter : Unity calls this function on a trigger collider when it first makes contact with another collider."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Partly met. Unity supports the platform's privacy declarations (Apple's privacy manifest listing the data an app collects, and Android runtime permission requests for camera and microphone). Missing: any control inside the sensing packages for spatial coarsening, retention terms on sensed data, or restricted or pseudonymous pose publication; AR Foundation's pages say nothing on privacy.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/apple-privacy-manifest-policy.html",
+          "title": "Unity Manual: Apple's privacy manifest policy requirements",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Apple requires new and updated applications targeted for iOS, iPadOS, macOS, tvOS, and visionOS platforms on the App Store to include privacy manifest files"
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/android-RequestingPermissions.html",
+          "title": "Unity Manual: Request runtime permissions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This page explains how to request the user’s permission for your application to access data on the device or use a device feature such as a built-in camera or microphone."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "via-extension",
+      "note": "The Unity AI Assistant package (Generators) includes a 3D Object Generator that makes static 3D object prefabs from a text prompt or reference image; the package version read is a pre-release (2.1.0-pre.1) and the 6.6 manual's AI page lists sprites, textures, sounds, animations and materials but not 3D objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.ai.assistant@2.1/manual/about/overview.html",
+          "title": "Assistant 2.1.0-pre.1 manual: About Generators",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Generates static 3D object prefabs from text prompts or reference images for use as simple props and environment assets."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/UnityManual.html",
+          "title": "Unity 6.6 User Manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Create with AI-powered tools in the Unity Editor and Dashboard. Use Assistant for contextual help, Generators for asset creation, and Sentis to run models at runtime."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Unity is a development engine, and training a radiance field or Gaussian representation from photographs is a reconstruction pipeline it does not specify or run; Unity's manual search finds no radiance-field page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://unity.com/products/unity-engine",
+          "title": "Unity Engine: 2D & 3D Development Platform | Unity",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unity Engine is a game and app development software that allows game developers to create video games across 20+ platforms and billions of devices."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Unity has no musical event-device input: the Input System package accepts any kind of input device through its device layouts, and its supported-device list has mouse, keyboard, pen, touch, gamepads, joysticks, sensors and XR, but no instrument or MIDI device. Searched the Unity 6.6 manual word index (3,667 pages) and all 55 pages of the Input System 1.14 manual for midi, musical and instrument on 2026-10-22; the only manual hit is the Tracker Modules audio page, which is a file format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.14/manual/index.html",
+          "title": "Input System 1.14 manual: Input System",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This Input System package is a newer, more flexible system, which allows you to use any kind of Input Device to control your Unity content."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "Partly met. The Unity AI Assistant package includes a Unity MCP server that lets outside agents such as Claude Code or Cursor create scenes, manage assets and edit scripts in the open Editor, with per-tool enable and disable toggles and approval of each new client. Missing: publishing. The page lists built-in tools for scene management, asset operations, script editing and console access and describes no step that publishes a built world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.ai.assistant@2.0/manual/unity-mcp-overview.html",
+          "title": "Assistant 2.0 manual: Unity MCP",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Unity MCP connects large language model (LLM)-based agents, such as Claude Code and Cursor, to the Unity Editor through standardized MCP tools."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.ai.assistant@2.0/manual/unity-mcp-overview.html",
+          "title": "Assistant 2.0 manual: Unity MCP",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Tool list with enable/disable toggles"
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.ai.assistant@2.0/manual/unity-mcp-overview.html",
+          "title": "Assistant 2.0 manual: Unity MCP",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Automate Unity tasks such as scene management, asset operations, script editing, and console access."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "native",
+      "note": "Unity's VR frame loop takes a predicted head pose from the headset software twice per frame, one for rendering the current frame and one for simulating the next, and applies it to cameras and controllers; if a frame is late the runtime reprojects the previous frame. This is automatic, and the page read does not show an application interface to the predicted display time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/VRFrameTiming.html",
+          "title": "Unity Manual: VR frame timing",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To keep latency as low as possible, the VR SDK predicts the head transform twice per frame:"
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/Manual/VRFrameTiming.html",
+          "title": "Unity Manual: VR frame timing",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unity applies the rendering prediction for the current frame to cameras, controllers, and anything that needs information for Scene rendering."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "partial",
+      "note": "Partly met through the Unity Render Streaming package (an experimental release, 3.1.0-exp.9): it streams video rendered in Unity to browsers, and a sample moves a camera on another PC from an AR Foundation device's position and direction. Missing: a predicted pose and display time sent from the client, and any late-stage correction on the device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.renderstreaming@3.1/manual/index.html",
+          "title": "Unity Render Streaming 3.1.0-exp.9 manual: About Unity Render Streaming",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We can broadcast video rendered on Unity to browsers via network."
+        },
+        {
+          "url": "https://docs.unity3d.com/Packages/com.unity.renderstreaming@3.1/manual/sample-arfoundation.html",
+          "title": "Unity Render Streaming 3.1.0-exp.9 manual: AR Foundation Sample",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This sample demonstrates operating the position and direction of a camera on another PC from the mobile device supported by AR Foundation"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Unity has no effect description and no effect-device output in the engine. Searched the full-text search indexes of the Unity 6.6 (6000.6) User Manual (3,680 pages) and Scripting API (47,075 entries) for dmx, scent, smell, olfactory, aroma, motion seat, motion platform, actuator, artnet, 4dx, mpeg-v, gdtf, sacn, fan, wind and fixture on 2026-11-01; the first thirteen have no match. Fan matched only a tree-frond setting and a mesh-triangulation option, fixture only unit-test and 2D physics settings, and wind only the in-engine WindZone, SpeedTree and particle simulations, which move virtual objects and drive no device. Haptics and vibration appear only as gamepad and XR controller output. Package documentation was not searched, so the absence is unverified for packages.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.6/Documentation/ScriptReference/XR.InputDevice.SendHapticImpulse.html",
+          "title": "Unity Scripting API: XR.InputDevice.SendHapticImpulse",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Sends a haptic impulse to a device."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "Unity can draw one scene with a different render pipeline by changing the active Render Pipeline Asset, including per quality level, and a shader can name a fallback shader. It declares no substitute for a whole renderer that cannot draw the scene, and the project's assets must be made compatible with the new pipeline by hand.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.unity3d.com/6000.0/Documentation/Manual/srp-setting-render-pipeline-asset.html",
+          "title": "Unity Manual 6000.0, Change or detect the active render pipeline",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As soon as you change the active Render Pipeline Asset in the Unity Editor or at runtime, Unity uses the new active render pipeline to render content."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.0/Documentation/Manual/srp-setting-render-pipeline-asset.html",
+          "title": "Unity Manual 6000.0, Change or detect the active render pipeline",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When you change the active render pipeline, you must ensure that the assets and code in your project are compatible with the new render pipeline; otherwise, you might experience errors or unintended visual effects."
+        },
+        {
+          "url": "https://docs.unity3d.com/6000.0/Documentation/Manual/SL-Fallback.html",
+          "title": "Unity Manual 6000.0, Fallback block in ShaderLab reference",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This page contains information on using a Fallback block in your ShaderLab code to assign a fallback Shader object."
+        }
+      ]
     }
   ]
 }

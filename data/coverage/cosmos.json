@@ -3352,6 +3352,110 @@
           "quote": "This page outlines the set of tools used to ensure content safety in Cosmos."
         }
       ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "A face-blurring post-processor runs over generated frames by default, but the privacy sub-card covers training data only and nothing declares how supplied sensor video is used or kept, or coarsens location or pose. The publications disagree: the model card says generated video will not blur people, the framework guide says the blur can be switched off, and the guardrail page says the guardrail cannot be disabled.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/NVIDIA/cosmos-framework/blob/9a70e64d2ad7ff1417484d12d10fb121b270baaf/docs/inference.md",
+          "title": "Inference guide, cosmos-framework at commit 9a70e64d",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "and RetinaFace face-blur post-processor"
+        },
+        {
+          "url": "https://huggingface.co/nvidia/Cosmos3-Super",
+          "title": "Cosmos3-Super model card, Hugging Face",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Please make sure you have proper rights and permissions for all input image and video content; if image or video includes people, personal health information, or intellectual property, the image or video generated will not blur or maintain proportions of image subjects included."
+        },
+        {
+          "url": "https://docs.nvidia.com/cosmos/latest/guardrail.html",
+          "title": "Cosmos Guardrail, NVIDIA Cosmos documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Face Blur Filter : A face detection and blurring module"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Inputs are declared as 8-bit sRGB colour and grayscale is refused. No colour space or range is stated for the generated JPEG images and MP4 video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://huggingface.co/nvidia/Cosmos3-Super/raw/f543c56225b2e04d0ad141e29655be3a45d9c455/README.md",
+          "title": "Cosmos3-Super model card, Hugging Face",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Image and video inputs are RGB color (8 bits per channel, sRGB color space); grayscale inputs are not supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the Cosmos3-Super model card and its safety, privacy, bias and explainability sub-cards (revision f543c562), the repository README, the framework README, setup, inference, training and FAQ pages, the guardrail and licence pages, the technical report and a code search of cosmos-framework for watermark, fingerprint, provenance, C2PA, content credential and generated-by marking on 2026-10-22; the only mentions concern detecting synthetic content in training data, and nothing marks or lets anyone recover the origin of a generated output.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://huggingface.co/nvidia/Cosmos3-Super/raw/f543c56225b2e04d0ad141e29655be3a45d9c455/EXPLAINABILITY.md",
+          "title": "Explainability sub-card, Cosmos3-Super",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Dataset provenance analysis, metadata validation, watermark and artifact detection, embedding-based clustering, heuristic quality checks, and model-assisted data validation pipelines are used to identify synthetic content patterns, assess dataset authenticity, and improve data quality during dataset curation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Cosmos is a platform of world models for robots, vehicles and infrastructure; it generates and reasons over video and text, not sensory effect descriptions for viewer devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/NVIDIA/Cosmos/blob/6e2c69afafd6444c1ca14a021aba93fcc6b7996a/README.md",
+          "title": "NVIDIA Cosmos README (commit 6e2c69a)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "NVIDIA Cosmos is an open platform for building physical AI applications — robots, autonomous vehicles, and smart infrastructure — providing better data, better environment, better starting point, and better tooling for physical AI developers."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A family of world-generation and reasoning models; it produces content and does not select renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/NVIDIA/Cosmos/blob/6e2c69afafd6444c1ca14a021aba93fcc6b7996a/README.md",
+          "title": "NVIDIA Cosmos README, What is Cosmos (commit 6e2c69a)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NVIDIA Cosmos is an open platform for building physical AI applications — robots, autonomous vehicles, and smart infrastructure — providing better data, better environment, better starting point, and better tooling for physical AI developers."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Cosmos is a platform of world models for physical AI; it has no portals between worlds and no previews of them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/NVIDIA/Cosmos/blob/6e2c69afafd6444c1ca14a021aba93fcc6b7996a/README.md",
+          "title": "NVIDIA Cosmos README, What is Cosmos (commit 6e2c69a)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NVIDIA Cosmos is an open platform for building physical AI applications — robots, autonomous vehicles, and smart infrastructure — providing better data, better environment, better starting point, and better tooling for physical AI developers."
+        }
+      ]
     }
   ]
 }

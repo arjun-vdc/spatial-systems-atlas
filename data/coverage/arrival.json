@@ -2501,6 +2501,860 @@
           "quote": "Once MFA has been enabled, you will be asked to enter both your password and a current authenticator app code whenever you sign in."
         }
       ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "partial",
+      "note": "The Blender add-on lists .splatv among the splat file types a space can hold, and the served client has a dedicated loader and shader for it in which each splat carries its own time parameters, so one file replays a time-varying splat scene. Missing: no document describes the format, and the loader code has no camera calibration or mask field that a second implementation would need to reproduce the capture. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for calibration, intrinsic, mask, fps, duration, volumetric and time-varying in the loader code and documents on 2026-10-23; the manual and plugin documentation say nothing about the format, and the loader contains none of the calibration or mask terms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/tools/arrival-blender/space.py",
+          "title": "space.py (arrival-plugins Blender add-on, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "SPLAT_EXTS = {\".ply\", \".sog\", \".spz\", \".splat\", \".splatv\", \".lcc\", \".lcc2\", \".asat\", \".ksplat\"}"
+        },
+        {
+          "url": "https://arrival.space/__game-scripts.js",
+          "title": "Arrival.Space client script (as served)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "float dt = time - trbf.x;"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "partial",
+      "note": "A .splatv file holds splats with per-splat time parameters in one file, so a receiver is not handed each frame as an unrelated file. Missing: the file carries no playback rate that the client uses; the served script feeds the shader a time value that sweeps between 0 and 1 as a sine of the wall clock (period about six seconds), and no document states a rate or timeline. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for 4D, time-varying, playback rate, fps, frame rate, duration, timeline and sequence on 2026-10-23; the manual and plugin documentation do not mention the format, and the loader code has no rate or duration field.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/tools/arrival-blender/space.py",
+          "title": "space.py (arrival-plugins Blender add-on, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "SPLAT_EXTS = {\".ply\", \".sog\", \".spz\", \".splat\", \".splatv\", \".lcc\", \".lcc2\", \".asat\", \".ksplat\"}"
+        },
+        {
+          "url": "https://arrival.space/__game-scripts.js",
+          "title": "Arrival.Space client script (as served)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "float dt = time - trbf.x;"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, and the splat.js repository at commit a84620c for multi-view, RGB-D, per-pixel depth, intrinsics and extrinsics on 2026-10-22; the reconstruction shows source images with their camera positions, but the output is a splat and no calibrated views with depth are carried or exported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/video-to-splat",
+          "title": "Video to Splat (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Once your Splat has finished training, you can review the camera positions and images used directly in the Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "partial",
+      "note": "The in-app Space Agent, the MCP server and the command-line tool let a person change an existing space by describing the change in words, and every push snapshots the space first so earlier versions can be restored. Missing: no pointing at a region of a generated splat world, no growing a generated world past its edges, and the edit acts on entities, plugins and Blender-built models rather than regenerating splat content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/3d-content/",
+          "title": "3D Content (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To use the Agent, simply describe what you want to do."
+        },
+        {
+          "url": "https://arrival.space/agents.md",
+          "title": "Arrival.Space guide for coding agents",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Each push snapshots the space server-side first, so it can be undone in-app."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "partial",
+      "note": "Encrypted splat files carry their own .asat extension and the Blender add-on can read them only through a compressed .sog copy, and a release note lists Splat Data Protection. No document names the scheme, key or algorithm, so a recipient can tell a file is protected but not by what mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/tools/arrival-blender/space.py",
+          "title": "Arrival.Space for Blender add-on, space.py (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "encrypted .asat splat without a .sog version"
+        },
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Splat Data Protection New"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for profile, level, subset, compatibility and minimum API version on 2026-10-23; the plugin interface reports one API version string for compatibility checking and notes the minimum version for single calls, but no named subset or level that content and a runtime declare against exists; the 'profile' hits are user-profile pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/arrival-script-api.md",
+          "title": "Arrival Script API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "API version string for plugin compatibility checking."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, and the terms and privacy policy for receipt, invoice, proof of purchase and grant record on 2026-10-22; invoices live in Stripe for subscriptions and top-ups, and the platform issues no portable machine-readable record binding recipient, resource, issuer and time with signed fields.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/claim/manage-settings",
+          "title": "Manage your Settings (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This gives you direct access to your subscription details in Stripe, where you can manage billing and invoices."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, the terms and privacy policy, and a GitHub code search of the arrival-space organisation for provenance, signed, signature, C2PA, content credentials and authorship on 2026-10-22; the only provenance object is an unsigned record of which AI model tagged a space, and no signed record of who made an asset or how is carried.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room Config reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "`{ model, promptVersion, enrichedAt, screenshotRef? }` provenance — preserve"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for watermark, fingerprint, C2PA, content credentials, digital signature and signing key on 2026-10-23; no document or client code offers a watermark, fingerprint or signature route to a provenance record; the only provenance object is an unsigned record of which AI model tagged a space, and the one 'fingerprint' hit is a cache key for a splat transform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/room-config.md",
+          "title": "Room config (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "`{ model, promptVersion, enrichedAt, screenshotRef? }` provenance — preserve"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "via-extension",
+      "note": "Plugins receive the PlayCanvas application as this.app, and the engine Arrival serves (version 2.22.2) lets a mesh instance draw many copies from one buffer of per-instance data, so a plugin can repeat a model cheaply. No Arrival document or example plugin describes or uses it, and placing one stored file on many entities is not by itself instancing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "| `this.app` | `pc.Application` | The PlayCanvas application |"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/scene/mesh-instance.js",
+          "title": "PlayCanvas engine v2.22.2, mesh-instance.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "attach a vertex buffer that holds per-instance data"
+        },
+        {
+          "url": "https://arrival.space/playcanvas-stable.min.js",
+          "title": "PlayCanvas engine bundle served by Arrival.Space (v2.22.2)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "PlayCanvas Engine v2.22.2 revision 6e6d0d0 (RELEASE)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "via-extension",
+      "note": "The Avatar Bone Attachment example plugin makes a model follow an avatar bone with set offset and rotation, and the Rail Camera plugin limits a camera to chosen axes. These are plugin code, and no declarative constraint with defined evaluation rules is part of the scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/README.md",
+          "title": "arrival-plugins README (commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Attach a GLB model to any avatar bone with configurable offset and rotation"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "partial",
+      "note": "Uploaded file names are described as content-hashed, so a cached copy never goes stale, but entities still refer to files by a location URL under the user folder. No hash-only reference or integrity check is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/tools/arrival-blender/space.py",
+          "title": "Arrival.Space for Blender add-on, space.py (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UGC file names are content-hashed, so a cached copy never goes stale."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/CLAUDE.md",
+          "title": "arrival-plugins CLAUDE.md (commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "https://ugc.arrival.space/{userId}/{resource_key}"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "partial",
+      "note": "A per-user store that works across spaces lets plugins keep settings such as a theme for the signed-in account, and avatar and profile follow the account. The manual says language is changed locally, and no graphics or accessibility choice is documented as following the user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Per-user persistent key-value storage that works **across spaces**."
+        },
+        {
+          "url": "https://codex.arrival.space/claim/interface",
+          "title": "Interface (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "You can change your language locally by using this dropdown menu."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "none",
+      "note": "The plugin store keeps lists such as best times, votes and high scores that everyone in a space reads, but it is a platform-internal string store, not a portable statement readable by a system outside the world. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for xAPI, SCORM, cmi5, learning record, learning record store and learning management on 2026-10-23; no hits in the manual, plugin documentation, client script or policies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A small shared store per space for lists that many visitors add to — best times, votes, high scores."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "none",
+      "note": "A plugin defines a unique static scriptName and the plugin reference advises namespaced event names, but the first is an authoring rule inside a workspace and the second a convention; neither reserves a name to one author or makes it resolve to the same code forever. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for namespace, reserved name, registry, claimed, immutable, pinned version and scriptName on 2026-10-23; scriptName is required and must be unique within a space, event-name prefixes are advised, and nothing reserves, registers or pins a name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/api/cli",
+          "title": "Arrival CLI (manual, version 1.0)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A plugin normally exports one class extending ArrivalScript and defines a unique static scriptName"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Use namespaced event names (e.g. `\"myGame:event\"`) to avoid collisions."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef for determinism, deterministic, fixed timestep, lockstep and replay on 2026-10-22; physics runs in each visitor's browser with a per-frame substep limit, and nothing promises identical outcomes on different machines.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Set the global physics simulation step rate for the current world."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Maximum Bullet substeps per frame (default: `10`)"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, and the terms and privacy policy for selective disclosure, minimal disclosure, attributes shared with a space, anonymous and pseudonymous entry on 2026-10-22; guests can enter without an account, but a space and its plugins receive the same fixed set of user ID, name and avatar for everyone, with no attribute-by-attribute disclosure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://claim.arrival.space/privacy-policy/",
+          "title": "Privacy policy (Stratum1 GmbH, Arrival.Space)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When using the Platform, particularly within interactive 3D environments, certain personal data may be visible to other users by design."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, and the terms and privacy policy for pairwise identifier, correlation, unlinkable and per-space identity on 2026-10-22; a signed-in user has one platform-wide user ID that every plugin in every space receives, only a guest gets a temporary one, and no correlation risk is stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "a guest's `userID` belongs to that temporary account only."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "partial",
+      "note": "The served client encrypts a space's data with an AES-GCM key generated from a password the owner enters; the encrypted records carry the hash of the key, the key is uploaded to the account's key store and a JSON web key file is offered for download, so key material and algorithm are identifiable inside the client. Missing: it is one shared symmetric key, not key material for an intended recipient, no public document names the format, algorithm or key exchange, and the terms say password-protected spaces are not end-to-end encrypted by default. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for encrypt, end-to-end, E2EE, AES, cipher, public key, private key and RSA on 2026-10-23; the manual and policies mention only transport encryption, encryption at rest and a release-note title, and the key handling above is found only in the served client script.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://claim.arrival.space/terms-conditions-arrival-space/",
+          "title": "Terms and conditions (Stratum1 GmbH, Arrival.Space)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Password-protected spaces are not end-to-end encrypted by default."
+        },
+        {
+          "url": "https://codex.arrival.space/version/",
+          "title": "Release Notes (Arrival.Space manual)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "End 2 End encryption New"
+        },
+        {
+          "url": "https://arrival.space/__game-scripts.js",
+          "title": "Arrival.Space client script (as served)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "const a=await this.app.keyStore.generateKey(r),i=a.hash"
+        },
+        {
+          "url": "https://arrival.space/__game-scripts.js",
+          "title": "Arrival.Space client script (as served)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "crypto.subtle.importKey(\"raw\",e,{name:\"AES-GCM\"},!0,[\"encrypt\",\"decrypt\"])"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef for face tracking, facial expression, body tracking, pose tracking, webcam and blendshape input on 2026-10-22; avatars move their mouth from voice loudness and the splat.js avatar tool fits faces from photos, but no live face or body stream is read as input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Receiving typed instrument events with channel, note and control values through a device or recorded-event interface is absent; the Piano example plays notes from pointer clicks and only carries a MIDI note number per key. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for MIDI, requestMIDIAccess, instrument, note on and note off on 2026-10-23; the only hits are audio/midi entries in the client's media-type table and the note-number field in the Piano example; no device or event input exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/piano.mjs",
+          "title": "Piano example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Piano — a playable keyboard, and the reference for pointer interaction."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Heart rate, skin conductance and similar body signals as a live input stream are not offered to plugins or described anywhere; the platform is a VR-capable avatar and voice service, so the area is within what it could carry. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for heart rate, skin conductance, GSR, EEG, biometric, wearable, Bluetooth and physiological on 2026-10-23; no input of body signals exists; the only hits are terms that forbid biometric identification as a use of the services.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "Synchronized view keeps viewers of a video or document in step, and synced properties resolve concurrent writes by last write wins. No shared clock or event-ordering mechanism is exposed to plugins.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/gates/gate-interface",
+          "title": "Gate Edit (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Activate this to synchronize the content playback or viewing experience with other creators currently in the Space."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Any player (last write wins)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef for interest management, area of interest, relevance filtering and per-client filtering on 2026-10-22; synced properties go to all players, and the only narrower route is a message sent to one named player.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "// Synced properties - automatically shared with all players"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef for client-side prediction, reconciliation, rollback, interpolation and lag compensation on 2026-10-22; the multiplayer reference describes synced values, an isRemote flag on change callbacks and last write wins, with no prediction or correction scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/multiplayer.md",
+          "title": "Multiplayer API (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Build real-time multiplayer experiences with synchronized state and messaging."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "Plugins load external data at run time, for example the Google 3D Tiles example streams the Google Earth globe, but nothing binds a world object to a sensor, machine controller or building system, and the privacy policy says plugins do not have general access to external websites. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for WebSocket, server-sent events, MQTT, OPC UA, sensor, IoT, digital twin, telemetry, webhook, live data and fetch on 2026-10-23; fetch calls appear only in tile-streaming and tooling code, and no live binding to an external asset is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/README.md",
+          "title": "arrival-plugins README (commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Stream the Google Earth globe (Photorealistic 3D Tiles) centered on any lat/lon, with LOD streaming and miniature-globe scaling"
+        },
+        {
+          "url": "https://claim.arrival.space/privacy-policy/",
+          "title": "Privacy policy (Stratum1 GmbH, Arrival.Space)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "They are technically restricted and do not have general access to external websites, external domains, browser cookies, or local storage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "partial",
+      "note": "Live voice runs over an encrypted WebRTC channel and broadcasts to everyone in the space, and recorded sound is uploaded as MP3 files and served from the content delivery network. No streamed or segmented audio delivery and no stated capacity limit is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://claim.arrival.space/privacy-policy/",
+          "title": "Privacy policy (Stratum1 GmbH, Arrival.Space)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Purpose: WebRTC-based, encrypted real-time communication such as voice and audio."
+        },
+        {
+          "url": "https://codex.arrival.space/social-interaction/voice-chat",
+          "title": "Voice Chat (Arrival.Space manual)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "As soon as one creator inside the Space has enabled his microphone, the voice will be broadcast to all participants in the Space."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "The Piano example plugin synthesises notes with WebAudio so it ships with no audio files. The synthesis is plugin code, not an exchanged synthesis model with supporting data and control parameters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/piano.mjs",
+          "title": "Piano example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "WebAudio note synthesis, so the vibe ships with no audio assets"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "none",
+      "note": "A space stores each entity as a position, rotation and scale in one scene frame, with hierarchy only inside model files, and the Google 3D Tiles example re-centres the world on a longitude and latitude; no interchange of linked poses or transform chains between systems exists. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for pose graph, spatial anchor, cloud anchor, relocalisation and frame of reference on 2026-10-23; no hits for any of them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Enter a longitude/latitude and the world re-centers so that location sits at this entity's origin"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "partial",
+      "note": "The Google 3D Tiles example plugin aligns a scan to Earth tiles by hand through stored plugin parameters (longitude, latitude, ground altitude), and a space can carry a latitude, longitude and altitude. No map-version or lifecycle declaration and no published alignment transform between two maps of a place is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/examples/google-3d-tiles.mjs",
+          "title": "Google 3D Tiles example plugin (arrival-plugins, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Tweak until the street lines up with your floor."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "via-extension",
+      "note": "Plugins receive the PlayCanvas application, and the engine Arrival serves (version 2.22.2) has a compute shader class that runs on WebGPU only; a space uses WebGPU when its WebGPU setting is on and the visitor's browser supports it, otherwise it falls back to WebGL2 where compute is not available. No Arrival document or example plugin describes dispatching compute work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "| `this.app` | `pc.Application` | The PlayCanvas application |"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/platform/graphics/compute.js",
+          "title": "PlayCanvas engine v2.22.2, compute.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A representation of a compute shader with the associated resources, that can be executed on the"
+        },
+        {
+          "url": "https://codex.arrival.space/edit/customize-space/space-adaption-pro",
+          "title": "Space Edit - Advanced (Arrival.Space manual)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Render this space with the WebGPU graphics backend when the visitor's browser supports it (otherwise falls back to WebGL2)."
+        },
+        {
+          "url": "https://arrival.space/playcanvas-stable.min.js",
+          "title": "PlayCanvas engine bundle served by Arrival.Space (v2.22.2)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "PlayCanvas Engine v2.22.2 revision 6e6d0d0 (RELEASE)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "native",
+      "note": "Arrival's client runs its XR sessions on the bundled PlayCanvas engine (version 2.22.2), whose frame loop requests each frame from the active XR session and reads that frame's viewer pose; WebXR defines the predicted display time attached to the frame. The behaviour comes from the engine, and no Arrival document describes it or exposes the predicted display time as a plugin call.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/framework/app-base.js",
+          "title": "PlayCanvas engine v2.22.2, app-base.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "this.frameRequestId = this.xr.session.requestAnimationFrame(this.tick);"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/framework/xr/xr-manager.js",
+          "title": "PlayCanvas engine v2.22.2, xr-manager.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "const pose = frame.getViewerPose(this._referenceSpace);"
+        },
+        {
+          "url": "https://www.w3.org/TR/webxr/",
+          "title": "WebXR Device API (W3C)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "For an immersive session the predictedDisplayTime attribute MUST return the DOMHighResTimeStamp corresponding to the average point in time this XRFrame is expected to be displayed on the devices' display."
+        },
+        {
+          "url": "https://arrival.space/playcanvas-stable.min.js",
+          "title": "PlayCanvas engine bundle served by Arrival.Space (v2.22.2)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "PlayCanvas Engine v2.22.2 revision 6e6d0d0 (RELEASE)"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "via-extension",
+      "note": "Arrival starts AR sessions through the bundled PlayCanvas engine (version 2.22.2), which asks the browser for the hit-test feature in every AR session and exposes the engine's hit-test interface to plugins through this.app. No Arrival document or example plugin uses it, and it works only where the device and browser grant the optional feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "| `this.app` | `pc.Application` | The PlayCanvas application |"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/framework/xr/xr-manager.js",
+          "title": "PlayCanvas engine v2.22.2, xr-manager.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "opts.optionalFeatures.push('hit-test');"
+        },
+        {
+          "url": "https://arrival.space/playcanvas-stable.min.js",
+          "title": "PlayCanvas engine bundle served by Arrival.Space (v2.22.2)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "PlayCanvas Engine v2.22.2 revision 6e6d0d0 (RELEASE)"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "none",
+      "note": "Searched the Arrival.Space manual (codex.arrival.space, all pages in its sitemap), the REST API 2.1, command-line 1.0 and MCP server 2.0 pages, and the arrival-plugins documentation and example plugins at commit 25b02ef, and the Quest depth-occlusion demo repository at commit b864951 for mesh detection, plane detection, room mesh and scene understanding on 2026-10-22; the demo reads a depth map for occlusion, and no mesh, planes or room model is produced or exported.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "via-extension",
+      "note": "Arrival starts AR sessions through the bundled PlayCanvas engine (version 2.22.2), which asks the browser for the light-estimation feature in every AR session and exposes the engine's light-estimation interface to plugins through this.app. No Arrival document or example plugin uses it, and it works only where the device and browser grant the optional feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "| `this.app` | `pc.Application` | The PlayCanvas application |"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/playcanvas/engine/v2.22.2/src/framework/xr/xr-manager.js",
+          "title": "PlayCanvas engine v2.22.2, xr-manager.js",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "opts.optionalFeatures.push('light-estimation');"
+        },
+        {
+          "url": "https://arrival.space/playcanvas-stable.min.js",
+          "title": "PlayCanvas engine bundle served by Arrival.Space (v2.22.2)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "PlayCanvas Engine v2.22.2 revision 6e6d0d0 (RELEASE)"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "Detecting recognised markers or images and reporting their pose is not offered: the bundled engine has an image-tracking interface, but Arrival's session start passes no image set to it and no document or example uses it. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for image tracking, tracked image, ArUco, QR code, fiducial and marker tracking on 2026-10-23; the QR code hits concern sharing and sign-in codes, the marker hits are timeline markers in cutscenes, and the client script has no image-tracking option.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "none",
+      "note": "Recognising a known physical object from its 3D model and reporting its pose is not offered by Arrival's XR session start, documents or examples. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for object tracking, model tracking and tracking a physical object on 2026-10-23; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "none",
+      "note": "Naming real surfaces, objects or pixels as floor, wall, sky or person is not offered: Arrival's XR session start requests no plane or mesh detection and no document or example reads such labels. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for semantic, segmentation, plane detection, mesh detection, scene understanding and surface label on 2026-10-23; the hits are merge semantics in the API and shader attribute names, and the client script has no plane-detection or mesh-detection option.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Disclosure controls on sensed data are not offered: Arrival publishes no controls or declarations for sensed data, and the separate Quest depth demo README says the depth map is written into the page's depth buffer and states nothing about sharing or retention of it, although depth and occlusion are scored partial for this subject. Searched the Arrival.Space manual (codex.arrival.space, all 75 pages in its sitemap), the arrival-plugins documentation, example plugins and tools at commit 25b02ef, the client script served at arrival.space/__game-scripts.js, the privacy policy, the terms and llms.txt for coarsening, sensed data, depth data, camera data, room scan, retention and passthrough, and the Quest depth-occlusion demo README at commit b864951, on 2026-10-23; no document or policy mentions sensed-data disclosure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "API Reference (arrival-plugins docs, commit 25b02ef)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Control WebXR sessions (VR and AR passthrough) from plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Arrival Space publishes shared 3D spaces to a browser, and its plugin guide only points to the browser's own gamepad rumble; it has no way to describe wind, scent, heat or motion effects for the viewer's own devices. Searched Arrival's llms.txt, the plugin API reference and room configuration documents (arrival-plugins commit 25b02ef) for rumble, haptic, vibrate, wind, scent, fog and XR on 2026-11-01; only the gamepad rumble remark found. The manual site was not searched in full. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/arrival-space/arrival-plugins/25b02ef9d05b3b402340f90c30655032c36cad5b/docs/api-reference.md",
+          "title": "Arrival plugins API reference (commit 25b02ef)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Rumble is the browser API too"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A hosted space service that opens spaces in a browser; renderer choice is not part of what a space author sets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arrival.space/llms.txt",
+          "title": "Arrival.Space llms.txt (platform overview for agents)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Arrival.Space hosts shareable 3D spaces that open in any browser: Gaussian splats (photoreal 3D scans), 3D models, images, video, portals (\"gates\") between spaces, and JavaScript plugins, with multiplayer, avatars and voice chat built in."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "A gate shows a preview image of the destination's target gate, refreshed by visiting it, and the source gate can use its own image instead. Missing: any control by the destination over what is shown, and a declared shape, scale or one-way setting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://codex.arrival.space/edit/gates/connecting-scenes",
+          "title": "Arrival.Space Manual, Seamlessly connect Scenes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This process will update the preview image both on the loading screen and within the gate."
+        },
+        {
+          "url": "https://codex.arrival.space/edit/gates/connecting-scenes",
+          "title": "Arrival.Space Manual, Seamlessly connect Scenes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The source gate does not have to use the preview screenshot."
+        }
+      ]
     }
   ]
 }

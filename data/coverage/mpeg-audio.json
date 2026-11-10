@@ -2073,6 +2073,1019 @@
           "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene. It defines metadata to support this rendering and a bitstream syntax that enables efficient storage and streaming of immersive audio content."
         }
       ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "partial",
+      "note": "The stream marks which scene properties outside software may change through local updates, so the content author decides what can be overridden. It names no owner per object among several participants and gives no rule for settling conflicting changes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, local update API",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Allowed changes through updates are indicated in the bitstream as L2 or L3 updates."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "The listening-space description tells the renderer the device's loudspeaker setup and can carry a reverberation complexity level for it. There is no general query for what a client can do, such as tracking, compute budget or which renderer stages it supports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Listening space description",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "For loudspeaker output, also the physical loudspeaker setup of the consumption space is stored in the LSDF."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.4 Reverberation, delay lines (AR)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If complexityLevel has been specified in the LSI, it shall be converted to numDelayLines as follows:"
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "partial",
+      "note": "Sound detail is cut in three ways: inaudible render items are switched off, the encoder chooses payload order by what the renderer needs first, and voxel blocks can be listed from most to least important. None of this covers visual detail or the order in which pictures or meshes are streamed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.14 Metadata culling",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In the metadata culling stage, RIs that become inaudible due to very low gain or EQ (e.g. because of a strong distance attenuation or occlusion) are deactivated to save computations that would otherwise occur in subsequent stages."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.5 Voxel payload semantics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The sequential specification of voxel block elements allows to describe level of details progressively - from the most significant to significant less important scene geometry elements."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The distribution of payloads into Scene Payload packets can be organized by the encoder, taking into the account when and where the metadata is needed by the renderer, which metadata is essential for rendering, as well as maximum size of the packet, etc."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for provenance, signature, certificate, attestation and credential on 2026-10-22; found none. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Reduced avatar representations concern visible bodies; this standard carries sound sources and rooms and no avatars.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for eye tracking, gaze and gaze privacy on 2026-10-22; the only mention is an eye tracker named as one possible outside source for steering the directional focus, with no gaze data format, interface or privacy rule. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.18 Directional focus",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The default direction steers towards the frontal viewing direction of the user but can also be re-oriented to other directions, e.g., to enable control through other services or modalities (e.g., eye tracker, handheld controller, etc.)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Drawing point clouds, voxels or volumetric video belongs to the visual parts the introduction names; the voxels in this standard are a grid for sound propagation, not something drawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at the point of use is a duty of the platform; this standard defines stream metadata for rendering sound and applies no licence terms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Articulated hand pose is an input for visual and interaction systems; a standard for rendering sound does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Playing animation authored for one body on another needs bodies and skeletons, which a standard for rendering sound does not carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "Physical listening-space information is combined with the virtual scene into one scene state, and later voxel blocks override earlier ones where they overlap. There is no layering of several scene documents, no references to scenes held elsewhere, and no named override mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Listening space description",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "For scenes with virtual scene information, the physical and virtual scene information is combined into a common scene state for rendering the scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.5 Voxel payload semantics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "All sequentially specified overlapping voxel block elements override the corresponding voxel material IDs inside of the overlapping region."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Revealing only what a receiving world needs concerns identity data, which a standard for rendering and streaming sound does not carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback is a different output from the sound this standard renders to the listener.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Finding worlds, nodes or services without knowing them in advance is directory work; the standard streams and renders the sound of one scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for content address, hash, digest and checksum on 2026-10-22; found none, only identifiers and paths relative to the stream. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, audioStreams()",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "audioStreamFileLocation This string is the file path to the respective WAV file for this audio stream. The path is relative to the bitstream itself."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Deformable simulation is the work of a physics engine, which this standard treats as an outside source of events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Interaction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Often this is caused directly by a user’s action but could also be prompted more indirectly, e.g., through a physics engine."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Portable relationships and standing are identity data, which a standard for rendering and streaming sound does not carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "partial",
+      "note": "The renderer keeps a scene time in seconds that can be synchronised to an external timekeeper, and updates carry timestamps in that time. It defines no shared clock or ordering rule across several clients, and it says this scene clock is not related to audio synchronisation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Clock",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The clock component allows to synchronize the Scene time to an external timekeeper."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, local update API",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The timestamp is given in Scene time."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 4 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The clock input to the scene controller is not related to audio synchronization."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a restart of a world is the platform's concern; the standard streams a scene and its updates and defines no stored world state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text in three dimensions is a visual matter, which the introduction leaves to the picture parts of the MPEG-I suite.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "partial",
+      "note": "The listener is a reserved scene object whose position and orientation are updated through the local update API, and a teleport flag marks a jump that is not interpolated. There are no authored or named viewpoints to bind to, and the listener is a hearing point, not an image camera.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, listener",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The bitstream identifier “listener” is reserved for this SO and may not be used by other entities in the scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, local update API",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A teleport flag to indicate non-interpolated modifications to the location of an entity, affecting e.g. the propagation delay."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Interaction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This can happen through motion tracking as well as through teleporting, allowing the user to move around occluding elements or into different rooms, which will change the way that sources, reflections and reverberation are rendered."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "partial",
+      "note": "The scene configuration, updates, bulk payloads and coded audio travel together as packets of one stream, which can be streamed or kept as a file. Some audio is still found as separate WAV files by a path relative to the stream, and the authoring input is a separate folder of files, so there is no single runnable package.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Streaming or download",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "MPEG-I immersive audio supports both streaming-based and file-based operation to serve a broad range of conceivable application scenarios."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, audioStreams()",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "audioStreamFileLocation This string is the file path to the respective WAV file for this audio stream. The path is relative to the bitstream itself."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/145_OnLine/w23425.zip",
+          "title": "MPEG-I Immersive Audio Encoder Input Format, Version 8 (ISO/IEC JTC 1/SC 29/WG 6 N0236, 2024-02-23), 2 Files and directories",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The audio encoder input data for a single scene consists of a package of files."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "partial",
+      "note": "The stream is designed for broadcast and for server-client use: scene configuration repeats so a listener can join, and large payloads can be fetched on request over a separate channel. It defines no caching, mirroring or distribution rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In a server-client application, the MHASPacketType PACTYP_MPEGI_CFG shall be interleaved periodically with the MHAS audio packets in the broadcast stream, but the large PACTYP_MPEGI_PLD packets should be sent on request only."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In a server-client scenario, payloads can be loaded via a separate channel."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Loudspeaker rendering is split into two named levels, the second requiring the first, and the second states which renderer stages it leaves out. This covers the loudspeaker path only; there is no list of profiles or levels that content and a whole implementation can declare against.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.7.2 Adaptive loudspeaker rendering",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Level 2: user-tracked object panning enables rendering of point sources (objects, channels) within the 6DoF play space and requires Level 1 as a prerequisite."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.7.2 Adaptive loudspeaker rendering",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In Level 2 rendering, the DiscoverSESS stage and the homogeneous extent stage are not supported and are therefore not part of the renderer pipeline."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering pose from camera imagery is a visual task; a standard for rendering sound takes the listener's pose as an input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "partial",
+      "note": "A listening-space description gives the renderer the geometry, surface materials and reverberation time of the room the listener is in, plus the loudspeaker setup and anchors. The version 2 working-group document allows only one mesh and one acoustic environment per listening space, and nothing describes doors, routes, several rooms or building structure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Listening space description",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The information describes the geometry of the listening space, its surface material properties and acoustic parameters such as reverberation time."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/141_OnLine/w22224.zip",
+          "title": "MPEG-I immersive audio augmented reality Listener Space Description Format, Version 2 (ISO/IEC JTC 1/SC 29/WG 6 N0183, January 2023), 1 Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The elements are used to describe the walls, ceiling and floor of the listening space."
+        }
+      ],
+      "direction": "read"
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for controller, button, stick and handheld pose on 2026-10-22; the only mention is a handheld controller named as one possible outside source for steering the directional focus, with no button, stick or pose input defined. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.18 Directional focus",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The default direction steers towards the frontal viewing direction of the user but can also be re-oriented to other directions, e.g., to enable control through other services or modalities (e.g., eye tracker, handheld controller, etc.)."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for script, interpreter, bytecode, JavaScript, WebAssembly and Lua on 2026-10-22; found none, only declarative timed, conditional, dynamic and triggered updates. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, update semantics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "updateType This integer indicates an update to be of the following types: timed, conditional, dynamic, or triggered."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "The stream carries data and no executable guest content, so there is nothing for this standard to run in isolation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "The standard does not bound memory, time or calls for guest content, because the stream carries data and no executable guest content; the renderer's culling and consolidation of its own render items is audio-processing economy, not a limit on guest code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.14 Metadata culling",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In the metadata culling stage, RIs that become inaudible due to very low gain or EQ (e.g. because of a strong distance attenuation or occlusion) are deactivated to save computations that would otherwise occur in subsequent stages."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, renderer configuration",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "consolidationThreshold Value for the perceptual threshold below which render items may be consolidated."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "partial",
+      "note": "The renderer can report which audio elements it is using at that moment, and at what order, so a delivery system can send only those; large scene payloads are also sent on request only. The sending protocol and any per-client filtering rule are left outside.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.9 Interface for audio utilization information",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This subclause describes the renderer output interface for describing the audio elements currently utilized by the renderer."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.9 Interface for audio utilization information",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The audio source elements that the renderer utilizes varies over time."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In a server-client application, the MHASPacketType PACTYP_MPEGI_CFG shall be interleaved periodically with the MHAS audio packets in the broadcast stream, but the large PACTYP_MPEGI_PLD packets should be sent on request only."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for prediction, dead reckoning, rollback and reconciliation on 2026-10-22; found none, only smoothing of listener and source velocity for the Doppler effect. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In a server-client application, the MHASPacketType PACTYP_MPEGI_CFG shall be interleaved periodically with the MHAS audio packets in the broadcast stream, but the large PACTYP_MPEGI_PLD packets should be sent on request only."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "The standard renders the sound of one scene for one listener, so knowing who is where across operators is not something it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Bodies that move by mass and velocity belong to a physics engine, which the white paper treats as an outside source of events; a scene object's optional velocity serves only the Doppler effect.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Interaction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Often this is caused directly by a user’s action but could also be prompted more indirectly, e.g., through a physics engine."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "partial",
+      "note": "Boxes, spheres, cylinders and meshes carry their own acoustic materials in a scene description kept apart from the visual asset, but they are used for sound paths (reflection, blocking, bending), not for contact tests.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Material",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The material specifies the acoustic properties of a box, sphere, cylinder or individual triangles of a mesh."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Encoder Input Format",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "a dedicated scene description file format has been developed called Encoder Input Format (EIF) that holds definitions for e.g. sources and their positions, scene geometry (primitives, meshes or voxels), transforms, material acoustic coefficients, etc."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Hinges and sliders between bodies belong to a physics engine, which this standard treats as an outside source of events.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Interaction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Often this is caused directly by a user’s action but could also be prompted more indirectly, e.g., through a physics engine."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Identical simulation outcomes on different machines concern a physics simulation, which this standard does not contain; it renders sound from a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Turning geometry into pixels is part of the picture side, which the introduction assigns to other parts; this standard renders audio.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "A graphics interface is of no concern to a standard for rendering sound; the renderer here produces audio samples.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "partial",
+      "note": "Materials are carried in the stream, but only as sound behaviour per frequency band (reflection, scattering, transmission, coupling). There is no visual appearance model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Material",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The material specifies the acoustic properties of a box, sphere, cylinder or individual triangles of a mesh."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Light and shadow are for the picture side, which the introduction assigns to other parts; this standard models sound only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Image effects after the main render pass belong to the picture side; the audio chain ends in its own spatializer and limiter.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Splats and radiance fields are captured picture data and belong to the visual parts of the suite, not to a standard for rendering sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "The standard's meshes are acoustic geometry and source extents, with no morph targets or blend shapes (a full-text search of the final draft finds no deform, morph or blend shape); shape deformation for faces is visual work outside a sound standard.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Material",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The material specifies the acoustic properties of a box, sphere, cylinder or individual triangles of a mesh."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Extended sound sources",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "With MPEG-I immersive audio, sound sources do not only have a position and orientation in space, but they may also have a specific size and shape, which can be described by a simple shape such as a box, or a more complex shape in the form of a mesh."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "none",
+      "note": "Searched the final draft text of ISO/IEC FDIS 23090-4 (2025-03-25), white paper N150, encoder input format version 8, listener space description format version 2 and the 2026 Audio Engineering Society paper for instance, instancing, prefab and repeated copies on 2026-10-22; found only sources pointing at shared directivity data by identifier, and no way to repeat a source or geometry cheaply. The sold published edition was not read.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Extended sound sources",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "With MPEG-I immersive audio, sound sources do not only have a position and orientation in space, but they may also have a specific size and shape, which can be described by a simple shape such as a box, or a more complex shape in the form of a mesh."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "Each acoustic environment is tied to a region whose bounding box sets its extent, and the renderer uses these regions to decide which environment applies to a source or the listener. This is a set of acoustic regions, not a general bounding-volume hierarchy or spatial index over all scene content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, acousticEnvironments()",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "acousticEnvironmentRegionId This value is the unique identifier for the geometry that represents the region in this acoustic environment."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.4 Reverberation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "For bounded environments, the dimensions of the acoustic environment shall be derived from the bounding box of the acoustic region."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/146_Rennes/w23975.zip",
+          "title": "White Paper on MPEG-I Immersive Audio, ISO/IEC JTC 1/SC 29/AG 03 N150, Renderer stages",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Room Assignment stage updates acoustic environment identifiers for the user and each RI at each update step to indicate in which acoustic environment they are located."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "partial",
+      "note": "An object's position can be given in world, parent-relative or listener-relative terms, so it can follow another object or the listener. No other constraint kinds (aim, copy, limit) are defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, positions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The position of an SO consists of its location in cartesian coordinates, its orientation in Tait-Bryan angles, as well as a coordinate space reference cSpace, which specifies whether the position is given in global coordinates or relative to a parent coordinate system."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, positions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "LCS, // Listener-relative Coordinate System"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "Audio streams are referenced inside the scene, tied to the coded audio by a packet label, and have a duration and can be played, stopped and sought. Only audio is covered: video is left to other parts, and no synchronisation with picture media is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 5.1 Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The MHASPacketLabel of these packets is used to connect MPEG-H 3DA Audio content to its associated 6DoF scene data."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, audioStreams()",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "streamDuration This value indicates the duration of the audio stream in seconds."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Stream manager",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Stream access may support seeking within the audio stream."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Along with other parts of MPEG-I (i.e., Part 12, “Immersive Video”, Part 5, “Visual Volumetric Video-based Coding (V3C) and Video-based Point Cloud Compression” and Part 2, “Systems Support”), the suite of standards supports a complete audio-visual VR or AR presentation in which the user can navigate and interact with the simulated environment using 6DoF, that being spatial navigation (x, y, z) and user head orientation (yaw, pitch, roll)."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "Four kinds of group exist: transforms that group other scene objects into a separate relative coordinate system, a channel source made of object sources at loudspeaker positions, grain probability groups that dynamic updates can target, and groups of higher order ambisonics sources that an update can reassign a source between. There is no general named or rule-based set of arbitrary scene objects to target. The text read is the final draft, not the sold published edition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 3.1 Terms and definitions, HOA group",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "recording or synthesis of an audio scene with one or more HOA sources"
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.2.11 Scene plus payload semantics, update modifications",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "newGroupId This value represents the new unique HOA Group for the target HOA source."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Transform",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Transforms can be used in the bitstream to group other SOs into a separate relative coordinate system, and to represent ARAnchors from the LSI."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.4.1 Control workflow, Scene objects, Channel source",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "A channel source is represented as a collection of object sources located at the respective loudspeaker positions."
+        },
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "Text of ISO/IEC FDIS 23090-4 MPEG-I immersive audio (final draft, ed.1, 2025-03-25), 6.6.3 Granular synthesis, Data elements and variables",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "granularProbGroupNo This value specifies an index of a grain probability group for a dynamic update."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "MPEG-I immersive audio renders sound only; its mention of atmospheric wind is a sound generator that models wind noise, not a wind effect for a fan or other device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://webstore.iec.ch/en/publication/110278",
+          "title": "ISO/IEC 23090-4:2025 catalogue record, Information technology - Coded representation of immersive media - Part 4: MPEG-I immersive audio",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "This document specifies technology that supports the real-time interactive rendering of an immersive virtual or augmented reality audio presentation while permitting the user to have 6DoF movement in the audio scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "This standard renders sound, not pictures, and the row concerns interchangeable renderers drawing a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "ISO/IEC FDIS 23090-4 MPEG-I immersive audio",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "real-time interactive rendering of an immersive virtual or augmented reality audio presentation"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The standard renders and streams sound inside one audio scene; showing a destination world through a portal is outside sound rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.mpeg.org/wp-content/uploads/mpeg_meetings/149_Geneva/w24674.zip",
+          "title": "ISO/IEC FDIS 23090-4 MPEG-I immersive audio",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "real-time interactive rendering of an immersive virtual or augmented reality audio presentation"
+        }
+      ]
     }
   ]
 }

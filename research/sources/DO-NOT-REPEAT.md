@@ -108,7 +108,7 @@ Full entries, with what replaced them, are in `VERIFIED-CORRECTIONS.md` sections
   platforms scored here **does not** — it targets vendor runtimes instead, and its own lead developer
   names the standard as future work. Do not assume conformance from the fact that a platform
   supports headsets.
-- **"The owner has not answered the disclosure question"** and **"the claim has never been
+- **"The maintainer has not answered the disclosure question"** and **"the claim has never been
   re-checked."** Both stale. Answered 2026-08-01, re-checked 2026-08-23 and 2026-08-24. See
   `VERIFIED-CORRECTIONS.md` section 19.
 
@@ -175,7 +175,7 @@ Full entries, with what replaced them, are in `VERIFIED-CORRECTIONS.md` sections
   September 10 Unreal scope trace now document the Pixel Streaming example. They establish a
   browser/WebRTC media and input route, not general client interchangeability, a headset latency
   budget, GPU cost per user, recovery behavior or cross-server state handoff. The remaining Model
-  A1/A2 prose is description, and the group's remote-rendering scope decision remains unrecorded.
+  A1/A2 prose is description, and the group's remote-rendering scope decision remains unrecorded. (Superseded on 2026-10-20: `render.remote` is now a row, recorded descriptively.)
 - **Failure behaviour** is nearly absent for all three topology models. No reconnection,
   state-recovery, or network-partition behaviour is documented. The failure lines on the board are
   descriptive, not measured.
@@ -252,4 +252,4 @@ sections 14 to 20 of the corrections file. Until they are, do not read a coverag
 of them.
 
 Full extraction with per-claim source attribution:
-`/Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool/.dev/ai/subtask-comms/2026-08-20-architecture-map-extraction-result.md`
+the maintainers' working notes (not published)

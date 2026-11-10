@@ -1617,7 +1617,7 @@
     {
       "capability_id": "capture.splat-format",
       "level": "native",
-      "note": "Three named ways out — standard USD particle-field geometry, the older NuRec package, and PLY for other splat tooling — with transcoding between them and a stated preference for the standard schema in new assets. This is the strongest splat interchange position of any subject scored in this lane.",
+      "note": "Three named ways out — standard USD particle-field geometry, the older NuRec package, and PLY for other splat tooling — with transcoding between them and a stated preference for the standard schema in new assets. This is the strongest splat interchange position of any capture subject scored here.",
       "confidence": "verified",
       "direction": "both",
       "sources": [
@@ -3133,6 +3133,176 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "nvblox reconstructs a voxel-based map from dense depth and RGB images, generating both a triangle mesh and an occupancy map."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "Searched every linked page of the NuRec documentation, the Isaac Sim 6.0 NuRec page, the 3DGRUT README and export README at commit e6f4552, and the NCore documentation for variant, variant set and alternative configuration on 2026-10-22; none is documented for a NuRec scene. The only choices are the export form (standard ParticleField or the older NuRec package) and the renderer, which are separate files or settings rather than named alternatives inside one asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.isaacsim.omniverse.nvidia.com/6.0.0/assets/usd_assets_nurec.html",
+          "title": "Isaac Sim 6.0 documentation: Neural Volume Rendering",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Compatible environments are published as USD stages that use OpenUSD ParticleField geometry (3D Gaussian splats and related radiance fields), which Omniverse RTX renders natively together with polygonal scene content."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "NCore carries optional per-frame blur-box metadata for anonymised regions of the Physical AI recordings, and the dataset licence says NVIDIA made reasonable efforts to anonymise the data and requires deletion on notice. Missing: spatial coarsening, restricted or pseudonymous pose publication, and any such declaration inside the reconstructed USD package.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://nvidia.github.io/ncore/conversions/pai/pai.html",
+          "title": "NCore documentation: Physical-AI-AV (PAI) Dataset",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Per-frame timestamps and optional blur-box metadata"
+        },
+        {
+          "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Autonomous-Vehicles-NuRec",
+          "title": "NVIDIA PhysicalAI-Autonomous-Vehicles-NuRec dataset card",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "While NVIDIA has exercised reasonable efforts to anonymize the Dataset, you must cooperate with NVIDIA to honor any data subject rights where applicable."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "3DGRUT exports three named forms, plain PLY, standard ParticleField USD for any USD-aware renderer, and the NuRec package for stated Omniverse Kit and Isaac Sim version ranges, and says the NuRec form is to be replaced. Missing: the form is chosen by flag, and nothing inside a file declares a profile or level that a reader can check.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/threedgrut/export/README.md",
+          "title": "3DGRUT export documentation (commit e6f4552)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Omniverse Kit 107.3 - 110.1 / Isaac Sim 5.0 - 6.0"
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/threedgrut/export/README.md",
+          "title": "3DGRUT export documentation (commit e6f4552)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Native USD Gaussian asset for any USD-aware renderer"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched every linked page of the NuRec documentation, the Isaac Sim 6.0 NuRec page, the 3DGRUT README and export README at commit e6f4552, and the NCore documentation for thumbnail, preview and preview image on 2026-10-22; none is documented. NVIDIA's list of what the reconstruction package contains names an XODR map, USDA files, a checkpoint and JSON, and no preview image.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The USDZ file is a zipped package that includes the following files:"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "Reconstruction separates a static background from a set of movable objects in dedicated layers, and the exporter can split a large scene into spatial partitions written as separate ParticleField prims. Missing: named or rule-selected collections that a consumer can address as a group, since groups come from scene structure and a particle budget.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "During reconstruction, NuRec separates the scene into a static background and a set of movable objects."
+        },
+        {
+          "url": "https://github.com/nv-tlabs/3dgrut/blob/e6f4552b408af020a96de09ab5757f9b57430aaa/threedgrut/export/README.md",
+          "title": "3DGRUT export documentation (commit e6f4552)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Partitioning divides a large Gaussian scene into spatial groups so it can be exported as several assets rather than one monolithic asset."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched every linked page of the NuRec documentation, the Isaac Sim 6.0 NuRec page, the 3DGRUT README and export README at commit e6f4552, and the NCore documentation for watermark, fingerprint, provenance and checksum on 2026-10-22; the only fingerprints are MD5 checksums of component stores in an NCore sequence metadata file, which check integrity and do not locate provenance for stripped content. No lookup route from a package or rendering to a provenance record is offered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://nvidia.github.io/ncore/tools/ncore_sequence_meta.html",
+          "title": "NCore documentation: Sequence Metadata",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The output includes the sequence ID, timestamp range, component store paths with MD5 checksums, component versions, and generic metadata fields."
+        },
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "How NuRec works",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "USDA files: Default file that defines the scene using Universal Scene Description (USD) and includes mapping, domelight, sequence tracks (cuboid tracks), and rig trajectories (logs of all trajectories)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs real sensor recordings into simulation scenes for physical-AI testing; its scope is camera and lidar data, not effects for a viewer's wind, scent or motion devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec: How NuRec works",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "none",
+      "note": "Searched the NuRec How NuRec Works page and the Isaac Sim neural volume rendering page for renderer, fallback, substitute, interchangeable and swap on 2026-11-03; two rendering routes are described, but no declared substitute when one cannot draw a scene.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works, Rendering",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can use the NuRec gRPC API to neurally render scenes in your simulation platform."
+        },
+        {
+          "url": "https://docs.isaacsim.omniverse.nvidia.com/6.0.0/assets/usd_assets_nurec.html",
+          "title": "Isaac Sim 6.0 documentation, Neural Volume Rendering",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Compatible environments are published as USD stages that use OpenUSD ParticleField geometry (3D Gaussian splats and related radiance fields), which Omniverse RTX renders natively together with polygonal scene content."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "NuRec reconstructs real-world captures into simulation environments; it defines no portals between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.nvidia.com/nurec/basics/how-nurec-works.html",
+          "title": "NVIDIA Omniverse NuRec documentation, How NuRec Works",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NVIDIA Omniverse NuRec refers to the neural reconstruction and rendering models and services from NVIDIA that support the seamless ingestion of real-world camera and lidar data to create a simulated 3D environment suitable for training and testing Physical AI Agents, including robotics and autonomous driving systems."
         }
       ]
     }

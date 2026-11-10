@@ -2973,6 +2973,212 @@
           "quote": "Augmented reality in Babylon.js relies heavily on WebXR."
         }
       ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Partly met. Babylon has two ways to make a region that reports entry and exit: action triggers that fire once when a mesh starts or stops intersecting another, and physics trigger shapes that raise entered and exited events. Missing: identified zones that can be exchanged with another system, event types beyond enter and exit, and summaries with a defined spatial and temporal meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/events/actions",
+          "title": "Babylon.js Documentation: Actions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "BABYLON.ActionManager.OnIntersectionEnterTrigger : Raised when the mesh intersects with a specific mesh. Raised just once."
+        },
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/652a2076243b76edc16447b82d502ae63b2f3e10/content/features/featuresDeepDive/physics/v2/collisionEvents.md",
+          "title": "Babylon.js Documentation: Collision events (pinned commit 652a207)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "As for triggers, you need to mark the **shape** as a trigger by setting the property `isTrigger` to true, and then by creating a body for that shape."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "Partly met. Babylon starts an immersive session in a chosen reference space, local-floor by default, so floor-relative reference information is available. Missing: the play-area boundary; the WebXR bounds polygon appears only in the engine's type declarations and nothing in the session or feature code reads it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/webXR/webXRSessionManagers",
+          "title": "Babylon.js Documentation: WebXR session managers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "xrSession.baseReferenceSpace is the initial reference space generated using the ReferenceSpaceMode you chose (like local-floor )."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Babylon has no controls over what sensed data is disclosed: its WebXR features hand plane, mesh and depth data to the application and leave what the user has granted to the browser. Searched the Babylon.js documentation repository (commit 652a207) and the engine packages core, loaders, gui, serializers and addons (commit 7f52ac8) for privacy, consent, pseudonym, coarsen and anonymi on 2026-10-22; the XR code and documentation have no hit.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/webXR/webXRARFeatures",
+          "title": "Babylon.js Documentation: WebXR augmented reality features",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Your device may be capable of detecting plane geometries in the real world."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Babylon.js renders and loads 3D objects but does not generate them from a text or image prompt, which is outside a web rendering engine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/652a2076243b76edc16447b82d502ae63b2f3e10/content/landing_pages/home.md",
+          "title": "Babylon.js Documentation home (pinned commit 652a207)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Babylon.js draws Gaussian splat scenes through its importer, but training one from photographs is a reconstruction pipeline that a web rendering engine does not include.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/BabylonJS/Documentation/blob/652a2076243b76edc16447b82d502ae63b2f3e10/content/landing_pages/home.md",
+          "title": "Babylon.js Documentation home (pinned commit 652a207)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "this powerful, beautiful, simple, and completely open-source web rendering engine"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Partly met. A Babylon texture carries a flag saying whether its data is gamma-encoded or linear, can be loaded into an sRGB buffer, and the scene's image processing sets tone mapping, so receivers can convert. The WebGPU engine options also take canvasColorSpace (srgb or display-p3) and canvasToneMapping (standard or extended) for wide-gamut and HDR output. Missing: no named colour space on textures beyond gamma versus linear, with output colour space and HDR range declarable only on the WebGPU engine, and no conversion of scene colours into the declared output space; the texture flag affects only the physically based and background materials.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/setup/support/webGPU",
+          "title": "Babylon.js Documentation: WebGPU support",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Display P3 changes how the browser interprets output color values."
+        },
+        {
+          "url": "https://doc.babylonjs.com/setup/support/webGPU",
+          "title": "Babylon.js Documentation: WebGPU support",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Extended tone mapping can present HDR output, but the canvas setting alone does not create an HDR image."
+        },
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/7f52ac8e679aba9b8d621a16108e593ee04ce127/packages/dev/core/src/Materials/Textures/baseTexture.pure.ts",
+          "title": "Babylon.js source: baseTexture.pure.ts (pinned commit 7f52ac8)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Define if the texture contains data in gamma space (most of the png/jpg aside bump)."
+        },
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/7f52ac8e679aba9b8d621a16108e593ee04ce127/packages/dev/core/src/Materials/Textures/baseTexture.pure.ts",
+          "title": "Babylon.js source: baseTexture.pure.ts (pinned commit 7f52ac8)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This only impacts the PBR and Background materials"
+        },
+        {
+          "url": "https://github.com/BabylonJS/Babylon.js/blob/7f52ac8e679aba9b8d621a16108e593ee04ce127/packages/dev/core/src/Materials/Textures/texture.pure.ts",
+          "title": "Babylon.js source: texture.pure.ts (pinned commit 7f52ac8)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Defines if the texture must be loaded in a sRGB GPU buffer (if supported by the GPU) (default: false)"
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/postProcesses/usePostProcesses",
+          "title": "Babylon.js Documentation: Use post processes",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Image post-processing can be done with the ImageProcessingPostProcess, but you can also use the built-in image processing features in StandardMaterial and PBRMaterial."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "Partly met. Babylon's audio engine accepts any Web Audio node, such as an oscillator, as a positioned sound source, and its documentation shows a Web Audio Modules synthesiser used that way, so sound can be generated during play. Missing: any synthesis model or data format of Babylon's own to exchange; the generator and its controls come from the browser or an outside module.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/audio/playingSoundsMusic",
+          "title": "Babylon.js Documentation: Playing sounds and music",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To create a sound source from a WebAudio node, use the CreateSoundSourceAsync function."
+        },
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/audio/playingSoundsMusic",
+          "title": "Babylon.js Documentation: Playing sounds and music (example title)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "WebAudioModules synth sound source"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Babylon has no musical event-device input: its device source manager covers keyboard, mouse, touch and gamepads. Searched the Babylon.js documentation repository (commit 652a207) and the engine packages core, loaders, gui, serializers and addons (commit 7f52ac8) for the whole word midi, requestMIDIAccess and WebMIDI on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/input/deviceSourceManager",
+          "title": "Babylon.js Documentation: Device Source Manager",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The DeviceSourceManager is a class that manages connections for various user input devices and provides methods for querying those devices for their current state."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Babylon.js has no effect description and no effect-device output. Searched the Babylon.js documentation repository (content folder, commit 3b12f8d) and the Babylon.js source repository (packages/dev, packages/public and packages/tools, commit 1b26881) for DMX, Art-Net, sACN, GDTF, MPEG-V, ISO/IEC 23005, olfactory, scent, aroma, smell, motion seat, motion platform, motion simulator, 4D cinema, sensory effect, wind machine, wind fan, fog machine, effect device, stage lighting, lighting fixture and Philips Hue on 2026-11-01; no match. Output beyond the screen is limited to spatial audio and controller haptics, which the audio and input.haptic rows cover.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.babylonjs.com/features/featuresDeepDive/webXR/webXRInputControllerSupport",
+          "title": "Babylon.js documentation: WebXR input and controller support",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Babylon WebXR motion controllers use it to support both the standard advanced Gamepad haptics API and the legacy pulse() API."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "native",
+      "note": "Babylon.js ships WebGL and WebGPU engines behind one scene interface, and its engine factory picks WebGPU, then WebGL, then a no-output engine according to what the hardware offers. The documentation warns that an existing WebGPU scene cannot be moved to WebGL after creation, so the choice is made before the scene is built.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/BabylonJS/Babylon.js/eeaab109b28fb4e90fc1db6788497d1edceaa3fd/packages/dev/core/src/Engines/engineFactory.ts",
+          "title": "Babylon.js engineFactory.ts, EngineFactory.CreateAsync (commit eeaab10)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Creates an engine based on the capabilities of the underlying hardware"
+        },
+        {
+          "url": "https://doc.babylonjs.com/setup/support/webGPU",
+          "title": "Babylon.js documentation, WebGPU Support",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Because Babylon cannot swap an existing WebGPU scene to WebGL, choose the engine before creating the scene and its resources."
+        }
+      ]
     }
   ]
 }

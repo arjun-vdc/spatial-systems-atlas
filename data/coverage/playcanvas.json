@@ -2528,11 +2528,11 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://developer.playcanvas.com/en/user-manual/scenes/",
-          "title": "PlayCanvas Developer Documentation, Scenes",
-          "retrieved": "2026-09-18",
+          "url": "https://github.com/playcanvas/developer-site/blob/main/docs/user-manual/ecs/index.md",
+          "title": "PlayCanvas Developer Documentation, Entity Component System",
+          "retrieved": "2026-10-31",
           "kind": "primary",
-          "quote": "PlayCanvas uses a component-based entity system for building interactive 3D applications."
+          "quote": "PlayCanvas uses an **Entity Component System (ECS)** to organize and manage the objects in your application."
         }
       ]
     },
@@ -2543,11 +2543,11 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://developer.playcanvas.com/en/user-manual/scenes/",
-          "title": "PlayCanvas Developer Documentation, Scenes",
-          "retrieved": "2026-09-18",
+          "url": "https://github.com/playcanvas/developer-site/blob/main/docs/user-manual/ecs/index.md",
+          "title": "PlayCanvas Developer Documentation, Entity Component System",
+          "retrieved": "2026-10-31",
           "kind": "primary",
-          "quote": "PlayCanvas uses a component-based entity system for building interactive 3D applications."
+          "quote": "PlayCanvas uses an **Entity Component System (ECS)** to organize and manage the objects in your application."
         }
       ]
     },
@@ -2883,6 +2883,200 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "Anchors Camera Color Depth Sensing DOM Overlay Hit Testing Image Tracking Light Estimation Mesh Detection Plane Detection 8th Wall Integration Zappar Integration"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Partly met. A collision component on an entity with no rigid body is a trigger volume that fires triggerenter and triggerleave events when a rigid body enters or leaves it; this needs the separately loaded physics library. Missing: identified zones that can be exchanged with another system, event types beyond these two, and summaries with a defined spatial and temporal meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/physics/trigger-volumes/",
+          "title": "PlayCanvas Developer Site: Trigger Volumes",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Trigger volumes are collision shapes that fire events whenever a rigid body enters or leaves them, without physically blocking anything."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/physics/physics-basics/",
+          "title": "PlayCanvas Developer Site: Physics basics",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Physics is opt-in."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "Partly met. PlayCanvas can start an immersive session in a bounded-floor, local-floor, local or unbounded reference space, so floor-relative reference information is available to the application. Missing: the play-area boundary itself; searching the engine source at commit fffea0c finds no read of the runtime's bounds polygon.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://api.playcanvas.com/engine/variables/XRSPACE_BOUNDEDFLOOR.html",
+          "title": "PlayCanvas API: XRSPACE_BOUNDEDFLOOR",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Bounded Floor - represents a tracking space with its native origin at the floor, where the user is expected to move within a pre-established boundary."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "PlayCanvas offers no sensed-data disclosure controls of its own: its XR features (plane detection, mesh detection, hit testing, light estimation) hand data to the application, and the browser decides what the user has granted. Searched the PlayCanvas developer documentation source (commit a822534) and the engine source XR and platform folders (commit fffea0c) for privacy, consent, coarse, pseudonym and permission on 2026-10-22; the only hits are account pages and a comment that views depend on granted permissions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/xr/capabilities/",
+          "title": "PlayCanvas Developer Site: XR capabilities",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Access to a representation of a real-world geometry in the form of a 3D mesh, with its position, orientation, and semantic labels."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "PlayCanvas is an engine for running 3D apps in a browser, and making a 3D object from a text or image prompt is not something it performs or specifies; its documentation has no generation feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/fffea0cbe38d60d953f4be7a7f3d6956de68cc1b/README.md",
+          "title": "PlayCanvas engine README (pinned commit fffea0c)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "PlayCanvas defines no synthesis model for sound generated during play: its sound system plays loaded samples with positional controls built on the Web Audio API, and an application can reach the underlying audio context to build its own nodes. Searched the PlayCanvas developer documentation source (commit a822534) and the engine sound folder (commit fffea0c) for oscillator, synthesis, worklet and procedural audio on 2026-10-22; only effects tutorials found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/fffea0cbe38d60d953f4be7a7f3d6956de68cc1b/README.md",
+          "title": "PlayCanvas engine README (pinned commit fffea0c)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D positional sounds built on the Web Audio API"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "PlayCanvas names no subsets or levels that content and an implementation can declare against: engine builds (release, debug, profiler) differ in counters, not in a stated feature contract, and device tiers are left to application code. Searched the PlayCanvas developer documentation source (commit a822534) and engine source and README (commit fffea0c) for profile, level, tier, subset and conformance on 2026-10-22; the hits are WebXR input profiles and graphics texture tiers, which are not content contracts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/fffea0cbe38d60d953f4be7a7f3d6956de68cc1b/README.md",
+          "title": "PlayCanvas engine README (pinned commit fffea0c)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "PlayCanvas is an open-source game engine built on WebGL2 and WebGPU. Use it to create interactive 3D apps, games and visualizations that run in any browser on any device."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "partial",
+      "note": "Partly met. PlayCanvas's own input devices report mouse, keyboard, touch and gamepad actions as key codes and positions; text entry is done by placing browser HTML form controls over the canvas, and a tutorial builds a text field that way. Missing: a text-entry component or interface inside the engine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/user-interface/html-and-css/",
+          "title": "PlayCanvas Developer Site: HTML and CSS",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "HTML and CSS over the canvas give an interface the browser's text rendering and layout, form controls with text input and autocomplete, accessibility, CSS animation and every web font and emoji."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "PlayCanvas has no musical event-device input: its input APIs cover mouse, keyboard, touch and gamepad. Searched the PlayCanvas developer documentation source (commit a822534) and engine source (commit fffea0c) for the whole word midi on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/fffea0cbe38d60d953f4be7a7f3d6956de68cc1b/README.md",
+          "title": "PlayCanvas engine README (pinned commit fffea0c)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Mouse, keyboard, touch and gamepad APIs"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "none",
+      "note": "PlayCanvas has no sandbox for untrusted content: published apps run as ordinary page scripts and can be embedded in an iframe of a host page, which is the browser's isolation rather than a limit the engine provides. Searched the PlayCanvas developer documentation source (commit a822534) and engine source (commit fffea0c) for sandbox and untrusted on 2026-10-22; the only hit is a general remark about web applications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/editor/publishing/web/communicating-webpage/",
+          "title": "PlayCanvas Developer Site: Communicating with the web page",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Embedding a PlayCanvas application in an iframe is a quick and easy way to get your PlayCanvas content in a page."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "PlayCanvas has no separately expressed styling rules that choose visibility, colour or other display properties from entity metadata: entities carry tags for grouping and searching, and appearance is set per component or material. Searched the PlayCanvas developer documentation source (commit a822534) for stylesheet, style rule, selector and metadata-driven styling on 2026-10-22; selectors appear only for referencing entities in web components.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/ecs/searching-the-hierarchy/",
+          "title": "PlayCanvas Developer Site: Searching the entity hierarchy",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Use tags for grouping related Entities."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "PlayCanvas has no effect description and no effect-device output. Searched the PlayCanvas engine repository (src and examples folders, commit b2a7693) and the developer documentation repository (docs folder, commit ea74e19) for DMX, Art-Net, sACN, GDTF, MPEG-V, ISO/IEC 23005, olfactory, scent, aroma, smell, motion seat, motion platform, motion simulator, 4D cinema, sensory effect, wind machine, wind fan, fog machine, effect device, stage lighting, lighting fixture and Philips Hue on 2026-11-01; no match. Output beyond the screen is limited to positioned audio and gamepad vibration, which the audio and input.haptic rows cover. The closed-source hosted editor was not searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/playcanvas/engine/blob/b2a7693defc0db9fe2358c3978812974bb7f83e1/src/platform/input/game-pads.js",
+          "title": "PlayCanvas engine, game-pads.js (main at commit b2a7693)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Make the gamepad vibrate."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "native",
+      "note": "PlayCanvas drives one scene through either a WebGPU or a WebGL 2 graphics device, and the engine falls back from WebGPU to WebGL on its own; an ordered list of device types lets the application declare its preference.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/graphics/",
+          "title": "PlayCanvas User Manual, Graphics",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The engine will seamlessly fall back from WebGPU to WebGL based on browser support."
+        },
+        {
+          "url": "https://api.playcanvas.com/engine/functions/createGraphicsDevice.html",
+          "title": "PlayCanvas Engine API, createGraphicsDevice, deviceTypes option",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "order in which the devices are attempted to get created."
         }
       ]
     }

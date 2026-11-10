@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inline the territory data into the atlas page so it can be published as one file.
 
-The atlas is attempt three's own page. It reads the same `territory.json` the matrix reads and
+The atlas is the third design's own page. It reads the same `territory.json` the matrix reads and
 `build.py` writes; this script never writes that file and never touches the matrix. It does the
 one thing the matrix's build does at its lines 92 to 101: put the payload into the page as an
 inline `<script id="territory-data">` so the built copy fetches nothing but the typefaces the

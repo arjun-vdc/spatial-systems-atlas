@@ -2626,6 +2626,278 @@
           "quote": "A free and open source implementation of 3D [gaussian splatting](https://www.youtube.com/watch?v=HVv_IQKlafQ) written in C++, focused on being portable, lean and fast."
         }
       ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "The .RAD output opens with a JSON header giving version, type, splat count, chunk size, per-chunk byte ranges and the value ranges used to quantise the data, plus a free-form comment describing how the file was built. Nothing descriptive such as title, author or capture date is written, and the .splat and .spz outputs carry no equivalent header.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "meta[\"type\"] = \"gsplat\";"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "meta[\"chunkSize\"] = 65536;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "meta[\"comment\"] = comment;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "encoder.comment = description.dump(2);"
+        }
+      ],
+      "direction": "write"
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "OpenSplat trains one splat scene from one project and writes it; there is no authored asset configuration with alternatives to select between. The several output containers are alternative encodings of the same scene, chosen by file extension when writing, not named variants of an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "(.ply, .splat, .spz, or .rad) that can be later imported for"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "OpenSplat is a command-line trainer that runs on the user's own machine and sends nothing anywhere, so controls on disclosing sensed data, such as coarsening or retention declarations, belong to whatever service stores or shares the photographs or the resulting scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "(.ply, .splat, .spz, or .rad) that can be later imported for"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The .RAD header declares the minimum and maximum of the colour values it quantises, so a reader can decode them, and the .splat writer converts colour to 8-bit RGB. Missing: any declaration of colour space or transfer function in any of the four outputs, which store raw spherical-harmonic colour terms in the PLY and SPZ writers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "enc[\"rgbMin\"] = encoding.rgbMin;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "enc[\"rgbMax\"] = encoding.rgbMax;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/model.cpp",
+          "title": "OpenSplat source, model writers (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "torch::Tensor colorsFlat = featuresDc.cpu().flatten(); // raw DC coefficients"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/model.cpp",
+          "title": "OpenSplat source, model writers (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "torch::Tensor rgbsCpu = (sh2rgb(featuresDc.cpu()) * 255.0f).toType(torch::kUInt8);"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "out-of-scope",
+      "note": "OpenSplat ships a program, not a specification, so it declares no named subsets or levels that content or an implementation could claim. Its .RAD and .spz writers follow formats defined elsewhere, and the .RAD writer's header carries only a version number.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "(.ply, .splat, .spz, or .rad) that can be later imported for"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "OpenSplat writes a scene file and nothing beside it; no preview image is produced or referenced with any of the four outputs. Searched the OpenSplat README, model.cpp, rad.cpp, opensplat.cpp, point_io.cpp, input_data.cpp and visualizer.cpp at commit 688944f for thumbnail, preview, poster and screenshot on 2026-10-22; no match (the only images written are optional validation renders).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/opensplat.cpp",
+          "title": "OpenSplat source, command-line options (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Path of the directory where to render validation images"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "(.ply, .splat, .spz, or .rad) that can be later imported for"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "The .RAD writer builds a level-of-detail tree over the splats and cuts the file into 65,536-splat chunks with recorded byte ranges, so a reader can pick coarse content before loading detail. Missing: the file records no bounding volumes; the boxes the writer computes while ordering splats are not stored, and the PLY, .splat and .spz outputs have no spatial organisation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "if (splats.hasLodTree()) meta[\"lodTree\"] = true;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "cj[\"offset\"] = cr.first;"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "// Writer for Spark's .RAD LoD gaussian splat format."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "The output is one flat set of Gaussians with no scene objects, so there are no named or rule-defined sets to use as targets; grouping would belong to the scene or engine that places the splat.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D"
+        },
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "(.ply, .splat, .spz, or .rad) that can be later imported for"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "The .RAD header records how the file was built, but nothing locates a provenance record from a content fingerprint or watermark. Searched the OpenSplat README, model.cpp, rad.cpp, opensplat.cpp, point_io.cpp, input_data.cpp and visualizer.cpp at commit 688944f for watermark, fingerprint, checksum, provenance, C2PA, signature, sha, md5 and crc on 2026-10-22; no match (rad.cpp has a hash only for an internal grid cell map).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/rad.cpp",
+          "title": "OpenSplat source, .RAD writer (commit 688944f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "description[\"method\"] = \"BhattLod { lod_base: 1.75 }\";"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "OpenSplat is a command-line Gaussian splat trainer; it reconstructs a scene from solved cameras and has no content-side effect description or effect-device output.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README (commit 688944f)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D [gaussian splatting](https://www.youtube.com/watch?v=HVv_IQKlafQ) written in C++, focused on being portable, lean and fast."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A splat-training program that does not handle scene renderer swapping.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README, opening (commit 688944f)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D [gaussian splatting](https://www.youtube.com/watch?v=HVv_IQKlafQ) written in C++, focused on being portable, lean and fast."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "OpenSplat trains Gaussian splats from images; it has no portals between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/WebODM/OpenSplat/blob/688944f01291a1939f688b49feef6936620b47b8/README.md",
+          "title": "OpenSplat README, opening (commit 688944f)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A free and open source implementation of 3D [gaussian splatting](https://www.youtube.com/watch?v=HVv_IQKlafQ) written in C++, focused on being portable, lean and fast."
+        }
+      ]
     }
   ]
 }

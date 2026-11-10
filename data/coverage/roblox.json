@@ -570,11 +570,11 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://create.roblox.com/docs/characters/r6-to-r15-adapter",
-          "title": "R6 to R15 Adapter",
-          "retrieved": "2026-08-23",
+          "url": "https://github.com/Roblox/creator-docs/blob/main/content/en-us/reference/engine/enums/AvatarUnificationMode.yaml",
+          "title": "Roblox Creator Docs, AvatarUnificationMode",
+          "retrieved": "2026-10-31",
           "kind": "primary",
-          "quote": "The **R6 to R15 Adapter** allows R15 avatars to join your R6 game."
+          "quote": "Controls whether the R6 to R15 adapter is active, allowing R15 avatars to join R6 experiences."
         }
       ]
     },
@@ -3228,6 +3228,260 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "Roblox is a platform where millions of people create and share 3D experiences. Creators use Roblox Studio (the IDE) and Luau (the scripting language) to build games, experiences, and avatar items."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Roblox states that it is a platform for creating and sharing 3D experiences, and its documentation describes no sensing of the physical surroundings, so ray hits against an estimate of the real world fall outside it; Raycast on the WorldRoot hits only virtual parts.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Detecting physical markers or images and reporting their pose belongs to a sensing runtime, which a platform for creating and sharing virtual 3D experiences is not.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Runtime estimates of the real environment's illumination are a sensing-runtime function; Roblox lighting is authored in the Lighting service and by light objects inside the virtual experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "The VR tracking enumeration reports the centre of the floor as a tracked pose, which gives a floor-relative origin; no play-area bounds or dimensions are reported to scripts in any page searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/enums/UserCFrame.md",
+          "title": "UserCFrame, Roblox Creator Hub (Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "| `Floor` | 3 | The `CFrame` of the center of the floor. |"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Studio's face capture asks the person to consent to collection of their facial movements and camera access before recording, the engine reports when the user denies camera permission, and Roblox's privacy policy says content from camera features is stored only for as long as needed for the purpose of the feature. No spatial coarsening and no restricted or pseudonymous pose publication is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/animation/capture",
+          "title": "Animation Capture, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A popup displays asking you to acknowledge that you consent to the collection of your facial movements to enable the feature and camera access."
+        },
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/enums/TrackerError.md",
+          "title": "TrackerError, Roblox Creator Hub (Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The user denied camera permission required for video-based face tracking."
+        },
+        {
+          "url": "https://en.help.roblox.com/hc/en-us/articles/115004630823-Roblox-Privacy-and-Cookie-Policy",
+          "title": "Roblox Privacy and Cookie Policy",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "we will collect, process, and store that content only for as long as needed to accomplish the purpose of the feature."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Roblox parts raise typed touch events when something contacts them, which scripts use as trigger zones inside one experience; zones have no interchange form, identifiers shared across systems or summaries with defined spatial and temporal meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/reference/engine/classes/BasePart.md",
+          "title": "BasePart, Roblox Creator Hub (Markdown)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The **Touched** event fires when a part comes in contact with another part."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "A colour grading effect sets how the renderer's colour values are converted to the screen's colour range, through two named tone-mapper presets; the pages searched declare no colour space or range for images, textures or surfaces that a receiver could use to convert.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/environment/post-processing-effects",
+          "title": "Post-processing effects, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The ColorGradingEffect effect modifies how color values calculated by the renderer should be converted to the screen's color range, impacting the mood and appearance of your place."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "Scripts can generate speech audio at play time from text through a text-to-speech object, with pitch and speed that can change while it plays; no synthesis model or supporting data is exchanged, and no general synthesis or sample-level generation is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/audio/objects",
+          "title": "Audio objects, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Text-to-speech ( TTS ) is a form of assistive technology that converts text strings into speech sounds using an artificial voice."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Reconstructing a radiance field or Gaussian representation from observed images is a capture and training task; Roblox is a platform for creating and sharing experiences, and no page searched mentions radiance fields or splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation (llms.txt)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Roblox documents keyboard, mouse, touch, gamepad and VR input but no interface for musical instrument events with channel, note and value. Searched Roblox's open-source creator documentation (Roblox/creator-docs at commit 142c1054364c20525ae92e7aedfcd7f2c2a4bfc3: 1,031 guide pages and 1,210 engine-reference files) and the Open Cloud API description (create.roblox.com/docs/cloud/openapi.json) for MIDI, musical instrument, note on, SysEx on 2026-10-22; no match other than audio effect descriptions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/input",
+          "title": "Input, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox supports nearly all forms of input"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "Roblox documents no way for an experience to submit separate image layers with placement and composition properties to a headset compositor, although its VR support is built on OpenXR. Searched Roblox's open-source creator documentation (Roblox/creator-docs at commit 142c1054364c20525ae92e7aedfcd7f2c2a4bfc3: 1,031 guide pages and 1,210 engine-reference files) and the Open Cloud API description (create.roblox.com/docs/cloud/openapi.json) for composition layer, compositor, quad layer, overlay layer, timewarp, reprojection, swapchain on 2026-10-22; no match about display composition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/production/publishing/vr-guidelines",
+          "title": "VR guidelines, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Roblox VR uses OpenXR as a backend for all VR devices."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "Roblox exposes no way for creators to dispatch compute work on the GPU; its shaders are fixed engine material shaders. Searched Roblox's open-source creator documentation (Roblox/creator-docs at commit 142c1054364c20525ae92e7aedfcd7f2c2a4bfc3: 1,031 guide pages and 1,210 engine-reference files) and the Open Cloud API description (create.roblox.com/docs/cloud/openapi.json) for compute shader, ComputeShader, GPU compute, compute pass on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/parts/materials",
+          "title": "Materials, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Shaders generate the look and feel of materials."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "Roblox documents a 60 frames per second target and a per-frame event that reports the time since the previous frame, but no predicted display time or view poses tied to a submission time for scripts. Searched Roblox's open-source creator documentation (Roblox/creator-docs at commit 142c1054364c20525ae92e7aedfcd7f2c2a4bfc3: 1,031 guide pages and 1,210 engine-reference files) and the Open Cloud API description (create.roblox.com/docs/cloud/openapi.json) for predicted display time, xrWaitFrame, late latching, frame timing, frame pacing on 2026-10-22; only the performance target and the RunService frame events were found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/performance-optimization",
+          "title": "Performance optimization, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "By default, Roblox games target 60 FPS, which is one frame every 16.67 milliseconds with proper frame pacing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "none",
+      "note": "Roblox documents shaders only as fixed engine material shaders and offers no shader source language that another implementation could consume. Searched Roblox's open-source creator documentation (Roblox/creator-docs at commit 142c1054364c20525ae92e7aedfcd7f2c2a4bfc3: 1,031 guide pages and 1,210 engine-reference files) and the Open Cloud API description (create.roblox.com/docs/cloud/openapi.json) for HLSL, GLSL, shading language, custom shader, shader source on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/parts/materials",
+          "title": "Materials, Roblox Creator Hub",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Shaders generate the look and feel of materials."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Roblox lets a creator trigger preset haptic effect types such as collision or explosion on supported gamepads and the Quest controller, adapted to what the player's device supports, but nothing for wind, scent, heat or motion seats. The GlobalWind setting is an on-screen simulation that moves grass and clouds, not a description sent to effect devices. Searched the Roblox Creator documentation index (llms.txt, 2604 lines of page titles) and the Global wind, HapticEffect and Gamepad input pages, plus a web search of create.roblox.com, for wind, scent, smell, 4D, motion seat, thermal, temperature, rumble and haptic on 2026-11-01; only haptics and simulated wind found. Page bodies were not all searched. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/input/gamepad",
+          "title": "Gamepad input, Roblox Creator Hub",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Roblox supports haptics for PlayStation gamepads, Xbox gamepads, and the Quest Touch controller. Haptic feedback is managed through HapticEffect instances which can be set to a specific Type such as GameplayCollision or UIClick ."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A closed platform where creators build in its own engine and do not choose or substitute renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://create.roblox.com/docs/llms.txt",
+          "title": "Roblox Creator Documentation index",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Roblox is a platform where millions of people create and share 3D experiences."
         }
       ]
     }

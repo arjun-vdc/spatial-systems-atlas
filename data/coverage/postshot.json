@@ -1,6 +1,6 @@
 {
   "subject_id": "postshot",
-  "summary": "Jawset Postshot is the desktop counterweight in this lane: a free-to-download Windows application that needs an NVIDIA card, keeps every image and every training step on the operator's own machine, and covers the whole path from a folder of photographs or a video to a trained radiance field that can be cropped, aligned, exported and dropped into Unreal Engine. It is scored here because it shows what the phone tools give up. It solves camera poses itself or imports them from COLMAP, Bundler or RealityScan; it reads professional image formats including raw and high-dynamic-range video, tracks the colour space through training and records it in the file; it will align a scene to a printed marker of a stated physical size, which is the only real-world scale mechanism found anywhere in this lane; and it writes its own non-standard metadata into the PLY header — colour space, anti-aliasing mode and world origin — because no splat format has anywhere to put them. Its export list is three items: a self-contained web page, lossless PLY, and SPZ with a version choice, and the reason given for keeping the older SPZ version is the honest state of splat interoperability — some third-party software does not read version 4 yet. There is no mesh, no time axis, no macOS or Linux build, and no statement of rights or authorship in anything it writes.",
+  "summary": "Jawset Postshot is the desktop counterweight among the capture tools: a free-to-download Windows application that needs an NVIDIA card, keeps every image and every training step on the operator's own machine, and covers the whole path from a folder of photographs or a video to a trained radiance field that can be cropped, aligned, exported and dropped into Unreal Engine. It is scored here because it shows what the phone tools give up. It solves camera poses itself or imports them from COLMAP, Bundler or RealityScan; it reads professional image formats including raw and high-dynamic-range video, tracks the colour space through training and records it in the file; it will align a scene to a printed marker of a stated physical size, which is the only real-world scale mechanism found anywhere among the capture tools; and it writes its own non-standard metadata into the PLY header — colour space, anti-aliasing mode and world origin — because no splat format has anywhere to put them. Its export list is three items: a self-contained web page, lossless PLY, and SPZ with a version choice, and the reason given for keeping the older SPZ version is the honest state of splat interoperability — some third-party software does not read version 4 yet. There is no mesh, no time axis, no macOS or Linux build, and no statement of rights or authorship in anything it writes.",
   "coverage": [
     {
       "capability_id": "render.raster",
@@ -50,7 +50,7 @@
     {
       "capability_id": "render.lighting",
       "level": "partial",
-      "note": "A sky model can be trained that projects the environment onto a large sphere around the scene, which is the nearest thing to lighting anywhere in this lane. It reduces artefacts rather than lighting the content.",
+      "note": "A sky model can be trained that projects the environment onto a large sphere around the scene, which is the nearest thing to lighting anywhere among the capture tools. It reduces artefacts rather than lighting the content.",
       "confidence": "verified",
       "sources": [
         {
@@ -406,7 +406,7 @@
     {
       "capability_id": "scene.units",
       "level": "partial",
-      "note": "Marker alignment is the one real scale mechanism in this lane: a printed tag whose side length is given in millimetres fixes the position, orientation and size of the field. The unit is used and is not written into any export.",
+      "note": "Marker alignment is the one real scale mechanism among the capture tools: a printed tag whose side length is given in millimetres fixes the position, orientation and size of the field. The unit is used and is not written into any export.",
       "confidence": "verified",
       "sources": [
         {
@@ -2765,6 +2765,162 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "You can export scenes from Postshot in several formats supported by third-party applications."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "Searched all 19 pages of the Postshot User Guide and its release notes from v0.4 to v1.1.69 for variant, alternative, preset, snapshot, switch between and option set on 2026-10-22; a Postshot scene is a tree of cameras, image sets and radiance fields, but it offers no named alternatives of that configuration that a user can select, and its training profiles select a reconstruction method, not a variant of an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree",
+          "title": "Postshot User Guide: Scene Tree",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Postshot scenes may contain multiple Cameras, Rdnc Field objects and/or Image Sets."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Jawset states that Postshot runs all processing on devices only the user has access to, and its licence terms say the technical data it collects expressly does not include any Content. Missing: spatial coarsening, restricted or pseudonymous pose publication, and any use or retention declaration written into an export, since no disclosure feature exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/",
+          "title": "Jawset Postshot",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Postshot runs all processing and machine learning steps on devices only you have access to."
+        },
+        {
+          "url": "https://www.jawset.com/eula",
+          "title": "Postshot End User Licence Agreement",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Such data expressly does not include any Content."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched all 19 pages of the Postshot User Guide, the release notes from v0.4 to v1.1.69, the Postshot home page and its EULA for profile, level, subset and compatibility on 2026-10-22; Postshot's radiance field profiles (Splat3, Splat MCMC, Splat ADC) are training methods that the guide says differ mostly in reconstruction quality, not compatibility contracts. The only compatibility choice is the SPZ format version, 3 or 4, which belongs to the SPZ format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Training+Configuration",
+          "title": "Postshot User Guide: Training Configuration",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Postshot supports different profiles to create radiance fields."
+        },
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Radiance+Field+Export",
+          "title": "Postshot User Guide: Radiance Field Export",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "However, some third-party software may not yet support version 4. If you need the exported files to open in such software, you can revert to version 3."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "partial",
+      "note": "Postshot's training is its own GPU compute workload on NVIDIA hardware, and its command line runs it on compute-only datacentre GPUs with no graphics output. Missing: the workloads are fixed by Postshot, not programmable or dispatchable by others, and no graphics-compute interface is exposed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Command-line+Interface",
+          "title": "Postshot User Guide: Command-line Interface",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This allows scripted control of training jobs and enables training on compute-only GPUs that don't provide graphics capabilities, like the Nvidia Datacenter GPUs."
+        },
+        {
+          "url": "https://www.jawset.com/",
+          "title": "Jawset Postshot",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "System Requirements: Windows 10 or later, Nvidia GPU CC 7.5 or higher (GeForce RTX 2060, Quadro T400/RTX 4000 or higher)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched all 19 pages of the Postshot User Guide, the release notes from v0.4 to v1.1.69, the Postshot home page and its EULA for thumbnail, preview and preview image on 2026-10-22; none is documented. The guide lists the metadata Postshot writes into a PLY header as colour space, anti-aliasing mode and world origin, and names no preview image in the PLY, SPZ, web or project exports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Radiance+Field+Export",
+          "title": "Postshot User Guide: Radiance Field Export",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Postshot stores several non-standard metadata in the PLY header, including the color space, anti-aliasing mode, and world origin. These can be extracted using custom software."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched all 19 pages of the Postshot User Guide, the release notes from v0.4 to v1.1.69, the Postshot home page and its EULA for watermark, fingerprint, content credentials, C2PA and provenance on 2026-10-22; nothing is documented. The only provenance field is the Postshot version that trained a field, so there is no authorship record to recover and no lookup route.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide/Interface/Scene+Tree/Rdnc+Field",
+          "title": "Postshot User Guide: Rdnc Field",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This field displays the version of Postshot that was used to train this radiance field."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Postshot is a desktop tool for training, editing and rendering radiance fields; it has no effect-description layer or effect-device output.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A tool for training and editing radiance fields; scene renderer swapping is not part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Postshot trains and edits radiance fields on local devices; it has no portals or destination previews.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.jawset.com/docs/d/Postshot+User+Guide",
+          "title": "Postshot User Guide, introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Postshot offers an end-to-end solution for tracking, training, editing and rendering radiance fields within a user-friendly, seamless workflow."
         }
       ]
     }

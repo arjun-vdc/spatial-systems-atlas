@@ -3221,6 +3221,361 @@
           "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
         }
       ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "VRChat's stated purpose is visiting and building virtual worlds and avatars, and none of its documentation describes sensing the physical surroundings, so ray hits against an estimate of the real world fall outside it; VRCRaycast hits only colliders in the virtual world and on players.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/",
+          "title": "VRChat",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
+        },
+        {
+          "url": "https://creators.vrchat.com/avatars/avatar-components/raycast",
+          "title": "Raycast, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The VRCRaycast component in VRChat allow avatars to fire rays through the scene that hit against colliders in the world or against players."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Detecting physical markers or images and reporting their pose is a function of a sensing runtime, which VRChat's stated purpose of virtual worlds and avatars does not include; the only marker component it documents is a portal to another world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/",
+          "title": "VRChat",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
+        },
+        {
+          "url": "https://creators.vrchat.com/worlds/components/vrc_portalmarker",
+          "title": "VRC Portal Marker, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Creates a portal to another VRChat world."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Runtime estimation of the real environment's illumination is a sensing-runtime function outside VRChat's stated purpose; worlds are lit by lighting baked in Unity and light probes authored in advance, which describe virtual light.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/",
+          "title": "VRChat",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
+        },
+        {
+          "url": "https://creators.vrchat.com/platforms/android/quest-content-optimization",
+          "title": "Quest Content Optimization, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Make extensive use of baked lighting and light probes."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "VRChat's privacy policy declares that movement and eye-movement data are used only to animate the wearer's avatar in real time and are not stored, and that facial-tracking analysis is kept only in temporary device memory; it also accepts tracker poses and eye tracking from outside over Open Sound Control. No spatial coarsening and no restricted or pseudonymous pose publication is documented, and the wearer's pose is published to the instance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/privacy",
+          "title": "Privacy Policy, VRChat",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "We only use your Movement Information and Eye Movement Information to animate your avatar in real time. We do not store records of this information."
+        },
+        {
+          "url": "https://docs.vrchat.com/docs/osc-eye-tracking",
+          "title": "OSC Eye Tracking, VRChat documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "VRChat now offers support for receiving eye tracking data (eyelook and eyelid) via OSC."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "World scripts can read the centre of a VR user's playspace (and the player's position for desktop users), which gives a floor-relative origin; no play-area bounds or dimensions are reported to content in any page searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/players/player-positions",
+          "title": "Player Positions, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Origin returns the center of the local VR user's playspace, while returning the player's position for local Desktop users and all remote users."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Trigger colliders give named zones with typed enter, stay and exit events scoped to a person, but they are Unity objects inside one world; there is no interchange form for zones or events and no spatial or temporal summaries.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/players/player-collisions",
+          "title": "Player Collisions, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "OnPlayerTriggerEnter is called when a player's capsule enters a Trigger Collider"
+        },
+        {
+          "url": "https://creators.vrchat.com/worlds/examples/player-join-zones",
+          "title": "Player Join Zones, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This example shows how to collect players based on their position, and handle basic lobby functionality, enabling users to join a game, play it, see results, then start a new game."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Producing a three-dimensional object from a text or image prompt is a creation-tool function; VRChat hosts worlds and avatars that creators build elsewhere in Unity and upload, and its documentation describes no generator.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/",
+          "title": "VRChat",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Reconstructing a radiance field from observed images is a capture and training task; VRChat is a host for worlds and avatars, and its documentation names no radiance field or splat tooling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://hello.vrchat.com/",
+          "title": "VRChat",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Explore thousands of worlds, meet people from everywhere, and express yourself however you want. Or build the worlds and avatars that others fall in love with."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "native",
+      "note": "Unity collider components are on the world allowlist, and VRChat's release notes confirm that physics material settings on pickups exist and work.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.vrchat.com/docs/vrchat-202124",
+          "title": "VRChat 2021.2.4 release notes",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Fixed issues causing physics material settings on pickups to be lost in certain situations"
+        },
+        {
+          "url": "https://creators.vrchat.com/worlds/whitelisted-world-components",
+          "title": "Allowlisted World Components, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The following is the complete list of scripts usable within worlds. Components that are not in this list will not work."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The camera settings exposed to world scripts carry an HDR flag saying whether high dynamic range values are submitted to the render target, which declares output range; no page declares a colour space or transfer function for textures and surfaces so a receiver could convert.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/vrc-graphics/vrc-camera-settings",
+          "title": "VRC Camera Settings, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "bool AllowHDR : If the camera will submit HDR values to the render target"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "partial",
+      "note": "The creator SDK tells PC creators to build with the DirectX 11 target; the graphics interface used on Android and iOS builds is not stated in any page searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/sdk/",
+          "title": "VRChat SDK, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Check the title bar to ensure it ends with PC, Mac & Linux Standalone <DX11>"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "Custom shaders are Unity shaders and VRChat's own example is HLSL with a VRChat include file, but VRChat specifies no shader language or execution semantics of its own, shaders are compiled into the per-platform bundle, and avatars on Android may use only the SDK's shaders.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/vrc-graphics/vrchat-shader-globals",
+          "title": "VRChat Shader Globals, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The HLSL code snippet below shows the include path and lists available functions:"
+        },
+        {
+          "url": "https://creators.vrchat.com/platforms/android/quest-content-limitations",
+          "title": "Android Content Limitations, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "VRChat on Android or Quest only permits the shaders provided with the latest SDK on avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "VRChat gives world scripts GPU texture readback but documents no way for creators to dispatch compute work; its release notes mention a compute shader only as part of its own SDK tooling. Searched creators.vrchat.com (all 311 pages in its sitemap), docs.vrchat.com (all 281 pages linked from its index) and the VRChat help centre (84 articles from its public article listing) for ComputeShader, ComputeBuffer, compute shader, Dispatch, GraphicsBuffer, RWTexture on 2026-10-22; the only matches were release notes about VRChat's own shaders.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/vrc-graphics/asyncgpureadback",
+          "title": "AsyncGPUReadback, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Common use cases for AsyncGPUReadback include generating CPU-side data based on the rendered output, such as creating a texture mipmap chain, implementing custom post-processing effects, or analyzing rendered frames for AI and computer vision purposes."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "VRChat documents no way for content to submit separate image layers with placement and composition properties to the headset compositor. Searched creators.vrchat.com (all 311 pages in its sitemap), docs.vrchat.com (all 281 pages linked from its index) and the VRChat help centre (84 articles from its public article listing) for compositor, composition layer, quad layer, overlay layer, timewarp, reprojection on 2026-10-22; the only overlay matches were debug overlays and SteamVR's own binding overlay.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.vrchat.com/docs/controls",
+          "title": "Controls, VRChat documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "VRChat officially supports the following headsets and their corresponding control schemes:"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "VRChat's documentation ties its frame cap to the headset's reported refresh rate but describes no predicted display time and no view poses tied to a submission time for content. Searched creators.vrchat.com (all 311 pages in its sitemap), docs.vrchat.com (all 281 pages linked from its index) and the VRChat help centre (84 articles from its public article listing) for predicted display time, frame timing, late latching, timewarp, reprojection, frame pacing on 2026-10-22; only the frame-cap launch option and general performance advice were found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.vrchat.com/docs/launch-options",
+          "title": "Launch Options, VRChat documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In VR, the headset's reported maximum refresh rate is the default."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "VRChat worlds can respond to MIDI note events and play recorded clips through a short list of audio effect filters, but no synthesis model or procedural audio generation is documented. Searched creators.vrchat.com (all 311 pages in its sitemap), docs.vrchat.com (all 281 pages linked from its index) and the VRChat help centre (84 articles from its public article listing) for OnAudioFilterRead, synthesizer, synthesis, procedural audio, oscillator, wavetable, AudioClip.SetData, generate audio on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/udon/midi/",
+          "title": "Midi in Udon, VRChat Creation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We've included it in VRChat so you can build worlds that respond to real-time instruments and prerecorded performances."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "VRChat has no way for a world or avatar to describe a wind, scent, heat or motion effect for the viewer's own devices. Its only outward routes are controller vibration from world scripts and OSC, an open network channel that lets outside programs read avatar parameters and drive hardware, with no effect vocabulary. Searched creators.vrchat.com (allowlisted world components, avatar animator parameters, worlds index) and docs.vrchat.com OSC overview, and a web search of VRChat documentation, for wind, fan, scent, smell, haptic, vibrate and hardware on 2026-11-01; the only wind item is Unity's WindZone, an on-screen simulation, and nothing describes effects for physical devices. Not every documentation page was read. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://docs.vrchat.com/docs/osc-overview",
+          "title": "VRChat OSC overview",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "OSC is a way to get different devices and applications to talk to each other."
+        },
+        {
+          "url": "https://creators.vrchat.com/worlds/whitelisted-world-components",
+          "title": "Allowlisted World Components, VRChat creators documentation",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The following is the complete list of scripts usable within worlds. Components that are not in this list will not work."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "VRChat lets a shader author declare a fallback shader with a tag so an avatar still draws when a viewer has blocked shaders. The substitute is declared per shader and chosen from a fixed list; it covers shaders, not whole renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/avatars/shader-fallback-system",
+          "title": "VRChat Creation, Shader Blocking and Fallback System",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can now add different tags, under the VRCFallback name, to specify which fallback shader to try to use:"
+        },
+        {
+          "url": "https://creators.vrchat.com/avatars/shader-fallback-system",
+          "title": "VRChat Creation, Shader Blocking and Fallback System",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This page serves as a description of the Shader Blocking System, how it operates, and how shader authors can work with it so that their shader falls back gracefully when a user has Shaders blocked on an avatar using a given shader."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "A portal shows a world name above it, which the creator may override, and the visitor can select it to learn more about the destination world; walking in is the trigger. Missing: any control by the destination over what is shown, and a declared shape, scale or one-way setting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://creators.vrchat.com/worlds/components/vrc_portalmarker",
+          "title": "VRC Portal Marker",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "While the user's VRChat menu is open, they can also select the portal to learn more about the portal's world."
+        },
+        {
+          "url": "https://creators.vrchat.com/worlds/components/vrc_portalmarker",
+          "title": "VRC Portal Marker, properties",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Overrides the world name users see above the portal."
+        }
+      ]
     }
   ]
 }

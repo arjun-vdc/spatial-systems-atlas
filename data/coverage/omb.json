@@ -3400,6 +3400,216 @@
           "quote": "XR device access (via OpenXR)"
         }
       ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "none",
+      "note": "Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8), all text files, for synthesis, synthesize, procedural, oscillator, waveform, tone, chime, sound design, audio graph, audio and sound on 2026-10-22; the audio hits are the architecture proposal and a list of planned parallel workloads, and nowhere is a synthesis model, supporting data or control parameter exchanged for sound made at play time. The architecture mixes non-voice sounds such as chimes and alerts on the client, so sound for objects is in scope, but it delivers those sounds as audio sources and not as a synthesis description.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Non-voice audio (music, ambient sounds, machine noise, notification chimes, alerts) is mixed client-side."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The browser receives these audio sources as data attached to SOM objects and services and spatializes them locally based on the user's head position."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Searched the Sneeze architecture proposal 2026.Q2.0 (SneezeDoc commit 8e26da5) and its overview pages, the SneezeSDK prep documentation and C header (commit 4239e2b), the Forum Sneeze README and module notes (commit 04bc0ac), the MetaversalCorp Sneeze README and module notes (commit 986fc4c) and the RCSF documents (commit f6c3ea8), all text files, for encrypt, JWE, key agreement, X25519, ECDH, HPKE, AES, ChaCha, decrypt, recipient key and public key on 2026-10-22; the public-key hits are all about signature verification and the certificate fingerprint, and the only encryption hits are the architecture's mentions of TLS 1.3, QUIC and encrypted on-device positioning, so no recipient key material or content-encryption algorithm is identified. The architecture has the identity provider generate and keep key pairs for the user, so key material is in scope, but it serves signing and transport, not confidential delivery to a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The provider generates and stores the cryptographic material (key pairs, DIDs) on the user's behalf."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Encryption for all network communication. Implicit in the architecture but worth making explicit as a baseline requirement."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "partial",
+      "note": "Style rules exist only for interface panels: an in-scene panel is an RmlUi document in HTML-like markup with CSS, drawn onto a quad in the scene, and the architecture adds a constrained styling model for colours, fonts, spacing and borders. Missing are rules carried apart from the content that select the visibility or colour of three-dimensional scene features from their metadata; the architecture lists fabric-level theming as an open design question.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaverseStandards/Sneeze/blob/04bc0ac68e1abd146a5df3b309f4d210b18bca57/src/deps/ui/Ui_Context.md",
+          "title": "Sneeze src/deps/ui/Ui_Context.md (Forum fork, commit 04bc0ac)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "It owns the engine's one-time RmlUi global lifecycle and turns RML+CSS documents into CPU pixel buffers the viewport can draw as in-scene quads."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "**Styling.** A constrained styling model for colors, fonts, spacing, borders, and opacity. Services can customize the look of their panels within the browser's framework, similar to how web form elements accept CSS but maintain baseline behavior."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "**Theming and fabric-level styling.** Can fabrics define a visual theme that service panels adopt?"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "none",
+      "note": "Searched the Sneeze architecture proposal and its docs and examples (SneezeDoc 8e26da5), the SneezeSDK prep documentation and C header (4239e2b), the Forum Sneeze (04bc0ac) and MetaversalCorp Sneeze (986fc4c) READMEs, module notes and source, RCSF (f6c3ea8), and the RMAP, Map, MSF_Map_Svc, PersonaLogin, Rubidium and Halogen repositories (0fd7efb, 0e6d26a, 9625b5c, 517116d, 3dba6fb, 132c060) for admit, admission, approve, refuse, deny, reject, accept, waitlist, invite, gatekeeper, eligibility, banned, allow list, access denied and age verification on 2026-10-25; every hit is a visitor-side or identity-side decision, namely build gates, rejection of malformed files, the browser auto-accepting, prompting on or rejecting a service's terms, organisational blocking of unapproved fabrics, the ban of a persona, an age proof the visitor presents, the avatar-rating rule the visitor's browser enforces, a node-privacy check on loaded modules, the revocation rule by which browsers refuse the modules of a service whose signing key is revoked, the hash pin by which a browser refuses a module that does not match, and a user-to-company invite in RMAP, so no destination returns an approval or refusal with a validity limit or reason, and the browser records a fabric's trust level but does not yet refuse any fabric.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "If the user's current avatar exceeds the fabric's rating, the browser substitutes a default avatar or prompts the user to switch."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "A persona caught in illegal activity is banned."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Zero-knowledge proofs backed by government credentials mean age-restricted services can cryptographically verify legal age."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "The browser handles presentation: auto-accept if terms match user-defined policy, prompt for review, or reject and skip the service."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/examples/03-signing.md",
+          "title": "SneezeDoc docs/examples/03-signing.md (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "At present, the browser computes and reports a fabric's trust level, but it does not yet refuse a fabric for being unsigned or untrusted - it loads them all today."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "SneezeDoc: Open Metaverse Browser Architecture (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "If a service is found malicious, its signing key is revoked and all browsers refuse its modules."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/examples/03-signing.md",
+          "title": "SneezeDoc docs/examples/03-signing.md (commit 8e26da5)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "How to pin a module to an exact version with a hash, so the browser refuses a module that does not match."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/src/context/scene/AccessControl.cpp",
+          "title": "MetaversalCorp Sneeze, src/context/scene/AccessControl.cpp (commit 986fc4c)",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "2. If the node is private and the requester doesn't own the fabric, deny."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "The Open Metaverse Browser has no sensory effect description or effect-device output. Its architecture document states the same principle this row needs, that the creator describes what to present and the browser decides how to render it, but applies it to displays and input only. Searched the Sneeze architecture proposal (SneezeDoc main), Scene.md, Control.md and Gltf.md (MetaverseStandards/Sneeze main), XrRuntime.md (commit 04bc0ac), MsfFile.md, trust-and-isolation.md, sneeze_abi.h and the Rubidium RELEASE file for haptic, vibration, rumble, wind, scent, smell, sensory, motion seat, 4D, 23005, MPEG-V, actuator, fan and temperature on 2026-11-01; the only hits were a future accessibility mention of haptic navigation aids and IoT vibration sensors as input, so no effect description or effect-device output was found. Unverified: the wider wiki and source tree were not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/main/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal (SneezeDoc, main)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Content is defined independently of how it is displayed. The creator describes what to present. The browser decides how to render it."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/main/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture proposal (SneezeDoc, main)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The content author has no knowledge of which hardware or operating system the user runs, and cannot design for a specific device."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The engine behind this browser draws through ANARI, a Khronos rendering interface that hands the scene to whichever rendering engine is loaded, so the scene description does not change when the engine does. The architecture document says the browser ships with at least one engine and names no declared substitute when an engine cannot draw a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture document (SneezeDoc commit 8e26da5), overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ANARI abstracts rendering, providing a uniform scene-description API that delegates to interchangeable rendering engines."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/SneezeDoc/blob/8e26da5637e77cd1f400a9885414968a63291e28/docs/architecture/sneeze-architecture.md",
+          "title": "Sneeze architecture document (SneezeDoc commit 8e26da5), shipped engine",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The browser ships with at least one rendering engine (ANARI backend) that targets the platform's GPU API."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "The engine behind the browser treats a node with subtype 255 as an attachment point that starts the fetch of another fabric, and a node's position, scale and bounding volume are held on its map object. Missing: anything saying what of the destination is shown before entry, any way for the destination to limit it, and any trigger or one-way setting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/README.md",
+          "title": "Sneeze README (commit 986fc4c)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Sneeze is the engine behind the Open Metaverse Browser, developed by the Open Metaverse Browser Initiative (OMBI), a project under the Metaverse Standards Forum."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/src/context/scene/Scene.md",
+          "title": "Sneeze Scene.md (commit 986fc4c), Fabric Loading Flow",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "1. A NODE recognizes it's an attachment point (bSubtype == 255) and calls `SCENE::Fabric_Spawn(pNode, sUrl)`, which starts the async MSF fetch."
+        },
+        {
+          "url": "https://github.com/MetaversalCorp/Sneeze/blob/986fc4cb3da83871c76e06f8b2b307b3933f6956/src/context/scene/Scene.md",
+          "title": "Sneeze Scene.md (commit 986fc4c), node properties",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NODEs are structural — all 3D properties (position, scale, color, bounding volume) live on the referenced MAP_OBJECT."
+        }
+      ]
     }
   ]
 }

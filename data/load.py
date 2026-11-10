@@ -11,6 +11,10 @@ D = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(D, "territory.db")
 TMP = DB + ".building"
 TMP_FILES = (TMP, TMP + "-journal", TMP + "-wal", TMP + "-shm")
+# The use cases a row may name in interop_uses: the first four, and since the maintainer's
+# decision of 2026-11-03 three more (U6 the same thing at the same real place, U7 a training
+# result leaves the simulator, U10 shared presence). Each is a certification lane.
+USE_CASES = ("U1", "U2", "U3", "U4", "U6", "U7", "U10")
 
 def clear_temp():
     for p in TMP_FILES:
@@ -40,15 +44,15 @@ def build(con):
         if not reason:
             sys.exit(f"capabilities.csv: {r['id']} is '{interop}' with no interop_reason; "
                      f"every row carries the one sentence that decided it")
-        # interop_uses names which of the four use cases the row serves. A certification lane
+        # interop_uses names which of the use cases the row serves. A certification lane
         # is the pair (must row, use case), so a wrong or missing value here would draw a lane
         # that disagrees with the boundaries page. A bad value stops the load the way a bad
         # interop word does.
         uses = [u.strip() for u in (r.get("interop_uses") or "").split(",") if u.strip()]
         for u in uses:
-            if u not in ("U1", "U2", "U3", "U4"):
+            if u not in USE_CASES:
                 sys.exit(f"capabilities.csv: {r['id']} has use case '{u}'; "
-                         f"use U1, U2, U3 or U4")
+                         f"use one of {', '.join(USE_CASES)}")
         if len(set(uses)) != len(uses):
             sys.exit(f"capabilities.csv: {r['id']} names a use case twice in interop_uses")
         if interop in ("must", "should") and not uses:
@@ -100,6 +104,11 @@ def build(con):
                 (sid, c["capability_id"], c["level"], c.get("note"), c.get("confidence", "unverified"),
                  direction)).lastrowid
             for s in c.get("sources", []):
+                # The database is published, so a source address must be a public one or a
+                # plain description; a file path on the maintainer's machine is refused.
+                if (s.get("url") or "").startswith(("/", "~", "file:")):
+                    sys.exit(f"{os.path.basename(path)}: {c['capability_id']} cites a path on this "
+                             f"machine; give its public address or a plain description")
                 # Every source entry becomes its own row. One claim may cite one address twice
                 # for two different sentences; evidence is keyed by its own row id, so the
                 # second quote lands instead of being ignored as a repeat of the first.
@@ -112,15 +121,15 @@ def build(con):
     # The three boundary values, counted from the rows that were just loaded, so a run says
     # out loud how many capabilities two systems must agree on.
     bounds = dict(con.execute("SELECT interop, COUNT(*) FROM capability GROUP BY interop"))
-    # The four certification lanes, counted the way the atlas counts them: the must rows that
+    # The certification lanes, counted the way the atlas counts them: the must rows that
     # serve one use case. A run says the four sizes out loud so a seed that has drifted from
     # infrastructure-wg/model/CERTIFICATION-LANES.md is visible at the load rather than on the
     # published page.
     lane_counts = {u: con.execute(
         "SELECT COUNT(*) FROM capability WHERE interop='must' AND "
         "(',' || interop_uses || ',') LIKE ?", ("%," + u + ",%",)).fetchone()[0]
-        for u in ("U1", "U2", "U3", "U4")}
-    lanes = " ".join(f"{u} {lane_counts[u]}" for u in ("U1", "U2", "U3", "U4"))
+        for u in USE_CASES}
+    lanes = " ".join(f"{u} {lane_counts[u]}" for u in USE_CASES)
     return (f"capabilities {n('SELECT COUNT(*) FROM capability')}  subjects {n('SELECT COUNT(*) FROM subject')}"
             f"  coverage {n('SELECT COUNT(*) FROM coverage')}  sources {n('SELECT COUNT(*) FROM source')}"
             f"  quotes {n('SELECT COUNT(*) FROM evidence')}"

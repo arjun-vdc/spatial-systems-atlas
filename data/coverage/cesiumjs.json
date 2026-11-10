@@ -451,9 +451,9 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/Ellipsoid.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/Ellipsoid.js",
           "title": "CesiumJS source: Ellipsoid.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "new Ellipsoid(6378137.0, 6378137.0, 6356752.3142451793)"
         }
@@ -961,16 +961,16 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/TimeStandard.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/TimeStandard.js",
           "title": "CesiumJS source: TimeStandard.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "Represents the International Atomic Time (TAI) time standard."
         },
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/JulianDate.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/JulianDate.js",
           "title": "CesiumJS source: JulianDate.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "Gets or sets the list of leap seconds used throughout Cesium."
         },
@@ -1124,23 +1124,23 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/Ellipsoid.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/Ellipsoid.js",
           "title": "CesiumJS source: Ellipsoid.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "An Ellipsoid instance initialized to the WGS84 standard."
         },
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/GeographicProjection.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/GeographicProjection.js",
           "title": "CesiumJS source: GeographicProjection.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "is also known as EPSG:4326."
         },
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/WebMercatorProjection.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/WebMercatorProjection.js",
           "title": "CesiumJS source: WebMercatorProjection.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "The map projection used by Google Maps, Bing Maps, and most of ArcGIS Online, EPSG:3857."
         },
@@ -1175,9 +1175,9 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Core/Cartographic.js",
+          "url": "https://github.com/CesiumGS/cesium/blob/main/packages/core/Source/Cartographic.js",
           "title": "CesiumJS source: Cartographic.js",
-          "retrieved": "2026-08-22",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "A position defined by longitude, latitude, and height."
         }
@@ -2707,6 +2707,398 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "CesiumJS draws a virtual Earth and picks against its own rendered scene, such as the globe and tiles, and has no sensing runtime that estimates the physical surroundings. Hit testing against the real world belongs to augmented reality runtimes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Scene.js",
+          "title": "CesiumJS source: Scene.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Returns the cartesian position reconstructed from the depth buffer and window position."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "The library has no camera-based sensing of the physical world, so it neither detects markers nor reports their tracked pose. Marker and image tracking belongs to augmented reality runtimes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "CesiumJS reports no physical play area or floor-relative reference, because it has no headset runtime that measures one. Play area bounds belong to the extended reality runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "The library senses nothing about the user's surroundings, so it has no sensed data to coarsen, label with retention terms or publish under a pseudonym. Those controls belong to the sensing platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "The library does not estimate the lighting of the user's physical surroundings; its lighting comes from the sun, authored lights and prepared environment maps. Sensed illumination estimates belong to augmented reality runtimes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "CesiumJS displays existing content and has no function that produces a three-dimensional object from a text or image prompt. Object generation belongs to generative tools that could feed models to the library.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "The library reads and draws Gaussian splat scenes that were trained elsewhere, and contains no optimisation or training of a radiance field from images and cameras. Training belongs to reconstruction tools.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "The library is a globe and map renderer and contains no audio at all, so it generates no sound at play time. A repository code search for AudioContext and HTMLAudioElement on 2026-10-22 found no use.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "CesiumJS takes no musical instrument input; its input is pointer, touch and keyboard modifiers for navigating a globe. Instrument events belong to audio and music applications built beside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/README.md",
+          "title": "CesiumJS README (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser without a plugin."
+        },
+        {
+          "url": "https://cesium.com/learn/cesiumjs/ref-doc/ScreenSpaceEventHandler.html",
+          "title": "CesiumJS API reference: ScreenSpaceEventHandler",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Handles user input events."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Content and library meet on a version plus an extension list: the library accepts tileset versions 0.0, 1.0 and 1.1 and a fixed list of glTF extensions, and refuses a tileset or model that requires anything else, while the 3D Tiles standard has content list the extensions it requires. There are no named subsets or levels that content and library declare against, so the contract is not a profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Cesium3DTileset.js",
+          "title": "CesiumJS source: Cesium3DTileset.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "@exception {RuntimeError} When the tileset asset version is not 0.0, 1.0, or 1.1, or when the tileset contains a required extension that is not supported."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Model/ModelUtility.js",
+          "title": "CesiumJS source: ModelUtility.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Checks whether or not the extensions required by the glTF are supported."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.7.4.1 Extensions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "All extensions required to load and render a tileset or any descendant external tilesets shall also be listed in the entry tileset JSON in the top-level extensionsRequired array property, such that extensionsRequired is a subset of extensionsUsed ."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "partial",
+      "note": "The maintainers publish a separate repository of agent skills, which are published instruction files for coding agents that write CesiumJS applications, and a reference starter app that exposes viewer tools to an in-page assistant. The library itself has no agent interface (a search of its README at tag 1.146 for skill, agent, MCP, AI and copilot found nothing), and none of these documents states what an agent may change or publish.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesiumjs-skills/blob/5f4792c09c4496f214ba9679cac6d7b3b014dcdd/README.md",
+          "title": "CesiumJS Agent Skills README (CesiumGS/cesiumjs-skills, commit 5f4792c)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Curated agent skills for CesiumJS development — 14 domain skills covering ~551 public symbols across the CesiumJS v1.143 API surface."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium-ai-integrations/blob/92b1c71c2b98eef3edbd5bb77fe14527486929ae/README.md",
+          "title": "Cesium AI Integrations README (CesiumGS/cesium-ai-integrations, commit 92b1c71, deprecated)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Starter app with AI assistant integration (viewer tools for camera control, entity management, 3D Tiles, imagery, and terrain; a code generation tool; plus support for connecting external MCP servers)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Searched the CesiumJS supported glTF extension list at tag 1.146, a repository code search on main for thumbnail and preview image outside the example gallery, and OGC 22-025r4 (3D Tiles 1.1) for thumbnail, preview and icon on 2026-10-22; no match. Thumbnails exist only for the Sandcastle example gallery, and neither a glTF model nor a tileset read by the library can carry a preview image.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Model/Model.js",
+          "title": "CesiumJS source: Model.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A 3D model based on glTF, the runtime asset format for WebGL, OpenGL ES, and OpenGL."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Model/ModelUtility.js",
+          "title": "CesiumJS source: ModelUtility.js supportedExtensions (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Checks whether or not the extensions required by the glTF are supported."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "none",
+      "note": "Searched the Model.js documentation and supported glTF extension list at tag 1.146 and a repository code search on main for constraint on 2026-10-22; no node-to-node transform constraint was found (the hits were value clamping, loader limits and code comments). The nearest feature is the AGI_articulations extension, whose named stage values are set by application code rather than derived from another node, and its pointing vector is not read by the glTF loader.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Model/Model.js",
+          "title": "CesiumJS source: Model.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A 3D model based on glTF, the runtime asset format for WebGL, OpenGL ES, and OpenGL."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Scene/Model/Model.js",
+          "title": "CesiumJS source: Model.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Applies any modified articulation stages to the matrix of each node that participates in any articulation."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Identified spatial zones can be interchanged as polygon entities through GeoJSON, CZML and KML, each with a unique identifier and an optional availability interval. What is missing is any typed event scoped to a zone and any summary with defined spatial and temporal meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/DataSources/Entity.js",
+          "title": "CesiumJS source: Entity.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A unique identifier for this object. If none is provided, a GUID is generated."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/DataSources/Entity.js",
+          "title": "CesiumJS source: Entity.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The availability, if any, associated with this object."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/DataSources/GeoJsonDataSource.js",
+          "title": "CesiumJS source: GeoJsonDataSource.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "GeoJSON specifies only the Feature object has a usable id property"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "Searched the CesiumJS repository at tag 1.146 (commit b8d3a36fe98a3e432eb89253c95d5f20e605e0f1) for predictedDisplayTime, requestSession, immersive-vr, WebXR and navigator.xr on 2026-10-23; no match. The default render loop submits a frame on each browser animation-frame callback, with an optional target frame rate, so submission follows the display refresh, but nothing uses predicted display time or view poses tied to that time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/widgets/Source/VRButton/VRButton.js",
+          "title": "CesiumJS source: VRButton.js (tag 1.146)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A single button widget for toggling vr mode."
+        },
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Widget/CesiumWidget.js",
+          "title": "CesiumJS source: CesiumWidget.js (tag 1.146)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Gets or sets the target frame rate of the widget when useDefaultRenderLoop is true. If undefined, the browser's requestAnimationFrame implementation determines the frame rate."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "Searched the repository by code search on main for navigator.xr, XRWebGLLayer and XRCompositionLayer on 2026-10-22; no match. The library renders everything into one canvas, composites its own imagery layers inside that render, and submits no shaped image layers to a display compositor.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/widgets/Source/VRButton/VRButton.js",
+          "title": "CesiumJS source: VRButton.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A single button widget for toggling vr mode."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "partial",
+      "note": "The only text entry is the viewer's geocoder widget, a browser search box that the widget reads to look up a place. The library defines no text-entry interface for applications or scene content; its own input handler covers pointer, touch and keyboard modifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/widgets/Source/Geocoder/Geocoder.js",
+          "title": "CesiumJS source: Geocoder.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "textBox.setAttribute(\"placeholder\", \"Enter an address or landmark...\");"
+        },
+        {
+          "url": "https://cesium.com/learn/cesiumjs/ref-doc/ScreenSpaceEventHandler.html",
+          "title": "CesiumJS API reference: ScreenSpaceEventHandler",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Handles user input events."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "partial",
+      "note": "The renderer runs non-raster GPU work through an internal compute command that draws a full-screen quad with a fragment shader into a texture, which is the older fragment-shader style of general computing. It uses no compute shaders or graphics-compute interface, since the library targets WebGL, and this facility is not offered to content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/1.146/packages/engine/Source/Renderer/ComputeCommand.js",
+          "title": "CesiumJS source: ComputeCommand.js (tag 1.146)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Represents a command to the renderer for GPU Compute (using old-school GPGPU)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "CesiumJS draws 3D globes and 2D maps in a browser; sensory effect devices are outside that purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/621826db344eb7f1248f6bd50ed4770563127f12/README.md",
+          "title": "CesiumJS README (commit 621826d)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "none",
+      "note": "Searched the CesiumJS README, the Scene reference page and CHANGES.md at the main branch for fallback, WebGPU, WebGL and renderer on 2026-11-03; found a single WebGL renderer with a WebGL 1 context option and no second renderer or declared substitute. Only these three pages were searched, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/CesiumGS/cesium/main/README.md",
+          "title": "CesiumJS README",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "It uses WebGL for hardware-accelerated graphics, and is cross-platform, cross-browser, and tuned for dynamic-data visualization."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "CesiumJS draws globes and maps in a page; it has no portals to other worlds and no destination previews.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/CesiumGS/cesium/blob/main/README.md",
+          "title": "CesiumJS README",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "CesiumJS is a JavaScript library for creating 3D globes and 2D maps in a web browser"
         }
       ]
     }

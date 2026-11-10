@@ -2210,6 +2210,670 @@
           "quote": "This document provides a formal specification of the core of the Universal Scene Description (USD) data representation, and scene construction algorithms."
         }
       ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "The core describes stored scene documents and their composition and has no client or device concept, so a device reporting what it can do is not something it would specify.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Gaze is a live sensor reading; the core describes stored scene documents and defines no input source of any kind.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Articulated hand pose is a live device input; the core describes stored scene documents and defines no input source of any kind.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Touch feedback is an output to a device the user holds; the core describes stored scene documents and has no device model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Buttons, sticks and pose from handheld devices are runtime device input; the core describes stored scene documents and has no device model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Placing sound in a scene is a domain-specific use left to other specifications. The OpenUSD software ships a spatial-audio prim in its media schema, but the ratified core defines none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_media_page_front.html",
+          "title": "OpenUSD reference documentation, UsdMedia (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UsdMediaSpatialAudio , which encodes both spatial and non-spatial audio as UsdGeomXformable-derived prims in a scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Carrying live voice between participants is a network function; the core describes stored scene documents and has no participants or live streams.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "How direction is rendered to the ears is playback behaviour of a player; the core describes the document and its composition, not how any media is presented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics describe how a player colours sound; the core describes stored scene documents and its foreword leaves domain-specific uses to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Blocking or muffling sound by geometry is a playback calculation, and geometry itself is a domain the core leaves to another specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Delivering audio over a network at scale is delivery infrastructure; the core defines how identifiers resolve and how files are laid out, not how media is streamed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Fixing content to a place on one device is a device runtime function; the core describes stored scene documents and has no device or tracking concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering pose from camera imagery is a sensing service; the core describes stored scene documents and has no camera input or localisation concept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Describing interior spaces is a domain-specific use; the core has no building or room vocabulary and its foreword leaves domain uses to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "What survives a restart of a world is a live-session concern; the core describes stored documents and has no running world to restart.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Viewpoints are a domain-specific use. The OpenUSD software defines a camera prim in its geometry schema, but the ratified core defines no camera, binding or transition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_geom_page_front.html",
+          "title": "OpenUSD reference documentation, UsdGeom (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UsdGeomCamera encodes a transformable camera."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Light and shadow are a domain-specific use. The OpenUSD software ships a lighting schema for interchange, but the ratified core defines no light and the colour section leaves lighting calculations to render settings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_lux_page_front.html",
+          "title": "OpenUSD reference documentation, UsdLux (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UsdLux provides a representation for lights and related components that are common to many graphics environments and therefore suitable for interchange."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Legible text in three dimensions is a domain-specific use; the core defines string values and the Unicode text encoding of its own files, but no fonts, layout or text prim.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Turning scene geometry into pixels is renderer behaviour; the core stops at producing a composed view of scene data and its foreword leaves domain uses to other specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Effects applied after the main render pass are renderer behaviour; the core describes stored scene documents and does not draw anything.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Drawing splats is renderer behaviour. The OpenUSD software has a particle-field schema introduced for Gaussian splats, but the ratified core defines no splat data and no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_vol_page_front.html",
+          "title": "OpenUSD reference documentation, UsdVol (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema was introduced to support 3d Gaussian splats, but is designed to be extensible and support things like Nerfs as well as future evolutions of this field of technology."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Drawing volumes and point sets is renderer behaviour. The OpenUSD software has a volume schema that loads OpenVDB fields, but the ratified core defines no volume data and no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_vol_page_front.html",
+          "title": "OpenUSD reference documentation, UsdVol (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UsdVolVolume can be used to represent continuous volumes (smoke, fire, etc), and can load spatial field definitions directly from OpenVDB and Field3d assets; it can also be extended to support other volume formats."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "partial",
+      "note": "Payloads let a reader leave parts of a scene unloaded, which is the composition mechanism for sending less detail first. The core defines no level-of-detail ranges, no rule for choosing a level, and no order in which to load; the proxy purpose that does such selection is in the OpenUSD geometry schema, not the ratified core.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Composition, Payloads (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Payloads are references that may either be composed (“loaded”) or ignored depending on the payload flag passed as input to the composition algorithm."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_geom_page_front.html",
+          "title": "OpenUSD reference documentation, UsdGeom (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Prims with purpose proxy should generally only be included when performing a lightweight proxy render (such as openGL)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for material, shader, surface and BRDF on 2026-10-22; hits are only example prims that carry a colour-space opinion. Materials are named as a domain left to a later alliance specification; the OpenUSD software ships a shading schema, which is not part of the ratified text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_shade_page_front.html",
+          "title": "OpenUSD reference documentation, UsdShade (generated 2026-10-20)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "UsdShade provides schemas and behaviors for creating and binding materials, which encapsulate shading networks."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for budget, quota, timeout, memory, limit and maximum on 2026-10-22; the security section only points to the URI security considerations in RFC 3986 and RFC 3987. Nothing bounds the memory, time or work a loaded layer may cost.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Security Considerations (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Refer to Section 7 of RFC 3986 and Section 8 of RFC 3987 for more information about security considerations for URI and IRI identifiers respectively."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for collision, collider, contact and shape on 2026-10-22; the only shape hits are spline curves. Physics is named as a domain left to a later alliance specification; the OpenUSD software ships a collision schema, which is not part of the ratified text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for joint, constraint and hinge on 2026-10-22; no hits. Physics is named as a domain left to a later alliance specification; the OpenUSD software ships joint schemas, which are not part of the ratified text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for friction, restitution and physics material on 2026-10-22; no hits. Physics is named as a domain left to a later alliance specification; the OpenUSD software has a physics material API, which is not part of the ratified text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for cloth, soft body, deform and simulation on 2026-10-22; the only simulation hits are informal remarks. The UsdPhysics reference documentation describes rigid bodies only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for determinism, deterministic and reproducible on 2026-10-22; no hits. The UsdPhysics reference documentation mentions determinism only for how a stage is parsed, not for simulation outcome.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "none",
+      "note": "Searched the USD Core Specification 1.0.1 (commit 2f9e746) for trigger, volume and event on 2026-10-22; no trigger volume is defined. The UsdPhysics reference documentation describes none either.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://aousd.org/usd-core-specification/",
+          "title": "USD Core Specification (Alliance for OpenUSD)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Foundation: Establishes the base for domain-specific standards in geometry, materials, and physics."
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword, Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        },
+        {
+          "url": "https://openusd.org/release/api/usd_physics_page_front.html",
+          "title": "OpenUSD reference documentation, UsdPhysics (current release)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This schema is intended as a baseline initial extension to USD that enables the minimum set of common concepts required to represent rigid body physics."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "The USD Core Specification covers how a scene description document is made up and composed and leaves domain-specific uses to other specifications, so effect devices fall outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword: Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "This Specification is focused on the core aspects of USD. It does not describe domain specific uses of USD"
+        },
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword: Domain Specific Specifications (repository commit 2f9e746)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Domain specific uses of USD will be covered by other specifications published by the Alliance for OpenUSD (AOUSD)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The OpenUSD software documentation, not the Core Specification, describes Hydra, where scene delegates and render delegates can be mixed and matched, and a material schema where an output can be tied to one render context or marked universal for any. No page read shows a declared preferred renderer with a named substitute, and the Core Specification text read does not cover rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://openusd.org/release/intro.html",
+          "title": "OpenUSD introduction, Hydra",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Hydra is the imaging framework that ships as part of the USD distribution."
+        },
+        {
+          "url": "https://openusd.org/release/api/class_usd_shade_material.html",
+          "title": "OpenUSD API reference, UsdShadeMaterial",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the renderContext value is empty (i.e. equal to UsdShadeTokens->universalRenderContext), then the output is considered to be a \"universal\", meaning it could apply to any render contexts."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The core defines scene documents and how layers compose; a portal's preview of another running world is not part of document composition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/aousd/specifications-public/blob/2f9e746c4fbd7f48d6d2c9ac568133fe398bbfc0/core/1.0.1/core_spec.md",
+          "title": "USD Core Specification 1.0.1, Foreword (repository commit 2f9e746)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This core specification describes the make-up of a scene description document, how to read its associated file formats and compose the scene description elements into a final stage."
+        }
+      ]
     }
   ]
 }

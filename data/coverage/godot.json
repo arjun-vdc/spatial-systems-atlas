@@ -2992,6 +2992,198 @@
           "quote": "For any sort of augmented reality application you need to access real world information, and be able to track real world locations."
         }
       ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "via-extension",
+      "note": "Met through the official Godot OpenXR Vendors plugin (GodotVR), on Android XR only: its OpenXRAndroidRaycastExtension casts rays into the physical environment against detected planes or against the headset's depth data and returns hit results with a position and orientation. Core Godot also lets an application make a detected plane interactable with a static body and collision shape and cast an ordinary physics ray at it, but that intersection is done by Godot's physics on the app's collision shapes, not by the sensing runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://godotvr.github.io/godot_openxr_vendors/manual/androidxr/trackables.html",
+          "title": "Godot OpenXR Vendors plugin documentation: Android XR Trackables",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "you can cast rays into the real world, and detect collisions against detected planes or against the data from the headset's depth sensor."
+        },
+        {
+          "url": "https://godotvr.github.io/godot_openxr_vendors/manual/androidxr/trackables.html",
+          "title": "Godot OpenXR Vendors plugin documentation: Android XR Trackables",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Raycast: Allows casting rays into the physical environment and getting a collision point."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/openxr_spatial_entities.html",
+          "title": "Godot Docs: OpenXR spatial entities",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The static body and collision shape will allow us to make the plane interactable."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Partly met. An Area3D is a region of space made from collision shapes that signals when other bodies or areas enter or leave it. Missing: identified zones that can be exchanged with another system, event types beyond these signals, and summaries with a defined spatial and temporal meaning; zones live in Godot scene files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_area3d.html",
+          "title": "Godot Docs: Area3D",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A region of 3D space that detects other CollisionObject3D s entering or exiting it."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Partly met. Godot asks the developer to enable the device permission flags that sensing features need in the export preset, and its macOS export has camera, microphone and location options each paired with a usage message shown to the player. Missing: any control for spatial coarsening, retention terms on sensed data, or restricted or pseudonymous pose publication.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/openxr_spatial_entities.html",
+          "title": "Godot Docs: OpenXR spatial entities",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Note that various XR devices also require permission flags to be set. These will need to be enabled in the export preset settings."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_macos.html",
+          "title": "Godot Docs: Exporting for macOS",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Enable if you need to use the camera, if it's enabled you should also provide usage message in the"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Godot is a game engine for building games from assets, and producing a 3D object from a text or image prompt is not something it performs or specifies; its manual search shows no generation feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot Docs: Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Godot is a game engine, and training a radiance field or Gaussian representation from photographs is a reconstruction pipeline outside it; the manual has no page on radiance fields or splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/about/introduction.html",
+          "title": "Godot Docs: Introduction",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Godot Engine is a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "none",
+      "note": "Godot has no way to bound memory, time or calls for guest content: its documentation treats loading mods and extra packs as code the developer must secure, and the only limits are project-wide settings such as the maximum GDScript call stack and message queue size. Searched the Godot 4.7 documentation source (godot-docs commit 9adca4c, all manual pages and the class reference) for budget, quota, limit, timeout, sandbox and untrusted on 2026-10-22; no per-content limit found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/export/exporting_pcks.html",
+          "title": "Godot Docs: Exporting packs, patches and mods",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "loading PCK files for patches, mods, or extra content like expansions, will require you to code a system to automatically load files based on their location, and possibly name"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "native",
+      "note": "Godot's OpenXR layer runs its own frame timing and exposes the runtime's predicted display time for the current and the next frame to extensions through OpenXRAPIExtension. The call is on the GDExtension-facing class rather than a general scripting interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_openxrapiextension.html",
+          "title": "Godot Docs: OpenXRAPIExtension",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Returns the predicted display timing for the current frame."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/classes/class_openxrapiextension.html",
+          "title": "Godot Docs: OpenXRAPIExtension",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Returns the predicted display timing for the next frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "via-extension",
+      "note": "Core Godot has no real-world lighting estimation: its AR passthrough page says some AR SDKs provide ambient lighting or a full radiance map but core XR functionality does not support it, and plugins would have to supply it. The official Godot OpenXR Vendors plugin (GodotVR) supplies it on Android XR only, through OpenXRAndroidLightEstimationExtension and an OpenXRAndroidLightEstimation node that can update DirectionalLight3D and WorldEnvironment nodes, with spherical-harmonic data available for custom ambient materials. Searched the Godot 4.7 documentation source (godot-docs commit 9adca4c, all manual pages and the class reference) for light estimation, ambient light, radiance and illumination on 2026-10-22, and the plugin's Android XR light estimation page on 2026-10-23.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://godotvr.github.io/godot_openxr_vendors/manual/androidxr/light_estimation.html",
+          "title": "Godot OpenXR Vendors plugin documentation: Android XR Light Estimation",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The Android XR Light Estimation extension provides real time lighting information from the player's environment."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/ar_passthrough.html",
+          "title": "Godot Docs: AR / passthrough",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The core Godot XR functionality doesn't currently have support for this, however this functionality can be exposed through plugins."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Godot has no effect description and no effect-device output. Searched the Godot documentation repository (commit 56033f3, master, including the class reference and tutorials, excluding translations) for DMX, Art-Net, sACN, GDTF, MPEG-V, ISO/IEC 23005, olfactory, scent, aroma, smell, motion seat, motion platform, motion simulator, 4D cinema, sensory effect, wind machine, wind fan, fog machine, effect device, stage lighting, lighting fixture and Philips Hue on 2026-11-01; no match. Output beyond the screen is limited to positioned audio and haptic output through the XR action map and gamepad vibration, which the audio and input.haptic rows cover; haptic vests are mentioned there only as a touch device. The engine source and add-ons were not searched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/xr/xr_action_map.html",
+          "title": "The XR action map - Godot Engine (stable) documentation",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "the only output type is Haptic and it allows us to set the intensity of haptic feedback"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "native",
+      "note": "Godot offers three renderers over one scene format and, since version 4.4, falls back from Vulkan to Direct3D 12 and then to the Compatibility renderer when the preferred one is unavailable. The documentation says the project then runs but may look different, and the fallback can be switched off in project settings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html",
+          "title": "Godot documentation (stable), Renderers, Switching between renderers",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Since Godot 4.4, when using Forward+ or Mobile, if Vulkan is not supported, the engine will fall back to Direct3D 12 and vice versa."
+        },
+        {
+          "url": "https://docs.godotengine.org/en/stable/tutorials/rendering/renderers.html",
+          "title": "Godot documentation (stable), Renderers, Switching between renderers",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This allows the project to run anyway, but it may look different than the intended appearance due to the more limited renderer."
+        }
+      ]
     }
   ]
 }

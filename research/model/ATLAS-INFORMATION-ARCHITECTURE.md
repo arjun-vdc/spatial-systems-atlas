@@ -1,20 +1,18 @@
 ---
-gas_schema: gas.doc.v1
 type: design
 title: The atlas — information architecture for the territory map as a C4 model, level by level
-status: draft for attempt three
+status: draft
 created: 2026-09-04T13:56:54Z
 project: msf-wg-tool
-workstream: infrastructure-wg-map
-author: project steward
-data_basis: infrastructure-wg/data/territory.db as of 2026-09-13 (57 subjects, 162 capabilities, 6,882 claims, 1,932 sources, 64 conflicts, 22 unverified claims). Originally written against 35 subjects and the first 89 rows on 2026-09-04T05:42Z; re-derived on 2026-09-06 when the map held 117 rows in 14 groups; all counts on this page re-derived 2026-09-13 by WO-msf-wg-tool-20260913-089.
+author: the maintainers
+data_basis: infrastructure-wg/data/territory.db as of 2026-09-13 (57 subjects, 162 capabilities, 6,882 claims, 1,932 sources, 64 conflicts, 22 unverified claims). Originally written against 35 subjects and the first 89 rows on 2026-09-04T05:42Z; re-derived on 2026-09-06 when the map held 117 rows in 14 groups; all counts on this page re-derived 2026-09-13.
 ---
 
 # The atlas
 
-The territory map drawn as a C4 model that you walk through like a map: one screen per level, a click to go one level deeper, the same lens (subjects on, filter) carried from level to level, and detail only where you ask for it. This document is the information architecture for attempt three. It fixes what each level is for, what is on it, what a click does, what is deliberately left off, and how every number on it is derived. It does not fix pixels.
+The territory map drawn as a C4 model that you walk through like a map: one screen per level, a click to go one level deeper, the same lens (subjects on, filter) carried from level to level, and detail only where you ask for it. This document is the information architecture for the third design. It fixes what each level is for, what is on it, what a click does, what is deliberately left off, and how every number on it is derived. It does not fix pixels.
 
-Attempt three owns only new files (`infrastructure-wg/board/atlas.html`, `infrastructure-wg/data/build_atlas.py`, the generated `atlas-standalone.html`) and the address `/msf/map/atlas/`. It touches nothing that attempts one and two own.
+The third design owns only new files (`infrastructure-wg/board/atlas.html`, `infrastructure-wg/data/build_atlas.py`, the generated `atlas-standalone.html`) and the address `/msf/map/atlas/`. It touches nothing the first two designs own.
 
 ---
 
@@ -217,7 +215,7 @@ Acceptance: with the same lens, the atlas's counts line equals the matrix's; the
 
 ---
 
-## 14. Build outline for attempt three
+## 14. Build outline for the third design
 
 Files: `infrastructure-wg/board/atlas.html` (page, no library, no outside script), `infrastructure-wg/data/build_atlas.py` (inlines `territory.json` the way `build.py` does, into `atlas-standalone.html`), address `https://openspatials.com/msf/map/atlas/`, noindex like the map. Predicates and the lens bar markup copied verbatim from `matrix.html`; the claim panel's rendering copied, not rewritten, so L3 matches the matrix's panel.
 
@@ -231,4 +229,4 @@ Order of work, each step provable before the next:
 7. Narrow screen and keyboard. Prove: at 390 px, no horizontal scroll; every card reachable by Tab.
 8. Deploy with the production deploy script under the lock, only when every proof above passes; republish nothing else.
 
-The result artifact records each proof with its query and output, and the three screenshots (L0, L1 Identity, L2 shared anchors).
+Each proof was recorded with its query and output, and the three screenshots (L0, L1 Identity, L2 shared anchors).

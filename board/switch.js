@@ -120,7 +120,7 @@
   var ATLAS = ATLAS_PAGE + "#level=territory&layers=1";
   // Where a comment goes. One constant, and it is empty on purpose: no address ships on this
   // page. While it is empty the button carries the hidden attribute and nothing is written into
-  // the markup for anybody, or any scanner, to find. WO-061 fills it in with the submissions
+  // the markup for anybody, or any scanner, to find. The submissions work fills it in with the submissions
   // address. A value that begins with http is opened as it stands; anything else is read as an
   // email address and opened as a prefilled message.
   var COMMENT_TO = "";

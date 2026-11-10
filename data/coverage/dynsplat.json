@@ -3130,6 +3130,393 @@
           "quote": "PD-4DGS is the first framework that brings progressive compression and on-demand transmission to 4DGS."
         }
       ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "The research methods reconstruct one moving scene from recorded video, and the Gracia player plays a captured volumetric video; neither authors an asset whose configuration has named alternatives. Gracia's scene stepper and playlist switch between different scenes, which are separate recordings and not variants of one asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/vye16/shape-of-motion/main/README.md",
+          "title": "Shape of Motion repository README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "# Shape of Motion: 4D Reconstruction from a Single Video"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/README.md",
+          "title": "Gracia Web SDK README (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Volumetric video player for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "The family reconstructs a moving scene from recorded video or multi-camera capture; none of it produces an individual object from a text or image prompt, which is a generation task rather than reconstruction of what was recorded.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/vye16/shape-of-motion/main/README.md",
+          "title": "Shape of Motion repository README",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "# Shape of Motion: 4D Reconstruction from a Single Video"
+        },
+        {
+          "url": "https://gracia.ai/",
+          "title": "Gracia: Reconstruct the Real World in 4D",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Reconstruct the real world in 4D with Gracia's World Reconstruction Models for Physical AI."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Gracia's streaming access control limits a view token to named scene identifiers and optionally to named web domains, with short-lived tokens issued by the customer's own backend, so published captures of people can be restricted to who may watch. Missing: spatial coarsening, retention or use declarations on the captured data and pseudonymous publication, and the research methods have none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.gracia.ai/streaming-usage",
+          "title": "Content Access and Security, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "set the `streamingIds` it can access, optionally restrict to specific `domains`, and pass it directly to the player."
+        },
+        {
+          "url": "https://docs.gracia.ai/streaming-usage",
+          "title": "Content Access and Security, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Implement an endpoint on your backend that your frontend calls when a user wants to watch content."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Gracia's OpenXR example viewer states that splats are trained in sRGB and declares its swapchain as sRGB so the compositor does not encode the colours twice, and the Python SDK documents its rendered output as float16 RGBA in the range 0 to 1. Missing: any colour space or range carried in the content format or in the research methods' outputs, and the documentation's dataset pages only list colour spaces as a topic to be written.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/c-cpp-sdk/blob/dcb869d30ef90b0b44e10462c213de27a4688362/examples/xr_viewer/src/xr_context.cpp",
+          "title": "Gracia C/C++ SDK, OpenXR example viewer (c-cpp-sdk commit dcb869d)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "// Splats are trained in sRGB, so the SDK writes values that are already"
+        },
+        {
+          "url": "https://github.com/gracia-labs/c-cpp-sdk/blob/dcb869d30ef90b0b44e10462c213de27a4688362/examples/xr_viewer/src/xr_context.cpp",
+          "title": "Gracia C/C++ SDK, OpenXR example viewer (c-cpp-sdk commit dcb869d)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "// So the swapchain is declared sRGB, which tells the compositor the contents"
+        },
+        {
+          "url": "https://docs.gracia.ai/sdks/python",
+          "title": "Python SDK, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "`.color` — RGBA `float16` `(H, W, 4)`, values in `[0, 1]`"
+        },
+        {
+          "url": "https://docs.gracia.ai/data/multivideo",
+          "title": "MultiVideo, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Supported codecs, containers, color spaces, and resolution constraints."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "PD-4DGS splits one dynamic scene into three independently transmittable layers (a static scaffold, a global deformation layer and a local refinement layer) so any prefix renders, and Gracia stream metadata declares a file type and renderer, each with a version. Missing: named profiles or levels that a player and content can both declare; the layering belongs to one research method and the version fields are vendor-specific.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2605.11427v1",
+          "title": "PD-4DGS, arXiv 2605.11427v1",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "a Static Scaffold, a Global Deformation layer, and a Local Refinement layer, so that any prefix is already renderable as a static snapshot, a coarsely animated scene, or full-fidelity dynamics"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "fileType: {"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "renderer: {"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "The Gracia Web SDK declares a hit test that takes a controller or hand pose and returns whether it meets the scene, on an overlay that holds the scene's bounding-box mesh, so pointing is resolved against the whole scene's box. Missing: any report of which splat, object or surface was hit; the SDK core is proprietary, so only its public types, documentation and examples were read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "hitTest(transform: {"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "get bboxMesh(): any;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/README.md",
+          "title": "Gracia Web SDK README (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "**XR built-in** — hand tracking, grab-to-move, spatial audio, environment relighting"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "partial",
+      "note": "The Gracia Web SDK's XR class exposes a layered-rendering flag and a list of external WebXR layers, and its OpenXR example viewer submits one stereo projection layer per frame. Missing: any documented use of other layer types or of per-layer placement and blending properties, since the web layer support is visible only as type declarations in a proprietary SDK.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "externalLayers: XRLayer[];"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "get layeredActive(): boolean;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/c-cpp-sdk/blob/dcb869d30ef90b0b44e10462c213de27a4688362/examples/xr_viewer/src/xr_context.cpp",
+          "title": "Gracia C/C++ SDK, OpenXR example viewer (c-cpp-sdk commit dcb869d)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "XrCompositionLayerProjection layer{XR_TYPE_COMPOSITION_LAYER_PROJECTION};"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "partial",
+      "note": "Gracia's OpenXR example viewer waits for the frame, locates the views at the predicted display time and ends the frame with that time, and the Web SDK passes the WebXR frame to its render callbacks and has an application-spacewarp hook. Missing: this lives in example code and callbacks, not in a documented core contract, and the research methods render offline.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/c-cpp-sdk/blob/dcb869d30ef90b0b44e10462c213de27a4688362/examples/xr_viewer/src/xr_context.cpp",
+          "title": "Gracia C/C++ SDK, OpenXR example viewer (c-cpp-sdk commit dcb869d)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "vli.displayTime = fs.predictedDisplayTime;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/c-cpp-sdk/blob/dcb869d30ef90b0b44e10462c213de27a4688362/examples/xr_viewer/src/xr_context.cpp",
+          "title": "Gracia C/C++ SDK, OpenXR example viewer (c-cpp-sdk commit dcb869d)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "fei.displayTime = fs.predictedDisplayTime;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "onFrame: ((dt: number, frame: XRFrame) => void) | null;"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "No preview image is packaged or referenced with a recording in the family. Searched the Gracia documentation in full (docs.gracia.ai/llms-full.txt, 1,265 lines), the Web SDK README and public type definitions (web-sdk commit 7d649d3) and the C/C++ SDK example sources and rules file (c-cpp-sdk commit dcb869d) for thumbnail, poster, cover image and preview image on 2026-10-22; no match, and the Gracia dataset pages only mention derived previews as a topic still to be written.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.gracia.ai/data/gracia-dataset-convention",
+          "title": "Gracia Dataset Convention, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Relationship between source captures, processed assets, and derived previews."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "Gracia's SDKs expose an axis-aligned bounding box for each scene, which the viewers use to frame the camera, and the Web SDK can clamp the camera to a box or sphere. Missing: a hierarchy of bounding volumes or any spatial index for rejecting content before it is loaded, and the box of a stream reads as empty until its metadata has arrived.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "sceneGetBBox(id: number): {"
+        },
+        {
+          "url": "https://docs.gracia.ai/sdks/apple",
+          "title": "Apple SDK, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "**Streams settle late.** The `duration`, `splatsBudget`, and `boundingBox` of a `.mint` stream read 0"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "setCameraBounds(bounds: {"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "Gracia's Apple SDK composites several scenes as one group, and the Web SDK keeps a playlist of sources with next, previous and go-to selection. Missing: named or rule-defined sets of objects within a scene; the group is a runtime object for compositing, not an authored, addressable set.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.gracia.ai/sdks/apple",
+          "title": "Apple SDK, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "composites N scenes as one."
+        },
+        {
+          "url": "https://docs.gracia.ai/sdks/web",
+          "title": "Web SDK, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Multi-source playlist with next/prev/goTo"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "The Gracia player presents a volumetric video as content inside a Three.js or PlayCanvas scene under one playhead with play, pause, seek and speed, and its stream metadata declares a duration and whether audio is in sync, with an audio track loadable alongside. Missing: a documented way to reference other timed media in a scene or to state synchronisation rules between several; the research methods only index frames.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "videoDuration: number;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "audioSync: boolean;"
+        },
+        {
+          "url": "https://github.com/gracia-labs/web-sdk/blob/7d649d3c362f6911f0e1fbad51bb25cf56dee23f/dist/GraciaSDK.d.ts",
+          "title": "Gracia Web SDK type definitions, GraciaSDK.d.ts (web-sdk commit 7d649d3)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "seek(t: any): void;"
+        },
+        {
+          "url": "https://docs.gracia.ai/sdks/web",
+          "title": "Web SDK, Gracia Docs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Splats as a standard Three.js mesh with environment relighting"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "The family records at most the capture device as provenance (colmap4d) and nothing locates a provenance record from a content fingerprint or watermark. Searched the Gracia documentation in full (docs.gracia.ai/llms-full.txt, 1,265 lines), the Web SDK README and public type definitions (web-sdk commit 7d649d3) and the C/C++ SDK example sources and rules file (c-cpp-sdk commit dcb869d) for watermark, fingerprint, C2PA, signature and provenance on 2026-10-22, and the colmap4d v1.0 specification for the same terms; no match apart from colmap4d's own provenance field and content-hash file names used only for cache busting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/Kiri-Innovation/colmap4d/main/spec/colmap4d-v1.0.md",
+          "title": "colmap4d format specification, v1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "**`devices` is provenance, not a conformance gate.**"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Dynamic splat research reconstructs moving scenes from video for novel-view rendering; it models geometry and appearance over time, not wind, scent or motion-seat effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion (arXiv 2407.13764), representative dynamic splat method",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "These methods reconstruct and compress moving scenes; choosing among interchangeable renderers is not part of their purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2604.13746",
+          "title": "ClipGStream, CVPR 2026, arXiv abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "We propose ClipGStream, a hybrid reconstruction framework that performs stream optimization at the clip level rather than the frame level."
+        },
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "These methods reconstruct moving scenes from ordinary video; they define no portal or destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2407.13764",
+          "title": "Shape of Motion: 4D Reconstruction from a Single Video, arXiv abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "We introduce a method for reconstructing generic dynamic scenes, featuring explicit, persistent 3D motion trajectories in the world coordinate frame, from casually captured monocular videos."
+        }
+      ]
     }
   ]
 }

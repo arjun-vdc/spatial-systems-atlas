@@ -1,0 +1,2806 @@
+{
+  "subject_id": "webxr-anchors",
+  "summary": "The WebXR Anchors Module is a World Wide Web Consortium draft that lets a web page ask an augmented reality device to keep tracking a fixed point in the real world, so virtual objects placed there stay in place as the device's understanding of the room changes. It covers making an anchor from a pose or from a hit test result, receiving anchor updates in each frame, deleting an anchor, and a per-website handle that lets the page ask for the same anchor again in a later session. It leaves how a device actually tracks the world to the underlying system, and leaves sessions, reference spaces, units and hit testing to the core WebXR Device API and its sibling modules. A standards audience should know that the stored handles are known only to the website that made them, the device may drop them for any reason, and nothing in the text hands an anchor to another device, so it is not a shared or cloud anchor standard.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "The module tracks poses fixed to the real world and defines no avatar mesh or appearance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "The module tracks single poses fixed to the real world and defines no bones or naming.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "The module defines no facial expressions or visemes; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "The module defines no worn or carried items; an anchor is only a tracked pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "The module defines no avatar and no identity binding; its handle names an anchor to one website.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "The module tracks poses and carries no captured scene data of any kind.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "The module tracks poses and carries no captured or replayed scene media.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "The module tracks poses and encodes no sets of points.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "The module tracks poses and carries no camera views or depth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "The module tracks poses and carries no time-varying captured scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "The module defines no payment exchange; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "The module defines no grants or licence checks; its handle is not a right to use anything.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "The module states how its requirements are to be read and an official public test directory for it exists in the W3C test suite, but the module does not point to tests or define how a conformance claim is made.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Conformance, Conformant Algorithms",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Conformance requirements phrased as algorithms or specific steps can be implemented in any manner, so long as the end result is equivalent."
+        },
+        {
+          "url": "https://api.github.com/repos/web-platform-tests/wpt/contents/webxr/anchors",
+          "title": "web-platform-tests, webxr/anchors directory listing (master, retrieved 2026-11-03)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"name\": \"idlharness.https.window.js\","
+        },
+        {
+          "url": "https://api.github.com/repos/web-platform-tests/wpt/contents/webxr/anchors",
+          "title": "web-platform-tests, webxr/anchors directory listing (master, retrieved 2026-11-03)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "\"name\": \"ar_anchor_states.https.html\","
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "The module adds itself to WebXR through a named feature descriptor and partial interfaces, with a stated rule on which devices count as capable. The rules for a recipient that lacks it (ignore if optional, refuse the session if required) are in the core WebXR Device API, not in this module.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 2.1 Feature descriptor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The string anchors is introduced by this module as a new valid feature descriptor for anchors feature."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), requestSession feature lists",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If any value in the list is not a recognized feature descriptor it will be ignored."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), requestSession feature lists",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If any value in the list is not a recognized feature descriptor the XRSession will not be created."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), requestSession feature lists",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Future iterations of this specification and additional modules may expand the list of accepted feature descriptors ."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "The module declares no protected content components or protection schemes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "none",
+      "note": "Searched the WebXR Anchors Module Editor's Draft of 27 April 2026 (a single page, read in full) for geo, latitude, longitude, earth, GPS, WGS, geodetic and coordinate reference on 2026-11-03; no match, so poses are never expressed against the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 1.1 Terminology",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Anchor, as understood by this document, is an entity that keeps track of the pose that is fixed relative to the real world, and is created by the application."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "partial",
+      "note": "The creating call names the frame its pose is expressed in by passing an XRSpace, so both sides agree on a frame for each call. There is no Earth-based or interchangeable coordinate reference system; the frames are the device-local spaces of the WebXR Device API.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 4 Anchor creation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Let anchor native origin be a new native origin returned from the device ’s call to create a new anchor using pose , interpreted as if expressed relative to effective origin at the frame ’s time ."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "partial",
+      "note": "Persistent handles let a website restore an anchor in a later session, but the map is stored by the device, tied to one website origin and may be pruned by the device. The text defines no way to give an anchor to another device or user.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 4 Anchor creation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This map is populated and stored by the XR device and restricted to only the set of persistent anchors created and not yet destroyed by any XRSession on origin ."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 3.1 XRAnchor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Note: when the XRSystem creates the unique ID, it MUST be unique and only known to the current origin."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 4 Anchor creation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The user agent MAY delete entries from this map for any reason."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "The module streams no geospatial data; it only tracks poses on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "none",
+      "note": "Searched the WebXR Anchors Module Editor's Draft of 27 April 2026 (a single page, read in full) for interpolat, trajector, sequence, stream, series, history and timestamp on 2026-11-03; no match. The anchor's pose can be read in each frame, but no time-stamped pose series or stream is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 7.1 Native anchor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "none",
+      "note": "Searched the WebXR Anchors Module Editor's Draft of 27 April 2026 (a single page, read in full) for chain, graph, hierarch, parent and linked on 2026-11-03; no match. An anchor's space can be located against other spaces during a session, but no form for interchanging linked poses is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 3.1 XRAnchor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An XRAnchor contains anchorSpace that can be used to locate the anchor relative to other XRSpaces ."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "The module defines no identifier for a person, agent or thing; its handle names one anchor to one website.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "The module defines no verifiable claims; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "The module defines no credential request or presentation; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "The module defines no permission grants; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "The module declares no claim vocabulary or schemas; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "The module has no identity keys to rotate, revoke or recover.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "The module issues no credentials whose status could be checked.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "The module carries no grant of permission with scope or withdrawal; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Starting, running and ending a session belong to the core WebXR Device API; this module only adds an anchors feature that a session can request and anchors it can track.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), Session",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Any interaction with XR hardware is done via an XRSession object, which can only be retrieved by calling requestSession() on the XRSystem object."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "The module carries no interactivity with an asset; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "The module has no agents acting in a world; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "The module shares no state between participants; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "The module defines no wire protocol; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "The module joins no running world; it only tracks poses within one device's session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "The module moves nobody between worlds; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "The module names no places or destinations; its handle names one anchor to one website.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "The module defines no approval or refusal of arrivals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "The module couples no worlds; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "The module keeps no items a user holds; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "The module carries no settings or accessibility choices; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "The module defines no tree of objects; anchors are individual tracked poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "The module reuses WebXR's pose type and defines no handedness, axis order or composition rules of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "The module defines no file for carrying models or scenes; it is a programming interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "The module encodes no meshes; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "The module encodes no images; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "The module carries no material definitions; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "The module stores no keyframes or clips; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "The module defines no bone hierarchy; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Units come from the core WebXR types the module reuses, which give positions in meters; this module defines no units of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), XRRigidTransform",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The position attribute is a 3-dimensional point, given in meters, describing the translation component of the transform."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "The module carries no rights metadata with an asset; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "The module carries no curves or surfaces; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "The module carries no spatial cell volumes; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "The module hosts no other party's running experience; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "The module places no sound in a scene; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "The module renders no sound direction; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "The module models no room acoustics; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "The module blocks or muffles no sound; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "The module delivers no audio; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "The module carries no live voice; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "The module generates no audio; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "The module defines no avatar animation, so retargeting is outside what it is for.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "The module defines no avatar representations, so reduced versions of them are outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "The module does not generate places; it only keeps a placed pose fixed to the real world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "The module has no model that continues a world; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "The module builds no models from photographs; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "The module delivers no captured scene, progressively or otherwise.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "The module produces no images from new viewpoints; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "The module deals with pose tracking, not the lighting of captured content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "The module holds no captured scene to edit; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "The module generates and edits no worlds; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "The module generates nothing, so there is no generation specification to accept.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "The module works with no splat or radiance-field world to derive assets from.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "The module exchanges no agent actions; it only tracks poses fixed to the real world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "The module carries no panoramic imagery; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "The module reconstructs no radiance fields; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "The module produces no 3D objects from prompts; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "The module defines no purchase records; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "The module packages no experience; it is a programming interface for anchors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "The module delivers no assets; it is a programming interface for anchors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "The module gates no content for review; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched the WebXR Anchors Module Editor's Draft of 27 April 2026 for profile, subset, level, component and tier on 2026-11-03; none found. The module adds one feature descriptor and one device-capability condition, which is a feature request, not named subsets or levels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 2.1 Feature descriptor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The string anchors is introduced by this module as a new valid feature descriptor for anchors feature."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 2.1 Feature descriptor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A device is capable of supporting the anchors feature if the device’s tracking system exposes a native anchors capability."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "native",
+      "note": "The module defines anchors created by the application that the device keeps fixed relative to the real world, with creation from a pose or a hit test result, per-frame updates and deletion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 1.1 Terminology",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Anchor, as understood by this document, is an entity that keeps track of the pose that is fixed relative to the real world, and is created by the application."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebXR Anchors module enables applications to ask the underlying XR system to track changes to a particular three-dimensional pose (position and orientation) as the system’s understanding of the world changes."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 4 Anchor creation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In order to create an anchor from hit test result , the application can call XRHitTestResult ’s createAnchor() method."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 5 Anchor updates",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An XRFrame is extended to contain a trackedAnchors attribute which contains all anchors still tracked in the frame."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 6 Anchor removal",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When an application is no longer interested in receiving updates to an anchor, it can delete an anchor by calling delete() ."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "How a device recovers its position from camera imagery is left to the underlying tracking system, which the module deliberately does not specify.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 7 Native device concepts",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This section describes requirements placed on the underlying XR system, and is by necessity under-specified to allow the implementation of anchors API on top of various frameworks / devices."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "The module describes no interior spaces; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "The module publishes no maps or alignment transforms; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "The module declares no area of applicability; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "The module publishes no zones or spatial events; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "The module carries no identity claims to disclose selectively.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "The module defines no relationships or standing; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "The module carries no licence terms to act on; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "The module carries no claims whose evidence could accompany them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "The module defines no identifiers for people, so correlation across relationships is not something it addresses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "The module identifies no recipient keys and defines no confidential delivery.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "The module records no decisions by a recipient; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "The module has no issuers or services for a verifier to accept or reject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Handheld device input belongs to other WebXR modules; this module only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking belongs to a separate WebXR module; this module only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Gaze input is not part of this module, which only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "The module sends no feedback to the user; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "The module says when a device counts as capable of anchors, and lets sessions request the feature as required or optional through the core API. It offers no query of its own for what the device can do, such as how many anchors it can keep.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 2.1 Feature descriptor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A device is capable of supporting the anchors feature if the device’s tracking system exposes a native anchors capability."
+        },
+        {
+          "url": "https://immersive-web.github.io/webxr/",
+          "title": "WebXR Device API (Editor's Draft), requestSession feature lists",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The optionalFeatures array contains any Optional features for the experience."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 4 Anchor creation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The size of this map is determined by the user agent."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "The module delivers no facial or body sensor stream; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "The module does not pick content from pointing input; it can only make an anchor from a hit test result that another module produced.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "The module receives no character or string entry; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "The module receives no musical events; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "The module receives no body signals; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "The module is a programming interface for anchors and defines no scripting runtime for world rules.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "The module runs no untrusted content; it is a programming interface for anchors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "The module bounds no guest content resources; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "The module names no published units of logic; its handle names one anchor to one website.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "The module offers no interface for outside programs to create or publish world content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "The module has no shared objects with an owner of the truth; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "The module sends nothing to clients; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "The module has no network latency to hide; it works on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "The module carries no live audio or video.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "The module tracks no participants; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "The module finds no worlds or services; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "The module defines no shared clock; its updates are tied to frames on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "The module binds objects to no external data source; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The module defines no portals or previews of destinations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "The module's handles are random identifiers private to one website, not hashes of content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "The module exports no places; it only tracks poses on one device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "The module records nothing a person did; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "The module simulates no bodies; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "The module defines no contact shapes; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "The module links no bodies; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "The module defines no surface response; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "The module simulates nothing, so repeatable outcomes are not something it addresses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "The module simulates no deformable bodies; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "The module defines no regions that fire events; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "The module draws nothing; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The module targets no graphics interface; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "The module describes no surface appearance; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "The module defines no lights or shadows; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "The module applies no effects after rendering; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "The module chooses no level of detail; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "The module renders nothing, splats included; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "The module renders nothing, point clouds included; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "The module renders no text; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Viewpoints are defined by the core WebXR Device API; this module only tracks anchor poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Blending the camera view with rendered content belongs to the augmented reality module; this module only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "The module declares no colour interpretation; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "The module lays out no interface regions; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "The module submits no image layers to a compositor; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "The module dispatches no GPU workloads; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame submission and display timing belong to the core WebXR Device API; this module only reads anchor poses for a given frame.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "The module defines no shader language; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "The module streams no rendered frames; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "The module describes no non-visual effects; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "The module draws nothing, so interchangeable renderers and fallbacks are outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "The module defines no shape deformation; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "The module repeats no objects; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "The module layers no scene parts from several sources; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "The module carries no record of who made an asset; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "The module says nowhere a body may walk or arrive; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "The module attaches no descriptive properties to scenes; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "The module references no preview images; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "The module defines no bounding volumes or spatial index; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "The module defines no named sets of objects; anchors are individual tracked poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "The module defines no authored relationships between node transforms; an anchor is a tracked pose created at run time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "The module references no timed audiovisual media; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "The module defines no particle emitters; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "The module carries no provenance records to recover; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "The module defines no styling rules; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "The module defines no selectable variants of an asset; it only tracks poses.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so a reconstruction of them is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so naming real surfaces is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so per-pixel depth is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so hiding content behind real surfaces is outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so lighting estimates are outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Detecting markers or images is not part of this module, which tracks only poses the application asks it to track.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "The module is for creating tracked anchors and does not directly expose information about the user's surroundings, so play-area bounds are outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The anchors API does not directly expose access to the information about the user environment."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit testing is specified by the separate Hit Test Module; this module only adds a way to make an anchor from one of its results.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        },
+        {
+          "url": "https://immersive-web.github.io/hit-test/",
+          "title": "WebXR Hit Test Module (Editor's Draft, 11 December 2025), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method for performing hit tests against real world geometry to be used with the WebXR Device API."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "The persistent handle is known only to the creating origin, and declaring the feature at session request lets the user agent warn the user. The text has no spatial coarsening, retention declaration or pseudonymous publication controls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 3.1 XRAnchor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Note: when the XRSystem creates the unique ID, it MUST be unique and only known to the current origin."
+        },
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), 8 Privacy & Security Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Anchor feature has to be declared when creating an XR session, which will allow the user agents to notify the users about potential privacy implications of allowing the anchors API to be used by the website."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "The module recognises no objects; it tracks only poses the application creates, and attaches an anchor to an entity only when the device and a hit test result supply one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://immersive-web.github.io/anchors/",
+          "title": "WebXR Anchors Module (Editor's Draft, 27 April 2026), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Describes a method to create anchors tracked by underlying system."
+        }
+      ]
+    }
+  ]
+}

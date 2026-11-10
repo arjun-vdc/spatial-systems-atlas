@@ -1,0 +1,1823 @@
+{
+  "subject_id": "x3dom",
+  "summary": "X3DOM is an open source JavaScript framework that draws declarative three-dimensional scenes inside ordinary web pages using the browser's WebGL graphics interface. It follows a web-oriented subset of the Extensible 3D Graphics standard. It covers scene structure, geometry, materials, lights, shadows, animation, navigation, geospatial placement and an optional physics build well, and it reads glTF and X3D content through its Inline node. It leaves identity, payments, shared multi-user worlds and content generation to others. A trap for standards audiences: its own tutorials still say only X3D files are supported although the release notes list glTF 2.0, and several features exist only in an unreleased development section of the change log, so check the version before relying on them.",
+  "coverage": [
+    {
+      "capability_id": "scene.graph",
+      "level": "native",
+      "note": "X3DOM builds a scene graph of nodes with fields, written as markup inside a web page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/basicX3D/index.html",
+          "title": "X3DOM Getting Started, 2. Basic X3D Concepts",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "All nodes of the scene are arranged in a tree or graph structure, the whole structure is called the scene-graph"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "Transform nodes compose a parent-relative coordinate system from translation, rotation, scale, scale orientation and centre. The pages read do not state handedness or axis order. Searched the Transform, Viewpoint, X3DNode and NavigationInfo pages of the Scene Author API for handedness, axis order and unit convention on 2026-11-03; none stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Grouping/Transform.html",
+          "title": "X3DOM Scene Author API, Transform",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Transform node is a grouping node that defines a coordinate system for its children that is relative to the coordinate systems of its ancestors."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Grouping/Transform.html",
+          "title": "X3DOM Scene Author API, Transform",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The translation, rotation, scale, scaleOrientation and center fields define a geometric 3D transformation."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "Inline loads other scenes by address and accepts X3D XML, X3D JSON, glTF and GLB content types. One tutorial still says only X3D files are supported, which predates the glTF loader.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/nodes/Networking/Inline.js",
+          "title": "X3DOM source, Inline node, content types (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "@range [\"\", \"model/x3d+xml\", \"model/x3d+json\", \"model/gltf+json\", \"model/gltf-binary\"]"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "glTF 2.0 support"
+        },
+        {
+          "url": "https://doc.x3dom.org/tutorials/models/thirdParty/index.html",
+          "title": "X3DOM tutorial, Using Third-Party Formats and Tools",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Since X3DOM only supports X3D files this tutorial will show you how to export your models properly."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "native",
+      "note": "Geometry can be plain X3D meshes, binary containers (BinaryGeometry, BufferGeometry) or progressive meshes; glTF Draco compression is supported in the 1.8.3 release.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Geometry3D/BufferGeometry.html",
+          "title": "X3DOM Scene Author API, Node: BufferGeometry",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The BufferGeometry node can load binary data like glTF buffer."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Geometry3D/BinaryGeometry.html",
+          "title": "X3DOM Scene Author API, Node: BinaryGeometry",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The BinaryGeometry node can load binary data exported by AOPT."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "support for glTF draco extension"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "partial",
+      "note": "Static textures are PNG, JPEG or GIF, with compressed DDS textures supported. No KTX2 or Basis path was found: searched the change log at the pinned commit for ktx and basis on 2026-11-03; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/basics/imagesMovies/index.html",
+          "title": "X3DOM tutorial, Using Images and Movies for Textures",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "You can use PNG , JPEG or GIF to encode your static Texture data."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Compressed Texture Support"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "fix mipmaps for compressed dds"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Animation is key-frame based: a time sensor drives interpolator nodes, routed to node fields; glTF animation is also converted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/animationInteraction/animate/index.html",
+          "title": "X3DOM tutorial, Animating Objects with Routes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The animations in X3DOM are based on the key frames animation."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "fix for key buffer reuse in glTF animation (#1349)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "The H-Anim nodes (humanoid, joint, segment, site) define a bone hierarchy, and CPU skinning has been in releases since 1.8.0. A search of the glTF loader at the pinned commit for skin, morph, weights and joints found no match on 2026-11-03, so glTF skins are not covered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/H-Anim/HAnimJoint.html",
+          "title": "X3DOM Scene Author API, Node: HAnimJoint",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Each joint in the body is represented by an HAnimJoint node, which is used to define the relationship of each body segment to its immediate parent."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "HAnim CPU skinning"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "partial",
+      "note": "H-Anim joints carry a name so applications can identify them. The pages read do not list a required set of bone names or say that the loader enforces one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/H-Anim/HAnimJoint.html",
+          "title": "X3DOM Scene Author API, Node: HAnimJoint",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In particular, a joint name is provided so that applications can identify each HAnimJoint node at run-time."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "partial",
+      "note": "HAnimHumanoid is a container for a whole humanoid with skin geometry fields. There is no avatar packaging for appearance beyond ordinary scene content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/H-Anim/HAnimHumanoid.html",
+          "title": "X3DOM Scene Author API, Node: HAnimHumanoid",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The HAnimHumanoid node is used to store human-readable data such as author and copyright information, as well as to store references to the HAnimJoint, HAnimSegment, and HAnimSite nodes in addition to serving as a container for the entire humanoid."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "partial",
+      "note": "Vertex displacement groups exist through HAnimDisplacer, with full support listed only in the unreleased development section. The glTF loader at the pinned commit has no match for morph or weights.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/H-Anim/HAnimDisplacer.html",
+          "title": "X3DOM Scene Author API, Node: HAnimDisplacer",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The HAnimDisplacers for a particular HAnimSegment are stored in the displacers field of that HAnimSegment."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "full support for HAnimDisplacer"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "native",
+      "note": "Metadata nodes (set, string, integer, float, double, boolean) attach named structured values to nodes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Core/MetadataSet.html",
+          "title": "X3DOM Scene Author API, Node: MetadataSet",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The metadata provided by this node is contained in the metadata nodes of the value field."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "native",
+      "note": "Nodes carry bounding boxes, and view-frustum culling tests bounding volumes recursively before drawing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/largeModels/culling/index.html",
+          "title": "X3DOM tutorial, Culling Techniques",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The bounding volumes of the nodes are tested to be intersecting the frustum defining the current view."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "bboxDisplay field for X3DBoundedObject, x3dom custom fields bboxMargin and bboxColor"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "native",
+      "note": "MovieTexture maps a movie onto geometry with playback controls, and a Sound node can take a movie as its source.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Texturing/MovieTexture.html",
+          "title": "X3DOM Scene Author API, Node: MovieTexture",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The MovieTexture node defines a time dependent texture map (contained in a movie file) and parameters for controlling the movie and the texture mapping."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Sound/Sound.html",
+          "title": "X3DOM Scene Author API, Node: Sound",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The source field shall specify either an AudioClip node or a MovieTexture node."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "partial",
+      "note": "A ParticleSet geometry node exists, but its own page calls it a stub, and the node index has no emitter or particle system node. Searched the 1.8.3 Scene Author API node index for Particle on 2026-11-03; only ParticleSet found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Rendering/ParticleSet.html",
+          "title": "X3DOM Scene Author API, Node: ParticleSet",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Attention: So far this is only a stub."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "native",
+      "note": "NURBS curves and surfaces have been in releases since 1.8.0, and other analytic shapes (extrusion, solid of revolution) are in the extended geometry component.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/nodes/NURBS/NurbsPatchSurface.js",
+          "title": "X3DOM source, NurbsPatchSurface (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The NurbsPatchSurface node is a contiguous NURBS surface patch."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "NurbsTrimmedSurface"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "VolumeData renders volume data with render styles. The pages read do not describe interchange of cell properties or updates.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/VolumeRendering/VolumeData.html",
+          "title": "X3DOM Scene Author API, Node: VolumeData",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The VolumeData node specifies a non-segmented volume data to be rendered with a volume rendering style."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "partial",
+      "note": "Inline references other scenes and EXPORT/IMPORT statements were added in 1.8.3. Layering or overriding parts of a scene from several sources was not found in the pages read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Networking/Inline.html",
+          "title": "X3DOM Scene Author API, Node: Inline",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Inline is a Grouping node that can load nodes from another X3D scene via url."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "support for EXPORT/IMPORT statements"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "The release has an X3D Material, a physically based material and a Blinn-Phong surface shader node.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Physically-based materials & lighting"
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Shaders/CommonSurfaceShader.html",
+          "title": "X3DOM Scene Author API, Node: CommonSurfaceShader",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Implements the Blinn-Phong BRDF with normal mapping and a perfect specular component."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "Directional, point and spot lights, shadow maps and a physical environment light are covered. No global illumination, light probes or baked lighting was found in the pages read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/lighting/lights/index.html",
+          "title": "X3DOM tutorial, Lights in X3DOM",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This tutorial will show you how to set up directional lights, point lights and spot lights."
+        },
+        {
+          "url": "https://doc.x3dom.org/tutorials/lighting/shadows/index.html",
+          "title": "X3DOM tutorial, Shadow Effects",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Shadow rendering is turned on, when the shadowIntensity property of a light node is set to a value greater than zero."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PhysicalEnvironmentLight"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "partial",
+      "note": "Screen-space ambient occlusion is a built-in post-process. No general post-processing chain appears in the node index.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/lighting/ssao/index.html",
+          "title": "X3DOM tutorial, Simple Screen-Space Ambient Occlusion",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Screen-Space Ambient Occlusion is a post-process that coarsely approximates a shadowing effect from ambient light."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "LOD selects child levels by distance, and progressive mesh streaming, dynamic and geographic level of detail nodes add data-driven refinement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Navigation/LOD.html",
+          "title": "X3DOM Scene Author API, Node: LOD",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "LOD (Level Of Detail) uses camera-to-object distance to switch among contained child levels."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Geometry3D/PopGeometry.html",
+          "title": "X3DOM Scene Author API, Node: PopGeometry",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The PopGeometry node provides a first, experimental implementation of the POP Buffer algorithm for progressive streaming of triangular mesh data."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "partial",
+      "note": "Point sets and volume data are rendered. Volumetric video was not found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Rendering/PointSet.html",
+          "title": "X3DOM Scene Author API, Node: PointSet",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PointSet is a node that contains a set of colored 3D points, represented by contained Color and Coordinate nodes."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/VolumeRendering/VolumeData.html",
+          "title": "X3DOM Scene Author API, Node: VolumeData",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The VolumeData node specifies a non-segmented volume data to be rendered with a volume rendering style."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "native",
+      "note": "Text and FontStyle nodes draw UTF-8 text in the scene with size, family and style.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Text/Text.html",
+          "title": "X3DOM Scene Author API, Node: Text",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Text nodes may contain multiple text strings specified using the UTF-8 encoding."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Text/FontStyle.html",
+          "title": "X3DOM Scene Author API, Node: FontStyle",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The FontStyle node defines the size, family, and style used for Text nodes, as well as the direction of the text strings and any language-specific rendering techniques used for non-English text."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "native",
+      "note": "Viewpoint and orthographic viewpoint nodes define cameras; one is bound at a time and the view animates between them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Navigation/Viewpoint.html",
+          "title": "X3DOM Scene Author API, Node: Viewpoint",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Viewpoint provides a specific location and direction where the user may view the scene."
+        },
+        {
+          "url": "https://doc.x3dom.org/tutorials/animationInteraction/viewpoint/index.html",
+          "title": "X3DOM tutorial, Including and activating viewpoints",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A scene can contain as many viewpoint as you want, but only one can be active."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Gamma-correct lighting can be switched on and colours are assumed gamma coded; an image colour-space field exists only in the development section. No dynamic range or output range declaration was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/lighting/gamma/index.html",
+          "title": "X3DOM tutorial, Gamma-Correct Lighting",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "RGB Colors and textures are assumed to be gamma coded."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ImageTexture colorSpaceConversion field"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "The renderer draws through WebGL and, since 1.8.0, WebGL 2.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM is solely based on standard browser technology, such as HTML5 and WebGL"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "webGL 2.0 support"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "Custom shaders enter through ComposedShader and ShaderPart nodes, but the variables available to the shader code are specific to X3DOM, so the same program is not portable to another runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/lighting/customShader/index.html",
+          "title": "X3DOM tutorial, Using Custom Shaders",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When it comes to using custom shaders in X3DOM, the most important point is clearly to know which shader variables are available for your shader programs."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "Context creation tries WebGL 2 then WebGL names, and a configuration option names an alternate image shown if rendering fails. The Flash backend was removed in 1.7.2, so there is no second renderer family and no declared substitute for one scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/gfx_webgl.js",
+          "title": "X3DOM source, WebGL context creation (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "var validContextNames = [ \"webgl2\", \"webgl\", \"experimental-webgl\", \"moz-webgl\", \"webkit-3d\" ];"
+        },
+        {
+          "url": "https://doc.x3dom.org/author/configuration.html",
+          "title": "X3DOM Scene Author API, Configuration",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Alternate image URL, if X3DOM fails to render."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Stop Flash support and remove the Flash-backend."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "none",
+      "note": "No splat or radiance-field rendering was found. Searched the 1.8.3 node index, the change log and src/util/glTF/glTF2Loader.js at the pinned commit for splat and gaussian on 2026-11-03; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "partial",
+      "note": "PointSet draws coloured points from coordinate and colour nodes, and point properties can be used with the binary geometry container. No point-cloud compression scheme was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Rendering/PointSet.html",
+          "title": "X3DOM Scene Author API, Node: PointSet",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "PointSet is a node that contains a set of colored 3D points, represented by contained Color and Coordinate nodes."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "enable PointProperties for BinaryGeometry"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "none",
+      "note": "No splat file format is read. Searched the 1.8.3 node index, the change log and src/util/glTF/glTF2Loader.js at the pinned commit for splat, gaussian and ply on 2026-11-03; no match for splat or gaussian.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "via-extension",
+      "note": "Rigid bodies come from the RigidBodyPhysics component, run by the ammo.js library packaged in x3dom-full-physics.js.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/RigidBodyPhysics/RigidBody.html",
+          "title": "X3DOM Scene Author API, Node: RigidBody",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The RigidBody node describes a body and its properties that can be affected by the physics model."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Move the ammo.js from x3dom-full.js to the new x3dom-full-physics.js to reduce the download size."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "via-extension",
+      "note": "CollidableShape separates collision geometry from the drawn shape, in the optional physics build.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/RigidBodyPhysics/CollidableShape.html",
+          "title": "X3DOM Scene Author API, Node: CollidableShape",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The CollidableShape node represents the glue between the collision detection system, the rigid"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Move the ammo.js from x3dom-full.js to the new x3dom-full-physics.js to reduce the download size."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "via-extension",
+      "note": "Ball, hinge, slider and universal joint nodes are listed in the physics component, in the optional physics build.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/RigidBodyPhysics/BallJoint.html",
+          "title": "X3DOM Scene Author API, Node: BallJoint",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The BallJoint node represents an unconstrained joint between two bodies that pivot about a common"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Move the ammo.js from x3dom-full.js to the new x3dom-full-physics.js to reduce the download size."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "via-extension",
+      "note": "CollisionCollection carries bounce and friction values for contacts, in the optional physics build.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/RigidBodyPhysics/CollisionCollection.html",
+          "title": "X3DOM Scene Author API, Node: CollisionCollection",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The bounce field indicates how bouncy the surface contact is."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Move the ammo.js from x3dom-full.js to the new x3dom-full-physics.js to reduce the download size."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "native",
+      "note": "GeoLocation places ordinary X3D content at an absolute geographic location, and GeoViewpoint places a camera by geographic coordinate.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Geospatial/GeoLocation.html",
+          "title": "X3DOM Scene Author API, Node: GeoLocation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The GeoLocation node provides the ability to geo-reference any standard X3D model."
+        },
+        {
+          "url": "https://doc.x3dom.org/author/Geospatial/GeoViewpoint.html",
+          "title": "X3DOM Scene Author API, Node: GeoViewpoint",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The GeoViewpoint node allows the specification of a viewpoint in terms of a geospatial coordinate."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "native",
+      "note": "The geoSystem field names the spatial reference frame; UTM and geocentric systems were added in 1.6.0.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Geospatial/GeoOrigin.html",
+          "title": "X3DOM Scene Author API, Node: GeoOrigin",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The geoSystem field is used to define the spatial reference frame."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "added geosystem UTM/GC support"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "native",
+      "note": "GeoLOD and the BVHRefiner dataset loader stream terrain by tile. Loading OGC 3D Tiles appears only in the unreleased development section of the change log.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Geospatial/GeoLOD.html",
+          "title": "X3DOM Scene Author API, Node: GeoLOD",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The GeoLOD node provides a terrain-specialized form of the LOD node."
+        },
+        {
+          "url": "https://doc.x3dom.org/tutorials/largeModels/BVHRefiner/index.html",
+          "title": "X3DOM tutorial, Refining and Loading hierarchical Data dynamically",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Two different dataset structures can be used (WMTS, TREE) that are described later."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "new GeoTileset node to add OGC 3D Tiles v.1.1 content"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "partial",
+      "note": "GeoPositionInterpolator interpolates between geographic key positions within a stated reference frame. Live pose streams were not found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Geospatial/GeoPositionInterpolator.html",
+          "title": "X3DOM Scene Author API, Node: GeoPositionInterpolator",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The GeoPositionInterpolator node provides an interpolator capability where key values are specified in geographic coordinates and the interpolation is performed within the specified spatial reference frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "native",
+      "note": "X3DOM defines an HTML profile of X3D, with the wider component set shipped as a separate full build.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/basicX3D/index.html",
+          "title": "X3DOM Getting Started, 2. Basic X3D Concepts",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The X3DOM creators did so by defining a special profile, which is entitled the HTML profile."
+        },
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/basicX3D/index.html",
+          "title": "X3DOM Getting Started, 2. Basic X3D Concepts",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Those nodes are, however, not packaged into the standard X3DOM release, but only into the X3DOM-Full release."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Releases are frozen downloads with a change log, but the 1.8.2 release removed several node types and loaders, so older content can break.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/x3domVersions/index.html",
+          "title": "X3DOM Getting Started, 3. Picking an X3DOM Version",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As soon as you have finished the main development work for your Web application, you might like to deploy it along with a downloaded snapshot of the version you used during development."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "remove support for ImageGeometry"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "The repository holds a regression suite that compares screenshots with reference images. It tests X3DOM against itself, not against the X3D specification. The documentation says only that large parts of X3DOM are standard-conformant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/test/regression-suite/README",
+          "title": "X3DOM repository, regression suite README (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "It runs the test cases in x3dom, creates screenshots, stores them in the output folder and compares them to reference images."
+        },
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Based on a new HTML Profile of the ISO Standard X3D, large parts of X3DOM are standard-conformant ."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "The developer documentation covers adding new nodes and components, and experimental X3D prototype support exists. No rule for recipients that do not implement an extension was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/",
+          "title": "X3DOM Documentation, Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This API is intended for developers of new nodes and components."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "experimental support for X3D prototypes"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Address fields can list backup URLs, and a base URL parameter was added in 1.8.3. No separate resolver interface was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "baseURL parameter"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/CHANGELOG.md",
+          "title": "X3DOM change log (repository, pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "check back-ups in url field for ImageTexture, Inline, Anchor and ExternProto"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "native",
+      "note": "Pointer clicks are tested against the scene with rays and a picking buffer, and the hit point is passed to the node's event handler.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/animationInteraction/picking/index.html",
+          "title": "X3DOM tutorial, Picking Objects",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Every time you click into the scene, intersection tests are made using rays and a special buffer."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "partial",
+      "note": "Basic WebXR is in the 1.8.3 release, and the source requests an immersive-vr session. No other session mode was found in the canvas code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.x3dom.org/news/",
+          "title": "X3DOM news, release 1.8.3",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Add basic support for webXR"
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/X3DCanvas.js",
+          "title": "X3DOM source, canvas (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "navigator.xr.requestSession( \"immersive-vr\" ).then( ( session ) =>"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "native",
+      "note": "Routes connect output fields of sensors and interpolators to input fields, so interactivity is written in the scene itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/animationInteraction/animate/index.html",
+          "title": "X3DOM tutorial, Animating Objects with Routes",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Each route connects an output field of one node to the input field of another node."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "partial",
+      "note": "The Anchor node loads another address when the user clicks it, replacing the current content. No state is carried across.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/author/Networking/Anchor.html",
+          "title": "X3DOM Scene Author API, Node: Anchor",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Clicking Anchored geometry loads content specified by the url field."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "via-extension",
+      "note": "Marker tracking is done by the separate JSARToolKit library fed from the web camera; X3DOM only draws the model at the reported pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/tutorials/applicationTutorials/simpleAR/index.html",
+          "title": "X3DOM tutorial, The Simple AR Application",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In order to keep it simple we will use the JSARToolKit and to access the webCam we use the navigator.getUserMedia() method."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "partial",
+      "note": "The Sound node is described as the spatial presentation of a sound, but its source plays through an HTML audio element. Searched src/nodes/Sound/Sound.js and AudioClip.js at the pinned commit for panner, location, direction and AudioContext on 2026-11-03; no match, so no distance or direction model was found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/nodes/Sound/Sound.js",
+          "title": "X3DOM source, Sound node (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Sound node specifies the spatial presentation of a sound in a X3D scene."
+        },
+        {
+          "url": "https://github.com/x3dom/x3dom/blob/a1e12d27c555801f5bc18523919da79d0162816a/src/nodes/Sound/Sound.js",
+          "title": "X3DOM source, Sound node (pinned commit a1e12d2)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The source field shall specify either an AudioClip node or a MovieTexture node."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Paying for a resource is a commerce exchange, not part of drawing a declarative 3D scene in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Checking a holder's grant at use is a rights service, not part of a scene description and drawing library.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts are commerce records, not part of a framework for declarative 3D scenes in web pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Identifiers for people or agents are an identity layer; the framework only draws scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Verifiable claims are an identity layer outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential request and presentation is a protocol the page's own application would use, not part of the 3D framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Permission grants between parties are outside a declarative 3D scene framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabularies belong to identity systems, not to a scene framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation and recovery belong to identity systems, not to a scene framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status belongs to identity systems, not to a scene framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Carrying consent is an identity and privacy matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is an identity matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and relationships are application services outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Acting on licence terms at use is a rights service outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Evidence behind claims is an identity matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers are an identity matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Recipient key material is an identity matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Records of what a system decided are an identity matter outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed registries of accepted issuers are outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Binding an avatar to an identity is outside a framework that draws declarative scenes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "A user's held items are a service concern; the framework draws a page's scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Portable user settings are a service concern; the framework draws a page's scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Learning or activity records are a service concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "The framework runs in the visitor's browser and has no world server whose state could survive a restart.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "Shared multi-user state is not part of a client-side library for declarative 3D in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "A session wire protocol is not part of a client-side library for declarative 3D in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Joining a running shared world is not part of a client-side library for declarative 3D in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "Admission decisions by a destination are not part of a client-side library for declarative 3D in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Authority over shared objects is not part of a client-side library for declarative 3D in a page.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Per-client interest filtering needs a shared-world server, which this library is not.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Latency hiding for shared state needs a networked simulation, which this library does not provide.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Rosters across operators are a service concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Finding worlds or services is a service concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "A shared clock for ordering events is a networking concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended coupling between worlds needs servers, which this client-side library is not.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review is an operator process, not part of a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Protection schemes for content components are outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Autonomous agents acting in a world are outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "An authoring interface for outside agents is a platform feature, not part of a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "Producing a place from a prompt is a generation service, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "A learned world model is a generation service, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Building models from photographs is a capture tool, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a generation service, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Specifying what a generator should make is a generation service concern, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Training a radiance field is a reconstruction tool, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generating objects from prompts is a generation service, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Exchanging agent actions is outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving meshes from generated worlds is a tool concern, not a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is a localisation service, not part of a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is a mapping service, not part of a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Body signal streams are a device concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical instrument events are a device concern outside a scene drawing framework.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://doc.x3dom.org/gettingStarted/background/index.html",
+          "title": "X3DOM Getting Started, 1. Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "X3DOM (pronounced \"X-Freedom\") is an open source JavaScript framework, used to create declarative 3D scenes in Web pages"
+        }
+      ]
+    }
+  ]
+}

@@ -18,21 +18,23 @@ if blank:
                      " - reload the database from capabilities.csv")
 interop_counts = {w: sum(1 for c in caps if c["interop"] == w) for w in INTEROP_WORDS}
 
-# The four use cases a row serves, carried to the page as an array so a certification lane can be
+# The use cases a row serves, carried to the page as an array so a certification lane can be
 # read off it: a lane is the must rows whose list holds that lane's use case. The stored value is
-# a comma-separated string; the page never has to split one.
-USE_CASES = ("U1", "U2", "U3", "U4")
+# a comma-separated string; the page never has to split one. The lanes are whatever use cases the
+# data names (U1 to U4 first, more since the maintainer's decision of 2026-11-03); the loader
+# holds the list of accepted ids, so here an id only has to have the shape U and a number.
 for c in caps:
     c["uses"] = [u for u in (c.pop("interop_uses", "") or "").split(",") if u]
-    bad = [u for u in c["uses"] if u not in USE_CASES]
+    bad = [u for u in c["uses"] if not re.fullmatch(r"U[0-9]+", u)]
     if bad:
         raise SystemExit("use case " + ", ".join(bad) + " on " + c["id"] +
-                         " is not one of U1 to U4 - reload the database from capabilities.csv")
+                         " is not a use case id - reload the database from capabilities.csv")
     if c["interop"] in ("must", "should") and not c["uses"]:
         raise SystemExit("no use case on " + c["id"] + ", which is marked " + c["interop"] +
                          " - reload the database from capabilities.csv")
-# The four lane sizes, printed on every build, so a lane that has drifted from
-# infrastructure-wg/model/CERTIFICATION-LANES.md shows here rather than on the published page.
+USE_CASES = tuple(sorted({u for c in caps for u in c["uses"]}, key=lambda u: int(u[1:])))
+# Every lane's size, printed on every build, so a lane that has drifted from
+# tool/model/CERTIFICATION-LANES.md shows here rather than on the published page.
 lane_counts = {u: sum(1 for c in caps if c["interop"] == "must" and u in c["uses"])
                for u in USE_CASES}
 subs   = [dict(r) for r in con.execute("""
@@ -81,6 +83,43 @@ for s in subs:
     s["source_ids"] = [r[0] for r in con.execute(
         "SELECT DISTINCT e.source_id FROM evidence e JOIN coverage c ON c.id = e.coverage_id "
         "WHERE c.subject_id=? ORDER BY e.source_id", (s["id"],))]
+
+# The platform facet: which subjects are platforms OpenSpatials supports. The source is the
+# OpenSpatials platform register (docs/openspatials-platforms/platforms.json in the project that
+# holds this workspace). Each register platform lists the atlas subject ids it is. Only those
+# ids are kept, in platform-register.json beside this file, because the register itself also
+# carries working notes that are not published. When the register is present the kept file is
+# refreshed from it; when it is not (a copy of this folder on its own) the kept file is read as
+# it stands, so the export rebuilds to the same bytes either way.
+PLATFORM_KEPT = os.path.join(D, "platform-register.json")
+PLATFORM_REGISTER = os.environ.get("ATLAS_PLATFORM_REGISTER") or os.path.join(
+    D, "..", "..", "..", "..", "docs", "openspatials-platforms", "platforms.json")
+if os.path.exists(PLATFORM_REGISTER):
+    with open(PLATFORM_REGISTER) as fh:
+        _register = json.load(fh)
+    _kept = {"about": "Register platforms that name Atlas subjects: register id to atlas subject ids, "
+                      "in register order. Refreshed by build.py from the OpenSpatials platform register.",
+             "platforms": [{"id": p["id"], "atlas_ids": list((p.get("atlas") or {}).get("ids") or [])}
+                           for p in _register.get("platforms", [])
+                           if (p.get("atlas") or {}).get("ids")]}
+    with open(PLATFORM_KEPT, "w") as fh:
+        fh.write(json.dumps(_kept, indent=1) + "\n")
+platform_of = {}
+if os.path.exists(PLATFORM_KEPT):
+    with open(PLATFORM_KEPT) as fh:
+        for _p in json.load(fh)["platforms"]:
+            for _sid in _p["atlas_ids"]:
+                platform_of.setdefault(_sid, []).append(_p["id"])
+_known = {s["id"] for s in subs}
+_unknown = sorted(sid for sid in platform_of if sid not in _known)
+if _unknown:
+    raise SystemExit("the platform register names atlas id(s) that are not subjects: " +
+                     ", ".join(_unknown))
+# One subject can be more than one register platform (ARCore is both Android and Google
+# Geospatial), so the field holds the register ids as a list, in register order.
+for s in subs:
+    if s["id"] in platform_of:
+        s["platform"] = platform_of[s["id"]]
 
 tally = {}
 for r in con.execute("""
@@ -204,9 +243,20 @@ def fill(text, where):
 
 tips_path = os.path.join(D, "tooltips", "tooltips.json")
 tips = {}
+# The note sources are published with this folder, so a path on the maintainer's
+# machine must not be one of them. Written without a literal path, so this line
+# does not trip the same check in the public repository.
+_LONG = "|".join(re.escape("/" + p + "/") for p in ("Users", "Volumes", "home", "private", "var/folders"))
+MACHINE_PATH = re.compile(r"(?<![\w./~-])(?:" + _LONG + r")"
+                          + r"|(?:^|(?<=[\s\"'`(\[<=]))(?:" + re.escape("~" + "/") + "|" + re.escape("$" + "HOME/") + r")"
+                          + r"|" + re.escape("file:" + "//") + r"(?:" + _LONG + r")", re.MULTILINE)
 if os.path.exists(tips_path):
     with open(tips_path) as fh:
         for k, v in json.load(fh).items():
+            for s in (v.get("sources") or []) if isinstance(v, dict) else []:
+                if isinstance(s, str) and MACHINE_PATH.search(s):
+                    raise SystemExit(f"tooltip {k} cites a path on this machine; give its public "
+                                     f"address or a plain description: {s[:120]}")
             text = v.get("tooltip") if isinstance(v, dict) else v
             if text:
                 tips[k] = fill(text, f"tooltip {k}")

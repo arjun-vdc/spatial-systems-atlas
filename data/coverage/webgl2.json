@@ -1,0 +1,3278 @@
+{
+  "subject_id": "webgl2",
+  "summary": "WebGL 2.0 is a Khronos Group specification that lets a web page draw three-dimensional graphics into an HTML canvas element through an interface that follows OpenGL ES 3.0. It covers the drawing calls themselves, shader programs in the OpenGL ES Shading Language, instanced drawing, a named opt-in extension mechanism and an official conformance test suite. It leaves everything above the drawing call to others, including scene description, materials, lighting, cameras, file formats, sound, input, networking and identity. Traps for a standards audience: the text describes only the differences from WebGL 1.0, so both documents must be read together; it is not entirely backwards compatible with WebGL 1; compressed texture formats come only from optional extensions; and the separate compute-shader draft is marked obsolete, with WebGPU named as the path forward.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so avatar body format is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so avatar skeleton standard is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so facial expression standard is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so attachments and wearables is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so avatar to identity binding is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so splat data interchange format falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so volumetric video capture and playback falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so point cloud encoding falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so multi-view plus depth falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so time-varying capture falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of purchases or grants, so machine and agent payments falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of purchases or grants, so entitlements and licence checks at use falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Version 2 is requested explicitly through a new context type and is stated to be not entirely backwards compatible with version 1, with the exceptions recorded; the page itself still calls itself an editor's draft.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Existing error-free content written against the core WebGL 1 specification without extensions will often run in WebGL 2 without modification, but this is not always the case."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL 2 is not entirely backwards compatible with WebGL 1."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Status of this document",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This document is an editor's draft."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This document should be read as an extension to the WebGL 1.0 specification ."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "native",
+      "note": "Khronos publishes an official conformance test suite, including a folder for version 2.0.0, in the repository that also holds the specifications.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/WebGL/blob/main/README.md",
+          "title": "KhronosGroup/WebGL repository, README (main branch)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Official live versions of the conformance test suite can be found at"
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Feedback",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Please file bugs against the specification or its conformance tests in"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "Any added parameter, constant or function must be enabled by name through getExtension, and extensions are specified in a separate registry with a stated development process.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Detecting and enabling extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An implementation of WebGL must not support any additional parameters, constants or functions without first enabling that functionality through the extension mechanism."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/extensions/",
+          "title": "WebGL Extension Registry, Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Extensions which are marked as promoted to core or removed in a certain version of the WebGL API must not be supported in an implementation of that or newer version of the WebGL API."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "WebGL is a drawing interface, not a way to package, protect or deliver content, so asset reference resolution falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "WebGL is a drawing interface, not a way to package, protect or deliver content, so content protection signalling falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so geospatial pose falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so coordinate reference systems falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so shared and persistent anchors falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so tiled terrain and city streaming falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so pose series and live pose streams falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so linked pose structures falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so identity root falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so credential format falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so credential exchange protocol falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so capability and permission grant falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so claim vocabulary and schema falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so key rotation, revocation and recovery falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so credential status and revocation falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so consent carried with the subject falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so immersive session lifecycle falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "WebGL leaves program logic to the hosting page's scripts, so behaviour graphs and interactivity falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "WebGL leaves program logic to the hosting page's scripts, so agent integration falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so state replication falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so transport protocol falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so session establishment falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so session handoff and portals falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so world addressing and naming falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so deciding whether to admit an arrival falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so unattended world coupling falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so inventory falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so preference portability falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so scene graph model falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so transforms and coordinate convention falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so asset container format falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so geometry encoding falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "via-extension",
+      "note": "The core text supplies no compressed texture formats by default; compressed formats such as ASTC and S3TC come from named registry extensions, which a device may or may not offer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, No ETC2 and EAC compressed texture formats",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "These texture formats are not supported by default in WebGL 2.0."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Compressed Texture Support",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The core WebGL specification does not define any supported compressed texture formats."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/extensions/WEBGL_compressed_texture_astc/",
+          "title": "WebGL WEBGL_compressed_texture_astc Extension Specification, Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This extension exposes the compressed texture format defined in the KHR_texture_compression_astc_hdr OpenGL ES extension to WebGL."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so material exchange falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so animation encoding falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so skeleton and rig definition falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so units and scale falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so rights and licence metadata falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so exact and parametric geometry falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so voxel volumes falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so experience containment falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so positioned audio sources falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so spatialization model falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so room acoustics and reverb falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so occlusion and obstruction falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so audio streaming falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so voice transport falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "WebGL draws images and has no sound, so sound generated at play time falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so animation retargeting is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "WebGL draws whatever geometry the application supplies and defines no avatar content, so avatar level of detail is not its concern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so world generation from a prompt or an image falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so simulation from a learned model falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so photogrammetric object capture falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so captured-scene streaming falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so novel view synthesis falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so relighting captured content falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so editing a capture after the fact falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so generative editing of a world falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so control over what gets generated falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so deriving conventional assets from a generated scene falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so action and control exchange falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so panoramic scene imagery falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so radiance-field reconstruction falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "WebGL draws what the application uploads and says nothing about captured or generated scenes, so generation of individual 3D objects falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of purchases or grants, so receipts and proofs of purchase falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "WebGL is a drawing interface, not a way to package, protect or deliver content, so bundle format falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "WebGL is a drawing interface, not a way to package, protect or deliver content, so content delivery falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "WebGL is a drawing interface, not a way to package, protect or deliver content, so content review and safety gating falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Two named levels (webgl and webgl2) are chosen by the context a page asks for, and extensions are named opt-ins; the specification defines no further named subsets or profiles.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "To access the new behavior provided in this specification, the content explicitly requests a new context ( details below )."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Detecting and enabling extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "An implementation of WebGL must not support any additional parameters, constants or functions without first enabling that functionality through the extension mechanism."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so local anchors falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so visual positioning falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so indoor mapping falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so map lifecycle and alignment falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so coverage declaration falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "WebGL draws in the application's own coordinates and has no link to places on Earth, so published zones and spatial events falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so selective disclosure falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so reputation and social graph falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so rights enforcement falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so assurance and evidence behind a claim falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so pairwise identifiers and unlinkability falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so encryption keys and confidential delivery falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so record of what a system decided falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "WebGL has no notion of people, credentials or keys, so governed trust registries falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so controller input falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so hand tracking falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so eye tracking falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so haptics falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "A page can read the implementation's limits and the list of supported extensions, but only graphics capability is reported, not other device features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Setting and getting state",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "As well as supporting all the pname/type values from WebGL 1.0, the following parameters are supported:"
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Detecting and enabling extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The getSupportedExtensions function returns an array of the extension strings supported by this implementation."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so face and body tracking as input falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so pointing and selection against content falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so text entry falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so musical event-device input falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "WebGL only draws; user input arrives through other web interfaces, so physiological signals as input falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "WebGL leaves program logic to the hosting page's scripts, so scripting runtime falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "partial",
+      "note": "The security section requires that shaders cannot read or write outside their data, which isolates guest drawing code from other data; it does not define a general sandbox or limits for guest logic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Resource Restrictions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "When WebGL resources are accessed by shaders through a call such as drawElements or drawArrays , the WebGL implementation must ensure that the shader cannot access either out of bounds or uninitialized data."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "partial",
+      "note": "Implementations are told they should limit excessively long rendering, but the exact safeguards are expressly left unspecified and no numeric budget is given.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Defense Against Denial of Service",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "User agents should implement safeguards to prevent excessively long rendering times and associated loss of interactivity."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Defense Against Denial of Service",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The supporting infrastructure at the OS and graphics API layer is expected to improve over time, which is why the exact nature of these safeguards is not specified."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "WebGL leaves program logic to the hosting page's scripts, so permanent code identity falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "WebGL leaves program logic to the hosting page's scripts, so agent authoring and publishing interface falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so authority and ownership falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so interest management falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so prediction and reconciliation falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so media transport falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so presence and roster falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so discovery falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so clock and time model falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so live data binding falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "WebGL does not use the network; it only draws into a canvas, so portal preview falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so world state persistence falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so content addressing falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so taking a whole world out falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "WebGL keeps no world or user data between visits, so activity and learning records falls outside a drawing interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so rigid bodies falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so collision shapes falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so joints and constraints falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so physics materials falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so deterministic simulation falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so soft bodies and cloth falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "WebGL draws and does not simulate, so trigger volumes falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "partial",
+      "note": "The drawing pipeline is that of OpenGL ES 3.0, referenced rather than restated; the specification defines no render graph or pass structure above framebuffer objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This context allows rendering using an API that conforms closely to the OpenGL ES 3.0 API."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Conventions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Unless otherwise specified, the behavior of each method is defined by the OpenGL ES 3.0 specification."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "The specification fixes the graphics interface as one that conforms closely to OpenGL ES 3.0, and defers each call's behaviour to that specification.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This context allows rendering using an API that conforms closely to the OpenGL ES 3.0 API."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Conventions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Unless otherwise specified, the behavior of each method is defined by the OpenGL ES 3.0 specification."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification describes an additional rendering context and support objects for the"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves material model to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves lighting and global illumination to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves post-processing to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves level of detail and streaming order to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves gaussian splatting and radiance fields to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves volumetric and point cloud to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves text rendering to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves camera and viewpoint model to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves passthrough and environment blending to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The specification covers premultiplied alpha for the drawing buffer and colour conversion on texture upload; the released texts do not declare the colour space or output range of the drawing buffer. A later editor's draft adds drawingBufferColorSpace.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Context creation parameters (premultipliedAlpha)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the value is true the page compositor will assume the drawing buffer contains colors with premultiplied alpha."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Pixel Storage Parameters",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If set to NONE , no colorspace conversion is applied."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/latest/1.0/",
+          "title": "WebGL Specification, editor's draft of 30 June 2026, drawingBufferColorSpace",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The color space used to interpret the drawing buffer's content values."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves two-dimensional interface surfaces to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves compositor layers to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "Searched WebGL 2.0.0 and 1.0.3 for compute shader, dispatch and general-purpose computation on 2026-11-03; no match. A separate WebGL 2.0 Compute draft exists but its own abstract calls it obsolete.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/latest/2.0-compute/",
+          "title": "WebGL 2.0 Compute, Editor's Draft of 31 March 2021, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "For this reason, this specification should be considered obsolete."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/latest/2.0-compute/",
+          "title": "WebGL 2.0 Compute, Editor's Draft of 31 March 2021, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This document is a draft. Implementations based on this document may not be shipped."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/latest/2.0-compute/",
+          "title": "WebGL 2.0 Compute, Editor's Draft of 31 March 2021, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGPU will be the path forward for compute shaders on the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "Searched WebGL 2.0.0 and 1.0.3 for predicted display time, frame pacing, vsync and presentation time on 2026-11-03; no normative match. Presentation is tied only to the page's next compositing operation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Drawing buffer presentation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL presents its drawing buffer to the HTML page compositor immediately before a compositing operation, but only if at least one of the following has occurred since the previous compositing operation:"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "native",
+      "note": "Shaders are written in the OpenGL ES Shading Language, version 1.00 or 3.00, with stated restrictions, so one shader source runs on every conforming implementation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, GLSL ES 3.00 support",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In addition to supporting The OpenGL ES Shading Language, Version 1.00, the WebGL 2 API also accepts shaders written in The OpenGL ES Shading Language, Version 3.00 [GLES30GLSL] , with some restrictions."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves remote (split) rendering to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "WebGL offers flexible drawing primitives and leaves non-visual sensory effects to the application, so the specification does not define it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Given the many use cases of 3D graphics, WebGL chooses the approach of providing flexible primitives that can be applied to any use case."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The specification names a fallback path (for example a 2D canvas) when a high-performance context cannot be created, but the application chooses and implements the substitute; no common interface or declared substitute exists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, failIfMajorPerformanceCaveat",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Applications that require high performance may set this parameter to true , and if context creation fails then the application may prefer to use a fallback rendering path such as a 2D canvas context."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so morph targets and blend shapes falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "native",
+      "note": "Instanced drawing is part of the core interface through drawArraysInstanced and drawElementsInstanced, with a per-attribute divisor.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Instanced drawing",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Draw instanceCount instances of geometry using the currently enabled vertex attributes."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so scene composition and overrides falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so provenance and authorship falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so navigable space and arrival points falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so domain metadata carried with an asset falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so preview image for an asset falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so bounding volumes and spatial index falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so named sets of objects falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so transform constraints falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "A frame of a video element can be uploaded as a texture, but the specification defines no reference to timed media from a scene and no synchronisation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Texture upload sources",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The width and height of the texture are set to the width and height of the uploaded frame of the video in pixels."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so emitter-based effects falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so recovering a stripped provenance record falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so declarative styling carried apart from the content falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "WebGL draws buffers and textures the application supplies and defines no scene description, so selectable variants of an asset falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        },
+        {
+          "url": "https://registry.khronos.org/webgl/specs/1.0.3/",
+          "title": "WebGL Specification, version 1.0.3, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Libraries can provide an API on top of WebGL that is more tailored to specific areas, thus adding a convenience layer to WebGL that can accelerate and simplify development."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so real-world reconstruction falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so semantic labelling of the real world falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so real-world depth falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so real-world occlusion falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so real-world lighting estimation falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so marker and image tracking falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so usable physical area falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so hit test against the real world falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so privacy terms on sensed data falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "WebGL has no access to sensors or the real world and only draws, so model-based object tracking falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/webgl/specs/2.0.0/",
+          "title": "WebGL 2 Specification, version 2.0.0, Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebGL™ is an immediate mode 3D rendering API designed for the web."
+        }
+      ]
+    }
+  ]
+}

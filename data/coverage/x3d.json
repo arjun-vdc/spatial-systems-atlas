@@ -2832,6 +2832,136 @@
           "quote": "Mixed and Augmented Reality (MAR) capabilities present computer-generated information within the real world, developing compatible extensions to X3D visualization and interactivity that implement an emerging ISO reference model."
         }
       ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "partial",
+      "note": "Live data can reach a scene by several routes: Script nodes that collect asynchronously generated data such as input from a network queue, external applications through the scene access interface, the DIS nodes (declarative network sensor nodes that bind entity state to network messages), and the autoRefresh field of nodes with a url, which reloads Inline, texture or audio content on a timer. The DIS text speaks of modifying virtual entities in the X3D scene. No node or protocol binds fields to a sensor, machine controller or building system.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/scripting.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 29.2.2 Script execution",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The program can perform a wide variety of actions including sending out events (and thereby changing the scene), performing calculations, and communicating with servers elsewhere on the Internet."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/scripting.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 29.2.5 prepareEvents()",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "prepareEvents() is called before any ROUTE processing and allows a Script to collect any asynchronously generated data, such as input from a network queue or the results of calling field listeners, and generate events to be handled by the X3D browser's normal event processing sequence as if it were a built-in sensor node."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/core.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 7.2.3 Sensors",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Sensors are nodes that generate events based on external inputs to the scene graph, such as user input, changes to the viewing environment, messages from the network or ticks of the system clock."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/dis.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 28.1.2 Overview",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The Distributed Interactive Simulation (DIS) component provides networked interoperability with the IEEE DIS protocol (see [IEEE1278] and [SISO] ) for sharing state and conducting real-time platform-level simulations across multiple host computers."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-2/V3.3/Part02/concepts.html",
+          "title": "X3D Scene Access Interface ISO/IEC 19775-2 (V3.3), 4.4.4 Application",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "An application may reside on another machine from the X3D browser."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/dis.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 28.2.2 Network communications",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "These messages can be used to communicate and to modify both position and orientation of virtual entities in the X3D scene among multiple hosts across the network."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/networking.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 9.3.1 X3DNetworkSensorNode",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This abstract node type is the basis for all sensors that generate events based on network activity."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/networking.html",
+          "title": "X3D 4.0 (ISO/IEC 19775-1:2023) clause 9.3.2 X3DUrlObject",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The autoRefresh field defines the interval in seconds that are necessary before an automatic reload of the current url asset is performed."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "No node, component or profile describes wind, scent, heat, fog machines or motion seats as effects for devices; the closest, WindPhysicsModel, only pushes simulated particles on screen, and Fog is a visual depth cue. Searched all 62 pages of ISO/IEC 19775-1:2023 (V4.0) Part 1 as published at web3d.org (clauses, components, profiles, annexes, node index) for haptic, sensory, scent, olfactory, aroma, 23005, MPEG-V, wind, actuator, motion platform, force feedback, rumble, vibration, temperature, smell on 2026-11-01; only particle WindPhysicsModel and a shader-language temperature mention matched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/scope.html",
+          "title": "Extensible 3D (X3D), ISO/IEC 19775-1:2023, 1 Scope",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "ISO/IEC 19775 Extensible 3D (X3D) defines a software system that integrates network-enabled 3D graphics and multimedia."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/particleSystems.html",
+          "title": "X3D 4.0 Particle systems component, WindPhysicsModel",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The WindPhysicsModel node specifies a physics model that applies a wind"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "X3D describes scenes as abstract behaviour that any browser may draw, and its shader field lets the author list shaders of several languages in order of preference so the browser takes the first it can run. The fallback is declared only for shaders, not for whole renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/shaders.html",
+          "title": "X3D 4.0 Part 1, Programmable shaders, 31.2.2.3 Selecting an appropriate shader",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The shader field is an MFNode field that defines the collection of pertinent shader nodes of various languages in the order of preference."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/shaders.html",
+          "title": "X3D 4.0 Part 1, Programmable shaders, 31.2.2.3 Selecting an appropriate shader",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Browsers are not expected to be able to handle all the different forms of shading languages."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "An Inline node embeds another X3D scene in place, and an Anchor's description may be shown by the browser's interface, so a destination can be drawn or described at the link. Missing: any way for the destination to limit what is shown before entry, and any declared one-way setting or scale of the opening.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/networking.html",
+          "title": "X3D 4.0 Networking component, Inline node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Inline node embeds an X3D scene stored at a location on the World Wide Web into the current scene."
+        },
+        {
+          "url": "https://www.web3d.org/documents/specifications/19775-1/V4.0/Part01/components/networking.html",
+          "title": "X3D 4.0 Networking component, Anchor node",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This information may be used by X3D browser-specific user interfaces that wish to present users with more detailed information about the Anchor."
+        }
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "subject_id": "hyperscape",
-  "summary": "Meta Horizon Hyperscape Capture is Meta's own answer to phone scanning, done with a headset: a Quest 3 or 3S user walks a room, the images and headset poses go to Meta's servers, and a Gaussian splat replica comes back, taking up to eight hours to process. It is scored here with the other capture product on the same platform — the experimental Splat interface in Meta's Spatial development kit, which loads splats on the same headsets from SPZ files — because together they show Meta's position clearly: the consumer capture path is closed and the developer path is open to a format somebody else published. Hyperscape shed features in 2026 rather than gaining them. Sharing a capture, inviting people into it and being in one together were all withdrawn on 12 May 2026; the worlds moved out of Horizon Worlds and are now view-only in the capture application itself, rendered on the headset instead of streamed from a server, and the separate preview application is gone. There is no export of any kind, no format, no interface for programs and no documented developer route into a Hyperscape capture: what you scan stays inside Meta's product on the headset that scanned it. The rules around capture, on the other hand, are the most explicit of any subject in this lane — a minimum room size, no people or pets, permission for the space, a code of conduct, a reporting tool, and a plain statement that the images go to Meta and may be used to improve Meta's products.",
+  "summary": "Meta Horizon Hyperscape Capture is Meta's own answer to phone scanning, done with a headset: a Quest 3 or 3S user walks a room, the images and headset poses go to Meta's servers, and a Gaussian splat replica comes back, taking up to eight hours to process. It is scored here with the other capture product on the same platform — the experimental Splat interface in Meta's Spatial development kit, which loads splats on the same headsets from SPZ files — because together they show Meta's position clearly: the consumer capture path is closed and the developer path is open to a format somebody else published. Hyperscape shed features in 2026 rather than gaining them. Sharing a capture, inviting people into it and being in one together were all withdrawn on 12 May 2026; the worlds moved out of Horizon Worlds and are now view-only in the capture application itself, rendered on the headset instead of streamed from a server, and the separate preview application is gone. There is no export of any kind, no format, no interface for programs and no documented developer route into a Hyperscape capture: what you scan stays inside Meta's product on the headset that scanned it. The rules around capture, on the other hand, are the most explicit of any capture subject — a minimum room size, no people or pets, permission for the space, a code of conduct, a reporting tool, and a plain statement that the images go to Meta and may be used to improve Meta's products.",
   "coverage": [
     {
       "capability_id": "render.raster",
@@ -2633,7 +2633,7 @@
     {
       "capability_id": "deliver.extension",
       "level": "none",
-      "note": "The Hyperscape capture path and the Spatial SDK splat sample load splat assets, and neither declares a way to add data or behaviour to a capture with rules for recipients that lack it. Searched the Gaussian Splat sample page (updated May 8, 2026) and the Hyperscape Capture help page for extension, extend, plug-in, custom component and format on 2026-10-20; found no extension mechanism, but the help page text could only be read through a summarising page reader this round, so the search is not complete.",
+      "note": "The Hyperscape capture path and the Spatial SDK splat sample load splat assets, and neither declares a way to add data or behaviour to a capture with rules for recipients that lack it. Searched the Gaussian Splat sample page (updated May 8, 2026) and the Hyperscape Capture help page for extension, extend, plug-in, custom component and format on 2026-10-20; found no extension mechanism, but the help page text could only be read through a summarising page reader at the time, so the search is not complete.",
       "confidence": "unverified",
       "sources": [
         {
@@ -2685,7 +2685,7 @@
     {
       "capability_id": "scene.voxel",
       "level": "none",
-      "note": "Hyperscape returns a Gaussian splat replica and the SDK's splat sample renders splats, with no cell volumes or per-cell properties documented. Searched the Gaussian Splat sample page (updated May 8, 2026) and the Hyperscape Capture help page for voxel, volume and cell on 2026-10-20; found no match, but the help page text could only be read through a summarising page reader this round, so the search is not complete.",
+      "note": "Hyperscape returns a Gaussian splat replica and the SDK's splat sample renders splats, with no cell volumes or per-cell properties documented. Searched the Gaussian Splat sample page (updated May 8, 2026) and the Hyperscape Capture help page for voxel, volume and cell on 2026-10-20; found no match, but the help page text could only be read through a summarising page reader at the time, so the search is not complete.",
       "confidence": "unverified",
       "sources": [
         {
@@ -2694,6 +2694,362 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "via-extension",
+      "note": "The capture application exposes no query of the room. The Splat sample page points developers to the separate Mixed Reality Utility Kit for real-world room geometry, and that kit's sample documents ray casts against scene planes, the global mesh and depth; the Splat sample itself makes no such call.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "position splat entities relative to real-world room geometry"
+        },
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-mruk",
+          "title": "MRUK sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "MRUK provides three raycast methods: raycastRoom() for single hits, raycastRoomAll() for all hits along a ray, and raycastEnvironment() for depth-based raycasts."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "A capture carries a title and an optional free-text description entered by the person who made it. Neither has declared structure, and nothing exports them for another system to read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Describe your world: Add a title and an optional description."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "A capture is one reconstruction of one room at one moment, with no authored configuration to vary; the sample's thumbnail switch swaps between two unrelated splat files, not variants of one asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "Through the separate Mixed Reality Utility Kit (MRUK), which the Splat sample page recommends for placing splats against real-world room geometry, a Spatial SDK application loads the device's scene data and receives floor, wall and ceiling surfaces as anchors. No play-area boundary is documented, and the capture application and the Splat sample themselves report no space bounds to an application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "position splat entities relative to real-world room geometry"
+        },
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-mruk",
+          "title": "MRUK sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Floor, walls, and ceiling receive procedural meshes with carpet and wall textures."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "Searched the Gaussian Splat sample page, the Capture help page, SplatSampleActivity.kt at commit 4ba28afe and the Spatial SDK environment guide for colour space, sRGB, linear, HDR and gamma on 2026-10-22; found nothing that declares how splat or image colour is to be interpreted (the environment guide mentions an HDR file converted for lighting only).",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "partial",
+      "note": "A room is reconstructed from a series of headset images and relative headset poses uploaded to Meta's servers, with Meta describing the method as Gaussian splatting; the person gets no optimisation controls, no training parameters and no trained scene to use elsewhere.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Additional data, such as the relative position and orientation of the Quest headset within the capture, are also captured to help in the reconstruction of your realistic digital replica."
+        },
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Processing: Once your world is uploaded, processing can take up to 8 hours, depending on the size of your spaces."
+        },
+        {
+          "url": "https://www.meta.com/blog/connect-2024-keynote-recap-quest-3s-llama-3-2-ai-wearables-mixed-reality/",
+          "title": "Meta Connect 2024 keynote recap, Meta Quest Blog",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "By utilizing Gaussian Splatting, a 3D volume rendering technique, we can take advantage of cloud rendering and streaming to make these spaces viewable on a standalone Quest 3 headset."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "The only named tier is experimental: an application must opt in in code and declare an experimental feature in its manifest to use the splat interface. No named subset or level lets a capture or a reader declare what it requires.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Splat API is experimental and requires opt-in via @OptIn(SpatialSDKExperimentalSplatAPI::class) ."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "The sample's floating panel takes controller pointing and reports which thumbnail was clicked to the application. Nothing in the documentation picks the splat or the room content or reports an intersected object or geometry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Click a thumbnail to swap splats"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "none",
+      "note": "Searched the Capture help page, the Gaussian Splat sample page, SplatSampleActivity.kt at commit 4ba28afe and the AI tooling overview for MCP, REST, command line and agent on 2026-10-22; Meta offers an agent interface for its platform (Meta VR CLI and its MCP server) covering devices, app installs, logs, documentation search, 3D asset search and store publishing, but nothing there or in the capture documentation lets an outside agent create or change a capture.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/essentials/ai-tooling-overview/",
+          "title": "AI tooling overview, Meta Horizon OS developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Both front ends reach device management, app installs, logs, performance traces, documentation search, 3D asset search, and Meta Horizon Store publishing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "native",
+      "note": "Via Spatial SDK, which the sample page uses, a 2D panel can be registered to render as a compositor layer instead of a mesh, with documented layer blend modes. The Hyperscape capture application itself exposes no layer interface, and the Splat sample page documents none for splat content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-2dpanel-registration/",
+          "title": "Panel registration, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Configure how the panel is rendered including whether it uses a mesh or a layer"
+        },
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-2dpanel-layers/",
+          "title": "Layer and mesh rendering modes, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When using layers, there are several different ways to blend the layer with the scene."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "The sample only registers a splat feature and draws a file the SDK loads; it neither exposes nor documents any general-purpose GPU work for developers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame submission and predicted display time belong to the headset's runtime; neither the capture application nor the sample exposes or documents them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "none",
+      "note": "Searched the Capture help page (read in full), the Gaussian Splat sample page and the March 2026 Meta announcement for cloud, stream and server rendering on 2026-10-22; viewing is now on the headset, though the 2024 demo was cloud rendered and streamed, so remote rendering was once in scope and has been withdrawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/blog/connect-2024-keynote-recap-quest-3s-llama-3-2-ai-wearables-mixed-reality/",
+          "title": "Meta Connect 2024 keynote recap, Meta Quest Blog",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "By utilizing Gaussian Splatting, a 3D volume rendering technique, we can take advantage of cloud rendering and streaming to make these spaces viewable on a standalone Quest 3 headset."
+        },
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Viewing is now built directly into the Capture app and is powered by on-device rendering."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "Searched the Gaussian Splat sample page, the Capture help page and SplatSampleActivity.kt at commit 4ba28afe for bound, extent, culling, tile and volume on 2026-10-22; found no bounding volume, tiling or spatial organisation of splat content, which is loaded whole as one room-sized scene.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Gaussian Splat sample, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "The sample's code selects sets of scene entities by rule, such as every local controller, and acts on them. These sets exist only in application code at run time and are not carried with a capture or its container.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/meta-quest/Meta-Spatial-SDK-Samples/4ba28afef987ce4cb89df37c1c38e8eec2fc7c86/SplatSample/app/src/main/java/com/meta/spatial/samples/splatsample/SplatSampleActivity.kt",
+          "title": "SplatSampleActivity.kt, Meta Spatial SDK Samples at commit 4ba28afe",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "val controllers = Query.where { has(Controller.id) }.eval().filter { it.isLocal() }"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "The Spatial SDK that hosts the Splat sample documents timed media in scenes: video playback on panels in a 3D room (Media Player sample) and an Audio component that plays sound from an entity's position. Neither is documented for a capture, which holds no media, and no synchronisation of media with other scene content is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-mediaplayer/",
+          "title": "Media Player sample overview, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This sample demonstrates immersive video playback in a spatial app using both flat YouTube streaming and stereoscopic 360-degree video."
+        },
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-audio/",
+          "title": "Playing audio in Spatial SDK apps, Meta Spatial SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Audio component makes an entity capable of playing sound from its location in 3D space."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Nothing leaves the product, so no copy exists from which an embedded provenance association could be lost and then recovered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Hyperscape Worlds have moved out of Horizon Worlds and are now only accessible as “view only” in the dedicated Meta Horizon Hyperscape Capture (Beta) app on Quest 3/3S devices."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Hyperscape Capture is a headset app that captures a real-world space and builds a digital replica of it, and the Spatial SDK Splat API sample renders such captures; neither carries or renders sensory effect descriptions.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Quest Help",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The Meta Horizon Hyperscape Capture (Beta) lets you capture your real-world space in just minutes, then creates an immersive digital replica in Worlds that you can visit from anywhere."
+        },
+        {
+          "url": "https://developers.meta.com/horizon/documentation/spatial-sdk/spatial-sdk-sample-gaussiansplat/",
+          "title": "Meta Spatial SDK Gaussian Splat sample",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The Gaussian Splat sample demonstrates how to render photorealistic 3D scene captures using the experimental Splat API in Spatial SDK."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A capture app that builds a digital replica of a real space and shows it with on-device rendering; the page describes no choice of renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Meta Quest Help",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Viewing is now built directly into the Capture app and is powered by on-device rendering."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The tool captures a real-world space and makes a replica to visit on its own; it defines no portal from one world to another and no destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.meta.com/help/quest/1088536553019177/",
+          "title": "Meta Horizon Hyperscape Capture (Beta): Getting Started and Best Practices, Meta Quest Help",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Meta Horizon Hyperscape Capture (Beta) lets you capture your real-world space in just minutes"
         }
       ]
     }

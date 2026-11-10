@@ -3008,6 +3008,205 @@
           "quote": "Scaniverse Classic is designed for individual use, and best for reconstruction of objects and small environments and personal projects where you want to capture and view results quickly."
         }
       ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "none",
+      "note": "Searched the Scaniverse documentation (overview, quickstart, techniques, advanced tools, 360 camera, migration, troubleshoot), the Scaniverse FAQ and migration FAQ, the capture product page, the USDZ and SPZ 4 posts, and the SPZ README and extensions README at commit affd0ec for metadata, properties, tags and labels on 2026-10-22; none is documented as written into any export. SPZ 4 adds a plaintext header and a vendor extension chain for metadata, but Niantic's 5 May 2026 post says SPZ 4 export is still to be added to Scaniverse.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/blog/spz4",
+          "title": "Niantic Spatial: SPZ 4",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "SPZ 4 addresses the scale and complexity of current workloads , supporting captures with tens of millions of points and introducing a more robust data model where critical metadata is embedded within the file itself, rather than managed externally."
+        },
+        {
+          "url": "https://www.nianticspatial.com/blog/spz4",
+          "title": "Niantic Spatial: SPZ 4",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We'll be adding SPZ 4 exports to Scaniverse within a few months. We encourage anyone developing an app that imports SPZ to join us in this timeline so we can advance together."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Scaniverse reconstructs one captured place or object into assets; it has no authored configuration that could have named alternatives. Its asset versions are regenerations from a chosen set of scans, not selectable variants of one asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://apps.apple.com/us/app/scaniverse-3d-scanner/id1541433223",
+          "title": "Scaniverse on the App Store",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Scaniverse captures, reconstructs, and localizes physical environments — on your phone, and now in the cloud."
+        },
+        {
+          "url": "https://www.nianticspatial.com/faq/scaniverse",
+          "title": "Niantic Spatial Scaniverse FAQ",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Generate 3D assets (VPS maps, meshes and Gaussian Splats) of large areas in the cloud."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Scaniverse's GLB export follows glTF 2.0, which fixes the encoding of base-colour and emissive texture colour as sRGB, so a receiver of that export can convert it. Missing: the SPZ and PLY splat exports store 8-bit colour values with no colour-space declaration (the SPZ header carries only antialiasing and extension flags), the FBX and USDZ exports have none stated in the Scaniverse documents, and nothing declares an output range. Searched the Scaniverse documentation (overview, quickstart, techniques, advanced tools, 360 camera, migration, troubleshoot), the Scaniverse FAQ and migration FAQ, the capture product page, the USDZ and SPZ 4 posts, and the SPZ README and extensions README at commit affd0ec for colour space, sRGB, linear, gamma, HDR and dynamic range on 2026-10-22; none is declared outside glTF's own rule.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/scaniverse/advanced_tools/",
+          "title": "Scaniverse documentation: Advanced tools",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Supported exports include .ply , .spz , .glb , .fbx , and .usdz ."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The first three components (RGB) MUST be encoded with the sRGB transfer function."
+        },
+        {
+          "url": "https://github.com/nianticlabs/spz/blob/affd0ecea7fbb4c265ee119475af7ee5b2997482/README.md",
+          "title": "SPZ README (commit affd0ec)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Colors are stored as (r, g, b) values, where each color component is represented as an unsigned 8-bit integer."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "Searched the Scaniverse documentation (overview, quickstart, techniques, advanced tools, 360 camera, migration, troubleshoot), the capture product page, the Scaniverse FAQ, the SPZ 4 post, and the SPZ README and extensions README at commit affd0ec for profile, conformance, compatibility, subset and level on 2026-10-22; SPZ is the container Scaniverse writes, and its versions are a compatibility contract between files and readers (an SPZ 4 file is unreadable by older loaders), but no named profile or level lets a file or a reader declare which subset it supports, and the Scaniverse documents name none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/scaniverse/advanced_tools/",
+          "title": "Scaniverse documentation: Advanced tools",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Supported exports include .ply , .spz , .glb , .fbx , and .usdz ."
+        },
+        {
+          "url": "https://www.nianticspatial.com/blog/spz4",
+          "title": "Niantic Spatial: SPZ 4",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Old loaders cannot read SPZ 4 files."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Scaniverse processes scans on the phone or in Niantic's cloud, but it offers no interface through which another party dispatches compute work. It is a capture product, not a graphics-compute platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://apps.apple.com/us/app/scaniverse-3d-scanner/id1541433223",
+          "title": "Scaniverse on the App Store",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Scaniverse captures, reconstructs, and localizes physical environments — on your phone, and now in the cloud."
+        },
+        {
+          "url": "https://www.nianticspatial.com/products/capture",
+          "title": "Capture products, Niantic Spatial",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Photorealistic results: Generate Gaussian Splats and meshes processed efficiently on-device."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "A Scaniverse capture is one asset with no object hierarchy, so there are no scene objects to group. Sites group scans inside the service as hosted administration, not as sets that other systems target.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://apps.apple.com/us/app/scaniverse-3d-scanner/id1541433223",
+          "title": "Scaniverse on the App Store",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Scaniverse captures, reconstructs, and localizes physical environments — on your phone, and now in the cloud."
+        },
+        {
+          "url": "https://www.nianticspatial.com/faq/scaniverse",
+          "title": "Niantic Spatial Scaniverse FAQ",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Team members use the Scaniverse mobile app to scan a site. Multiple people can capture different parts of the same site."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the Scaniverse documentation (overview, quickstart, techniques, advanced tools, 360 camera, migration, troubleshoot), the Scaniverse FAQ and migration FAQ, the capture product page, the USDZ and SPZ 4 posts, and the SPZ README and extensions README at commit affd0ec for watermark, fingerprint, content credentials, C2PA and provenance on 2026-10-22; nothing is documented. No authorship record is written into an export, so there is nothing to recover and no lookup service is offered.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://apps.apple.com/us/app/scaniverse-3d-scanner/id1541433223",
+          "title": "Scaniverse on the App Store",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Combine scans from multiple users and devices into one unified site project"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Scaniverse is a capture and scan-processing service that produces splats and meshes; it is not a content format or player, so effect descriptions for wind, scent or motion fall outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://scaniverse.com/",
+          "title": "Scaniverse (Niantic Spatial Capture page)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Scaniverse has evolved from a market-leading mobile 3D scanning app into a scalable spatial data ingestion service, enabling everyone from creators to field teams to capture and operationalize real-world environments with precision and at scale."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A capture service producing maps, meshes and splats; renderer choice is left to the viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/faq/scaniverse",
+          "title": "Niantic Spatial Scaniverse FAQ",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Generate 3D assets (VPS maps, meshes and Gaussian Splats) of large areas in the cloud."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Scaniverse generates 3D assets from scans; it has no portal and no destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/faq/scaniverse",
+          "title": "Niantic Spatial Scaniverse FAQ",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Generate 3D assets (VPS maps, meshes and Gaussian Splats) of large areas in the cloud."
+        }
+      ]
     }
   ]
 }

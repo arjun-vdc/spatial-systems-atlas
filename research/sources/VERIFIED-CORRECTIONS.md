@@ -3,8 +3,8 @@
 Sections 1 to 13 were checked 2026-08-20 against primary sources and applied to the board and to
 `model/COMPANION.md` at that time.
 
-**Sections 14 to 20 were merged 2026-08-24 from six separate re-verification passes** (WO-006 parts
-A, B and C, WO-010, WO-012, and the platform scoring pass). Those passes found claims in sections 1
+**Sections 14 to 20 were merged 2026-08-24 from six separate re-verification passes** (passes A, B and C,
+D, E and the platform scoring pass). Those passes found claims in sections 1
 to 13 that were wrong. **Every one of them has been corrected in place above, each marked
 "Corrected 2026-08-24" or "Withdrawn 2026-08-24" at the line where the wrong claim used to sit.**
 Read the marked lines before repeating anything from the earlier sections.
@@ -25,7 +25,7 @@ of multimedia information. It defines audio objects together with room acoustic 
 reverberation, early reflections, occlusion, diffraction and Doppler shift, with listener movement
 in three translation axes on top of three rotation axes.
 
-**Refined 2026-08-24 (WO-006 part C).** The verification test line was written from memory. The
+**Refined 2026-08-24 (re-verification pass C).** The verification test line was written from memory. The
 report itself is ISO/IEC JTC 1/SC 29/WG 6 N0396, dated **2026-01-23**: six laboratories, 56
 listeners after screening, median 84 on a 100-point scale, in the band the test method labels
 excellent. Say the report and its date, not "January 2026".
@@ -50,7 +50,7 @@ citing a catalogue abstract and a summary page.
 **What is genuinely missing, stated narrowly:** a ratified, royalty-free, engine-neutral audio
 extension for the common 3D asset format.
 
-**Corrected 2026-08-24 (WO-006 part B).** This paragraph used to read "That proposal has been open
+**Corrected 2026-08-24 (re-verification pass B).** This paragraph used to read "That proposal has been open
 since 2022-03-31 and is still unmerged", sourced to pull request 2137. **The name that sentence
 carried is not in the registry at any stage.** What the registry's in-progress table actually lists
 is `KHR_audio_graph` at **Proposal** — the earliest stage — in pull request 2421. Do not repeat the
@@ -97,7 +97,7 @@ body project pages, and publisher records. Two sources could not be reached and 
 on them is marked unverified in the underlying result files, not repeated here.
 
 Underlying results:
-`/Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool/.dev/ai/subtask-comms/`
+the maintainers' working notes (not published)
 
 ## 4. Eight claims in our own standards research are wrong
 
@@ -106,7 +106,7 @@ nine needing update, and eight wrong. The eight, with what is actually true:
 
 - **Pose on Earth.** Called a draft seeking uplift. It is an adopted standard. It was already wrong
   when our research was written. This is the one most likely to be caught by someone in a
-  geospatial-adjacent room. **Refined 2026-08-24 (WO-006 part C):** the single date 2023-09-08 was a
+  geospatial-adjacent room. **Refined 2026-08-24 (re-verification pass C):** the single date 2023-09-08 was a
   conflation. The document records **two** dates in its own front matter — approval **2022-06-20**
   and publication **2023-09-08**. State both, or state which one you mean.
 - **The spatial web protocol from the electrical engineering body.** Called a draft with an
@@ -118,7 +118,7 @@ nine needing update, and eight wrong. The eight, with what is actually true:
 - **The tiled 3D format at version 1.1.** Called adopted January 2025 with the specification
   address unknown. It was approved 2022-12-17 and published 2023-01-12 — off by two years. Both
   dates re-confirmed 2026-08-24 from the document's own front matter. **Two corrections to the rest
-  of this bullet, both 2026-08-24 (WO-006 part B) — see section 14 for the full entry.** It is an
+  of this bullet, both 2026-08-24 (re-verification pass B) — see section 14 for the full entry.** It is an
   **OGC Community Standard, not an OGC Implementation Standard**, and the address we published for
   it returned nothing. And the 2.0 sentence was two things run together: version **1.1 already**
   deprecated the four original tile formats in favour of the common asset format, in the published
@@ -132,7 +132,7 @@ nine needing update, and eight wrong. The eight, with what is actually true:
 - **The open avatar format.** Listed at a zero-point version. It has been at 1.0 since 2022-09-22.
   **This bullet used to end: "The matching avatar extension for the common asset format does not
   exist yet: unmerged draft, ratification targeted December 2026." That sentence is withdrawn as of
-  2026-08-24 (WO-006 part B).** There is no avatar extension anywhere in the format's registry — not
+  2026-08-24 (re-verification pass B).** There is no avatar extension anywhere in the format's registry — not
   ratified, not in progress, not vendor. There is no draft to point at, so there is nothing behind
   the December 2026 date and it must not be repeated. What is verifiable is a press item dated
   **2024-10-23** announcing a collaboration between the graphics consortium and the avatar format
@@ -177,7 +177,7 @@ the format's own July 2026 roadmap presentation.
 - **Ratified physics extensions for the common asset format: zero.** The ratified list holds **23**
   entries and none is physics. The ratified specification text contains no physics functionality at
   all; the single occurrence of the word is a naming example.
-  **Corrected 2026-08-24 (WO-006 part B): this line used to say 26. It is 23** — twenty carrying the
+  **Corrected 2026-08-24 (re-verification pass B): this line used to say 26. It is 23** — twenty carrying the
   consortium prefix and three carrying the multi-vendor prefix, ratified after becoming widely used.
   Counted twice from the downloaded registry file. The load-bearing half is untouched: none of the
   23 is physics and none is audio. Only the number changed. Do not say twenty-six.
@@ -232,7 +232,7 @@ document, its working group charters, and its news index.
 - Geometry, materials and physics are separate working groups with separate specifications. **None
   is published.** Their 1.0 releases were described in July 2026 as expected later this year.
 - ~~The physics draft was accepted by vote at the end of October 2025 and targeted for ratification
-  in the second quarter of 2026.~~ **Withdrawn 2026-08-24 (WO-006 part B): neither date could be
+  in the second quarter of 2026.~~ **Withdrawn 2026-08-24 (re-verification pass B): neither date could be
   reached in a primary source on a fresh pass. Do not state a vote date or a ratification quarter
   for that draft.** What survives, and is quoted in the coverage record, is the exclusion itself:
   geometry, materials and physics are outside the published core, and nothing has been published in
@@ -320,7 +320,7 @@ process document, the other body's specification pages, and the registry data it
   **2026-08-12**. The registry states in its own words that it is not an endorsement of any method
   and exists so developers can discover them. The most commonly cited method is a draft in a
   community group with no status header.
-  **Corrected 2026-08-24 (WO-006 part A): this line used to say 268. That count included the table's
+  **Corrected 2026-08-24 (re-verification pass A): this line used to say 268. That count included the table's
   header row.** The correct figure is 267 rows in the table body, counted programmatically from the
   downloaded register. Always date the figure, because it moves.
 - **No ratified recommendation defines a presentation exchange protocol.** The one that exists is a
@@ -336,7 +336,7 @@ that is an acknowledgement that the protocols are future work. A full-text check
 newer identifier draft, found the word handoff zero times, and every occurrence of the word session
 was either an acknowledgements line or a privacy warning about correlation.
 
-**Say this before somebody else does (added 2026-08-24, WO-006 part A).** The "separation of roles"
+**Say this before somebody else does (added 2026-08-24, re-verification pass A).** The "separation of roles"
 sentence sits directly under a line reading **"This section is non-normative."** The sentence is
 real and it is the right point, but anyone who opens the specification will see that line above it.
 Lead with it. Quoting a non-normative sentence as your evidence, and being told so, is an avoidable
@@ -367,7 +367,7 @@ says it defines requirements for a set of implementation specifications **to be 
 twice over a reference model, and the specifications it calls for are unwritten. Corroborating: no
 spatial or hyperspace scheme appears among the 433 registered address schemes, and its identifier
 method is not among the **267** registered ones (register dated 2026-08-12).
-**Corrected 2026-08-24 (WO-006 part A): this line used to say 268. The old count included a header
+**Corrected 2026-08-24 (re-verification pass A): this line used to say 268. The old count included a header
 row.** Both facts were re-checked independently that day: the method is still absent from the
 register.
 
@@ -376,7 +376,7 @@ register.
 publication date, the only item on sale is the approved draft, and no registration record exists.
 Say board-approved. Do not say published, and do not give a publication date.
 
-**One date trap added 2026-08-24 (WO-006 part A).** The originating foundation's own page says the
+**One date trap added 2026-08-24 (re-verification pass A).** The originating foundation's own page says the
 standard was approved on **2025-05-29**. The standards body's catalogue record says board approval
 **2025-05-28**. One day apart, two official sources. **Cite the catalogue record.** If somebody in
 the room quotes the 29th, they are reading the foundation's page, and that is worth knowing before
@@ -551,21 +551,17 @@ portal does not standardize the name inside it.
 
 # Merged 2026-08-24 — six re-verification passes
 
-Six workers re-read the primary sources behind this map. None of them was allowed to write this
-file, so their corrections sat in five result artifacts and four coverage records until now. This is
+Six independent passes re-read the primary sources behind this map. Their corrections were first
+recorded in five result notes and four coverage records, not in this file. This is
 the merge. Each entry gives the old claim, the new claim, and where it came from.
 
-Sources merged, all under `.dev/ai/subtask-comms/`:
-`2026-08-24-wo-006a-identity-provenance-rows-result.md`,
-`2026-08-24-wo-006b-asset-geospatial-rows-result.md`,
-`2026-08-24-wo-006c-pose-and-mpeg-rows-result.md`,
-`2026-08-24-wo-010-two-pages-and-portaling-result.md`,
-`2026-08-24-wo-012-universal-manifest-claim-recheck-result.md`,
+Sources merged, from the maintainers' working notes (not published):
+the result notes of passes A to E (2026-08-24),
 and the platform coverage records `infrastructure-wg/data/coverage/{vrchat,resonite,roblox,recroom}.json`.
 
 ## 14. The asset and geospatial formats
 
-Source: WO-006 part B, which rewrote the four coverage records for the common asset format, the
+Source: re-verification pass B, which rewrote the four coverage records for the common asset format, the
 scene description standard, the older 3D scene standard and the tiled geospatial format. 110 rows,
 131 quotes, every quote checked as an exact substring of a downloaded primary source.
 
@@ -583,7 +579,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   link fails in front of them at the same moment.
 - **Applied 2026-08-24:** `data/subjects.csv`, `3dtiles` row — address corrected and the name now
   carries "(Community Standard)". See section 20 for the exact line.
-- **Source:** WO-006 part B item 1; the steward verified both the 404 and the front matter
+- **Source:** re-verification pass B item 1; the maintainers verified both the 404 and the front matter
   first-hand.
 
 ### 14.2 Ratified extensions to the common asset format: 23, not 26
@@ -592,7 +588,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
 - **New:** **23** — twenty with the consortium prefix, three with the multi-vendor prefix, ratified
   after becoming widely used. Counted twice from the downloaded registry.
 - **Unaffected:** none of the 23 is physics and none is audio. Only the number changed.
-- **Source:** WO-006 part B item 2. Corrected in place in section 7.
+- **Source:** re-verification pass B item 2. Corrected in place in section 7.
 
 ### 14.3 The audio proposal we named is not the one that exists
 
@@ -601,7 +597,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   at **Proposal**, the earliest stage, in pull request 2421.
 - **Stronger replacement fact:** the word "audio" does not occur once in the body of the glTF 2.0
   specification. The seven occurrences in the published file are page styling.
-- **Source:** WO-006 part B item 3. Corrected in place in section 1.
+- **Source:** re-verification pass B item 3. Corrected in place in section 1.
 
 ### 14.4 There is no avatar extension for the common asset format, at any stage
 
@@ -610,7 +606,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   vendor. There is no draft, so the December 2026 date has nothing behind it. What is verifiable is
   a press item dated **2024-10-23** announcing a collaboration with the avatar format consortium
   towards international standardization.
-- **Source:** WO-006 part B item 4. Withdrawn in place in section 4.
+- **Source:** re-verification pass B item 4. Withdrawn in place in section 4.
 
 ### 14.5 The interactivity extension: both halves of the old sentence were true
 
@@ -620,7 +616,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   an open pull request. The submission date is confirmed. The level stays `partial`.
 - **Same picture** for the Gaussian splatting extension: Release Candidate, merged text, announced
   2026-02-03. It defines how to **store** splats, not how to draw them.
-- **Source:** WO-006 part B item 5.
+- **Source:** re-verification pass B item 5.
 
 ### 14.6 The older 3D scene standard was under-scored by a wide margin
 
@@ -645,7 +641,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   deliberately consistent with the common asset format's material, and that converting either way is
   equivalent. That is the clearest worked example on this whole map of two bodies making an exchange
   lossless **on purpose**.
-- **Source:** WO-006 part B item 6.
+- **Source:** re-verification pass B item 6.
 
 ### 14.7 That standard's physics and audio come with two conditions we never stated
 
@@ -658,7 +654,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
     times** in clause 16. The propagation model covers reflection, refraction and absorption against
     surrounding geometry. Nothing specifies what happens to a sound behind a wall. Anyone
     extrapolating from "acoustic rendering" to "occlusion is covered" would be corrected in the room.
-- **Source:** WO-006 part B item 7.
+- **Source:** re-verification pass B item 7.
 
 ### 14.8 That standard lets a file change its unit of length
 
@@ -666,7 +662,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
 - **New:** the base unit of length is metres, but a file may declare a different one with a UNIT
   statement. The common asset format fixes metres with no escape. A reader that assumes metres will
   silently mis-scale content.
-- **Source:** WO-006 part B item 8.
+- **Source:** re-verification pass B item 8.
 
 ### 14.9 The scene description alliance has published exactly one specification — now properly sourced
 
@@ -678,7 +674,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
 - **Also confirmed:** the licence is Attribution-NoDerivatives. In its own words, a derivative work
   made from the deliverable may not be distributed. That constrains how another standards body can
   build on it.
-- **Source:** WO-006 part B item 9.
+- **Source:** re-verification pass B item 9.
 
 ### 14.10 The physics vote and ratification quarter for that specification are not sourced
 
@@ -686,7 +682,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   the second quarter of 2026."
 - **New:** neither date could be reached in a primary source on a fresh pass. **Do not repeat
   either.** The exclusion itself is verified and quoted; the timeline is not.
-- **Source:** WO-006 part B item 10. Withdrawn in place in section 8.
+- **Source:** re-verification pass B item 10. Withdrawn in place in section 8.
 
 ### 14.11 That specification defines no unit of length and no up axis
 
@@ -697,7 +693,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   with nothing in the standard to settle it.
 - **Why it matters:** "adopt it and you get scale interoperability" is false, and this is the
   sharpest single finding in that record.
-- **Source:** WO-006 part B item 11.
+- **Source:** re-verification pass B item 11.
 
 ### 14.12 That specification's conformance tests do not exist yet
 
@@ -706,7 +702,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   tests "will be made available" at the alliance website. Future tense. Related, and quoted in the
   animation row: interpolation methods "are not subject to specification or compliance validation at
   the time of this writing", so two conforming readers may return different values between keys.
-- **Source:** WO-006 part B item 12.
+- **Source:** re-verification pass B item 12.
 
 ### 14.13 The tiled format's 2.0 sentence was two things run together
 
@@ -718,7 +714,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   format's **next, unratified** version, carrying the tile tree itself as an extension to it.
 - **Caveat to keep:** those next-version extensions live on a branch of one company's fork, not in
   the format owner's registry, and that next version is itself not ratified.
-- **Source:** WO-006 part B item 13. Corrected in place in section 4.
+- **Source:** re-verification pass B item 13. Corrected in place in section 4.
 
 ### 14.14 The tiled format never mentions the geospatial pose standard
 
@@ -726,7 +722,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
 - **New:** **zero occurrences** in the full text. Two standards from the same consortium, both about
   placing things on the Earth, with no reference between them. A concrete, checkable gap a working
   group can act on rather than argue about.
-- **Source:** WO-006 part B item 14.
+- **Source:** re-verification pass B item 14.
 
 ### 14.15 The tiled format normatively depends on two extensions its own registry does not list
 
@@ -735,7 +731,7 @@ scene description standard, the older 3D scene standard and the tiled geospatial
   metadata model. Neither name appears anywhere in the format owner's extension registry — not
   ratified, not in progress, not vendor. An approved standard from one body has a normative
   dependency on extensions another body's registry does not carry.
-- **Source:** WO-006 part B item 15.
+- **Source:** re-verification pass B item 15.
 
 ### 14.16 Three short quotes worth having ready
 
@@ -748,11 +744,11 @@ Each settles an argument, and each is exact.
   no isolation model, no budget.
 - The common asset format: *"glTF 2.0 only supports animating node transforms and morph target
   weights."* Useful when someone claims the format carries full animation.
-- **Source:** WO-006 part B.
+- **Source:** re-verification pass B.
 
 ## 15. Identity and provenance
 
-Source: WO-006 part A, which rewrote the four coverage records for the identifier standard, the
+Source: re-verification pass A, which rewrote the four coverage records for the identifier standard, the
 credential data model, the content provenance coalition's specification and the spatial web
 standard. 53 quotes checked, 53 matched.
 
@@ -769,7 +765,7 @@ the specification itself.
 - **New:** **267**. The register is a Group Note dated **2026-08-12**, and 267 is the number of rows
   in its table body. The 268 counted the header row as a method.
 - **Always date it.** The figure moves.
-- **Source:** WO-006 part A. Corrected in place in sections 10 and 11.
+- **Source:** re-verification pass A. Corrected in place in sections 10 and 11.
 
 ### 15.2 Asserting that a specification says nothing is not a quotation
 
@@ -778,7 +774,7 @@ the specification itself.
 - **New:** the row was **removed** rather than dressed up. A full-text search result is evidence,
   but it is not something the specification says, and it cannot carry a `verified` row that claims a
   quotation. The search result itself still stands and is recorded in section 10 of this file.
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.3 The identity specifications do have permission slots — the vocabulary is what is missing
 
@@ -790,7 +786,7 @@ the specification itself.
   permissions as claims. Both are now scored `partial`, quoted.
 - **The sharper sentence:** the **slot exists and the vocabulary does not.** That is more useful in
   a room than "absent", and it cannot be contradicted.
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.4 Verifiable credentials do not require decentralized identifiers
 
@@ -800,7 +796,7 @@ the specification itself.
   2025-05-15. Decentralized identifiers appear as one example among plain identifiers and ordinary
   web addresses. Five recommendations of 2025-05-15 were re-confirmed: the data model, the two
   securing formats, the status list, and controlled identifiers.
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.5 Selective disclosure is the issuer's choice, not the holder's
 
@@ -811,7 +807,7 @@ the specification itself.
   add it to a credential they already hold.**
 - **Why it matters here:** this bears directly on any avatar or wearable credential design where the
   issuer is a platform. The person wearing the credential has no way to narrow it later.
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.6 The provenance specification cannot be embedded in a 3D asset
 
@@ -828,7 +824,7 @@ This is the finding from that pass that matters most to this working group.
   specification provides for external manifests. So a model **can** be covered — as a sidecar file,
   with **nothing in any standard keeping the two together**.
 - **That is a real, specific, fillable gap and it is squarely this group's business.**
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.7 Two things people say that provenance specification carries were removed from it in 2024
 
@@ -847,7 +843,7 @@ This is the finding from that pass that matters most to this working group.
   the room will correct it.
 - **Levels changed with it:** the licence row moved from `partial`/`reported` to
   `via-extension`/`verified`, because a named external assertion is not a partial core feature.
-- **Source:** WO-006 part A.
+- **Source:** re-verification pass A.
 
 ### 15.8 The spatial web rows were claiming a reading of text nobody paid for
 
@@ -858,12 +854,12 @@ This is the finding from that pass that matters most to this working group.
   body** — it comes from the originating foundation's own page, which says the system *will* use a
   particular identifier method. That claim has been moved to a row where it can be sourced, and the
   method re-checked against the register: **it is not registered.**
-- **Source:** WO-006 part A. The date trap and the two-official-records tension that came with it
+- **Source:** re-verification pass A. The date trap and the two-official-records tension that came with it
   are recorded in place in section 11.
 
 ## 16. Pose on Earth, and the two immersive media parts
 
-Source: WO-006 part C, which rewrote the coverage records for the geospatial pose standard, the
+Source: re-verification pass C, which rewrote the coverage records for the geospatial pose standard, the
 immersive audio standard and the draft avatar representation format.
 
 ### 16.1 The geospatial pose standard has a typo in a normative requirement
@@ -877,7 +873,7 @@ immersive audio standard and the draft avatar representation format.
 - **Read literally, the normative rule permits only the north pole.**
 - **Say it before you are asked.** Anyone citing conformance to that standard in a room with
   geospatial people should know this first.
-- **Source:** WO-006 part C; the steward verified the published text first-hand.
+- **Source:** re-verification pass C; the maintainers verified the published text first-hand.
 
 ### 16.2 Two conforming systems can exchange a valid pose and still disagree about where it is
 
@@ -889,7 +885,7 @@ immersive audio standard and the draft avatar representation format.
   **"The interpretation of the contents of these fields is outside the scope of GeoPose."**
 - **The failure mode is now stated, and it is the point:** two conforming systems can exchange a
   valid pose and still disagree about where it is.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.3 The "does not resolve" finding now rests on evidence, not memory
 
@@ -899,7 +895,7 @@ immersive audio standard and the draft avatar representation format.
   review comment resolution.
 - **Also re-confirmed:** the document header reads "Approved", "OGC Standard", "Document stage:
   Approved". Section 4's correction — an adopted standard, not a draft seeking uplift — stands.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.4 Every immersive audio row is `reported`, and the record used to say `verified`
 
@@ -907,7 +903,7 @@ immersive audio standard and the draft avatar representation format.
 - **New:** twelve rows, all `reported`, every one carrying an exact quote from a document that was
   downloaded and read. The normative text is sold, not published, so `verified` was never available.
   This is the exact failure the re-verification pass existed to fix.
-- **Source:** WO-006 part C. Recorded in place in section 1.
+- **Source:** re-verification pass C. Recorded in place in section 1.
 
 ### 16.5 An otherwise complete audio standard has no voice transport
 
@@ -915,7 +911,7 @@ immersive audio standard and the draft avatar representation format.
 - **New:** the standard can render a talker's voice into a scene once it has arrived, and its white
   paper lists social use as a use case. **It defines nothing about carrying live voice between
   participants.** Scored `none`, and this is the honest gap.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.6 That standard describes the room a second time, for sound
 
@@ -927,7 +923,7 @@ immersive audio standard and the draft avatar representation format.
 - **Related trap:** it does define surface "materials", but they are frequency-dependent sound
   energy coefficients — transmitted, reflected, coupled, absorbed. **No friction, no restitution.**
   Do not score a physics cell off the word "material".
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.7 The avatar draft is not the first formal standard to try this
 
@@ -939,7 +935,7 @@ immersive audio standard and the draft avatar representation format.
   it cannot be lost again.
 - **This is the same pattern as sections 1 and 9 of this file:** a cell called empty, filled years
   earlier by work that was passed over. See `DO-NOT-REPEAT.md`.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.8 A quote we were using could not be re-read, so it was dropped
 
@@ -951,7 +947,7 @@ immersive audio standard and the draft avatar representation format.
 - **Stage, restated carefully:** the catalogue record shows stage 40.99 reached **2026-07-31**, the
   catalogue still titles the document a **draft**, and the press release describes the move to the
   final draft stage. Publication is expected at the beginning of 2027. Do not call it published.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.9 The avatar draft transposes its matrices relative to the common asset format
 
@@ -961,7 +957,7 @@ immersive audio standard and the draft avatar representation format.
   and places the avatar wrongly.** The same document flags a second clash: what this draft calls a
   **skeleton** is what the common asset format calls a **skin**.
 - Both traps are documented by the group itself, which makes them safe to raise.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.10 The avatar draft borrows the agreement that would make an avatar portable
 
@@ -976,7 +972,7 @@ immersive audio standard and the draft avatar representation format.
   built for a different one. What is missing is the **body** problem: this maps parameter to
   parameter between tracking frameworks, not motion between differently proportioned bodies, and the
   mapping must be authored in advance.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ### 16.11 Three more things about that draft worth carrying
 
@@ -993,11 +989,11 @@ immersive audio standard and the draft avatar representation format.
   footer says its content is summarized from draft materials and nothing establishes it as official,
   so nothing rests on it. One discrepancy is worth recording: it expands an abbreviation one way and
   the group's own guidelines expand it another, so the expansion is asserted nowhere.
-- **Source:** WO-006 part C.
+- **Source:** re-verification pass C.
 
 ## 17. The board's own coverage claims are contradicted by our own database
 
-Source: WO-010, a read-only review of the narrative board, the generated comparison page and the
+Source: pass D, a read-only review of the narrative board, the generated comparison page and the
 written companion, dated 2026-08-24.
 
 **None of the following has been applied to the board or the companion.** They are recorded here so
@@ -1024,7 +1020,7 @@ the same question and cannot be reconciled by editing a chip.
 - **The true position is split:** licence **metadata** is covered — one format natively, another
   through a ratified extension. Rights **enforcement** is genuinely empty and is reached by nobody.
   The board and the companion collapse both halves into one chip and get one of them wrong.
-- **Source:** WO-010 decision one, item 1.
+- **Source:** pass D decision one, item 1.
 
 ### 17.2 Portal handoff is not empty
 
@@ -1037,7 +1033,7 @@ the same question and cannot be reconciled by editing a chip.
   fail-closed gate deciding whether traversal into a child scope was allowed at all.
 - **The board says carrying state across the jump does not exist. The database records one that was
   built and run.**
-- **Source:** WO-010 decision one, item 2.
+- **Source:** pass D decision one, item 2.
 
 ### 17.3 Addressing: the flat word "Nothing" does not survive
 
@@ -1050,7 +1046,7 @@ the same question and cannot be reconciled by editing a chip.
 - **The companion's careful version survives:** *no ratified standard from an accredited body* does
   both halves. Sections 11, 12 and 13 of this file are unaffected. **The board's flat word "Nothing"
   is what fails.**
-- **Source:** WO-010 decision one, item 3.
+- **Source:** pass D decision one, item 3.
 
 ### 17.4 Portable capability is not empty, and its only occupant is a governance problem
 
@@ -1062,7 +1058,7 @@ the same question and cannot be reconciled by editing a chip.
   shared screen, is the co-chair's own unpublished draft as the sole occupant of a cell the group is
   being asked to adopt. **That is a governance problem before it is a data problem.** Whoever
   presents this must say so first.
-- **Source:** WO-010 decision one, item 4.
+- **Source:** pass D decision one, item 4.
 
 ### 17.5 The two gap lists do not intersect at all
 
@@ -1079,7 +1075,7 @@ This is the finding that makes the rest unavoidable.
 - **Persistence is the clearest case.** It is the emptiest region in the whole database: four
   capabilities, three reached by nobody at all. On the board it is one engine part labelled
   "Replaceable", with no socket in the standards plane at all.
-- **Source:** WO-010 decision one, item 6.
+- **Source:** pass D decision one, item 6.
 
 ### 17.6 Three more chips where the words are right and the picture is wrong
 
@@ -1096,7 +1092,7 @@ This is the finding that makes the rest unavoidable.
   version 4.0 dated December 2023 and no 2008 anywhere. The companion gets this right; the chip
   loses the qualifier. Section 9 of this file states the defensible version: the same clause is
   present in the 2008 and 2013 editions, and the current edition is the fourth, December 2023.
-- **Source:** WO-010 decision one, items 5 and 7.
+- **Source:** pass D decision one, items 5 and 7.
 
 ### 17.7 The "What is safe" list in `DO-NOT-REPEAT.md` was blessing the wrong claims
 
@@ -1105,7 +1101,7 @@ This is the finding that makes the rest unavoidable.
 - **New:** the database was built 2026-08-22 and contradicts precisely those claims. Anyone relying
   on that line today is being told the wrong thing.
 - **Applied 2026-08-24:** that line has been rewritten in `DO-NOT-REPEAT.md`.
-- **Source:** WO-010 decision one, item 8.
+- **Source:** pass D decision one, item 8.
 
 ### 17.8 The gaps view is trustworthy, and the full wall is not yet
 
@@ -1118,7 +1114,7 @@ This is the finding that makes the rest unavoidable.
   an artifact of how much has been scored, not a finding. Show the gaps filter and the collisions.
 - **Scale at that read, 2026-08-24, and it moves:** 89 capabilities in 12 groups, 34 subjects of
   which 29 scored, 1,155 claims, 606 sources, 15 recorded collisions.
-- **Source:** WO-010 decision one.
+- **Source:** pass D decision one.
 
 ### 17.9 The comments on the portaling draft do not exist
 
@@ -1154,8 +1150,8 @@ This is the finding that makes the rest unavoidable.
   on maturity, not a defect in the text, and this project's own ecosystem note already recorded the
   restraint — nobody in this stack publishes a conformance suite, so it is not a criticism we are
   entitled to make loudly.
-- **Nothing has ever been sent to that consortium.** The decision is the owner's alone.
-- **Source:** WO-010 decision two.
+- **Nothing has ever been sent to that consortium.** The decision is the maintainer's alone.
+- **Source:** pass D decision two.
 
 ### 17.10 Unreal Engine 6 has a named game — Rocket League — and still has not shipped
 
@@ -1212,7 +1208,7 @@ version 6 yet; early access is targeted for the end of 2027."*
 which matches Epic's forum announcement and the State of Unreal page of that date. Epic's own
 `unreal-engine-5-8-is-now-available` news post is stamped **June 23, 2026**, and the road-to-UE6
 post **June 22, 2026** — so the register's "the version 6 plan was announced the same day" is true
-of the show, not of the blog posts. Left as found; it was not this order's to change.
+of the show, not of the blog posts. Left as found; it was not this pass's to change.
 
 **The coverage file was checked and nothing in it changed.** In
 `infrastructure-wg/data/coverage/unreal.json`, two of the 79 rows touch this subject. `logic.script`
@@ -1222,7 +1218,7 @@ editor as Epic's sandboxed model and does not depend on version 6 at all. The fi
 summary already says version 6 has not shipped and dates early access to the end of 2027. **No row
 changed, so nothing was rebuilt and nothing was deployed.**
 
-- **Source:** WO-msf-wg-tool-20260904-062.
+- **Source:** the 2026-09-04 maintenance pass.
 
 ### 17.11 The Khronos Gaussian splatting extension is ratified. Two of our own rows said it was not.
 
@@ -1271,12 +1267,12 @@ extension's status line as ratified while the two glTF subjects said it was not.
   bytes), `https://github.com/KhronosGroup/glTF/pull/2628` (HTTP 200; the page's own state field
   reads `MERGED` with `mergedTime` 2026-08-28T17:08:24Z) and
   `https://github.com/KhronosGroup/glTF/tree/draft-2.1/specification/2.1` (HTTP 200).
-- **Source:** WO-msf-wg-tool-20260906-073.
+- **Source:** the 2026-09-06 scoring pass.
 
 ## 18. The platforms — nineteen recorded collisions
 
-Source: the platform scoring pass. That work order died on a transient server error before it could
-write a result artifact, so its findings were read directly out of the four coverage records it had
+Source: the platform scoring pass. That pass stopped on a server error before it could
+record a result, so its findings were read directly out of the four coverage records it had
 already written: `coverage/vrchat.json` (86 rows), `resonite.json` (89), `roblox.json` (89) and
 `recroom.json` (44). Every item below is a row scored **`conflicts`** — the level this project uses
 when a platform's own documented behaviour clashes head-on with a neutral standard. There are
@@ -1400,7 +1396,7 @@ at all, and only for content its creator is permitted to take.
 
 ## 19. The Universal Manifest security claim — the technical core holds, the framing did not
 
-Source: WO-012, a live re-check on 2026-08-24. Recorded here because this project's own steward
+Source: pass E, a live re-check on 2026-08-24. Recorded here because this project's own maintainers
 files were carrying a version of this claim that was wrong in three ways, and because the corrected
 framing changes what anyone should do about it.
 
@@ -1409,31 +1405,31 @@ live at the same two line numbers in the published draft, and on the public rend
 affected text is normative production-candidate content, not a preview section. The file has not
 changed by a single byte since 2026-07-09, which is why line numbers written in July still land.
 Nothing has reached upstream: zero pull requests, zero issues, zero forks, and no commit in the
-owner's private working repository has ever touched that file either.
+maintainer's private working repository has ever touched that file either.
 
-### 19.1 "Upstream" is the owner's own publication surface, not a third party's
+### 19.1 "Upstream" is the maintainer's own publication surface, not a third party's
 
 - **Old:** carried in the register with the weight of an **undisclosed third-party vulnerability**.
-- **New:** every commit in that repository was authored and committed by the owner, and the
+- **New:** every commit in that repository was authored and committed by the maintainer, and the
   authenticated account holds administrator permission on it. **There is no external gatekeeper to
   persuade and no vendor to notify. Structurally this is a self-fix.**
 - **This is the single most important correction to how the claim has been circulating.**
-- **Source:** WO-012 hypothesis 6.
+- **Source:** pass E hypothesis 6.
 
-### 19.2 "The owner has not answered the disclosure question" is stale
+### 19.2 "The maintainer has not answered the disclosure question" is stale
 
-- **Old:** the steward's active-constraint file — "Owner has not answered."
+- **Old:** the maintainers' list of open constraints — "Maintainer has not answered."
 - **New:** **he answered on 2026-08-01 and it was re-recorded 2026-08-03:** quiet fix, ordinary
-  specification-improvement pull request rather than a security advisory, owner submits personally.
-  The steward files were never updated, and that one line is what generated a whole work order.
-- **Source:** WO-012.
+  specification-improvement pull request rather than a security advisory, the maintainer submits personally.
+  The maintainers' notes were never updated, and that one line set off a whole round of work.
+- **Source:** pass E.
 
 ### 19.3 "The claim has never been re-checked" is false
 
-- **Old:** asserted in the work order that commissioned the re-check.
+- **Old:** asserted in the brief that commissioned the re-check.
 - **New:** it had been re-checked **2026-08-23T22:49Z**, about five hours earlier, in a queue this
-  project's steward was not reading — and again on 2026-08-24.
-- **Source:** WO-012.
+  project's maintainers were not reading — and again on 2026-08-24.
+- **Source:** pass E.
 
 ### 19.4 The specification does have a limitations section, and that makes it worse
 
@@ -1443,7 +1439,7 @@ owner's private working repository has ever touched that file either.
   cooperating people rather than one person. It says nothing about replay, transplantation or
   capture. **So the pointer actively works against the reader:** it signals that the limits of the
   mode are documented over there, and the thing documented over there is not this.
-- **Source:** WO-012 hypothesis 3.
+- **Source:** pass E hypothesis 3.
 
 ### 19.5 Cite the newer fix package, not the July prototype
 
@@ -1454,7 +1450,7 @@ owner's private working repository has ever touched that file either.
   project at `docs/rp1-um-security-finding/SPEC-PR-reciprocal-control-v2.md`. It is public-safe,
   names the target file and the exact sections to change, states the problem and rebuts the obvious
   objection. **Point at that one.**
-- **Source:** WO-012 hypothesis 4.
+- **Source:** pass E hypothesis 4.
 
 ### 19.6 State the severity as two answers, because it is two questions
 
@@ -1474,8 +1470,8 @@ owner's private working repository has ever touched that file either.
   reactivation condition. Adoption is.**
 - **One limit on the finding, stated honestly:** a private message to the maintainers would leave no
   trace in any repository and cannot be seen from here. Everything above rules out delivery through
-  code, pull requests and issues. Only the owner can close that gap absolutely.
-- **Source:** WO-012.
+  code, pull requests and issues. Only the maintainer can close that gap absolutely.
+- **Source:** pass E.
 
 ## 20. The subject register — what was changed on 2026-08-24
 
@@ -1503,7 +1499,7 @@ One row changed in `infrastructure-wg/data/subjects.csv`. Nothing else in that f
    "Document type: OGC Community Standard".
 
 The `kind` column stays `standard` and the `status` column stays `ratified`: the schema's closed
-lists have no value for a community standard, and the schema is not this work order's to change.
+lists have no value for a community standard, and the schema is not this pass's to change.
 The name is the only field that can carry the distinction today. **If the schema ever grows a field
 for the class of a standard, this is the row that needs it.**
 

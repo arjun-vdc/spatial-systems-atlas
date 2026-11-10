@@ -1,4 +1,4 @@
-// The row panel — the answer to the owner's "matrix inside a matrix" question.
+// The row panel — the answer to the "matrix inside a matrix" question.
 //
 // Clicking any cell opens the ROW, not the cell: one capability across every
 // compared subject, banded by support level. Each subject expands in place to

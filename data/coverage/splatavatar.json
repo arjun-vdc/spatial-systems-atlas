@@ -3119,6 +3119,308 @@
           "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
         }
       ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "partial",
+      "note": "GaussianAvatars reads camera poses from COLMAP or Synthetic NeRF data sets and reads and writes a per-frame file of face-model parameters (head rotation and translation, neck, jaw and eye poses) that drive a kinematic chain in the FLAME model, and it places every splat in the local frame of its parent mesh triangle. Missing: any pose chain or graph written for other systems to reconstruct consistently; the parameter file is an unnamed NumPy archive with FLAME-specific keys, and the other methods keep their equivalents inside their own checkpoints.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/README.md",
+          "title": "GaussianAvatars source, README (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Path to the source directory containing a COLMAP or Synthetic NeRF data set."
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "'neck_pose': torch.zeros([T, 3]),"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "np.savez(str(npz_path), **flame_param)"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/flame_model/flame.py",
+          "title": "GaussianAvatars source, FLAME model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "neck_kin_chain.append(curr_idx)"
+        },
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We parameterize each splat by a local coordinate frame of a triangle and optimize for explicit displacement offset to obtain a more accurate geometric representation."
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "none",
+      "note": "What these methods write is the splat set plus arrays of pose and shape numbers, with no descriptive properties such as a name, subject, capture date or tool version attached to the avatar or its parts. Searched the READMEs of GaussianAvatars (main), SplattingAvatar (master), ExAvatar (main) and Gaussian Head Avatar (main), the arXiv HTML text of GaussianAvatars v2, SplattingAvatar v1, Relightable Gaussian Codec Avatars v2, ExAvatar v1, Gaussian Head Avatar v2 and S-Avatar v1, and the GaussianAvatars sources at commit 29b0021 (scene/flame_gaussian_model.py, scene/__init__.py, scene/dataset_readers.py, doc/download.md, flame_model/flame.py) for metadata, descriptive properties, annotation, author, header, created, timestamp and description on 2026-10-22; the only matches were a BibTeX author line, a licence header and arXiv page text, none describing an avatar, and the code writes no descriptive record.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "np.savez(str(npz_path), **flame_param)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Each method reconstructs one driveable avatar of one captured person; there is no authored asset with named alternative configurations such as outfits to select between. Changing expression or pose is animation of the same avatar, not a variant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar, arXiv 2403.05087 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh, which renders over 300 FPS on a modern GPU and 30 FPS on a mobile device."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "The papers name privacy and consent as concerns (unauthorised manipulation of a person's likeness; use limited to the consenting subject), but no output carries a use, retention or disclosure declaration and none offers coarsening or pseudonymous publication of the captured face and body data. Searched the READMEs of GaussianAvatars (main), SplattingAvatar (master), ExAvatar and Gaussian Head Avatar, the arXiv HTML text of GaussianAvatars v2, SplattingAvatar v1, Relightable Gaussian Codec Avatars v2, ExAvatar v1, Gaussian Head Avatar v2 and S-Avatar v1, and the GaussianAvatars sources at commit 29b0021 for privacy, consent, ethics, anonymisation, misuse, retention, coarsening and pseudonym on 2026-10-22; the READMEs have no match and the papers contain only the ethics statements quoted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2312.02069v2",
+          "title": "GaussianAvatars, arXiv 2312.02069v2",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Privacy violations are a significant concern, with potential for unauthorized manipulation of people’s likeness."
+        },
+        {
+          "url": "https://arxiv.org/html/2312.03704v2",
+          "title": "Relightable Gaussian Codec Avatars, arXiv 2312.03704v2",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "These effectively limit the use case to driving ones’ own avatars only with their consent."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "None of the methods declares a colour space, transfer function or output range for its splat colours or renders; the one radiometric statement is that the relightable model relies on the linearity of light transport. Searched the READMEs of GaussianAvatars (main), SplattingAvatar (master), ExAvatar and Gaussian Head Avatar, the arXiv HTML text of GaussianAvatars v2, SplattingAvatar v1, Relightable Gaussian Codec Avatars v2, ExAvatar v1, Gaussian Head Avatar v2 and S-Avatar v1, and the GaussianAvatars sources at commit 29b0021 for sRGB, gamma, tone mapping, HDR, colour space and white balance on 2026-10-22; no declaration found.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2312.03704v2",
+          "title": "Relightable Gaussian Codec Avatars, arXiv 2312.03704v2",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Both diffuse and specular representations satisfy the linearity of light transport, hence supporting real-time rendering under both point lights and environment illumination without additional training."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "out-of-scope",
+      "note": "These are research methods that publish a paper and training code, not a format or specification, so there are no named subsets or levels that an implementation and an avatar could both declare.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar, arXiv 2403.05087 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh, which renders over 300 FPS on a modern GPU and 30 FPS on a mobile device."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "The deliverable is a checkpoint for the method's own code, with no asset package into which a preview image could be put or referenced; preview images belong to the library or product that stores the avatar.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars, arXiv 2312.02069 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We introduce GaussianAvatars, a new method to create photorealistic head avatars that are fully controllable in terms of expression, pose, and viewpoint."
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar, arXiv 2403.05087 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "We present SplattingAvatar, a hybrid 3D representation of photorealistic human avatars with Gaussian Splatting embedded on a triangle mesh, which renders over 300 FPS on a modern GPU and 30 FPS on a mobile device."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "No bounding volume is written with an avatar or used to select content before loading it; the only extent computed is a radius taken from the training camera positions that the trainer uses to scale its learning rates. Searched the READMEs of GaussianAvatars (main), SplattingAvatar (master), ExAvatar and Gaussian Head Avatar, the arXiv HTML text of GaussianAvatars v2, SplattingAvatar v1, Relightable Gaussian Codec Avatars v2, ExAvatar v1, Gaussian Head Avatar v2 and S-Avatar v1, and the GaussianAvatars sources at commit 29b0021 for bounding box, bounding volume, bounding sphere, bbox and AABB on 2026-10-22; no bounding volume for the avatar.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/dataset_readers.py",
+          "title": "GaussianAvatars source, dataset readers (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "radius = diagonal * 1.1"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/__init__.py",
+          "title": "GaussianAvatars source, scene (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "self.cameras_extent = scene_info.nerf_normalization[\"radius\"]"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "GaussianAvatars reads a file of named vertex-mask regions of the FLAME face model (such as the lips and the left half) and its viewer can remove all splats bound to chosen faces, so rule-defined sets of splats can be targeted through their parent triangles. Missing: the sets belong to the borrowed face model and are used in code only, nothing is named or exported with the avatar, and no other method documents the equivalent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/doc/download.md",
+          "title": "GaussianAvatars source, download notes (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "- FLAME Vertex Masks -> `flame_model/assets/flame/FLAME_masks.pkl`"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/flame_model/flame.py",
+          "title": "GaussianAvatars source, FLAME model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "vid_lip_outside_ring_upper = self.mask.get_vid_by_region(['lip_outside_ring_upper'], keep_order=True)"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "mask = (self.binding[:, None] != kwargs['disable_fid'][None, :]).all(-1)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "partial",
+      "note": "Each splat is tied to a parent triangle: its position, orientation and scale follow the triangle's centre, orientation matrix and scaling, which is a runtime constraint of one transform on another with defined evaluation, and SplattingAvatar does the same with barycentric coordinates and a displacement. Missing: the relationship is fixed in each method's code, found by training rather than authored, and never written as constraint data another system could evaluate.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "self.face_center = triangles.mean(dim=-2).squeeze(0)"
+        },
+        {
+          "url": "https://github.com/ShenhanQian/GaussianAvatars/blob/29b0021308d45c6dce0b522044a4893e189c7a23/scene/flame_gaussian_model.py",
+          "title": "GaussianAvatars source, FLAME Gaussian model (commit 29b0021)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "self.face_orien_mat, self.face_scaling = compute_face_orientation(verts.squeeze(0), faces.squeeze(0), return_scale=True)"
+        },
+        {
+          "url": "https://arxiv.org/abs/2403.05087",
+          "title": "SplattingAvatar, arXiv 2403.05087 (abstract)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Gaussians are defined by barycentric coordinates and displacement on a triangle mesh as Phong surfaces."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing in the family locates a provenance record from a content fingerprint or watermark, although the papers say avatars of real people can be used to make deceptive content. Searched the READMEs of GaussianAvatars (main), SplattingAvatar (master), ExAvatar and Gaussian Head Avatar, the arXiv HTML text of GaussianAvatars v2, SplattingAvatar v1, Relightable Gaussian Codec Avatars v2, ExAvatar v1, Gaussian Head Avatar v2 and S-Avatar v1, and the GaussianAvatars sources at commit 29b0021 for watermark, fingerprint, provenance, C2PA, digital signature and content credentials on 2026-10-22; no match apart from a negative text prompt in S-Avatar and the arXiv page banner.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/html/2312.02069v2",
+          "title": "GaussianAvatars, arXiv 2312.02069v2",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Moreover the creation of deceptive content, like deepfake videos, can lead to misinformation, defamation and harm to reputations."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "These methods rig splats to a parametric body or face model to make a drivable avatar; the output is visual, with no description of effects for a viewer's effect devices.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars (arXiv 2312.02069), representative of the family",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A research method for rigged splat avatars, not a renderer-selection mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians, arXiv abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The research families build animatable splat avatars; they have no worlds, portals or destination previews.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://arxiv.org/abs/2312.02069",
+          "title": "GaussianAvatars: Photorealistic Head Avatars with Rigged 3D Gaussians, arXiv abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The core idea is a dynamic 3D representation based on 3D Gaussian splats that are rigged to a parametric morphable face model."
+        }
+      ]
     }
   ]
 }

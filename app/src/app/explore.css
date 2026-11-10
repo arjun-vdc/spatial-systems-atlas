@@ -1,0 +1,804 @@
+/* The two candidate displays, Map and Line-up.
+   Everything is scoped under .cv- class names and reads the app's own colour
+   variables (--panel, --ink, --rule, --ac, --bad, --warn and the font
+   variables), so a restyle of those variables carries through. The only new
+   colours are the nine family colours, which the app did not have. */
+
+.cv-root {
+  --fam-msf: #8e3a6d;
+  --fam-standard: #2d5b9a;
+  --fam-project: #5c6b16;
+  --fam-device-platform: #7a4e2a;
+  --fam-game-engine: #6a4ba3;
+  --fam-web-runtime: #2e7a3e;
+  --fam-platform: #c0601a;
+  --fam-world-model: #1b7fa0;
+  --fam-tool: #9a7b0c;
+  --fam-other: #6b6e66;
+  --fam-groups: var(--ink);
+  container-type: inline-size;
+  color: var(--ink);
+}
+
+:root[data-theme='dark'] .cv-root {
+  --fam-msf: #e08bc0;
+  --fam-standard: #8ab4f0;
+  --fam-project: #b9c46a;
+  --fam-device-platform: #d9a47a;
+  --fam-game-engine: #b9a1f0;
+  --fam-web-runtime: #86cf92;
+  --fam-platform: #f2a060;
+  --fam-world-model: #79c9e6;
+  --fam-tool: #e3c55a;
+  --fam-other: #a9aba2;
+}
+
+.cv-fam-msf { --fam: var(--fam-msf); }
+.cv-fam-standard { --fam: var(--fam-standard); }
+.cv-fam-project { --fam: var(--fam-project); }
+.cv-fam-device-platform { --fam: var(--fam-device-platform); }
+.cv-fam-game-engine { --fam: var(--fam-game-engine); }
+.cv-fam-web-runtime { --fam: var(--fam-web-runtime); }
+.cv-fam-platform { --fam: var(--fam-platform); }
+.cv-fam-world-model { --fam: var(--fam-world-model); }
+.cv-fam-tool { --fam: var(--fam-tool); }
+.cv-fam-other { --fam: var(--fam-other); }
+.cv-fam-groups { --fam: var(--fam-groups); }
+
+/* ---------- shared layout: the display and its card at the right ---------- */
+
+.cv-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 14px;
+  align-items: start;
+}
+
+@container (max-width: 860px) {
+  .cv-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cv-stage {
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+}
+
+.cv-eyebrow {
+  font-family: var(--fm);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.cv-keyline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin: 0 0 8px;
+  font-family: var(--fl);
+  font-size: 11.5px;
+  color: var(--soft);
+}
+
+.cv-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.cv-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--fam);
+  flex: 0 0 auto;
+}
+
+/* ---------- the step strip ---------- */
+
+.cv-stops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.cv-stop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  min-width: 0;
+  padding: 7px 12px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cv-stop strong {
+  font-family: var(--fl);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.cv-stop span {
+  font-family: var(--fm);
+  font-size: 10.5px;
+  color: var(--faint);
+}
+
+.cv-stop:hover {
+  border-color: var(--ruleS);
+}
+
+.cv-stop[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.cv-stop[aria-pressed='true'] span {
+  color: var(--bg);
+  opacity: 0.75;
+}
+
+.cv-stop:focus-visible,
+.cv-button:focus-visible,
+.cv-chip:focus-visible,
+.cv-link:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 2px;
+}
+
+/* ---------- the map canvas ---------- */
+
+.cv-canvas {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  border-radius: var(--r);
+}
+
+.cv-canvas.dragging {
+  cursor: grabbing;
+}
+
+.cv-canvas:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: -2px;
+}
+
+.cv-canvas svg {
+  display: block;
+}
+
+.cv-zoom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  border: 1px solid var(--ruleS);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.cv-zoom button {
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 12px;
+  min-width: 32px;
+  height: 28px;
+  padding: 0 8px;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  border-left: 1px solid var(--rule);
+  cursor: pointer;
+}
+
+.cv-zoom button:first-child {
+  border-left: 0;
+}
+
+.cv-zoom button:hover {
+  background: var(--sunk);
+}
+
+.cv-hint {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--faint);
+  pointer-events: none;
+}
+
+.cv-node {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.cv-node:focus {
+  outline: none;
+}
+
+.cv-node .cv-box {
+  fill: color-mix(in srgb, var(--fam) 9%, var(--panel));
+  stroke: color-mix(in srgb, var(--fam) 55%, var(--panel));
+  stroke-width: 1;
+}
+
+.cv-node .cv-bar {
+  fill: var(--fam);
+}
+
+.cv-node .cv-name {
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 11.5px;
+  fill: var(--ink);
+}
+
+.cv-node .cv-sub {
+  font-family: var(--fm);
+  font-size: 9.5px;
+  fill: var(--faint);
+}
+
+.cv-node.group .cv-box {
+  fill: var(--bg);
+  stroke: var(--ruleS);
+}
+
+.cv-node.group .cv-name {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.cv-node:hover .cv-box,
+.cv-node:focus-visible .cv-box {
+  stroke: var(--fam);
+  stroke-width: 1.6;
+}
+
+.cv-node:focus-visible .cv-box {
+  stroke: var(--ac);
+  stroke-width: 2.4;
+}
+
+.cv-node.selected .cv-box {
+  stroke: var(--fam);
+  stroke-width: 2.4;
+}
+
+.cv-node.group.selected .cv-box {
+  stroke: var(--ink);
+}
+
+.cv-node.dim {
+  opacity: 0.22;
+}
+
+.cv-node.off .cv-box {
+  stroke-dasharray: 3 3;
+}
+
+.cv-head {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--fam);
+}
+
+.cv-edge {
+  fill: none;
+  transition: opacity 0.15s;
+}
+
+.cv-edge-label {
+  font-family: var(--fm);
+  font-size: 10px;
+  fill: var(--soft);
+  paint-order: stroke;
+  stroke: var(--panel);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.cv-badge rect {
+  fill: var(--panel);
+  stroke: var(--fam);
+  stroke-width: 1.2;
+}
+
+.cv-badge text {
+  font-family: var(--fm);
+  font-size: 9.5px;
+  font-weight: 700;
+  fill: var(--fam);
+}
+
+.cv-edge-label.bad {
+  fill: var(--bad);
+}
+
+/* ---------- the card ---------- */
+
+.cv-card {
+  position: sticky;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px 16px 14px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--fam, var(--ink));
+  border-radius: var(--r);
+}
+
+@container (max-width: 860px) {
+  .cv-card {
+    position: static;
+  }
+
+  /* Stacked under the display, the card is full width; a 16:10 slot would
+     fill the screen, so the image keeps a modest height. */
+  .cv-image {
+    aspect-ratio: auto;
+    height: 220px;
+  }
+}
+
+.cv-card h2 {
+  margin: 0;
+  font-family: var(--fl);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+.cv-card p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.cv-card .cv-note {
+  font-size: 11.5px;
+  color: var(--faint);
+  font-style: italic;
+}
+
+.cv-stats {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-stats li {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.cv-stats b {
+  font-family: var(--fl);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--fam, var(--ac));
+}
+
+.cv-stats b.bad {
+  color: var(--bad);
+}
+
+.cv-stats span {
+  font-size: 12px;
+  color: var(--soft);
+  line-height: 1.35;
+}
+
+.cv-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cv-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12.5px;
+}
+
+.cv-list li span:last-child {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+.cv-link {
+  font: inherit;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--ac);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cv-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+}
+
+.cv-nav span {
+  font-family: var(--fm);
+  font-size: 11px;
+  color: var(--faint);
+}
+
+.cv-button {
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 12px;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cv-button:hover:not(:disabled) {
+  border-color: var(--ruleS);
+}
+
+.cv-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cv-button.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cv-tag {
+  font-family: var(--fm);
+  font-size: 10.5px;
+  padding: 2px 7px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--soft);
+  background: var(--bg);
+}
+
+.cv-tag.fam {
+  color: var(--fam);
+  border-color: color-mix(in srgb, var(--fam) 60%, var(--panel));
+}
+
+.cv-kv {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 4px 10px;
+  margin: 0;
+  font-size: 12.5px;
+}
+
+.cv-kv dt {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding-top: 2px;
+}
+
+.cv-kv dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- the image slot ---------- */
+
+.cv-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cv-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--fam) 10%, var(--bg));
+}
+
+.cv-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-image.logo {
+  background: #fbfbf8;
+  border: 1px solid var(--rule);
+}
+
+.cv-image.logo img {
+  object-fit: contain;
+  padding: 18px 22px;
+}
+
+.cv-plain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.cv-plain .cv-eyebrow {
+  color: var(--fam);
+  font-weight: 700;
+}
+
+.cv-plain b {
+  font-family: var(--fl);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.9;
+  color: var(--fam);
+}
+
+.cv-plain small {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.cv-credit {
+  font-size: 10.5px;
+  color: var(--faint);
+  line-height: 1.4;
+}
+
+.cv-credit a {
+  color: var(--soft);
+}
+
+/* ---------- the line-up ---------- */
+
+.cv-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 0 10px;
+}
+
+.cv-seg {
+  display: inline-flex;
+  border: 1px solid var(--ruleS);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.cv-seg button {
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 5px 12px;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  border-left: 1px solid var(--ruleS);
+  cursor: pointer;
+}
+
+.cv-seg button:first-child {
+  border-left: 0;
+}
+
+.cv-seg button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.cv-seg button:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: -4px;
+}
+
+.cv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cv-root .cv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 11.5px;
+  padding: 3px 9px 3px 7px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.cv-root .cv-chip[aria-pressed='true'] {
+  background: var(--panel);
+  color: var(--ink);
+  border-color: var(--ruleS);
+}
+
+.cv-chip .cv-swatch {
+  border-radius: 50%;
+}
+
+.cv-root .cv-chip[aria-pressed='false'] {
+  color: var(--faint);
+}
+
+.cv-chip[aria-pressed='false'] .cv-swatch {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--fam);
+}
+
+.cv-chip.part .cv-swatch {
+  background: linear-gradient(90deg, var(--fam) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--fam);
+}
+
+.cv-axis text {
+  font-family: var(--fm);
+  font-size: 10px;
+  fill: var(--faint);
+}
+
+.cv-axis line {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.cv-band-name {
+  font-family: var(--fl);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  fill: var(--fam);
+}
+
+.cv-band-sub {
+  font-family: var(--fm);
+  font-size: 9.5px;
+  fill: var(--faint);
+}
+
+.cv-band-rule {
+  stroke: var(--rule);
+}
+
+.cv-dot {
+  cursor: pointer;
+}
+
+.cv-dot:focus {
+  outline: none;
+}
+
+.cv-dot circle.mark {
+  stroke: var(--fam);
+  stroke-width: 2;
+}
+
+.cv-dot text {
+  font-family: var(--fl);
+  font-weight: 600;
+  font-size: 11.5px;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--panel);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.cv-dot text .v {
+  font-family: var(--fm);
+  font-weight: 400;
+  font-size: 10px;
+  fill: var(--faint);
+}
+
+.cv-dot:hover text,
+.cv-dot:focus-visible text {
+  text-decoration: underline;
+}
+
+.cv-dot:focus-visible circle.ring,
+.cv-dot.selected circle.ring {
+  stroke: var(--ink);
+  stroke-width: 2;
+  fill: none;
+}
+
+.cv-dot circle.ring {
+  stroke: transparent;
+  fill: none;
+}
+
+.cv-dot.dim {
+  opacity: 0.3;
+}
+
+.cv-empty-band {
+  font-family: var(--fl);
+  font-size: 11px;
+  font-style: italic;
+  fill: var(--faint);
+}

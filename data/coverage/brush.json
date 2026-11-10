@@ -2829,6 +2829,229 @@
           "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting]"
         }
       ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "Brush writes free-text comment lines into the header of the PLY it exports (tool name, vertical axis, spherical-harmonic degree and render mode) and reads the vertical axis and render mode back on import. These are comment conventions, not declared fields, and there is nothing descriptive such as a title, author or capture date.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/crates/brush-serde/src/export.rs",
+          "title": "Brush source, PLY export (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "let mut comments = vec![\"Exported from Brush\".to_owned()];"
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/crates/brush-serde/src/export.rs",
+          "title": "Brush source, PLY export (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "comments.push(format!(\"SH degree: {sh_degree}\"));"
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/crates/brush-serde/src/import.rs",
+          "title": "Brush source, PLY import (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "let suffix = s.strip_prefix(\"vertical axis: \")?.trim();"
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/CHANGELOG.md",
+          "title": "Brush release notes (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "- Read up-axis from PLY file if it’s included"
+        }
+      ],
+      "direction": "both"
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Brush reconstructs one splat from one dataset; it has no authored asset whose configuration could have named alternatives. The decimated levels it can bake are detail levels written as separate files, not selectable variants of an authored configuration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting]"
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/CHANGELOG.md",
+          "title": "Brush release notes (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Each level exports as its own `.ply` with a `_lodN` suffix."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Brush trains and views on the user's own device, including in a browser tab, and publishes nothing, so disclosure controls on sensed data such as coarsening or retention declarations belong to whatever service uploads or shares the photographs or the result.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting]"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "Brush reads colour from PLY files, but nothing declares a colour space, transfer function or output range for the input images or for the colours in the exported splat; its alpha_mode option only tells the trainer how to treat input alpha. Searched the Brush README, CHANGELOG, brush-serde export.rs and import.rs and brush-dataset config.rs at commit 1388f74 for sRGB, linear, gamma, colour space and transfer on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/CHANGELOG.md",
+          "title": "Brush release notes (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Support r/g/b as color names in ply files"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "out-of-scope",
+      "note": "Brush ships an application and a library, not a specification, so it declares no named subsets or levels that content could be written to. Its file variants (the delta-frame PLY, the compressed PLY) are formats it reads, not contracts it publishes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting]"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "Brush writes PLY files and nothing beside them, and no preview image is packaged or referenced with the output. Searched the Brush README and CHANGELOG, and the export, import, process and training-stream sources at commit 1388f74 for thumbnail, preview, poster and screenshot on 2026-10-22; no thumbnail is produced (the only images it writes are evaluation renders).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/CHANGELOG.md",
+          "title": "Brush release notes (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Each level exports as its own `.ply` with a `_lodN` suffix."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "Brush computes a bounding box over the dataset and uses splat bounds during training, but only internally: none is written into its exported PLY, exposed to a loader, or built into a spatial index that could reject or select content before loading it. Searched the Brush README, CHANGELOG, brush-serde export.rs and import.rs at commit 1388f74 for bound, bbox and aabb on 2026-10-22; only internal training bounds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/CHANGELOG.md",
+          "title": "Brush release notes (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "- Training bounds are now based on the splat bounds instead of the camera bounds"
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/crates/brush-dataset/src/scene.rs",
+          "title": "Brush source, dataset scene (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "pub fn bounds(&self) -> BoundingBox {"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "A trained scene is one flat set of Gaussians with no objects to group, so there are no named or rule-defined sets to target. Grouping would belong to the scene or engine that places the splat.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting]"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Brush records only its own name in the PLY header and nothing locates a provenance record from a content fingerprint or watermark. Searched the Brush README and CHANGELOG, and the brush-serde export, import, quantisation and PLY sources and the training-stream source at commit 1388f74 for watermark, fingerprint, checksum, provenance, C2PA, signature and hash on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/crates/brush-serde/src/export.rs",
+          "title": "Brush source, PLY export (commit 1388f74)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "let mut comments = vec![\"Exported from Brush\".to_owned()];"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Brush is a reconstruction engine that trains Gaussian splats from camera-solved image datasets and views them; it has no role in carrying wind, scent, light or motion-seat effects with content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Brush is a 3D reconstruction engine using [Gaussian splatting](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A reconstruction engine that also works as a splat viewer; its purpose is to train and view splats, not to offer interchangeable renderers with a declared substitute.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74, 2026-10-03), Viewer",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Brush also works well as a splat viewer, including on the web."
+        },
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74, 2026-10-03), Training",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Brush takes in COLMAP data or datasets in the Nerfstudio format."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Brush trains splat models from image data; it has no worlds to link and no portals.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/ArthurBrussee/brush/blob/1388f74c6fe0236f68ee4915564bf00e9d2e3747/README.md",
+          "title": "Brush README (commit 1388f74, 2026-10-03)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Brush takes in COLMAP data or datasets in the Nerfstudio format. Training is fully supported natively, on mobile, and in a browser."
+        }
+      ]
     }
   ]
 }

@@ -2838,6 +2838,481 @@
           "quote": "The list of candidate objects to search for in the scene. This feature is used by ARKit."
         }
       ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "native",
+      "note": "The Stereo Layer component, with its layer description and layer interface, sits in the engine's core Engine module, and it submits separate textures to the headset compositor in their own pass, with a layer type (face-, tracker- or world-locked), a shape, a priority and a size. The submission itself goes through the platform XR plugin, here OpenXR, whose runtime decides which shapes work. The OpenXR page contradicts itself on shapes: one line lists cylinder, equirect and quad, another says only quad is supported in OpenXR, and a note says quad alone works on every runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/openxr-stero-layers-overview-in-unreal-engine",
+          "title": "OpenXR Stereo Layers Overview in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "OpenXR Stereo Layers send a separate texture to the head-mounted display (HMD) and re-project the texture in a separate rendering pass than the rest of the project."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/openxr-stero-layers-overview-in-unreal-engine",
+          "title": "OpenXR Stereo Layers Overview in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Note: The Quad Layer Shape is supported on all OpenXR runtimes. Other Stereo Layer Shapes may not be supported depending on the OpenXr Runtime you are using."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/openxr-stero-layers-overview-in-unreal-engine",
+          "title": "OpenXR Stereo Layers Overview in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Layers with higher priority are rendered on top of layers with lower priority."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/UStereoLayerComponent",
+          "title": "UStereoLayerComponent (Unreal Engine 5.8 API reference)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A geometry layer within the stereo rendered viewport."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/IStereoLayers",
+          "title": "IStereoLayers (Unreal Engine 5.8 API reference)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Structure describing the visual appearance of a single stereo layer"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "via-extension",
+      "note": "Through the OpenXR plugin, a project can read the headset runtime's play area: Get Play Area Bounds returns the size of the largest rectangle in the area for eye-level, floor-level or stage space, and Get Play Area Rect returns its transform and dimensions. The page warns that a runtime may return nothing if it does not implement play-area bounds.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/visualizing-play-area-bounds-in-unreal-engine",
+          "title": "Visualizing Play Area Bounds in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "You can access these bounds in Unreal Engine with the OpenXR APIs ."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/visualizing-play-area-bounds-in-unreal-engine",
+          "title": "Visualizing Play Area Bounds in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Get Play Area Bounds function has three reference spaces it can return: Eye Level , Floor Level , and Stage ."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/BlueprintAPI/Input/XRTracking/GetPlayAreaRect?lang=en-US",
+          "title": "Get Play Area Rect (Unreal Engine 5.8 Blueprint API)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Get the transform and dimensions of the playable area rectangle. Returns false if none currently specified/available."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "via-extension",
+      "note": "The engine's AR layer exposes geo tracking as an interface with states including localizing and localized plus an accuracy value, and the ARKit plugin implements it. The camera-image matching is done by Apple's service on supported iPhones and iPads, not by Unreal, and Epic's own pages do not describe how the pose is recovered.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/AugmentedReality/UARGeoTrackingSupport",
+          "title": "UARGeoTrackingSupport (Unreal Engine 5.8 API reference)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Interface class for Geo tracking related features."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/arpin-overview-in-unreal-engine",
+          "title": "ARPin Overview in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Apple's platform implementation for ARPin in the cloud, ARGeoAnchor , is exposed in Unreal Engine as a subclass of UARTrackedGeometry ."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/argeotrackingconfiguration.json",
+          "title": "ARGeoTrackingConfiguration, Apple ARKit documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "By comparing the device's current camera image with this imagery, the session matches the user's precise geographic location with the scene's local coordinates."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "partial",
+      "note": "The engine can ask the platform whether geo tracking is available at a given longitude and latitude, which lets a client test where the service applies. It is a runtime query to the platform's service, not a declared, published area carried with a dataset or content item, and no frame is stated for it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/AugmentedReality/UARGeoTrackingSupport/CheckGeoTrackingAvailability?lang=en-US",
+          "title": "CheckGeoTrackingAvailability (Unreal Engine 5.8 API reference)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "the async task to check Geo tracking availability at the user's current location. Can return null if the feature is not supported."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/AugmentedReality/UARGeoTrackingSupport/CheckGeoTrackingAvailability?lang=en-US",
+          "title": "CheckGeoTrackingAvailability (Unreal Engine 5.8 API reference)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "the async task to check Geo tracking availability at a specific location. Can return null if the feature is not supported."
+        },
+        {
+          "url": "https://developer.apple.com/tutorials/data/documentation/arkit/argeotrackingconfiguration.json",
+          "title": "ARGeoTrackingConfiguration, Apple ARKit documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Geotracking is available in specific geographic locations."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "partial",
+      "note": "The Georeferencing plugin lets a level state where its origin sits on Earth in a chosen coordinate reference system and converts coordinates between systems, which gives the transform from engine space to Earth frames. It does not declare that a map exists with a version or lifecycle, nor an alignment between two maps of the same place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/georeferencing-a-level-in-unreal-engine",
+          "title": "Georeferencing a Level in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unreal Engine comes with a Georeferencing plugin that you can use to define the level origin coordinates in one specific CRS, and provides functions to convert coordinates between each different CRS."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "via-extension",
+      "note": "Through the Datasmith CAD Importer plugin, the editor reads Industry Foundation Classes building files and creates an actor for each object, named with its IFC type, arranged in a parent-child hierarchy in which sites contain buildings, buildings contain storeys and storeys contain walls, doors and spaces, with each object's properties kept as flat Datasmith metadata. It is import only; the engine has no indoor-space description of its own, and the importer flattens grouped IFC properties into one list.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/importing-ifc-files-into-unreal-engine-using-datasmith",
+          "title": "Importing IFC Files into Unreal Engine using Datasmith (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Datasmith currently supports the IFC2x Editions 2, 3 and 4 format."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/importing-ifc-files-into-unreal-engine-using-datasmith",
+          "title": "Importing IFC Files into Unreal Engine using Datasmith (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Datasmith creates an Actor for each object in your IFC scene and gives each Actor a name that matches its corresponding object, prefaced by the object's IFC type."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/importing-ifc-files-into-unreal-engine-using-datasmith",
+          "title": "Importing IFC Files into Unreal Engine using Datasmith (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Activate the Importers > Datasmith CAD Importer plugin for your project."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/importing-ifc-files-into-unreal-engine-using-datasmith",
+          "title": "Importing IFC Files into Unreal Engine using Datasmith (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "sites contain buildings, buildings contain storeys, storeys contain walls, doors, spaces, and so on."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Trigger volumes and actors raise typed begin-overlap and end-overlap events when something enters or leaves a region, so zones with scoped events exist inside a running level. Nothing interchanges the zones, their identifiers or any spatial and temporal summaries outside the engine's own level and Blueprint formats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/BlueprintAPI/AddEvent/Collision/EventActorBeginOverlap?lang=en-US",
+          "title": "Event ActorBeginOverlap (Unreal Engine 5.8 Blueprint API)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Event when this actor overlaps another actor, for example a player walking into a trigger."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "none",
+      "note": "Searched the Unreal Engine 5.8 release notes for gaussian, splat, radiance, nerf, photogrammetry, RealityScan and reconstruct on 2026-10-23; the only hits are renderer terms (radiance caches for lighting, gaussian filters, depth-of-field splats, reconstruction of volumetric clouds), and no radiance-field or Gaussian training feature appears. Making assets inside the editor is in the engine's scope, as the release notes' agentic plugin shows, so training from photographs is not ruled out of scope. Only the release notes were searched, not the rest of the documentation, so the confidence is unverified.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-8-release-notes?lang=en-US",
+          "title": "Unreal Engine 5.8 Release Notes",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This plugin enables agentic AI systems to connect to the Unreal Editor. This allows these systems to understand the engine and the project, as well as helping users build assets or systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "none",
+      "note": "The 5.8 release notes describe a plugin that lets outside agentic AI systems drive the editor and help users build assets, but no engine feature makes a three-dimensional object from a text or image prompt. Searched the Unreal Engine 5.8 release notes and the Unreal MCP page for text-to-3D, image-to-3D, generative, from a prompt and from an image, and the AI Features, Tools, and Plugins page for generat, text-to and prompt on 2026-10-22; no match.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-8-release-notes?lang=en-US",
+          "title": "Unreal Engine 5.8 Release Notes",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This plugin enables agentic AI systems to connect to the Unreal Editor. This allows these systems to understand the engine and the project, as well as helping users build assets or systems."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Searched the Unreal Engine 5.8 Augmented Reality Overview, the UARSessionConfig and UARGeoTrackingSupport API references and the Online Subsystem EOS plugin page for privacy, permission, consent, anonymous, pseudonymous, coarse and retention on 2026-10-22; none describes spatial coarsening, payload use or retention declarations, or restricted pose publication for sensed data. The Epic page on the OpenXR plugin returned no readable text, so the headset side was not searched.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/augmented-reality-overview-in-unreal-engine",
+          "title": "Augmented Reality Overview in Unreal Engine (Unreal Engine 5.8 documentation)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The unified AR framework includes support for basic AR functionality like Alignment, Light Estimation, Pinning, Session State, Trace Results, and Tracking."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "via-extension",
+      "note": "The Epic Online Services Auth and Connect interfaces, reached through the EOS SDK that ships with the engine and the Online Subsystem EOS plugin, define their ID tokens as a header and a payload of named, typed claims with stated validation steps. The vocabulary belongs to Epic's identity service rather than to the engine, whose own pages say only that the external auth token is on most platforms an OpenId token.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/online-subsystem-eos-plugin-in-unreal-engine",
+          "title": "Online Subsystem EOS Plugin in Unreal Engine",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Unreal Engine is distributed with a copy of the EOS SDK, so you do not need to download the EOS SDK separately if you want to use the EOS SDK version included with Unreal Engine."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/auth-interface/auth-reference",
+          "title": "Auth Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Epic Account ID of the authenticated player."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/eos-fundamentals/connect-interface/connect-reference",
+          "title": "Connect Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "ID Tokens are part of the OpenID Connect protocol and can be used to verify a player's identity on the server side."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/auth-interface/retrieve-and-validate-id-tokens",
+          "title": "Retrieve and Validate ID Tokens, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "The EOS SDK and other support libraries take care of the needed steps for securely validating the ID Token before its containing claims can be securely trusted."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/auth-interface-in-unreal-engine",
+          "title": "Auth Interface in Unreal Engine",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "On most platforms, this token is an OpenId token, which provides a guarantee of user identity."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Epic's identity service publishes a key-set address for checking its ID tokens, says the keys may rotate at any time while a key for a given key id never changes, and the EOS SDK that ships with the engine verifies tokens against it. Missing: any rule for revoking or recovering the issuer's signing keys or a player's own keys, and none of this appears in the engine's own pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/online-subsystem-eos-plugin-in-unreal-engine",
+          "title": "Online Subsystem EOS Plugin in Unreal Engine",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Unreal Engine is distributed with a copy of the EOS SDK, so you do not need to download the EOS SDK separately if you want to use the EOS SDK version included with Unreal Engine."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/auth-interface/retrieve-and-validate-id-tokens",
+          "title": "Retrieve and Validate ID Tokens, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Verify the JWT signature against the expected public certificate using the JWKS endpoint hosted by Epic Online Services."
+        },
+        {
+          "url": "https://api.epicgames.dev/epic/oauth/v2/.well-known/openid-configuration",
+          "title": "Epic Online Services OpenID Connect discovery document",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "\"jwks_uri\":\"https://api.epicgames.dev/epic/oauth/v2/.well-known/jwks.json\""
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/web-api-ref/authentication",
+          "title": "Auth Web APIs, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "While the keys are not changed frequently, it is possible that they are rotated at any time."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/web-api-ref/authentication",
+          "title": "Auth Web APIs, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "While the keys may rotate, a key for a given key ID will not change."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "partial",
+      "note": "The engine's Auth interface raises an event when a user's login status changes, and Epic's identity service adds a backend notice when access is revoked and a token info endpoint for checking access and refresh tokens online. Missing: a status check for an issued ID token, whose documented validation covers signature, issuer, times and audience only, and any wrapper for the token info endpoint in the engine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/auth-interface-in-unreal-engine",
+          "title": "Auth Interface in Unreal Engine",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Event triggers as a result of a change in user login status."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/eos-fundamentals/connect-interface/connect-reference",
+          "title": "Connect Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "This only occurs if the expiration notification is ignored, the external provider credentials are unable to refresh the access token, or the access is revoked explicitly by the backend service for some administrative reason."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/web-api-ref/authentication",
+          "title": "Auth Web APIs, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "If offline verification is not an option, you can perform an online verification by calling the token info endpoint with a valid access token."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/web-api-ref/authentication",
+          "title": "Auth Web APIs, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Both access tokens and refresh tokens can be verified using this endpoint."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "partial",
+      "note": "Epic's ID tokens say how the player signed in, through an external account type and platform claim, Connect tokens add a device type that can confirm a real console, and Epic's identity service lists two authentication assurance levels. Missing: any assurance level claim (the advertised aal1 and aal2 values do not appear in the documented payloads), and no engine page says a game receives the service's levels.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/accounts-and-social/eos-epic-account-services/auth-interface/auth-reference",
+          "title": "Auth Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "External account type. This optional claim will be present if the player has signed in to their Epic Games account using external account credentials (for example, through local platform authentication)."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/eos-fundamentals/connect-interface/connect-reference",
+          "title": "Connect Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Can be used to securely verify that the player is connected through a real Console device."
+        },
+        {
+          "url": "https://api.epicgames.dev/epic/oauth/v2/.well-known/openid-configuration",
+          "title": "Epic Online Services OpenID Connect discovery document",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "\"acr_values_supported\":[\"urn:epic:loa:aal1\",\"urn:epic:loa:aal2\"]"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "partial",
+      "note": "A Product User ID is described as a unique ID for each product under the same organization, and Epic's identity service lists pairwise subject identifiers among the types it supports. Missing: a statement of which identifiers a game receives are pairwise and of the correlation risks that remain, such as the linked accounts Epic keeps together at organization level.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/eos-fundamentals/connect-interface/connect-reference",
+          "title": "Connect Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "This Product User ID is a unique ID for each product under the same organization."
+        },
+        {
+          "url": "https://dev.epicgames.com/docs/epic-online-services/eos-fundamentals/connect-interface/connect-reference",
+          "title": "Connect Interface Reference, Epic Online Services Developer",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Because the keychain of a player's linked external accounts is managed at the Organization level, the Accounts dashboard is next to the Organization management menu items."
+        },
+        {
+          "url": "https://api.epicgames.dev/epic/oauth/v2/.well-known/openid-configuration",
+          "title": "Epic Online Services OpenID Connect discovery document",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "\"subject_types_supported\":[\"public\",\"pairwise\"]"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "none",
+      "note": "Searched 3,614 pages of the Unreal Engine 5.8 documentation guides, 909 Online Services API reference pages (interface, common and Epic Online Services game services modules) and 356 Epic Online Services developer pages on 2026-10-25 for receipt, signed record, signed statement, digital signature, non-repudiation, audit log and attestation; no page describes a machine-readable account of a recipient's evaluation of an identity claim with an identified signature, and the receipt hits are purchase receipts scored under the commerce receipt row. The rest of the engine's API reference was not searched, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/auth-interface-in-unreal-engine",
+          "title": "Auth Interface in Unreal Engine",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Users need to prove their identity and allow for authentication session tracking when connecting to a game server or peer-to-peer network."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "partial",
+      "note": "Light and other DMX stage-effect fixtures such as fog machines and lasers, through the DMX Engine and DMX Protocol plugins: fixture types described by GDTF files carry device capabilities and the engine sends DMX to physical fixtures. Missing: an effect description that travels with the content as intent, wind, scent, heat or motion-seat effects, and adaptation to whatever devices a viewer happens to own, since fixtures are patched by the author for live events and installations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/unreal-engine/dmx-in-unreal-engine",
+          "title": "DMX in Unreal Engine (Unreal Engine 5.8 Documentation)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The DMX Plugin enables Unreal Engine use for live events and permanent digital installations."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/create-a-dmx-library-and-add-fixture-patches-in-unreal-engine",
+          "title": "DMX Library and Patching (Unreal Engine 5.8 Documentation)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Each fixture has a set of attributes or channels that are predefined on the hardware level."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/create-a-dmx-library-and-add-fixture-patches-in-unreal-engine",
+          "title": "DMX Library and Patching (Unreal Engine 5.8 Documentation)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Most of the time, manufacturers have created properly crafted signature files for their fixtures following the GDTF specifications that Unreal Engine also supports."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/unreal-engine/create-a-dmx-library-and-add-fixture-patches-in-unreal-engine",
+          "title": "DMX Library and Patching (Unreal Engine 5.8 Documentation)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Lights are the most common type of DMX fixture, but many stage special effects machines, like lasers and fog machines, are also fixtures."
+        }
+      ]
     }
   ]
 }

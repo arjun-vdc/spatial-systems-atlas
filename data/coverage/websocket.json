@@ -1,0 +1,3908 @@
+{
+  "subject_id": "websocket",
+  "summary": "The WebSocket Protocol is an Internet standard that lets a program, usually web page code running in a browser, hold a two-way connection with a server that has agreed to it. It specifies an opening handshake that starts as an ordinary web request, a message framing layer over the Transmission Control Protocol, address forms for plain and encrypted connections, and a check of the page origin. It leaves everything above the connection to others: what the messages mean is left to named application protocols called subprotocols, and how a client proves who it is is left to ordinary web mechanisms. It offers registered extensions and subprotocols and a version number agreed during the handshake. A trap for a standards audience is that it carries text and binary messages between two endpoints and nothing more, so it says nothing about worlds, shared state, media or identity; a system that uses it still has to define all of those itself.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar body format is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar skeleton standard is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression standard is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Attachments and wearables is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Avatar to identity binding is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat data interchange format is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video capture and playback is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Multi-view plus depth is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Machine and agent payments is about buying, granting or proving rights to a resource; WebSocket only carries messages and defines no commercial exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Entitlements and licence checks at use is about buying, granting or proving rights to a resource; WebSocket only carries messages and defines no commercial exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "The client states a protocol version number in the handshake and a server that does not understand it refuses and lists the versions it does; subprotocols are versioned by changing their registered name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 4.2.2, Sending the Server's Opening Handshake",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If this version does not match a version understood by the server, the server MUST abort the WebSocket handshake described in this section and instead send an appropriate HTTP error code (such as 426 Upgrade Required) and a |Sec-WebSocket-Version| header field indicating the version(s) the server is capable of understanding."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.9, Subprotocols Using the WebSocket Protocol",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Subprotocols can be versioned in backward-incompatible ways by changing the subprotocol name, e.g., going from \"bookings.example.net\" to \"v2.bookings.example.net\"."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011, full text) for conformance, test suite, test case, testing and interoperability on 2026-11-03; it has a conformance-requirements section on how normative text is read but no test suite or procedure for proving an implementation matches.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 2, Conformance Requirements",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Conformance requirements phrased as algorithms or specific steps MAY be implemented in any manner, so long as the end result is equivalent."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "native",
+      "note": "Extensions are negotiated in the opening handshake by registered name, with reserved opcodes and header bits set aside, and a client may not use an extension the server has not accepted.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 9, Extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebSocket clients MAY request extensions to this specification, and WebSocket servers MAY accept some or all extensions requested by the client."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 9.1, Negotiating Extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Any extension-token used MUST be a registered token (see Section 11.4)."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 9.1, Negotiating Extensions",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Note that the client is only offering to use any advertised extensions and MUST NOT use them unless the server indicates that it wishes to use the extension."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 5.8, Extensibility",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification provides opcodes 0x3 through 0x7 and 0xB through 0xF, the \"Extension data\" field, and the frame-rsv1, frame-rsv2, and frame-rsv3 bits of the frame header for use by extensions."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "out-of-scope",
+      "note": "Asset reference resolution is outside the protocol: it defines no resolution of scene resource identifiers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is outside the protocol: it defines no signalling of a content protection scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Shared and persistent anchors is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and live pose streams is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "Linked pose structures is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Identity root is outside the connection: the protocol names endpoints by address and defines no base identifier for a person, agent or thing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Credential format is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential exchange protocol is left to ordinary web mechanisms: the document does not define how credentials are requested or presented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 10.5, WebSocket Client Authentication",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This protocol doesn't prescribe any particular way that servers can authenticate clients during the WebSocket handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Capability and permission grant is outside the connection: the protocol defines no permission grants; whether to accept a client is the server's own decision.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabulary and schema is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation, revocation and recovery is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status and revocation is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Consent carried with the subject is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive session lifecycle is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Behaviour graphs and interactivity is about world logic or agents; WebSocket carries the messages such logic might exchange but defines none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Agent integration is about world logic or agents; WebSocket carries the messages such logic might exchange but defines none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "State replication is outside the protocol: what state is shared and how often is decided by the application over the connection.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "native",
+      "note": "The protocol is itself a wire protocol: an opening handshake, then message framing over a reliable byte stream, with text and binary message types.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The protocol consists of an opening handshake followed by basic message framing, layered over TCP."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol is designed on the principle that there should be minimal framing (the only framing that exists is to make the protocol frame-based instead of stream-based and to support a distinction between Unicode text and binary frames)."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "partial",
+      "note": "The opening handshake establishes a connection, but how a server authenticates the client is explicitly left to ordinary web mechanisms and nothing about joining a running world is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 4.2.2, Sending the Server's Opening Handshake",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the server chooses to accept the incoming connection, it MUST reply with a valid HTTP response indicating the following."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 10.5, WebSocket Client Authentication",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This protocol doesn't prescribe any particular way that servers can authenticate clients during the WebSocket handshake."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 10.5, WebSocket Client Authentication",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket server can use any client authentication mechanism available to a generic HTTP server, such as cookies, HTTP authentication, or TLS authentication."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Session handoff and portals is outside the protocol: it defines one connection, not moving between worlds with state.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "The document defines the ws and wss address forms (host, optional port, path, query) and their default ports; turning a host name into a reachable machine is left to the general address standard it cites, and no naming of worlds is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 3, WebSocket URIs",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification defines two URI schemes, using the ABNF syntax defined in RFC 5234 [RFC5234], and terminology and ABNF productions defined by the URI specification RFC 3986 [RFC3986]."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 3, WebSocket URIs",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The port component is OPTIONAL; the default for \"ws\" is port 80, while the default for \"wss\" is port 443."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "A server answers the opening handshake by accepting it or by refusing with an ordinary web error status (for example 403 for an unacceptable origin); no validity limit or structured explanation is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 10.2, Origin Considerations",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the origin indicated is unacceptable to the server, then it SHOULD respond to the WebSocket handshake with a reply containing HTTP 403 Forbidden status code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 4.2.2, Sending the Server's Opening Handshake",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If the requested service is not available, the server MUST send an appropriate HTTP error code (such as 404 Not Found) and abort the WebSocket handshake."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended world coupling is outside the protocol: it defines no link causing change between worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Inventory is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "Scene graph model is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Transforms and coordinate convention is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "Asset container format is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Geometry encoding is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Animation encoding is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Skeleton and rig definition is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Units and scale is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "Rights and licence metadata is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Exact and parametric geometry is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Experience containment is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned audio sources is about sound; WebSocket carries bytes or text and defines no audio model, source or coding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatialization model is about sound; WebSocket carries bytes or text and defines no audio model, source or coding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics and reverb is about sound; WebSocket carries bytes or text and defines no audio model, source or coding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Occlusion and obstruction is about sound; WebSocket carries bytes or text and defines no audio model, source or coding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is about sound; WebSocket carries bytes or text and defines no audio model, source or coding.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar level of detail is about the avatar itself; WebSocket only carries messages between two endpoints and defines nothing about what an avatar is.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation from a prompt or an image is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Simulation from a learned model is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Photogrammetric object capture is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Captured-scene streaming is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Control over what gets generated is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Action and control exchange is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic scene imagery is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generation of individual 3D objects is about captured or generated three-dimensional content; WebSocket only carries messages and defines no capture or generation data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts and proofs of purchase is about buying, granting or proving rights to a resource; WebSocket only carries messages and defines no commercial exchange.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "Bundle format is outside the protocol: it defines no packaging of a runnable experience.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Content delivery is outside the protocol: it defines one connection between two endpoints, not delivery of assets at scale.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating is outside the protocol: it defines no review of content before it reaches people.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "A client and server can agree on a named application-level contract (a subprotocol) at the handshake, and on named extensions; the protocol itself defines no named subsets or levels of its own features.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.2, Protocol Overview",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The |Sec-WebSocket-Protocol| request-header field can be used to indicate what subprotocols (application-level protocols layered over the WebSocket Protocol) are acceptable to the client."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 11.5, WebSocket Subprotocol Name Registry",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "WebSocket Subprotocol names are to be subject to the \"First Come First Served\" IANA registration policy [RFC5226]."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchors is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Coverage declaration is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and spatial events is about places on the Earth; WebSocket only carries messages and defines no location or map data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graph is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Rights enforcement is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Assurance and evidence behind a claim is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkability is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Record of what a system decided is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed trust registries is about identity and claims; WebSocket only carries messages, and leaves who a party is to the layers around it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Haptics is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Device capability discovery is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking as input is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Pointing and selection against content is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event-device input is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Physiological signals as input is about user input devices or signals; WebSocket carries what an application sends and defines no input model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "Scripting runtime is about world logic or agents; WebSocket carries the messages such logic might exchange but defines none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent code identity is about world logic or agents; WebSocket carries the messages such logic might exchange but defines none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Agent authoring and publishing interface is about world logic or agents; WebSocket carries the messages such logic might exchange but defines none of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Authority and ownership is outside the protocol: which party decides the truth for an object is the application's choice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Interest management is outside the protocol: what each client receives is the application's choice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Prediction and reconciliation is outside the protocol: hiding latency and reconciling state are done by the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Presence and roster is outside the protocol: it defines no roster of who is where.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Discovery is outside the protocol: a client must already hold the address of the server it connects to.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Clock and time model is outside the protocol: it defines no shared clock or event ordering across participants.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Portal preview is outside the protocol: it defines no portal or preview of a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "World state persistence is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "Content addressing is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Taking a whole world out is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records is about what is stored or kept; WebSocket is a live connection and defines no storage.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid bodies is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft bodies and cloth is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes is about simulated bodies; WebSocket only carries messages and defines no simulation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Rasterization pipeline is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Graphics interface binding is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Material model is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting and radiance fields is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Volumetric and point cloud is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text rendering is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Camera and viewpoint model is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Passthrough and environment blending is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space and dynamic range is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface surfaces is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "General-purpose GPU computation is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Portable shader language is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote (split) rendering is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Non-visual sensory effects is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "Renderer swap and fallback is about drawing a scene; WebSocket only carries messages and defines no rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets and blend shapes is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Scene composition and overrides is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "Provenance and authorship is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "Domain metadata carried with an asset is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview image for an asset is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial index is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "Named sets of objects is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media inside a scene is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Emitter-based effects is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering a stripped provenance record is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative styling carried apart from the content is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable variants of an asset is about describing a scene or asset; WebSocket only carries messages and defines no scene or asset content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Real-world depth is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Real-world lighting estimation is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Usable physical area is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit test against the real world is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is about sensing the real world; WebSocket only carries messages and defines no sensing.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, Section 1.5, Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Other than that, WebSocket adds nothing."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for audio, video, voice, media, codec and streaming on 2026-11-03; no audio format or audio delivery is defined, only a message channel between a script and a host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), 1.5 Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Basically it is intended to be as close to just exposing raw TCP to script as possible given the constraints of the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for audio, video, voice, media and codec on 2026-11-03; no voice transport is defined, only a message channel between a script and a host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), 1.5 Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Basically it is intended to be as close to just exposing raw TCP to script as possible given the constraints of the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for encrypt, cipher, public key, key material and recipient on 2026-11-03; confidentiality is left to the separate TLS layer, and the protocol identifies no recipient key material or algorithms.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), 10.6 Connection Confidentiality and Integrity",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Connection confidentiality and integrity is provided by running the WebSocket Protocol over TLS (wss URIs)."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for sandbox and isolation on 2026-11-03; neither term occurs; the protocol assumes the controlled environment for untrusted code from the host and adds an origin-based security model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The security model used for this is the origin-based security model commonly used by web browsers."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for audio, video, media and codec on 2026-11-03; no live audio or video stream is defined, only a message channel between a script and a host.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), 1.5 Design Philosophy",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Basically it is intended to be as close to just exposing raw TCP to script as possible given the constraints of the Web."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "Searched RFC 6455 (December 2011), full text, for sensor, telemetry, live data and real-time on 2026-11-03; the only hit is the Background sentence naming stock tickers and server-side services in real time as uses, and no binding of world objects to a data source is defined.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), 1.1 Background",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The same technique can be used for a variety of web applications: games, stock tickers, multiuser applications with simultaneous editing, user interfaces exposing server-side services in real time, etc."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6455.txt",
+          "title": "RFC 6455, The WebSocket Protocol (December 2011), Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The WebSocket Protocol enables two-way communication between a client running untrusted code in a controlled environment to a remote host that has opted-in to communications from that code."
+        }
+      ]
+    }
+  ]
+}

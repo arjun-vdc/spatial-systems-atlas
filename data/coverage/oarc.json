@@ -3544,6 +3544,80 @@
           "quote": "The ShapeNet model ID can be carried in `Detection3D.attributes` as a MetaKV, but there is no first-class CAD reference type."
         }
       ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "partial",
+      "note": "SpatialDDS 1.7 carries machine-readable accounts of what a participant decided or did: a map lifecycle event with a human-readable reason, and, in an informative example appendix, task assignment and acceptance messages; the 1.8 draft adds a decline-with-reason convention. No such record identifies a signature or integrity proof of its own, and none is a general receipt for any request.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.7-full.md",
+          "title": "SpatialDDS 1.7 full specification (commit 84220cf), Mapping extension, MapEvent",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "string reason; // e.g., \"merged with map/robot-B after 42 loop closures\""
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.7-full.md",
+          "title": "SpatialDDS 1.7 full specification (commit 84220cf), Agent example (informative)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The assigned agent should respond with TaskStatus(ACCEPTED)."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 draft full specification (commit 84220cf), Appendix M.1",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When an addressee cannot or will not carry out a command, it does not stay silent: it publishes a response carrying a terminal state and a human-readable reason"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "The Open Spatial Computing Platform covers positioning, discovery and addressing of places and content, not effect description or effect-device rendering.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/OpenArCloud/sparcl/blob/a1d536c4f10f8e44f829984be134bcf7a4b27e9d/docs/index.md",
+          "title": "spARcl documentation index (commit a1d536c)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The open spatial computing platform (abbreviated OSCP) defines the major components and most important interfaces required to deliver AR Cloud experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "The cloud platform's published protocol exchanges spatial data over DDS and does not describe renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/main/SpatialDDS-1.7-full.md",
+          "title": "SpatialDDS 1.7 full specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SpatialDDS provides a lightweight, standards-based framework for exchanging real-world spatial data over DDS."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The platform specification covers exchange of spatial data and discovery of spatial services; a portal's preview of another world is not part of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/main/SpatialDDS-1.7-full.md",
+          "title": "SpatialDDS 1.7 full specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SpatialDDS provides a lightweight, standards-based framework for exchanging real-world spatial data over DDS."
+        }
+      ]
     }
   ]
 }

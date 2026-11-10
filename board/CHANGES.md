@@ -51,13 +51,13 @@ C2PA 2.4 carries a depth-map assertion; Rec Room added avatar and creation-data 
     lanes         U1 30  U2 25  U3 29  U4 18  ->  U1 30  U2 26  U3 31  U4 19
 
 Production deployment f088df00. Evidence and per-cell dispositions:
-`.dev/ai/subtask-comms/2026-09-19-21-23-55Z-maintenance-pass-result.md` in the msf-wg-tool repository.
+the maintainers' working notes (not published).
 
 ---
 
 ## 2026-09-06, later still — captured content is first-class, and five capture rows become musts
 
-The owner answered question 5 of `infrastructure-wg/model/INTEROPERABILITY-BOUNDARIES.md`: **yes,
+The maintainer answered question 5 of `infrastructure-wg/model/INTEROPERABILITY-BOUNDARIES.md`: **yes,
 captured content is first-class.** No capability, no subject and no claim changed. What changed is
 the boundary under five rows, and everything downstream of it.
 
@@ -145,7 +145,7 @@ bundles, the same 35 capabilities in the same 68 places, and the same restricted
 document gained is the correction that goes with the wider map: **eighteen rows now rest on a single
 system, not eight**, and six of the eighteen are musts — the same six as before.
 
-Three of the steward's four expectations did not survive the rule, and the boundaries page now says
+Three of the maintainers' four expectations did not survive the rule, and the boundaries page now says
 so in its own section. World sensing's occlusion row is a none, because whether a real wall hides a
 virtual chair is decided on the device that sees the wall. Control over what gets generated is a
 should, not a none, because the specification of the world to make can arrive from another tool as
@@ -307,10 +307,10 @@ account should settle the four Horizon rows.
 
 ### Not done in this pass
 
-Seven proposed rows were parked with their reasons and one was folded into the commerce order, as
-the owner's decision directed. No existing claim was re-scored, so the glTF splat ratification
+Seven proposed rows were parked with their reasons and one was folded into the commerce research task, as
+the maintainer's decision directed. No existing claim was re-scored, so the glTF splat ratification
 contradiction recorded on 2026-09-05 still stands, and this pass adds a third row to it: the splat
-lane read the Khronos extension's status line as ratified. Two model documents still describe the
+research read the Khronos extension's status line as ratified. Two model documents still describe the
 map as 89 capabilities in twelve groups and need bringing up to 117 and fourteen.
 
 ---
@@ -379,10 +379,10 @@ is the map's last true gap.
 
 The glTF rows say the Khronos Gaussian splatting extension is **not ratified**; the new splat
 technique row says it **is**, quoting the extension's own status line as read on 2026-09-04. Both
-rows stand as their lanes wrote them. Settling it is the next pass's job, not this one's.
+rows stand as they were written. Settling it is the next pass's job, not this one's.
 
 ### Not done in this pass
 
-No new capability was added. The eleven lanes made forty-four proposals between them, thirty-eight
-distinct once duplicates are merged by meaning. They are consolidated into one table for the owner
+No new capability was added. The eleven research passes made forty-four proposals between them, thirty-eight
+distinct once duplicates are merged by meaning. They are consolidated into one table for the maintainer
 to decide, and none of it was loaded. The map still has 89 capabilities.

@@ -1,0 +1,136 @@
+/* Candidate identities: self-hosted faces and the few detail rules that tokens
+   alone cannot reach. Every rule here is scoped to :root[data-identity], which
+   main.tsx sets only when the address carries ?identity=a|b|c, so today's
+   look is untouched without it. Faces are declared for all three candidates;
+   a browser downloads a face only when text on screen uses it. All faces are
+   SIL Open Font License 1.1; each folder in public/fonts holds its licence. */
+
+/* ---------- a: Survey sheet ---------- */
+
+@font-face {
+  font-family: 'Ysabeau Office';
+  src: url('/fonts/ysabeau-office/YsabeauOffice-Variable.woff2') format('woff2');
+  font-weight: 1 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ysabeau Office';
+  src: url('/fonts/ysabeau-office/YsabeauOffice-Italic-Variable.woff2') format('woff2');
+  font-weight: 1 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  src: url('/fonts/fira-mono/FiraMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  src: url('/fonts/fira-mono/FiraMono-Medium.woff2') format('woff2');
+  font-weight: 500 900;
+  font-display: swap;
+}
+
+/* ---------- b: Signal code ---------- */
+
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  src: url('/fonts/schibsted-grotesk/SchibstedGrotesk-latin-Variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  src: url('/fonts/schibsted-grotesk/SchibstedGrotesk-latin-ext-Variable.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F,
+    U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---------- c: Flight chart ---------- */
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible/AtkinsonHyperlegible-Bold.woff2') format('woff2');
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('/fonts/intel-one-mono/IntelOneMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('/fonts/intel-one-mono/IntelOneMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Intel One Mono';
+  src: url('/fonts/intel-one-mono/IntelOneMono-Bold.woff2') format('woff2');
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+/* ---------- detail rules, shared by all three ---------- */
+
+/* Figures line up in columns. */
+:root[data-identity] body {
+  font-variant-numeric: var(--num);
+}
+
+/* Selected controls. The app fills a selected chip, switcher segment or primary
+   button with the ink colour; each identity names its own fill instead. When the
+   chosen identity becomes the default, these two rules become the --sel and
+   --selInk tokens in the shell's own styles. */
+:root[data-identity] [style*='background: var(--ink)'] {
+  background: var(--sel) !important;
+  color: var(--selInk) !important;
+}
+
+:root[data-identity] [style*='solid var(--ink)'] {
+  border-color: var(--sel) !important;
+}
+
+/* The "Out of scope" mark keeps a quiet edge, whatever weight the identity
+   gives its card borders. */
+:root[data-identity] [style*='background: var(--sunk)'][style*='border: 1px solid var(--rule)'] {
+  border-color: var(--scopeEdge) !important;
+}
+
+/* Uppercase labels: the identity's face, tracking and weight. Monospace is kept
+   for figures and marks, and no longer used as a label costume. */
+:root[data-identity] [style*='text-transform: uppercase'] {
+  font-family: var(--labelFont) !important;
+  letter-spacing: var(--labelTrack) !important;
+  font-weight: var(--labelWeight) !important;
+}
+
+/* The quiet ones (section names, legend heading, eyebrows) take the label ink. */
+:root[data-identity] [style*='text-transform: uppercase'][style*='color: var(--faint)'] {
+  color: var(--label) !important;
+}

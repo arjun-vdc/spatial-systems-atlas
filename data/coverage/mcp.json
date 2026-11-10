@@ -2654,6 +2654,219 @@
           "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
         }
       ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Only the optional Enterprise-Managed Authorization extension touches claim structure: it points to the claims defined in an IETF draft for the signed identity assertion and adds one rule for the resource claim. MCP itself declares no vocabulary, types or validation schema for claims about a person or agent.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/modelcontextprotocol/ext-auth/blob/fb374c7db2b34f18ca9183882e0beecdf661892b/specification/stable/enterprise-managed-authorization.mdx",
+          "title": "Enterprise-Managed Authorization extension, stable specification (ext-auth fb374c7), section 4.3",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The ID-JAG is a JWT issued and signed by the IdP with the claims defined in [Section 3.1 of draft-ietf-oauth-identity-assertion-authz-grant](https://www.ietf.org/archive/id/draft-ietf-oauth-identity-assertion-authz-grant-04.html#section-3.1)."
+        },
+        {
+          "url": "https://github.com/modelcontextprotocol/ext-auth/blob/fb374c7db2b34f18ca9183882e0beecdf661892b/specification/stable/enterprise-managed-authorization.mdx",
+          "title": "Enterprise-Managed Authorization extension, stable specification (ext-auth fb374c7), section 4.3",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "In this profile, the `resource` claim **MUST** contain the Resource Identifier of the MCP Server if present."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+          "title": "Enterprise-Managed Authorization (MCP extensions)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Map IdP claims to permissions — ID-JAG tokens carry claims (scope and resource information) that your server uses to determine who the employee is and what the employee can access."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Verification material is discovered through published key sets: a client may authenticate with a private-key signed assertion whose key set is described in its metadata document, and the enterprise extension has the authorization server check assertions against the identity provider's key set. No rule covers changing, revoking or recovering identity-control keys; the only rotation rule is for refresh tokens, which are bearer tokens.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/client-registration",
+          "title": "Client Registration (2026-07-28)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Clients MAY use private_key_jwt for client authentication (e.g., for requests to the token endpoint) with appropriate JWKS configuration as described in Section 6.2 of Client ID Metadata Document"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+          "title": "Enterprise-Managed Authorization (MCP extensions)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Validate ID-JAGs issued by the enterprise IdP. This typically means validating JWT signatures against the IdP’s JWKS endpoint and checking the token’s audience, issuer, and expiration."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations",
+          "title": "Authorization Security Considerations (2026-07-28)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "For public clients, authorization servers MUST rotate refresh tokens as described in OAuth 2.1 Section 4.3.1 “Token Endpoint Extension” ."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "none",
+      "note": "Searched the specification 2026-07-28 and the draft, the Enterprise-Managed Authorization and OAuth client credentials extension pages, the ext-auth repository (fb374c7), the enhancement proposals, the registry, community and roadmap pages and the developer documentation in the project's documentation index (362 pages), and the specification repository (80041ab), for assurance, evidence, authentication context, acr, amr, auth_time, personhood and attestation on 2026-10-22; nothing in the protocol or its extensions carries evidence of how an identity claim was established, and the extension's example identity assertion has no such claim. The roadmap lists human-presence attestation only as a topic under discussion.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+          "title": "Enterprise-Managed Authorization (MCP extensions)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "ID-JAG tokens will always contain a subject claim and may additionally contain an email claim that can be used to link the enterprise identity to an existing account in your system."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/development/roadmap",
+          "title": "MCP roadmap, Agent Identity and Enterprise-Ready Security",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Beyond these, several other topics are under discussion and may come into scope as the Working Group forms, including human-presence attestation for distinguishing interactive clients from headless agents and other agent identity concerns."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "partial",
+      "note": "Disclosure is limited by consent and by narrow permissions: hosts must get explicit consent before exposing user data to servers, and clients should request only the scopes they need. Nothing lets a holder reveal part of an identity claim, so the missing part is claim-level selective disclosure.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview), Key Principles",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Hosts must obtain explicit user consent before exposing user data to servers"
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+          "title": "Authorization (2026-07-28)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "MCP clients SHOULD follow the principle of least privilege by requesting only the scopes necessary for their intended operations."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Searched the specification 2026-07-28 and the draft, the Enterprise-Managed Authorization and OAuth client credentials extension pages, the ext-auth repository (fb374c7), the enhancement proposals, the registry, community and roadmap pages and the developer documentation in the project's documentation index (362 pages), and the specification repository (80041ab), for pairwise, unlinkable, correlation, anonymous, pseudonym, stable identifier and linkability on 2026-10-22; the only hits are request-correlation identifiers inside the protocol, and no mechanism or warning concerns correlating a person across servers. The enterprise extension tells servers to use the subject claim as the primary stable identifier and to fall back to the email claim for matching.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+          "title": "Enterprise-Managed Authorization (MCP extensions)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Use the subject claim as the primary stable identifier for the user, and fall back to the email claim for matching against pre-existing accounts that were created before enterprise-managed authorization was configured."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "none",
+      "note": "Searched the specification 2026-07-28 and the draft, the Enterprise-Managed Authorization and OAuth client credentials extension pages, the ext-auth repository (fb374c7), the enhancement proposals, the registry, community and roadmap pages and the developer documentation in the project's documentation index (362 pages), and the specification repository (80041ab), for encrypt, JWE, key agreement, recipient key, public key, end-to-end and confidentiality on 2026-10-22; the only hits concern secure token storage, confidential refresh tokens and a sample opaque state value, and no recipient key material or algorithm is identified for any subject. The specification handles confidential exchanges by keeping them out of the client, not by encrypting to a subject.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization/security-considerations",
+          "title": "Authorization Security Considerations (2026-07-28)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "MCP servers MUST only accept tokens specifically intended for themselves and MUST reject tokens that do not include them in the audience claim or otherwise verify that they are the intended recipient of the token."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation",
+          "title": "Elicitation (2026-07-28)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "URL mode elicitation enables servers to direct users to external URLs for out-of-band interactions that must not pass through the MCP client."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "partial",
+      "note": "Two governed lists of servers exist but neither tells a verifier which parties to accept as a protocol rule: the enterprise extension has the organisation's identity provider keep a registry of approved servers and their policies, and the official Registry has a removal policy but gives no guarantee and is not meant to be read by host applications. Missing are a format for the list, entry meanings, delegation rules and a version or time that applies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+          "title": "Enterprise-Managed Authorization (MCP extensions)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The enterprise IdP maintains a registry of approved MCP servers and the access policies for each."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/about",
+          "title": "The MCP Registry",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The MCP Registry is not intended to be directly consumed by host applications."
+        },
+        {
+          "url": "https://modelcontextprotocol.io/registry/moderation-policy",
+          "title": "MCP Registry Moderation Policy",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The MCP Registry does not make guarantees about moderation, and consumers should assume minimal-to-no moderation."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "MCP connects language-model applications to tools and data; it has no content format for describing sensory effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A protocol linking language-model applications to tools and data has no rendering role.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "MCP connects language-model applications to data and tools; it has no portals between worlds and no previews.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+          "title": "Model Context Protocol specification 2026-07-28 (overview)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Model Context Protocol (MCP) is an open protocol that enables seamless integration between LLM applications and external data sources and tools."
+        }
+      ]
     }
   ]
 }

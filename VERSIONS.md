@@ -22,10 +22,10 @@ rather than a version of its own.
 
 **1.1 — the matrix page.** The tidy-up of 1.0. Was live at
 `https://openspatials.com/msf/map/matrix/`, now a 301 redirect to `/msf/map/`
-(WO-100, 2026-09-18). Also one self-contained file from the same build.
+(2026-09-18). Also one self-contained file from the same build.
 
 **1.2 — the first redesign.** `app/design-candidate/MSF Map - redesign.dc.html`.
-Frozen at the owner's instruction and kept as the record of what changed between
+Frozen at the maintainer's instruction and kept as the record of what changed between
 the two design rounds. Never deployed.
 
 **1.3 — the accepted redesign.** `app/design-candidate/MSF Map - redesign v3.dc.html`.
@@ -54,7 +54,7 @@ The first 1.4 deploy was 1.4.5, on 2026-09-15, as deployment `7ebe4b7f`, at
 `/msf/map/`.
 
 `/msf/map/matrix/` redirects to `/msf/map/` with a 301, since 2026-09-18
-(deployment `8279c9d1`, WO-100). The matrix page was version 1.1, the tidy-up of
+(deployment `8279c9d1`). The matrix page was version 1.1, the tidy-up of
 the original atlas. The current interface's Compare display does everything it
 did, so it was retired the same way the c4 and atlas addresses were: a permanent
 redirect, not a removal, because working-group material links to it.

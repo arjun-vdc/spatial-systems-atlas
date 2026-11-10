@@ -1,0 +1,2725 @@
+{
+  "subject_id": "json-pointer",
+  "summary": "JSON Pointer is a Standards Track document from the Internet Engineering Task Force that defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document. A pointer is evaluated from the root of the document, and it can be written either as a JSON string or as a Uniform Resource Identifier fragment. It does not define what happens when a pointer fails, because the RFC leaves error handling to each application that uses it. A trap for a standards audience: a document being JSON does not mean pointers work as its fragment, since the fragment syntax for the application/json media type is not JSON Pointer, and each media type has to adopt it explicitly.",
+  "coverage": [
+    {
+      "capability_id": "avatar.body",
+      "level": "out-of-scope",
+      "note": "Avatar body format is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "out-of-scope",
+      "note": "Avatar skeleton standard is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "out-of-scope",
+      "note": "Facial expression standard is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "out-of-scope",
+      "note": "Attachments and wearables is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "out-of-scope",
+      "note": "Avatar to identity binding is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "out-of-scope",
+      "note": "Splat data interchange format is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Volumetric video capture and playback is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "out-of-scope",
+      "note": "Point cloud encoding is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Multi-view plus depth is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Time-varying capture is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "out-of-scope",
+      "note": "Machine and agent payments is a matter of payments and entitlements; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "out-of-scope",
+      "note": "Entitlements and licence checks at use is a matter of payments and entitlements; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "out-of-scope",
+      "note": "Versioning and update is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "out-of-scope",
+      "note": "Conformance testing is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "out-of-scope",
+      "note": "Extension mechanism is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "partial",
+      "note": "Evaluating a pointer against the root of a JSON document resolves an identifier to one value inside that document, but the RFC defines no scene resource identifiers, no external resolver or context, and no later access to the referenced resource. Whether a pointer can be used as a fragment depends on the media type, and the RFC leaves error handling to each application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Status of This Memo",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This is an Internet Standards Track document."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 4 Evaluation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Evaluation of a JSON Pointer begins with a reference to the root value of a JSON document and completes with a reference to some value within the document."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 4 Evaluation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Thus, applications of JSON Pointer need to specify how that character is to be handled, if it is to be useful."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 6 URI Fragment Identifier Representation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "In particular, the fragment identifier syntax for application/json is not JSON Pointer."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 5 JSON String Representation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A JSON Pointer can be represented in a JSON string value."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 6 URI Fragment Identifier Representation",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "A JSON Pointer can be represented in a URI fragment identifier by encoding it into octets using UTF-8 [RFC3629], while percent-encoding those characters not allowed by the fragment rule in [RFC3986]."
+        },
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Section 7 Error Handling",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This specification does not define how errors are handled."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "out-of-scope",
+      "note": "Content protection signalling is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Geospatial pose is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Coordinate reference systems is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Shared and persistent anchors is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Tiled terrain and city streaming is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.trajectory",
+      "level": "out-of-scope",
+      "note": "Pose series and live pose streams is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose-graph",
+      "level": "out-of-scope",
+      "note": "Linked pose structures is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "out-of-scope",
+      "note": "Identity root is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "out-of-scope",
+      "note": "Credential format is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "out-of-scope",
+      "note": "Credential exchange protocol is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "out-of-scope",
+      "note": "Capability and permission grant is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "out-of-scope",
+      "note": "Claim vocabulary and schema is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "out-of-scope",
+      "note": "Key rotation, revocation and recovery is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "out-of-scope",
+      "note": "Credential status and revocation is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "out-of-scope",
+      "note": "Consent carried with the subject is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "out-of-scope",
+      "note": "Immersive session lifecycle is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "out-of-scope",
+      "note": "Behaviour graphs and interactivity is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "out-of-scope",
+      "note": "Agent integration is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "out-of-scope",
+      "note": "State replication is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "out-of-scope",
+      "note": "Transport protocol is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "out-of-scope",
+      "note": "Session establishment is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "out-of-scope",
+      "note": "Session handoff and portals is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "out-of-scope",
+      "note": "World addressing and naming is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "out-of-scope",
+      "note": "Deciding whether to admit an arrival is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "out-of-scope",
+      "note": "Unattended world coupling is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "out-of-scope",
+      "note": "Inventory is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "out-of-scope",
+      "note": "Preference portability is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.graph",
+      "level": "out-of-scope",
+      "note": "Scene graph model is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "out-of-scope",
+      "note": "Transforms and coordinate convention is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "out-of-scope",
+      "note": "Asset container format is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "out-of-scope",
+      "note": "Geometry encoding is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "out-of-scope",
+      "note": "Texture encoding is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "out-of-scope",
+      "note": "Material exchange is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "out-of-scope",
+      "note": "Animation encoding is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "out-of-scope",
+      "note": "Skeleton and rig definition is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "out-of-scope",
+      "note": "Units and scale is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "out-of-scope",
+      "note": "Rights and licence metadata is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "out-of-scope",
+      "note": "Exact and parametric geometry is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "out-of-scope",
+      "note": "Voxel volumes is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "out-of-scope",
+      "note": "Experience containment is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "Positioned audio sources is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "out-of-scope",
+      "note": "Spatialization model is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "Room acoustics and reverb is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "Occlusion and obstruction is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "Audio streaming is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "Voice transport is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "out-of-scope",
+      "note": "Sound generated at play time is a matter of sound; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "out-of-scope",
+      "note": "Animation retargeting is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "out-of-scope",
+      "note": "Avatar level of detail is a matter of avatar content; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "World generation from a prompt or an image is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Simulation from a learned model is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Photogrammetric object capture is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Captured-scene streaming is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Novel view synthesis is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Relighting captured content is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Editing a capture after the fact is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Generative editing of a world is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Control over what gets generated is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Deriving conventional assets from a generated scene is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Action and control exchange is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.panorama",
+      "level": "out-of-scope",
+      "note": "Panoramic scene imagery is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Radiance-field reconstruction is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Generation of individual 3D objects is a matter of captured or generated scene data; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "out-of-scope",
+      "note": "Receipts and proofs of purchase is a matter of payments and entitlements; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "out-of-scope",
+      "note": "Bundle format is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "out-of-scope",
+      "note": "Content delivery is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "out-of-scope",
+      "note": "Content review and safety gating is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "out-of-scope",
+      "note": "Named subsets and levels is a matter of how content is packaged, delivered and protected; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Local anchors is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Visual positioning is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Indoor mapping is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Map lifecycle and alignment is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Coverage declaration is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Published zones and spatial events is a matter of places on the Earth; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "out-of-scope",
+      "note": "Selective disclosure is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "out-of-scope",
+      "note": "Reputation and social graph is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "out-of-scope",
+      "note": "Rights enforcement is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.assurance",
+      "level": "out-of-scope",
+      "note": "Assurance and evidence behind a claim is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "out-of-scope",
+      "note": "Pairwise identifiers and unlinkability is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.encryption",
+      "level": "out-of-scope",
+      "note": "Encryption keys and confidential delivery is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "out-of-scope",
+      "note": "Record of what a system decided is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.trust-registry",
+      "level": "out-of-scope",
+      "note": "Governed trust registries is a matter of identity, credentials and consent; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "Controller input is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "Hand tracking is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "Eye tracking is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "Haptics is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "Device capability discovery is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "out-of-scope",
+      "note": "Face and body tracking as input is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "out-of-scope",
+      "note": "Pointing and selection against content is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "out-of-scope",
+      "note": "Text entry is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "out-of-scope",
+      "note": "Musical event-device input is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "out-of-scope",
+      "note": "Physiological signals as input is a matter of devices and sensor input; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "out-of-scope",
+      "note": "Scripting runtime is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "out-of-scope",
+      "note": "Sandboxing and isolation is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "out-of-scope",
+      "note": "Resource budgets is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.namespace",
+      "level": "out-of-scope",
+      "note": "Permanent code identity is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "out-of-scope",
+      "note": "Agent authoring and publishing interface is a matter of world logic, scripting and agents; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "out-of-scope",
+      "note": "Authority and ownership is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "out-of-scope",
+      "note": "Interest management is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "out-of-scope",
+      "note": "Prediction and reconciliation is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "out-of-scope",
+      "note": "Media transport is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "out-of-scope",
+      "note": "Presence and roster is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "out-of-scope",
+      "note": "Discovery is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "out-of-scope",
+      "note": "Clock and time model is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "out-of-scope",
+      "note": "Live data binding is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Portal preview is a matter of network sessions between worlds; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "World state persistence is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "out-of-scope",
+      "note": "Content addressing is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "out-of-scope",
+      "note": "Taking a whole world out is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "out-of-scope",
+      "note": "Activity and learning records is a matter of stored user and world state; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "out-of-scope",
+      "note": "Rigid bodies is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "Collision shapes is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "Joints and constraints is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "Physics materials is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "Deterministic simulation is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "Soft bodies and cloth is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "Trigger volumes is a matter of physical simulation; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "Rasterization pipeline is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "Graphics interface binding is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "out-of-scope",
+      "note": "Material model is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "Lighting and global illumination is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "Post-processing is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "out-of-scope",
+      "note": "Level of detail and streaming order is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "out-of-scope",
+      "note": "Gaussian splatting and radiance fields is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "out-of-scope",
+      "note": "Volumetric and point cloud is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "Text rendering is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "Camera and viewpoint model is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "out-of-scope",
+      "note": "Passthrough and environment blending is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "out-of-scope",
+      "note": "Colour space and dynamic range is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Two-dimensional interface surfaces is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Compositor layers is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "General-purpose GPU computation is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Frame pacing and predicted display time is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Portable shader language is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.remote",
+      "level": "out-of-scope",
+      "note": "Remote (split) rendering is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Non-visual sensory effects is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "Renderer swap and fallback is a matter of drawing a scene; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "out-of-scope",
+      "note": "Morph targets and blend shapes is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "out-of-scope",
+      "note": "Instancing is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.compose",
+      "level": "out-of-scope",
+      "note": "Scene composition and overrides is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "out-of-scope",
+      "note": "Provenance and authorship is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "out-of-scope",
+      "note": "Navigable space and arrival points is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "out-of-scope",
+      "note": "Domain metadata carried with an asset is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "out-of-scope",
+      "note": "Preview image for an asset is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "out-of-scope",
+      "note": "Bounding volumes and spatial index is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "Named sets of objects is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "out-of-scope",
+      "note": "Transform constraints is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "out-of-scope",
+      "note": "Timed media inside a scene is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "out-of-scope",
+      "note": "Emitter-based effects is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Recovering a stripped provenance record is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Declarative styling carried apart from the content is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "Selectable variants of an asset is a matter of scene description; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Real-world reconstruction is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Semantic labelling of the real world is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Real-world depth is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Real-world occlusion is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Real-world lighting estimation is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Marker and image tracking is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Usable physical area is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Hit test against the real world is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Privacy terms on sensed data is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Model-based object tracking is a matter of sensing the real world; this RFC only defines a string syntax for identifying a value inside a JSON document, so the capability falls outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc6901.txt",
+          "title": "RFC 6901, Abstract",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "JSON Pointer defines a string syntax for identifying a specific value within a JavaScript Object Notation (JSON) document."
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,21 @@ import { createRoot } from 'react-dom/client'
 import { adapt, mergeDetail } from './design-model.ts'
 import type { Model } from './design-model.ts'
 import { Shell } from './app/Shell.tsx'
+import { identityCss, readIdentity } from './identity/identity.ts'
+import { PREVIEW } from './preview.ts'
 import './styles.css'
+import './identity/identity.css'
+
+// A candidate visual identity, chosen in the address with ?identity=a|b|c.
+// Without it the page keeps today's look. Preview builds only (src/preview.ts).
+const identity = PREVIEW ? readIdentity(window.location.search) : null
+if (identity) {
+  document.documentElement.dataset.identity = identity
+  const tokens = document.createElement('style')
+  tokens.id = 'identity-tokens'
+  tokens.textContent = identityCss(identity)
+  document.head.append(tokens)
+}
 
 function Root() {
   const [model, setModel] = useState<Model | null>(null)

@@ -3048,6 +3048,247 @@
           "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
         }
       ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "via-extension",
+      "note": "On the glTF route, KHR_xmp_json_ld attaches standard XMP descriptive metadata (attribution, licensing, creation date) to the asset, a scene, a node or a mesh holding the splats. The standalone formats are thin: SOG declares an optional tool and version block and an optional training-model tag, and PLY has only informal header comments that tools spell differently (Brush and Postshot name the same antialiasing flag two ways).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Metadata is used to transmit information (such as attribution, licensing, creation date) about the glTF asset."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "XMP metadata packets can then be referenced from glTF objects of type: `asset`, `scene`, `node`, `mesh`, `material`, `image`, `animation`."
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/sog/",
+          "title": "SOG format, PlayCanvas user manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "asset ? : { // Optional tool/version metadata"
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/sog/",
+          "title": "SOG format, PlayCanvas user manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "model ? : \"antialiased\" | \"2dgs\" ; // Optional. How the scene was trained; omitted for ordinary gaussians"
+        },
+        {
+          "url": "https://github.com/playcanvas/splat-transform/blob/4f90012be983078010d631fa0572baa99d5c1965/README.md",
+          "title": "SplatTransform README, PlayCanvas (commit 4f90012)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "or Postshot's `comment antialiased 0 | 1` (last one wins)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "No splat format offers named alternatives of a scene with a selection mechanism, and the one glTF mechanism, KHR_materials_variants, switches materials, which the splat extension requires to be ignored. Searched the PlayCanvas PLY, SOG, Streamed SOG and format-index pages, the SPZ README and extensions README (commit affd0ec), and the KHR_gaussian_splatting and KHR_xmp_json_ld READMEs (glTF commit 7cee0fc) for variant on 2026-10-22; the only hit is SOG's 'Bundled variant', a packaging form.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_materials_variants/README.md",
+          "title": "KHR_materials_variants, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This extension allows for a compact glTF representation of multiple material variants of an asset, structured to allow low-latency switching at runtime."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unless specified otherwise by additional Gaussian splats extensions, the glTF material referenced from the mesh primitive (if any) MUST be ignored for splat rendering."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Splat files are made from photographs of real places and PLY is a format for 3D scanner data, and the glTF route can carry free-form rights restrictions through the XMP rights namespace. Missing: any sensed-data disclosure control, such as coarsening, retention declarations or pseudonymous publication, in any of the five formats (the format pages, SPZ READMEs and glTF extension READMEs searched on 2026-10-22 for privacy, anonymisation, consent, retention, redaction and blur have no match).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/ply/",
+          "title": "The PLY Format, PlayCanvas user manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "PLY is a simple, flexible file format originally designed by Stanford University for storing 3D scanner data."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Legal restrictions associated with a resource"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "On the glTF route an asset declares its contract by listing in the top-level extensionsRequired array the extensions a reader must support, and Streamed SOG files carry a format version that readers are told to reject when it is greater than they know, so a reader can tell whether it can load a file. Missing: any named subset or level with stated requirements that content and an implementation could both claim; PLY, SOG, SPZ and the glTF extension define none, and the levels in Streamed SOG are levels of detail inside one scene, not conformance levels. Searched the KHR_gaussian_splatting README (glTF commit 7cee0fc), the glTF 2.0 specification, the PlayCanvas PLY, SOG and Streamed SOG pages and the SPZ README (main) for profile, level and subset on 2026-10-22; no named profile or conformance level. Context only, outside this record's version boundary and not scored: MPEG has an amendment to its video-based point cloud standard at draft stage that defines a profile for Gaussian splats.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting extension (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Other extensions that depend on this extension such as 3D Gaussian splatting compression extensions MAY require that this extension be included in `extensionsRequired`."
+        },
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 Specification, section 3.12 Specifying Extensions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "All glTF extensions required to load and/or render an asset MUST be listed in the top-level extensionsRequired array"
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/streamed-sog/",
+          "title": "PlayCanvas documentation, Streamed SOG format",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Readers should reject files with a greater major version."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "On the glTF route, KHR_xmp_json_ld recommends the XMP thumbnail namespace, so a preview image can ride in the metadata packet, and the PlayCanvas converter can render one WebP still from a camera view as a separate file. Missing: a preview property or packaged preview in PLY, SOG, Streamed SOG or SPZ, and the glTF recommendation is not normative (the format pages and READMEs searched on 2026-10-22 for thumbnail, preview and poster have no packaged preview).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "we recommend glTF creators to use the following preferred list of namespace prefixes and URIs."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_xmp_json_ld/README.md",
+          "title": "KHR_xmp_json_ld, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "xmp:Thumbnails"
+        },
+        {
+          "url": "https://github.com/playcanvas/splat-transform/blob/4f90012be983078010d631fa0572baa99d5c1965/README.md",
+          "title": "SplatTransform README, PlayCanvas (commit 4f90012)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Lossless WebP image rendered from a camera view via GPU rasterizer"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "On the glTF route, nodes gather child nodes and a splat primitive sits under one, so a group can be addressed in the node tree, and Streamed SOG keeps one named environment set apart from the main scene. Missing: named or rule-defined sets of splats or scene objects in PLY, SOG or SPZ, which are single flat bags with no labels to select by.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+          "title": "glTF 2.0 specification",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The node hierarchy MUST be a set of disjoint strict trees."
+        },
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/7cee0fcddd5730e90d488bfb5aa2e52171483dde/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification (glTF commit 7cee0fc)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The global transformation matrix of the node containing a mesh with splat primitives SHOULD conform to all of the following conditions:"
+        },
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/streamed-sog/",
+          "title": "Streamed SOG, PlayCanvas user manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "environment ? : string ; // Relative path to the environment SOG's meta.json; omitted if none"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "The formats carry at most a generator string, and nothing locates a provenance record from a content fingerprint or watermark when the file is separated from its source. Searched the PlayCanvas PLY, SOG, Streamed SOG and format-index pages, the SPZ README and extensions README (commit affd0ec), the KHR_gaussian_splatting README and the KHR_xmp_json_ld README (glTF commit 7cee0fc) for watermark, fingerprint, checksum, SHA-256, provenance, C2PA and signature on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.playcanvas.com/user-manual/gaussian-splatting/formats/sog/",
+          "title": "SOG format, PlayCanvas user manual",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "asset ? : { // Optional tool/version metadata"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "4D Gaussian splatting is a way to represent and draw captured scenes (including moving ones) as splats and the file formats that carry them; it describes visual appearance only, so non-visual effects fall outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/",
+          "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering (project page)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "allow high-quality real-time (≥ 100 fps) novel-view synthesis at 1080p resolution"
+        },
+        {
+          "url": "https://arxiv.org/abs/2605.11427",
+          "title": "PD-4DGS: Progressive Decomposition of 4D Gaussian Splatting (arXiv 2605.11427)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "4D Gaussian Splatting (4DGS) enables high-quality dynamic novel view synthesis"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "partial",
+      "note": "The ratified Khronos Gaussian splatting extension for glTF defines a fallback: an optional per-point colour lets a renderer that cannot draw splats show the points instead. Other splat formats covered by this subject were not found to declare any substitute.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/KhronosGroup/glTF/59ecbdba704206bb656965ab4e202881806066f1/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting (glTF commit 59ecbdb), Fallback Behavior",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This allows renderers to color the points in the sparse point cloud when 3D Gaussian splatting is not supported by a renderer."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The splat formats store captured scenes as assets; they define no portal or destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_gaussian_splatting/README.md",
+          "title": "KHR_gaussian_splatting, Khronos glTF extension specification",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "This extension defines basic support for storing 3D Gaussian splats in glTF assets, bringing structure and conformity to the 3D Gaussian splatting space."
+        }
+      ]
     }
   ]
 }

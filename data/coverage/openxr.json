@@ -2807,6 +2807,95 @@
           "quote": "For example, the system can track keyboards, mice, and other objects in the environment, and then report the poses and extents of these objects to the application."
         }
       ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Input in OpenXR is a set of actions that read boolean, float, two-axis and pose state from bound sources, with no typed instrument events carrying channel, note or control numbers. Searched the OpenXR 1.1 specification with all extensions (current build, about 99,000 lines of text) and the 1.1 specification with ratified extensions only for MIDI, musical, instrument, note on, synthesizer and OSC on 2026-10-22; no match in either, the only keyboard text concerns tracking physical or virtual typing keyboards.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html",
+          "title": "The OpenXR 1.1 Specification (with all ratified extensions), 11.1 Action Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "OpenXR applications communicate with input devices using XrActions."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "The pointing half is specified: every hand and controller input source offers an aim pose, a ray used to point in the world. The picking half is missing for virtual content, because OpenXR has no scene and never reports an intersected object; the only intersection tests are against the physical surroundings, through unratified single-vendor extensions such as XR_META_environment_raycast and XR_ANDROID_raycast, which the specification lists as not ratified.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html",
+          "title": "The OpenXR 1.1 Specification (with all ratified extensions), 6.3 Reserved Paths and input pose definitions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "aim - A pose that allows applications to point in the world using the input source, according to the platform’s conventions for aiming with that kind of source."
+        },
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "The OpenXR 1.1 Specification (with all extensions), 12.161.1 XR_META_environment_raycast Overview",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The XR_META_environment_raycast extension allows applications to perform raycast operations against the surrounding physical environment."
+        },
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "The OpenXR 1.1 Specification (with all extensions), 14.10 XR_ANDROID_raycast Overview",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This extension allows the application to perform raycasts against trackables"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Output actions can drive haptics or motion platforms, but the motion-platform wording is only a passing remark on what output actions are for, not a defined effect; the only output action type is vibration (XR_ACTION_TYPE_VIBRATION_OUTPUT) and there is no way to describe wind, scent, light, heat or fog effects with content. Searched the OpenXR 1.1.65 specification with registered extensions (single-page HTML) for olfactory, scent, wind, thermal, motion platform, motion seat, climate, fan, sensory, 23005 on 2026-11-01; only the motion-platform remark, eye-tracker wording and device thermal throttling matched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "OpenXR 1.1.65 Specification with registered extensions, section 11.3.1 Input Actions & Output Actions",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Input actions are used to read sensors like buttons or joysticks while output actions are used for triggering haptics or motion platforms."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "OpenXR standardises how an application reaches XR hardware, not which renderer draws the scene; its graphics bindings fall under the graphics-interface row.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html",
+          "title": "The OpenXR 1.1.62 Specification (with all ratified extensions)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "OpenXR is an API (Application Programming Interface) for XR applications."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "OpenXR is the device interface for a single application; it has no concept of a destination world or a portal opening.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1-khr/html/xrspec.html",
+          "title": "The OpenXR 1.1.62 Specification (with all ratified extensions)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "OpenXR is an API (Application Programming Interface) for XR applications."
+        }
+      ]
     }
   ]
 }

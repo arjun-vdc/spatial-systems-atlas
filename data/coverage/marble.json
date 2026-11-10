@@ -3092,6 +3092,236 @@
           "quote": "Access control permissions for a resource."
         }
       ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "partial",
+      "note": "Named alternatives exist only at export time: an export request selects a mesh variant (textured or vertex-coloured) and a splat resolution, and the Variations tool makes new worlds from a different seed. No file carries a set of authored alternatives for a reader to switch between.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/api/reference/worlds/export.md",
+          "title": "Export a world, World Labs API reference",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Mesh variant to return when an HQ mesh already exists."
+        },
+        {
+          "url": "https://docs.worldlabs.ai/index.md",
+          "title": "Welcome to Marble, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Generate alternative versions of your worlds while maintaining core elements and style, perfect for exploring different possibilities from the same starting point."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "The policy and terms declare that submitted images and video are used to train World Labs models, that training data may be kept longer, and that paid accounts can opt out from the account page. Free accounts cannot revoke the licence, retention has no stated period, and nothing coarsens location or strips it from uploaded media.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.worldlabs.ai/terms-of-service",
+          "title": "Terms of Service, World Labs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "For Paid Account Users, this license is revocable, and you may opt out from World Labs' use of your User Content, including via your Account page."
+        },
+        {
+          "url": "https://www.worldlabs.ai/privacy-policy",
+          "title": "Privacy Policy, World Labs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "User Submitted Content used for AI training may be retained longer to maintain AI Model integrity, subject to your rights under Applicable Law or the TOS."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "none",
+      "note": "Searched the 55 pages of the World Labs documentation index (llms.txt), the OpenAPI reference, the Terms of Service, the Privacy Policy and the two World Labs launch posts for object, prop, character, asset and single-item generation on 2026-10-22; Marble generates whole worlds only, tells users to avoid close-ups of objects, and sends people to other software to insert characters.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/marble/support/faq.md",
+          "title": "FAQ, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Currently, this can be done by exporting to Spark or other software."
+        },
+        {
+          "url": "https://docs.worldlabs.ai/marble/create/prompt-guides/image-prompt.md",
+          "title": "Image prompt tips, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Extreme close-ups of objects without spatial context"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "Searched the 55 pages of the World Labs documentation index (llms.txt), the OpenAPI reference, the Terms of Service, the Privacy Policy and the two World Labs launch posts for colour space, sRGB, linear, HDR, gamma, tone mapping and bit depth on 2026-10-22; the export specifications give image size and file type only, and the only HDR mention is advice to enable it in a third-party engine's pipeline.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/marble/export/specs.md",
+          "title": "Export file specs, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Equirectangular png of 2560 x 1280 pixels"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Splats come in named resolution levels (full_res, 500k, 150k and 100k in the export interface), with approximate counts stated on the specs page only for the roughly 2M and 500k files, and a low-resolution file is described as perceptually close to the full one. These are size tiers chosen by the user; nothing lets a reader or a file declare which level it requires or supports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/marble/export/specs.md",
+          "title": "Export file specs, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Splat-based format optimized for Marble's rendering system, about 500k splats"
+        },
+        {
+          "url": "https://docs.worldlabs.ai/api/reference/worlds/export.md",
+          "title": "Export a world, World Labs API reference",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Splat resolution to convert when exporting splats as PLY."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "Marble produces static worlds, panoramas and flythrough videos to be shown by someone else's viewer, and describes no interface regions, overlays or their layout in what it exports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/index.md",
+          "title": "Welcome to Marble, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Marble lets anyone create high-fidelity, persistent 3D worlds from a single text prompt, single or multiple image, video, and coarse 3D structures."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Marble generates and exports assets and leaves all drawing to Marble's own viewer or the receiving engine; it exposes no graphics-compute interface to developers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/index.md",
+          "title": "Welcome to Marble, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Marble lets anyone create high-fidelity, persistent 3D worlds from a single text prompt, single or multiple image, video, and coarse 3D structures."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "Searched the 55 pages of the World Labs documentation index (llms.txt), the OpenAPI reference, the Terms of Service, the Privacy Policy and the two World Labs launch posts for bounding volume, bounds, extent, spatial index and octree on 2026-10-22; the only match is a viewer option in the Compose tool that draws world boundaries on screen, and no extent appears in any exported file or API response.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/marble/create/studio-tools/compose.md",
+          "title": "Compose, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Connect and arrange multiple worlds to create larger, seamless environments for games and experiences."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "The Compose tool keeps a set of worlds in one composition and a layer panel hides or shows them. These are authoring-session groupings of whole worlds; no named or rule-defined sets of objects exist within a world or in the exports.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/marble/create/studio-tools/compose.md",
+          "title": "Compose, World Labs documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Layer panel lets you organize and manage the visibility of different worlds in your composition."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Searched the 55 pages of the World Labs documentation index (llms.txt), the OpenAPI reference, the Terms of Service, the Privacy Policy and the two World Labs launch posts for watermark, fingerprint, C2PA, provenance and content credential on 2026-10-22; the Terms of Service forbid users from removing or altering watermarks or attribution indicators that World Labs embeds in Outputs, and forbid paid users from misrepresenting how an output was made, but no public documentation describes any embedded watermark or fingerprint, or any detection or lookup route (other watermark mentions are about third-party plugins), so the terms contemplate marks that the documentation neither describes nor rules out.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://www.worldlabs.ai/terms-of-service",
+          "title": "Terms of Service, World Labs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Paid Account Users shall not misrepresent the origin or method of creation of such Outputs"
+        },
+        {
+          "url": "https://www.worldlabs.ai/terms-of-service",
+          "title": "Terms of Service, World Labs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Users shall not remove, obscure, or alter any proprietary notices, watermarks, or attribution indicators embedded in Outputs by World Labs."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Marble generates a walkable visual 3D world from prompts, images or video; the world is delivered as splats or a mesh, with no layer for wind, scent or motion effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/",
+          "title": "World Labs documentation",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Marble lets anyone create high-fidelity, persistent 3D worlds from a single text prompt, single or multiple image, video, and coarse 3D structures."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A service that generates 3D worlds from prompts; renderer choice is left to the viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/",
+          "title": "Marble documentation, Welcome to Marble (World Labs)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Marble lets anyone create high-fidelity, persistent 3D worlds from a single text prompt, single or multiple image, video, and coarse 3D structures."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Marble generates worlds from prompts; it has no portal between worlds and no preview of a destination.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.worldlabs.ai/",
+          "title": "Marble documentation, Welcome to Marble (World Labs)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Marble lets anyone create high-fidelity, persistent 3D worlds from a single text prompt, single or multiple image, video, and coarse 3D structures."
+        }
+      ]
     }
   ]
 }

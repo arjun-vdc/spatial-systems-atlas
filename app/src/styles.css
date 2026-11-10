@@ -1013,3 +1013,64 @@ blockquote {
     box-shadow: 0 0 30px rgb(0 0 0 / 35%);
   }
 }
+
+/* ---------- tool rail, panel resize handle, display switcher ---------- */
+
+/* The drag handle on the panel column's right edge: a 2px accent line on
+   hover, while dragging and on keyboard focus. */
+.panel-resize::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 3px;
+  width: 2px;
+  background: transparent;
+  transition: background-color 0.12s;
+}
+
+.panel-resize:hover::after,
+.panel-resize.dragging::after,
+.panel-resize:focus-visible::after {
+  background: var(--ac);
+}
+
+.panel-resize:focus-visible {
+  outline: none;
+}
+
+.rail-button:hover {
+  border-color: var(--ruleS) !important;
+}
+
+.rail-button[aria-pressed='true']:hover {
+  border-color: var(--ac) !important;
+}
+
+.rail-button:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 1px;
+}
+
+/* The panel column's pin and close button: a small glyph in a 24px target,
+   with a light fill on hover and a ring on keyboard focus. */
+.panel-control:hover {
+  background: var(--sunk) !important;
+  border-color: var(--ruleS) !important;
+}
+
+.panel-control:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 1px;
+}
+
+/* The segmented display switcher clips its corners, so its focus ring sits
+   inside the segment, where the clipping cannot hide it. */
+.segment:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: -4px;
+}
+
+.segment[aria-pressed='false']:hover {
+  background: var(--sunk) !important;
+}

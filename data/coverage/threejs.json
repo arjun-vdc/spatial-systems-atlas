@@ -2473,9 +2473,9 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://threejs.org/manual/en/scenegraph.html",
+          "url": "https://web.archive.org/web/20260726113726/https://threejs.org/manual/en/scenegraph.html",
           "title": "Three.js Scene Graph",
-          "retrieved": "2026-09-18",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "A scene graph in a 3D engine is a hierarchy of nodes in a graph where each node represents a local space."
         }
@@ -2488,9 +2488,9 @@
       "confidence": "verified",
       "sources": [
         {
-          "url": "https://threejs.org/manual/en/scenegraph.html",
+          "url": "https://web.archive.org/web/20260726113726/https://threejs.org/manual/en/scenegraph.html",
           "title": "Three.js Scene Graph",
-          "retrieved": "2026-09-18",
+          "retrieved": "2026-10-31",
           "kind": "primary",
           "quote": "A scene graph in a 3D engine is a hierarchy of nodes in a graph where each node represents a local space."
         }
@@ -3113,6 +3113,214 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "\"webxr_ar_plane_detection\""
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "Three.js wraps the WebXR session but has no marker or image tracking: nothing reads the tracked-image results that a session can return, and the WebXR example pages request hit-test, plane-detection, camera-access, depth-sensing, light-estimation and hand-tracking but never image-tracking. Searched the three.js source tree (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f and those example pages for image-tracking, trackedImages, ImageTracking, aruco, apriltag, qr and fiducial on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://threejs.org/docs/pages/WebXRManager.html",
+          "title": "three.js docs: WebXRManager",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This class represents an abstraction of the WebXR Device API"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "out-of-scope",
+      "note": "Three.js is a drawing library and has no zone or event concept to exchange: its physics addons (Ammo, Jolt, Rapier) define no sensor or trigger volumes, and the library publishes no identified zones or spatial events. Zones and events belong to the application or to the world built on top.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/README.md",
+          "title": "three.js README (pinned commit 087f01f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The aim of the project is to create an easy-to-use, lightweight, cross-browser, general-purpose 3D library."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "none",
+      "note": "Three.js has no controls over what sensed data is disclosed: its WebXR layer passes plane, depth and camera data to the application and leaves what the user has granted to the browser. Searched the three.js source tree (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f for privacy, consent, pseudonym, coarsen and permission on 2026-10-22; no hit in the XR code or documentation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://threejs.org/docs/pages/WebXRManager.html",
+          "title": "three.js docs: WebXRManager",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This class represents an abstraction of the WebXR Device API"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Three.js draws and loads 3D objects but does not generate them from a text or image prompt, which is outside a general-purpose rendering library.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/README.md",
+          "title": "three.js README (pinned commit 087f01f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The aim of the project is to create an easy-to-use, lightweight, cross-browser, general-purpose 3D library."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Three.js can draw a Gaussian splat scene through its addons, but training one from photographs is a reconstruction pipeline that a general-purpose rendering library does not include.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/README.md",
+          "title": "three.js README (pinned commit 087f01f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The aim of the project is to create an easy-to-use, lightweight, cross-browser, general-purpose 3D library."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "none",
+      "note": "Three.js wraps WebXR sessions, including camera images, but offers no way to recover a precise pose from camera imagery against a map. Searched the three.js source (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f for visual positioning, VPS, geospatial, localization, localisation and relocalization on 2026-10-23; the only hits were a code comment in the manual's index page and a third-party library, Giro3D, named in the manual's library list.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/src/renderers/webxr/WebXRManager.js",
+          "title": "three.js src/renderers/webxr/WebXRManager.js (pinned commit 087f01f)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This class represents an abstraction of the WebXR Device API"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "none",
+      "note": "The only interior-related addon is XRPlanes, which draws the planes the WebXR runtime detects as thin boxes, with no labels, levels or interior structure. Searched the three.js source (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f for indoor, floor plan, IndoorGML, IFC, BIM, IMDF and room on 2026-10-23; the only hits were RoomEnvironment and DebugEnvironment, which are lighting environments, and a link to the third-party IFC.js library in the manual's library list.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/examples/jsm/webxr/XRPlanes.js",
+          "title": "three.js examples/jsm/webxr/XRPlanes.js (pinned commit 087f01f)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "A utility class for the WebXR Plane Detection Module."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "via-extension",
+      "note": "Met through the HTMLMesh addon (examples/jsm/interactive/HTMLMesh.js at commit 087f01f), which renders a DOM element onto a mesh so it works in VR, draws the values of text, number, email and password inputs (masking passwords) and focuses those inputs when they are clicked. The characters are received by the browser's DOM input element, not by a three.js text interface. Outside the addon, three.js handles keyboard input only in controls, as key bindings for camera movement. Searched the three.js source tree (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f for keyboard, textarea, input and contenteditable on 2026-10-22, and re-read HTMLMesh on 2026-10-23.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/examples/jsm/interactive/HTMLMesh.js",
+          "title": "three.js examples/jsm/interactive/HTMLMesh.js (pinned commit 087f01f)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "element.type === 'text' || element.type === 'number' || element.type === 'email' || element.type === 'password'"
+        },
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/src/extras/Controls.js",
+          "title": "three.js src/extras/Controls.js (pinned commit 087f01f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This object defines the keyboard input of the controls."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Three.js has no musical event-device input; its input handling covers pointer, keyboard controls and WebXR controllers. Searched the three.js source tree (src), addons (examples/jsm), class reference (docs) and manual (manual) at commit 087f01f for the whole word midi, requestMIDIAccess and WebMIDI on 2026-10-22; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/087f01f5d20fb8ea527395e04780bbbe7d1345a0/src/extras/Controls.js",
+          "title": "three.js src/extras/Controls.js (pinned commit 087f01f)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This object defines the keyboard input of the controls."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Three.js has no effect description and no effect-device output. Searched the three.js repository at development commit 3fd3e4e (src, examples including the jsm addons, docs, manual and editor folders) for DMX, Art-Net, sACN, GDTF, MPEG-V, ISO/IEC 23005, olfactory, scent, aroma, smell, motion seat, motion platform, motion simulator, 4D cinema, sensory effect, wind machine, wind fan, fog machine, effect device, stage lighting, lighting fixture and Philips Hue on 2026-11-01; the only match was a text file of the sample model examples/models/md2/ogro/Ogro.txt that calls a character smelly. Output beyond the screen is limited to positioned audio and one example that pulses controller vibration, which the audio and input.haptic rows cover.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/3fd3e4ec0b454bcc171e5256fd5240251c92340b/examples/webxr_xr_haptics.html",
+          "title": "three.js example, immersive haptics (dev commit 3fd3e4e)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "three.js xr - haptics"
+        },
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/3fd3e4ec0b454bcc171e5256fd5240251c92340b/src/audio/Audio.js",
+          "title": "three.js source, Audio (dev commit 3fd3e4e)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Represents a non-positional ( global ) audio object."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "native",
+      "note": "Three.js ships separate WebGL, WebGPU, SVG and CSS3D renderers for the same scene objects, and its WebGPU renderer falls back to a WebGL 2 backend when the browser lacks WebGPU; the fallback can also be forced with a constructor option. The substitute is a library rule, not something a scene file declares.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/mrdoob/three.js/f06340e459f19609d3dd82253f38831f58ab6c84/README.md",
+          "title": "three.js README, introduction (commit f06340e)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The current builds only include WebGL and WebGPU renderers but SVG and CSS3D renderers are also available as addons."
+        },
+        {
+          "url": "https://threejs.org/docs/pages/WebGPURenderer.html",
+          "title": "three.js documentation, WebGPURenderer",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If not, WebGPURenderer falls backs to a WebGL 2 backend."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/mrdoob/three.js/f06340e459f19609d3dd82253f38831f58ab6c84/src/renderers/webgpu/WebGPURenderer.js",
+          "title": "three.js WebGPURenderer.js, forceWebGL parameter (commit f06340e)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "If set to `true`, the renderer uses a WebGL 2 backend no matter if WebGPU is supported or not."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "A general-purpose drawing library draws one client's scene; a portal preview of another world is a feature an application builds on top, not one the library specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/mrdoob/three.js/blob/9b840199c684ddf47df52c210c43e6d91a3c6a18/README.md",
+          "title": "three.js README, project aim (dev commit 9b84019)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The aim of the project is to create an easy-to-use, lightweight, cross-browser, general-purpose 3D library."
         }
       ]
     }

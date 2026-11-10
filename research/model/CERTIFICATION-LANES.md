@@ -1,26 +1,23 @@
 ---
-gas_schema: gas.doc.v1
 legacy_document_type: design
 type: spec
 title: Certification lanes — four bundles of must-interoperate capabilities, with what conformance would mean and what would prove it
-status: draft for steward review
+status: draft for review
 created: 2026-09-06T14:02:41Z
 project: msf-wg-tool
-workstream: infrastructure-wg-map
-source_work_order: /Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool/.dev/ai/workorders/2026-09-04-21-42-57Z-WO-msf-wg-tool-20260904-065-certification-lanes.md
-created_by: project steward
-depends_on: infrastructure-wg/model/INTEROPERABILITY-BOUNDARIES.md (WO-msf-wg-tool-20260904-064, approved by the owner 2026-09-06T13:51:17Z); infrastructure-wg/tests/PILOT-AVATAR-PORTABILITY.md (WO-msf-wg-tool-20260904-066)
+created_by: the maintainers
+depends_on: infrastructure-wg/model/INTEROPERABILITY-BOUNDARIES.md (approved by the maintainer 2026-09-06T13:51:17Z); infrastructure-wg/tests/PILOT-AVATAR-PORTABILITY.md
 updated: 2026-09-11T07:51:29Z
 data_basis: 164 capabilities in 14 groups and 57 subjects. Membership derives from accepted capabilities.csv metadata. Integrated coverage contains 6,996 accepted claims and 1,943 sources, including 1,693 accepted claims for the 47 additions; 986 new subject-capability pairs remain explicitly unscored.
-data_basis_2026_09_06: "infrastructure-wg/data/territory.db read 2026-09-06T19:27Z — 46 subjects, 117 capabilities, 4,016 claims, 1,507 sources; sha256 81dbf0dbec1a6f07653885d2a0d6134fc8955a0e07c0c362d3666ffa02522ca9, written by the rebuild of WO-msf-wg-tool-20260906-074, which applied the owner's answer to question 5 of the boundaries page: 40 must, 62 should, 15 none, lanes U1 22, U2 19, U3 20, U4 12. Lane 1 gained five rows and no other lane moved. Every number in lane 1 was re-derived against that database. The earlier basis line follows."
-data_basis_previous: "infrastructure-wg/data/territory.db read 2026-09-06T18:19Z — 46 subjects, 117 capabilities, 4,016 claims, 1,507 sources; sha256 9f4dd1aaab7bdbb625cf9769b495c5a2f4d1b9b07f333a1a4f9637b9ce7fb096, written 2026-09-06T18:08Z by the reconcile rebuild of WO-msf-wg-tool-20260906-073, whose 35 must, 67 should and 15 none match the boundaries table row for row. Every lane number on this page was re-derived against that database and none of them moved: the 28 capabilities added on 2026-09-06 are 21 shoulds and 7 nones, so no lane gained or lost a row. The page was first written against the database of 2026-09-06T14:10Z — 89 capabilities, 2,728 claims, 1,436 sources, sha256 25ab2eb7f0082bf0b0b6bf98d724d05c1122c48fcce54908f19667e093964143"
-project_root: /Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool
-project_code_note: Omitted because the project registry has no uppercase alias; the frontmatter standard directs omission rather than invention.
+data_basis_2026_09_06: "infrastructure-wg/data/territory.db read 2026-09-06T19:27Z — 46 subjects, 117 capabilities, 4,016 claims, 1,507 sources; sha256 81dbf0dbec1a6f07653885d2a0d6134fc8955a0e07c0c362d3666ffa02522ca9, written by the rebuild that applied the maintainer's answer to question 5 of the boundaries page: 40 must, 62 should, 15 none, lanes U1 22, U2 19, U3 20, U4 12. Lane 1 gained five rows and no other lane moved. Every number in lane 1 was re-derived against that database. The earlier basis line follows."
+data_basis_previous: "infrastructure-wg/data/territory.db read 2026-09-06T18:19Z — 46 subjects, 117 capabilities, 4,016 claims, 1,507 sources; sha256 9f4dd1aaab7bdbb625cf9769b495c5a2f4d1b9b07f333a1a4f9637b9ce7fb096, written 2026-09-06T18:08Z by the reconcile rebuild of the 2026-09-06 scoring pass, whose 35 must, 67 should and 15 none match the boundaries table row for row. Every lane number on this page was re-derived against that database and none of them moved: the 28 capabilities added on 2026-09-06 are 21 shoulds and 7 nones, so no lane gained or lost a row. The page was first written against the database of 2026-09-06T14:10Z — 89 capabilities, 2,728 claims, 1,436 sources, sha256 25ab2eb7f0082bf0b0b6bf98d724d05c1122c48fcce54908f19667e093964143"
 ---
 
 # Certification lanes
 
 Since 2026-10-20 the four lanes hold 30, 27, 32 and 21 must rows: `commerce.payment` joined U4, and `commerce.entitlement` joined U2, U3 and U4. The support tables below are as of 2026-09-11.
+
+Since 2026-11-03, by the maintainer's decision of that day, the map takes use cases beyond its first four: lanes U6 (3 must rows), U7 (1) and U10 (3) are described after lane 4, under "Use cases beyond the first four". The first four lanes did not change.
 
 ## What this is, and what it is not
 
@@ -30,7 +27,7 @@ what conformance would mean in one sentence, the test that would prove it, and t
 
 **This is a lane definition, not a certification programme.** There is no badge, no mark, no register
 of certified products, no body that issues anything, and no plan on this page for any of them. The
-owner's direction of 2026-09-04 is plain: no official certification; build the lanes slowly, tests to
+maintainer's direction of 2026-09-04 is plain: no official certification; build the lanes slowly, tests to
 follow. Alfred Tom and Don Brutzman asked for the same order of work from the other side of the
 meeting — build the tests, certification follows — and Don's line is the one to keep: if you cannot
 measure it, maybe you have not defined it.
@@ -72,8 +69,11 @@ second pass, and the boundaries page still holds them.
 | 2 Avatar portability | U2 An avatar, its items and its expressions travel | 26 | `/msf/atlas/#lane=avatar` |
 | 3 World-to-world travel | U3 A person travels through a portal and stays themselves | 31 | `/msf/atlas/#lane=travel` |
 | 4 Agent participation | U4 An agent joins a world, acts, and pays | 19 | `/msf/atlas/#lane=agent` |
+| 6 The same thing at the same real place | U6 People on different devices find the same content at the same real place | 3 | none yet |
+| 7 A training result leaves the simulator | U7 A training result reaches whoever has to act on it, readable and trusted | 1 | none yet |
+| 10 Shared presence | U10 People in one space hear and see each other the same way (no source yet) | 3 | none yet |
 
-The four lanes hold 106 places between them, filled by 54 distinct capabilities. Every must row belongs to at least one lane. The approved additions contribute 14 new must rows and 33 lane places. The five captured-content rows made must by the owner on 2026-09-06 remain in U1.
+The four lanes hold 106 places between them, filled by 54 distinct capabilities. Every must row belongs to at least one lane. The approved additions contribute 14 new must rows and 33 lane places. The five captured-content rows made must by the maintainer on 2026-09-06 remain in U1.
 
 All new test entries below are proposed tests. None was executed as part of this metadata preparation, and membership does not establish runtime conformance.
 
@@ -107,7 +107,7 @@ effort.
 The oldest ask in the working group, and the lane with the most systems already standing on it. Ten
 of its twenty-two rows are the file itself and the conventions inside it, four are about content
 pinned to a place on the Earth, three are behaviour, versions and the test suite itself, and five are
-the carriage formats for captured content, which joined the lane on 2026-09-06 when the owner
+the carriage formats for captured content, which joined the lane on 2026-09-06 when the maintainer
 answered that captured content is first-class. **Those five are the only rows in this lane that no
 other lane shares, and four of the five rest on one system.** The lane got wider and thinner on the
 same day.
@@ -132,7 +132,7 @@ same day.
 | Tiled terrain and city streaming `geo.tiles` | A client streams another party's tileset without converting it first, and draws the same tiles at the same detail. | Test idea: point two clients at one tileset at a fixed camera and compare which tiles each requested and drew. |
 | Behaviour graphs and interactivity `logic.behaviour` | Behaviour authored with the asset runs in the receiving system: the door opens, the switch fires, the timer ends. | Test idea: one fixture with a trigger, a timer and a state change, and a check that each fires in each system within a fixed time. |
 | Versioning and update `deliver.version` | A reader can tell which version of the format it holds, and behaves predictably with the parts it does not know. | Test idea: feed each system a file with an unknown required extension and one with an unknown optional extension; it must refuse the first and load the second. |
-| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set (WO-msf-wg-tool-20260904-066) is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
+| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
 | Splat data interchange format `capture.splat-format` | A splat capture written by one tool is read by another from the named format alone — the same splats, in the same places, with the same scales, rotations, colours and opacities — with no converter and no re-export. | Test idea: write one capture as a splat `.ply` and as a glTF carrying `KHR_gaussian_splatting`, load each in two systems, and compare the splat count and every splat's position, scale, rotation, colour and opacity against the file read by a parser that draws nothing. |
 | Volumetric video capture and playback `capture.volumetric-video` | A volumetric clip plays in the receiving system as the recording it is, with the camera calibration and the masks the sender wrote, rather than with the receiver's own guess at them. | Test idea: hand each system one clip with its calibration and mask metadata, require it to report the camera parameters it read, and compare a named frame reprojected to a named viewpoint against the reference within a stated pixel tolerance. |
 | Point cloud encoding `capture.point-cloud` | The receiver decodes the point set as encoded, compression included, and ends with the same points and the same per-point attributes the sender had. | Test idea: feed each system one cloud uncompressed and the same cloud under each compression the format defines, and require the point count, the bounding box and the per-point colour to match the uncompressed original within tolerance. It is the geometry test written for points instead of triangles. |
@@ -267,7 +267,7 @@ from travel — the portal, and the identity root behind it.
 | Identity root `identity.root` | One identifier for a person or an agent resolves to the same subject in both worlds. | Test idea: resolve the same identifier with two independent resolvers and compare the documents returned, then repeat with a revoked identifier and require the same answer from both. |
 | Behaviour graphs and interactivity `logic.behaviour` | Behaviour authored with the asset runs in the receiving system: the door opens, the switch fires, the timer ends. | Test idea: one fixture with a trigger, a timer and a state change, and a check that each fires in each system within a fixed time. |
 | Versioning and update `deliver.version` | A reader can tell which version of the format it holds, and behaves predictably with the parts it does not know. | Test idea: feed each system a file with an unknown required extension and one with an unknown optional extension; it must refuse the first and load the second. |
-| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set (WO-msf-wg-tool-20260904-066) is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
+| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
 | Extension mechanism `deliver.extension` | Two receivers identify the same declared extension and apply its required or optional handling rule when they do not implement it. | Proposed test: exchange fixtures with a supported extension, an unknown optional extension and an unknown required extension; compare each receiver's declared handling and result with the extension contract. |
 | Key rotation, revocation and recovery `identity.key-lifecycle` | Two receivers discover the verification material that applies after an identity-control key is changed, revoked or recovered under the declared method. | Proposed test: use an identity fixture with a recorded key change, revocation and recovery; ask each receiver which verification material applies to each supplied verification case and compare with the method's expected result. |
 | Asset reference resolution `deliver.resolve` | Two receivers resolve a scene's resource identifiers to the intended resources using the declared base location or resolver context. | Proposed test: resolve relative references and context-dependent aliases from one scene fixture in two receivers; compare the selected resources with an expected mapping, including a missing reference. |
@@ -378,7 +378,7 @@ them.
 | Immersive session lifecycle `input.session` | An application starts an immersive session on a runtime it was not written for and receives pose and frames from it. | Test idea: run one session lifecycle — start, frame loop, end — against two runtimes and require the same states in the same order, including a refused start. |
 | Inventory `persist.inventory` | What a person carries is readable at the destination and comes back unchanged. | Pilot T7 is the nearest thing that exists: one runtime writes the record of what is equipped, another reads it and repeats T4. No runtime in the pilot holds an inventory, so the harness stands in for the platform layer, and the design says so. |
 | Preference portability `persist.prefs` | Comfort and accessibility settings a person set in one world are read and honoured by the next. | Test idea: set three named preferences — turning style, comfort vignette, text size — travel, and require the destination to report the same three. |
-| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set (WO-msf-wg-tool-20260904-066) is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
+| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
 | Extension mechanism `deliver.extension` | Two receivers identify the same declared extension and apply its required or optional handling rule when they do not implement it. | Proposed test: exchange fixtures with a supported extension, an unknown optional extension and an unknown required extension; compare each receiver's declared handling and result with the extension contract. |
 | Claim vocabulary and schema `identity.schema` | A receiver interprets the declared claim vocabulary and checks the claim structure against the applicable schema, separately from checking truth and issuer trust. | Proposed test: give two independent verifiers one structurally valid claim, one invalid claim and one unknown vocabulary; compare their interpretation and validation results with the declared contract. |
 | Key rotation, revocation and recovery `identity.key-lifecycle` | Two receivers discover the verification material that applies after an identity-control key is changed, revoked or recovered under the declared method. | Proposed test: use an identity fixture with a recorded key change, revocation and recovery; ask each receiver which verification material applies to each supplied verification case and compare with the method's expected result. |
@@ -493,7 +493,7 @@ half of the use case about paying has no row on the map at all.
 | Credential exchange protocol `identity.exchange` | A world asks for a credential and the holder presents it, over a protocol neither of them owns. | Test idea: run one request-and-present exchange between an independent verifier and holder, then a request the holder refuses, and check both sides end in a state each expected. |
 | Capability and permission grant `identity.capability` | A world reads what an arriving person or agent is permitted to do, from a grant it did not issue, and acts on it. | Test idea: present a grant that allows one action and forbids another; the world must allow the first and refuse the second, and say which grant it read. |
 | Agent integration `logic.agent` | An agent written for one world perceives and acts in another through an interface neither world owns. | Test idea: one agent completes the same three-step task in two worlds using only the published interface, and both worlds log the same actions. |
-| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set (WO-msf-wg-tool-20260904-066) is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
+| Conformance testing `deliver.conformance` | A shared test suite exists for the row, both parties run it, and the results are public. | This row is the lane machinery itself. The pilot test set is its first instance; until a suite exists for a row, every other line in that row's lane is a claim. |
 | Extension mechanism `deliver.extension` | Two receivers identify the same declared extension and apply its required or optional handling rule when they do not implement it. | Proposed test: exchange fixtures with a supported extension, an unknown optional extension and an unknown required extension; compare each receiver's declared handling and result with the extension contract. |
 | Claim vocabulary and schema `identity.schema` | A receiver interprets the declared claim vocabulary and checks the claim structure against the applicable schema, separately from checking truth and issuer trust. | Proposed test: give two independent verifiers one structurally valid claim, one invalid claim and one unknown vocabulary; compare their interpretation and validation results with the declared contract. |
 | Key rotation, revocation and recovery `identity.key-lifecycle` | Two receivers discover the verification material that applies after an identity-control key is changed, revoked or recovered under the declared method. | Proposed test: use an identity fixture with a recorded key change, revocation and recovery; ask each receiver which verification material applies to each supplied verification case and compare with the method's expected result. |
@@ -553,7 +553,59 @@ All three single-system rows are the ones that decide what an agent is allowed t
 metadata, credential exchange and permission grant. No row in this lane has a test today. The lane is
 also incomplete by construction. The use case says the agent pays for what it uses, and the map has no
 payment row to put that on until the commerce rows are added
-(WO-msf-wg-tool-20260904-063, held until after the Forum's X402 session).
+(held until after the Forum's X402 session).
+
+## Use cases beyond the first four — 2026-11-03
+
+**By the maintainer's decision of 2026-11-03 the map takes use cases beyond its first four.** Three lanes join: U6 and U7 come from use case lanes proposed from the Virtual Worlds Use Case Repository of the Virtual Dimension Center Fellbach, and U10 is new. They are numbered by their use case ids; U5, U8 and U9 were proposed at the same time and are not taken. A lane is still the must rows of one use case, and a row was raised to must only where a public record shows the use case stopping unless two independent systems agree (the rule on `INTEROPERABILITY-BOUNDARIES.md`). Rows the evidence shows only degrading stay should and name the use case in `interop_uses`, which puts them in the second pass, not in the lane. No atlas route exists for these lanes yet, and their recorded support tables follow the next rebuild of the data. Every test below is proposed; none has run.
+
+Evidence counts on this page are from the repository's public pages, read on 2026-11-03: the demand table at https://usecases.vdc-fellbach.de/territory-atlas/demand and each use case page under https://usecases.vdc-fellbach.de/use-cases/ . A "record" is a use case or a record that specialises it; an "implementation" is any implementation the repository files under those records, of any evidence kind.
+
+## Lane 6 — The same thing at the same real place (U6)
+
+**The use case.** People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later.
+
+**The bundle.** 3 must-interoperate capabilities. **The route.** None yet.
+
+**The evidence.** The repository files 8 use cases under this lane, 20 records with their specialisations, and 56 implementations (27 of them of evidence kind "deployment"). The row raised for it is Visual positioning `geo.vps`: in VW-UC-0311 (https://usecases.vdc-fellbach.de/use-cases/VW-UC-0311) a world storage service holds one map of a real place and "shares it between AR services", and a device finds its pose "using relocalisation information extracted from the shared map" (its requirements R-0311-01 and R-0311-03, cited there to ETSI GS ARF 003 V2.1.1). A device that cannot read that information cannot find its pose in the shared map, so it cannot find what another person placed. Shared anchors and geospatial pose were already must rows; they now name U6 as well. Three rows the lane was proposed to raise stay should on the evidence and name U6: Map lifecycle and alignment `geo.map-align` (a shared map that cannot take in other devices' partial maps goes stale, VW-UC-0311), Model-based object tracking `sense.object-track` (the tracking stays on one device, VW-UC-0216) and Privacy terms on sensed data `sense.privacy`. Coordinate reference systems `geo.crs` is a must row the repository links to no use case of this lane, so it is not in it.
+
+### What conformance would mean, and what would prove it
+
+| Capability | What conformance would mean | The test that would prove it |
+|---|---|---|
+| Visual positioning `geo.vps` | A device of one AR service finds its own pose in a map of a real place held by another party's service, from the relocalisation information that service gives out, without knowing where it started. | Proposed test: map one room into a shared map service with one system's devices, then start a device of a second system at an unknown pose and ask it to relocalise from the service's relocalisation information; report its pose error against a surveyed reference and the time to its first pose. |
+| Shared and persistent anchors `geo.anchor-shared` | Two people on two systems see the same virtual thing in the same real place, and it is still there the next day. | Proposed test (as in lane 1): create an anchor on one system, resolve it on the other in the same room, measure the offset, and measure it again 24 hours later. |
+| Geospatial pose `geo.pose` | Content pinned to a place on the Earth lands within a stated distance of the same place in the other system. | Proposed test (as in lane 1): place one GeoPose fixture in two systems and report the distance between the two placements in metres and the difference in heading in degrees. |
+
+## Lane 7 — A training result leaves the simulator (U7)
+
+**The use case.** What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust.
+
+**The bundle.** 1 must-interoperate capability. **The route.** None yet.
+
+**The evidence.** The repository files 12 use cases under this lane, 39 records with their specialisations, and 184 implementations (58 of them of evidence kind "deployment"); Activity and learning records `persist.activity-record` alone sits under 12 linked use cases and 167 implementations. It is raised to must: in VW-UC-0247 (https://usecases.vdc-fellbach.de/use-cases/VW-UC-0247) the cabin crew's "results flow into the LMS", and in VW-UC-0344 (https://usecases.vdc-fellbach.de/use-cases/VW-UC-0344) a training application sends a learner's progress "as standard e-learning records, such as xAPI statements or SCORM data" to the organisation's learning record store or learning management system (its requirement R-0344-01, cited there to ETSI GR CIM 052 V1.1.1). The simulator and the record store are different systems, and a store that cannot read the record receives no result. Two rows stay should and name U7, because the record still arrives without them, carrying more than the receiver needs: Selective disclosure `identity.privacy` and Privacy terms on sensed data `sense.privacy` (VW-UC-0344 asks that recorded head, hand and controller motion be handled as personal data because it identifies the person; VW-UC-0280 records vital signs for the debriefing). The credential rows are not in this lane: the repository links none of them to a use case of this lane, and a result can still be checked by asking whoever issued it.
+
+### What conformance would mean, and what would prove it
+
+| Capability | What conformance would mean | The test that would prove it |
+|---|---|---|
+| Activity and learning records `persist.activity-record` | A record of what a trainee did and with what result, written by one training system, is read by a learning record store or an assessor's system built by another party, with the same person, activity, result and time. | Proposed test: send one fixed training attempt (steps, score, pass or fail, duration) as records from two independent training applications to two independent record stores; compare what each store reports with the fixture, and require each store to refuse a record for a learner it does not know. |
+
+## Lane 10 — Shared presence (U10)
+
+**The use case.** People in one space hear and see each other the same way.
+
+**The bundle.** 3 must-interoperate capabilities. **The route.** None yet.
+
+**The evidence.** No source yet. No evidence has been gathered for this use case, so no row was rated for it: the rows it needs are tagged with U10 only where they were already must or should. The three must rows below make the lane. The should rows tagged U10 are Positioned audio sources `audio.source`, Voice transport `audio.voice`, Media transport `net.media`, Presence and roster `net.presence`, Hand tracking `input.hand` and Face and body tracking as input `input.face`. Spatialization model `audio.spatial` is rated none and is not tagged. Audio and input still have no must row.
+
+### What conformance would mean, and what would prove it
+
+| Capability | What conformance would mean | The test that would prove it |
+|---|---|---|
+| State replication `net.replication` | A client written by one party reads and writes the other's state stream and sees the same world as everybody else in it. | Proposed test (as in lane 3): an independent client joins a reference server, and a third observer compares the two views of one moving object over sixty seconds. |
+| Transport protocol `net.transport` | Two independent implementations open a session over the same wire protocol and exchange messages with no bridge between them. | Proposed test (as in lane 3): one conformance client completes a handshake, an echo and a clean close against two servers written by different parties. |
+| Session establishment `net.session` | A visitor's client joins a running world it was not built for, authentication included, and is placed in it. | Proposed test (as in lane 3): join twice, once with a valid credential and once with an expired one; entry then refusal, and any other pair of outcomes is a fail. |
 
 ## What the four lanes say together
 
@@ -590,7 +642,7 @@ nothing because the only system that has it, the Universal Manifest, is a draft.
 should be judged by is the next column along: how many of its rows have two or more systems with the
 capability built in, because that is the condition for a test between two implementations to be
 possible at all. **Read that way, the content lane fell from 16 of 17 to 17 of 22 in one day**, which
-is the truer account of what the owner's answer did. The avatar lane still clears it almost
+is the truer account of what the maintainer's answer did. The avatar lane still clears it almost
 everywhere; travel clears fifteen of its twenty rows, and the agent lane nine of its twelve.
 
 **Eighteen rows on the whole map rest on a single system. Ten of the eighteen are must rows, and
@@ -605,7 +657,7 @@ the row is open and simply unimplemented so far by anyone else. All ten are wher
 tested yet for want of a second implementation to test against, and they are the sharpest argument
 the map makes for what the Forum's standards work should do next.
 
-**The thin list doubled on 2026-09-06, and later the same day the owner's answer moved four of the
+**The thin list doubled on 2026-09-06, and later the same day the maintainer's answer moved four of the
 thin rows into a lane.** The map grew from 89 rows to 117, and ten of the 28 new rows have exactly
 one system with the capability built in. When those 28 were scored, every one of the ten was a should
 or a none, so the lanes did not move at all. Then question 5 of the boundaries page was answered yes
@@ -627,10 +679,10 @@ named.
 The sequence remains boundary, lane, test suite, then any separate badge decision. The progress descriptions below record the 2026-09-06 state; the 12 added must rows now have proposed test ideas above, with no execution claimed.
 
 1. **Decide the boundary.** Done: `infrastructure-wg/model/INTEROPERABILITY-BOUNDARIES.md`, approved
-   by the owner on 2026-09-06.
+   by the maintainer on 2026-09-06.
 2. **Define the lane.** This page.
 3. **Write one test suite at a time, starting where two implementations already exist.** The avatar
-   pilot is the first, by the owner's choice, and it covers nine of lane 2's nineteen rows.
+   pilot is the first, by the maintainer's choice, and it covers nine of lane 2's nineteen rows.
 4. **Run the tests in public and put the results in the map.** Nothing is built for this yet; the
    pilot's results shape is the first sketch of it.
 5. **Only then**, if the Forum wants one, a conversation about what a badge would say. Not before,
@@ -704,7 +756,7 @@ tables reproduced by the queries above.
 - **It does not create a certification of any kind.** No badge, no levels, no register, no body, no
   self-declaration form. If one is ever wanted, it is a separate decision after the tests exist.
 - **It does not rank the lanes against each other.** Lane 2 is the first to be measured because the
-  owner chose the pilot example, not because this page put it there.
+  maintainer chose the pilot example, not because this page put it there.
 - **It does not set tolerances.** Every number in a test — centimetres, degrees, frames — belongs to
   the test design, where it can be argued with measurements. The sentences here say what would be
   true, not how close is close enough.
@@ -712,7 +764,7 @@ tables reproduced by the queries above.
 - **It does not decide who would run a test.** That is a conversation with the working group, and it
   is Alfred's and Don's to open.
 
-## Historical steward review — 2026-09-06
+## Historical review — 2026-09-06
 
 These earlier questions are retained as context, not as a new gate for the 45 approved additions. Their support percentages describe the historical snapshot.
 

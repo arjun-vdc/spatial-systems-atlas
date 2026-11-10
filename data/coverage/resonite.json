@@ -3520,6 +3520,391 @@
           "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
         }
       ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "A login token can be revoked by its holder, and a password reset can be requested by email, which covers recovery and revocation of the credential that controls an account. No rotation of identity keys and no discovery of verification material is described.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/API",
+          "title": "API, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "To revoke a token, send a DELETE request to https://api.resonite.com/userSessions/{userId}/{token_to_be_revoked} with an authorization header ."
+        },
+        {
+          "url": "https://wiki.resonite.com/API",
+          "title": "API, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Request a password reset email for the specified {emailAddress} ."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "partial",
+      "note": "Resonite's OAuth page names three scopes (profile, email, offline access) and says the profile endpoint returns a user profile in JSON, which is a small declared vocabulary of what an application may obtain. No schema giving the types and validation of the profile's fields is published; the only JSON schemas in the project's schema repository (commit a2d5601) cover client and headless-server configuration.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/OAuth",
+          "title": "OAuth, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Calling: https://account.resonite.com/api/user/profile , with your token in the header: Authorization: Bearer [token] will provide a standard Resonite User Profile in JSON Format."
+        },
+        {
+          "url": "https://github.com/Yellow-Dog-Man/JSONSchemas/blob/a2d560120deefef6f2c9d863de826ab8617287c7/README.md",
+          "title": "JSONSchemas, Yellow-Dog-Man (commit a2d560120deefef6f2c9d863de826ab8617287c7)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "When creating headless configuration files, or Resonite Client configuration files you might be unsure what you can do. These files are designed to fix this :)"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Resonite describes itself as a digital universe for socialising, playing and building; nothing in its documentation reads the physical surroundings, so ray hits against an estimate of the real world fall outside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Detecting physical markers or images and reporting their pose is a function of a sensing runtime; Resonite describes itself as a digital universe, and its documentation reads nothing from the physical room.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Runtime estimates of the real environment's illumination belong to a sensing runtime; Resonite describes itself as a digital universe, and its lighting is authored in-world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Producing an object from a text or image prompt is a creation-tool function; Resonite describes itself as a digital universe in which people build by hand, and its documentation describes no generator.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Resonite imports and renders Gaussian splats but points creators to outside tools to create them, so reconstructing a radiance field from images is not something the platform itself does.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://resonite.com/",
+          "title": "Resonite",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A novel digital universe with infinite possibilities. Whether you resonate with people around the world in a casual conversation, playing games and socializing."
+        },
+        {
+          "url": "https://wiki.resonite.com/Gaussian_Splat",
+          "title": "Gaussian Splat, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This is the closest known tutorial for creating and importing Gaussian Splats into an engine (please ignore the unreal engine portion, every other part has information that helps with making the best possible Gaussian Splat)."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "partial",
+      "note": "Resonite offers privacy settings that remove potentially sensitive photo metadata and hide the user from in-engine screenshots, and muting stops the voice stream entirely; the wiki's own privacy page states that whisper mode still sends the stream to every user and documents no spatial coarsening, use or retention declaration on streamed body data, or pseudonymous pose publication.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Privacy_information",
+          "title": "Privacy information, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Resonite provides some privacy settings , such as removing potentially sensitive photo metadata and hiding yourself from screenshots taken in engine."
+        },
+        {
+          "url": "https://wiki.resonite.com/Privacy_information",
+          "title": "Privacy information, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Changing your microphone to whisper mode will only change the max range it can be heard, the data stream will still be sent to all users in a session."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "A collider component raises a trigger with the position whenever a user enters or exits it, so zones and typed enter and exit events exist inside one world; there is no interchange form for zones or events and no summaries with defined spatial and temporal meaning.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Component:CharacterEventTrigger",
+          "title": "CharacterEventTrigger, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The CharacterEventTrigger component invokes Action<Float3> triggers whenever a user enters or exits an attached collider."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "Built-in clip components generate tones and noise at play time from a frequency and amplitude that can be changed, but they are basic oscillators and noise sources held as Resonite components, the wiki says a change takes time to be heard, and no portable synthesis model or supporting data is exchanged.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Component:SineWaveClip",
+          "title": "SineWaveClip, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The SineWaveClip component is an audio clip that can be used to get a whistling like tone with a frequency and loudness."
+        },
+        {
+          "url": "https://wiki.resonite.com/Component:SineWaveClip",
+          "title": "SineWaveClip, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This component takes time to change it's pitch and loudness when it's properties are changed."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.unlinkable",
+      "level": "none",
+      "note": "Every account has one immutable user ID used in every world and every installation has one machine ID, and a ProtoFlux node returns a user's machine ID to any script, so identifiers are stable across relationships; no pairwise identifier or correlation-reducing presentation mechanism is documented. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for pairwise, pseudonym, unlinkable, anonymous, correlation and \"machine ID\"; no pairwise or pseudonymous identifier was found, anonymous matched only permission roles and anonymous moderation tickets, and machine ID matched only the Machine ID, home-world address and release-note pages.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/ProtoFlux:UserMachineID",
+          "title": "User Machine ID, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The User Machine ID node returns a machine ID from a user."
+        },
+        {
+          "url": "https://wiki.resonite.com/Machine_ID",
+          "title": "Machine ID, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Resonite Machine ID, is a unique identifier that identifies your computer's installation of Resonite."
+        },
+        {
+          "url": "https://wiki.resonite.com/User_ID",
+          "title": "User ID, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A user's User ID (also written userid) is an immutable ID linked to their user account."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "none",
+      "note": "Moderation outcomes are communicated by a person: the wiki says ticket responses are sent by the assigned moderator and are not automatic, and no machine-readable record of an evaluation and action, signed or otherwise, is documented. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for receipt and \"audit log\"; only a release-note fix for asset-variant processing receipts and a release-note mention of a record audit log matched, neither a machine-readable account of an evaluation and action.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Moderation",
+          "title": "Moderation, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Responses to tickets are not automatic responses. All messages are sent by the assigned Moderator processing the ticket."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "none",
+      "note": "The only compatibility contract documented is an exact match of a build's compatibility hash between client and session host; there are no named subsets or levels that content or an implementation can declare. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for conformance, subset and \"feature level\"; no named subsets or levels were found; the only interoperability list is a community member's avatar-variable proposal, not a Resonite contract.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/API",
+          "title": "API, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "compatibilityHash : The compatibility-hash sessions needs to have. A Resonite client can only join a session if this hash matches between client and server. (string, optional)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "Resonite has a legacy component that sets UI colours by where the UI sits and a particle style component, but no separately expressed rules that select feature visibility or colour from content metadata. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for stylesheet, \"style rule\", theme and style; only rich-text formatting tags, world descriptions, a community tool's theme registry and a community avatar proposal matched, none a Resonite styling-rule mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Component:LegacyUIStyle",
+          "title": "LegacyUIStyle, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The LegacyUIStyle component is used in older content to specify what colors a UI should be depending on where it is."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "Resonite exposes the tracked user's head, hands, hips and feet positions and a ground projection of the head, but no page describes reporting physical play-area bounds or a floor reference from the headset runtime to content. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for \"play area\", playspace, \"play space\", chaperone, guardian, boundary, \"room scale\", \"tracking space\", \"floor height\" and \"physical floor\"; only calibration and full-body-tracking instructions, world descriptions, collider and UI boundary pages and talk transcripts matched, none reporting play-area bounds or a floor reference to content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Frequently_Asked_Questions",
+          "title": "Frequently Asked Questions, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Use the Full Body Calibrator found in the Home section of your Dash Menu. If this is the first time doing so, ensure your height is set correctly to your real height, confirm your trackers are recognized, then press the Start Tracker Calibration and align yourself as closely as you can in your playspace to the outline avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "none",
+      "note": "Resonite documents no way for content to submit separate image layers with placement and composition properties to a headset compositor. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for compositor, \"composition layer\", \"quad layer\", \"overlay layer\", swapchain and reprojection; only a talk transcript, the userspace overlay bootstrap page and a Linux SteamVR compatibility note matched, none a content-facing compositor layer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Frequently_Asked_Questions",
+          "title": "Frequently Asked Questions, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "It supports all of the major headsets, including SteamVR/OpenVR, Oculus, and Windows Mixed Reality (via SteamVR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "none",
+      "note": "Resonite documents no coordination of frame submission with predicted display time and the view poses for that time. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for \"display time\", \"refresh rate\", reprojection and compositor; only the VSync setting, a Linux SteamVR compatibility note and talk transcripts matched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Frequently_Asked_Questions",
+          "title": "Frequently Asked Questions, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "It supports all of the major headsets, including SteamVR/OpenVR, Oculus, and Windows Mixed Reality (via SteamVR)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "Resonite documents no way for creators to dispatch programmable non-raster GPU work; it renders through Direct3D 11 in Unity. Searched the live Resonite wiki (wiki.resonite.com) full text through its search interface on 2026-10-22 for \"compute shader\", ComputeShader and \"GPU compute\"; only release notes on Resonite's own internal compute use, a planned-feature item on the Sauce renderer page and talk transcripts matched.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Optimization_guidelines",
+          "title": "Optimization guidelines, Resonite Wiki",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Resonite currently uses Direct3D 11 for rendering in Unity ."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "partial",
+      "note": "Resonite has a component that holds several material lists for one mesh and switches between them by an index, and a community avatar standard that names a base variant in a string variable. Missing: the alternatives are numbered rather than named inside the asset, they cover only materials on one mesh, and they exist only as Resonite components and community-proposed variable names, with nothing another runtime could read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Component:MaterialSet",
+          "title": "Component:MaterialSet, Resonite Wiki",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "Material set allows for switching the list of materials being used on a mesh dynamically at any given moment."
+        },
+        {
+          "url": "https://wiki.resonite.com/Component:MaterialSet",
+          "title": "Component:MaterialSet, Resonite Wiki",
+          "retrieved": "2026-10-25",
+          "kind": "primary",
+          "quote": "The index into the Sets list of the materials to apply to the target renderer."
+        },
+        {
+          "url": "https://wiki.resonite.com/Avatar_standard",
+          "title": "Avatar standard, Resonite Wiki",
+          "retrieved": "2026-10-25",
+          "kind": "secondary",
+          "quote": "Name of an avatar base variant, if there are any. Examples: Tora or Oyama for the Ears and Tail Parts on the Mayu Base."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "Resonite has no effect description for wind, scent, heat or motion. World content can drive vests and other vibration hardware through haptic volumes, and the open OSC and WebSocket channels could in principle carry other hardware, but no effect vocabulary or device-capability negotiation is defined. The virtual haptic point sampler even picks up temperature sensations, which stay touch feedback. Searched the Resonite wiki pages OSC, Haptics, Supported Features, Frequently Asked Questions and Component:VirtualHapticPointSampler, and a web search of wiki.resonite.com, for wind, scent, smell, fan, heat, temperature, motion platform and haptic on 2026-11-01; no sensory effect feature found. The wiki was not searched in full. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/OSC",
+          "title": "OSC, Resonite wiki",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Traditionally, OSC is used for controlling sound-related equipment (such as DJ equipment, synthesizers and sliders/faders), but it can be used to send any structured data over the network."
+        },
+        {
+          "url": "https://wiki.resonite.com/Haptics",
+          "title": "Haptics, Resonite wiki",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The Haptics system in Resonite allows users to define volumes or positions where a user can receive haptics sensations from in the world."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "none",
+      "note": "Searched the Resonite wiki page Sauce and the resonite.com home page for renderer, Unity and fallback on 2026-11-03; found a retired plan to replace the Unity renderer and no declared substitute. Only these two pages were searched, so the absence is not fully checked.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://wiki.resonite.com/Sauce",
+          "title": "Resonite wiki, Sauce",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Sauce was a graphics renderer, designed to eventually replace Unity."
+        }
+      ]
     }
   ]
 }

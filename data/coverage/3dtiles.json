@@ -2302,6 +2302,671 @@
           "quote": "It defines a hierarchical data structure and a set of tile formats which deliver renderable content."
         }
       ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "out-of-scope",
+      "note": "The standard describes a stream of tiles and says nothing about the device that displays them, so it has no way to ask or report what a client device can do. Device capability is for the client runtime or the web platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "out-of-scope",
+      "note": "A tileset is static streamed content with no user or sensor model, so gaze input and its privacy rules are outside what it describes. That belongs to the client platform and its input standards.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "out-of-scope",
+      "note": "The standard defines no input of any kind, hands included; it carries geospatial content to a client and leaves interaction to the client. Hand pose belongs to the platform input layer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "out-of-scope",
+      "note": "A tileset carries renderable content and metadata, and nothing in it addresses touch feedback to a user. Haptics belong to the device and input layer of a client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "out-of-scope",
+      "note": "The standard defines no input devices or controller actions; it only describes how tiled content is organised and fetched. Handheld controller input belongs to the client platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "The standard supplies the per-feature identity that a pick reports: it says feature identifiers are useful for per-object picking. It does not define how pointing input picks content or how the hit is reported; that is left to the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 7.7.4.5 Batched points (Point Cloud)",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "This is useful for per-object picking and storing application-specific metadata for declarative styling and application-specific use cases such as populating a UI or issuing a REST API request on a per-object instead of per-point basis."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "out-of-scope",
+      "note": "A tile's payload is renderable geometry, points and metadata, and the standard defines no sound or sound placement. Positioned audio belongs to a scene or audio format used alongside it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "out-of-scope",
+      "note": "The standard is a one-way format for streaming geospatial content and has no notion of participants or live voice. Voice transport belongs to a realtime communication layer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "out-of-scope",
+      "note": "The standard defines no audio, so it cannot describe how a space colours sound. Room acoustics belong to an audio or scene format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "out-of-scope",
+      "note": "The standard defines no audio, so there is nothing to block or muffle. Its bounding volumes exist for tile selection, not for sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "out-of-scope",
+      "note": "What it streams is tiles of geospatial content, not audio, and it defines no audio media. Audio delivery at scale belongs to media streaming standards.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.soft",
+      "level": "out-of-scope",
+      "note": "The standard describes how to stream and render static geospatial content and defines no simulation of any kind, so deformable bodies are not part of it. That belongs to a physics engine or physics scene format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "out-of-scope",
+      "note": "The standard defines bounding volumes for choosing which tiles to load, not shapes for contact tests. Its only mention of a collision volume is a hypothetical vendor extension used as an example of the extension mechanism.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.7.4.1 Extensions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The following example shows a tile object with a hypothetical vendor extension which specifies a separate collision volume."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "out-of-scope",
+      "note": "The standard defines no bodies or constraints between bodies, because it carries static renderable content. Joints belong to a physics format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.material",
+      "level": "out-of-scope",
+      "note": "The standard defines no physical simulation, so friction and restitution have no place in it. Surface response belongs to a physics scene format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "out-of-scope",
+      "note": "The standard defines no simulation, so there is no outcome to reproduce across machines. Deterministic stepping is a property of a physics runtime.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "out-of-scope",
+      "note": "The standard defines no events and no regions that react to a visitor; its volumes only select which tiles to fetch. Trigger regions belong to a scene or logic format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "out-of-scope",
+      "note": "A tileset is a dataset published by its author, not a running world, and the standard says nothing about state that changes while people use it. What survives a restart is for the world server or platform.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "The standard places content on the Earth through its own frame and transforms, and defines no device-local anchors tied to one user's session. Local anchors belong to augmented reality runtimes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "The standard carries content and does not define recovering a device pose from camera imagery. Visual positioning belongs to localisation services that may use such content as a map.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "out-of-scope",
+      "note": "The standard names no text, label or font facility; strings appear only as metadata values and names, and how a client draws anything is left to it. Legible three-dimensional text belongs to the glTF payload's tooling or to the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "out-of-scope",
+      "note": "The standard does not define viewpoints or how a camera moves. A tile may name a viewer request volume that the viewer must be inside before the tile loads, but that only tests the viewer's position and does not define the camera.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Annex A tile.viewerRequestVolume",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Optional bounding volume that defines the volume the viewer shall be inside of before the tile’s content will be requested and before the tile will be refined based on geometricError."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "out-of-scope",
+      "note": "The standard defines no lights, shadows or probes and leaves visualization to the client; it only notes that per-point normals can enable lighting. Lighting belongs to the glTF payload and to the client renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 7.7.4.4 Point Cloud normals",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Per-point normals are an optional property that can help improve the visual quality of points by enabling lighting, hidden surface removal, and other rendering techniques."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "out-of-scope",
+      "note": "The standard names no render graph or passes and states that a client may visualize the data however it sees fit. Turning geometry into pixels is the client's job.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "out-of-scope",
+      "note": "The standard does not choose a graphics interface; WebGL appears only in examples, notes and descriptive text, such as a point-size note, a remark on batching for few WebGL draw calls and a note that instanced models map well to a WebGL extension. A client is free to target any graphics interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 10 Declarative styling, pointSize",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Implementations may clamp the evaluated pointSize to the system’s supported point size range. For example, WebGL renderers may query ALIASED_POINT_SIZE_RANGE to get the system limits when rendering with POINTS ."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "out-of-scope",
+      "note": "The standard defines no effects after the main render pass, and a client may visualize the data however it sees fit. Post-processing belongs to the client renderer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "out-of-scope",
+      "note": "The standard defines no layout or presentation of interface regions; it notes only that an application showing a tileset may let users click a tile to see metadata. Interface layout belongs to the application.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.7.3 Metadata, Inspection",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Inspection: Applications displaying a tileset within a user interface (UI) may allow users to click or hover over specific tiles or tile contents, showing informative metadata about a selected entity in the UI."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "The standard defines no shader source language. Its styling language is a declarative expression language for colour and visibility whose vector types borrow GLSL syntax, which is covered by the style and script rows, not by a shader language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles does not define explicit rules for visualization of the content; a client may visualize 3D Tiles data however it sees fit."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "none",
+      "note": "Searched OGC 22-025r4 (version 1.1) in full for hash, SHA, digest, checksum, integrity and content address on 2026-10-22; no match. Every tile and schema is referred to by a URI, relative or embedded as a data URI, and nothing refers to content by its hash.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.4 URIs",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "3D Tiles uses URIs to reference tile content."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "The styling language says its colours derive from CSS3 Colors and lists CSS Color Module Level 3 as a normative reference, so style colours have a defined interpretation; the glTF payload carries texture and material colour. Point-cloud colour values (RGB, RGBA bytes or RGB565) and any output range or rendering surface are undeclared. Searched OGC 22-025r4 (version 1.1) in full for sRGB, color space, colour, gamma, HDR, dynamic range and output range on 2026-10-23; no match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 10 Declarative styling, expression types",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Colors derive from CSS3 Colors and are implemented as vec4 ."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 3 Normative references",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "W3C css-color-3, CSS Color Module Level 3 ."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 7.7 Point Cloud, Overview",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Each point is defined by a position and by optional properties used to define its appearance, such as color and normal, as well as optional properties that define application-specific metadata."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.4 glTF tile format",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "glTF 2.0 is the primary tile format for 3D Tiles. glTF is an open specification designed for the efficient transmission and loading of 3D content. A glTF asset includes geometry and texture information for a single tile, and may be extended to include metadata, model instancing, and compression"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "partial",
+      "note": "Surface appearance is described only by the glTF payload, which the standard calls the primary tile format and which carries mesh and material configurations; the standard itself defines no material model and only lets a style override feature colour and visibility. What is missing is any material description or evaluation rule of its own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 7.2 glTF",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "glTF provides flexibility for a wide range of mesh and material configurations, and is well suited for photogrammetry as well as stylized 3D models."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 10 Declarative styling",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Styles define how a featured is displayed, for example show and color (RGB and translucency), using an expression based on a feature’s properties."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "none",
+      "note": "Searched OGC 22-025r4 (version 1.1) in full for budget, limit, memory, quota, throttle, time out, sandbox, malicious and untrusted on 2026-10-23; the only bound found is the author-chosen subtree depth of implicit tiling, which sizes the tileset's own availability data and is not a limit a host places on guest content. No bound on memory, time or calls for a client or for style expressions is stated, and the security section makes no statement.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Clause 6.9 Declarative styling specification",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "3D Tiles includes concise declarative styling defined with JSON and expressions written in a small subset of JavaScript augmented for styling."
+        },
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1, Security considerations",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "No security considerations have been made for this document."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "3D Tiles streams and renders massive geospatial 3D content, so effects for viewer devices are outside its purpose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Specification 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "3D Tiles defines how tiled content is organised and streamed, and leaves the choice of renderer to the viewer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Community Standard 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds. It defines a hierarchical data structure and a set of tile formats which deliver renderable content."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The standard streams tiles of geospatial content; it has no portals between worlds and so no destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://docs.ogc.org/cs/22-025r4/22-025r4.html",
+          "title": "OGC 3D Tiles Community Standard 1.1 (22-025r4), Clause 1 Scope",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "3D Tiles is designed for streaming and rendering massive 3D geospatial content such as Photogrammetry, 3D Buildings, BIM/CAD, Instanced Features, and Point Clouds. It defines a hierarchical data structure and a set of tile formats which deliver renderable content."
+        }
+      ]
     }
   ]
 }

@@ -1,17 +1,15 @@
 ---
-gas_schema: gas.doc.v1
 type: roadmap
-title: The map's roadmap after meeting 2 — now, next, and later behind an owner gate
+title: The map's roadmap after meeting 2 — now, next, and later behind an approval gate
 status: active
 created: 2026-09-04T21:10:30Z
 project: msf-wg-tool
-workstream: infrastructure-wg-map
 source: infrastructure-wg/meetings/2026-09-04-meeting-notes.md (F1 to F12) and the chair's notes
 ---
 
 # Roadmap
 
-Three lanes. **Now** runs without another word from the owner. **Next** needs one small decision each. **Later** is hard or long work; each item stays behind an owner gate with the gate's category and the evidence that it is real, and becomes a work order only on approval. Everything on the map's future is on this page; nothing is recorded anywhere else.
+Three lanes. **Now** runs without another decision. **Next** needs one small decision each. **Later** is hard or long work; each item stays behind an approval gate with the gate's category and the evidence that it is real, and becomes a task only on approval. Everything on the map's future is on this page; nothing is recorded anywhere else.
 
 ## Now — this week, no decision needed
 
@@ -20,23 +18,23 @@ Three lanes. **Now** runs without another word from the owner. **Next** needs on
 | R1 | Search box on every page | F1 | Type-ahead over capability names and definitions, subject names, group names; Enter jumps to the row, card or subject and highlights it; keyboard reachable; no library | Alfred's "transport protocol" query lands on Transport protocol in one keystroke sequence on all three pages |
 | R2 | Plain labels: "Gaps — no system has it"; a terminology pass on every label, chip, eyebrow and legend key against plain meaning and the Forum's words | F3, F12 | Labels only; explanations follow the new words; the register is consulted for every changed term | A member who did not hear the talk reads every control without the explanation |
 | R3 | Coverage metric on the header line | F7 | "Covered: N% built in · M% with extensions · P% with partial", with a selector for which subjects count: production only (status shipping, ratified, board-approved, mixed) or every subject switched on; one sentence under the number defining it; the same numbers on the atlas top level | The three percentages equal their queries under both selector positions |
-| R4 | Comment button | F2 | A "Comment on this map" button that opens a prefilled email to the owner with the page and current location in the subject; a line saying comments are folded in every two weeks | Members can send a comment from any page in one click |
+| R4 | Comment button | F2 | A "Comment on this map" button that opens a prefilled email to the maintainer with the page and current location in the subject; a line saying comments are folded in every two weeks | Members can send a comment from any page in one click |
 | R5 | Forum overlap routes on the atlas | F10 | Three named routes: "Web of Worlds with and without RP1", "Portals and handoff across the Forum's projects" (Inter-World Portaling System, Web of Worlds, RP1 Spatial Fabric, TeleportXR on Session handoff and portals and World addressing), "TeleportXR, alone and beside the standards" | Each route lands with the right subjects on and the right rows in view |
 | R6 | "Layers" entry and layers-only view | F8 | A "Layers" link on every page to the atlas top level; on the atlas, a switch that hides the shores and shows the twelve regions alone | A newcomer reaches a twelve-box picture in one click from anywhere |
-| R7 | Fortnightly maintenance pass | F2 | A standing order: every two weeks, read the comments received, fold accepted changes into the data, rebuild, republish, and post the change list on the page | First pass 2026-09-18 before the meeting |
+| R7 | Fortnightly maintenance pass | F2 | A standing rule: every two weeks, read the comments received, fold accepted changes into the data, rebuild, republish, and post the change list on the page | First pass 2026-09-18 before the meeting |
 
 ## Next — one decision each, then it runs
 
 | Id | Item | From | The decision | Recommendation |
 |---|---|---|---|---|
-| N1 | DONE 2026-09-04 (WO-060, deploy fa188a11). The atlas as the landing page at /msf/map/, matrix and C4 as modes behind it; retire /msf/map/c4/ with a redirect | F8, and the open C4 choice | Which of the three C4 attempts survives | Done as recommended: the atlas lands at /msf/map/; the matrix is one click away at /msf/map/matrix/; C4-in-page is the matrix's diagram mode at /msf/map/matrix/#mode=c4; /msf/map/c4/ returns 301 to /msf/map/; the map as it stood on 2026-09-04 is frozen at /msf/map/v1/ |
+| N1 | DONE 2026-09-04 (deploy fa188a11). The atlas as the landing page at /msf/map/, matrix and C4 as modes behind it; retire /msf/map/c4/ with a redirect | F8, and the open C4 choice | Which of the three C4 designs survives | Done as recommended: the atlas lands at /msf/map/; the matrix is one click away at /msf/map/matrix/; C4-in-page is the matrix's diagram mode at /msf/map/matrix/#mode=c4; /msf/map/c4/ returns 301 to /msf/map/; the map as it stood on 2026-09-04 is frozen at /msf/map/v1/ |
 | N2 | Public comment list | F2 | Where comments live so everyone sees them: a public repository's issues, or a form and list served by the site itself (needs a store and a mail path on the hosting account), or email only for now | Email only now (R4); revisit after the first fortnightly pass shows the volume |
 | N3 | Payments, entitlements and trust as capabilities | F11 | Scope expansion: about four new rows (machine and agent payments, entitlement and licence checks, payment identity binding, trust registries) scored across 35 subjects, one to two days of sourced research | Yes, after the 2026-09-14 X402 session so the rows use the Forum's own framing |
 | N4 | Unreal Engine 6 statement | notes, "one thing said in the room" | Update the register with newer evidence, or send the chair a one-line correction | Send the correction unless newer evidence exists |
 
-## Later — hard or long, behind an owner gate
+## Later — hard or long, behind an approval gate
 
-Each item stays here until the owner approves it by number. Gate category and evidence are stated so the gate is real, not ceremony.
+Each item stays here until it is approved. Gate category and evidence are stated so the gate is real, not ceremony.
 
 | Id | Item | From | Size | Gate category | Current evidence the gate is real |
 |---|---|---|---|---|---|
@@ -49,19 +47,19 @@ Each item stays here until the owner approves it by number. Gate category and ev
 | L7 | Certification concept note: levels from open-source-as-standard, through conformance tests, to a certification body and third-party labs; tests first, certification follows | F5 | S, one note | Low; kept behind the gate only because it is not map work | Alfred 00:33:48–00:39:13, Don 00:40:23 |
 | L8 | OMB roadmap view: scope of work, versions, release candidates on a timeline | F9 | M | External dependency: the OMB team's own plan | Grig 00:25:36 |
 
-Reply with the numbers to approve; each approved Later item becomes a work order and starts.
+Each Later item starts once it is approved.
 
 
-## Owner answers, 2026-09-04T21:42:57Z
-- Addresses: today's map is frozen at /msf/map/v1/; the atlas becomes the landing page; the matrix stays one click away at /msf/map/matrix/; the separate C4 page redirects (WO-060).
-- N1 approved as recommended (WO-060). N2: no email; a public GitHub repository whose issues show every submission, on the PeerMesh pattern (WO-061; the organisation is the owner's call). N3 approved, after 2026-09-14 (WO-063). N4: the owner is right that a first game is announced for version 6 (Rocket League, 2026-05-24); the register gains that fact with its dates; nothing runs on version 6 yet (WO-062). N5 withdrawn.
-- L1 now (WO-064). L4 after breadth: a breadth order first (WO-067), then depth (WO-068). L7 reframed: no official certification; certification lanes built slowly, tests to follow (WO-065). Tests in general: one obvious example defines the pilot test set; steward's choice, avatar portability, for the owner to confirm (WO-066).
-- All of these are written as orders and held; the owner dispatches them at a lower effort level.
+## Answers, 2026-09-04T21:42:57Z
+- Addresses: today's map is frozen at /msf/map/v1/; the atlas becomes the landing page; the matrix stays one click away at /msf/map/matrix/; the separate C4 page redirects.
+- N1 approved as recommended. N2: no email; a public GitHub repository whose issues show every submission, on the PeerMesh pattern (the organisation is the maintainer's call). N3 approved, after 2026-09-14. N4: the maintainer is right that a first game is announced for version 6 (Rocket League, 2026-05-24); the register gains that fact with its dates; nothing runs on version 6 yet. N5 withdrawn.
+- L1 now. L4 after breadth: a breadth pass first, then depth. L7 reframed: no official certification; certification lanes built slowly, tests to follow. Tests in general: one obvious example defines the pilot test set; the maintainers' choice, avatar portability, to be confirmed.
+- All of these were written up and held, then started one at a time.
 
-## Owner answers, 2026-09-04T23:06:02Z
-- Submissions: the organisation exists, https://github.com/openspatials/spatial-systems-atlas ; the comment button floats bottom right, a modal files the issue itself (title and body required, email optional and never published), the modal then points to the submission; the email link on the C4 page is replaced in that same update, not before (WO-061 rewritten).
-- Pilot: avatar portability confirmed (WO-066).
-- Breadth batch 1 replaced by the owner's list: AR support (Apple, Google, Niantic), Open AR Cloud, Verse and Fortnite with its editor, world models (NVIDIA Cosmos, World Labs Marble, Tencent Hunyuan World 2.0), volumetric capture (MPEG V3C/MIV, 4D Gaussian splatting and splat formats); new kinds and chip groups; lanes may propose new capabilities (WO-067). The earlier list becomes batch 2.
+## Answers, 2026-09-04T23:06:02Z
+- Submissions: the organisation exists, https://github.com/openspatials/spatial-systems-atlas ; the comment button floats bottom right, a modal files the issue itself (title and body required, email optional and never published), the modal then points to the submission; the email link on the C4 page is replaced in that same update, not before.
+- Pilot: avatar portability confirmed.
+- Breadth batch 1 replaced by the maintainer's list: AR support (Apple, Google, Niantic), Open AR Cloud, Verse and Fortnite with its editor, world models (NVIDIA Cosmos, World Labs Marble, Tencent Hunyuan World 2.0), volumetric capture (MPEG V3C/MIV, 4D Gaussian splatting and splat formats); new kinds and chip groups; research passes may propose new capabilities. The earlier list becomes batch 2.
 
 ## Capability proposals from breadth batch 1, 2026-09-06T13:52:39Z
-38 distinct proposals. Steward recommendation: take 28 (a Generation & capture group of 17, a World sensing group of 4, seven rows in existing groups), park 7 (capture.sensor-stream, capture.gen-job, render.scalability, scene.localisation, logic.transaction, logic.concurrency, logic.typecheck), fold persist.entitlement into the commerce order. WO-071 carries the exact list and the merges; it runs on the owner's go. Parked rows stay here for a later pass.
+38 distinct proposals. Recommendation: take 28 (a Generation & capture group of 17, a World sensing group of 4, seven rows in existing groups), park 7 (capture.sensor-stream, capture.gen-job, render.scalability, scene.localisation, logic.transaction, logic.concurrency, logic.typecheck), fold persist.entitlement into the commerce research task. A separate change carries the exact list and the merges, on the maintainer's go. Parked rows stay here for a later pass.

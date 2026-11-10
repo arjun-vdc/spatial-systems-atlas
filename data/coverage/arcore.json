@@ -3202,6 +3202,361 @@
           "quote": "Android XR supports the glTF format for 3D models"
         }
       ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Android XR lists the heart-rate and electrocardiogram sensor features among the Android features that headsets do not support, so an app that requires them is filtered out of the store listing, and no ARCore or Android XR guide offers a body-signal stream. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar) for heart rate, skin conductance, galvanic, physiological, biometric, biosignal, Health Connect and body sensor on 2026-10-22; the only hits are those unsupported-feature entries and a face-biometrics feature name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/build-immersive",
+          "title": "Build immersive apps, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "android.hardware.sensor.heartrate"
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/build-immersive",
+          "title": "Build immersive apps, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "If your app requires a feature that is not supported on the device, then that app won't be available for installation from the Play Store for XR devices."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/get-started",
+          "title": "Build for Android XR, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Android XR is an extension of the Android platform and ecosystem. To start building, you'll use the Android XR SDK, which includes all the tools and libraries that you need to build incredible experiences for a growing set of XR devices, including XR headsets, wired XR glasses, audio glasses, and display glasses."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "An app can synthesize its own audio and feed the buffers to the audio track, which the platform then plays like any other source, so generated sound is possible. The platform exchanges no synthesis model, patch or supporting data and defines no control parameters for one; the generator is application code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-spatial-audio",
+          "title": "Add spatial audio to your app, Android XR for Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Allows for directly writing buffers of audio or if you synthesized or decoded your own audio files."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "native",
+      "note": "On the headset the runtime is OpenXR 1.1, whose frame loop returns the predicted display time that applications are told to pass when asking for poses, as Android's own depth extension says. On a phone, ARCore gives each camera frame a timestamp, and its guides document no predicted display time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "Develop with OpenXR on Android XR, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Android XR supports apps built with OpenXR through its support for the OpenXR 1.1 specification and select vendor extensions"
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr/extensions/XR_ANDROID_depth_texture",
+          "title": "XR_ANDROID_depth_texture, Android XR OpenXR extensions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Applications should pass their predicted display time for the current frame."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "Android XR's SceneCore renders glTF content itself but offers no way to dispatch GPU compute work; ARCore hands the app a camera image as a hardware buffer that the app can bind to its own Vulkan image, and compute is something the app does with the graphics interface it chose. Searched 230 pages under developer.android.com/develop/xr and 500 pages under developers.google.com/ar, plus the class lists of the six Jetpack XR packages (scenecore, arcore, runtime, compose, projected, glimmer), for compute shader, compute pipeline and GPGPU on 2026-10-22; no compute API in either half.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "none",
+      "note": "Neither half specifies a shader language. Android XR's SceneCore renders content itself, and its package summary offers only Material, KhronosPbrMaterial and KhronosUnlitMaterial, with no custom shader route; ARCore's depth guide ships sample fragment shader code for the app's own renderer, which is sample code, not a language definition. Searched 230 pages under developer.android.com/develop/xr and 500 pages under developers.google.com/ar, plus the class lists of the six Jetpack XR packages (scenecore, arcore, runtime, compose, projected, glimmer), for shader, GLSL, SPIR-V and HLSL on 2026-10-22; no language definition and no custom shader route.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        },
+        {
+          "url": "https://developer.android.com/reference/kotlin/androidx/xr/scenecore/package-summary",
+          "title": "SceneCore package summary, Jetpack XR reference",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "Represents an unlit material, which is not affected by scene lighting."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "native",
+      "note": "Android XR gives apps and devices a declared contract: the app manifest names XR features (the spatial API feature, 6DoF controller input, high-fidelity hand tracking, eye tracking) and marks each required or optional, and the store filters installs by what the device provides. The names are Google's own, not an interchange profile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/build-immersive",
+          "title": "Build immersive apps, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The uses-feature element allows the Play Store to appropriately filter apps shown to users."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/build-immersive",
+          "title": "Build immersive apps, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "This feature indicates that the app requires input from a high precision, 6DoF (degrees of freedom) motion controller to function correctly."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "native",
+      "note": "Text reaches an Android XR app through the Android input method framework: the headset has a system virtual keyboard and accepts external keyboards, and Google's readiness guide tells developers to test with both. The text interface is Android's own, not something XR-specific.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/check-mobile-app-readiness",
+          "title": "Check your mobile app's readiness for Android XR, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Test your app with both the system virtual keyboard and external keyboards."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "partial",
+      "note": "Floor-relative reference is supported: Android XR lists the local-floor reference space extension, and its depth sample uses a stage reference space. Android XR's documentation does not say whether its OpenXR 1.1 runtime returns stage bounds through the core xrGetReferenceSpaceBoundsRect call; the only boundary control it documents is a manifest property in which the app recommends a boundary type for the system to use. ARCore on a phone reports detected planes, not a play area.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/build-immersive",
+          "title": "Build immersive apps, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Your app needs to specify XR_BOUNDARY_TYPE_LARGE if it's designed to let users move around their physical space."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/openxr/extensions",
+          "title": "Build with supported OpenXR extensions, Android XR",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The core OpenXR spec contains two world-locked reference space XrSpace types in XrReferenceSpaceType ."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.constraint",
+      "level": "partial",
+      "note": "One constraint is documented: a layout modifier that keeps content turned to face the user at all times, with a variant that stays upright for a billboard effect. It ties a transform to the viewer and not to another node, and it is a Compose layout modifier, so no authored constraint between scene nodes (parent, aim, limit) travels with a glTF asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/subspace-modifiers",
+          "title": "Subspace modifiers, Jetpack XR SDK, Android Developers",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The rotateToLookAtUser modifier continuously rotates content so that it faces the user at all times."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "No preview image is documented for a model or environment asset; a glTF file is loaded whole and the only images named are textures and skyboxes. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar) for thumbnail, preview image, poster image and cover image on 2026-10-22; the only match is a camera JPEG thumbnail quality setting.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing finds a stripped provenance record from a fingerprint or watermark of an asset. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar) for provenance, watermark, fingerprint, C2PA, content credential, digital signature and SynthID on 2026-10-22; the only hits are the device build fingerprint in recording reports and a hardware fingerprint feature.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "none",
+      "note": "No separate styling rules are documented that choose feature visibility or colour from content metadata; a model's look is set by its materials and by per-entity material overrides. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar) for stylesheet, style rule, styling and map style on 2026-10-22; the matches are interface theming for glasses, the map style menu of a Maps tool and Scene Viewer title text styling.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "partial",
+      "note": "Partly met. The Jetpack XR SDK lists the glTF extension KHR_materials_variants among those it supports, so a model can carry named material variants. Missing: a defined selection mechanism. The reference pages for the glTF model entity, model and node list no call that selects a variant, so how an application chooses one is not documented; per-node material overrides are the documented way to change a look.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Jetpack XR SDK supports several glTF extensions that expand the capabilities of 3D models."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "KHR_materials_variants"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "none",
+      "note": "No structured descriptive properties are exposed: the only readable labels of a loaded model are node and animation names, which identify parts rather than describe them. Structured properties such as glTF extras or XMP packets, or a declared schema for them, appear nowhere in the reference. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar), and the class lists of the six Jetpack XR packages (scenecore, arcore, runtime, compose, projected, glimmer) with the scenecore Scene, Entity, GltfModelEntity, GltfModel and GltfModelNode reference pages for extras, metadata, XMP and custom properties on 2026-10-22; only node and animation names, and sensing metadata, which describes perception results rather than assets.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/reference/kotlin/androidx/xr/scenecore/GltfModelNode",
+          "title": "GltfModelNode, SceneCore, Jetpack XR reference",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The name of the node as defined in the glTF file. Returns null if the node has no name."
+        },
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "partial",
+      "note": "The scene can be queried for every entity of a given type, and a model entity lists its nodes in the order of the source file, so a rule-defined set of objects is available for operations. There are no named or author-defined groups, tags or layers, and nothing in a glTF asset names a set for the runtime to act on.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/reference/kotlin/androidx/xr/scenecore/Scene",
+          "title": "Scene, SceneCore, Jetpack XR reference",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Returns all entities of the given type or its subtypes."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "none",
+      "note": "No particle system or emitter is offered: SceneCore's classes cover entities, panels, glTF models, surfaces, meshes, materials and sound, and its only visual-effect mention is applying a material to a node. Searched the Android XR developer documentation (230 pages under developer.android.com/develop/xr, including the Jetpack XR, OpenXR extension, Unity, Godot and Unreal guides) and the ARCore developer guides and references (500 pages under developers.google.com/ar), and the class lists of the six Jetpack XR packages (scenecore, arcore, runtime, compose, projected, glimmer) with the scenecore Scene, Entity, GltfModelEntity, GltfModel and GltfModelNode reference pages for particle, emitter, VFX and visual effect on 2026-10-22; no match, and the supported glTF extension list has no particle extension.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/jetpack-xr-sdk/add-3d-models",
+          "title": "Add 3D models to your app, Jetpack XR SDK",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "When working with 3D models, the Jetpack XR SDK supports the glTF 2.0 open standard."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "none",
+      "note": "ARCore and Android XR document no way to describe wind, scent, heat or motion effects with content; the only device effect output the searched pages discuss is vibration, which ARCore tells developers to avoid. Android XR supports OpenXR 1.1, whose output actions are meant for haptics or motion platforms, so effect-device output is within what such a platform could expose. Searched the Android XR OpenXR page, the Android XR get-started page and the ARCore runtime page on 2026-11-01 for haptic, vibrate, wind, scent, olfactory, thermal, motion platform, motion seat, sensory, 23005, MPEG-V and fog; only vibration advice on the ARCore runtime page found. The full documentation set was not searched. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://developer.android.com/develop/xr/openxr",
+          "title": "Develop with OpenXR on Android XR",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Android XR supports apps built with OpenXR through its support for the OpenXR 1.1 specification and select vendor extensions"
+        },
+        {
+          "url": "https://registry.khronos.org/OpenXR/specs/1.1/html/xrspec.html",
+          "title": "OpenXR 1.1.65 Specification with registered extensions, section 11.3.1 Input Actions & Output Actions",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Input actions are used to read sensors like buttons or joysticks while output actions are used for triggering haptics or motion platforms."
+        },
+        {
+          "url": "https://developers.google.com/ar/develop/runtime",
+          "title": "ARCore runtime considerations, Google for Developers",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Because device vibrations can temporarily interfere with ARCore's ability to accurately estimate the device's pose, avoid providing haptic feedback"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "ARCore senses the environment for augmented reality and does not define interchangeable renderers.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "ARCore senses the phone's environment and places content in it; it has no destination world behind an opening.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://developers.google.com/ar/develop",
+          "title": "ARCore overview, Google for Developers",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information."
+        }
+      ]
     }
   ]
 }

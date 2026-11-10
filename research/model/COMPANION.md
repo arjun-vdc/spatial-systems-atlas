@@ -79,7 +79,7 @@ accepted Unreal scope trace supplies the later source context. The cost, headset
 and general portability statements above remain descriptive, not measured findings; a browser
 frontend is not proof of a universally interchangeable client protocol. A working-group scope
 answer for remote rendering is still unrecorded, and the existing `render.remote` proposal remains
-on hold. No shared-corpus or published-board update is claimed.
+on hold. (Superseded on 2026-10-20: `render.remote` is now a row, recorded descriptively.) No shared-corpus or published-board update is claimed.
 
 **What Model A1 demands of a standard:** almost nothing about assets or scene format, because the
 client never sees them. What it needs standardized is the session: how you find the server, how
@@ -870,7 +870,7 @@ Six, in the order I would take them.
 *Companion to the architecture map board.*
 
 **Before quoting anything from this document at a standards meeting, read**
-`/Users/grig/work/spatial-computing-research-projects-msf/repo/msf-wg-tool/infrastructure-wg/sources/DO-NOT-REPEAT.md`.
+`research/sources/DO-NOT-REPEAT.md`.
 It lists the figures in this family's research that are misattributed, arithmetically wrong, or
 stale, and the parts of this map that are description rather than findings.
 
@@ -886,5 +886,5 @@ sections 14 to 20 of the corrections file. It still carries "The one empty noun"
 "Nothing" for addressing, "Traversal is ratified. Carrying your state across the jump is not.",
 "Claims about a holder, not permissions a world can act on.", "Welded to each engine. Nothing
 crosses vendor lines.", "Ratified since 2008" without its qualifier, "Pose on Earth adopted 2023",
-and "engine part a standard cannot reach". **Do not read a coverage claim off the board.** An owner
-decision on that page is open, which is why it has not been edited.
+and "engine part a standard cannot reach". **Do not read a coverage claim off the board.** A decision
+on that page is open, which is why it has not been edited.

@@ -1,6 +1,6 @@
 {
   "subject_id": "lightship",
-  "summary": "Niantic Lightship is Niantic's developer platform for putting content in real places, and it has just been rebuilt and renamed under it. The product a developer installs today is the Niantic Spatial Development Kit, release 4.1.0, a library for Unity, Swift and Kotlin that layers onto Apple's and Google's device tracking rather than replacing it; the older Lightship kit, version 3.17, is on critical fixes only and the lightship.dev site has been decommissioned in favour of Scaniverse. What it does well is a narrow, deep band: coordinate spaces and the transforms between them, anchors with honest tracking states, and visual positioning, where a cloud service matches live camera frames against a map built from scans and returns a full six-degrees-of-freedom pose, together with a device-only variant that serializes a single scan's map to bytes so several devices can share a frame with no server at all. It also senses the world in ways the map has no rows for: metric depth from a neural network on any camera phone, thirty-two-bit semantic channels, live meshing in blocks, and on-device Gaussian splat reconstruction that exports to Niantic's own open splat format. Almost everything else is somebody else's job. There is no renderer, no scene format, no avatar, no audio, no physics and no world scripting, and there is no way to draw the splats the kit itself produces. Two traps for a standards audience: the multi-user layer was removed in version 4.0 and stopped working on 1 May 2026, so the platform that fills the shared-anchor row cannot currently share anything else; and the public catalogue of positioned places has been withdrawn, with public locations converted to private, organisation-scoped sites addressed by an opaque payload only Niantic can resolve, which moves this from an open world map towards a permissioned enterprise one. Nothing here is specified or testable by a second party: there is no format document and no conformance suite, and the licence is the vendor's business terms of service.",
+  "summary": "Niantic Lightship is Niantic's developer platform for putting content in real places, and it has just been rebuilt and renamed under it. The product a developer installs today is the Niantic Spatial Development Kit, release 4.1.0, a library for Unity, Swift and Kotlin that layers onto Apple's and Google's device tracking rather than replacing it; the older Lightship kit, version 3.17, is on critical fixes only and the lightship.dev site has been decommissioned in favour of Scaniverse. What it does well is a narrow, deep band: coordinate spaces and the transforms between them, anchors with honest tracking states, and visual positioning, where a cloud service matches live camera frames against a map built from scans and returns a full six-degrees-of-freedom pose, together with a device-only variant that serializes a single scan's map to bytes so several devices can share a frame with no server at all. It also senses the world in ways the map scores on its sensing and capture rows: metric depth from a neural network on any camera phone, thirty-two-bit semantic channels, live meshing in blocks, and on-device Gaussian splat reconstruction that exports to Niantic's own open splat format. Almost everything else is somebody else's job. There is no renderer, no scene format, no avatar, no audio, no physics and no world scripting, and there is no way to draw the splats the kit itself produces. Two traps for a standards audience: the multi-user layer was removed in version 4.0 and stopped working on 1 May 2026, so the platform that fills the shared-anchor row cannot currently share anything else; and the public catalogue of positioned places has been withdrawn, with public locations converted to private, organisation-scoped sites addressed by an opaque payload only Niantic can resolve, which moves this from an open world map towards a permissioned enterprise one. Nothing here is specified or testable by a second party: there is no format document and no conformance suite, and the licence is the vendor's business terms of service.",
   "coverage": [
     {
       "capability_id": "render.raster",
@@ -79,7 +79,7 @@
     {
       "capability_id": "render.post",
       "level": "out-of-scope",
-      "note": "No post-processing stack. The one render-time thing the kit does in Unity is blend a mesh-derived depth map with the live depth buffer to steady occlusion, and that is an occlusion mode, not a general post pass. The map has no row for real-world occlusion; see the capability proposals in this lane's result.",
+      "note": "No post-processing stack. The one render-time thing the kit does in Unity is blend a mesh-derived depth map with the live depth buffer to steady occlusion, and that is an occlusion mode, not a general post pass. Real-world occlusion is scored on its own row, sense.occlusion.",
       "confidence": "verified",
       "sources": [
         {
@@ -3127,6 +3127,265 @@
           "retrieved": "2026-10-20",
           "kind": "primary",
           "quote": "Users can only access organizations, sites, and assets that they have permission to view based on their authentication credentials."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "none",
+      "note": "The kit estimates no illumination of its own: its one mention of real-world lighting tells the developer to use AR Foundation's light estimation, which comes from the host platform. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for light estimation, lighting estimation, illumination, spherical harmonics, ambient light, environmental light and reflection probe on 2026-10-22; no feature or API.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK, Niantic Spatial Platform, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation, so you can build Unity AR experiences with real-world localization, contextual awareness, and NSDK development workflows."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/meshing/meshing_physics_real_world/",
+          "title": "How to Add Physics to a Meshed Scene, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Look into ARLightEstimation from AR Foundation to set up realistic lighting in your project."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "none",
+      "note": "The current kit detects no printed markers or reference images. The older Shared AR package (3.17, now non-functional) did offer image-target colocalization, and the 4.x kit has no equivalent. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for image tracking, tracked image, reference image, marker, QR code, fiducial and barcode on 2026-10-22; only map pins and visual markers in sample UIs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK, Niantic Spatial Platform, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation, so you can build Unity AR experiences with real-world localization, contextual awareness, and NSDK development workflows."
+        },
+        {
+          "url": "https://github.com/niantic-lightship/sharedar-upm/blob/280432ace384ccd494417cdfdc3f08dc2f564a24/Runtime/Colocalization/SharedSpaceManager.cs",
+          "title": "Lightship Shared AR SharedSpaceManager source, com.nianticlabs.lightship.sharedar 3.17.0, commit 280432a",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "ImageTrackingColocalization,"
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/migration_guide/",
+          "title": "Niantic Spatial migration guide, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "SharedAR is no longer functional as of May 1, 2026."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "none",
+      "note": "No physical play-area bounds or floor-relative reference are reported by the kit; on headsets that comes from the host's tracking origin. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for play area, boundary, guardian, stage, floor level, tracking origin and room scale on 2026-10-22; only the XROrigin setup step and scan boundary advice.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/unity/headset_development/",
+          "title": "Developing for NSDK on XR Headsets, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Working with NSDK on XR headsets is, in many ways, the same as developing an AR experience for mobile devices."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "Each captured asset is a typed record with a name, description, status, deployment stage, source scan identifiers and, for a mesh, its coverage area, so another program can read declared fields. The fields are a fixed set of the platform's own; nothing lets a developer attach custom properties to an asset or to parts of a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/api/unity/NianticSpatial.NSDK.AR.Sites.AssetInfo/",
+          "title": "Niantic Spatial SDK Unity API reference: NianticSpatial.NSDK.AR.Sites.AssetInfo",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Mesh-specific data. Only valid when AssetType is Mesh."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/sites/",
+          "title": "Sites, NSDK, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Sites is essential for applications that need to discover available spatial content, navigate hierarchy structures, access spatial data metadata, and build location-aware experiences that adapt based on the site and its associated assets."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "out-of-scope",
+      "note": "The kit authors no asset configurations to vary, so named alternatives of an authored configuration fall outside it. The only alternatives are release stages of captured scans: a version is held in preview until a person promotes it to production, and localization uses the production one. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for variant, alternate asset, asset version, level of detail and deployment on 2026-10-22; found the preview and production states and the experimental live-mesh levels of detail only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK for Unity: setup",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/first_localization/",
+          "title": "First localization, Niantic Spatial Platform, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "VPS2 localization provides precise alignment when the device is within a scanned Site that has a Production Asset Version."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "none",
+      "note": "Image buffers are declared by layout and bit width (for example BGRA32, RGB24 and 32-bit float depth), and Niantic's open splat format fixes colour components at unsigned 8 bits, but these are storage encodings. No document names a colour space, transfer function or value range for camera images, textures or splat colours, so a receiver cannot know what conversion is needed. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, 7 Scaniverse guide pages) and the SPZ README at commit affd0ec for colour space, sRGB, linear, gamma, HDR, dynamic range and pixel format on 2026-10-22; no colour interpretation or output range stated.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://github.com/nianticlabs/spz/blob/affd0ecea7fbb4c265ee119475af7ee5b2997482/README.md",
+          "title": "Niantic Labs spz splat format README, commit affd0ec",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Colors are stored as (r, g, b) values, where each color component is represented as an unsigned 8-bit integer."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "There is one named level, Experimental, defined as unsupported and not for production, and the feature index states which of Unity, Swift and Kotlin carry each feature. There are no named subsets that an app or an asset can declare as a compatible contract, and the supported devices are a plain list of models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/experimental/",
+          "title": "Experimental Features, Niantic Spatial Platform, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Experimental features are unsupported and subject to change."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "none",
+      "note": "No preview image is attached to a site, scan or asset record. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for thumbnail, preview image, cover image and poster on 2026-10-22; no match, and the asset record fields are an identifier, name, description, type, status, deployment, data blocks, pipeline job and source scans.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/sites/",
+          "title": "Sites, NSDK, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "An Asset is a spatial data resource associated with a site."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "partial",
+      "note": "Sites and assets can be found by position before any geometry is downloaded: a call returns the sites and assets within a radius of a coordinate, ordered by distance. That is a point-and-radius lookup over a site list; nothing attaches a bounding volume to an asset, and an asset's only extent is a scalar mesh coverage area, so there is no spatial hierarchy for culling or traversal.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/api/unity/NianticSpatial.NSDK.AR.Sites.SitesClient.RequestSiteAssetsByLocationAsync/",
+          "title": "Niantic Spatial SDK Unity API reference: SitesClient.RequestSiteAssetsByLocationAsync",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Requests sites and assets near a GPS coordinate."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.collection",
+      "level": "out-of-scope",
+      "note": "The kit holds no scene whose objects could be grouped. Organisations and sites are access containers for assets, and semantic mesh filtering with allow and block lists selects which channels the mesher captures; neither is a named or rule-defined set of scene objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Niantic Spatial SDK for Unity: setup",
+          "retrieved": "2026-10-23",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/features/sites/",
+          "title": "Sites, NSDK, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "An Organization is a top-level container that groups related sites and assets together."
+        },
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/how-to/ar/meshing/semantic_mesh_filtering/",
+          "title": "How to Exclude Semantic Channels with Mesh Filtering, release 4.1.0",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Semantic Mesh Filtering allows you to set an allow list or block list of semantic channels."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Nothing locates a stripped provenance record from a fingerprint or watermark. An asset only records the scans it was built from. Searched the Niantic Spatial documentation for release 4.1.0 as published in its plain-text indexes (66 guide pages, 596 Unity, 424 Swift and 355 Kotlin API pages, and the 7 Scaniverse guide pages) for watermark, fingerprint, provenance, C2PA, content credential, signature and tamper on 2026-10-22; no match apart from signed access tokens.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/api/unity/NianticSpatial.NSDK.AR.Sites.AssetInfo/",
+          "title": "Niantic Spatial SDK Unity API reference: NianticSpatial.NSDK.AR.Sites.AssetInfo",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The source scan IDs used to create this asset."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "The Niantic Spatial SDK adds localization, depth, occlusion, meshing and semantics to AR Foundation and carries no authored content, audio or haptics, so a description of wind, scent, heat or motion effects is outside what it is for. Touch feedback is scored under input.haptic and in-scene image effects under render.post, so neither counts here.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "The SDK extends the host engine's AR layer with localization, depth, occlusion, meshing and semantics features; renderer selection is not among the features it lists.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation, so you can build Unity AR experiences with real-world localization, contextual awareness, and NSDK development workflows."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "The kit positions a device in the real world on top of AR Foundation; it has no destination world to preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.nianticspatial.com/docs/nsdk/setup/",
+          "title": "Set up the Niantic SDK for Unity, Niantic Spatial SDK documentation (release 4.1.0)",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "The Niantic Spatial SDK (NSDK) for Unity extends AR Foundation with Niantic Spatial features for VPS localization, depth, occlusion, meshing, semantics, and developer tools such as playback and project validation"
         }
       ]
     }

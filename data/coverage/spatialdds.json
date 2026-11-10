@@ -3381,6 +3381,109 @@
           "quote": "The ShapeNet model ID can be carried in `Detection3D.attributes` as a MetaKV, but there is no first-class CAD reference type."
         }
       ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "partial",
+      "note": "Machine participants can react to another system's state without a person present: zone events are described as bridging perception streams and application logic such as building automation, a model service reads sensor streams and publishes predictions back, and a provisional command message addresses an entity's authority. Missing is any rule for one separately governed world driving another, such as authority, loop prevention or consent, and the MQTT and ROS 2 bridges are left to implementations.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), Appendix D Spatial Events",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Bridges perception streams (Detection3DSet) and application logic (fleet management, building automation, safety systems)."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), Appendix H.2",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A bridge process relays them onto the local DDS domain."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), section 3.3 topic table",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "World-model command to an entity's authority (provisional)"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), Future Directions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "These are implementation artifacts maintained in the SpatialDDS-demo repository, not spec extensions."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "none",
+      "note": "Searched the SpatialDDS 1.8 full specification, its section files, IDL, example manifests and changelog at 9aa43ff (and the 84220cf pin used elsewhere) for licence, license, rights, entitlement, permitted use, usage terms, DRM and royalty on 2026-10-22; the only licence text is a key in one example manifest that consumers are told to ignore, so no terms exist to act on. The specification does require services to enforce authorization on sensitive spatial state, which is access control, not a licence.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), security considerations",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "services MUST enforce authorization for publish/subscribe operations that expose or modify sensitive spatial state"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/9aa43ff71d2dc8f8c285c105c6b409b183dbe437/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 full specification (SpatialDDS-spec 9aa43ff, 2026-10-22), manifest conventions",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Unknown top-level fields MUST be ignored by consumers (forward compatibility)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "SpatialDDS exchanges poses, anchors, maps and sensor data over DDS; it is a messaging protocol and does not define actuator or effect-device content.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 (commit 84220cf)",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "SpatialDDS is a lightweight, standards-based protocol, built on OMG DDS, for real-time exchange of spatial world models."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A data-exchange protocol for spatial world models carries no rendering behaviour.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 (Draft), full specification at commit 84220cf: 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SpatialDDS is a lightweight, standards-based protocol, built on OMG DDS, for real-time exchange of spatial world models."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "SpatialDDS exchanges real-time spatial data between systems; it defines no portal opening or destination preview.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/OpenArCloud/SpatialDDS-spec/84220cf5b8fcc10195b09c82fd49a7872b7b5071/SpatialDDS-1.8-full.md",
+          "title": "SpatialDDS 1.8 (Draft), full specification at commit 84220cf: 1 Introduction",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "SpatialDDS is a lightweight, standards-based protocol, built on OMG DDS, for real-time exchange of spatial world models."
+        }
+      ]
     }
   ]
 }

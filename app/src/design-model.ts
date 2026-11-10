@@ -2,7 +2,7 @@
 // `design-candidate/MSF Map - redesign v3.dc.html` and its handoff notes.
 //
 // This module supersedes the earlier `data.ts` and `select.ts` pair, which belong
-// to the interface the owner replaced. Both still drive the old shell and are left
+// to the interface that was replaced. Both still drive the old shell and are left
 // in place until the view port lands; nothing new should be built on them.
 //
 // Two rules from the design notes govern every line below.
@@ -22,7 +22,8 @@ export type Conf = 'v' | 'r' | 'u'
 /** Support level then confidence, e.g. "nv" = built in, verified. */
 export type Code = string
 
-export type LaneId = 'U1' | 'U2' | 'U3' | 'U4'
+/** A use-case lane: "U" and a number. The data names which lanes exist (counts.lanes). */
+export type LaneId = `U${number}`
 export type RowFilter = 'all' | 'overlap' | 'thin' | 'gap' | 'conflict' | 'connect' | 'interop'
 export type Basis = 'prod' | 'all' | 'must'
 
@@ -80,6 +81,8 @@ export interface Subject {
   conflicts: number
   unverified: number
   scored: number
+  /** Register ids of the OpenSpatials platforms this subject is. Absent when it is none. */
+  platform?: string[]
 }
 
 export interface GroupHealth {
@@ -106,6 +109,7 @@ export interface Model {
   /** Level counts per capability, across all subjects in the export. */
   agg: Record<string, Record<string, number>>
   health: Record<string, GroupHealth>
+  /** Every lane the data carries, in order (U1, U2, ... U10), with its label and must-row count. */
   lanes: Record<LaneId, { label: string; n: number }>
   byCapability: Map<string, Capability>
   bySubject: Map<string, Subject>
@@ -116,7 +120,19 @@ export const LANE_LABEL: Record<LaneId, string> = {
   U2: 'Avatar portability',
   U3: 'World-to-world travel',
   U4: 'Agent participation',
+  U6: 'Same place, same thing',
+  U7: 'Training results that travel',
+  U10: 'Shared presence',
 }
+
+/** A lane's label; a lane the data carries before it has a label here still gets a name. */
+export const laneLabel = (lane: LaneId): string => LANE_LABEL[lane] ?? `Use case ${lane}`
+
+/** Is this text a lane id? */
+export const isLaneId = (x: unknown): x is LaneId => typeof x === 'string' && /^U[0-9]+$/.test(x)
+
+/** The lanes the model carries, in number order. */
+export const laneIds = (model: Pick<Model, 'lanes'>): LaneId[] => Object.keys(model.lanes) as LaneId[]
 
 /** Compact tuples in, named fields out. Nothing is rewritten or recomputed later. */
 export function adapt(raw: any): Model {
@@ -174,6 +190,7 @@ export function adapt(raw: any): Model {
       conflicts: Number(s.conflicts ?? 0),
       unverified: Number(s.unverified ?? 0),
       scored: Number(s.scored ?? 0),
+      ...(Array.isArray(s.platform) && s.platform.length ? { platform: s.platform.map(String) } : {}),
     }
   })
 
@@ -203,12 +220,15 @@ export function adapt(raw: any): Model {
     }
   }
 
-  const laneCounts = raw.counts?.lanes ?? {}
-  const lanes = {
-    U1: { label: LANE_LABEL.U1, n: laneCounts.U1 },
-    U2: { label: LANE_LABEL.U2, n: laneCounts.U2 },
-    U3: { label: LANE_LABEL.U3, n: laneCounts.U3 },
-    U4: { label: LANE_LABEL.U4, n: laneCounts.U4 },
+  // Every lane the data counts, plus any lane a row names, in number order. The
+  // four original lanes are always present so an older export still reads.
+  const laneCounts: Record<string, number> = raw.counts?.lanes ?? {}
+  const named = new Set<LaneId>(['U1', 'U2', 'U3', 'U4'])
+  for (const k of Object.keys(laneCounts)) if (isLaneId(k)) named.add(k)
+  for (const c of capabilities) for (const u of c.uses) if (isLaneId(u)) named.add(u)
+  const lanes = {} as Model['lanes']
+  for (const id of [...named].sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)))) {
+    lanes[id] = { label: laneLabel(id), n: laneCounts[id] }
   }
 
   return {
@@ -253,17 +273,30 @@ export interface Query {
   hasEntry: boolean
   basis: Basis
   lane: LaneId | null
+  /** Capability ids picked by a preset or a link (`sel`). When any are picked, only those rows show. */
+  sel?: string[]
 }
+
+/** The picked rows, or null when none are picked. */
+export const pickedRows = (model: Model, query: Query): Set<string> | null =>
+  query.sel?.length ? new Set(query.sel.filter((id) => model.byCapability.has(id))) : null
 
 export const levelOf = (code: Code | undefined): Level | null => (code ? (code[0] as Level) : null)
 export const confOf = (code: Code | undefined): Conf | null => (code ? (code[1] as Conf) : null)
+
+/**
+ * A lane holds the must rows of one use case (tool/model/CERTIFICATION-LANES.md).
+ * Rows that only degrade the use case ("should") are tagged with it but are not in
+ * the lane, so the Lane panel's count and the rows a lane shows are the same set.
+ */
+export const inLane = (c: Capability, lane: LaneId): boolean => c.interop === 'must' && c.uses.includes(lane)
 
 /** Does this capability pass the current row filter? */
 export function rowMatch(model: Model, query: Query, c: Capability): boolean {
   const codes = query.on.map((id) => model.cov[id]?.[c.id]).filter(Boolean) as Code[]
   const scored = codes.filter((x) => x[0] !== 'o')
   if (query.hasEntry && scored.length === 0) return false
-  if (query.lane && !c.uses.includes(query.lane)) return false
+  if (query.lane && !inLane(c, query.lane)) return false
 
   const ne = codes.filter((x) => x[0] === 'n' || x[0] === 'x').length
   const nat = codes.filter((x) => x[0] === 'n').length
@@ -290,8 +323,41 @@ export function rowMatch(model: Model, query: Query, c: Capability): boolean {
   }
 }
 
-export const matchingRows = (model: Model, query: Query): Capability[] =>
-  model.capabilities.filter((c) => rowMatch(model, query, c))
+export function matchingRows(model: Model, query: Query): Capability[] {
+  const picked = pickedRows(model, query)
+  return model.capabilities.filter((c) => (!picked || picked.has(c.id)) && rowMatch(model, query, c))
+}
+
+/**
+ * The subject display's own filters, one per figure in its hero. They narrow the
+ * rows already shown to those the subject in focus reaches, has built in, has a
+ * claim for (or not), or has a recorded conflict on. Every active one must pass.
+ */
+export interface SubjectOnly {
+  reach: boolean
+  native: boolean
+  assessed: 'all' | 'assessed' | 'unassessed'
+  conflicts: boolean
+}
+
+export const NO_SUBJECT_ONLY: SubjectOnly = { reach: false, native: false, assessed: 'all', conflicts: false }
+
+export const subjectOnlyActive = (only: SubjectOnly): boolean =>
+  only.reach || only.native || only.assessed !== 'all' || only.conflicts
+
+/** Same definitions as the figures: reach is built in, extension or partial; a missing code is not assessed. */
+export function subjectRowMatch(model: Model, subjectId: string, only: SubjectOnly, c: Capability): boolean {
+  const level = levelOf(model.cov[subjectId]?.[c.id])
+  if (only.reach && !(level === 'n' || level === 'x' || level === 'p')) return false
+  if (only.native && level !== 'n') return false
+  if (only.assessed === 'assessed' && level === null) return false
+  if (only.assessed === 'unassessed' && level !== null) return false
+  if (only.conflicts && level !== 'c') return false
+  return true
+}
+
+export const subjectRows = (model: Model, subjectId: string, only: SubjectOnly, rows: Capability[]): Capability[] =>
+  rows.filter((c) => subjectRowMatch(model, subjectId, only, c))
 
 export const matchCount = (model: Model, query: Query, filter: RowFilter): number =>
   matchingRows(model, { ...query, filter }).length
@@ -305,7 +371,7 @@ export const countedIds = (model: Model, query: Query): string[] =>
 
 /** Which capability rows a percentage is measured over. */
 export function measuredCaps(model: Model, query: Query): Capability[] {
-  if (query.lane) return model.capabilities.filter((c) => c.uses.includes(query.lane!))
+  if (query.lane) return model.capabilities.filter((c) => inLane(c, query.lane!))
   return query.basis === 'must'
     ? model.capabilities.filter((c) => c.interop === 'must')
     : model.capabilities
@@ -402,6 +468,7 @@ export function shareUrl(
   p.push(`basis=${query.basis}`)
   if (query.lane) p.push(`lane=${query.lane}`)
   if (view === 'relations' && relGroup) p.push(`group=${relGroup}`)
+  if (query.sel?.length) p.push(`sel=${query.sel.join(',')}`)
   if (detail) p.push(`open=${detail.cid}${detail.sid ? `:${detail.sid}` : ''}`)
   return `/msf/atlas/?${p.join('&')}`
 }

@@ -3128,6 +3128,392 @@
           "quote": "This enables forward-compatible schema evolution - new fields with defaults can be added without breaking old saved data."
         }
       ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and asking a sensing runtime for ray intersections with the real surroundings is a device runtime's job; the collision sweeps a Verse program can run act on the virtual scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and detecting physical markers or images and tracking their pose is a sensing capability of the device runtime, not of the language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay that runs inside a host, and dispatching programmable GPU workloads belongs to the host's graphics layer, which the language does not expose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.frame-timing",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and its time model is the simulation tick, so pacing frame submission against predicted display time and view poses is the host renderer's matter.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, not a shader language, and the host renderer's shader source is outside what the language specifies.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.layer",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and submitting shaped image layers to a display compositor is a host and device matter; the screen widgets a Verse program can add are scored under the interface-layout row.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and locating a provenance record from a content fingerprint or watermark is a content-service function the language does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.style",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, so display-property rules that select features from content metadata would belong to a scene format, which the language does not define.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language for gameplay, and estimating real-world illumination is a sensing capability of the device runtime, not of the language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language, Fortnite documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "Epic's Presentation and SceneGraph modules give an entity typed descriptive components, such as a name-and-description component and a rarity classification, that other Verse code can read. Missing: these are classes in Epic's library with no declared metadata schema or exchange form that a system outside Verse could read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/versedotorg/presentation",
+          "title": "Verse API reference, Presentation module (Verse.org/Presentation), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Component that holds the details for an entity, such as name and description."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/versedotorg/scenegraph?lang=en-US",
+          "title": "Verse API reference, SceneGraph module (Verse.org/SceneGraph), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Component that denotes the rarity of an entity."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.variant",
+      "level": "none",
+      "note": "The SceneGraph has reusable authored prefabs but no named alternatives of one asset with a selection mechanism. Searched the Book of Verse (chapters 00 to 18) and the runtime API reference at verselang/book commit 2af9dfd, and the Verse API SceneGraph module and entity pages (API version 42.40), for variant, variation, preset and alternate on 2026-10-22; the matches for variant describe forms of other functions and types, and none concerns alternatives of an asset.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/versedotorg/scenegraph?lang=en-US",
+          "title": "Verse API reference, SceneGraph module (Verse.org/SceneGraph), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Reference type to editor defined prefab. Only generated digest code should reference this type."
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.procedural",
+      "level": "partial",
+      "note": "Epic's Patchwork devices include a synthesizer that turns note inputs into audio by sound synthesis, and a sound component plays MetaSound sources whose input settings can be overridden on the component. The reference lists only enable, disable and placement functions for the synthesizer device, no exchanged synthesis-model format is named, and runtime control of synthesis parameters from Verse is not documented in the pages read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/fortnitedotcom/devices/patchwork?lang=en-US",
+          "title": "Verse API reference, Patchwork module, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Turn Patchwork note inputs into audio using customizable sound synthesis."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/sound-component-in-unreal-editor-for-fortnite",
+          "title": "Sound Component in Unreal Editor for Fortnite, Epic Games",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Any input setting on the sound component will auto-populate any input setting you defined on the MetaSound preset."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Verse has numbered language versions that a project can stay on or upgrade from, and a definition can state the minimum upload version it needs. These are version gates on one language, not named subsets or levels that content and a second implementation could each claim.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/verselang/book/2af9dfd79c46ce91623e00c9088a342842ad785b/docs/18_evolution.md",
+          "title": "Verse Code Evolution and Compatibility, Book of Verse (commit 2af9dfd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Only when developers explicitly upgrade to a new language version do deprecations become errors, and even then, the option to remain on older versions provides an escape hatch."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/verselang/book/2af9dfd79c46ce91623e00c9088a342842ad785b/docs/12_access.md",
+          "title": "Access specifiers and attributes, Book of Verse (commit 2af9dfd)",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The `@available` annotation controls when a definition becomes available based on version numbers."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "Epic's Input module turns a viewport coordinate into a world-space ray, and SceneGraph sweep queries report the component that was hit, so a program can pick scene content in two calls. Missing: the Input, player_input and input_events pages document no source for a pointer or touch position, and there is no single pick call; the ray starts at the camera eye, so the program must filter out the player's own body.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/versedotorg/input/deprojectviewporttoworld?lang=en-US",
+          "title": "Verse API reference, DeprojectViewportToWorld extension, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Transforms the given viewport space coordinates into 3D world origin and direction vectors."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/versedotorg/scenegraph/sweep_hit?lang=en-US",
+          "title": "Verse API reference, sweep_hit struct, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "The component that was hit by SourceVolume."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "none",
+      "note": "Verse's screen widgets include buttons, text display, canvases and stacks but no widget or call that receives typed characters or strings from a player. Searched the Book of Verse (chapters 00 to 18) and the runtime API reference at verselang/book commit 2af9dfd, and the Verse API pages for the Input, Chat and UnrealEngine.com/Temporary/UI modules (API version 42.40), for text_edit, edit_text, text_input, text input and keyboard on 2026-10-22; the only keyboard mention is the input-mapping asset description, which concerns physical key bindings.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/unrealenginedotcom/temporary/ui",
+          "title": "Verse API reference, UI module (UnrealEngine.com/Temporary/UI), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Button is a container of a single child widget slot and fires the OnClick event when the button is clicked."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/verselang/book/2af9dfd79c46ce91623e00c9088a342842ad785b/docs/api/verse_runtime_api.html",
+          "title": "Verse runtime API reference, verselang/book at commit 2af9dfd",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "A reference to an input mapping asset — the table that connects physical inputs, across keyboard, mouse, gamepad and touch, to the abstract actions a game responds to."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Epic's Patchwork music devices take note inputs, but the Verse reference lists only enable, disable and placement functions for them, with no event, note, channel or value data a program can receive. Searched the Patchwork module and its note_trigger_device, omega_synthesizer_device and patchwork_device pages (Verse API version 42.40), the Book of Verse and the runtime API reference at commit 2af9dfd for midi, instrument, note_on, musical and synthesizer on 2026-10-22; no musical event input is exposed to Verse code.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/fortnitedotcom/devices/patchwork?lang=en-US",
+          "title": "Verse API reference, Patchwork module, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Turn Patchwork note inputs into audio using instrument samples."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/fortnitedotcom/devices/patchwork?lang=en-US",
+          "title": "Verse API reference, Patchwork module, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Send events to devices based on Patchwork note inputs."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "partial",
+      "note": "Epic's SceneGraph has an icon component that holds one texture representing an entity in the interface, so UI code can show a picture without knowing the entity's kind. It is a runtime texture slot on an entity, not a preview image packaged with or referenced from an exchanged asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/verselang/book/2af9dfd79c46ce91623e00c9088a342842ad785b/docs/api/verse_runtime_api.html",
+          "title": "Verse runtime API reference, verselang/book at commit 2af9dfd",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Holds a single texture to represent the entity in the interface, implementing the has_icon interface so that UI code can ask for an icon without knowing what kind of entity it has."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse-api/versedotorg/scenegraph?lang=en-US",
+          "title": "Verse API reference, SceneGraph module (Verse.org/SceneGraph), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Component that holds an icon for an entity."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.bounds",
+      "level": "none",
+      "note": "The runtime reference describes entity bounds, but marks GetGlobalBounds, GetLocalBounds, the bounded interface and the bounded_box struct as epic_internal, so creator code cannot call them, and the released SceneGraph module pages list no bounds function. Searched the Verse API reference SceneGraph and Input module pages and the Verse runtime reference at commit 2af9dfd for bounds, bounded and extent on 2026-10-22; bounds appear only as epic_internal declarations.",
+      "confidence": "unverified",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/verselang/book/2af9dfd79c46ce91623e00c9088a342842ad785b/docs/api/verse_runtime_api.html",
+          "title": "Verse runtime API reference, verselang/book at commit 2af9dfd",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Returns the bounds of this entity by accumulating bounded components, including owned entities, in world space."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "Through Epic's device library a Verse program can play, pause, seek and set the rate of a level sequence that carries animation and audio tracks, and can restart or seek curated videos shown on in-game screens. The pages define no synchronization model between that media and the simulation clock, and the video device plays curated videos only.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/fortnitedotcom/devices/cinematic_sequence_device?lang=en-US",
+          "title": "Verse API reference, cinematic_sequence_device class, Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Used to trigger level sequences that allow coordination of cinematic animation, transformation, and audio tracks."
+        },
+        {
+          "url": "https://dev.epicgames.com/documentation/fortnite/verse-api/fortnitedotcom/devices?lang=en-US",
+          "title": "Verse API reference, Devices module (Fortnite.com/Devices), Epic Games developer documentation",
+          "retrieved": "2026-10-22",
+          "kind": "primary",
+          "quote": "Used to display curated videos onto in-game screens or player HUDs."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.sensory-effect",
+      "level": "out-of-scope",
+      "note": "Verse is a programming language, so effects would be authored in code against platform devices rather than described as portable content metadata; the language page names no sensory-effect feature. A search of the Verse API page for haptic, rumble, wind, scent and sensory on 2026-11-01 found none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Verse language overview, Epic Games",
+          "retrieved": "2026-11-01",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.renderer-swap",
+      "level": "out-of-scope",
+      "note": "A gameplay programming language has no renderer-selection role.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Epic Games, Fortnite documentation, Verse",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "out-of-scope",
+      "note": "Verse is a gameplay programming language; the reference defines no portal opening or destination preview as part of the language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://dev.epicgames.com/documentation/en-us/fortnite/verse",
+          "title": "Epic Games, Fortnite documentation, Verse",
+          "retrieved": "2026-11-03",
+          "kind": "primary",
+          "quote": "Verse is a statically-checked programming language with an emphasis on gameplay programming."
+        }
+      ]
     }
   ]
 }
