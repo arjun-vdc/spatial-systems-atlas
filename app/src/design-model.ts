@@ -129,6 +129,12 @@ export interface Model {
    * it never changes a cell or a count. Arrives with the full payload, like the notes.
    */
   useCases: UseCases
+  /**
+   * via[subjectId][capabilityId] = ids of the standards the subject's own sources name as what it
+   * uses for that row. Arrives with the full payload; empty until then. Only the Interop
+   * display reads it.
+   */
+  via: Record<string, Record<string, string[]>>
   /** Level counts per capability, across all subjects in the export. */
   agg: Record<string, Record<string, number>>
   health: Record<string, GroupHealth>
@@ -389,6 +395,7 @@ export function adapt(raw: any): Model {
     det,
     detLoaded: hasDetail,
     useCases: adaptUseCases(raw.use_cases),
+    via: raw.via ?? {},
     agg,
     health,
     lanes,
@@ -410,7 +417,7 @@ export function mergeDetail(base: Model, raw: any): Model {
     }
     if (Object.keys(detail).length) det[sid] = detail
   }
-  return { ...base, det, detLoaded: true, useCases: adaptUseCases(raw.use_cases) }
+  return { ...base, det, detLoaded: true, useCases: adaptUseCases(raw.use_cases), via: raw.via ?? {} }
 }
 
 /** Everything the counting rules read. The address carries all of it. */
@@ -603,7 +610,7 @@ export function scopeNote(model: Model, subjectId: string): ScopeNote | null {
 /** The shareable address. The address is the state. */
 export function shareUrl(
   query: Query,
-  view: 'subject' | 'compare' | 'groups' | 'relations',
+  view: 'subject' | 'compare' | 'groups' | 'relations' | 'interop',
   focus: string | null,
   relGroup: string | null,
   detail: { cid: string; sid: string | null } | null,

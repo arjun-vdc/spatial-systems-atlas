@@ -1,0 +1,155 @@
+/* The Interop display. Everything is scoped under .wt- class names and
+   reads the app's own colour and type variables. The only new colours are the
+   six statuses: a teal side (a standard is in use) and a warm side (none in
+   use), each darker toward its end. Both 3-step ramps keep monotone lightness
+   in light and dark. */
+
+.wt-root {
+  --s-agreed: #1C5866; --s-rivals: #3B8796; --s-some: #76B3BE;
+  --s-own: #D9A262; --s-paper: #B4692E; --s-none: #7F3B1A;
+  --t-agreed: #F7F6F1; --t-rivals: #F7F6F1; --t-some: #1B1D1A;
+  --t-own: #1B1D1A; --t-paper: #F7F6F1; --t-none: #F7F6F1;
+}
+:root[data-theme='dark'] .wt-root {
+  --s-agreed: #93D3DE; --s-rivals: #4BA9BA; --s-some: #2B7F8F;
+  --s-own: #A0552C; --s-paper: #D3864A; --s-none: #F0BB86;
+  --t-agreed: #161814; --t-rivals: #161814; --t-some: #ECEBE4;
+  --t-own: #ECEBE4; --t-paper: #161814; --t-none: #161814;
+}
+
+.wt-root .mono { font-family: var(--fm); font-size: 10px; color: var(--soft); line-height: 1.45 }
+.wt-root .tiny { font-family: var(--fl); font-weight: 700; font-size: 9.5px; letter-spacing: .15em; text-transform: uppercase; color: var(--faint) }
+.wt-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0 }
+.wt-sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; flex: none }
+.wt-card { border: 1px solid var(--rule); background: var(--panel); border-radius: var(--r); padding: 11px 13px; color: var(--ink) }
+.wt-content { display: flex; flex-direction: column; gap: 10px }
+.wt-link { font: 11.5px var(--fl); background: transparent; border: 0; color: var(--ac); cursor: pointer; text-decoration: underline; padding: 0 }
+.wt-quiet { margin: 0 0 6px; font-size: 12px; color: var(--faint); font-style: italic }
+
+/* The answer in figures: the Subject view's figure style. */
+.wt-figs { display: grid; grid-template-columns: repeat(4, max-content); gap: 22px; margin-top: 8px }
+.wt-fig { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; min-width: 72px; text-align: left }
+.wt-fig b { font: 700 26px/1 var(--fl); padding-bottom: 4px }
+.wt-fig span { font: 9.5px/1.3 var(--fm); letter-spacing: .06em; text-transform: uppercase; color: var(--faint); max-width: 20ch }
+
+/* The chart: one diverging bar per use case. */
+.wt-chart-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 6px }
+.wt-chart-head h3 { margin: 0; font: 600 14.5px/1.2 var(--fl) }
+.wt-chart-head .mono { flex: 1 1 260px }
+.wt-grid { display: grid; grid-template-columns: minmax(150px, 210px) minmax(0, var(--L)) 2px minmax(0, var(--R)); align-items: center }
+.wt-axis { font: 600 11px/1.3 var(--fl); color: var(--soft); padding: 2px 0 4px }
+.wt-axis.l { text-align: right; padding-right: 10px }
+.wt-axis.r { padding-left: 10px }
+.wt-mid { align-self: stretch; background: var(--ink) }
+.wt-clab { display: flex; flex-direction: column; align-items: flex-start; text-align: left; background: transparent; border: 0; border-left: 2px solid transparent; border-radius: var(--r); padding: 3px 8px 3px 6px; margin: 1px 0; cursor: pointer; color: var(--ink) }
+.wt-clab b { font: 600 13px/1.2 var(--fl) }
+.wt-clab span { font: 10px/1.3 var(--fm); color: var(--faint) }
+.wt-clab:hover b { text-decoration: underline }
+.wt-clab .chev { color: var(--faint); font-weight: 400 }
+.wt-side { display: flex; align-items: center; height: 100%; min-height: 30px }
+.wt-side.l { flex-direction: row-reverse; padding-left: 34px }
+.wt-side.r { padding-right: 34px }
+.wt-segm { height: 16px; flex: none; display: flex; align-items: center; justify-content: center; font: 600 10px/1 var(--fm); border: 0; padding: 0; cursor: pointer; min-width: 3px }
+.wt-segm[data-fits='no'] .wt-n { display: none }
+.wt-side.l .wt-segm { margin-right: 2px }
+.wt-side.r .wt-segm { margin-left: 2px }
+.wt-side.l .wt-segm.end { border-radius: 4px 0 0 4px }
+.wt-side.r .wt-segm.end { border-radius: 0 4px 4px 0 }
+.wt-segm.dim { opacity: .32 }
+.wt-segm[aria-pressed='true'] { outline: 2px solid var(--ink); outline-offset: 1px }
+.wt-endlab { font: 600 11px/1 var(--fm); color: var(--soft); padding: 0 6px; white-space: nowrap }
+.wt-rowsep { grid-column: 1 / -1; height: 1px; background: var(--rule); margin: 3px 0 }
+.wt-chart-foot { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; margin-top: 6px }
+.wt-nums { border-collapse: collapse; width: 100%; font: 12px/1.4 var(--fl) }
+.wt-nums th, .wt-nums td { border-bottom: 1px solid var(--rule); padding: 4px 6px; text-align: right }
+.wt-nums th:first-child, .wt-nums td:first-child { text-align: left }
+.wt-nums thead th { font-size: 10.5px; color: var(--soft); vertical-align: bottom }
+.wt-tip { position: fixed; z-index: 80; max-width: 260px; padding: 7px 9px; background: var(--ink); color: var(--bg); font: 12px/1.4 var(--fl); border-radius: var(--r); pointer-events: none }
+
+/* First screen: the findings. A use case: its parts. */
+.wt-finds { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)) }
+.wt-find { display: flex; flex-direction: column; gap: 5px; text-align: left; cursor: pointer }
+.wt-find b { font: 600 14.5px/1.25 var(--fl) }
+.wt-find .t { font-size: 13px; color: var(--soft); line-height: 1.45 }
+.wt-find .go { font: 600 11.5px var(--fl); color: var(--ac); margin-top: auto }
+.wt-find:hover { border-color: var(--ruleS) }
+.wt-lanehead { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin-bottom: 4px }
+.wt-lanehead h3 { margin: 0; font: 600 15.5px/1.2 var(--fl) }
+.wt-lanehead h3:focus { outline: none }
+.wt-lanehead .plain { font-size: 13px; color: var(--soft) }
+.wt-lanehead .wt-link { margin-left: auto }
+.wt-filterline { font-size: 12.5px; color: var(--soft); margin: 2px 0 6px }
+.wt-cols { column-width: 320px; column-gap: 24px }
+.wt-lanebar { margin: 4px 0 2px; grid-template-columns: minmax(0, var(--L)) 2px minmax(0, var(--R)) }
+.wt-grp { break-inside: avoid-column }
+.wt-grp h4 { display: flex; align-items: center; gap: 6px; margin: 6px 0 2px; font: 700 10.5px/1.3 var(--fl); letter-spacing: .1em; text-transform: uppercase; color: var(--soft); border-bottom: 1px solid var(--rule); padding-bottom: 3px }
+.wt-grp h4 .n { font-family: var(--fm); color: var(--faint); letter-spacing: 0 }
+.wt-grp h4 .rule { font: 400 11px var(--fb); letter-spacing: 0; text-transform: none; color: var(--faint); margin-left: 2px }
+.wt-prow { display: flex; gap: 8px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; border-radius: var(--r); padding: 3px 4px; cursor: pointer; break-inside: avoid; color: var(--ink) }
+.wt-prow:hover { background: var(--sunk) }
+.wt-prow .nm { flex: 1; min-width: 0; font: 600 12.5px/1.3 var(--fl) }
+.wt-prow .fg { font: 10px/1.3 var(--fm); color: var(--soft); text-align: right; white-space: nowrap }
+.wt-prow[aria-expanded='true'] { background: var(--acF) }
+
+/* The key (Reading the marks) for this display. */
+.wt-legend { flex: 0 0 186px; width: 186px; display: flex; flex-direction: column; gap: 6px; position: sticky; top: 12px; padding: 11px 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--r); box-sizing: border-box }
+.wt-legend .lgt { display: flex; align-items: center; gap: 6px; padding: 0; margin: 0; border: 0; background: none; color: var(--faint); cursor: pointer; text-align: left }
+.wt-legend .lgt svg { transition: transform .15s ease }
+.wt-legend .e { display: flex; gap: 8px; align-items: flex-start }
+.wt-legend .e .wt-sw { width: 16px; height: 14px; margin-top: 2px }
+.wt-legend strong { display: block; font: 600 11.5px/1.3 var(--fl) }
+.wt-legend span.d { font-size: 11px; color: var(--faint); line-height: 1.35; display: block }
+.wt-legend hr { border: 0; border-top: 1px solid var(--rule); margin: 0; width: 100% }
+.wt-legend p { margin: 0; font-size: 11px; color: var(--faint); line-height: 1.35 }
+.wt-legend.shut { flex: 0 0 auto; width: auto; padding: 10px 8px; align-items: center }
+.wt-legend.shut .e > span, .wt-legend.shut hr, .wt-legend.shut p { display: none }
+.wt-legend.strip { position: static; width: 100%; flex: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(170px, 100%), 1fr)); gap: 8px 14px; margin-bottom: 10px }
+.wt-legend.strip .full { grid-column: 1 / -1 }
+.wt-legend.strip.shut { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; border: 0; background: none; gap: 8px }
+
+/* The row panel's own sections in this display. */
+.wt-panel .verdict { display: flex; gap: 9px; align-items: flex-start; border: 1px solid var(--rule); border-radius: var(--r); padding: 8px 10px; background: var(--bg); margin-bottom: 8px }
+.wt-panel .verdict .wt-sw { width: 16px; height: 16px; margin-top: 2px }
+.wt-panel .verdict b { font: 600 13px/1.3 var(--fl); display: block }
+.wt-panel .verdict p { margin: 2px 0 0; font-size: 12.5px }
+.wt-panel .sh { margin: 12px 0 2px; font: 700 11px/1.3 var(--fl); letter-spacing: .12em; text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 8px }
+.wt-panel .shbtn { all: unset; cursor: pointer; display: flex; gap: 6px; align-items: baseline }
+.wt-panel .shbtn:focus-visible { outline: 2px solid var(--ac); outline-offset: 2px }
+.wt-panel .shnote { margin: 0 0 4px; font-size: 12px; color: var(--soft) }
+.wt-panel .stdb { display: flex; flex-wrap: wrap; align-items: center; gap: 3px 8px; width: 100%; text-align: left; background: transparent; border: 0; border-bottom: 1px solid var(--rule); padding: 6px 0; cursor: pointer; color: var(--ink) }
+.wt-panel .tw { width: 12px; font-size: 11px; color: var(--faint) }
+.wt-panel .stdb .nm { flex: 1 1 140px; font: 600 13px/1.25 var(--fl) }
+.wt-panel .stdb .fg { font: 10.5px var(--fm); color: var(--soft); white-space: nowrap }
+.wt-notches { display: flex; gap: 1px; flex: 0 0 auto }
+.wt-notches i { display: block; width: 5px; height: 12px; border: 1px solid var(--ruleS); border-radius: 1px; box-sizing: border-box }
+.wt-notches i.on { background: var(--ac); border-color: var(--ac) }
+.wt-panel .lvl { padding: 2px 0 8px 20px }
+.wt-panel .band { margin: 8px 0 2px; font: 700 10.5px/1.3 var(--fl); letter-spacing: .1em; text-transform: uppercase; color: var(--soft) }
+.wt-panel .band .n { font-family: var(--fm); color: var(--faint); letter-spacing: 0; margin-left: 4px }
+.wt-panel .prod { display: flex; gap: 6px; align-items: baseline; width: 100%; text-align: left; background: transparent; border: 0; padding: 3px 0; cursor: pointer; font-size: 12.5px; color: var(--ink) }
+.wt-panel .prod .nm { flex: 1; font: 600 12.5px/1.3 var(--fl) }
+.wt-panel .prod .cf { font: 9.5px var(--fm); color: var(--faint) }
+.wt-panel .ev { padding: 2px 0 8px 18px; font-size: 12.5px }
+.wt-panel .ev p { margin: 0 0 6px }
+.wt-panel .src { margin-top: 4px; font-size: 12px }
+.wt-panel .src .k { font: 9.5px var(--fm); color: var(--faint); margin-left: 6px }
+.wt-panel .src q { display: block; margin-top: 2px; font-size: 11.5px; color: var(--soft); font-style: italic }
+.wt-panel .names { font-size: 12px; color: var(--soft); margin: 2px 0 6px }
+
+@media (max-width: 760px) {
+  .wt-grid { grid-template-columns: minmax(0, var(--L)) 2px minmax(0, var(--R)) }
+  .wt-clab { grid-column: 1 / -1; margin-top: 4px; flex-direction: row; gap: 8px; align-items: baseline; flex-wrap: wrap }
+  .wt-axis.lab { display: none }
+  .wt-side { min-height: 22px }
+  .wt-side.l { padding-left: 26px }
+  .wt-side.r { padding-right: 26px }
+  .wt-cols { column-width: auto; column-count: 1 }
+  .wt-prow .fg { max-width: 46%; white-space: normal }
+  .wt-grp h4 { flex-wrap: wrap }
+  .wt-grp h4 .rule { flex-basis: 100%; margin-left: 18px }
+  .wt-legend.strip { grid-template-columns: 1fr 1fr; gap: 6px 10px; padding: 9px 10px }
+  .wt-legend span.d, .wt-legend hr, .wt-legend p.full { display: none }
+  .wt-figs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px }
+  .wt-fig { min-width: 0 }
+  .wt-fig b { font-size: 22px }
+}

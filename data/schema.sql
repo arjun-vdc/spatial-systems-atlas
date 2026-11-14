@@ -79,6 +79,21 @@ CREATE TABLE IF NOT EXISTS evidence (
   quote       TEXT
 );
 
+-- Which standard or specification a claim says the product uses for that row, one row per
+-- named standard per quote. Optional: most claims have none. A row here exists only when one of
+-- the claim's own sources names that standard as what the product uses for the row, and quote is
+-- the exact words, found inside that source's quote. A product that does the thing its own way,
+-- or a source that only compares with a standard, gives no row. Two products that share a via
+-- standard on a row agree there for certain; two that only share a level may not.
+CREATE TABLE IF NOT EXISTS via (
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  coverage_id INTEGER NOT NULL REFERENCES coverage(id),
+  standard_id TEXT NOT NULL REFERENCES subject(id),
+  evidence_id INTEGER NOT NULL REFERENCES evidence(id),
+  quote       TEXT NOT NULL,
+  UNIQUE(coverage_id, standard_id, evidence_id)
+);
+
 CREATE VIEW IF NOT EXISTS matrix AS
 SELECT s.name AS subject, s.kind, cg.plane, cg.name AS grp, c.name AS capability,
        c.interop, c.interop_uses, cov.level, cov.confidence, cov.note, cov.direction

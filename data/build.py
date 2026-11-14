@@ -278,6 +278,19 @@ if os.path.exists(tips_path):
             if text:
                 tips[k] = fill(text, f"tooltip {k}")
 
+# Which standard a claim's own sources say the product uses for the row: {subject: {row: [ids]}},
+# only for claims that name one. Kept beside coverage rather than inside it, so the four-item claim
+# the pages read keeps its shape; nothing on screen reads it yet. Two products that list one id on
+# one row agree there for certain; a shared level alone does not say so.
+via = {}
+for r in con.execute("""
+    SELECT c.subject_id, c.capability_id, v.standard_id FROM via v
+    JOIN coverage c ON c.id = v.coverage_id
+    ORDER BY c.subject_id, c.capability_id, v.id"""):
+    ids = via.setdefault(r["subject_id"], {}).setdefault(r["capability_id"], [])
+    if r["standard_id"] not in ids:
+        ids.append(r["standard_id"])
+
 out = {"groups": groups, "capabilities": caps, "subjects": subs, "coverage": cov, "tally": tally,
        "display_groups": display_groups, "tooltips": tips,
        "counts": {"claims": con.execute("SELECT COUNT(*) FROM coverage").fetchone()[0],
@@ -285,7 +298,8 @@ out = {"groups": groups, "capabilities": caps, "subjects": subs, "coverage": cov
                   "conflicts": con.execute("SELECT COUNT(*) FROM coverage WHERE level='conflicts'").fetchone()[0],
                   "unverified": con.execute("SELECT COUNT(*) FROM coverage WHERE confidence='unverified'").fetchone()[0],
                   "must": interop_counts["must"], "should": interop_counts["should"],
-                  "no_interop": interop_counts["none"], "lanes": lane_counts}}
+                  "no_interop": interop_counts["none"], "lanes": lane_counts},
+       "via": via}
 
 # Related use cases: why a task needs a row, kept apart from the claims. Exported only in the full
 # file, which the row panel reads; the index stays the landing view's figures alone. A record

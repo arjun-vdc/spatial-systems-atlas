@@ -181,7 +181,8 @@ function Actions({ label, note, ids, name }: { label: string; note: string; ids:
   )
 }
 
-const s = {
+/** The sheet's shell (scrim, 460px panel, header, Close), shared with the Interop display's panel. */
+export const ROW_SHEET = {
   scrim: { position: 'fixed', inset: 0, background: 'rgba(0,0,0,.28)', zIndex: 60, display: 'flex', justifyContent: 'flex-end' } as const,
   panel: { width: 'min(460px,100%)', background: 'var(--panel)', borderLeft: '1px solid var(--ruleS)', display: 'flex', flexDirection: 'column', padding: '14px 16px', gap: 4, overflow: 'hidden' } as const,
   head: { display: 'flex', gap: 12, alignItems: 'flex-start' } as const,
@@ -203,3 +204,4 @@ const s = {
   kind: { fontFamily: 'var(--fm)', fontSize: 9.5, color: 'var(--faint)', marginLeft: 6 } as const,
   excerpt: { margin: '2px 0 0', fontSize: 11.5, color: 'var(--soft)', fontStyle: 'italic' } as const,
 }
+const s = ROW_SHEET

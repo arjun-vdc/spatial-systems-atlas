@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Write the two download copies of the territory map: territory.csv and territory.md.
 
-The CSV is the whole record, one row per claim, with the note and the sources.
+The CSV is the whole record, one row per claim, with the note, the sources and the standards
+the claim's sources say the product uses (the via column, empty where none is recorded).
 The Markdown is the map as a reader sees it: one table per capability group, subjects
 across the top, one symbol per cell, and every capability's binding word and definition
 under its table.
@@ -43,7 +44,7 @@ LEGEND = [
 ]
 COLUMNS = ["subject_id", "subject", "kind", "subcategory", "status", "group", "capability_id",
            "capability", "binding", "interop", "interop_reason", "level", "confidence",
-           "note", "sources"]
+           "note", "sources", "via"]
 
 # The word the boundaries page decided for a row, printed in the Markdown tables' Boundary
 # column beside the capability's name. must means a use case fails outright unless two
@@ -81,7 +82,7 @@ def read(con):
             "SELECT id, subject_id, capability_id, level, note, confidence FROM coverage"):
         claims[(r["subject_id"], r["capability_id"])] = {
             "id": r["id"], "level": r["level"], "note": r["note"] or "",
-            "confidence": r["confidence"] or "", "sources": []}
+            "confidence": r["confidence"] or "", "sources": [], "via": []}
 
     by_coverage = {c["id"]: c for c in claims.values()}
     # Primary sources first, then secondary, then local evidence; inside a kind, by source id.
@@ -100,6 +101,11 @@ def read(con):
         label = (r["title"] or "") if r["kind"] == "local-evidence" else (r["url"] or "")
         if label:
             claim["sources"].append(label)
+    # The standards a claim's own sources say the product uses for the row, in recorded order.
+    for r in con.execute("SELECT coverage_id, standard_id FROM via ORDER BY coverage_id, id"):
+        claim = by_coverage.get(r["coverage_id"])
+        if claim is not None and r["standard_id"] not in claim["via"]:
+            claim["via"].append(r["standard_id"])
     return groups, caps, subs, claims
 
 
@@ -117,7 +123,7 @@ def build_csv(caps, subs, claims):
                         c["group_name"], c["id"], c["name"], bind_word(c["binding"]),
                         c["interop"], c["interop_reason"],
                         claim["level"], claim["confidence"], claim["note"],
-                        " | ".join(claim["sources"])])
+                        " | ".join(claim["sources"]), " | ".join(claim["via"])])
             rows += 1
     return buf.getvalue(), rows
 

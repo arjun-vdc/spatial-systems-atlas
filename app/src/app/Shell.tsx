@@ -35,12 +35,14 @@ import { HoverTip } from './HoverTip.tsx'
 import { WIDE_WIDTH, frame, pageLocked, panelMode } from './layout.ts'
 import { CustomPreset } from './CustomPreset.tsx'
 import { PresetReasons } from './PresetReasons.tsx'
+import { TOGETHER_QUESTION, TogetherFigures, TogetherLegend, TogetherPanel, TogetherView } from './TogetherView.tsx'
 
 const VIEWS: Array<{ id: ViewId; label: string }> = [
   { id: 'subject', label: 'Subject' },
   { id: 'compare', label: 'Compare' },
   { id: 'groups', label: 'Groups' },
   { id: 'relations', label: 'Relationships' },
+  { id: 'interop', label: 'Interop' },
 ]
 
 const FILTERS: Array<{ id: RowFilter; label: string }> = [
@@ -227,17 +229,21 @@ export function Shell({ model }: { model: Model }) {
     return () => media.removeEventListener('change', onChange)
   }, [])
 
-  // Escape unwinds one layer at a time, innermost first.
+  // Escape unwinds one layer at a time, innermost first. In Interop the last
+  // layer is the use case, which steps back to the first screen.
+  const together = !candidate && state.view === 'interop'
+  const togetherOpen = together && Boolean(state.lane || state.wtAll)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return
       if (state.detail) dispatch({ type: 'detail', detail: null })
       else if (sheet && panels.length) closeSheet()
       else if (floating && panels.length) closePanels()
+      else if (togetherOpen) dispatch({ type: 'together', patch: { lane: null, wtAll: false, wtStatus: null } })
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [state.detail, floating, sheet, panels.length, closeSheet, closePanels])
+  }, [state.detail, floating, sheet, panels.length, closeSheet, closePanels, togetherOpen])
 
   const query = queryOf(state)
   const rows = useMemo(() => matchingRows(model, query), [model, query])
@@ -294,6 +300,7 @@ export function Shell({ model }: { model: Model }) {
       : `Where do these ${state.on.length} subjects agree, differ, and leave a gap?`,
     groups: 'What the spatial web covers, and where it is thin',
     relations: 'Inside one group, who supports which capability?',
+    interop: TOGETHER_QUESTION,
   }[state.view]
 
   return (
@@ -359,10 +366,11 @@ export function Shell({ model }: { model: Model }) {
         />
 
         <main ref={mainRef} style={F.main}>
-          <div style={S.questionBar}>
+          <div style={together ? { ...S.questionBar, alignItems: 'flex-start' } : S.questionBar}>
             <div style={{ flex: 1, minWidth: 'min(260px, 100%)', overflowWrap: 'anywhere' }}>
               <h1 style={S.question}>{question}</h1>
-              {!candidate && (state.customPreset?.details || preset?.details) && <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--soft)' }}>{state.customPreset?.details || preset?.details}</p>}
+              {!candidate && !together && (state.customPreset?.details || preset?.details) && <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--soft)' }}>{state.customPreset?.details || preset?.details}</p>}
+              {together && <TogetherFigures model={model} state={state} />}
             </div>
             <div style={S.segmented} role="group" aria-label="Display">
               {VIEWS.map((v, i) => (
@@ -423,7 +431,9 @@ export function Shell({ model }: { model: Model }) {
           }}>
             <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
               {!candidate && preset?.reasons && <PresetReasons model={model} preset={preset} dispatch={dispatch} />}
-              {state.on.length === 0 ? (
+              {together ? (
+                <TogetherView model={model} state={state} dispatch={dispatch} />
+              ) : state.on.length === 0 ? (
                 <Empty title="No subject is being compared"
                   why="Every percentage and every column here is drawn from the subjects you select."
                   fixLabel={`Select all ${total} subjects`}
@@ -457,7 +467,9 @@ export function Shell({ model }: { model: Model }) {
             {/* A candidate display carries its own key and card in this column. */}
             {/* Closed, the legend is a bar of the toggle and the nine marks, each
                 with its two lines in a tip: a slim column beside the display, a row above it. */}
-            {!candidate && <aside aria-label="Reading the marks"
+            {together && <TogetherLegend model={model}
+              open={legendOpen} toggle={toggleLegend} narrow={narrow} />}
+            {!candidate && !together && <aside aria-label="Reading the marks"
               style={legendOpen ? (narrow ? S.legendStrip : S.legend) : (narrow ? S.legendBarRow : S.legendBar)}>
               <button type="button" style={legendOpen ? S.legendToggle : S.legendToggleShut} onClick={toggleLegend}
                 aria-expanded={legendOpen} aria-controls="legend-entries">
@@ -498,10 +510,13 @@ export function Shell({ model }: { model: Model }) {
         </main>
       </div>
 
-      {state.detail && (
+      {state.detail && (together ? (
+        <TogetherPanel key={state.detail.cid} model={model} state={state}
+          onClose={() => dispatch({ type: 'detail', detail: null })} />
+      ) : (
         <RowPanel model={model} state={state}
           onClose={() => dispatch({ type: 'detail', detail: null })} />
-      )}
+      ))}
     </div>
   )
 }

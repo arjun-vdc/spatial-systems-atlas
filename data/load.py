@@ -18,6 +18,11 @@ USE_CASES = ("U1", "U2", "U3", "U4", "U6", "U7", "U10")
 # The kinds of platform, in the order the pages group them. Only a subject whose kind is
 # platform carries one.
 PLATFORM_SUBCATEGORIES = ("social-world", "game-platform", "ai-built-world")
+# What a claim's optional "via" list may name: any subject of kind standard, and these
+# specification projects. A via entry says the product uses that standard for the row.
+VIA_PROJECTS = ("rp1", "teleportxr", "vibejam", "wow")
+# The levels a via entry may sit on: a claim that the product does the thing.
+VIA_LEVELS = ("native", "via-extension", "partial")
 
 def clear_temp():
     for p in TMP_FILES:
@@ -117,6 +122,40 @@ def load_use_cases(con):
                      atlas.get("native"), atlas.get("partial"), atlas.get("scored")))
 
 
+def load_via(con, where, sid, c, cov, evidence_ids, via_ok):
+    """Load a claim's optional via list: the standards its own sources say the product uses.
+
+    Each entry is {"id": <standard subject id>, "source": <index into the claim's sources>,
+    "quote": <exact words>}. The quote must stand inside that source's recorded quote, so every
+    entry rests on words already on record. Anything else stops the load: a via entry is a
+    certainty, never a guess."""
+    via = c.get("via")
+    if via is None:
+        return
+    cap = c["capability_id"]
+    def need(ok, msg):
+        if not ok:
+            sys.exit(f"{where}: {cap} via {msg}")
+    need(isinstance(via, list) and via, "must be a non-empty list, or leave the key out")
+    need(c["level"] in VIA_LEVELS,
+         f"sits on level '{c['level']}'; only {', '.join(VIA_LEVELS)} claims name a standard used")
+    sources = c.get("sources", [])
+    for v in via:
+        need(isinstance(v, dict) and set(v) == {"id", "source", "quote"},
+             f"entry {v!r} must have exactly id, source and quote")
+        need(v["id"] in via_ok, f"names '{v['id']}', which is not a standard or specification subject")
+        need(v["id"] != sid, f"names the subject itself")
+        i = v["source"]
+        need(isinstance(i, int) and not isinstance(i, bool) and 0 <= i < len(sources),
+             f"entry {v['id']} points at source {i!r}; the claim has {len(sources)} sources")
+        q = v["quote"]
+        need(isinstance(q, str) and q.strip(), f"entry {v['id']} quotes no words")
+        need(q in (sources[i].get("quote") or ""),
+             f"entry {v['id']} quote is not inside source {i}'s quote; quote that source's own words")
+        con.execute("INSERT INTO via (coverage_id,standard_id,evidence_id,quote) VALUES (?,?,?,?)",
+                    (cov, v["id"], evidence_ids[i], q))
+
+
 def build(con):
     """Fill one empty database. Returns the one-line summary to print on success."""
     con.executescript(open(os.path.join(D, "schema.sql")).read())
@@ -190,6 +229,9 @@ def build(con):
         return con.execute("INSERT INTO source (url,title,retrieved,kind) VALUES (?,?,?,?)",
                            (url, title, retrieved, kind)).lastrowid
 
+    via_ok = {r[0] for r in con.execute(
+        "SELECT id FROM subject WHERE kind='standard' OR id IN (%s)" % ",".join("?" * len(VIA_PROJECTS)),
+        VIA_PROJECTS)}
     loaded = 0
     for path in sorted(glob.glob(os.path.join(D, "coverage", "*.json"))):
         doc = json.load(open(path))
@@ -207,6 +249,7 @@ def build(con):
                 "INSERT OR REPLACE INTO coverage (subject_id,capability_id,level,note,confidence,direction) VALUES (?,?,?,?,?,?)",
                 (sid, c["capability_id"], c["level"], c.get("note"), c.get("confidence", "unverified"),
                  direction)).lastrowid
+            evidence_ids = []
             for s in c.get("sources", []):
                 # The database is published, so a source address must be a public one or a
                 # plain description; a file path on the maintainer's machine is refused.
@@ -216,9 +259,11 @@ def build(con):
                 # Every source entry becomes its own row. One claim may cite one address twice
                 # for two different sentences; evidence is keyed by its own row id, so the
                 # second quote lands instead of being ignored as a repeat of the first.
-                con.execute("INSERT INTO evidence (coverage_id,source_id,quote) VALUES (?,?,?)",
-                            (cov, source_id(s["url"], s.get("title"), s.get("retrieved"), s.get("kind", "primary")),
-                             s.get("quote")))
+                evidence_ids.append(con.execute(
+                    "INSERT INTO evidence (coverage_id,source_id,quote) VALUES (?,?,?)",
+                    (cov, source_id(s["url"], s.get("title"), s.get("retrieved"), s.get("kind", "primary")),
+                     s.get("quote"))).lastrowid)
+            load_via(con, os.path.basename(path), sid, c, cov, evidence_ids, via_ok)
             loaded += 1
     load_use_cases(con)
     con.commit()
@@ -239,6 +284,7 @@ def build(con):
             f"  coverage {n('SELECT COUNT(*) FROM coverage')}  sources {n('SELECT COUNT(*) FROM source')}"
             f"  quotes {n('SELECT COUNT(*) FROM evidence')}"
             f"  directed {n('SELECT COUNT(*) FROM coverage WHERE direction IS NOT NULL')}"
+            f"  via {n('SELECT COUNT(*) FROM via')} on {n('SELECT COUNT(DISTINCT coverage_id) FROM via')} claims"
             f"  use-case links {n('SELECT COUNT(*) FROM use_case_link')}"
             f" ({n('SELECT COUNT(*) FROM use_case')} cases,"
             f" {n('SELECT COUNT(*) FROM use_case_coverage')} coverage rows)"
