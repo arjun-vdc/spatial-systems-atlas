@@ -489,6 +489,13 @@ export interface Preset {
   platforms?: boolean
   /** Capability ids the preset picks; only those rows show. Carried in the address as `sel`. */
   sel?: string[]
+  /** A short task description shown under the heading, within the custom-preset details limit. */
+  details?: string
+  /**
+   * Why each picked row is in the preset, keyed by capability id: one reviewed sentence per row,
+   * kept in the source so every reader sees the same reasons. Need, never support.
+   */
+  reasons?: Record<string, string>
 }
 
 // The presets (2026-11-01). Each preset answers a question a real
@@ -526,6 +533,23 @@ export const PRESETS: Preset[] = [
     scope: 'Agent and identity standards beside platforms · agent participation lane',
     on: ['mcp', 'oauth', 'did', 'vc', 'roblox', 'unity', 'unreal', 'arrival'],
     view: 'compare', filter: 'interop', lane: 'U4' },
+  // A task preset: six picked rows, each with the reason the task needs it. The related use
+  // cases behind each row are in the row panel; the reasons say why, never who supports it.
+  { name: 'Training results that travel',
+    question: 'Training results that travel',
+    details: 'A learner finishes training in one application. Another system must receive a readable record of what they did and how well.',
+    scope: 'Engines, platforms and identity standards · six picked rows',
+    on: ['unity', 'unreal', 'roblox', 'vrchat', 'vc', 'ieee2874', 'oauth'],
+    view: 'compare', filter: 'all',
+    sel: ['persist.activity-record', 'identity.privacy', 'sense.privacy', 'identity.consent', 'identity.credential', 'identity.status'],
+    reasons: {
+      'persist.activity-record': 'The result itself. The learning record store, employer or assessor is a different system; if it cannot read the record, the result stays in the simulator.',
+      'identity.privacy': 'The receiver needs the outcome, not the whole session. Sending only what it needs keeps the record from over-sharing.',
+      'sense.privacy': 'Recorded head and hand motion can identify the learner. Terms on that data have to travel with it.',
+      'identity.consent': "Says who may receive the learner's record, for what purpose and until when.",
+      'identity.credential': 'Only when the result becomes a qualification a third party must trust, such as a certificate for an employer.',
+      'identity.status': 'Only when a credential is issued: the receiver must be able to learn it was withdrawn. Correcting an activity record is a different thing.',
+    } },
   { name: 'The open web stack',
     question: 'What can a browser do with no app store and no install?',
     scope: 'Browser standards and web engines · every row',
@@ -599,6 +623,10 @@ export const presetSubjects = (preset: Preset, model: Model): string[] =>
   preset.mostConflicts ? mostConflicted(model, preset.mostConflicts)
     : preset.platforms ? platformSubjects(model)
     : preset.on.length ? preset.on : model.subjects.map((s) => s.id)
+
+/** The selected built-in preset, if any. */
+export const presetNamed = (presetName: string): Preset | null =>
+  PRESETS.find((p) => p.name === presetName) ?? null
 
 /** The heading: the selected preset's question, or the generic heading. */
 export const presetQuestion = (presetName: string): string | null =>

@@ -10,10 +10,10 @@ import type { Theme } from './state.ts'
 export const THEMES: Record<Theme, Record<string, string>> = {
   light: {
     '--bg': '#ECEBE4', '--panel': '#F7F6F1', '--sunk': '#E2E1D8',
-    '--ink': '#1B1D1A', '--soft': '#55584E', '--faint': '#7E8177',
-    '--rule': '#C7C5B8', '--ruleS': '#A9A79A',
+    '--ink': '#1B1D1A', '--soft': '#55584E', '--faint': '#5F6259',
+    '--rule': '#C7C5B8', '--ruleS': '#918F82',
     '--ac': '#2C5F6B', '--acF': '#CFE0E1',
-    '--warn': '#8A6634', '--warnF': '#EBDCC2',
+    '--warn': '#7F5B29', '--warnF': '#EBDCC2',
     '--bad': '#A33328', '--badF': '#F0D6D0', '--lane': '#3F6B3A',
     '--fl': "'IBM Plex Sans Condensed',sans-serif",
     '--fb': "'IBM Plex Serif',Georgia,serif",
@@ -25,8 +25,8 @@ export const THEMES: Record<Theme, Record<string, string>> = {
   // mark keeps its own hue so no two meanings collapse into one.
   dark: {
     '--bg': '#161814', '--panel': '#1F211D', '--sunk': '#2A2C27',
-    '--ink': '#ECEBE4', '--soft': '#BDBFB4', '--faint': '#9A9D92',
-    '--rule': '#3D4038', '--ruleS': '#62655B',
+    '--ink': '#ECEBE4', '--soft': '#BDBFB4', '--faint': '#A2A59A',
+    '--rule': '#3D4038', '--ruleS': '#696C61',
     '--ac': '#7FC3CF', '--acF': '#1C3F46',
     '--warn': '#D9AE6A', '--warnF': '#453722',
     '--bad': '#F2897C', '--badF': '#4A2420', '--lane': '#93C98A',

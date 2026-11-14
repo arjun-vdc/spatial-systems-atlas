@@ -96,3 +96,68 @@ JOIN capability c ON c.id = cov.capability_id
 JOIN subject s    ON s.id = cov.subject_id
 WHERE cov.level IN ('native','via-extension')
 GROUP BY c.id;
+
+-- Related use cases: why a task needs a row. Need evidence only. A use case names no subject,
+-- no support level and no confidence, so nothing here can change a coverage claim. Loaded from
+-- related-use-cases.json, which is imported from a pinned commit of the contributing repository.
+CREATE TABLE IF NOT EXISTS use_case (
+  id             TEXT PRIMARY KEY,   -- the repository's own id, never renumbered
+  title          TEXT NOT NULL,
+  url            TEXT NOT NULL,      -- the original public record
+  repository     TEXT NOT NULL,
+  record_status  TEXT,
+  record_version TEXT,
+  record_date    TEXT,
+  specificity    TEXT NOT NULL CHECK (specificity IN ('generic','specialised','individual','unknown')),
+  extends        TEXT NOT NULL DEFAULT '',   -- comma-separated ids of the cases it specialises
+  read_at        TEXT,                        -- when the public record was read
+  record_sha256  TEXT,
+  implementations_stated INTEGER,            -- "evidenced by" figure the page states
+  implementations_linked TEXT NOT NULL DEFAULT ''  -- comma-separated implementation ids linked from the page
+);
+
+-- One link between one use case and one capability. Basis is the contributor's reading; review
+-- is the Atlas's own and is kept apart from it.
+CREATE TABLE IF NOT EXISTS use_case_link (
+  id             TEXT PRIMARY KEY,   -- <use case id>~<capability id>
+  use_case_id    TEXT NOT NULL REFERENCES use_case(id),
+  capability_id  TEXT NOT NULL REFERENCES capability(id),
+  source_passage TEXT NOT NULL,      -- the record's own words, quoted exactly
+  source_section TEXT,
+  rationale      TEXT NOT NULL,
+  rationale_by   TEXT NOT NULL CHECK (rationale_by IN ('contributor','atlas-reader')),
+  basis          TEXT NOT NULL CHECK (basis IN ('derived','proposed')),
+  origin         TEXT NOT NULL CHECK (origin IN ('contributor','contributor-public-record','atlas-reader')),
+  contribution_commit TEXT NOT NULL,
+  contribution_refreshed TEXT,
+  in_pinned_commit INTEGER NOT NULL,
+  passage_found  INTEGER NOT NULL,
+  basis_on_public_record TEXT,
+  checked_release TEXT,              -- Atlas release whose definition the link was checked against
+  definition_as_read TEXT,
+  review_status  TEXT NOT NULL DEFAULT 'unreviewed'
+                 CHECK (review_status IN ('unreviewed','accepted','needs-change','rejected','stale')),
+  reviewed_at    TEXT,
+  review_note    TEXT,
+  drift          TEXT NOT NULL DEFAULT '[]'  -- JSON list: the source's copy of Atlas values, history only
+);
+
+-- Coverage of the contributing repository per capability, as its own file states it. Three
+-- separate counts that are never added together, and not market demand.
+CREATE TABLE IF NOT EXISTS use_case_coverage (
+  capability_id   TEXT PRIMARY KEY REFERENCES capability(id),
+  source_interop  TEXT,              -- the source's copy of the Atlas interop word, history only
+  use_cases       INTEGER NOT NULL,
+  specialisations INTEGER NOT NULL,
+  deployments     INTEGER NOT NULL,
+  use_case_ids    TEXT NOT NULL DEFAULT '',
+  source_native   INTEGER,           -- the source's copy of the Atlas figures, history only
+  source_partial  INTEGER,
+  source_scored   INTEGER
+);
+
+-- Where the use-case data came from: one row per key.
+CREATE TABLE IF NOT EXISTS use_case_source (
+  key   TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);

@@ -5,7 +5,7 @@ The rebuild happens in a temporary file beside the target. That file is renamed 
 after the whole load has succeeded, so a run that fails part way through leaves the existing
 territory.db exactly as it was.
 """
-import csv, os, sqlite3, sys, json, glob
+import csv, os, re, sqlite3, sys, json, glob
 
 D = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(D, "territory.db")
@@ -27,6 +27,95 @@ def rows(name):
     p = os.path.join(D, name)
     if not os.path.exists(p): return []
     with open(p, newline="") as f: return list(csv.DictReader(f))
+
+USE_CASE_FILE = "related-use-cases.json"
+BASES = ("derived", "proposed")
+ORIGINS = ("contributor", "contributor-public-record", "atlas-reader")
+REVIEW = ("unreviewed", "accepted", "needs-change", "rejected", "stale")
+SPECIFICITY = ("generic", "specialised", "individual", "unknown")
+
+
+def load_use_cases(con):
+    """Load the related-use-case records, kept apart from coverage, confidence and sources.
+
+    A record that names an unknown capability, a word outside its field's list, an address that
+    is not public, or a use case described two different ways stops the load."""
+    path = os.path.join(D, USE_CASE_FILE)
+    if not os.path.exists(path):
+        return
+    with open(path) as f:
+        doc = json.load(f)
+    known = {r[0] for r in con.execute("SELECT id FROM capability")}
+    where = USE_CASE_FILE
+
+    def need(ok, msg):
+        if not ok:
+            sys.exit(f"{where}: {msg}")
+
+    src = doc["contribution"]
+    for key in ("repository", "branch", "folder", "commit", "committed", "refreshed",
+                "use_case_repository", "use_case_repository_url"):
+        need(src.get(key), f"contribution has no {key}")
+        con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)", (key, str(src[key])))
+    need(re.fullmatch(r"[0-9a-f]{40}", src["commit"]), "contribution commit is not a full commit id")
+    reading = doc.get("record_reading", {})
+    con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)",
+                ("records_read_at", reading.get("read_at", "")))
+    con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)",
+                ("atlas_figures_date", doc["coverage"].get("atlas_figures_date", "")))
+
+    cases, link_rows = {}, []
+    for r in doc["records"]:
+        uc, cap = r["use_case"], r["capability"]
+        lid = r["link_id"]
+        need(lid == f"{uc['id']}~{cap['id']}", f"{lid} is not <use case id>~<capability id>")
+        need(cap["id"] in known, f"{lid} names capability {cap['id']}, which is not a row")
+        need(r["basis"] in BASES, f"{lid} has basis '{r['basis']}'; use {', '.join(BASES)}")
+        need(r["origin"] in ORIGINS, f"{lid} has origin '{r['origin']}'")
+        need(r["review"]["status"] in REVIEW, f"{lid} has review status '{r['review']['status']}'")
+        need(uc["specificity"] in SPECIFICITY, f"{lid} has specificity '{uc['specificity']}'")
+        need(uc["url"].startswith("https://"), f"{lid} links to {uc['url']}; give the public record")
+        need(r["explanation"]["source_passage"].strip(), f"{lid} quotes no words of the record")
+        sv = r["source_version"]
+        case = (uc["title"], uc["url"], uc["repository"], uc.get("record_status"),
+                uc.get("record_version"), uc.get("record_date_shown"), uc["specificity"],
+                ",".join(uc.get("extends", [])), sv.get("public_record_read_at"),
+                sv.get("public_record_sha256"))
+        need(cases.setdefault(uc["id"], case) == case, f"{uc['id']} is described two ways")
+        link_rows.append((
+            "INSERT INTO use_case_link (id,use_case_id,capability_id,source_passage,source_section,"
+            "rationale,rationale_by,basis,origin,contribution_commit,contribution_refreshed,"
+            "in_pinned_commit,passage_found,basis_on_public_record,checked_release,definition_as_read,"
+            "review_status,reviewed_at,review_note,drift) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (lid, uc["id"], cap["id"], r["explanation"]["source_passage"],
+             r["explanation"].get("source_section"), r["explanation"]["rationale"],
+             r["explanation"]["rationale_by"], r["basis"], r["origin"], sv["contribution_commit"],
+             sv.get("contribution_refreshed"), int(bool(sv.get("in_pinned_commit"))),
+             int(bool(sv["passage_found_on_public_record"])), sv.get("basis_on_public_record"),
+             cap.get("atlas_release"), cap.get("definition_as_read"), r["review"]["status"],
+             r["review"].get("reviewed_at"), r["review"].get("review_note"),
+             json.dumps(r.get("drift", []), ensure_ascii=False))))
+    read = reading.get("cases", {})
+    for cid, c in cases.items():
+        imp = read.get(cid, {})
+        con.execute("INSERT INTO use_case (id,title,url,repository,record_status,record_version,"
+                    "record_date,specificity,extends,read_at,record_sha256,implementations_stated,"
+                    "implementations_linked) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    (cid, *c, imp.get("implementations_stated"),
+                     ",".join(imp.get("implementations_linked", []))))
+    # A link names its case, so the cases go in first.
+    for sql, values in link_rows:
+        con.execute(sql, values)
+    for row in doc["coverage"]["rows"]:
+        need(row["capability_id"] in known, f"coverage names {row['capability_id']}, which is not a row")
+        atlas = row.get("source_atlas") or {}
+        con.execute("INSERT INTO use_case_coverage (capability_id,source_interop,use_cases,"
+                    "specialisations,deployments,use_case_ids,source_native,source_partial,"
+                    "source_scored) VALUES (?,?,?,?,?,?,?,?,?)",
+                    (row["capability_id"], row.get("source_interop"), row["use_cases"],
+                     row["specialisations"], row["deployments"], ",".join(row["use_case_ids"]),
+                     atlas.get("native"), atlas.get("partial"), atlas.get("scored")))
+
 
 def build(con):
     """Fill one empty database. Returns the one-line summary to print on success."""
@@ -131,6 +220,7 @@ def build(con):
                             (cov, source_id(s["url"], s.get("title"), s.get("retrieved"), s.get("kind", "primary")),
                              s.get("quote")))
             loaded += 1
+    load_use_cases(con)
     con.commit()
     n = lambda q: con.execute(q).fetchone()[0]
     # The three boundary values, counted from the rows that were just loaded, so a run says
@@ -149,6 +239,9 @@ def build(con):
             f"  coverage {n('SELECT COUNT(*) FROM coverage')}  sources {n('SELECT COUNT(*) FROM source')}"
             f"  quotes {n('SELECT COUNT(*) FROM evidence')}"
             f"  directed {n('SELECT COUNT(*) FROM coverage WHERE direction IS NOT NULL')}"
+            f"  use-case links {n('SELECT COUNT(*) FROM use_case_link')}"
+            f" ({n('SELECT COUNT(*) FROM use_case')} cases,"
+            f" {n('SELECT COUNT(*) FROM use_case_coverage')} coverage rows)"
             f"  interop must {bounds.get('must', 0)}"
             f" should {bounds.get('should', 0)} none {bounds.get('none', 0)}"
             f"  lanes {lanes}")

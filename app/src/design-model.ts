@@ -124,6 +124,11 @@ export interface Model {
   det: Record<string, Record<string, [string, RawSource[]]>>
   /** True when det is populated. False when the model was built from the index. */
   detLoaded: boolean
+  /**
+   * Related use cases: why a task needs a row. Need evidence only, kept apart from the claims;
+   * it never changes a cell or a count. Arrives with the full payload, like the notes.
+   */
+  useCases: UseCases
   /** Level counts per capability, across all subjects in the export. */
   agg: Record<string, Record<string, number>>
   health: Record<string, GroupHealth>
@@ -141,6 +146,94 @@ export const LANE_LABEL: Record<LaneId, string> = {
   U6: 'Same place, same thing',
   U7: 'Training results that travel',
   U10: 'Shared presence',
+}
+
+/** A public use-case record a related-use-case link rests on, as the export carries it. */
+export interface UseCase {
+  id: string
+  title: string
+  /** The original public record. */
+  url: string
+  repository: string
+  status: string | null
+  version: string | null
+  date: string | null
+  specificity: 'generic' | 'specialised' | 'individual' | 'unknown'
+  /** Ids of the more general cases this one specialises. */
+  extends: string[]
+  readAt: string | null
+  implementationsStated: number | null
+  implementationsLinked: string[]
+}
+
+/** One link from one use case to one capability: why the case needs the row, and on what basis. */
+export interface UseCaseLink {
+  id: string
+  case: string
+  cap: string
+  passage: string
+  section: string | null
+  reason: string
+  reasonBy: 'contributor' | 'atlas-reader'
+  /** derived: the case states the need. proposed: the case implies it. Not a review result. */
+  basis: 'derived' | 'proposed'
+  origin: 'contributor' | 'contributor-public-record' | 'atlas-reader'
+  inPinnedCommit: boolean
+  passageFound: boolean
+  review: { status: 'unreviewed' | 'accepted' | 'needs-change' | 'rejected' | 'stale'; at: string | null; note: string | null }
+  /** The source's copy of Atlas values where it differs from the Atlas. History; never applied. */
+  drift: Array<{ field: string; source_value: string; current_atlas_value: string }>
+}
+
+/** Coverage of the contributing repository for one row. Three counts, never added together. */
+export interface UseCaseCoverage {
+  /** The source's copy of the Atlas interop word, which may be out of date. */
+  interop: string | null
+  useCases: number
+  specialisations: number
+  deployments: number
+  ids: string[]
+  /** The source's copy of the Atlas figures, dated by source.atlas_figures_date. */
+  atlas: { native: number | null; partial: number | null; scored: number | null }
+}
+
+export interface UseCases {
+  /** Where the records came from: repository, commit, dates. Null when the export has none. */
+  source: Record<string, string> | null
+  cases: Map<string, UseCase>
+  links: UseCaseLink[]
+  coverage: Record<string, UseCaseCoverage>
+}
+
+/** The export's use-case block in named fields. An export without one reads as no records. */
+export function adaptUseCases(raw: any): UseCases {
+  if (!raw) return { source: null, cases: new Map(), links: [], coverage: {} }
+  const cases = new Map<string, UseCase>()
+  for (const [id, c] of Object.entries<any>(raw.cases ?? {})) {
+    cases.set(id, {
+      id, title: c.title, url: c.url, repository: c.repository, status: c.status ?? null,
+      version: c.version ?? null, date: c.date ?? null, specificity: c.specificity,
+      extends: c.extends ?? [], readAt: c.read_at ?? null,
+      implementationsStated: c.implementations_stated ?? null,
+      implementationsLinked: c.implementations_linked ?? [],
+    })
+  }
+  const links: UseCaseLink[] = (raw.links ?? []).map((l: any) => ({
+    id: l.id, case: l.case, cap: l.cap, passage: l.passage, section: l.section ?? null,
+    reason: l.reason, reasonBy: l.reason_by, basis: l.basis, origin: l.origin,
+    inPinnedCommit: Boolean(l.in_pinned_commit), passageFound: Boolean(l.passage_found),
+    review: { status: l.review?.status ?? 'unreviewed', at: l.review?.at ?? null, note: l.review?.note ?? null },
+    drift: l.drift ?? [],
+  }))
+  const coverage: Record<string, UseCaseCoverage> = {}
+  for (const [cid, c] of Object.entries<any>(raw.coverage ?? {})) {
+    coverage[cid] = {
+      interop: c.interop ?? null, useCases: c.use_cases, specialisations: c.specialisations,
+      deployments: c.deployments, ids: c.ids ?? [],
+      atlas: { native: c.atlas?.native ?? null, partial: c.atlas?.partial ?? null, scored: c.atlas?.scored ?? null },
+    }
+  }
+  return { source: raw.source ?? null, cases, links, coverage }
 }
 
 /** A lane's label; a lane the data carries before it has a label here still gets a name. */
@@ -295,6 +388,7 @@ export function adapt(raw: any): Model {
     cov,
     det,
     detLoaded: hasDetail,
+    useCases: adaptUseCases(raw.use_cases),
     agg,
     health,
     lanes,
@@ -316,7 +410,7 @@ export function mergeDetail(base: Model, raw: any): Model {
     }
     if (Object.keys(detail).length) det[sid] = detail
   }
-  return { ...base, det, detLoaded: true }
+  return { ...base, det, detLoaded: true, useCases: adaptUseCases(raw.use_cases) }
 }
 
 /** Everything the counting rules read. The address carries all of it. */

@@ -286,6 +286,47 @@ out = {"groups": groups, "capabilities": caps, "subjects": subs, "coverage": cov
                   "unverified": con.execute("SELECT COUNT(*) FROM coverage WHERE confidence='unverified'").fetchone()[0],
                   "must": interop_counts["must"], "should": interop_counts["should"],
                   "no_interop": interop_counts["none"], "lanes": lane_counts}}
+
+# Related use cases: why a task needs a row, kept apart from the claims. Exported only in the full
+# file, which the row panel reads; the index stays the landing view's figures alone. A record
+# carries no subject and no level, so nothing here can move a count above.
+def _use_cases():
+    source = dict(con.execute("SELECT key, value FROM use_case_source"))
+    if not source:
+        return None
+    cases = {}
+    for r in con.execute("SELECT * FROM use_case ORDER BY id"):
+        cases[r["id"]] = {
+            "title": r["title"], "url": r["url"], "repository": r["repository"],
+            "status": r["record_status"], "version": r["record_version"], "date": r["record_date"],
+            "specificity": r["specificity"], "extends": [x for x in r["extends"].split(",") if x],
+            "read_at": r["read_at"], "implementations_stated": r["implementations_stated"],
+            "implementations_linked": [x for x in r["implementations_linked"].split(",") if x]}
+    links = []
+    for r in con.execute("SELECT * FROM use_case_link ORDER BY capability_id, use_case_id"):
+        links.append({
+            "id": r["id"], "case": r["use_case_id"], "cap": r["capability_id"],
+            "passage": r["source_passage"], "section": r["source_section"],
+            "reason": r["rationale"], "reason_by": r["rationale_by"], "basis": r["basis"],
+            "origin": r["origin"], "in_pinned_commit": bool(r["in_pinned_commit"]),
+            "passage_found": bool(r["passage_found"]), "basis_on_record": r["basis_on_public_record"],
+            "checked_release": r["checked_release"],
+            "review": {"status": r["review_status"], "at": r["reviewed_at"], "note": r["review_note"]},
+            "drift": json.loads(r["drift"])})
+    coverage = {}
+    for r in con.execute("SELECT * FROM use_case_coverage ORDER BY capability_id"):
+        coverage[r["capability_id"]] = {
+            "interop": r["source_interop"], "use_cases": r["use_cases"],
+            "specialisations": r["specialisations"], "deployments": r["deployments"],
+            "ids": [x for x in r["use_case_ids"].split(",") if x],
+            "atlas": {"native": r["source_native"], "partial": r["source_partial"],
+                      "scored": r["source_scored"]}}
+    return {"source": source, "cases": cases, "links": links, "coverage": coverage}
+
+use_cases = _use_cases()
+if use_cases:
+    out["use_cases"] = use_cases
+
 board = os.path.join(os.path.dirname(D), "board")
 p = os.path.join(board, "territory.json")
 payload = json.dumps(out, separators=(",", ":"))

@@ -15,6 +15,8 @@ type Update = {
 }
 
 const UPDATES: Update[] = [
+  { date: '14 November 2026', text: 'A new starting view, training results that travel, with the reason each of its six rows is there. A row\'s panel now lists its related use cases from public use-case records, each marked as a stated or implied need and as reviewed or unreviewed by the Atlas, with dated counts from the repository they come from. Use cases explain why a row is needed; they never change a rating.',
+    subjects: 84, capabilities: 178, claims: 14619, sources: 3352 },
   { date: '14 November 2026', text: 'Two new platform subjects, Spawn and Project 0, where games and worlds are built by instructing an AI. Platforms are now grouped into social worlds, game platforms, and AI-built game and world platforms, in the subject list, the family chips and on each platform\'s own page.',
     subjects: 84, capabilities: 178, claims: 14619, sources: 3352 },
   { date: '3 November 2026', text: 'Sixteen new subjects: the X3D web players X_ITE and X3DOM, H-Anim, Hyperfy, and twelve web and data standards (IMDF, DDS, W3C Geolocation, WebXR Anchors, WebXR Hand Input, WebGL 2.0, MPEG-V, JSON Pointer, HTTP, WebSocket, the URL Standard and OpenAPI). Two new rows, renderer swap and fallback, and portal preview. Three new lanes: same place, same thing; training results that travel; and shared presence. A new starting view shows the platforms OpenSpatials supports.',
@@ -72,8 +74,8 @@ function UpdatesDialog({ onClose }: { onClose: () => void }) {
           <button ref={closeRef} type="button" style={US.trigger(false)} onClick={onClose}>Close</button>
         </div>
         <ol style={US.list}>
-          {UPDATES.map((u) => (
-            <li key={u.date} style={US.item}>
+          {UPDATES.map((u, i) => (
+            <li key={`${u.date}-${i}`} style={US.item}>
               <span style={US.date}>{u.date}</span>
               <p style={US.text}>{u.text}</p>
               <p style={US.counts}>

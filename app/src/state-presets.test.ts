@@ -18,7 +18,7 @@ const withPreset = (index = SUBSET): AppState => {
   const on = presetSubjects(p, model)
   return reducer(initialState(model), {
     type: 'preset', name: p.name,
-    state: { on, view: p.view, filter: p.filter, lane: p.lane ?? null, focus: p.focus ?? on[0], basis: 'prod', hasEntry: false },
+    state: { on, view: p.view, filter: p.filter, lane: p.lane ?? null, focus: p.focus ?? on[0], basis: 'prod', hasEntry: false, sel: p.sel ?? [] },
   })
 }
 
@@ -36,16 +36,16 @@ test('the opening view is the whole map in Groups, with no preset, focus or lane
   assert.equal(decode('#' + encode(s, model.subjects.length), model, s).presetName, '')
 })
 
-test("the 15 presets, in order, 3 shown and 12 behind More", () => {
+test("the 16 presets, in order, 3 shown and 13 behind More", () => {
   assert.deepEqual(PRESETS.map((p) => p.name), [
     'What has to be agreed', 'Where nobody has built it yet', 'Where the sources disagree',
     'Moving 3D content between tools and worlds', 'Carrying your avatar with you',
-    'Travelling between worlds', 'AI agents inside worlds',
+    'Travelling between worlds', 'AI agents inside worlds', 'Training results that travel',
     'The open web stack', 'Real places and maps', 'Capturing the real world',
     'Identity, trust and who made what', 'Closed platforms against open formats',
     'Engines against the formats', "The Forum's own projects", 'Platforms OpenSpatials supports',
   ])
-  assert.deepEqual(PRESETS.map((p) => presetBehindMore(p.name)), [...Array(3).fill(false), ...Array(12).fill(true)])
+  assert.deepEqual(PRESETS.map((p) => presetBehindMore(p.name)), [...Array(3).fill(false), ...Array(13).fill(true)])
   assert.ok(!PRESETS.some((p) => p.name.includes('glTF')), 'glTF beside its neighbours is dropped')
   assert.equal(new Set(PRESETS.map((p) => p.question)).size, PRESETS.length, 'every preset asks its own question')
 })

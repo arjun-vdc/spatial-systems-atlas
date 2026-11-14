@@ -12,7 +12,7 @@ import { LEGEND, THEMES, cellStyle, read } from './marks.ts'
 import { exportOptions } from './exports.ts'
 import {
   DOCK_MIN_DISPLAY, PANEL_IDS, PANEL_WIDTH, PRESETS_BOX, RAIL_WIDTH, addressOf, clampPanelWidth, decode, defaultPanelsDocked, encode, initialState, preferredTheme,
-  listedPresets, nextPanels, presetBehindMore, presetQuestion, presetSubjects, queryOf, queryWithoutAddress, reducer, rememberLegendOpen, storedLegendOpen, rememberPanelWidth, rememberPanels, rememberPanelsDocked, rememberTheme, storedPanelWidth,
+  listedPresets, nextPanels, presetBehindMore, presetNamed, presetQuestion, presetSubjects, queryOf, queryWithoutAddress, reducer, rememberLegendOpen, storedLegendOpen, rememberPanelWidth, rememberPanels, rememberPanelsDocked, rememberTheme, storedPanelWidth,
   storedPanels, storedPanelsDocked, storedTheme, withoutLegacyKeys,
 } from './state.ts'
 import type { AppState, PanelId, Preset, ViewId } from './state.ts'
@@ -34,6 +34,7 @@ import { LineupView } from './LineupView.tsx'
 import { HoverTip } from './HoverTip.tsx'
 import { WIDE_WIDTH, frame, pageLocked, panelMode } from './layout.ts'
 import { CustomPreset } from './CustomPreset.tsx'
+import { PresetReasons } from './PresetReasons.tsx'
 
 const VIEWS: Array<{ id: ViewId; label: string }> = [
   { id: 'subject', label: 'Subject' },
@@ -280,6 +281,8 @@ export function Shell({ model }: { model: Model }) {
       (state.lane ? ` · lane ${laneLabel(state.lane)}` : ''),
   ]
 
+  const preset = presetNamed(state.presetName)
+
   // While a preset is selected the heading is its question. The moment the
   // reader changes the selection the preset is gone and the heading is generic.
   const question = (candidate && CANDIDATES.find((c) => c.id === candidate)?.question) || state.customPreset?.title || presetQuestion(state.presetName) || {
@@ -359,7 +362,7 @@ export function Shell({ model }: { model: Model }) {
           <div style={S.questionBar}>
             <div style={{ flex: 1, minWidth: 'min(260px, 100%)', overflowWrap: 'anywhere' }}>
               <h1 style={S.question}>{question}</h1>
-              {!candidate && state.customPreset?.details && <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--soft)' }}>{state.customPreset.details}</p>}
+              {!candidate && (state.customPreset?.details || preset?.details) && <p style={{ margin: '4px 0 0', fontSize: 13, color: 'var(--soft)' }}>{state.customPreset?.details || preset?.details}</p>}
             </div>
             <div style={S.segmented} role="group" aria-label="Display">
               {VIEWS.map((v, i) => (
@@ -419,6 +422,7 @@ export function Shell({ model }: { model: Model }) {
             flexDirection: narrow ? 'column-reverse' : 'row',
           }}>
             <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
+              {!candidate && preset?.reasons && <PresetReasons model={model} preset={preset} dispatch={dispatch} />}
               {state.on.length === 0 ? (
                 <Empty title="No subject is being compared"
                   why="Every percentage and every column here is drawn from the subjects you select."

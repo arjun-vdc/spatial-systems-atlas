@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { Level, Model } from '../design-model.ts'
 import { levelOf } from '../design-model.ts'
 import { read } from './marks.ts'
+import { RelatedUseCases } from './RelatedUseCases.tsx'
 import type { AppState } from './state.ts'
 
 /** Bands in the order the design fixed: strongest support first, unknown last. */
@@ -31,9 +32,16 @@ export function RowPanel({ model, state, onClose }: {
   const capability = model.byCapability.get(target.cid)
   const [expanded, setExpanded] = useState<string | null>(target.sid)
   const closeRef = useRef<HTMLButtonElement>(null)
+  // The control that opened the panel, read before focus moves, so closing returns to it.
+  const opener = useRef(document.activeElement as HTMLElement | null)
 
-  // Focus moves into the panel when it opens, so the keyboard follows the eye.
-  useEffect(() => { closeRef.current?.focus() }, [])
+  // Focus moves into the panel when it opens, so the keyboard follows the eye, and goes back
+  // to the opening control when the panel closes.
+  useEffect(() => {
+    closeRef.current?.focus()
+    const back = opener.current
+    return () => { if (back && back !== document.body && document.contains(back)) back.focus() }
+  }, [])
 
   if (!capability) return null
 
@@ -70,32 +78,38 @@ export function RowPanel({ model, state, onClose }: {
             title="Close this row (Escape)">Close</button>
         </header>
 
-        <p style={s.definition}>{capability.def}</p>
-        <p style={s.binding}>
-          {capability.bind === 'connect'
-            ? 'Agreed between two systems when they connect.'
-            : 'Fixed when the content is made.'}
-          {capability.why ? ` ${capability.why}` : ''}
-        </p>
-
-        {state.focus && (
-          <section style={s.reading}>
-            <span style={s.eyebrow}>For {focusName}</span>
-            <p style={{ margin: '4px 0 8px' }}>
-              <strong>{read(focusCode).word}</strong>
-              {read(focusCode).confidence ? ` — ${read(focusCode).confidence}` : ''}.
-              {' '}
-              {level === 'n' || level === 'x'
-                ? `${follow.length} of the ${peers.length} others reach it with verified evidence.`
-                : `${follow.length} of the ${peers.length} others have it built in with verified evidence.`}
-            </p>
-            <Actions label="Follow" note="built in, with primary evidence read" ids={follow} name={name} />
-            <Actions label="Resolve" note="a conflict is recorded against this row" ids={resolve} name={name} />
-            <Actions label="Blocked by" note="recorded as absent" ids={blocked} name={name} />
-          </section>
-        )}
-
+        {/* Below the title everything scrolls together, so a phone's short sheet still reaches
+            the use cases and the subject bands. */}
         <div style={{ overflowY: 'auto', minHeight: 0 }}>
+          <p style={s.definition}>{capability.def}</p>
+          <p style={s.binding}>
+            {capability.bind === 'connect'
+              ? 'Agreed between two systems when they connect.'
+              : 'Fixed when the content is made.'}
+            {capability.why ? ` ${capability.why}` : ''}
+          </p>
+
+          {state.focus && (
+            <section style={s.reading}>
+              <span style={s.eyebrow}>For {focusName}</span>
+              <p style={{ margin: '4px 0 8px' }}>
+                <strong>{read(focusCode).word}</strong>
+                {read(focusCode).confidence ? ` — ${read(focusCode).confidence}` : ''}.
+                {' '}
+                {level === 'n' || level === 'x'
+                  ? `${follow.length} of the ${peers.length} others reach it with verified evidence.`
+                  : `${follow.length} of the ${peers.length} others have it built in with verified evidence.`}
+              </p>
+              <Actions label="Follow" note="built in, with primary evidence read" ids={follow} name={name} />
+              <Actions label="Resolve" note="a conflict is recorded against this row" ids={resolve} name={name} />
+              <Actions label="Blocked by" note="recorded as absent" ids={blocked} name={name} />
+            </section>
+          )}
+
+          {/* Why a task needs the row comes first, and is kept apart from who supports it. */}
+          <RelatedUseCases key={capability.id} model={model} capability={capability} />
+          <h3 style={s.supportHead}>Support in the compared subjects</h3>
+          <p style={s.supportIntro}>Atlas assessments. The use cases above do not change them.</p>
           {BANDS.map((band) => {
             const members = subjects.filter(
               (id) => levelOf(model.cov[id]?.[capability.id]) === band.level,
@@ -177,6 +191,8 @@ const s = {
   definition: { margin: '0 0 6px', color: 'var(--soft)' } as const,
   binding: { margin: '0 0 10px', fontSize: 12, color: 'var(--faint)', fontStyle: 'italic' } as const,
   reading: { border: '1px solid var(--rule)', borderRadius: 'var(--r)', padding: '8px 10px', marginBottom: 10, background: 'var(--bg)' } as const,
+  supportHead: { margin: '4px 0 2px', fontFamily: 'var(--fl)', fontWeight: 700, fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', borderTop: '2px solid var(--ink)', paddingTop: 8 } as const,
+  supportIntro: { margin: '0 0 4px', fontSize: 12, color: 'var(--soft)' } as const,
   bandHead: { margin: '10px 0 4px', fontFamily: 'var(--fl)', fontWeight: 700, fontSize: 11, letterSpacing: '.12em', textTransform: 'uppercase', borderBottom: '1px solid var(--rule)', paddingBottom: 3 } as const,
   bandCount: { fontFamily: 'var(--fm)', color: 'var(--faint)', marginLeft: 4 } as const,
   subjectRow: (isFocus: boolean) => ({ borderLeft: isFocus ? '2px solid var(--ac)' : '2px solid transparent', paddingLeft: 6 } as const),
