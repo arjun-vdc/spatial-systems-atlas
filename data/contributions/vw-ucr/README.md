@@ -34,7 +34,8 @@ python3 build_demand.py
 ## How the links were made
 
 Every use case scope in the repository was read against the map's capability definitions: the
-164 of the 2026-09-22 capture, and since 2026-10-21 the 175 of the 2026-10-20 capture. A link is made only where a reader comparing the two texts arrives at the
+164 of the 2026-09-22 capture, since 2026-10-21 the 175 of the 2026-10-20 capture, and since
+2026-11-10 the 178 of the 2026-11-09 data. A link is made only where a reader comparing the two texts arrives at the
 pairing, and its note gives the words it rests on, quoted or closely paraphrased. `derived` means the scope states the need;
 `proposed` means the scope implies it without naming it, and the note says what is missing. Many
 plausible pairings were left out on purpose. Individual use cases (a named company's realisation)
@@ -49,17 +50,15 @@ need their parent does not.
    worked around its platform, or a claim worth reading again. Rows with no verdict are pairs the map
    never scored where a deployment bears on them. Each can be filed as a `kind:correction`
    submission.
-2. **Weigh the candidate capabilities.** The first five (model-based object tracking, remote
-   (split) rendering, live data binding, activity and learning records, physiological signals as
-   input) are in the map since its 2026-10-20 data, and are marked `adopted` here; they stay in the
-   file because the map cites it as their source. One is open: **non-visual sensory effects** (wind,
-   scent, light, a motion seat), rendered from effect metadata on whatever devices the viewer has.
-   `input.haptic` covers touch only, and ISO/IEC 23005 (MPEG-V) defines such a description.
+2. **Weigh the candidate capabilities.** All six are in the map and marked `adopted` here: the
+   first five (model-based object tracking, remote (split) rendering, live data binding, activity
+   and learning records, physiological signals as input) since its 2026-10-20 data, and non-visual
+   sensory effects since 2026-11-01. They stay in the file because the map cites it as their source.
 3. **Use demand as evidence for `interop_uses`.** The interoperability boundaries rest on four use
    cases, U1 to U4. Section 2 of the demo page lists rows rated *should* or *none* that three or more
    real deployments depend on. That does not settle a rating, but it gives the next boundary
    review somewhere to look.
-4. **Consider five more lanes.** `LANE-CANDIDATES.md` proposes U5 to U9 (a twin follows its asset, the same thing at the same real place, a training result leaves the simulator, engineering data reaches the point of use, a live event reaches remote viewers), each in the lanes' own shape, from clusters of real deployments.
+4. **Consider more lanes.** `LANE-CANDIDATES.md` proposed U5 to U9 from clusters of real deployments. The map took U6 (the same thing at the same real place) and U7 (a training result leaves the simulator) on 2026-11-03; `lane_status` in `lane-candidates.csv` says which. U5, U8 and U9 stay here as evidence.
 5. **Carry a demand column.** A *must* row that many use cases need and few systems provide is a
    standardisation gap with deployments behind it. That is a sharper ranking than coverage alone.
 
@@ -69,7 +68,15 @@ The repository regenerates these files from its database with one command
 (a script the VDC maintains), so a refresh is a new commit on this branch,
 not hand work. The repository imports the map's claims the same way, from a dated capture.
 
-The files were last refreshed on 2026-10-27, after the map's 2026-10-21 publication (pop-up note
+The files were last refreshed on 2026-11-17, after the map's version 1.4.57 was merged into this branch. They now hold 383 links on 219 public use cases, 115 demand rows and 132 deployment checks; only public records are exported. The repository added 76 linked use cases since 2026-10-21.
+
+Before that, the files were refreshed on 2026-11-10, after the map's 2026-11-09 data (version 1.4.49)
+was merged into this branch. The repository imported it, linked the three new rows where use case
+scopes name the need (non-visual sensory effects on four use cases, portal preview on one; no scope
+names a renderer swap), and read the use cases added since its previous pass (VW-UC-0418 to 0431)
+against all 178 rows: 24 new links, each quoting its scope word for word.
+
+Before that, the files were refreshed on 2026-10-27, after the map's 2026-10-21 publication (pop-up note
 wording only; no claim changed) was merged into this branch; the counts moved with the repository's
 new deployments. The same day the repository read the 80 use cases added since its previous pass
 (VW-UC-0338 to 0417) against all 175 rows: 112 new links on 51 use cases, each quoting its scope

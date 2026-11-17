@@ -2,6 +2,11 @@
 
 **A proposal. Nothing here changes a published figure or a lane.**
 
+**Status, 2026-11-10.** The map took U6 and U7 on 2026-11-03 (see "Use cases beyond the first four"
+in `research/model/CERTIFICATION-LANES.md`), raising `geo.vps` and `persist.activity-record` to
+*must*; the other rows proposed for them stay *should* and name the lane. U5, U8 and U9 were not
+taken and stay here as evidence. `lane_status` in `lane-candidates.csv` records this.
+
 The four lanes in `research/model/CERTIFICATION-LANES.md` come from four use cases the map wrote for
 itself (U1 content moves, U2 an avatar travels, U3 a person travels, U4 an agent participates). The
 Virtual Worlds Use Case Repository (Virtual Worlds UCR) holds use cases and real deployments that
@@ -24,16 +29,16 @@ content, live data binding still only degrades the result. That difference would
 in `interop_reason`. The question each lane puts to the map is therefore whether its use case
 belongs in the map's scope; once it does, the rating follows from the map's own rule.
 
-Figures are from the repository's public records on 2026-10-27, against the map's data of
-2026-10-21 (its claims are unchanged since 2026-10-20). *Records* counts the lane's use cases and the records that specialise them; *deployments*
+Figures are from the repository's public records on 2026-11-10, against the map's data of
+2026-11-09 (version 1.4.49). *Records* counts the lane's use cases and the records that specialise them; *deployments*
 counts the real implementations filed under them.
 
 | Lane | Use case | Records | Deployments | Rows (must now / would become must) |
 |---|---|---:|---:|---|
 | U5 A twin follows its asset | A digital twin stays in step with the real asset it represents, from live data or a real controller, so that people judge and act on the asset through it | 14 | 13 | 4 / 2 |
-| U6 The same thing at the same real place | People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later | 19 | 55 | 3 / 4 |
-| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 38 | 166 | 3 / 3 |
-| U8 Engineering data reaches the point of use | Engineering data from the system of record reaches a viewer, a headset or a kiosk at the point of use with its structure, units and metadata, without hand preparation | 21 | 31 | 3 / 1, plus `render.remote` recorded descriptively |
+| U6 The same thing at the same real place | People on different devices see the same virtual content at the same real place, or registered to the same physical object, and find it there again later | 20 | 56 | 4 / 3 |
+| U7 A training result leaves the simulator | What a person did in a simulation, and how well, reaches the employer, the assessor or the authority that has to act on it, in a form they can read and trust | 39 | 184 | 4 / 2 |
+| U8 Engineering data reaches the point of use | Engineering data from the system of record reaches a viewer, a headset or a kiosk at the point of use with its structure, units and metadata, without hand preparation | 22 | 33 | 3 / 1, plus `render.remote` recorded descriptively |
 | U9 A live event reaches remote viewers as captured | A live event or a remote person is captured and presented elsewhere as it happens, volumetrically or as panoramic video, with sound placed where the source is | 7 | 12 | 3 / 1 |
 
 ## What each lane would change
