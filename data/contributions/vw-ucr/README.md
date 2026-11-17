@@ -19,6 +19,7 @@ depends on.
 | `demand.csv` | capability with at least one use case | Use cases linked, records that specialise them, deployments under them, beside the map's own native/partial/scored counts |
 | `links.csv` | use case → capability link | The link's basis (`derived` or `proposed`) and the sentence of the use case it rests on, with the record's address |
 | `deployment-evidence.csv` | deployment × capability, for deployments built on a system the map scores | The map's verdict for that pair, or a blank where the map has no claim. `realisation` says whether the deployment fully realises its use case |
+| `interop-evidence.csv` | product × must-agree capability × standard | Standards a public deployment's own record names for a must-agree row, for the Atlas's `via` list (1.4.57). Columns: `subject_id`, `cap_id`, `interop`, `standard_id` (an Atlas standard subject), `implementation_id`, `via_use_cases` (a use case of that deployment linked to the capability), `quote` (the record's own words, exact) and `url`. Not a claim: the repository holds no product claims, so each row is evidence for a maintainer to turn into a `via` entry with the claim's own source |
 | `lane-candidates.csv` | lane × capability, for five candidate use case lanes (U5–U9) | Use cases the repository holds many deployments for, with the rows that stop them; where a row rated *should* would become *must*. Read with `LANE-CANDIDATES.md` |
 | `candidate-capabilities.csv` | need the map had no row for | A proposed row in the columns of `data/capabilities.csv`, with the use cases that need it, and a `status` column: adopted or open |
 
@@ -90,6 +91,10 @@ refresh against all 175 rows: 74 new links, each quoting its scope word for word
 The previous refresh, on 2026-10-19, followed the rewrite of the repository's record texts: every
 link note was read again against the current scope, and scores of the map frozen into note text were
 removed (the `demand.csv` columns carry them instead).
+
+## Interop evidence (2026-11-17)
+
+`interop-evidence.csv` holds 4 rows, from 82 public deployments on the 14 products joined to repository systems: 47 of them touch a must-agree row through their use cases, 5 name a standard that is an Atlas subject in their own text, and 4 of those name it for a row their use case needs. The repository has no structured link from a deployment to a standard, so the rows come from the deployment's own text only; no standard is inferred. Two cases were left out: IEEE 2874 on lunar-rover twin VW-IMP-0227 (no must-agree row is named for it) and WebXR on VW-IMP-XRU01 (named as the renderer, not for replication). Each row is a deployment built with the product, not a statement that the product itself implements the standard.
 
 ## Licence
 
