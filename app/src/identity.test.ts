@@ -36,6 +36,16 @@ test('every text pairing passes WCAG AA, and every mark edge passes 3:1', () => 
   }
 })
 
+test('today\'s palette passes every text pairing and every mark edge, in light and dark', () => {
+  for (const theme of ['light', 'dark'] as const) {
+    const p = THEMES[theme]
+    // Today's look has no detail tokens: quiet labels use --faint, selected controls use --ink with --bg text.
+    const palette = { ...p, '--label': p['--faint'], '--sel': p['--ink'], '--selInk': p['--bg'] }
+    const failed = checkPalette(palette).filter((c) => !c.pass)
+    assert.deepEqual(failed.map((c) => `${c.fg} on ${c.bg} = ${c.ratio.toFixed(2)}`), [], theme)
+  }
+})
+
 test('the contrast formula matches the WCAG reference values', () => {
   assert.equal(contrast('#000000', '#FFFFFF').toFixed(2), '21.00')
   assert.equal(contrast('#777777', '#FFFFFF').toFixed(2), '4.48')

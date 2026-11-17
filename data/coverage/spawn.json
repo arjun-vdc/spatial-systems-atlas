@@ -1,0 +1,1714 @@
+{
+  "subject_id": "spawn",
+  "summary": "Spawn is a hosted platform where people make multiplayer games and worlds by talking to a built-in AI builder, and play them in a web browser, a desktop app or on a phone. Underneath, every world is a git repository of Spawn's own object rows and JavaScript scripts, built on the three.js graphics library, and outside AI agents can create and change worlds through a published web interface and plain git without a person present. Within Spawn it covers a lot: GLB models and rigged GLB bodies that follow a player into every world, portals between any two Spawn worlds that carry held items, saved values and even running object scripts under the host world's limits, saved inventories, an in-game currency with platform-held purchase records, and version history. None of this reaches outside Spawn: addresses, accounts, the currency and portals work only between Spawn worlds, a copy of a world refers to its models by name instead of containing them, and Spawn's policy forbids using its builder to make games for other platforms. Two traps for a standards reader: player movement is trusted from each player's own machine rather than checked by a server, and the admission check on a portal runs on the arriving player's machine, so a modified client can skip it.",
+  "coverage": [
+    {
+      "capability_id": "scene.graph",
+      "level": "native",
+      "note": "A world is a tree of objects written as one YAML row per object, with children nested under a parent and transforms that carry down to children. The format is Spawn's own; it borrows three.js shape names and material fields but is not a published interchange format.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "one yaml row per object, with three.js's geometry names and MeshStandardMaterial's fields"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`rotation` turns the whole object, children and colliders."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "partial",
+      "note": "Spawn states that models face negative Z and its examples treat positive Y as up, with rotation given per object and inherited by children. Missing: the public documentation does not state handedness or the order in which rotations compose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Facing: the engine, a CDN model and a dropped file face −Z (no `forward`)."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/pointer-raycasting/skill.md",
+          "title": "Spawn agent skill: pointer-raycasting",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "const flat = hit && hit.normal.y > 0.5; // ground, not a wall or a ceiling"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "GLB is the documented file for bringing 3D models in, for characters, props, buildings and the player's own body. The world itself travels as a git repository of Spawn's own YAML rows and scripts, and a copy of that repository does not include the model files, which are held on Spawn's servers and referred to by name. No way to export a scene as a GLB file is documented.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "3D models: GLB for characters, props, and buildings."
+        },
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Assets are referenced by name, so a copy of the code is not a bundle of every image, model, and sound."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "partial",
+      "note": "Meshes come in as GLB files or as named primitive shapes that borrow three.js's geometry names. Missing: no mesh compression scheme is named in the public documentation.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "one yaml row per object, with three.js's geometry names"
+        },
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "3D models: GLB for characters, props, and buildings."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "partial",
+      "note": "PNG, JPG and WebP images are accepted as textures and sprites. Missing: no compressed GPU texture format or per-device texture choice is documented.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Images: PNG, JPG, and WebP for art, textures, sprites, and reference pictures."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "partial",
+      "note": "Materials in a GLB are read slot by slot and can be overridden by name, and Spawn's own material rows use the fields of three.js's standard physically based material. Custom shaders are written as node materials in three.js's shading language, which only a three.js renderer can run. Missing: no way to carry Spawn materials out to another renderer is documented.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "keyed by the GLB's material names (else node names)"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "whose material(ctx) returns a node material in TSL"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Animation clips stored in a GLB play by name, matched loosely, and generated humanoids arrive with a fixed set of clips. A shared clip library also plays on rigs Spawn recognises.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Clips play by name, case-insensitive and near (Walk finds Walking)"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A humanoid comes rigged with Idle, Walk, Run, Sprint and Jump inside it"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "Skeletons in a GLB drive skinned meshes, and a separate garment with joints named after the wearer's bones deforms with the wearer. A model without a skeleton takes no bone attachments.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a SKINNED child (its own joints named for the parent's bones, case-insensitive) deforms with the parent's rig"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "An unrigged model plays baked clips but takes no bone attachments, IK or library clips."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "Positions, sizes and the default character collider are given in metres.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "keeps a 1.9 m capsule, radius 0.35"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/voxel-terrain/skill.md",
+          "title": "Spawn agent skill: voxel-terrain",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "ctx.x/y/z are world METERS whatever cellSize"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "native",
+      "note": "A player's body is a rigged GLB file: one of Spawn's preset looks, a character generated from words or a picture, or the person's own uploaded file. The chosen body follows the account into every Spawn world. A file without a skeleton is refused. No avatar format other than GLB is documented, and no way to take the body out is documented.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "{\"body\": \"<url>\"} wears your own rigged .glb"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "every world you join dresses your player in it"
+        },
+        {
+          "url": "https://www.spawn.co/llms-full.txt",
+          "title": "Spawn full agent-facing documentation (llms-full.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The model must carry a skeleton (422 body_no_rig)"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "native",
+      "note": "Spawn does not publish a bone standard of its own for others to adopt. Instead it recognises several existing naming conventions, and any rig it knows can play its whole shared animation library. Other rigs play only their own clips.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a rig the platform knows (Mixamo, Spawn's, Meshy, UE mannequin, Auto-Rig Pro, Unity humanoid) also plays every library clip by address; any other rig plays its own clips and one made on its bones."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "partial",
+      "note": "Shape keys in a model can be listed and driven by name, and a face talks through a jaw bone or a mouth shape key. Missing: there is no named set of expressions or mouth shapes that every body is expected to carry.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Discover an object's shape keys (morph targets / blend shapes)"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A face talks by its jaw bone or mouth key"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "native",
+      "note": "Worn items attach to a named bone, to a named socket on a model, or as a skinned garment that deforms with the body, one garment per child. Held and worn items cross a portal inside one world; arriving in another world, that world's admission rule decides whether they come in, and a refused item waits in the player's pocket rather than being lost.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "one child per garment, never baked in"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Your held and worn things come through a door WITHIN your world."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A refused thing is never lost: it waits in `player.pocket`"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "partial",
+      "note": "A body is always worn by a Spawn account, whose name and face show over it, and a game can obtain a signed token proving which account a player is. Missing: the identity is Spawn's own account only; nothing ties a body to a credential issued anywhere else.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/game-ui/skill.md",
+          "title": "Spawn agent skill: game-ui",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a player is their Spawn name and face overhead and on every board"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a signed JWT (`sub` = `player.userId`) verified at"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "native",
+      "note": "Shared state is written by scripts into world state for everyone and object state for one thing, and Spawn keeps every player in step; the creator writes no networking code. Each room keeps its own copy of world state. The wire format of this traffic is not published.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "ctx.world.state.* for what everyone shares, ctx.self.state.* for one thing's own"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/rooms-and-matchmaking/skill.md",
+          "title": "Spawn agent skill: rooms-and-matchmaking",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "each room your rule names has its own `world.state`, clock and RNG"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "native",
+      "note": "Joining is by link: anyone with a world's link can visit, and a program joins with a token by asking for a session grant that names the world and returns the address to attach to. Guests without an account can play.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Anyone with the game's link can visit it before you publish."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "anyone who opens it plays in the same world, no account needed."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "POST /api/session/grant/agent with {\"world\": \"@alice/gauntlet\"} + Bearer answers { grantWire, attachUrl, worldId, personaId, exp }"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "native",
+      "note": "Walking through a portal moves a player to another place or another Spawn world with no loading screen, carrying held items and the player's saved values, subject to the destination's admission rule. Every object keeps an address that names it in every world. This works only between Spawn worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You see the far place in the glass, walk through with no loading screen, and what you carry, throw or shoot crosses with you."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Your `player.state` rides the door too."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`ctx.self.objectId`, `world:<birth>#<name>`, names a thing in every world"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "native",
+      "note": "Every world has an address of the form @creator/world, a place inside it is named with a plus sign and a gate with a hash, and a public call resolves an address to the world's identifier. Addresses resolve only inside Spawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A link naming only the place (`+cellar`) steps out of the far gate whose link names yours back"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "https://www.spawn.co/@alice/gauntlet@dev (an example address; every world has one)"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "GET /api/resolve-adventure?address=@alice/gauntlet answers the game id."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "native",
+      "note": "The base identifier is a Spawn account with a public handle, and an AI agent is an account like any other. Objects carry their own address naming the world they were born in. All of these are issued by Spawn and resolve only through Spawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "An agent is a Spawn account."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`ctx.self.objectId`, `world:<birth>#<name>`, names a thing in every world"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "partial",
+      "note": "A game can ask for a signed token whose subject is the player's account, which an outside service verifies against Spawn's published keys. Missing: the token states only who the player is; there is no general way to express other claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "To prove the player to a service, `ctx.job(\"player:token\", {}, (r) => …)` from their body answers `r.data.token`, a signed JWT (`sub` = `player.userId`) verified at `https://www.spawn.co/api/.well-known/jwks.json`."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "partial",
+      "note": "The game obtains the player's signed token and sends it to an outside service itself. Missing: no protocol by which the outside service asks for particular claims, or by which the player approves what is shown.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "To prove the player to a service, `ctx.job(\"player:token\", {}, (r) => …)` from their body answers `r.data.token`"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "An object's script that travels to another world declares the powers it needs in a short fixed vocabulary, and the host world reads that declaration against its own ceiling and withholds what it does not allow. For accounts, a call names the holder's permissions on a world. Missing: both are Spawn's own vocabulary and are read only by Spawn worlds.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A top-level `export const faculties = [\"write:self\"]` narrows it to the words it names"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A declared word the ceiling lacks pockets that behavior"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the answer names your permissions"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Spawn worlds are invented game places played in a browser; nothing is placed against the Earth. Spawn describes itself as a place to make and play multiplayer games in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn is a place to make multiplayer games with Savi and play them in a browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "The only frame is each world's own local one; no Earth coordinate reference system has a role in a game played in a browser. Spawn describes itself as a place to make and play multiplayer games in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn is a place to make multiplayer games with Savi and play them in a browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Content is fixed to places in invented worlds, never to a physical location across devices. Spawn describes itself as a place to make and play multiplayer games in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn is a place to make multiplayer games with Savi and play them in a browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Recovering a pose from camera imagery of the real world has no meaning for an invented game world. Spawn describes itself as a place to make and play multiplayer games in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn is a place to make multiplayer games with Savi and play them in a browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Spawn streams a world around the player as they move, but that is its own game content, not geospatial data referenced to the Earth. Spawn describes itself as a place to make and play multiplayer games in a browser.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn is a place to make multiplayer games with Savi and play them in a browser."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "native",
+      "note": "Behaviour is a script module attached to an object, and it travels with the object through a portal into another Spawn world, where it runs under the host world's limits. It is Spawn's own script interface and does not run outside Spawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a script per behavior, a module with update(ctx, dt)"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A travelling behavior runs abroad under the host's ceiling"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "native",
+      "note": "Agents act inside worlds in three ways: Spawn's own builder can join a game as a player, game characters can make choices through a built-in decision service, and any outside AI agent can hold an account and play as a body.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Say \"play it yourself\" and she joins your game as a player and tells you what it felt like."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Any agent that can make an HTTP request signs up by itself, plays worlds, makes worlds"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/jev/skill.md",
+          "title": "Spawn agent skill: jev",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "calibrated probabilities out in about half a second"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "native",
+      "note": "Coins, bags and progress are saved per player and return on every rejoin, and chosen keys can be made writable only by the platform so a player's machine cannot cheat them. Items cross into other Spawn worlds only if the destination admits them; refused items wait in a pocket.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Durable things (coins, a bag, XP) are `player.state`: back on every rejoin over the template"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "makes these keys cheat-proof in a multiplayer world"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A refused thing is never lost: it waits in `player.pocket`"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.prefs",
+      "level": "native",
+      "note": "Players own their settings, including sound levels, accessibility protections, performance preference and control bindings, and a game may only switch protections on, never off. Settings are changed in Spawn's own settings panel rather than in each game, with sound levels kept per game.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/player-settings/skill.md",
+          "title": "Spawn agent skill: player-settings",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Players own their settings: sound levels (kept per game), accessibility protections, perf preference, control overrides"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/player-settings/skill.md",
+          "title": "Spawn agent skill: player-settings",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a creator can pre-enable a protection, never disable one"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/player-settings/skill.md",
+          "title": "Spawn agent skill: player-settings",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "every game's keys and pad, rebound in Settings › look › keys"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "native",
+      "note": "Each game stays on the engine version it was built on until its creator moves it, every change to a world is kept in a history that can be rolled back, and players on a published link keep their version until the creator releases an update.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Every game keeps running on the version it was built on."
+        },
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Players on the link keep their version while you keep editing, and you decide when they take the update."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "A push is checked against Spawn's own world format and a mismatch is refused, naming the row, line and field. Missing: this proves conformance to Spawn, not to any external specification, and no conformance suite is published.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a push in another shape is refused naming the row, the line and the field"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Mods are named, versioned add-ons that creators publish and that other creators install into their games. Missing: no rule is documented for what a game or world that lacks a mod does with content that depends on it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/terms-of-service",
+          "title": "Spawn Terms of Service (last revision October 9, 2026)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Users also have the ability to create and offer add-ons to User Apps (“mods”) through the Services."
+        },
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is",
+          "title": "What Spawn Is",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "then you publish your tool as a mod, and the next creator builds on top of it."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Account tokens can be revoked, and a lost token is replaced through a one-time reconnect code that issues a new token and revokes the old ones; the keys that verify player tokens are published at a fixed address. Missing: no published rule for rotating Spawn's own signing keys.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "hands the same @@name a new token and revokes the old ones"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "POST /api/agent/v1/token/revoke kills the token"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "verified at `https://www.spawn.co/api/.well-known/jwks.json`"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "A world refers to its files by name under Spawn's content address, and Spawn resolves those names to its own servers when the world loads.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "reference it in the tree as /cdn/value.<sha256>.<ext>"
+        },
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Assets are referenced by name"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Before a thing enters from another world, the destination's admission rule decides, and a refusal reaches the portal with a message that can be shown to the player; a full room also refuses a join. Missing: no validity limit on a decision. Spawn also notes that the admission check runs on the arriving player's own machine, so a modified client can skip it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Into ANOTHER world, even one you edit, its `admits()` decides"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "verdict.message"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`policy.admits` trusts one but runs on the entrant's machine: a patched client skips it."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "partial",
+      "note": "Block worlds are a built-in terrain kind: cells of a declared size, each holding a named material, edited live for every player at once. Missing: the voxel data lives inside the world and no file format for exchanging it is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/voxel-terrain/skill.md",
+          "title": "Spawn agent skill: voxel-terrain",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "ctx.place.voxels[x][y][z] takes integer CELL coords"
+        },
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "block worlds you dig through"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "partial",
+      "note": "An object from another world can arrive through a portal and keep running its own script inside the host world, limited by the host's ceiling on what scripts may do. Missing: a whole experience from another party cannot be hosted inside a world; a portal shows the far world and moves people into it but does not run it in place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A travelling behavior runs abroad under the host's ceiling"
+        },
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A door in your world opens onto another place or another world, yours or anyone's."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "native",
+      "note": "Players spend Spawn's in-game currency, bought with real money through Spawn or an app store. A game opens Spawn's own checkout, and the game's purchase code runs only once payment is confirmed. Creators keep half. The currency cannot leave Spawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/buyables/skill.md",
+          "title": "Spawn agent skill: buyables",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "opens the platform's checkout and answers a requestId, never proof of payment; `onPurchase(ctx, buyer)` runs once on verified completion."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/buyables/skill.md",
+          "title": "Spawn agent skill: buyables",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "1 Spoin = $0.01, creators keep 50%"
+        },
+        {
+          "url": "https://www.spawn.co/terms-of-service",
+          "title": "Spawn Terms of Service (last revision October 9, 2026)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spoins are not your personal property, have no equivalent value in real currency, and may not be sold, transferred, or exchanged outside the Services."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "native",
+      "note": "What an account bought is Spawn's own record, readable by the game on every client and writable by the platform alone, so a game checks ownership before granting an item or opening a door.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/buyables/skill.md",
+          "title": "Spawn agent skill: buyables",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "What an account bought is the platform's record, on every client as `player.state.purchases[buyableId]`"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/buyables/skill.md",
+          "title": "Spawn agent skill: buyables",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Gate an equip, a door or an \"owned\" badge on it."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "Surfaces use three.js's standard physically based material fields, and custom looks are scripted node materials in three.js's shading language.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "MeshStandardMaterial's fields"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "whose material(ctx) returns a node material in TSL"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "native",
+      "note": "Lighting is real time: one time of day relights the whole world and a day and night cycle runs without a script. Particles are lit by the scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "One time of day relights the whole world, and a day-night cycle runs with no script."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "A player's machine loads the part of the world around them and streams in the rest as they move, and far voxel land is drawn at reduced detail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A player's machine loads the part around them and streams the rest in as they move"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/voxel-terrain/skill.md",
+          "title": "Spawn agent skill: voxel-terrain",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Past lodRanges far land draws to min(camera.far, linear fog far)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "native",
+      "note": "Words and buttons painted on objects in the world stay sharp at any distance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Words and buttons painted on objects are sharp at any distance and wired to the game."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "native",
+      "note": "Cameras are scripts, and portal faces can show placed cameras, mirrors and map views.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the camera → a script (camera: { kind: \"custom\", behavior: \"scripts/camera.js\" })"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`camera: \"mirror\"` is a mirror"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "native",
+      "note": "Shape keys in a model are listed and driven by name.",
+      "confidence": "verified",
+      "direction": "read",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Discover an object's shape keys (morph targets / blend shapes): the names morph takes, e.g. [\"Blink\", \"Smile\"]"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "native",
+      "note": "Repeated objects are drawn as instance sets from a geometry script.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "an InstancedMesh, instancing → an instance set, ctx.instances in a geometry script"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.retarget",
+      "level": "native",
+      "note": "Any rig Spawn recognises plays every clip in the shared animation library, so animation made for one body plays on another.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "also plays every library clip by address"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "native",
+      "note": "Spawn runs its own physics engine; objects are marked as characters, static or dynamic.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn's own physics engine."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "physics: \"character\" on what walks or rolls, \"static\" on what stands, \"dynamic\" on what falls"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "native",
+      "note": "Collision shapes are separate from visible models: a capsule fitted to a character, a box hitbox, or a hull computed from the mesh.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A box hitbox is a `render: false` box `primitive` with `collider: \"box\"` that never turns"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "native",
+      "note": "Bodies are linked by joints with limits, such as spherical joints for limbs and hinges for doors.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/physics/skill.md",
+          "title": "Spawn agent skill: physics",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "type: \"spherical\""
+        },
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Doors on hinges"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "partial",
+      "note": "Random numbers and time are seeded and shared so every machine builds the same level. Missing: no claim that the physics simulation itself gives the same result on every machine.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Math.random and Date.now → ctx.random() and ctx.now(), seeded and shared, so every machine draws the same level"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "native",
+      "note": "A static body can be marked as a trigger, and scripts receive an event when something enters it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "physics: { body: \"static\", trigger: true }"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "export function onTriggerEnter(ctx, other)"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "native",
+      "note": "Sounds are played at a position in the world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "ctx.emit(\"playSound\", { clip: \"cdn/gate-chime.mp3\", position: ctx.self.worldFeetPosition });"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "native",
+      "note": "Voice chat between players is built into Spawn, with mute and deafen controls, and games do not build their own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Voice has controls to mute your microphone or deafen yourself."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/game-ui/skill.md",
+          "title": "Spawn agent skill: game-ui",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "talk is Spawn's mic (join, mute, open or hold V)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "native",
+      "note": "Each player's machine simulates what that player controls, and Spawn states there is no server-side authority over movement. Rows marked to run on the platform run on Spawn's machines instead, and chosen saved values can be written only by the platform. A trap for anyone assuming server authority: movement is trusted from the client.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/rooms-and-matchmaking/skill.md",
+          "title": "Spawn agent skill: rooms-and-matchmaking",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn has no server-authoritative movement or custom networking code"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "runs on Spawn's machine, never a player's, even with nobody near"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "partial",
+      "note": "World content streams to each player by distance, a portal's view is drawn only while someone sees it, and an object can be made visible to its owner alone. Missing: whether updates about other players are filtered by interest is not documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A player's machine loads the part around them and streams the rest in as they move"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A view draws only while a player sees its face"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.prediction",
+      "level": "native",
+      "note": "A player's own moves are applied locally the instant they are made.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Your own moves land the instant you make them."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "partial",
+      "note": "A player can see which worlds their friends are in right now and the people they stood with recently. Missing: this works only inside Spawn, never across operators.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "GET /api/social/places the worlds your friends are in right now"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "native",
+      "note": "Public worlds are listed by a public feed with no credential, and Spawn publishes a machine-readable catalogue of its interfaces at a well-known address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "GET /api/feed?sort=hot|top|recent&q= lists public games without a credential."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "API catalog: spawn.co/.well-known/api-catalog"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "native",
+      "note": "Scripts read a shared world clock that every machine agrees on and that continues across periods when nobody is in the world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "ctx.random() and ctx.now(), seeded and shared"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/rooms-and-matchmaking/skill.md",
+          "title": "Spawn agent skill: rooms-and-matchmaking",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`ctx.now()` (continuous across the sleep)"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "partial",
+      "note": "Friends, mutes and blocks are Spawn relationships kept on the account across every Spawn game. Missing: they cannot be carried outside Spawn.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A friend is the one relation between people; mute, block and nickname take the same door."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "native",
+      "note": "Keyboard and gamepad inputs are mapped to named axes and actions that a game reads, and players can rebind them.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "keyboard and gamepad → inputs.axes and inputs.actions"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "native",
+      "note": "Scripts arriving from another world run with only the powers the host allows, from a fixed list, and a script that asks for a power the host withholds is set aside rather than run.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A travelling behavior runs abroad under the host's ceiling"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A declared word the ceiling lacks pockets that behavior"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "native",
+      "note": "World state outlives empty rooms: a change made today, such as dug ground, is there tomorrow for everyone, with no save script.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a hole dug today is there tomorrow for everyone, and the world's state outlives every empty room."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.content-addr",
+      "level": "native",
+      "note": "Uploaded files are stored under the hash of their bytes, and uploading the same bytes again returns the existing file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "PUT /api/sdk/v1/<worldId>/assets/value.<sha256 of the bytes>.<ext>"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "200 exists when the same bytes are already here"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "native",
+      "note": "A runnable world is a git repository; pushing to its main branch reaches every open room with no build step and no deploy.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The world is a git repository, and the tree is the game"
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A push to main reaches every room open on main with no build and no deploy"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "native",
+      "note": "Uploaded files are placed on Spawn's content delivery network and served from a returned address.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "on the CDN by its bytes and answers the URL that serves it"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "native",
+      "note": "A whole playable world is made by describing it to Spawn's built-in AI builder, which shapes terrain, lighting, buildings and rules. What comes out is an editable world of objects and scripts, not a picture or a captured scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is",
+          "title": "What Spawn Is",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "you tell savi you want a snowy village at dusk. she builds it: hills, cottages, snow starting to fall."
+        },
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is",
+          "title": "What Spawn Is",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "you describe what you want; the world appears around you, fully made."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "native",
+      "note": "The builder is directed by conversation and by reference images, with each request a small change on the last.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You can give her reference images and point out what you like."
+        },
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is",
+          "title": "What Spawn Is",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "every message is a small move you make after watching the last one land"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "partial",
+      "note": "Uploaded pictures are reviewed, and words players write can be run through chat's filter. Missing: published games and mods are not described as reviewed before players see them, and the mod listing says Spawn has not checked makers' claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms-full.txt",
+          "title": "Spawn full agent-facing documentation (llms-full.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the same review every uploaded picture gets"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/platform-systems/skill.md",
+          "title": "Spawn agent skill: platform-systems",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "runs any length through chat's filter"
+        },
+        {
+          "url": "https://www.spawn.co/mods",
+          "title": "Mods for your game",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Makers wrote these words. Spawn hasn't checked what they claim."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "native",
+      "note": "A game's heads-up display is written as HTML in one script file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the HUD as HTML in scripts/ui.js"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "native",
+      "note": "Custom shaders are written in three.js's shading language and return node materials; raw shader material code from another engine must be rewritten into it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a ShaderMaterial or any shader → a scripted material"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "native",
+      "note": "Particle effects are written as short programs in Spawn's own effect language and live in the world, lit by the scene and blown by its wind. The format is Spawn's own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Effects live in the world: particles lit by the scene"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/fx/skill.md",
+          "title": "Spawn agent skill: fx",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A program is a string in the emit"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "Outside AI agents and programs build worlds through a published HTTP interface and plain git: an agent can create an account, create a world, push changes and publish without a person.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "One account, one token, one API, stock git."
+        },
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The whole contract, machine-readable: https://www.spawn.co/openapi.json."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "A world's files and history are a git repository the owner can copy, and a game made elsewhere can be brought in by rewriting it for Spawn. Missing: a copy holds Spawn's own file layout and refers to models, images and sounds by name rather than carrying them, and Spawn provides no ready-to-run export for another engine or platform. Its use policy also forbids using its builder to make games for other platforms.",
+      "confidence": "verified",
+      "direction": "both",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is-for",
+          "title": "What Spawn Is For (and What It Isn't)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Leave if you want. Projects are git repos and an outside agent like Claude Code or Codex can pull them."
+        },
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Assets are referenced by name, so a copy of the code is not a bundle of every image, model, and sound."
+        },
+        {
+          "url": "https://www.spawn.co/about/faq",
+          "title": "Spawn FAQ",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Spawn does not provide a ready-to-run Steam export"
+        },
+        {
+          "url": "https://www.spawn.co/about/bring-a-game",
+          "title": "Bring a game you already made",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Your code is rewritten to run on Spawn's engine."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "A portal shows the far place through its face, with its light spilling out and its sound, in a frame whose shape the creator sets; it fires when a body enters its trigger, and can be one way. Missing: the destination has no documented control over what the portal shows of it.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`material.view: { link, spill, sound, oneWay }`: the far place seen through the face, its light on your ground."
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/portals/skill.md",
+          "title": "Spawn agent skill: portals",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`oneWay: true`: one face, veiled and closed behind."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "native",
+      "note": "World rules are JavaScript modules run against Spawn's own game interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a script per behavior, a module with update(ctx, dt)"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "native",
+      "note": "A made world is changed by describing the change, one request at a time, and every change is kept in a history that can be undone.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/about/what-spawn-is",
+          "title": "What Spawn Is",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "\"make a platformer,\" then \"add spikes to that gap,\" then \"the jump feels stiff, loosen it,\""
+        },
+        {
+          "url": "https://www.spawn.co/about/release-6-0-0",
+          "title": "One Place, engine v6.0.0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Every version of your world is kept."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "native",
+      "note": "Characters are generated from a text prompt or a picture and turned into rigged 3D bodies, and a picture can be turned into a 3D model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://www.spawn.co/llms.txt",
+          "title": "Spawn orientation for agents (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "POST /api/character/generate {\"prompt\"} or POST /api/character/picture (a multipart image) makes a draft"
+        },
+        {
+          "url": "https://www.spawn.co/.well-known/agent-skills/uploaded-models/skill.md",
+          "title": "Spawn agent skill: uploaded-models",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A creator's own picture they want in 3D asks for its cooked mesh"
+        }
+      ]
+    }
+  ]
+}

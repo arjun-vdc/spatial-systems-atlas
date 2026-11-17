@@ -18,7 +18,8 @@ const custom = () => reducer({ ...initialState(model), view: 'compare', sel }, {
 
 test('custom preset restores metadata, six capabilities and the exact assessed subject selection in a fresh state', () => {
   const state = custom()
-  assert.equal(state.on.length, 40)
+  // 40 -> 41 on 2026-11-14: Project 0 is assessed on three of the six rows.
+  assert.equal(state.on.length, 41)
   const restored = decode('#' + encode(state, model.subjects.length), model, initialState(model))
   assert.deepEqual(restored, state)
   assert.deepEqual(restored.customPreset, { title, details })

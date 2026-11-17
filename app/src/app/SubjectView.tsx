@@ -6,7 +6,7 @@
 
 import { useLayoutEffect, useRef, useState } from 'react'
 import type { Capability, Model } from '../design-model.ts'
-import { inLane, levelOf, scopeNote } from '../design-model.ts'
+import { inLane, levelOf, scopeNote, subjectKindLine } from '../design-model.ts'
 import { collapsedCount } from './layout.ts'
 import type { Collapse } from './layout.ts'
 import { cellStyle, describe, read } from './marks.ts'
@@ -50,7 +50,7 @@ export function SubjectView({ model, state, dispatch, rows }: {
       <section style={s.hero}>
         <div style={{ flex: 1, minWidth: 260 }}>
           <span style={s.eyebrow}>
-            {focus.kind.replace('-', ' ')} · {focus.org ?? 'no organisation recorded'}
+            {subjectKindLine(model, focus)} · {focus.org ?? 'no organisation recorded'}
           </span>
           <h2 style={s.name}>{focus.name}</h2>
           <span style={s.facts}>

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "related-use-case.schema.json",
+  "title": "Related use case record",
+  "description": "One link between one external use case and one Atlas capability: why the case needs the capability, on what basis, from which source version, and its separate review state. It says nothing about whether any subject supports the capability. Many records may share a use case or a capability.",
+  "type": "object",
+  "required": ["link_id", "use_case", "capability", "explanation", "basis", "origin", "source_version", "review"],
+  "additionalProperties": false,
+  "properties": {
+    "link_id": {
+      "description": "Stable key: external use case id, a tilde, then the Atlas capability id. One record per pair.",
+      "type": "string",
+      "pattern": "^[A-Z]{2}-UC-[0-9A-Z]+~[a-z0-9]+\\.[a-z0-9.-]+$"
+    },
+    "use_case": {
+      "type": "object",
+      "required": ["id", "title", "url", "repository", "record_version", "specificity"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "description": "The repository's own stable id. Never renumbered by the Atlas.", "type": "string" },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "description": "The original public record.", "type": "string", "format": "uri", "pattern": "^https://" },
+        "repository": { "type": "string" },
+        "record_status": { "type": "string" },
+        "record_version": { "type": "string" },
+        "record_date_shown": { "type": "string", "format": "date" },
+        "specificity": {
+          "description": "From the record. Generic and specialised or individual cases are kept apart so counts are not double counted.",
+          "enum": ["generic", "specialised", "individual", "unknown"]
+        },
+        "extends": {
+          "description": "Ids of the more general cases this one specialises.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "licence_note": { "type": "string" }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "required": ["id", "atlas_release"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "description": "Atlas capability id.", "type": "string" },
+        "name": { "type": "string" },
+        "atlas_release": { "description": "Atlas release whose definition the link was checked against.", "type": "string" },
+        "atlas_released": { "type": "string", "format": "date" },
+        "atlas_export_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "definition_as_read": { "type": "string" }
+      }
+    },
+    "explanation": {
+      "type": "object",
+      "required": ["source_passage", "rationale", "rationale_by"],
+      "additionalProperties": false,
+      "properties": {
+        "source_passage": { "description": "Words of the public record the link rests on, quoted exactly.", "type": "string", "minLength": 1 },
+        "source_section": { "type": "string" },
+        "rationale": { "description": "Why the passage means the case needs this capability.", "type": "string", "minLength": 1 },
+        "rationale_by": { "enum": ["contributor", "atlas-reader"] }
+      }
+    },
+    "basis": {
+      "description": "derived: the case states the need. proposed: the case implies it. Neither is support evidence and neither is a review outcome.",
+      "enum": ["derived", "proposed"]
+    },
+    "basis_meaning": { "type": "string" },
+    "origin": {
+      "description": "Where the link came from: the contribution files, the contributor's public record page, or an Atlas reader's proposal.",
+      "enum": ["contributor", "contributor-public-record", "atlas-reader"]
+    },
+    "source_version": {
+      "type": "object",
+      "required": ["contribution_commit", "public_record_read_at", "passage_found_on_public_record"],
+      "additionalProperties": false,
+      "properties": {
+        "contribution_repository": { "type": "string", "format": "uri" },
+        "contribution_branch": { "type": "string" },
+        "contribution_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "contribution_file": { "type": ["string", "null"] },
+        "contribution_refreshed": { "type": "string", "format": "date" },
+        "in_pinned_commit": { "type": "boolean" },
+        "public_record_read_at": { "type": "string", "format": "date-time" },
+        "public_record_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "passage_found_on_public_record": { "type": "boolean" },
+        "basis_on_public_record": { "description": "Basis the public record page itself shows for this pair, or null when the page shows no such link.", "enum": ["derived", "proposed", null] }
+      }
+    },
+    "review": {
+      "description": "Atlas review of the link. Separate from basis, from subject support and from assessment confidence.",
+      "type": "object",
+      "required": ["status"],
+      "additionalProperties": false,
+      "properties": {
+        "status": { "enum": ["unreviewed", "accepted", "needs-change", "rejected", "stale"] },
+        "reviewed_at": { "type": ["string", "null"], "format": "date-time" },
+        "review_note": { "type": ["string", "null"] }
+      }
+    },
+    "drift": {
+      "description": "Known differences between the source's copy of Atlas values and the current Atlas. Shown as history; never applied.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["field", "source_value", "current_atlas_value", "handling"],
+        "additionalProperties": false,
+        "properties": {
+          "field": { "type": "string" },
+          "source_value": { "type": "string" },
+          "current_atlas_value": { "type": "string" },
+          "handling": { "type": "string" }
+        }
+      }
+    }
+  }
+}

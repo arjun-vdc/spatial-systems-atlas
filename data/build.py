@@ -145,6 +145,12 @@ KIND_LABEL = [("standard", "Standards"), ("device-platform", "Device platforms")
               ("world-model", "World models & capture"),
               ("technique", "World models & capture"),
               ("tool", "Capture & generation tools")]
+# The platform group is split by the subject's subcategory, in this order and under these plain
+# labels. The group keeps one flat subject list, ordered subcategory by subcategory, so every
+# page that reads the group as one family still works; a page that can show the split reads
+# "subgroups". The loader has already refused a platform with no subcategory.
+SUBCATEGORY_LABEL = [("social-world", "Social worlds"), ("game-platform", "Game platforms"),
+                     ("ai-built-world", "AI-built game and world platforms")]
 display_groups = [{"id": "msf", "name": "MSF standards & projects",
                    "subjects": [s["id"] for s in subs if s["id"] in MSF_IDS]}]
 by_label = {}
@@ -156,6 +162,17 @@ for kind, label in KIND_LABEL:
         by_label[label]["subjects"].extend(ids)
         continue
     group = {"id": kind, "name": label, "subjects": ids}
+    if kind == "platform":
+        sub_of = {s["id"]: s.get("subcategory") for s in subs}
+        unsorted = [sid for sid in ids if sub_of[sid] not in dict(SUBCATEGORY_LABEL)]
+        if unsorted:
+            raise SystemExit("platform(s) with no known subcategory: " + ", ".join(unsorted) +
+                             " - set it in subjects.csv and reload")
+        group["subgroups"] = [{"id": sub, "name": sub_label,
+                               "subjects": [sid for sid in ids if sub_of[sid] == sub]}
+                              for sub, sub_label in SUBCATEGORY_LABEL
+                              if any(sub_of[sid] == sub for sid in ids)]
+        group["subjects"] = [sid for g in group["subgroups"] for sid in g["subjects"]]
     by_label[label] = group
     display_groups.append(group)
 
@@ -261,6 +278,19 @@ if os.path.exists(tips_path):
             if text:
                 tips[k] = fill(text, f"tooltip {k}")
 
+# Which standard a claim's own sources say the product uses for the row: {subject: {row: [ids]}},
+# only for claims that name one. Kept beside coverage rather than inside it, so the four-item claim
+# the pages read keeps its shape; nothing on screen reads it yet. Two products that list one id on
+# one row agree there for certain; a shared level alone does not say so.
+via = {}
+for r in con.execute("""
+    SELECT c.subject_id, c.capability_id, v.standard_id FROM via v
+    JOIN coverage c ON c.id = v.coverage_id
+    ORDER BY c.subject_id, c.capability_id, v.id"""):
+    ids = via.setdefault(r["subject_id"], {}).setdefault(r["capability_id"], [])
+    if r["standard_id"] not in ids:
+        ids.append(r["standard_id"])
+
 out = {"groups": groups, "capabilities": caps, "subjects": subs, "coverage": cov, "tally": tally,
        "display_groups": display_groups, "tooltips": tips,
        "counts": {"claims": con.execute("SELECT COUNT(*) FROM coverage").fetchone()[0],
@@ -268,7 +298,49 @@ out = {"groups": groups, "capabilities": caps, "subjects": subs, "coverage": cov
                   "conflicts": con.execute("SELECT COUNT(*) FROM coverage WHERE level='conflicts'").fetchone()[0],
                   "unverified": con.execute("SELECT COUNT(*) FROM coverage WHERE confidence='unverified'").fetchone()[0],
                   "must": interop_counts["must"], "should": interop_counts["should"],
-                  "no_interop": interop_counts["none"], "lanes": lane_counts}}
+                  "no_interop": interop_counts["none"], "lanes": lane_counts},
+       "via": via}
+
+# Related use cases: why a task needs a row, kept apart from the claims. Exported only in the full
+# file, which the row panel reads; the index stays the landing view's figures alone. A record
+# carries no subject and no level, so nothing here can move a count above.
+def _use_cases():
+    source = dict(con.execute("SELECT key, value FROM use_case_source"))
+    if not source:
+        return None
+    cases = {}
+    for r in con.execute("SELECT * FROM use_case ORDER BY id"):
+        cases[r["id"]] = {
+            "title": r["title"], "url": r["url"], "repository": r["repository"],
+            "status": r["record_status"], "version": r["record_version"], "date": r["record_date"],
+            "specificity": r["specificity"], "extends": [x for x in r["extends"].split(",") if x],
+            "read_at": r["read_at"], "implementations_stated": r["implementations_stated"],
+            "implementations_linked": [x for x in r["implementations_linked"].split(",") if x]}
+    links = []
+    for r in con.execute("SELECT * FROM use_case_link ORDER BY capability_id, use_case_id"):
+        links.append({
+            "id": r["id"], "case": r["use_case_id"], "cap": r["capability_id"],
+            "passage": r["source_passage"], "section": r["source_section"],
+            "reason": r["rationale"], "reason_by": r["rationale_by"], "basis": r["basis"],
+            "origin": r["origin"], "in_pinned_commit": bool(r["in_pinned_commit"]),
+            "passage_found": bool(r["passage_found"]), "basis_on_record": r["basis_on_public_record"],
+            "checked_release": r["checked_release"],
+            "review": {"status": r["review_status"], "at": r["reviewed_at"], "note": r["review_note"]},
+            "drift": json.loads(r["drift"])})
+    coverage = {}
+    for r in con.execute("SELECT * FROM use_case_coverage ORDER BY capability_id"):
+        coverage[r["capability_id"]] = {
+            "interop": r["source_interop"], "use_cases": r["use_cases"],
+            "specialisations": r["specialisations"], "deployments": r["deployments"],
+            "ids": [x for x in r["use_case_ids"].split(",") if x],
+            "atlas": {"native": r["source_native"], "partial": r["source_partial"],
+                      "scored": r["source_scored"]}}
+    return {"source": source, "cases": cases, "links": links, "coverage": coverage}
+
+use_cases = _use_cases()
+if use_cases:
+    out["use_cases"] = use_cases
+
 board = os.path.join(os.path.dirname(D), "board")
 p = os.path.join(board, "territory.json")
 payload = json.dumps(out, separators=(",", ":"))

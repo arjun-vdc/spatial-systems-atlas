@@ -16,8 +16,10 @@ import { shareUrl } from '../design-model.ts'
 import { normalizeCustomPreset } from './custom-preset.ts'
 import type { CustomPreset } from './custom-preset.ts'
 import type { PanelMode } from './layout.ts'
+import { STATUS_ORDER } from './together-model.ts'
+import type { TogetherStatus } from './together-model.ts'
 
-export type ViewId = 'subject' | 'compare' | 'groups' | 'relations'
+export type ViewId = 'subject' | 'compare' | 'groups' | 'relations' | 'interop'
 export type Theme = 'light' | 'dark'
 
 /**
@@ -56,6 +58,12 @@ export interface AppState {
   customPreset: CustomPreset | null
   /** Rows picked by a preset or a link (`sel`). Empty means every row. */
   sel: string[]
+  /**
+   * The Interop display. With no lane, `wtAll` lists every part instead of the chart;
+   * `wtStatus` shows one status only. The use case itself is `lane`.
+   */
+  wtAll: boolean
+  wtStatus: TogetherStatus | null
 
   // Preferences. Not analysis, so they never travel in the address.
   theme: Theme
@@ -87,6 +95,7 @@ export type Action =
   | { type: 'custom-preset'; title: string; details: string; on?: string[] }
   | { type: 'theme'; theme: Theme }
   | { type: 'clear-picked' }
+  | { type: 'together'; patch: Partial<Pick<AppState, 'lane' | 'wtAll' | 'wtStatus'>> }
   | { type: 'replace'; state: AppState }
 
 /** The view has departed from its preset, so no preset is selected any more. Preferences never do this. */
@@ -101,7 +110,7 @@ export function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
     // The display switcher is the only control that changes the display.
     case 'view':
-      return edited(state, { view: action.view, detail: null })
+      return edited(state, { view: action.view, detail: null, wtAll: false, wtStatus: null })
 
     // The one labelled exception: putting a subject in focus is navigation, so
     // it sets the display and guarantees the subject is in the comparison.
@@ -135,7 +144,7 @@ export function reducer(state: AppState, action: Action): AppState {
     case 'basis':
       return edited(state, { basis: action.basis })
     case 'lane':
-      return edited(state, { lane: action.lane })
+      return edited(state, { lane: action.lane, wtAll: false, wtStatus: null })
     case 'rel-group':
       return edited(state, { relGroup: action.id })
 
@@ -164,6 +173,10 @@ export function reducer(state: AppState, action: Action): AppState {
     case 'clear-picked':
       return edited(state, { sel: [] })
 
+    // A step inside the Interop display: a use case, every part, or one status.
+    case 'together':
+      return edited(state, { ...action.patch, detail: 'lane' in action.patch || 'wtAll' in action.patch ? null : state.detail })
+
     case 'replace':
       return action.state
   }
@@ -180,25 +193,35 @@ export function reducer(state: AppState, action: Action): AppState {
  * The keys the address carries. A link may put them after `?` or after `#`; the app writes `#`.
  * `only` is a retired key: the subject figures were row filters until 2026-11 (see LEGACY_KEYS).
  */
-export const ADDRESS_KEYS = ['view', 's', 'of', 'rows', 'basis', 'lane', 'group', 'open', 'sel', 'only', 'title', 'details']
+export const ADDRESS_KEYS = ['view', 's', 'of', 'rows', 'basis', 'lane', 'group', 'open', 'sel', 'only', 'title', 'details', 'parts', 'status', 'wide']
 
 /**
  * Keys older links may still carry but that no longer mean anything. `only` held
  * the subject figure filters (reach, built in, assessed, conflicts), which were
- * withdrawn: the figures are plain figures now. Reading a link ignores these
- * keys, and the app drops them from the address it shows.
+ * withdrawn: the figures are plain figures now. `wide` held the Interop display's
+ * "widely used" stepper, which was withdrawn: widely used is fixed. Reading a link
+ * ignores these keys, and the app drops them from the address it shows.
  */
-export const LEGACY_KEYS = ['only']
+export const LEGACY_KEYS = ['only', 'wide']
+
+/** Display names older links may still carry, and the display each now opens. */
+export const LEGACY_VIEWS: Record<string, ViewId> = { together: 'interop' }
 
 /**
- * An address part (`#…` or `?…`) with the retired keys removed and every other
- * byte left as it was, so a link's subject order and unknown fields survive.
+ * An address part (`#…` or `?…`) with the retired keys removed, a retired display name
+ * replaced by its new one, and every other byte left as it was, so a link's subject order
+ * and unknown fields survive.
  */
 export function withoutLegacyKeys(part: string): string {
   const lead = part.match(/^[?#]/)?.[0] ?? ''
   const body = part.slice(lead.length)
   if (!body) return part
-  const kept = body.split('&').filter((pair) => !LEGACY_KEYS.includes(pair.split('=')[0]))
+  const kept = body.split('&')
+    .filter((pair) => !LEGACY_KEYS.includes(pair.split('=')[0]))
+    .map((pair) => {
+      const [k, v] = pair.split('=')
+      return k === 'view' && v in LEGACY_VIEWS ? `view=${LEGACY_VIEWS[v]}` : pair
+    })
   return kept.length ? lead + kept.join('&') : ''
 }
 
@@ -213,7 +236,7 @@ export function queryWithoutAddress(search: string): string {
   return rest ? `?${rest}` : ''
 }
 
-const VIEWS: ViewId[] = ['subject', 'compare', 'groups', 'relations']
+const VIEWS: ViewId[] = ['subject', 'compare', 'groups', 'relations', 'interop']
 const FILTERS: RowFilter[] = ['all', 'overlap', 'thin', 'gap', 'conflict', 'connect', 'interop']
 const BASES: Basis[] = ['prod', 'all', 'must']
 
@@ -238,6 +261,8 @@ export function initialState(model: Model): AppState {
     presetName: '',
     customPreset: null,
     sel: [],
+    wtAll: false,
+    wtStatus: null,
     theme: 'light',
   }
 }
@@ -377,11 +402,20 @@ export function encode(state: AppState, total: number): string {
     state.view === 'relations' ? state.relGroup : null,
     state.detail,
     total,
-  ).replace(/^[^?]*\?/, '')
+  ).replace(/^[^?]*\?/, '') + togetherKeys(state)
   const custom = state.customPreset && normalizeCustomPreset(state.customPreset.title, state.customPreset.details)
   if (!custom) return analysis
   const metadata = new URLSearchParams({ title: custom.title, details: custom.details })
   return `${analysis}&${metadata}`
+}
+
+/** The Interop display's own keys, written only while it is the display. */
+function togetherKeys(state: AppState): string {
+  if (state.view !== 'interop') return ''
+  const p: string[] = []
+  if (state.wtAll && !state.lane) p.push('parts=all')
+  if (state.wtStatus && (state.lane || state.wtAll)) p.push(`status=${state.wtStatus}`)
+  return p.map((x) => `&${x}`).join('')
 }
 
 /**
@@ -420,13 +454,18 @@ export function decode(search: string, model: Model, base: AppState): AppState {
   // Unknown row ids are dropped, so a stale link shows the rows it still names, or every row.
   const sel = (p.get('sel') ?? '').split(',').filter((id) => model.byCapability.has(id))
 
-  const view = pick(p.get('view'), VIEWS, 'subject')
+  const viewParam = p.get('view')
+  const view = pick(viewParam !== null && viewParam in LEGACY_VIEWS ? LEGACY_VIEWS[viewParam] : viewParam, VIEWS, 'subject')
   const basis = pick(p.get('basis'), BASES, 'prod')
   // Any lane the data carries; an unknown lane id is dropped.
   const lane = pick(p.get('lane'), laneIds(model), null as LaneId | null)
   // A retired `only` (the withdrawn figure filters) is ignored, so an old link
   // opens the same view with every row, and every other row filter as it says.
   const customPreset = normalizeCustomPreset(p.get('title'), p.get('details'))
+  // Interop: every part and one status mean something only in that display.
+  const together = view === 'interop'
+  const wtAll = together && !lane && p.get('parts') === 'all'
+  const wtStatus = together && (lane || wtAll) ? pick(p.get('status'), STATUS_ORDER, null as TogetherStatus | null) : null
 
   // An address names a preset only when it is exactly what that preset writes.
   // Anything the reader changed afterwards (focus, basis, the assessed-only
@@ -457,6 +496,8 @@ export function decode(search: string, model: Model, base: AppState): AppState {
     relGroup: p.get('group') ?? base.relGroup,
     detail,
     sel,
+    wtAll,
+    wtStatus,
     presetName: customPreset ? '' : matched?.name ?? '',
     customPreset,
   }
@@ -489,6 +530,13 @@ export interface Preset {
   platforms?: boolean
   /** Capability ids the preset picks; only those rows show. Carried in the address as `sel`. */
   sel?: string[]
+  /** A short task description shown under the heading, within the custom-preset details limit. */
+  details?: string
+  /**
+   * Why each picked row is in the preset, keyed by capability id: one reviewed sentence per row,
+   * kept in the source so every reader sees the same reasons. Need, never support.
+   */
+  reasons?: Record<string, string>
 }
 
 // The presets (2026-11-01). Each preset answers a question a real
@@ -526,6 +574,23 @@ export const PRESETS: Preset[] = [
     scope: 'Agent and identity standards beside platforms · agent participation lane',
     on: ['mcp', 'oauth', 'did', 'vc', 'roblox', 'unity', 'unreal', 'arrival'],
     view: 'compare', filter: 'interop', lane: 'U4' },
+  // A task preset: six picked rows, each with the reason the task needs it. The related use
+  // cases behind each row are in the row panel; the reasons say why, never who supports it.
+  { name: 'Training results that travel',
+    question: 'Training results that travel',
+    details: 'A learner finishes training in one application. Another system must receive a readable record of what they did and how well.',
+    scope: 'Engines, platforms and identity standards · six picked rows',
+    on: ['unity', 'unreal', 'roblox', 'vrchat', 'vc', 'ieee2874', 'oauth'],
+    view: 'compare', filter: 'all',
+    sel: ['persist.activity-record', 'identity.privacy', 'sense.privacy', 'identity.consent', 'identity.credential', 'identity.status'],
+    reasons: {
+      'persist.activity-record': 'The result itself. The learning record store, employer or assessor is a different system; if it cannot read the record, the result stays in the simulator.',
+      'identity.privacy': 'The receiver needs the outcome, not the whole session. Sending only what it needs keeps the record from over-sharing.',
+      'sense.privacy': 'Recorded head and hand motion can identify the learner. Terms on that data have to travel with it.',
+      'identity.consent': "Says who may receive the learner's record, for what purpose and until when.",
+      'identity.credential': 'Only when the result becomes a qualification a third party must trust, such as a certificate for an employer.',
+      'identity.status': 'Only when a credential is issued: the receiver must be able to learn it was withdrawn. Correcting an activity record is a different thing.',
+    } },
   { name: 'The open web stack',
     question: 'What can a browser do with no app store and no install?',
     scope: 'Browser standards and web engines · every row',
@@ -599,6 +664,10 @@ export const presetSubjects = (preset: Preset, model: Model): string[] =>
   preset.mostConflicts ? mostConflicted(model, preset.mostConflicts)
     : preset.platforms ? platformSubjects(model)
     : preset.on.length ? preset.on : model.subjects.map((s) => s.id)
+
+/** The selected built-in preset, if any. */
+export const presetNamed = (presetName: string): Preset | null =>
+  PRESETS.find((p) => p.name === presetName) ?? null
 
 /** The heading: the selected preset's question, or the generic heading. */
 export const presetQuestion = (presetName: string): string | null =>

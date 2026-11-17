@@ -83,6 +83,24 @@ export interface Subject {
   scored: number
   /** Register ids of the OpenSpatials platforms this subject is. Absent when it is none. */
   platform?: string[]
+  /**
+   * A platform's kind of platform: social-world, game-platform or ai-built-world. Absent on
+   * every other kind of subject. Its plain label is the name of the display subgroup.
+   */
+  subcategory?: string
+}
+
+/**
+ * One display group of subjects, as the sidebar shows it. The platform group also carries
+ * subgroups, one per kind of platform, in display order; its flat `subjects` list holds the
+ * same subjects in the same order, so a page that shows the group as one family needs nothing
+ * more.
+ */
+export interface DisplayGroup {
+  id: string
+  name: string
+  subjects: string[]
+  subgroups?: Array<{ id: string; name: string; subjects: string[] }>
 }
 
 export interface GroupHealth {
@@ -98,7 +116,7 @@ export interface Model {
   groups: Array<{ id: string; name: string; plane: string; sort: number }>
   capabilities: Capability[]
   subjects: Subject[]
-  displayGroups: Array<{ id: string; name: string; subjects: string[] }>
+  displayGroups: DisplayGroup[]
   counts: Record<string, unknown>
   /** cov[subjectId][capabilityId] = 2-char code. A missing key means never assessed. */
   cov: Record<string, Record<string, Code>>
@@ -106,6 +124,17 @@ export interface Model {
   det: Record<string, Record<string, [string, RawSource[]]>>
   /** True when det is populated. False when the model was built from the index. */
   detLoaded: boolean
+  /**
+   * Related use cases: why a task needs a row. Need evidence only, kept apart from the claims;
+   * it never changes a cell or a count. Arrives with the full payload, like the notes.
+   */
+  useCases: UseCases
+  /**
+   * via[subjectId][capabilityId] = ids of the standards the subject's own sources name as what it
+   * uses for that row. Arrives with the full payload; empty until then. Only the Interop
+   * display reads it.
+   */
+  via: Record<string, Record<string, string[]>>
   /** Level counts per capability, across all subjects in the export. */
   agg: Record<string, Record<string, number>>
   health: Record<string, GroupHealth>
@@ -125,11 +154,135 @@ export const LANE_LABEL: Record<LaneId, string> = {
   U10: 'Shared presence',
 }
 
+/** A public use-case record a related-use-case link rests on, as the export carries it. */
+export interface UseCase {
+  id: string
+  title: string
+  /** The original public record. */
+  url: string
+  repository: string
+  status: string | null
+  version: string | null
+  date: string | null
+  specificity: 'generic' | 'specialised' | 'individual' | 'unknown'
+  /** Ids of the more general cases this one specialises. */
+  extends: string[]
+  readAt: string | null
+  implementationsStated: number | null
+  implementationsLinked: string[]
+}
+
+/** One link from one use case to one capability: why the case needs the row, and on what basis. */
+export interface UseCaseLink {
+  id: string
+  case: string
+  cap: string
+  passage: string
+  section: string | null
+  reason: string
+  reasonBy: 'contributor' | 'atlas-reader'
+  /** derived: the case states the need. proposed: the case implies it. Not a review result. */
+  basis: 'derived' | 'proposed'
+  origin: 'contributor' | 'contributor-public-record' | 'atlas-reader'
+  inPinnedCommit: boolean
+  passageFound: boolean
+  review: { status: 'unreviewed' | 'accepted' | 'needs-change' | 'rejected' | 'stale'; at: string | null; note: string | null }
+  /** The source's copy of Atlas values where it differs from the Atlas. History; never applied. */
+  drift: Array<{ field: string; source_value: string; current_atlas_value: string }>
+}
+
+/** Coverage of the contributing repository for one row. Three counts, never added together. */
+export interface UseCaseCoverage {
+  /** The source's copy of the Atlas interop word, which may be out of date. */
+  interop: string | null
+  useCases: number
+  specialisations: number
+  deployments: number
+  ids: string[]
+  /** The source's copy of the Atlas figures, dated by source.atlas_figures_date. */
+  atlas: { native: number | null; partial: number | null; scored: number | null }
+}
+
+export interface UseCases {
+  /** Where the records came from: repository, commit, dates. Null when the export has none. */
+  source: Record<string, string> | null
+  cases: Map<string, UseCase>
+  links: UseCaseLink[]
+  coverage: Record<string, UseCaseCoverage>
+}
+
+/** The export's use-case block in named fields. An export without one reads as no records. */
+export function adaptUseCases(raw: any): UseCases {
+  if (!raw) return { source: null, cases: new Map(), links: [], coverage: {} }
+  const cases = new Map<string, UseCase>()
+  for (const [id, c] of Object.entries<any>(raw.cases ?? {})) {
+    cases.set(id, {
+      id, title: c.title, url: c.url, repository: c.repository, status: c.status ?? null,
+      version: c.version ?? null, date: c.date ?? null, specificity: c.specificity,
+      extends: c.extends ?? [], readAt: c.read_at ?? null,
+      implementationsStated: c.implementations_stated ?? null,
+      implementationsLinked: c.implementations_linked ?? [],
+    })
+  }
+  const links: UseCaseLink[] = (raw.links ?? []).map((l: any) => ({
+    id: l.id, case: l.case, cap: l.cap, passage: l.passage, section: l.section ?? null,
+    reason: l.reason, reasonBy: l.reason_by, basis: l.basis, origin: l.origin,
+    inPinnedCommit: Boolean(l.in_pinned_commit), passageFound: Boolean(l.passage_found),
+    review: { status: l.review?.status ?? 'unreviewed', at: l.review?.at ?? null, note: l.review?.note ?? null },
+    drift: l.drift ?? [],
+  }))
+  const coverage: Record<string, UseCaseCoverage> = {}
+  for (const [cid, c] of Object.entries<any>(raw.coverage ?? {})) {
+    coverage[cid] = {
+      interop: c.interop ?? null, useCases: c.use_cases, specialisations: c.specialisations,
+      deployments: c.deployments, ids: c.ids ?? [],
+      atlas: { native: c.atlas?.native ?? null, partial: c.atlas?.partial ?? null, scored: c.atlas?.scored ?? null },
+    }
+  }
+  return { source: raw.source ?? null, cases, links, coverage }
+}
+
 /** A lane's label; a lane the data carries before it has a label here still gets a name. */
 export const laneLabel = (lane: LaneId): string => LANE_LABEL[lane] ?? `Use case ${lane}`
 
 /** Is this text a lane id? */
 export const isLaneId = (x: unknown): x is LaneId => typeof x === 'string' && /^U[0-9]+$/.test(x)
+
+/**
+ * The plain label of a subject's subcategory, read from the display subgroup that holds it, so
+ * the page names it in one wording everywhere. Null for a subject with no subcategory.
+ */
+export function subcategoryName(model: Pick<Model, 'displayGroups'>, subjectId: string): string | null {
+  for (const g of model.displayGroups) {
+    for (const sub of g.subgroups ?? []) if (sub.subjects.includes(subjectId)) return sub.name
+  }
+  return null
+}
+
+/**
+ * The kind as the subject header prints it, with a platform's subcategory label beside it:
+ * "platform · Social worlds". Any other subject prints its kind alone.
+ */
+export function subjectKindLine(model: Pick<Model, 'displayGroups'>, subject: Pick<Subject, 'id' | 'kind'>): string {
+  const kind = subject.kind.replace('-', ' ')
+  const sub = subcategoryName(model, subject.id)
+  return sub ? `${kind} · ${sub}` : kind
+}
+
+/** How many of a set of subjects are switched on, and whether all of them are. */
+export function setState(on: readonly string[], ids: readonly string[]): { n: number; all: boolean } {
+  const n = ids.filter((id) => on.includes(id)).length
+  return { n, all: ids.length > 0 && n === ids.length }
+}
+
+/**
+ * What one click on a group or subgroup heading does: when every subject in it is on, it
+ * switches them all off; otherwise it switches them all on, keeping every other subject as it
+ * was.
+ */
+export function toggleSet(on: readonly string[], ids: readonly string[]): string[] {
+  return setState(on, ids).all ? on.filter((id) => !ids.includes(id)) : [...new Set([...on, ...ids])]
+}
 
 /** The lanes the model carries, in number order. */
 export const laneIds = (model: Pick<Model, 'lanes'>): LaneId[] => Object.keys(model.lanes) as LaneId[]
@@ -191,6 +344,7 @@ export function adapt(raw: any): Model {
       unverified: Number(s.unverified ?? 0),
       scored: Number(s.scored ?? 0),
       ...(Array.isArray(s.platform) && s.platform.length ? { platform: s.platform.map(String) } : {}),
+      ...(s.subcategory ? { subcategory: String(s.subcategory) } : {}),
     }
   })
 
@@ -240,6 +394,8 @@ export function adapt(raw: any): Model {
     cov,
     det,
     detLoaded: hasDetail,
+    useCases: adaptUseCases(raw.use_cases),
+    via: raw.via ?? {},
     agg,
     health,
     lanes,
@@ -261,7 +417,7 @@ export function mergeDetail(base: Model, raw: any): Model {
     }
     if (Object.keys(detail).length) det[sid] = detail
   }
-  return { ...base, det, detLoaded: true }
+  return { ...base, det, detLoaded: true, useCases: adaptUseCases(raw.use_cases), via: raw.via ?? {} }
 }
 
 /** Everything the counting rules read. The address carries all of it. */
@@ -454,7 +610,7 @@ export function scopeNote(model: Model, subjectId: string): ScopeNote | null {
 /** The shareable address. The address is the state. */
 export function shareUrl(
   query: Query,
-  view: 'subject' | 'compare' | 'groups' | 'relations',
+  view: 'subject' | 'compare' | 'groups' | 'relations' | 'interop',
   focus: string | null,
   relGroup: string | null,
   detail: { cid: string; sid: string | null } | null,

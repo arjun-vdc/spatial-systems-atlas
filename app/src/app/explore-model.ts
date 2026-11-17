@@ -56,18 +56,26 @@ export function familyOf(model: Model): Map<string, string> {
   return out
 }
 
-/** Families in display order, each with its member subjects in sidebar order. */
-export function families(model: Model): Array<{ id: string; name: string; subjects: Subject[] }> {
+/**
+ * Families in display order, each with its member subjects in sidebar order. A family the
+ * data splits (the platforms, by kind of platform) also carries its subgroups, in order.
+ */
+export function families(model: Model): Array<{
+  id: string; name: string; subjects: Subject[]
+  subgroups?: Array<{ id: string; name: string; subjects: Subject[] }>
+}> {
   const rank = (id: string) => {
     const i = (FAMILY_ORDER as readonly string[]).indexOf(id)
     return i === -1 ? FAMILY_ORDER.length : i
   }
+  const resolve = (ids: string[]) => ids.map((id) => model.bySubject.get(id)).filter((s): s is Subject => Boolean(s))
   return [...model.displayGroups]
     .sort((a, b) => rank(a.id) - rank(b.id))
     .map((g) => ({
       id: g.id,
       name: g.name,
-      subjects: g.subjects.map((id) => model.bySubject.get(id)).filter((s): s is Subject => Boolean(s)),
+      subjects: resolve(g.subjects),
+      ...(g.subgroups ? { subgroups: g.subgroups.map((sub) => ({ id: sub.id, name: sub.name, subjects: resolve(sub.subjects) })) } : {}),
     }))
 }
 

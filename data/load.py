@@ -5,7 +5,7 @@ The rebuild happens in a temporary file beside the target. That file is renamed 
 after the whole load has succeeded, so a run that fails part way through leaves the existing
 territory.db exactly as it was.
 """
-import csv, os, sqlite3, sys, json, glob
+import csv, os, re, sqlite3, sys, json, glob
 
 D = os.path.dirname(os.path.abspath(__file__))
 DB = os.path.join(D, "territory.db")
@@ -15,6 +15,14 @@ TMP_FILES = (TMP, TMP + "-journal", TMP + "-wal", TMP + "-shm")
 # decision of 2026-11-03 three more (U6 the same thing at the same real place, U7 a training
 # result leaves the simulator, U10 shared presence). Each is a certification lane.
 USE_CASES = ("U1", "U2", "U3", "U4", "U6", "U7", "U10")
+# The kinds of platform, in the order the pages group them. Only a subject whose kind is
+# platform carries one.
+PLATFORM_SUBCATEGORIES = ("social-world", "game-platform", "ai-built-world")
+# What a claim's optional "via" list may name: any subject of kind standard, and these
+# specification projects. A via entry says the product uses that standard for the row.
+VIA_PROJECTS = ("rp1", "teleportxr", "vibejam", "wow")
+# The levels a via entry may sit on: a claim that the product does the thing.
+VIA_LEVELS = ("native", "via-extension", "partial")
 
 def clear_temp():
     for p in TMP_FILES:
@@ -24,6 +32,129 @@ def rows(name):
     p = os.path.join(D, name)
     if not os.path.exists(p): return []
     with open(p, newline="") as f: return list(csv.DictReader(f))
+
+USE_CASE_FILE = "related-use-cases.json"
+BASES = ("derived", "proposed")
+ORIGINS = ("contributor", "contributor-public-record", "atlas-reader")
+REVIEW = ("unreviewed", "accepted", "needs-change", "rejected", "stale")
+SPECIFICITY = ("generic", "specialised", "individual", "unknown")
+
+
+def load_use_cases(con):
+    """Load the related-use-case records, kept apart from coverage, confidence and sources.
+
+    A record that names an unknown capability, a word outside its field's list, an address that
+    is not public, or a use case described two different ways stops the load."""
+    path = os.path.join(D, USE_CASE_FILE)
+    if not os.path.exists(path):
+        return
+    with open(path) as f:
+        doc = json.load(f)
+    known = {r[0] for r in con.execute("SELECT id FROM capability")}
+    where = USE_CASE_FILE
+
+    def need(ok, msg):
+        if not ok:
+            sys.exit(f"{where}: {msg}")
+
+    src = doc["contribution"]
+    for key in ("repository", "branch", "folder", "commit", "committed", "refreshed",
+                "use_case_repository", "use_case_repository_url"):
+        need(src.get(key), f"contribution has no {key}")
+        con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)", (key, str(src[key])))
+    need(re.fullmatch(r"[0-9a-f]{40}", src["commit"]), "contribution commit is not a full commit id")
+    reading = doc.get("record_reading", {})
+    con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)",
+                ("records_read_at", reading.get("read_at", "")))
+    con.execute("INSERT INTO use_case_source (key,value) VALUES (?,?)",
+                ("atlas_figures_date", doc["coverage"].get("atlas_figures_date", "")))
+
+    cases, link_rows = {}, []
+    for r in doc["records"]:
+        uc, cap = r["use_case"], r["capability"]
+        lid = r["link_id"]
+        need(lid == f"{uc['id']}~{cap['id']}", f"{lid} is not <use case id>~<capability id>")
+        need(cap["id"] in known, f"{lid} names capability {cap['id']}, which is not a row")
+        need(r["basis"] in BASES, f"{lid} has basis '{r['basis']}'; use {', '.join(BASES)}")
+        need(r["origin"] in ORIGINS, f"{lid} has origin '{r['origin']}'")
+        need(r["review"]["status"] in REVIEW, f"{lid} has review status '{r['review']['status']}'")
+        need(uc["specificity"] in SPECIFICITY, f"{lid} has specificity '{uc['specificity']}'")
+        need(uc["url"].startswith("https://"), f"{lid} links to {uc['url']}; give the public record")
+        need(r["explanation"]["source_passage"].strip(), f"{lid} quotes no words of the record")
+        sv = r["source_version"]
+        case = (uc["title"], uc["url"], uc["repository"], uc.get("record_status"),
+                uc.get("record_version"), uc.get("record_date_shown"), uc["specificity"],
+                ",".join(uc.get("extends", [])), sv.get("public_record_read_at"),
+                sv.get("public_record_sha256"))
+        need(cases.setdefault(uc["id"], case) == case, f"{uc['id']} is described two ways")
+        link_rows.append((
+            "INSERT INTO use_case_link (id,use_case_id,capability_id,source_passage,source_section,"
+            "rationale,rationale_by,basis,origin,contribution_commit,contribution_refreshed,"
+            "in_pinned_commit,passage_found,basis_on_public_record,checked_release,definition_as_read,"
+            "review_status,reviewed_at,review_note,drift) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (lid, uc["id"], cap["id"], r["explanation"]["source_passage"],
+             r["explanation"].get("source_section"), r["explanation"]["rationale"],
+             r["explanation"]["rationale_by"], r["basis"], r["origin"], sv["contribution_commit"],
+             sv.get("contribution_refreshed"), int(bool(sv.get("in_pinned_commit"))),
+             int(bool(sv["passage_found_on_public_record"])), sv.get("basis_on_public_record"),
+             cap.get("atlas_release"), cap.get("definition_as_read"), r["review"]["status"],
+             r["review"].get("reviewed_at"), r["review"].get("review_note"),
+             json.dumps(r.get("drift", []), ensure_ascii=False))))
+    read = reading.get("cases", {})
+    for cid, c in cases.items():
+        imp = read.get(cid, {})
+        con.execute("INSERT INTO use_case (id,title,url,repository,record_status,record_version,"
+                    "record_date,specificity,extends,read_at,record_sha256,implementations_stated,"
+                    "implementations_linked) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                    (cid, *c, imp.get("implementations_stated"),
+                     ",".join(imp.get("implementations_linked", []))))
+    # A link names its case, so the cases go in first.
+    for sql, values in link_rows:
+        con.execute(sql, values)
+    for row in doc["coverage"]["rows"]:
+        need(row["capability_id"] in known, f"coverage names {row['capability_id']}, which is not a row")
+        atlas = row.get("source_atlas") or {}
+        con.execute("INSERT INTO use_case_coverage (capability_id,source_interop,use_cases,"
+                    "specialisations,deployments,use_case_ids,source_native,source_partial,"
+                    "source_scored) VALUES (?,?,?,?,?,?,?,?,?)",
+                    (row["capability_id"], row.get("source_interop"), row["use_cases"],
+                     row["specialisations"], row["deployments"], ",".join(row["use_case_ids"]),
+                     atlas.get("native"), atlas.get("partial"), atlas.get("scored")))
+
+
+def load_via(con, where, sid, c, cov, evidence_ids, via_ok):
+    """Load a claim's optional via list: the standards its own sources say the product uses.
+
+    Each entry is {"id": <standard subject id>, "source": <index into the claim's sources>,
+    "quote": <exact words>}. The quote must stand inside that source's recorded quote, so every
+    entry rests on words already on record. Anything else stops the load: a via entry is a
+    certainty, never a guess."""
+    via = c.get("via")
+    if via is None:
+        return
+    cap = c["capability_id"]
+    def need(ok, msg):
+        if not ok:
+            sys.exit(f"{where}: {cap} via {msg}")
+    need(isinstance(via, list) and via, "must be a non-empty list, or leave the key out")
+    need(c["level"] in VIA_LEVELS,
+         f"sits on level '{c['level']}'; only {', '.join(VIA_LEVELS)} claims name a standard used")
+    sources = c.get("sources", [])
+    for v in via:
+        need(isinstance(v, dict) and set(v) == {"id", "source", "quote"},
+             f"entry {v!r} must have exactly id, source and quote")
+        need(v["id"] in via_ok, f"names '{v['id']}', which is not a standard or specification subject")
+        need(v["id"] != sid, f"names the subject itself")
+        i = v["source"]
+        need(isinstance(i, int) and not isinstance(i, bool) and 0 <= i < len(sources),
+             f"entry {v['id']} points at source {i!r}; the claim has {len(sources)} sources")
+        q = v["quote"]
+        need(isinstance(q, str) and q.strip(), f"entry {v['id']} quotes no words")
+        need(q in (sources[i].get("quote") or ""),
+             f"entry {v['id']} quote is not inside source {i}'s quote; quote that source's own words")
+        con.execute("INSERT INTO via (coverage_id,standard_id,evidence_id,quote) VALUES (?,?,?,?)",
+                    (cov, v["id"], evidence_ids[i], q))
+
 
 def build(con):
     """Fill one empty database. Returns the one-line summary to print on success."""
@@ -66,9 +197,21 @@ def build(con):
                     (r["id"], r["group_id"], r["name"], r["definition"], r["binding"],
                      interop, reason, ",".join(uses), int(r["sort"])))
     for r in rows("subjects.csv"):
-        con.execute("INSERT INTO subject (id,name,kind,org,licence,url,status,version,status_date) VALUES (?,?,?,?,?,?,?,?,?)",
+        # Every platform names its kind of platform, so the pages can group platforms, and no
+        # other subject names one. A missing or wrong word stops the load rather than loading a
+        # platform the pages would show in no group.
+        sub = (r.get("subcategory") or "").strip()
+        if r["kind"] == "platform" and sub not in PLATFORM_SUBCATEGORIES:
+            sys.exit(f"subjects.csv: platform {r['id']} has subcategory '{sub}'; "
+                     f"use one of {', '.join(PLATFORM_SUBCATEGORIES)}")
+        if r["kind"] != "platform" and sub:
+            sys.exit(f"subjects.csv: {r['id']} is a {r['kind']}, not a platform, "
+                     f"yet names subcategory '{sub}'")
+        con.execute("INSERT INTO subject (id,name,kind,org,licence,url,status,version,status_date,subcategory) "
+                    "VALUES (?,?,?,?,?,?,?,?,?,?)",
                     (r["id"], r["name"], r["kind"], r["org"] or None, r["licence"] or None,
-                     r["url"] or None, r["status"] or None, r["version"] or None, r["status_date"] or None))
+                     r["url"] or None, r["status"] or None, r["version"] or None, r["status_date"] or None,
+                     sub or None))
 
     # Keep canonical metadata for shared URLs stable when new claims occur earlier in the
     # coverage order. These records come from existing claims; each claim retains its own
@@ -86,6 +229,9 @@ def build(con):
         return con.execute("INSERT INTO source (url,title,retrieved,kind) VALUES (?,?,?,?)",
                            (url, title, retrieved, kind)).lastrowid
 
+    via_ok = {r[0] for r in con.execute(
+        "SELECT id FROM subject WHERE kind='standard' OR id IN (%s)" % ",".join("?" * len(VIA_PROJECTS)),
+        VIA_PROJECTS)}
     loaded = 0
     for path in sorted(glob.glob(os.path.join(D, "coverage", "*.json"))):
         doc = json.load(open(path))
@@ -103,6 +249,7 @@ def build(con):
                 "INSERT OR REPLACE INTO coverage (subject_id,capability_id,level,note,confidence,direction) VALUES (?,?,?,?,?,?)",
                 (sid, c["capability_id"], c["level"], c.get("note"), c.get("confidence", "unverified"),
                  direction)).lastrowid
+            evidence_ids = []
             for s in c.get("sources", []):
                 # The database is published, so a source address must be a public one or a
                 # plain description; a file path on the maintainer's machine is refused.
@@ -112,10 +259,13 @@ def build(con):
                 # Every source entry becomes its own row. One claim may cite one address twice
                 # for two different sentences; evidence is keyed by its own row id, so the
                 # second quote lands instead of being ignored as a repeat of the first.
-                con.execute("INSERT INTO evidence (coverage_id,source_id,quote) VALUES (?,?,?)",
-                            (cov, source_id(s["url"], s.get("title"), s.get("retrieved"), s.get("kind", "primary")),
-                             s.get("quote")))
+                evidence_ids.append(con.execute(
+                    "INSERT INTO evidence (coverage_id,source_id,quote) VALUES (?,?,?)",
+                    (cov, source_id(s["url"], s.get("title"), s.get("retrieved"), s.get("kind", "primary")),
+                     s.get("quote"))).lastrowid)
+            load_via(con, os.path.basename(path), sid, c, cov, evidence_ids, via_ok)
             loaded += 1
+    load_use_cases(con)
     con.commit()
     n = lambda q: con.execute(q).fetchone()[0]
     # The three boundary values, counted from the rows that were just loaded, so a run says
@@ -134,6 +284,10 @@ def build(con):
             f"  coverage {n('SELECT COUNT(*) FROM coverage')}  sources {n('SELECT COUNT(*) FROM source')}"
             f"  quotes {n('SELECT COUNT(*) FROM evidence')}"
             f"  directed {n('SELECT COUNT(*) FROM coverage WHERE direction IS NOT NULL')}"
+            f"  via {n('SELECT COUNT(*) FROM via')} on {n('SELECT COUNT(DISTINCT coverage_id) FROM via')} claims"
+            f"  use-case links {n('SELECT COUNT(*) FROM use_case_link')}"
+            f" ({n('SELECT COUNT(*) FROM use_case')} cases,"
+            f" {n('SELECT COUNT(*) FROM use_case_coverage')} coverage rows)"
             f"  interop must {bounds.get('must', 0)}"
             f" should {bounds.get('should', 0)} none {bounds.get('none', 0)}"
             f"  lanes {lanes}")

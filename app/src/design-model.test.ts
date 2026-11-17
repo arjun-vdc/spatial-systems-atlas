@@ -248,7 +248,8 @@ test('the real published export still reports the figures the map claims', async
   // 2026-10-20: 59 -> 66 subjects, wave 2 (STAC, WebAssembly, Arrival Space, OAuth, Vibe Jam,
   // OMI glTF extensions, JSON-LD).
   // 2026-11-03: 66 -> 82 subjects: X_ITE, X3DOM, H-Anim, Hyperfy and twelve web and data standards.
-  assert.equal(real.subjects.length, 82)
+  // 2026-11-14: 82 -> 84 subjects: the platforms Spawn and Project 0.
+  assert.equal(real.subjects.length, 84)
   // These figures are a deliberate tripwire: they move only when capabilities are
   // added or removed, which is a decision somebody made and should have to record here.
   // 2026-09-18: 162 -> 164, the two approved composability rows.

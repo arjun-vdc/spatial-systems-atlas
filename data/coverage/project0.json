@@ -1,0 +1,3280 @@
+{
+  "subject_id": "project0",
+  "summary": "Project 0 is a city in the web browser whose lots are built and published by the players' own AI coding agents, through a published instruction file and a web interface authorised by each player's key, which makes it the clearest example on this map of a world designed to be authored by agents from outside. Everything visible arrives as binary glTF in metres with Y up, the neutral transfer convention, and every build must come with three levels of detail its author made, so on asset format and scale it agrees with the common approach rather than fighting it. Its other strength is hosting: any lot can run another player's whole game, their own JavaScript or a Godot web export, sandboxed inside the shared city, with a documented session for messages, shared state and lockstep input. It leaves out what it does not need for that: no headset support, no positioned sound or voice, no network access for games, and one world with no way to travel elsewhere carrying anything. Two traps for a standards reader: what a player wears is a plain glTF model plus a private settings file, and only the model reaches a game, so expressions, shaders and emotes stay behind; and the terms describe the whole service as an experiment that can lose data or be reset, with each new publish deleting the previous version, so nothing here is an archive.",
+  "coverage": [
+    {
+      "capability_id": "scene.graph",
+      "level": "native",
+      "note": "Builds keep the glTF node tree: a build's script moves named parts in their parent's space, and a game draws a three.js scene graph.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a part's transform, in its parent's space (lot-local for top-level parts); scale 0 to 4"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a `THREE.Scene` (with a hemisphere light)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 2,
+          "quote": "glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.transform",
+      "level": "native",
+      "note": "Content is modelled in metres with +Y up and the front facing +Z, the glTF convention; each lot's origin is the middle of its floor, and everything must stay inside the lot's box, also while animating.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Model in metres, +Y up. The origin is the centre of the lot on the ground."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "One GLB, metres, origin at the feet, facing +Z"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 1,
+          "quote": "One GLB, metres, origin at the feet, facing +Z"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.container",
+      "level": "native",
+      "note": "Every build, avatar, pet, car and entity model is glTF 2.0 binary with embedded textures; external files are refused. The server re-optimises what it receives (re-encoding textures and compressing geometry) before storing it, so the stored file differs from the uploaded one.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Format:** glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness materials."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The server deduplicates, prunes, converts textures to WebP at the target's maximum size and compresses with meshopt"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 0,
+          "quote": "glTF 2.0 binary, textures embedded"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.geometry",
+      "level": "native",
+      "note": "Geometry is glTF meshes. Uploads may use meshopt compression but not Draco; the server compresses stored builds with meshopt. Inside a game neither Draco nor meshopt can be decoded, because the sandbox runs no WebAssembly, and the guide recommends quantized geometry instead.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Inside an experience:** no Draco and no meshopt (the sandbox has no WebAssembly to decode them)."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "16-bit quantized geometry (`KHR_mesh_quantization`, which three.js reads as it is)"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 1,
+          "quote": "KHR_mesh_quantization"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.texture",
+      "level": "native",
+      "note": "Textures are PNG, JPEG or WebP embedded in the glTF file, with size limits per level of detail; on publish they are re-encoded as WebP, losslessly for pixel art and small textures. No GPU-compressed texture format is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Textures are re-encoded as WebP** when you publish."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Format:** glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness materials."
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 1,
+          "quote": "glTF 2.0 binary, textures embedded (PNG, JPEG or WebP)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.material-x",
+      "level": "none",
+      "note": "Materials are glTF metallic-roughness plus Project 0's own lighting modes and shader hooks; nothing carries a material between renderers. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for MaterialX, USD and material exchange; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Format:** glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness materials."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.animation",
+      "level": "native",
+      "note": "Animation is glTF animation: one clip per animation, played by name, with stated limits on clips per build, avatar, pet and car; a build's script can play a clip from a given second so every viewer sees it in step.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**One glTF animation per clip**, in place, loops seamless."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| Animation and skinning | yes: 8 clips, 2 skinned meshes, 64 bones | no | no |"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 0,
+          "quote": "One glTF animation per clip"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.skeleton",
+      "level": "native",
+      "note": "Skinned meshes use glTF skins with stated limits per target, such as two skinned meshes and 64 bones in a build and 75 bones in an avatar; an avatar's lighter copy must keep the same skeleton.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| Animation and skinning | yes: 8 clips, 2 skinned meshes, 64 bones | no | no |"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Keep the same skeleton and the clip names (at least `idle` and `fly`)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Project 0 skill guide, avatar model",
+          "kind": "primary",
+          "retrieved": "2026-11-14",
+          "quote": "One GLB, metres, origin at the feet, facing +Z: at most 3 m tall and 2.5 m wide, 20,000 triangles, 6 primitives (draw calls), 6 materials, 6 textures up to 1024 px, 3 skinned meshes, 75 bones, 24 animation clips, 3 MB after optimisation."
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 2,
+          "quote": "One GLB, metres, origin at the feet, facing +Z: at most 3 m tall and 2.5 m wide, 20,000 triangles, 6 primitives (draw calls), 6 materials, 6 textures up to 1024 px, 3 skinned meshes, 75 bones"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.units",
+      "level": "native",
+      "note": "The unit is the metre throughout: lot boxes, avatar size limits and particle sizes are stated in metres, and the physics example uses Earth gravity.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Model in metres, +Y up."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "const world = new CANNON.World({ gravity: new CANNON.Vec3(0, -9.82, 0) })"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.licence",
+      "level": "partial",
+      "note": "A build or game may declare a credits list naming each work, its author and, for three fan-work licences, a licence key that the review and the lot's panel act on; Project 0 itself takes a worldwide licence to show what is published. Any other licence named in credits changes nothing, so there is no general machine-readable licence carried with an asset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Declare them in `credits`, in the publish manifest of a build or in experience.json"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A license that is not in the list changes nothing"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "This permission is worldwide and free of charge."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.body",
+      "level": "native",
+      "note": "A city avatar is one binary glTF file with its animation clips, in metres, origin at the feet, facing +Z, inside fixed limits; an optional Project 0 file adds shaders, particles and emotes on top. The model itself is the neutral format, but only the model reaches a game inside a lot: the Project 0 additions stay in the city. Inside a lot's game, VRM characters can also be loaded through a bundled library, but the avatar a player wears is always the plain glTF model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "One GLB, metres, origin at the feet, facing +Z: at most 3 m tall and 2.5 m wide, 20,000 triangles,"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Only the model comes: the avatar's own shaders, particles and emotes stay in the city."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`@pixiv/three-vrm` | VRM characters (VRoid and the like): toon shading, swinging hair and clothes, faces, humanoid bones"
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 0,
+          "quote": "One GLB, metres, origin at the feet, facing +Z"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.skeleton",
+      "level": "partial",
+      "note": "City avatars have bone-count limits and clip names the game plays by name (idle and fly are required), but no agreed bone naming or structure, so animation does not transfer between avatars by rule. Inside a lot's game the bundled VRM library gives humanoid bone names; the assets guide tells authors to match renamed library bones by suffix by hand. The missing part is a bone vocabulary for the avatar a player wears.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `idle` | yes | hovering still |"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Bones by humanoid name: `vrm.humanoid.getNormalizedBoneNode('leftUpperArm')`."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "bones may come back renamed (`mixamorigRightHand`), so match by suffix."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Project 0 skill guide, VRM characters in a game",
+          "kind": "primary",
+          "retrieved": "2026-11-14",
+          "quote": "A VRM character is a GLB with extras; put the `.vrm` in the package"
+        }
+      ],
+      "via": [
+        {
+          "id": "vrm",
+          "source": 3,
+          "quote": "A VRM character is a GLB with extras"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.expression",
+      "level": "partial",
+      "note": "Faces can carry morph targets for expressions and blinks, and every avatar has four named emotes on keys 1 to 4, but the emotes are animation clips with names the author picks, not an agreed vocabulary of expressions or visemes, and they do not leave the city: a game inside a lot receives the model only. The missing part is any named expression or viseme set that survives a move.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Morph targets (blend shapes) work, for faces and blinks."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Make any four; a good set is **1 Joy, 2 Approval, 3 Sadness, 4 Indignation**."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Only the model comes: the avatar's own shaders, particles and emotes stay in the city."
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.wearable",
+      "level": "partial",
+      "note": "Carried props exist only as nodes inside the avatar's own model, hidden until an emote shows them; there is no separate wearable item, no attachment point, and nothing a player wears travels anywhere. The missing parts are separate items and attachment points that survive a transfer.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "up to 8 node names hidden until an emote `show`s them (props: an umbrella, a sign, a guitar)"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.identity",
+      "level": "none",
+      "note": "An avatar belongs to an account that signs in with Google, and that binding is held only inside Project 0; nothing ties an avatar to a credential another system could check. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for credential, verifiable, signed, OpenID and OAuth; the only hit for credential is a warning not to leak a generation service's key into a model.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The avatar is how everyone sees the player"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.replication",
+      "level": "native",
+      "note": "Each lot's game gets a shared session with three documented channels: messages to everyone or one player, a shared key-value state that late joiners also see, and an input channel delivered as 20-a-second ticks for lockstep games, each with stated size and rate limits. Players' positions are shared automatically.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "shared key-value state (values up to 2 KB, 64 KB and 256 keys in total, `null` deletes)."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "20 times a second every player gets a tick with everyone's latest input"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Everyone's position (`p0.me.position`) is shared automatically."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.transport",
+      "level": "none",
+      "note": "The wire protocol between the browser and the relay server is not published; games use the session interface and are forbidden their own network connections. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for protocol, WebSocket, WebRTC and transport; WebSocket appears only in the list of refused calls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The server only relays; it never runs your code."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.session",
+      "level": "native",
+      "note": "Players sign in with Google; everyone inside a lot shares one session up to the game's player limit, with a second one opened for more, and a dropped connection keeps the player's seat for a stated time.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Everyone inside the lot shares one session (up to `maxPlayers`; more people get a second one)."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "15 seconds after a dropped connection, and a minute for everyone through a server update"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.handoff",
+      "level": "none",
+      "note": "There is one world, and the only way out is a link to a full game hosted on another site, approved by hand, which carries nothing across: the other site is outside Project 0 and must not get the player's sign-in. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for portal, teleport, handoff and travel; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the other site is not part of Project 0, its own terms apply there"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Today there is one world; more worlds are planned"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.address",
+      "level": "partial",
+      "note": "Places are lots with stable numbers inside the single world, and an invitation flies the receiving player to the lot and into the very session. The documentation describes no address form that opens a lot from outside the client, and today there is one world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Whoever takes it is flown to the lot and enters that very session."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Today there is one world; more worlds are planned and may come with their own rules."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.root",
+      "level": "partial",
+      "note": "A person is a Project 0 account created through Google sign-in, one per person; games see an id, a first name and a colour, and the id changes when a player comes back to a new session after a long absence. The identifier means nothing outside Project 0.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "your Google account ID, email address, first name and profile picture link."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "back in a new session after a long time away, everyone has a new id: start again"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.credential",
+      "level": "none",
+      "note": "Sign-in is delegated to Google and Project 0 issues no verifiable claim about a player. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for credential, verifiable, claim, token signing and OpenID; the only hit for credential concerns keeping a generation service's key out of models.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.exchange",
+      "level": "none",
+      "note": "No credential is requested or presented between Project 0 and another party; a player signs in with Google and a linked outside game must never receive the Project 0 sign-in. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for credential, presentation, OAuth and OpenID; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Never give another site your Project 0 sign-in"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.capability",
+      "level": "partial",
+      "note": "A player's agent key is a capability with a stated scope (only that player's lots and avatar), and a game's collaborators are granted roles with stated powers. Only Project 0 can read either grant; no other party can verify what a key or a role allows.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The key can only touch this player's lots and avatar."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a **maintainer**'s go live by themselves once the review passes"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.pose",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and nothing in it is positioned against the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.crs",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and each lot has its own local frame (metres, origin at the middle of its floor, +Y up) and the city has no relation to the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-shared",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and it fixes content to lots in its own virtual city, never to a physical place.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.vps",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and it uses no camera imagery to recover a real-world pose.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.tiles",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and it streams its own city lot by lot at three levels of detail by distance, which is not geospatial data streamed by tile.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.session",
+      "level": "none",
+      "note": "Project 0 runs as a flat 3D view in a web browser, played with keyboard, mouse, touch or a game controller; no headset session is documented. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for WebXR, VR, headset and immersive; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.behaviour",
+      "level": "partial",
+      "note": "Interactivity does travel with a build inside Project 0: a lot's package can carry a script that moves named parts, sets shader values and plays clips, and a game is a JavaScript package. It is imperative code against Project 0's own interface, not a declarative graph, and it never leaves the platform; game entities are data and may not carry code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`script`: a module that runs in a sandbox in each nearby player's browser"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "An entity is data, never code:"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent",
+      "level": "partial",
+      "note": "Games inside lots may run game-AI characters with the bundled steering and pathfinding libraries. The AI agents Project 0 is built around act from outside the world, publishing through its interface; no agent takes part in the city as a participant. The missing part is an agent present inside the shared world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "game AI: steering (seek, flee, wander, follow a path), state machines, goals, perception"
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.inventory",
+      "level": "native",
+      "note": "A player holds up to four avatars, four pets and four cars, items (badges, cards, keys, achievements), and the things they bought in each game, all kept by the city; games can give or sell avatars, pets and cars to wear anywhere in the city. Nothing travels outside Project 0, items cannot be sold, and goods bought in a game cannot be resold.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A player keeps up to four avatars and wears one"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Items (badges, cards, keys and achievements) are pictures with a name and a number that players and brands make and games give."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "give or sell this player one of your game's avatars, to wear in the city"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.version",
+      "level": "partial",
+      "note": "Updates are handled for players: a new game version reaches only players who enter after it, players already inside keep theirs and are told, drafts can be reviewed before going live, and entities that fail a game's new rules are flagged for an update. The missing part is any history or pinning: a new publish deletes the previous version, and keeping old saves readable is left to the author.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A new version of your game goes live for players who enter after it;"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the previous version is deleted (no history is kept)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a new version of your game reads the old saves, so keep their shape or check it."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.conformance",
+      "level": "partial",
+      "note": "Testing exists, but it proves conformance to Project 0's own rules rather than to a specification: every upload is validated against budgets, a local dev kit runs a game in the same sandbox and runtime players get, and a game's entity rules module is exactly what the server runs. There is one implementation and no specification for a second one to match.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The dev kit runs your game from your own machine in the real sandbox and runtime players get"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "import { validate } from './rules.js'` and run it locally, it is exactly what the server runs."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.splat-format",
+      "level": "none",
+      "note": "No Gaussian splat format is accepted: builds and avatars must be binary glTF, and a game package's allowed file types list no splat format. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for splat, Gaussian, radiance and SPZ; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.volumetric-video",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city of lots built by players' agents from modelled glTF content, and it carries no captured, time-varying scene as media and no camera calibration; the file types a game may ship are models, images, sound and text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.point-cloud",
+      "level": "none",
+      "note": "Point data has no place in what Project 0 accepts: builds and avatars are binary glTF meshes, and a game package may ship only models, images, sound, JSON and text. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for point cloud, points, PLY and LAS; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.multiview-depth",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city of lots built by players' agents from modelled glTF content, and it carries no calibrated camera views with per-pixel depth; the file types a game may ship are models, images, sound and text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.4d",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city of lots built by players' agents from modelled glTF content, and it carries no captured scene that changes over time and states no playback rate; the file types a game may ship are models, images, sound and text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.extension",
+      "level": "partial",
+      "note": "Project 0 accepts some glTF extensions and refuses others (meshopt is accepted, Draco compression and GPU instancing are refused), and its own avatar file adds shaders on top of the model with a stated fallback: a device that cannot compile them draws the model's own material. Its own configuration files have no declared extension mechanism with rules for readers that do not understand an addition.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Not accepted: Draco compression, `EXT_mesh_gpu_instancing`, external files."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "send a plain GLB (meshopt is accepted, Draco is not)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "If a player's device still cannot compile them, that material falls back to the GLB's own."
+        }
+      ],
+      "via": [
+        {
+          "id": "gltf",
+          "source": 1,
+          "quote": "send a plain GLB (meshopt is accepted, Draco is not)"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.schema",
+      "level": "none",
+      "note": "Project 0 issues no claims, so it declares no claim vocabulary; the JSON Schemas it hosts describe game entities, not claims about a subject. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for claim, vocabulary, credential and verifiable; no hits about identity claims.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.key-lifecycle",
+      "level": "partial",
+      "note": "Agent keys can be replaced at any time, a new key cancels the old one, the operator can revoke a key, and only a hash of each key is stored. These rules cover Project 0's own publishing keys; there is no published verification material and no recovery rule for an identity-control key.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A new key cancels the old one."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You can replace the key at any time, and we can revoke it."
+        },
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "we store only a hash of each key, so we cannot read the key itself."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.status",
+      "level": "none",
+      "note": "There is no issued credential whose status could be checked; the only revocation documented is of the platform's own agent keys. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for credential, status list and revocation; revocation appears only for agent keys.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You sign in with Google. One account per person."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You can replace the key at any time, and we can revoke it."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.resolve",
+      "level": "native",
+      "note": "Inside a game, files are named by their path in the package and the platform resolves a path to a full address; imports of the bundled libraries are resolved to Project 0's pinned copies. Nothing outside the game's own files can be reached.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.asset(path)` | full address of a file in your package"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "We bundle it on publish; `three` is r186, shared with the game."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.protection",
+      "level": "none",
+      "note": "Published content carries no protection scheme, and the collaboration interface hands any agent the live code of a game that is open to proposals. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for encrypt, protection, DRM and key system; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Cloudflare carries traffic to the site, stores the published 3D files"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the live version: experience.json and the code as text, other files as addresses to fetch"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.consent",
+      "level": "none",
+      "note": "What a game receives about a player is fixed by policy rather than granted by the player: first name, colour, avatar and position. No grant with scope, purpose or withdrawal travels with the player. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for consent, permission and withdraw; no hits about a player's grant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the experience and the other players in its session get your first name, colour, avatar and position."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.admission",
+      "level": "partial",
+      "note": "Entry to a lot's game is decided by fixed platform rules: a paid entry, an account at least 12 hours old for paid games, a prize pool able to cover the prize, and a session cap; a full world lets new arrivals watch. A destination cannot return its own approval or refusal with a validity limit or explanation.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "While a prize is set and the pool holds less than it, nobody but the owner can enter."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Accounts younger than 12 hours can claim free lots but cannot buy from other players or enter paid games."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "When the world is full, new arrivals can watch until a place frees up."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.parametric",
+      "level": "none",
+      "note": "All geometry arrives as triangle meshes in glTF. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for NURBS, curve, Bezier and spline; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.voxel",
+      "level": "none",
+      "note": "Builds are triangle meshes and a game package ships models, images, sound and text; no volume of cells is accepted. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for voxel, volume and cell; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.containment",
+      "level": "native",
+      "note": "This is what Project 0 is built on: any lot can run another player's game, their own JavaScript with its own logic and lifecycle, inside the lot's box while the city fades behind a veil, sandboxed from the page and the player's machine; a Godot 4 web export can also run as it is. Players outside still see the lot's street model with the players inside shown as glass cubes.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Their view dives into the lot, the city around fades behind a white veil, and your code runs the space inside the lot's box"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A lot can run a game made in Godot 4. Its Web export goes up as it is and plays on a page of its own,"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "WebAssembly: its Web export runs as it is"
+        }
+      ],
+      "via": [
+        {
+          "id": "wasm",
+          "source": 2,
+          "quote": "WebAssembly: its Web export runs as it is"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.world-coupling",
+      "level": "none",
+      "note": "A game session exists only while someone is inside, and a lot's script runs only in the browsers of nearby players, so nothing changes in one place with nobody present. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for background, scheduled, server-side and offline; no hits for world logic running unattended.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The session lives while someone is inside; when the last player leaves it is gone, so each visit starts fresh."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The server only relays; it never runs your code."
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.payment",
+      "level": "partial",
+      "note": "Inside the city a game asks to sell an item, the city's own page shows the price and balance and takes the tokens only after two presses, and the game gets a result back; tokens themselves can be bought with named stablecoins or SOL on the Solana network, matched by a unique amount. The missing parts are a machine-readable payment requirement an agent could answer and any automated settlement: token purchases are matched to orders by sum, and tokens have no money value.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Resolves `{ ok, purchase, again, reason }`"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "you can buy tokens with USDC, USDT or SOL on the Solana network, paid straight to Project 0's wallet"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Tokens have no money value: they cannot be cashed out or exchanged for money"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.entitlement",
+      "level": "native",
+      "note": "Project 0 checks grants at the moment of use for its own goods: an entry price admits a player for 30 minutes, permanent in-game purchases are listed to the game on every visit, lots can be leased until a date, and bought avatars, cars and pets are the buyer's to keep but never to sell again. All of it lives in one platform's records; no other system can check a grant.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`price`: entry in tokens (0 to 1,000). 90% to the owner, 10% to the project fund; it lets a player back in for 30 minutes."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Read it on start: a permanent thing stays theirs in every session."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A lot the player leases from someone else is in the list too, with `lease.leasedFrom` and `lease.until`:"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "An avatar from a game is its player's to wear, never to sell again."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.activity-record",
+      "level": "partial",
+      "note": "What a player achieved is recorded publicly: every item given and every prize is a row in a public token ledger, and a lot's weekly score table can be read over a public web address. These are Project 0's own records; there is no portable statement format an outside learning record or assessor could ingest.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Every one given is a row in the public ledger."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`GET /api/lots/LOT_ID/game` (`top`) show it too."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Every movement of tokens is recorded in a public ledger at project0.city/ledger"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.material",
+      "level": "native",
+      "note": "Surfaces are glTF metallic-roughness materials, and builds and avatars may add Project 0's own shader functions, outlines and lighting modes per material by name.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**Format:** glTF 2.0 binary, textures embedded (PNG, JPEG or WebP), PBR metallic-roughness materials."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`materials`: LOD0's materials by name (`\"*\"` for all), exactly like an avatar's"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lighting",
+      "level": "partial",
+      "note": "The city lights builds itself: lights in uploaded models are ignored, emissive surfaces glow into a halo, and avatars choose standard, toon or unlit shading. A game may light its own three.js scene, which starts with a hemisphere light.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Lights and cameras are ignored."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`lighting`: `standard` (the GLB's PBR, default), `toon` (flat bands, `toonSteps` 2-6) or `unlit`."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.lod",
+      "level": "native",
+      "note": "Every build must ship three levels of detail made by its author, each with its own budget and viewing distance (up close, to about 240 metres, to about 700 metres).",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| Seen | up close (40 m from the lot, plus ¾ of its largest side), at most 5 lots at once | middle distance, up to ~240 m | far away, up to ~700 m |"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.splat",
+      "level": "none",
+      "note": "Builds and avatars are drawn as glTF meshes. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for splat, Gaussian and radiance; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.volumetric",
+      "level": "none",
+      "note": "Only meshes are drawn; a game package may not ship point, voxel or volumetric video files. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for point cloud, voxel and volumetric; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You deliver binary glTF files (`.glb`)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.text",
+      "level": "partial",
+      "note": "The platform gives a game one text line area at the top of the screen; any other text in the scene is the game's own drawing, for example a bitmap font on a texture.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "It is the only text UI."
+        },
+        {
+          "url": "https://project0.city/guides/games.md",
+          "title": "Making games people come back to",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "with their own bitmap font (ship the font file and its licence, e.g. OFL, in the package)."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.camera",
+      "level": "native",
+      "note": "Each game gets a perspective camera with fly, orbit or game-controlled modes; the platform keeps it within two lot sizes of the lot's centre and its field of view between 20 and 120 degrees. Cameras in uploaded models are ignored.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`mode: 'fly'` (default), `'orbit'` (camera circles the lot) or `'none'`"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "its field of view between 20 and 120 degrees."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.morph",
+      "level": "native",
+      "note": "Morph targets work in avatars, for faces and blinks.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Morph targets (blend shapes) work, for faces and blinks."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.instancing",
+      "level": "partial",
+      "note": "Builds may not use the glTF GPU instancing extension, so repeated parts in a build are merged instead; inside a game three.js instanced meshes work, and the guide reports games drawing thousands of copies that way.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Not accepted: Draco compression, `EXT_mesh_gpu_instancing`, external files."
+        },
+        {
+          "url": "https://project0.city/guides/games.md",
+          "title": "Making games people come back to",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "MIKU APPLE 2,400 glow sticks as one `InstancedMesh`"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance",
+      "level": "partial",
+      "note": "Authorship is recorded but not signed: anything published with a player's key counts as theirs, and a build's credits name the works and people used, including the generator of an AI-made model. Nothing records how an asset was made in a form another system can verify.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Anything published with your key counts as published by you."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Name the generator in `credits`"
+        }
+      ]
+    },
+    {
+      "capability_id": "avatar.lod",
+      "level": "native",
+      "note": "An avatar may ship a lighter copy within stated limits; the twelve nearest players show in full, the next ones show the lighter copy or, without one, a glass cube. Pets and cars have the same scheme.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The twelve players nearest to someone show in full (avatar.glb); the next ones show `avatar-lod1.glb` if the package has it, otherwise as the glass cube."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.rigid",
+      "level": "via-extension",
+      "note": "Rigid bodies come from the bundled cannon-es physics library inside a game; there is no physics in builds or avatars.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `cannon-es` | 3D physics: rigid bodies, collisions, constraints, vehicles |"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.collision",
+      "level": "via-extension",
+      "note": "A game may use the bundled three-mesh-bvh library for raycasts and collisions against meshes, or cannon-es bodies; the platform itself carries no collision shapes in content, and players cannot fly into a lot without a game.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `three-mesh-bvh` | fast raycasts and collisions against meshes (a character walking on a level) |"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.joint",
+      "level": "via-extension",
+      "note": "Joints and constraints come from the bundled cannon-es physics library inside a game; builds and avatars carry none.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `cannon-es` | 3D physics: rigid bodies, collisions, constraints, vehicles |"
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.determinism",
+      "level": "partial",
+      "note": "The platform gives every player in a session the same seeded random numbers and lockstep input ticks; keeping a simulation identical across machines is left to the game, and the guide describes using only basic arithmetic for that.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "random numbers seeded per session: everyone inside gets the same sequence"
+        },
+        {
+          "url": "https://project0.city/guides/games.md",
+          "title": "Making games people come back to",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "use only `+ − × ÷` and rounding in the rules, as ZER0 ARENA does, so every browser computes the same result."
+        }
+      ]
+    },
+    {
+      "capability_id": "physics.trigger",
+      "level": "partial",
+      "note": "A lot itself acts as a trigger: its build's script hears when players come near, enter or leave and when one taps it. Inside a game there are no platform trigger volumes; the game tests regions itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "b.on('enter', player => b.log('hello', player.name)) // also 'leave', 'near' (everyone within 60 m)"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.source",
+      "level": "none",
+      "note": "Sound in a game is played by file with volume, loop, rate and start time, and the documented interface takes no position or direction. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for spatial, positional, panner, 3D audio and distance; no hits about sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.sound.play(path, {volume, loop, rate, at})` | plays a sound file from your package"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.room",
+      "level": "none",
+      "note": "A game plays sound effects and one music track with volume, looping, rate and start time; no reverb or room model is offered. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for reverb, acoustic and room; no hits about sound.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.sound.play(path, {volume, loop, rate, at})` | plays a sound file from your package"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.stream",
+      "level": "partial",
+      "note": "A game can stream one music track from its own package and drive timing from its playback clock. There is no live or networked audio stream: a game cannot open its own connections.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "streams one music track from your package"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.voice",
+      "level": "none",
+      "note": "Players talk through text chat only, in room, world and direct channels. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for voice, microphone and speech; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Players have built-in **Room**, **World** and **Direct** chat above the game."
+        },
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "what you type in the chat is sent to other players in real time"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.authority",
+      "level": "native",
+      "note": "Authority is documented: the server only relays, the longest-present player is the host for decisions that need one answer, wins and scores come from players' browsers unchecked, and a staked duel pays only when both players' games name the same winner.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the longest-present player; when they leave the next one takes over."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 does not check each game's result"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The server pays only when the two reports agree"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.interest",
+      "level": "native",
+      "note": "Each client receives only what is near: a player's position goes to nearby players, a build's script runs only for the nearest three scripted lots within 60 metres, the twelve nearest avatars show in full, and builds switch level of detail by distance.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "your position and movement are sent to nearby players in real time."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "(the nearest three scripted lots within 60 m)"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.media",
+      "level": "none",
+      "note": "No live audio or video is carried: players chat in text, and a game may not open network connections or ship video files. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for video, voice, stream and WebRTC; streaming appears only for a music file from the game's package.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.presence",
+      "level": "partial",
+      "note": "Project 0 shows who is online and where inside its own world: a game gets the roster of everyone in its session, and a build's script sees players within 60 metres. There is no presence across operators.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`Map` of everyone inside, you included: `{ id, name, color, avatar, position, yaw, isMe }`."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.discovery",
+      "level": "partial",
+      "note": "Within the city an agent can discover the games that take player entities, each with its own instruction file, and the events running now, from public listings. Discovery stops at Project 0's one world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "games where a player's agent can make them a creature, a car or a fighter; each lists its own skill.md"
+        },
+        {
+          "url": "https://project0.city/api/games/entities",
+          "title": "Games that take entities (public listing)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "\"skill\":\"https://project0.city/api/games/zer0-g/skill.md\""
+        }
+      ]
+    },
+    {
+      "capability_id": "net.time",
+      "level": "native",
+      "note": "There is a shared world clock: build scripts and shaders receive the same time for every viewer, and a game session delivers ticks 20 times a second.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`time` is the world's clock, so everyone sees the same"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Builds get `p0Time` (the world's clock, the same for everyone)"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.privacy",
+      "level": "partial",
+      "note": "Disclosure is minimal by fixed rule: other players see only a first name, a colour and what the player builds, and a game receives first name, colour, avatar and position. The player cannot choose what to reveal to a particular receiver.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "we show other players only your first name and what you build"
+        },
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the experience and the other players in its session get your first name, colour, avatar and position."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.social",
+      "level": "partial",
+      "note": "Project 0 keeps a social layer of its own: friends to invite, fans told of a lot's updates, likes on lots, avatars and cars, and weekly council elections. None of it is portable to another system.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "in the session's chat, the World chat or to a friend"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "every live update tells the lot's fans."
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.rights",
+      "level": "partial",
+      "note": "Licence terms are acted on at the point of use for three listed fan-work licences: the review allows what the licence covers and a lot showing such credits cannot charge an entry price. No other licence is enforced.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the lot **cannot charge an entry price** while it shows them (prizes are fine)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A license that is not in the list changes nothing"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.indoor",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and its interiors are the insides of virtual lots, not descriptions of real buildings.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.controller",
+      "level": "native",
+      "note": "Game controllers are supported: the sticks and buttons press keys for simple games, and a game can read the standard layout's axes and 17 button values directly.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`axes` [left x, left y, right x, right y] in -1..1 past a dead zone, `buttons` the standard layout's 17 values 0..1"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.hand",
+      "level": "none",
+      "note": "Input is keyboard, mouse, touch and game controllers; no hand tracking is offered. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for hand tracking, finger and articulated; no hits about input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.eye",
+      "level": "none",
+      "note": "A game reads keyboard, mouse, touch and game controllers; no gaze input is offered. The avatar's look-at setting turns its head towards where the player's camera looks, which is not eye tracking. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for eye tracking, gaze and eye; no hits about input.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.haptic",
+      "level": "none",
+      "note": "Game controllers are read but no vibration or other touch feedback is documented. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for haptic, vibration and rumble; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.devcaps",
+      "level": "partial",
+      "note": "A game learns a little about the device: whether a game controller is in use, whether a pointer event came from touch, and the pixel ratio it renders at. It cannot discover other capabilities.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input.pad` is true and `p0.on('pad', inUse => ...)` tells you when that changes"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "taps arrive as pointer events with `touch: true`"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.sandbox",
+      "level": "native",
+      "note": "A game runs in a Web Worker in an isolated frame with no network beyond its own files, no storage and no access to the page or the player's computer; evaluation of generated code, WebAssembly, outside requests and storage are refused at review. A build's script runs in the same kind of sandbox and draws nothing itself.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a Web Worker in an isolated frame with no network beyond your own files, no storage, no access to the page or the player's computer."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.budget",
+      "level": "native",
+      "note": "Guest content is bounded throughout: triangle, draw-call, material, texture and file budgets per level, shader cost measured against plain materials in a real browser, script source limits, loop bounds in shaders, and per-player message and state rates in a session.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "it may cost at most 4 times as much, or 6 ms more per frame in the test renderer."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "At most 20 sets a second per player: more are dropped without an error"
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world",
+      "level": "native",
+      "note": "Lots and their builds persist, and the city keeps a save per player per game and players' notes; a game session itself does not survive the last player leaving. The terms warn that the world may lose data or be reset.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The city keeps one save per player in your game"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "it can go offline, lose data or be reset, and it may stop entirely."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.bundle",
+      "level": "native",
+      "note": "A runnable game is a documented package: a manifest naming its entry module, more modules imported by relative path, and assets of listed types, with size and file-count limits; a build is three model files plus an optional manifest, script and shaders, and an avatar is a model plus an optional settings file.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "experience.json {\"entry\": \"main.js\", \"name\": \"Ink Orbs\", \"description\": \"...\", \"maxPlayers\": 8}"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Up to 4 MB of JavaScript, 1,000 files, 200 MB in total,"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.cdn",
+      "level": "native",
+      "note": "Published 3D files are stored and delivered through Cloudflare in front of the city.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Cloudflare carries traffic to the site, stores the published 3D files"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.worldgen",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it generates nothing itself: the players' own coding agents make the content outside the platform and publish finished files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.sim-learned",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it never continues a world from a learned model; games run their own code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.stream",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it delivers no captured scene; what it streams are modelled builds at three levels of detail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-control",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it generates nothing itself: the players' own coding agents make the content outside the platform and publish finished files.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.derived-asset",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it holds no splat or radiance-field world to derive meshes from.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.action-io",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it carries no agent's actions in or out as time-sampled data; its agents act by publishing files through its interface.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.mesh",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and reads no device sensors to reconstruct the player's room.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.semantics",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and labels no real surfaces or objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.depth",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and measures no real-world depth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.face",
+      "level": "none",
+      "note": "No face or body tracking reaches a game: input is keyboard, mouse, touch and game controllers, and a game cannot reach the player's device. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for face tracking, webcam, camera access and body tracking; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "in a sandbox in your browser that has no access to your account, the rest of the page or your device."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.navmesh",
+      "level": "via-extension",
+      "note": "A game may use the bundled three-pathfinding library on a navigation mesh it supplies; builds carry no walkable-surface data.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `three-pathfinding` | pathfinding on a navigation mesh |"
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.moderation",
+      "level": "native",
+      "note": "Every upload passes automatic checks, a sandboxed test run and an AI review of rendered pictures, test-run frames and on-screen text before it goes live; there is no human review before publication. Players can report a lot, and an elected council or the administrators can put a lot before a jury of 20 players. A receiving system cannot tell what review a piece of content had.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "then an AI model (Google Gemini on Google Cloud) looks at pictures of the content, the frames of the test run and the text players will see"
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Nobody looks at content by hand before it goes live."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.map-align",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and it has no map of a real place to align.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.coverage",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and nothing in it applies to an area of the Earth.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        }
+      ]
+    },
+    {
+      "capability_id": "deliver.profile",
+      "level": "partial",
+      "note": "Content works against named levels with stated requirements: three levels of detail per build, each with exact triangle, draw-call, material, texture and file limits, larger allowances for bigger lot classes, and per-lot numbers from the interface. These are budgets for content on one implementation, not profiles another implementation could claim.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Large lots get 25% more triangles and file size, landmark lots 50% more and 17 draw calls for LOD0,"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The exact numbers per lot are in `/api/agent/me`."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.color",
+      "level": "partial",
+      "note": "Shader inputs state their colour interpretation: base colour and the player's colour are given in linear space. No output range or high dynamic range declaration is documented.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "vec3 color; // base colour (linear), after the GLB's texture and factor"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.metadata",
+      "level": "partial",
+      "note": "A published build or game carries a name, a description and a credits list, and a lot may show a one-line note; there is no structured property scheme for parts of a scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "The name is up to 48 characters, the description up to 400."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.thumbnail",
+      "level": "native",
+      "note": "A game entity can carry a square picture alongside its model, and avatars and cars a game offers are listed with a thumbnail.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the picture square, 256-1,024 px."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`[{ id, name, price, url, config, thumb, owned }]`"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.ui",
+      "level": "partial",
+      "note": "Two-dimensional interface is mostly the city's own: its bar, chat and buttons sit over a game and can be folded away, and a game gets a closable text area; the game draws everything else into its scene.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "On a phone the city's bar, chat and buttons sit over your game."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`\"ui\": \"minimized\"`: players enter with all of that folded away, only your game on screen."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.marker",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and tracks no physical markers or images.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.timed-media",
+      "level": "partial",
+      "note": "A game can stream a music track and drive its scene from the track's playback time, and start it from the clock so everyone hears it in step. Video cannot be shipped: a game package's file types are models, images, sound and text.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.music.time` is where the track is as heard"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "assets/... .glb .vrm .png .jpg .webp .ogg .mp3 .wav .json .txt"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.zone-event",
+      "level": "partial",
+      "note": "Each lot is a zone that raises enter, leave, near and tap events to its build's script, for players within 60 metres. The zones are Project 0's own lots with no identifiers or event form another system could read.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "b.on('enter', player => b.log('hello', player.name)) // also 'leave', 'near' (everyone within 60 m)"
+        }
+      ]
+    },
+    {
+      "capability_id": "identity.receipt",
+      "level": "partial",
+      "note": "Publishing returns a machine-readable decision: live, still in review, or refused with the reasons, and a submission can be checked later by its number. Nothing in the answer is signed.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`422` returns the errors or the review's reasons"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Check a submission later with `GET https://project0.city/api/agent/submissions/ID`."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.shader-lang",
+      "level": "partial",
+      "note": "Custom shaders are written in GLSL ES 3.0, a portable language, but as functions with Project 0's own entry points and inputs that the city inserts into its materials; they are compiled and timed in a real browser before publication.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Write GLSL ES 3.0 functions; the game puts them inside its own materials"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A **surface** file defines `void p0Surface(inout P0Surface s)` and changes the fields of `s`."
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.particle",
+      "level": "native",
+      "note": "Avatars, pets and cars declare up to four particle styles in their settings file (shape or texture, colours, size, life, speed, gravity, spread, spin) that the city evaluates; the format is Project 0's own.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `shape` | `dot`, `star`, `heart`, `spark`, `ring` or `square` |"
+        }
+      ]
+    },
+    {
+      "capability_id": "scene.provenance-recovery",
+      "level": "none",
+      "note": "Copyright complaints are handled by email and in-game reports; no fingerprint or watermark recovers a lost provenance record. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for watermark, fingerprint of content and provenance; fingerprint appears only for phone numbers and players.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "If something in Project 0 uses your work without permission, email us with a link or the lot number"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.hit-test",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and has no estimate of the physical surroundings to cast rays against.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.privacy",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and senses nothing of the physical world, so it has no sensed data to govern.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.event-device",
+      "level": "none",
+      "note": "Games read keyboard, mouse, touch and game controllers only. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for MIDI, instrument and note; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "commerce.receipt",
+      "level": "partial",
+      "note": "Every purchase in a game is a row in a public ledger, and a game can read what a player bought before with the item, price and time. Nothing is signed, so another verifier cannot check a record apart from trusting Project 0.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "You get 90% of every purchase, the project fund 10%, and each one is in the public ledger."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "what this player bought in your game before, oldest first: `[{ id, item, name, price, once, at }]`"
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.agent-authoring",
+      "level": "native",
+      "note": "The strongest example of this row: Project 0 exists to be built by outside coding agents. A single published instruction file gives an agent the whole web interface, authorised by the player's key, to claim status, validate and publish builds, avatars, pets, cars, games, items and entities, run drafts and read error logs; a command line wraps the same calls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "everything an agent needs to build here (the API, the limits, examples)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Every request carries the player's key:"
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "persist.world-export",
+      "level": "partial",
+      "note": "Content is authored in open formats (glTF, JavaScript, images, sound), an agent can fetch the live code and files of a game that is open to proposals, and a player can ask by email for a copy of their data. No whole-lot export is documented, a new publish deletes the previous version, and the terms ask players not to keep the only copy of anything there.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Please do not keep the only copy of anything important here."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the live version: experience.json and the code as text, other files as addresses to fetch"
+        },
+        {
+          "url": "https://project0.city/privacy",
+          "title": "Privacy Policy, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Email us to get a copy of your data"
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.object-track",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and recognises no physical objects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "net.live-data",
+      "level": "none",
+      "note": "A game cannot bind to an outside data source: outside requests, sockets and event streams are refused at review. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for live data, sensor and external API; the only matches are the list of refused network calls.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.physiological",
+      "level": "none",
+      "note": "Input is keyboard, mouse, touch and game controllers. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for heart rate, skin conductance and physiological; the only hit for heart is a particle shape.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.input` | `keys` (a `Set` of `KeyboardEvent.code`), `isDown(code)`, `pointer {x, y, buttons, locked}`"
+        }
+      ]
+    },
+    {
+      "capability_id": "net.portal-preview",
+      "level": "partial",
+      "note": "Before entering, a passer-by sees the lot's street model, with the players inside shown as glass cubes, and a lot linked to an outside full game shows a marked link beside Play. The preview is of a lot in the same world; there is no portal to another world.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Other players outside see your LOD0 as usual (with the players inside as glass cubes)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Once approved the lot shows **Full game ↗** beside Play"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.raster",
+      "level": "native",
+      "note": "Drawing is three.js rasterisation in the browser at a pinned version shared with the city; a game may create its own renderer with chosen options or render by hand.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`three` is r186, shared with the game."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.autoRender = false` to render yourself."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.gpu-api",
+      "level": "native",
+      "note": "Rendering targets WebGL: games get a three.js WebGL renderer, Godot games must use the WebGL 2 Compatibility renderer, and WebGPU is refused.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "a transparent `WebGLRenderer`"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "the **Compatibility** renderer (WebGL 2)"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "render.post",
+      "level": "native",
+      "note": "The city applies its own post effect to builds, spreading emissive light into a halo, and games may run their own post-processing such as bloom; the games guide warns it is among the most expensive effects.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Emissive light glows: it spills into a halo around the build"
+        },
+        {
+          "url": "https://project0.city/guides/games.md",
+          "title": "Making games people come back to",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "**What costs frames here:** post-processing (bloom) and multisampled targets"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.spatial",
+      "level": "none",
+      "note": "The documented sound interface takes volume, loop, rate and start time, and no direction. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for spatial, HRTF, ambisonic and panner; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.sound.play(path, {volume, loop, rate, at})` | plays a sound file from your package"
+        }
+      ]
+    },
+    {
+      "capability_id": "audio.occlusion",
+      "level": "none",
+      "note": "Sound is played by file with no position, so nothing can block it. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for occlusion, obstruction and muffle; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.sound.play(path, {volume, loop, rate, at})` | plays a sound file from your package"
+        }
+      ]
+    },
+    {
+      "capability_id": "geo.anchor-local",
+      "level": "out-of-scope",
+      "note": "Project 0 is a virtual city in the browser and fixes content to lots in that city, never to a place seen by a device.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "logic.script",
+      "level": "native",
+      "note": "World rules are readable JavaScript modules using three.js r186 and a short list of bundled libraries, with no minified or generated code; a Godot 4 web export is the one route for compiled code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Readable ES modules only: no minified, generated or encoded code"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "(A game made in Godot is the one way in for WebAssembly: its Web export runs as it is, see \"A Godot game\" below.)"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.photogrammetry",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it builds no models from photographs.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.novel-view",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it synthesises no views from captures.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.relight",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it holds no captured scene to relight.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.edit",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it holds no captured scene to edit.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.gen-edit",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it generates nothing itself; changes are made by the players' own agents outside it and republished.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.occlusion",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and has no real surfaces for content to hide behind.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.passthrough",
+      "level": "none",
+      "note": "Project 0 draws a wholly virtual city and a game cannot reach the device's camera. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for passthrough, augmented reality, AR and camera feed; no hits.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        },
+        {
+          "url": "https://project0.city/terms",
+          "title": "Terms of Service, Project 0",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "in a sandbox in your browser that has no access to your account, the rest of the page or your device."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.lighting",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and estimates no real-world light.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "input.pointing",
+      "level": "partial",
+      "note": "In the city a click picks a lot and a tap reaches the lot's build script with the player who tapped; inside a game, pointer events arrive and picking a particular object is the game's own raycast, for example with the bundled mesh-raycast library.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "b.on('tap', player => { pulse = 1; b.play('open', { loop: false }) })"
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "| `three-mesh-bvh` | fast raycasts and collisions against meshes (a character walking on a level) |"
+        }
+      ]
+    },
+    {
+      "capability_id": "input.text",
+      "level": "native",
+      "note": "Text entry has a defined interface: a game asks the city to open its own small window, the player types and posts there, and the game receives the note; chat typing is never exposed to game code.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`p0.notes.write()` opens the city's own small window, the player types and posts there, and your game gets the note back."
+        },
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "human chat is not exposed to your code or `p0.room` messages."
+        }
+      ]
+    },
+    {
+      "capability_id": "sense.play-space",
+      "level": "out-of-scope",
+      "note": "Project 0 is a wholly virtual city drawn in the browser and reports no physical play area.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Project 0 is an unfinished white city in the browser: pale glass boxes drawn in ink on white paper."
+        }
+      ]
+    },
+    {
+      "capability_id": "render.compute",
+      "level": "none",
+      "note": "Games render with WebGL, which has no general compute, and WebGPU is refused at review. Searched skill.md, guides/games.md and guides/assets.md (the full documentation set that project0.city/llms.txt lists) and the terms and privacy pages, as served on 2026-11-14, for compute shader, GPGPU and WebGPU; WebGPU appears only in the refused list.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/skill.md",
+          "title": "Building in Project 0 (skill.md)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "`fetch` to other sites, `WebSocket`/`XMLHttpRequest`/`EventSource`, storage (`indexedDB`, `caches`), workers, WebGPU,"
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.radiance-training",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it trains no radiance fields.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        }
+      ]
+    },
+    {
+      "capability_id": "capture.objectgen",
+      "level": "out-of-scope",
+      "note": "Project 0 is a city that players' own agents build from outside, and it generates no objects itself; its assets guide points agents to outside generation services.",
+      "confidence": "verified",
+      "sources": [
+        {
+          "url": "https://project0.city/llms.txt",
+          "title": "Project 0 (llms.txt)",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "A 3D city whose players build with their own AI agents: buildings, games inside them, avatars."
+        },
+        {
+          "url": "https://project0.city/",
+          "title": "Project 0: a 3D city built with AI agents",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Claude Code, Codex or any other coding agent builds here for you: your lots, the games inside them, your avatar."
+        },
+        {
+          "url": "https://project0.city/guides/assets.md",
+          "title": "Getting 3D assets",
+          "retrieved": "2026-11-14",
+          "kind": "primary",
+          "quote": "Services Project 0's makers have used themselves: fal.ai, Higgsfield, Tripo's own API, AssetHub, Hunyuan's web studio."
+        }
+      ]
+    }
+  ]
+}

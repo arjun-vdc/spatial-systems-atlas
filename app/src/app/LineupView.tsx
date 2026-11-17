@@ -12,6 +12,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Capability, Model, Subject } from '../design-model.ts'
+import { setState, subjectKindLine, toggleSet } from '../design-model.ts'
 import type { Action, AppState } from './state.ts'
 import { MEASURES, families, isProduction, measureValue, packDots, shortName, subjectCounts } from './explore-model.ts'
 import type { Measure } from './explore-model.ts'
@@ -112,19 +113,23 @@ export function LineupView({ model, state, dispatch, rows, onFocusSubject }: {
           ))}
         </div>
         <div className="cv-chips" role="group" aria-label="Families in the comparison">
-          {fams.map((f) => {
-            const n = f.subjects.filter((s) => on.has(s.id)).length
-            const all = n === f.subjects.length
-            return (
-              <button key={f.id} type="button" className={`cv-chip cv-fam-${f.id}${n && !all ? ' part' : ''}`}
-                aria-pressed={all} title={all ? `Remove every ${f.name} subject from the comparison` : `Add every ${f.name} subject to the comparison`}
-                onClick={() => {
-                  const ids = f.subjects.map((s) => s.id)
-                  dispatch({ type: 'set-on', on: all ? state.on.filter((id) => !ids.includes(id)) : [...new Set([...state.on, ...ids])] })
-                }}>
-                <span className="cv-swatch" />{f.name}
-              </button>
-            )
+          {fams.flatMap((f) => {
+            // One chip per family; the platform family is followed by one chip per kind of
+            // platform, in the family's colour, so a reader can switch on one kind alone.
+            const chip = (id: string, name: string, ids: string[], sub: boolean) => {
+              const { n, all } = setState(state.on, ids)
+              return (
+                <button key={id} type="button" className={`cv-chip cv-fam-${f.id}${sub ? ' sub' : ''}${n && !all ? ' part' : ''}`}
+                  aria-pressed={all} title={all ? `Remove every ${name} subject from the comparison` : `Add every ${name} subject to the comparison`}
+                  onClick={() => dispatch({ type: 'set-on', on: toggleSet(state.on, ids) })}>
+                  <span className="cv-swatch" />{name}
+                </button>
+              )
+            }
+            return [
+              chip(f.id, f.name, f.subjects.map((s) => s.id), false),
+              ...(f.subgroups ?? []).map((g) => chip(`${f.id}:${g.id}`, g.name, g.subjects.map((s) => s.id), true)),
+            ]
           })}
         </div>
       </div>
@@ -170,7 +175,8 @@ export function LineupView({ model, state, dispatch, rows, onFocusSubject }: {
         </div>
 
         {selected ? (
-          <ImageCard subject={model.bySubject.get(selected)!} famId={famOfId.get(selected) ?? 'other'}
+          <ImageCard subject={model.bySubject.get(selected)!} kindLine={subjectKindLine(model, model.bySubject.get(selected)!)}
+            famId={famOfId.get(selected) ?? 'other'}
             famName={fams.find((f) => f.id === famOfId.get(selected))?.name ?? ''}
             counts={counts.get(selected)!} measure={measure} index={index} total={order.length}
             onStep={step1} onFocus={() => onFocusSubject(selected)} />
@@ -207,8 +213,9 @@ function Dot({ subject, x, y, value, left, selected, onPick }: {
   )
 }
 
-function ImageCard({ subject, famId, famName, counts, measure, index, total, onStep, onFocus }: {
+function ImageCard({ subject, kindLine, famId, famName, counts, measure, index, total, onStep, onFocus }: {
   subject: Subject
+  kindLine: string
   famId: string
   famName: string
   counts: ReturnType<typeof subjectCounts>
@@ -267,7 +274,7 @@ function ImageCard({ subject, famId, famName, counts, measure, index, total, onS
       <dl className="cv-kv">
         {subject.org && <><dt>Organisation</dt><dd>{subject.org}</dd></>}
         {subject.licence && <><dt>Licence</dt><dd>{subject.licence}</dd></>}
-        <dt>Kind</dt><dd>{subject.kind}</dd>
+        <dt>Kind</dt><dd>{kindLine}</dd>
       </dl>
       {subject.sum && <p>{subject.sum}</p>}
       <p className="cv-note">{counts.z} absent · {counts.o} out of scope · {counts.never} not assessed, on the rows on screen.</p>
