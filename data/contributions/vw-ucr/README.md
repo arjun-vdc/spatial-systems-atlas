@@ -94,7 +94,7 @@ removed (the `demand.csv` columns carry them instead).
 
 ## Interop evidence (2026-11-17)
 
-`interop-evidence.csv` holds 4 rows, from 82 public deployments on the 14 products joined to repository systems: 47 of them touch a must-agree row through their use cases, 5 name a standard that is an Atlas subject in their own text, and 4 of those name it for a row their use case needs. The repository has no structured link from a deployment to a standard, so the rows come from the deployment's own text only; no standard is inferred. Two cases were left out: IEEE 2874 on lunar-rover twin VW-IMP-0227 (no must-agree row is named for it) and WebXR on VW-IMP-XRU01 (named as the renderer, not for replication). Each row is a deployment built with the product, not a statement that the product itself implements the standard.
+`interop-evidence.csv` holds 4 rows, from 82 public deployments on the 14 products joined to repository systems: 47 of them touch a must-agree row through their use cases, and 8 of those name a standard that is an Atlas subject in their own text (read one by one); 4 name it for a row their use case needs. The repository has no structured link from a deployment to a standard, so the rows come from the deployment's own text only; no standard is inferred. Left out: IEEE 2874 on VW-IMP-0227 (no must-agree row named for it), WebXR on VW-IMP-XRU01 and WebGL on VW-IMP-ABS01 and XRHQ364 (the renderer, not the row's subject), geolocation on XRHQ482 (not shared anchors). Each row is a deployment built with the product, not a statement that the product itself implements the standard.
 
 ## Licence
 
